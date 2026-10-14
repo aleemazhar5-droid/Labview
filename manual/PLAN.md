@@ -36,19 +36,19 @@ Part III — Satellites in Earth Orbit
 - [x] 12 Satellite Buses and Payload Instruments
 Part IV — Earth Observation and Remote Sensing
 - [x] 13 Remote Sensing Fundamentals
-- [ ] 14 Electro-Optical / Infrared Satellites
-- [ ] 15 Synthetic Aperture Radar Satellites
-- [ ] 16 Weather and Environmental Satellites
+- [x] 14 Electro-Optical / Infrared Satellites
+- [x] 15 Synthetic Aperture Radar Satellites
+- [x] 16 Weather and Environmental Satellites
 Part V — Communication and Navigation
-- [ ] 17 Communication Satellites
-- [ ] 18 Global Navigation Satellite Systems
+- [x] 17 Communication Satellites
+- [x] 18 Global Navigation Satellite Systems
 Part VI — Military, Intelligence and Security Space
-- [ ] 19 National Security Space and Signals Intelligence
-- [ ] 20 Missile Early Warning Satellites
-- [ ] 21 Space Surveillance, Orbital Debris and SSA
+- [x] 19 National Security Space and Signals Intelligence
+- [x] 20 Missile Early Warning Satellites
+- [x] 21 Space Surveillance, Orbital Debris and SSA
 Part VII — Space Environmental Science
-- [ ] 22 Space Weather
-- [ ] 23 Magnetospheric and Ionospheric Physics
+- [x] 22 Space Weather
+- [x] 23 Magnetospheric and Ionospheric Physics
 Part VIII — Deep Space Exploration
 - [ ] 24 Deep-Space Mission Design
 - [ ] 25 Planetary Orbiters

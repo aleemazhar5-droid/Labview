@@ -128,3 +128,5 @@
 - Top fragmentations (catalogued/in orbit): FY-1C 3534/2314; Cosmos 1408 1806/4; Cosmos 2251 1716/612; LM-6A 2022 800/613; Pegasus HAPS 753/56; LM-6A 2024 705/574; Iridium 33 656/115.
 - Re-entries: ~2,500 catalogued objects in 2022, ~2,000/yr since.
 - TraCSS: pre-production in 2026, funding contested. ClearSpace-1 (PROBA-1, launched 2001): ~2028-29 on Vega-C. ADRAS-J2: FY2027 on Isar Spectrum (Andoya). ADRAS-J 2024 approached H-IIA stage to ~15 m.
+- SMILE (ESA-CAS) launched 19 May 2026 on Vega-C (VV29, first Avio-operated), to HEO 5,000 x 121,000 km. TRACERS launched 23 Jul 2025. Cluster re-entries 2024.
+- Space weather: SC25 smoothed max 160.9 (Oct 2024). G4+ storm days: 2023-03-24, 2023-04-23, 2024-03-24, 2024-05-10/11 (Kp9, Ap 271), 2024-08-12, 2024-10-10, 2025-01-01, 2025-11-12 (Kp 9-), 2026-01-19 (Kp 9-).
