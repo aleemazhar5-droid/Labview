@@ -62,3 +62,12 @@
 - ESA Space Rider: first flight NET 2028 (Vega-C, Kourou), drop tests/landing milestones 2026.
 - Reaction Engines (SABRE) entered administration Oct 2024.
 - ISRO RLV-LEX landing experiments: LEX-01 Apr 2023, LEX-02 Mar 2024, LEX-03 Jun 2024 (Pushpak).
+- Guowang (China SatNet): ~204 LEO sats launched by Sept 2026 (+3 high orbit, 27 test). Qianfan (Thousand Sails,
+  SSST): ~218 after July 4 2026 launch. AST SpaceMobile: 13 BlueBirds (6 Block 1 + 7 Block 2) after Aug 5 2026;
+  target ~45 by early 2027; FCC authorised commercial D2D (up to 248 sats); 98.9 Mbps peak to phone.
+- IRIS² (EU, SpaceRISE: SES, Eutelsat, Hispasat): concession Dec 2024; Aug 2026 agreement → 348 sats (330 LEO + 18
+  MEO) + 66 defence/security sats; first launches 2029; ~€10.6B→ cost cited €15.6B (Wikipedia).
+- Starlink: Jan 1 2026 announcement (M. Nicolls) — lowering ~4,400 sats from ~550 km to ~480 km during 2026 for
+  safety (decay time at solar min from 4+ yr to months); followed Dec 2025 sat anomaly at ~418 km creating debris.
+- GCAT in-orbit counts (Oct 2026): Starlink 10,655; OneWeb 654; Amazon Leo (Kuiper) 392; Qianfan 239; Iridium 106;
+  Globalstar 85; Planet Flock 109; Spire Lemur 82; ICEYE 46; SDA 42.

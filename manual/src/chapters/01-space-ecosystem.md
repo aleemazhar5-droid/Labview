@@ -154,7 +154,7 @@ The number of satellites has grown even faster than the number of launches, beca
 **Data box — Earth orbit population, October 2026 (GCAT)**
 
 - Catalogued objects in orbit: **≈33 800**, of which payloads ≈19 200, debris fragments ≈11 300, rocket bodies ≈2 000, other mission objects ≈1 300.
-- Payloads believed to be operating: **≈16 000** (estimates range from 15 000 to 18 000 depending on the definition of "active").
+- Payloads believed to be operating: **≈16 000–17 000** (GCAT estimate ≈16 000; CelesTrak lists ≈17 200 as operational; definitions of "active" differ).
 - Starlink satellites in orbit: **≈10 650**.
 - Payloads by regime: LEO ≈17 100, GEO ≈1 340, MEO ≈460, highly elliptical ≈240.
 - Estimated objects too small to track (1–10 cm): **about one million**; objects 1 mm–1 cm: over 100 million (ESA debris model).
