@@ -46,3 +46,7 @@
   $141B across 53 budgets, US gov $78.3B (57%). 2024: $613B. Forecast >$1T by ~2032.
   Novaspace: 2024 gov space $135B, defense $73B (54%), US 59%, China >$19B.
 - Artemis Accords: 76 signatories by late Sept 2026 (NASA: "surpasses 75").
+- HAPS: AALTO (Airbus) Zephyr reported ~67-day record flight (2025); commercial service targeted 2026 (Kenya ops
+  base). Sceye airship + SoftBank pre-commercial HAPS in Japan 2026. BAE PHASA-35 stratospheric trials Dec 2024.
+- NASA SPB Wanaka 2025: HIWIND flight 17.6 days; second SPB launched May 2025 (planned up to 100 days).
+- Space Perspective: financial distress Jan 2025, acquired by EOS X Space (Spain) July 2025.

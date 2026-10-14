@@ -20,15 +20,15 @@ Includes a detailed Part on AI across the space ecosystem.
 
 ## Outline (Parts / Chapters)  — status: [ ] todo, [x] done
 Part I — Foundations
-- [ ] 01 The Space Ecosystem: An Overview
-- [ ] 02 The Space Environment
-- [ ] 03 Orbital Mechanics and Astrodynamics
-- [ ] 04 Spacecraft Systems Engineering
-- [ ] 05 Spacecraft Subsystems I: Structures, Thermal, Power, Mechanisms
-- [ ] 06 Spacecraft Subsystems II: ADCS, Propulsion, C&DH, Flight Software
-- [ ] 07 Space Communications and the Ground Segment
+- [x] 01 The Space Ecosystem: An Overview
+- [x] 02 The Space Environment
+- [x] 03 Orbital Mechanics and Astrodynamics
+- [x] 04 Spacecraft Systems Engineering
+- [x] 05 Spacecraft Subsystems I: Structures, Thermal, Power, Mechanisms
+- [x] 06 Spacecraft Subsystems II: ADCS, Propulsion, C&DH, Flight Software
+- [x] 07 Space Communications and the Ground Segment
 Part II — Near-Space and Suborbital
-- [ ] 08 High-Altitude Platforms and Space Balloons
+- [x] 08 High-Altitude Platforms and Space Balloons
 - [ ] 09 Sounding Rockets and Suborbital Vehicles
 - [ ] 10 Spaceplanes, Reentry and Reusable Vehicles
 Part III — Satellites in Earth Orbit
@@ -91,3 +91,9 @@ Appendices
 - [ ] I Standards, Sources and Further Reading
 - [ ] J Image Credits
 - [ ] Index
+
+## Status / page tracking (per-chapter PDF pages)
+01:17 02:18 03:21 04:18 05:17 06:16 07:15 08:17  → avg ≈17. Target ≥22 for chapters 09+ (≈6 500–7 500 words,
+15+ figures, 6–8 tables). Later pass: add "Review questions" to every chapter and expand ch01–07 by ~1 500 words.
+Workflow per chapter: photos (search → photo_list.json → fetch → contact sheet) → figures/src/chNN.py → preview →
+text → build --only NN → commit.
