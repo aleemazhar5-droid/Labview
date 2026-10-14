@@ -91,3 +91,12 @@
 - BIOMASS (P-band) launched 29 Apr 2025 Vega-C.  ALOS-4 (L-band PALSAR-3) Jul 2024 (H3 F3).
 - ICEYE: 76 launched (Jul 2026, Transporter-17), Gen4 up to 16 cm; ~56 active in SATCAT; production 50/yr -> 100/yr 2027.
 - Active (CelesTrak name-match, Oct 2026): Capella 9, Umbra ≈5-12, StriX 11, QPS-SAR 11, COSMO-SkyMed/CSG 7, RCM 3 + RADARSAT-2, SAOCOM 2, Yaogan 167 (mixed).
+
+## Weather/environment (checked 14 Oct 2026)
+- GOES-19 = GOES-East since Apr 2025; GOES-18 West. GeoXO first launch 2032 (ABI+GLM), then 2034...2043.
+- JPSS: NOAA-20, NOAA-21 (2022), Suomi NPP; JPSS-4 Sep 2027, JPSS-3 in storage -> ~2032. QuickSounder (NEON pathfinder, refurbished ATMS) on Firefly Alpha NET late 2026.
+- MTG-I1 = Meteosat-12 operational (Dec 2024). MTG-S1 + Sentinel-4 launched 1 Jul 2025 (Falcon 9); Sentinel-4 first images Oct 2025. MTG-I2 launched 27 Aug 2026 (Ariane 62).
+- Metop-SG A1 + Sentinel-5 launched 13 Aug 2025 (Ariane 6). Metop-SG B1 planned ~Oct 2026 (not yet launched - say "late 2026").
+- Sentinel-6B launched 17 Nov 2025 (Falcon 9). Sea-level rise rate 2.1 mm/yr (1993) -> 4.5 mm/yr (2023), ~10 cm since 1993 (NASA).
+- DMSP SSMIS: NOAA ended public processing mid-2025 (permanent), DoD users continue; satellites near end of life ~2026.
+- ECMWF AIFS Single operational 25 Feb 2025; AIFS ENS operational 1 Jul 2025; AIFS wave runs from 12 May 2026.
