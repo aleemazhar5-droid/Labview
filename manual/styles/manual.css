@@ -1,0 +1,202 @@
+/* Space & Aerospace Engineering Reference Manual — print stylesheet (Chromium) */
+
+@font-face { font-family: "SrcSerif"; src: url("fonts/source-serif-4-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SrcSerif"; src: url("fonts/source-serif-4-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SrcSerif"; src: url("fonts/source-serif-4-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+@font-face { font-family: "SrcSerif"; src: url("fonts/source-serif-4-latin-600-italic.woff2") format("woff2"); font-weight: 600; font-style: italic; }
+@font-face { font-family: "SrcSerif"; src: url("fonts/source-serif-4-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "SrcSerif"; src: url("fonts/source-serif-4-latin-700-italic.woff2") format("woff2"); font-weight: 700; font-style: italic; }
+@font-face { font-family: "SrcSerifX"; src: url("fonts/source-serif-4-latin-ext-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SrcSerifX"; src: url("fonts/source-serif-4-latin-ext-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SrcSerifX"; src: url("fonts/source-serif-4-latin-ext-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "SrcSerifG"; src: url("fonts/source-serif-4-greek-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SrcSerifG"; src: url("fonts/source-serif-4-greek-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SrcSerifG"; src: url("fonts/source-serif-4-greek-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "JBMono"; src: url("fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBMono"; src: url("fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+
+:root {
+  --navy: #0B2E4F;
+  --blue: #1F6FB2;
+  --sky: #5FA8D3;
+  --orange: #D9772B;
+  --gold: #C9A227;
+  --green: #2E8B57;
+  --red: #B23A48;
+  --violet: #6D4C9F;
+  --ink: #1B1F24;
+  --muted: #5B6670;
+  --rule: #C9D3DD;
+  --tint: #F2F6FA;
+  --serif: "SrcSerif", "SrcSerifX", "SrcSerifG", "DejaVu Serif", serif;
+  --sans: "Inter", "DejaVu Sans", sans-serif;
+  --mono: "JBMono", "DejaVu Sans Mono", monospace;
+}
+
+@page { size: A4; margin: 21mm 19mm 19mm 19mm; }
+
+html { font-size: 10.6pt; }
+body {
+  font-family: var(--serif);
+  color: var(--ink);
+  line-height: 1.52;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  orphans: 3; widows: 3;
+}
+p { margin: 0 0 0.62em 0; text-align: justify; }
+a { color: var(--blue); text-decoration: none; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+sup, sub { line-height: 0; }
+code { font-family: var(--mono); font-size: 0.86em; background: var(--tint); padding: 0 0.2em; border-radius: 2px; }
+pre { font-family: var(--mono); font-size: 8.4pt; line-height: 1.4; background: #F4F6F8; border: 0.6pt solid var(--rule);
+      border-left: 3pt solid var(--blue); padding: 6pt 9pt; white-space: pre-wrap; break-inside: avoid; margin: 0.4em 0 0.9em; }
+pre code { background: none; padding: 0; font-size: inherit; }
+
+/* ---------- Headings ---------- */
+h1, h2, h3, h4, h5 { font-family: var(--sans); color: var(--navy); break-after: avoid; page-break-after: avoid; line-height: 1.22; }
+h2 { font-size: 15.5pt; font-weight: 700; margin: 1.3em 0 0.5em; padding-bottom: 3pt; border-bottom: 1.4pt solid var(--navy); }
+h3 { font-size: 12.4pt; font-weight: 650; margin: 1.15em 0 0.4em; color: var(--blue); }
+h4 { font-size: 10.8pt; font-weight: 650; margin: 1em 0 0.3em; color: var(--navy); }
+h5 { font-size: 10pt; font-weight: 600; margin: 0.8em 0 0.2em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+h2 .secnum, h3 .secnum { color: var(--orange); margin-right: 0.45em; font-weight: 700; }
+h2.newpage { break-before: page; }
+
+/* ---------- Chapter opener ---------- */
+.chapter-opener { break-after: avoid; margin: 0 0 1.2em 0; }
+.chapter-opener .part-name { font-family: var(--sans); font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.chapter-opener .ch-band { display: flex; align-items: flex-end; gap: 14pt; margin-top: 6mm; padding-bottom: 8pt; border-bottom: 3pt solid var(--orange); }
+.chapter-opener .ch-num { font-family: var(--sans); font-weight: 800; font-size: 58pt; line-height: 0.85; color: var(--orange); }
+.chapter-opener .ch-label { font-family: var(--sans); font-size: 9pt; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.chapter-opener h1 { font-size: 25pt; font-weight: 800; margin: 2pt 0 0 0; color: var(--navy); letter-spacing: -0.01em; }
+.chapter-opener .ch-hero { margin: 7mm 0 4mm; }
+.chapter-opener .ch-hero img { width: 100%; height: 72mm; object-fit: cover; display: block; border-radius: 2px; }
+.chapter-opener .ch-hero .credit { font-family: var(--sans); font-size: 6.8pt; color: var(--muted); text-align: right; margin-top: 2pt; }
+.ch-abstract { font-size: 10.4pt; color: #2b3640; border-left: 3pt solid var(--sky); padding: 3pt 0 3pt 10pt; margin: 4mm 0; font-style: italic; }
+.ch-contents { font-family: var(--sans); font-size: 8.6pt; columns: 2; column-gap: 9mm; background: var(--tint); padding: 7pt 10pt; margin: 3mm 0 6mm; border-radius: 2px; }
+.ch-contents .t { column-span: all; font-weight: 700; color: var(--navy); letter-spacing: 0.1em; text-transform: uppercase; font-size: 7.8pt; margin-bottom: 3pt; }
+.ch-contents div.e { break-inside: avoid; padding: 1pt 0; }
+.ch-contents div.e b { color: var(--orange); display: inline-block; min-width: 2.6em; }
+
+/* ---------- Figures ---------- */
+figure { margin: 0.9em auto 1.1em; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+figure img { max-width: 100%; max-height: 205mm; display: block; margin: 0 auto; }
+figure.photo img { border-radius: 1.5px; }
+figcaption { font-family: var(--sans); font-size: 8.5pt; line-height: 1.38; color: #333C45; text-align: left; margin: 5pt 4mm 0; }
+figcaption .fig-label { font-weight: 800; color: var(--navy); letter-spacing: 0.04em; margin-right: 0.5em; }
+figcaption .credit { color: var(--muted); font-size: 7.4pt; }
+.figrow { display: flex; gap: 4mm; justify-content: center; align-items: flex-start; break-inside: avoid; }
+.figrow figure { flex: 1 1 0; margin-top: 0.4em; }
+
+/* ---------- Tables ---------- */
+table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 8.25pt; line-height: 1.32; margin: 0.4em 0 1.1em; }
+table caption { caption-side: top; text-align: left; font-size: 8.6pt; color: #333C45; padding-bottom: 4pt; line-height: 1.35; }
+table caption .tbl-label { font-weight: 800; color: var(--navy); letter-spacing: 0.04em; margin-right: 0.5em; }
+thead th { background: var(--navy); color: #fff; font-weight: 600; text-align: left; padding: 3.6pt 5pt; vertical-align: bottom; border: none; }
+tbody td { padding: 3pt 5pt; border-bottom: 0.5pt solid #D5DDE5; vertical-align: top; text-align: left; }
+tbody tr:nth-child(even) td { background: #F3F6F9; }
+tbody tr { break-inside: avoid; }
+thead { display: table-header-group; }
+td p, th p { margin: 0; text-align: left; }
+table.small, .small table { font-size: 7.5pt; }
+
+/* ---------- Callouts ---------- */
+.note, .key, .example, .warning, .data, .ai, .formula, .history {
+  break-inside: avoid; margin: 0.8em 0 1em; padding: 7pt 11pt 6pt; border-radius: 2px; font-size: 9.8pt; line-height: 1.45;
+  border-left: 4pt solid var(--blue); background: #EEF4FA;
+}
+.note > p:first-child strong:first-child, .key > p:first-child strong:first-child, .example > p:first-child strong:first-child,
+.warning > p:first-child strong:first-child, .data > p:first-child strong:first-child, .ai > p:first-child strong:first-child,
+.formula > p:first-child strong:first-child, .history > p:first-child strong:first-child {
+  font-family: var(--sans); font-size: 8.4pt; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 2pt;
+}
+.note { border-color: var(--blue); background: #EEF4FA; }
+.note > p:first-child strong:first-child { color: var(--blue); }
+.key { border-color: var(--orange); background: #FCF3EA; }
+.key > p:first-child strong:first-child { color: #B35C17; }
+.example { border-color: var(--green); background: #EEF7F1; }
+.example > p:first-child strong:first-child { color: #1F6B41; }
+.warning { border-color: var(--red); background: #FBEFF0; }
+.warning > p:first-child strong:first-child { color: var(--red); }
+.data { border-color: var(--muted); background: #F3F4F5; }
+.data > p:first-child strong:first-child { color: #3E4851; }
+.ai { border-color: var(--violet); background: #F3EFF9; }
+.ai > p:first-child strong:first-child { color: var(--violet); }
+.formula { border-color: var(--gold); background: #FBF7E8; }
+.formula > p:first-child strong:first-child { color: #8A6D0F; }
+.history { border-color: #8B6F47; background: #F7F2EA; }
+.history > p:first-child strong:first-child { color: #6E5434; }
+.note p:last-child, .key p:last-child, .example p:last-child, .warning p:last-child, .data p:last-child, .ai p:last-child, .formula p:last-child, .history p:last-child { margin-bottom: 0.2em; }
+.note ul, .key ul, .example ul, .warning ul, .data ul, .ai ul, .formula ul, .history ul,
+.note ol, .key ol, .example ol, .warning ol, .data ol, .ai ol, .formula ol, .history ol { margin: 0.2em 0 0.3em; }
+
+/* ---------- Lists & math ---------- */
+ul, ol { margin: 0.2em 0 0.75em; padding-left: 1.5em; }
+li { margin: 0.15em 0; text-align: left; }
+li > p { margin: 0.1em 0; }
+dl { margin: 0.4em 0 0.8em; }
+dt { font-family: var(--sans); font-weight: 700; color: var(--navy); font-size: 9.6pt; margin-top: 0.45em; }
+dd { margin: 0.1em 0 0.25em 1.4em; }
+mjx-container[display="true"] { margin: 0.55em 0 !important; }
+mjx-container { font-size: 103% !important; }
+.math.display { display: block; break-inside: avoid; }
+hr { border: none; border-top: 0.6pt solid var(--rule); margin: 1em 0; }
+blockquote { margin: 0.6em 1.5em; color: #3b4651; font-style: italic; }
+
+/* key facts strip */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 0.6em 0 1em; break-inside: avoid; }
+.facts > div { background: var(--tint); border-top: 2.5pt solid var(--orange); padding: 5pt 7pt; font-family: var(--sans); }
+.facts .v { font-size: 13pt; font-weight: 800; color: var(--navy); line-height: 1.1; }
+.facts .l { font-size: 7.4pt; color: var(--muted); line-height: 1.25; margin-top: 2pt; }
+
+/* two-column text helper */
+.twocol { columns: 2; column-gap: 7mm; }
+.twocol p { text-align: left; }
+
+/* ---------- Front matter ---------- */
+.toc-title, .front-title { font-family: var(--sans); font-size: 24pt; font-weight: 800; color: var(--navy); border-bottom: 3pt solid var(--orange); padding-bottom: 6pt; margin: 0 0 8mm; }
+.toc { font-family: var(--sans); }
+.toc .part { font-weight: 800; font-size: 10.2pt; color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em; margin: 7pt 0 2pt; break-after: avoid; }
+.toc .row { display: flex; align-items: baseline; break-inside: avoid; }
+.toc .row .n { flex: 0 0 auto; min-width: 2.7em; color: var(--navy); font-weight: 700; }
+.toc .row .t { flex: 0 1 auto; }
+.toc .row .dots { flex: 1 1 auto; border-bottom: 0.8pt dotted #9AA5B1; margin: 0 4pt 3pt; min-width: 8mm; }
+.toc .row .p { flex: 0 0 auto; min-width: 2.2em; text-align: right; font-variant-numeric: tabular-nums; }
+.toc .l1 { font-size: 10pt; font-weight: 700; color: var(--navy); margin-top: 4pt; }
+.toc .l2 { font-size: 8.7pt; padding-left: 2.7em; color: #2c3640; }
+.toc .l2 .n { font-weight: 500; color: var(--blue); }
+.toc .l3 { font-size: 8pt; padding-left: 5.6em; color: #4a5560; }
+.toc .l3 .n { font-weight: 400; min-width: 3.4em; color: var(--muted); }
+.lof .row { font-size: 8.1pt; }
+.lof .row .n { min-width: 4.8em; font-weight: 700; color: var(--navy); }
+.lof .chap { font-weight: 700; color: var(--orange); font-size: 8.6pt; margin: 6pt 0 1pt; }
+
+/* Part divider */
+.part-page { width: 210mm; height: 296.5mm; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
+.part-page .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.part-page .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,20,38,0.15) 0%, rgba(5,20,38,0.55) 40%, rgba(5,20,38,0.93) 66%, rgba(5,20,38,0.98) 100%); }
+.part-page .content { position: relative; color: #fff; font-family: var(--sans); padding: 0 20mm 24mm; }
+.part-page .pn { font-size: 13pt; letter-spacing: 0.3em; color: #F2A65A; font-weight: 700; text-transform: uppercase; }
+.part-page .pt { font-size: 34pt; font-weight: 800; line-height: 1.08; margin: 4mm 0 6mm; }
+.part-page .pd { font-family: var(--serif); font-size: 11.5pt; line-height: 1.5; color: #E3EAF2; max-width: 150mm; }
+.part-page .pc { margin-top: 7mm; font-size: 9.6pt; color: #CFE0EF; columns: 2; }
+.part-page .pc div { margin: 2pt 0; }
+.part-page .pc b { color: #F2A65A; display: inline-block; min-width: 2.2em; }
+.part-page .credit { position: absolute; right: 20mm; bottom: 8mm; font-size: 6.5pt; color: #aab; }
+
+/* Glossary / index */
+.glossary dt { break-after: avoid; }
+.index { columns: 3; column-gap: 6mm; font-family: var(--sans); font-size: 7.9pt; line-height: 1.32; }
+.index .letter { font-weight: 800; color: var(--orange); font-size: 11pt; margin: 6pt 0 2pt; break-after: avoid; }
+.index div.ie { padding-left: 1em; text-indent: -1em; break-inside: avoid; }
+.acronyms table { font-size: 7.8pt; }
+.acronyms td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; width: 18%; }
+
+.pagebreak { break-before: page; }
+.center { text-align: center; }
+.muted { color: var(--muted); }
+.smallprint { font-size: 8.4pt; }

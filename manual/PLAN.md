@@ -1,0 +1,93 @@
+# Space Exploration & Aerospace Engineering — Reference Manual: Build Plan
+
+Target: ≥1000-page A4 PDF engineering reference manual, written in simple words but technically deep,
+with photos (NASA public domain), diagrams, charts, tables, and equations. Current to October 2026.
+Includes a detailed Part on AI across the space ecosystem.
+
+## Toolchain
+- Content: `src/chapters/NN-slug.md` (pandoc Markdown). Math with `$...$` / `$$...$$` (MathJax SVG).
+- Figures: `figures/src/chNN.py` → `figures/out/*.svg|png` (matplotlib, shared `tools/figlib.py`).
+- Photos: `tools/fetch_photos.py` (NASA Image Library, public domain) → `figures/photos/*.jpg` + `credits.json`.
+- Build: `python3 tools/build.py` → per-chapter HTML → Chromium PDF → header/footer overlay → merged
+  `output/Space_Aerospace_Engineering_Reference_Manual.pdf` with TOC, List of Figures/Tables, bookmarks.
+
+## Markup conventions
+- Figure: `![Caption text.](figures/out/ch03_hohmann.svg){#fig:hohmann width=80%}` → auto "FIGURE 3.4".
+- Table: pipe table followed/preceded by `Table: Caption {#tbl:id}` → auto "TABLE 3.2".
+- Cross-ref: `@fig:id`, `@tbl:id` → "Figure 3.4" / "Table 3.2".
+- Callouts: `::: note`, `::: key`, `::: example`, `::: warning`, `::: data` fenced divs; first line `**Title**`.
+- Chapter file front: `# Title {.chapter}` plus optional `<div class="ch-abstract">…</div>`.
+
+## Outline (Parts / Chapters)  — status: [ ] todo, [x] done
+Part I — Foundations
+- [ ] 01 The Space Ecosystem: An Overview
+- [ ] 02 The Space Environment
+- [ ] 03 Orbital Mechanics and Astrodynamics
+- [ ] 04 Spacecraft Systems Engineering
+- [ ] 05 Spacecraft Subsystems I: Structures, Thermal, Power, Mechanisms
+- [ ] 06 Spacecraft Subsystems II: ADCS, Propulsion, C&DH, Flight Software
+- [ ] 07 Space Communications and the Ground Segment
+Part II — Near-Space and Suborbital
+- [ ] 08 High-Altitude Platforms and Space Balloons
+- [ ] 09 Sounding Rockets and Suborbital Vehicles
+- [ ] 10 Spaceplanes, Reentry and Reusable Vehicles
+Part III — Satellites in Earth Orbit
+- [ ] 11 Earth Orbits, Constellations and Small Satellites
+- [ ] 12 Satellite Buses and Payload Instruments
+Part IV — Earth Observation and Remote Sensing
+- [ ] 13 Remote Sensing Fundamentals
+- [ ] 14 Electro-Optical / Infrared Satellites
+- [ ] 15 Synthetic Aperture Radar Satellites
+- [ ] 16 Weather and Environmental Satellites
+Part V — Communication and Navigation
+- [ ] 17 Communication Satellites
+- [ ] 18 Global Navigation Satellite Systems
+Part VI — Military, Intelligence and Security Space
+- [ ] 19 National Security Space and Signals Intelligence
+- [ ] 20 Missile Early Warning Satellites
+- [ ] 21 Space Surveillance, Orbital Debris and SSA
+Part VII — Space Environmental Science
+- [ ] 22 Space Weather
+- [ ] 23 Magnetospheric and Ionospheric Physics
+Part VIII — Deep Space Exploration
+- [ ] 24 Deep-Space Mission Design
+- [ ] 25 Planetary Orbiters
+- [ ] 26 Space Probes and Flyby Missions
+- [ ] 27 Landers and Entry, Descent & Landing
+- [ ] 28 Planetary Rovers and Aerial Explorers
+- [ ] 29 Sample-Return Missions
+Part IX — Human Spaceflight and Habitation
+- [ ] 30 Human Spaceflight Fundamentals and Life Support
+- [ ] 31 Crewed Spacecraft
+- [ ] 32 Space Stations and Habitats
+- [ ] 33 Extravehicular Activity Systems
+Part X — Launch Systems and Infrastructure
+- [ ] 34 Launch Vehicle Engineering
+- [ ] 35 Rocket Propulsion
+- [ ] 36 Launch Vehicles of the World
+- [ ] 37 Spaceports and Ground Infrastructure
+Part XI — Space Observatories
+- [ ] 38 Space Telescope Engineering
+- [ ] 39 Great Observatories and Deep-Space Telescopes
+Part XII — Emerging Frontiers
+- [ ] 40 In-Space Servicing, Assembly and Manufacturing
+- [ ] 41 Space Resources and Asteroid Mining
+- [ ] 42 Advanced Propulsion
+Part XIII — Artificial Intelligence in the Space Ecosystem
+- [ ] 43 AI Foundations for Space Systems
+- [ ] 44 AI in Earth Observation, Weather and Climate
+- [ ] 45 AI for Autonomy, GNC and Mission Operations
+- [ ] 46 AI for SSA, Defense, Science, Exploration and Human Spaceflight
+- [ ] 47 AI Across Design, Manufacturing, Launch and the Space Business; Assurance and Governance
+Appendices
+- [ ] A Constants, Units and Conversions
+- [ ] B Equation Quick Reference
+- [ ] C Solar System Data
+- [ ] D Radio Frequency Bands and Allocations
+- [ ] E Mission and Vehicle Databases
+- [ ] F Timeline of Spaceflight
+- [ ] G Acronyms and Abbreviations
+- [ ] H Glossary
+- [ ] I Standards, Sources and Further Reading
+- [ ] J Image Credits
+- [ ] Index
