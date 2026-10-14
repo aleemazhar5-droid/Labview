@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="396.36pt" height="164.3436pt" viewBox="0 0 396.36 164.3436" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-14T20:02:15.709681</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 164.3436 
+L 396.36 164.3436 
+L 396.36 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 112.248 135.684 
+L 127.872 135.684 
+L 120.06 120.06 
+z
+" clip-path="url(#p9974596cd2)" style="fill: #0b2e4f"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 229.428 135.684 
+L 245.052 135.684 
+L 237.24 120.06 
+z
+" clip-path="url(#p9974596cd2)" style="fill: #0b2e4f"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 120.06 135.684 
+L 237.24 135.684 
+" clip-path="url(#p9974596cd2)" style="fill: none; stroke: #0b2e4f; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 120.06 120.06 
+L 204.827125 -1 
+" clip-path="url(#p9974596cd2)" style="fill: none; stroke: #d9772b; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 237.24 120.06 
+L 322.007125 -1 
+" clip-path="url(#p9974596cd2)" style="fill: none; stroke: #d9772b; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 237.24 120.06 
+L 237.24 120.06 
+" clip-path="url(#p9974596cd2)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 237.24 120.06 
+L 158.61104 65.003409 
+" clip-path="url(#p9974596cd2)" style="fill: none; stroke: #b23a48; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 265.3632 143.496 
+L 380.9808 143.496 
+Q 385.668 143.496 385.668 138.8088 
+L 385.668 101.3112 
+Q 385.668 96.624 380.9808 96.624 
+L 265.3632 96.624 
+Q 260.676 96.624 260.676 101.3112 
+L 260.676 138.8088 
+Q 260.676 143.496 265.3632 143.496 
+z
+" clip-path="url(#p9974596cd2)" style="fill: #ffffff; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 121.401641 147.402 
+Q 178.65 147.402 235.898359 147.402 
+" clip-path="url(#p9974596cd2)" style="fill: none; stroke: #7f8c8d; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 125.401641 149.402 
+L 121.401641 147.402 
+L 125.401641 145.402 
+z
+" clip-path="url(#p9974596cd2)" style="fill: #7f8c8d; stroke: #7f8c8d; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 231.898359 145.402 
+L 235.898359 147.402 
+L 231.898359 149.402 
+z
+" clip-path="url(#p9974596cd2)" style="fill: #7f8c8d; stroke: #7f8c8d; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 6.3px; font-family: 'Inter'; fill: #1b1f24" transform="translate(271.435711 112.288175)">Phase difference φ = 2π d sin θ / λ</text>
+    <text style="font-size: 6.3px; font-family: 'Inter'; fill: #1b1f24" transform="translate(265.95225 121.747219)">long baselines: precise but ambiguous</text>
+    <text style="font-size: 6.3px; font-family: 'Inter'; fill: #1b1f24" transform="translate(272.329031 131.275661)">short baselines: resolve ambiguity</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: middle; fill: #7f8c8d" x="178.65" y="159.871608" transform="rotate(-0 178.65 159.871608)">baseline d</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #b23a48" transform="translate(182.295422 83.314008)">path difference</text>
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #b23a48" transform="translate(189.287813 91.29975)">Δ = d sin θ</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #d9772b" transform="translate(332.331891 20.731137)">incoming</text>
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #d9772b" transform="translate(330.971156 28.716879)">wavefront</text>
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #d9772b" transform="translate(327.574734 36.702621)">from emitter</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9974596cd2">
+   <rect x="2.88" y="2.88" width="390.6" height="156.24"/>
+  </clipPath>
+ </defs>
+</svg>

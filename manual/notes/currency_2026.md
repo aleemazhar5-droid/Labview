@@ -113,3 +113,8 @@
 - GPS III SV09 launched 28 Jan 2026 (Falcon 9), SV10 (final GPS III) 21 Apr 2026 (Falcon 9). GPS IIIF first launch ~2027 (hedge). SV07 Dec 2024 (rapid response), SV08 May 2025.
 - Galileo: L14 (VA266, Ariane 6) planned 17 Dec 2025 with SAT 33/34; before it 31 launched sats, 27 active. G2 first 4 sats on Ariane 6 L17/L18 (2026/2027); 12 G2 sats (6 Airbus, 6 TAS) with electric propulsion. OSNMA public service mid-2025 (hedge).
 - Baltic interference: Lithuania 1,022 pilot reports Jun 2025, >1,000 aircraft/month H1 2025; spoofing up to >3,000/month Jun-Aug 2025; Kaliningrad sources.
+
+## National security space (checked 14 Oct 2026)
+- SDA Tranche 1: 154 sats (126 Transport, 28 Tracking) + 4 demos; first launch Sep 2025 (21 York sats, Falcon 9); pause Oct 2025-Jul 2026; 63 fielded by mid-2026; ops support from 2027.
+- Golden Dome: Apr 2026 Space Force awarded 12 companies (Anduril, Booz Allen, GDMS, GITAI USA, Lockheed, Northrop, Quindar, Raytheon, Sci-Tec, SpaceX, True Anomaly, Turion) OTAs up to $3.2 B for space-based interceptor prototypes; demo by 2028; total est. $175-185 B.
+- ASAT debris (CelesTrak Oct 2026): China 2007 3,534 catalogued / 2,314 still in orbit; Russia 2021 1,806 / 4; US 2008 174 / 0; India 2019 129 / 0; US 1985 286 / 0.

@@ -175,7 +175,7 @@ Mega-constellations raise new problems. Their satellites are visible in astronom
 
 A LEO broadband system is a capital-intensive bet. Building, launching and operating several thousand satellites, plus gateways and user terminals, costs on the order of $10–30 billion before the system covers its costs, and satellites must be replaced every five to seven years. Three factors dominate the economics:
 
-1. **Cost per satellite and per launch.** Mass production on assembly lines (Starlink, OneWeb and Amazon all built factories producing several satellites per day) has reduced satellite costs to a few hundred thousand to a few million dollars each, and reusable launchers have cut launch costs per kilogram by a factor of five to ten (Chapter 31).
+1. **Cost per satellite and per launch.** Mass production on assembly lines (Starlink, OneWeb and Amazon all built factories producing several satellites per day) has reduced satellite costs to a few hundred thousand to a few million dollars each, and reusable launchers have cut launch costs per kilogram by a factor of five to ten (Chapter 34).
 2. **Capacity per satellite.** Because most of the fleet flies over oceans and empty land at any moment, revenue comes only from the fraction over paying customers. Larger satellites with more capacity improve this ratio dramatically, which is why SpaceX's V3 satellites depend on Starship.
 3. **Terminal cost.** A phased-array terminal that costs more to make than the customer pays for it must be subsidised. Driving terminal costs down from thousands to a few hundred dollars was essential to reaching consumers.
 
@@ -248,7 +248,7 @@ This is why broadband constellations are sized by **capacity**, not coverage, an
 ::: ai
 **AI in satellite communications**
 
-Modern satellite networks are too complex to manage by hand. Machine learning predicts traffic demand and rain fades, allocates beams, frequencies and power dynamically on software-defined satellites, routes traffic through laser meshes, detects interference and jamming, and plans collision-avoidance manoeuvres for thousands of satellites. Chapter 46 discusses AI for satellite operations and networks.
+Modern satellite networks are too complex to manage by hand. Machine learning predicts traffic demand and rain fades, allocates beams, frequencies and power dynamically on software-defined satellites, routes traffic through laser meshes, detects interference and jamming, and plans collision-avoidance manoeuvres for thousands of satellites. Chapter 45 discusses AI for satellite operations and networks.
 :::
 
 ::: key

@@ -1,0 +1,42 @@
+{
+ "date": "2026-10-14",
+ "source": "CelesTrak SATCAT active payloads, name-matched; orbits of some classified objects not published",
+ "groups": {
+  "USA military/NRO (\"USA\" series)": {
+   "GEO": 67,
+   "LEO": 365,
+   "unknown": 18,
+   "HEO": 7,
+   "MEO": 1
+  },
+  "Russia (\"Cosmos\" series)": {
+   "MEO": 32,
+   "LEO": 101,
+   "HEO": 7,
+   "GEO": 6
+  },
+  "China Yaogan": {
+   "LEO": 164,
+   "GEO": 1,
+   "MEO": 2
+  },
+  "China Shiyan/Shijian/TJS": {
+   "LEO": 64,
+   "GEO": 34,
+   "HEO": 5
+  },
+  "Japan IGS": {
+   "unknown": 11,
+   "LEO": 2
+  },
+  "France CSO/CERES/Syracuse": {
+   "GEO": 3,
+   "unknown": 4,
+   "LEO": 2
+  },
+  "Israel Ofek": {},
+  "SDA Tranche (USA)": {
+   "LEO": 42
+  }
+ }
+}
