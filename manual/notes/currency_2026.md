@@ -118,3 +118,6 @@
 - SDA Tranche 1: 154 sats (126 Transport, 28 Tracking) + 4 demos; first launch Sep 2025 (21 York sats, Falcon 9); pause Oct 2025-Jul 2026; 63 fielded by mid-2026; ops support from 2027.
 - Golden Dome: Apr 2026 Space Force awarded 12 companies (Anduril, Booz Allen, GDMS, GITAI USA, Lockheed, Northrop, Quindar, Raytheon, Sci-Tec, SpaceX, True Anomaly, Turion) OTAs up to $3.2 B for space-based interceptor prototypes; demo by 2028; total est. $175-185 B.
 - ASAT debris (CelesTrak Oct 2026): China 2007 3,534 catalogued / 2,314 still in orbit; Russia 2021 1,806 / 4; US 2008 174 / 0; India 2019 129 / 0; US 1985 286 / 0.
+- Next-Gen OPIR GEO-1 (USSF-57, Lockheed/RTX payload): planned NET Mar/May 2026 on Vulcan - NOT launched per GCAT by mid-Oct 2026 -> say "awaiting launch in late 2026". 2 GEO + 2 Polar (Northrop, ~2028).
+- Russia EKS Tundra/Kupol: Kosmos-2510 (2015), 2518 (2017), 2541 (2019), 2546 (2020), + 2552 (2021), 2563 (2022) -> ~6.
+- 2026 US NS launches (GCAT): NROL-105/172/179 Starshield, USSF-87 GSSAP (Vulcan, 12 Feb 2026), SBST launches (Aug-Sep 2026).
