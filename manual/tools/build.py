@@ -162,6 +162,11 @@ class Chapter:
                 fig.append(cap)
             cap.attrs.pop("aria-hidden", None)
             short = short_caption(cap)
+            if img is not None and "photos/" in img.get("src", "") and not cap.find(class_="credit"):
+                key = Path(img["src"]).stem
+                cr = soup.new_tag("span", attrs={"class": "credit"})
+                cr.string = " " + photo_credit(key) + "."
+                cap.append(cr)
             lab = soup.new_tag("span", attrs={"class": "fig-label"})
             lab.string = f"FIGURE {label}"
             cap.insert(0, lab)

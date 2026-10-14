@@ -63,7 +63,7 @@ plt.rcParams.update({
 def save(fig, name, raster=False):
     ext = "png" if raster else "svg"
     path = OUT / f"{name}.{ext}"
-    fig.savefig(path, format=ext, transparent=False, facecolor="white")
+    fig.savefig(path, format=ext, transparent=False, facecolor=fig.get_facecolor())
     plt.close(fig)
     return path
 
@@ -278,3 +278,56 @@ def logspace_axis(ax, which="x"):
         ax.set_yscale("log")
     ax.grid(True, which="major", color="#D5DDE5", lw=0.6)
     ax.grid(True, which="minor", color="#EEF2F6", lw=0.4)
+
+
+# ---------------------------------------------------------------- maps
+def world_axes(fig, rect=111, proj=None, land="#E4E8DC", ocean="#F3F7FB", coast="#8A9AA8", borders=False,
+               extent=None, res="110m", grid=True):
+    import cartopy.crs as ccrs
+    import cartopy.feature as cf
+    proj = proj or ccrs.PlateCarree()
+    ax = fig.add_subplot(rect, projection=proj)
+    ax.add_feature(cf.NaturalEarthFeature("physical", "ocean", res, fc=ocean, ec="none"), zorder=0)
+    ax.add_feature(cf.NaturalEarthFeature("physical", "land", res, fc=land, ec="none"), zorder=0.5)
+    ax.coastlines(resolution=res, color=coast, lw=0.4, zorder=1)
+    if borders:
+        ax.add_feature(cf.NaturalEarthFeature("cultural", "admin_0_boundary_lines_land", res, fc="none",
+                                              ec="#B0B8C0", lw=0.3), zorder=1)
+    if extent:
+        ax.set_extent(extent, crs=ccrs.PlateCarree())
+    else:
+        ax.set_global()
+    if grid:
+        gl = ax.gridlines(draw_labels=False, color="#C9D3DD", lw=0.4, ls="-")
+    return ax
+
+
+def ground_track(a_km, inc_deg, hours=6.0, raan0=0.0, u0=0.0, n=3000, j2=True):
+    """Return lon, lat arrays (deg) of a circular orbit ground track with Earth rotation (and J2 nodal drift)."""
+    mu = 398600.4418
+    R = 6378.137
+    J2 = 1.08263e-3
+    we = 7.2921159e-5
+    t = np.linspace(0, hours * 3600, n)
+    nmot = np.sqrt(mu / a_km ** 3)
+    i = np.radians(inc_deg)
+    raan_dot = -1.5 * nmot * J2 * (R / a_km) ** 2 * np.cos(i) if j2 else 0.0
+    u = np.radians(u0) + nmot * t
+    raan = np.radians(raan0) + raan_dot * t
+    x = np.cos(raan) * np.cos(u) - np.sin(raan) * np.sin(u) * np.cos(i)
+    y = np.sin(raan) * np.cos(u) + np.cos(raan) * np.sin(u) * np.cos(i)
+    z = np.sin(u) * np.sin(i)
+    lat = np.degrees(np.arcsin(z))
+    lon = np.degrees(np.arctan2(y, x) - we * t)
+    lon = (lon + 180) % 360 - 180
+    return lon, lat
+
+
+def plot_track(ax, lon, lat, **kw):
+    """Plot a ground track breaking lines at the date line."""
+    import cartopy.crs as ccrs
+    brk = np.where(np.abs(np.diff(lon)) > 180)[0] + 1
+    for k, (seg_lon, seg_lat) in enumerate(zip(np.split(lon, brk), np.split(lat, brk))):
+        if k > 0:
+            kw.pop("label", None)
+        ax.plot(seg_lon, seg_lat, transform=ccrs.PlateCarree(), **kw)
