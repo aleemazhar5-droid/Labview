@@ -108,3 +108,8 @@
 - ViaSat-3 F2 launch ~Nov 2025 (Atlas V); Telesat Lightspeed launches from ~2026, service 2027; SES completed Intelsat acquisition Jul 2025; Viasat bought Inmarsat 2023; Kuiper renamed Amazon Leo (Nov 2025).
 - Amazon Leo: FCC 50% milestone (1,618 sats) July 2026; Amazon asked (Jan 2026) 24-month extension; FCC Space Bureau granted limited waiver with conditions (spectral priority demotion). ~300+ in orbit Jun 2026, ~397 active Oct 2026 (CelesTrak). Full-constellation milestone 2029.
 - !! New Glenn exploded on pad during static-fire test 28 May 2026 (Blue Origin) - check launch chapter.
+
+## GNSS (checked 14 Oct 2026)
+- GPS III SV09 launched 28 Jan 2026 (Falcon 9), SV10 (final GPS III) 21 Apr 2026 (Falcon 9). GPS IIIF first launch ~2027 (hedge). SV07 Dec 2024 (rapid response), SV08 May 2025.
+- Galileo: L14 (VA266, Ariane 6) planned 17 Dec 2025 with SAT 33/34; before it 31 launched sats, 27 active. G2 first 4 sats on Ariane 6 L17/L18 (2026/2027); 12 G2 sats (6 Airbus, 6 TAS) with electric propulsion. OSNMA public service mid-2025 (hedge).
+- Baltic interference: Lithuania 1,022 pilot reports Jun 2025, >1,000 aircraft/month H1 2025; spoofing up to >3,000/month Jun-Aug 2025; Kaliningrad sources.
