@@ -50,8 +50,8 @@ Part VII — Space Environmental Science
 - [x] 22 Space Weather
 - [x] 23 Magnetospheric and Ionospheric Physics
 Part VIII — Deep Space Exploration
-- [ ] 24 Deep-Space Mission Design
-- [ ] 25 Planetary Orbiters
+- [x] 24 Deep-Space Mission Design
+- [x] 25 Planetary Orbiters
 - [ ] 26 Space Probes and Flyby Missions
 - [ ] 27 Landers and Entry, Descent & Landing
 - [ ] 28 Planetary Rovers and Aerial Explorers
