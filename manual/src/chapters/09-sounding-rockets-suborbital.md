@@ -164,9 +164,9 @@ Sounding rockets also serve as cheap, fast test beds — "a space mission in a y
 
 ## Microgravity Research Platforms
 
-Gravity affects many processes in subtle ways: it drives buoyant convection in fluids, sedimentation, hydrostatic pressure, and the structure of flames. Removing it lets researchers study fundamental physics (fluid dynamics, combustion, crystal growth, soft matter), biology (cell behaviour, plant growth, physiology) and materials processing. Several platforms provide reduced gravity, trading duration against quality and cost (@fig:platforms, @tbl:microgravity).
+Gravity affects many processes in subtle ways: it drives buoyant convection in fluids, sedimentation, hydrostatic pressure, and the structure of flames. Removing it lets researchers study fundamental physics (fluid dynamics, combustion, crystal growth, soft matter), biology (cell behaviour, plant growth, physiology) and materials processing. Several platforms provide reduced gravity, trading duration against quality and cost (@fig:microgplatforms, @tbl:microgravity).
 
-![Duration and quality of reduced gravity provided by different research platforms.](figures/out/ch09_platforms.svg){#fig:platforms width=86%}
+![Duration and quality of reduced gravity provided by different research platforms.](figures/out/ch09_platforms.svg){#fig:microgplatforms width=86%}
 
 Table: Microgravity research platforms. {#tbl:microgravity}
 

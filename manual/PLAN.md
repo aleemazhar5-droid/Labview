@@ -29,13 +29,13 @@ Part I — Foundations
 - [x] 07 Space Communications and the Ground Segment
 Part II — Near-Space and Suborbital
 - [x] 08 High-Altitude Platforms and Space Balloons
-- [ ] 09 Sounding Rockets and Suborbital Vehicles
-- [ ] 10 Spaceplanes, Reentry and Reusable Vehicles
+- [x] 09 Sounding Rockets and Suborbital Vehicles
+- [x] 10 Spaceplanes, Reentry and Reusable Vehicles
 Part III — Satellites in Earth Orbit
-- [ ] 11 Earth Orbits, Constellations and Small Satellites
-- [ ] 12 Satellite Buses and Payload Instruments
+- [x] 11 Earth Orbits, Constellations and Small Satellites
+- [x] 12 Satellite Buses and Payload Instruments
 Part IV — Earth Observation and Remote Sensing
-- [ ] 13 Remote Sensing Fundamentals
+- [x] 13 Remote Sensing Fundamentals
 - [ ] 14 Electro-Optical / Infrared Satellites
 - [ ] 15 Synthetic Aperture Radar Satellites
 - [ ] 16 Weather and Environmental Satellites

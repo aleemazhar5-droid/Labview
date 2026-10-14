@@ -123,6 +123,8 @@ class Chapter:
             unnumbered = "unnumbered" in (h.get("class") or [])
             if not h.get("id"):
                 h["id"] = f"s{self.key}-{len(self.sections)}"
+            elif not h["id"].startswith("sec:"):
+                h["id"] = f"s{self.key}-{h['id']}"
             if h.name == "h2":
                 if not unnumbered:
                     n2 += 1

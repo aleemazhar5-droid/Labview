@@ -185,7 +185,7 @@ Architectures may be **centralised** (one computer does everything — common on
 
 ### Data Buses and Networks
 
-Table: Common spacecraft data bus and network standards. {#tbl:buses}
+Table: Common spacecraft data bus and network standards. {#tbl:databuses}
 
 | Standard | Data rate | Typical use |
 |---|---|---|

@@ -90,7 +90,7 @@ At 400 km the pressure is about $10^{-6}$ Pa, and in GEO about $10^{-11}$ Pa —
 
 ### Heat Sources
 
-A spacecraft in Earth orbit receives heat from three external sources and loses heat only by radiation (@fig:spectrum):
+A spacecraft in Earth orbit receives heat from three external sources and loses heat only by radiation (@fig:solarearthspec):
 
 1. **Direct sunlight.** The **solar constant** at 1 AU is about $S = 1\,361$ W/m² (it varies ±3.4 % between January perihelion and July aphelion, and only ±0.1 % over the solar cycle). The spectrum peaks in the visible.
 2. **Albedo.** The Earth reflects on average about 30 % of incident sunlight (0.25–0.40 depending on clouds, ice and ocean).
@@ -98,7 +98,7 @@ A spacecraft in Earth orbit receives heat from three external sources and loses 
 
 In addition, internal electronics dissipate heat. Deep space appears as a sink at 2.7 K.
 
-![Spectra of sunlight and of Earth's thermal emission. Because the two hardly overlap, a surface can be designed to absorb little sunlight (low α) while radiating strongly in the infrared (high ε) — the principle behind white paints and mirrors used on radiators.](figures/out/ch02_spectrum.svg){#fig:spectrum width=90%}
+![Spectra of sunlight and of Earth's thermal emission. Because the two hardly overlap, a surface can be designed to absorb little sunlight (low α) while radiating strongly in the infrared (high ε) — the principle behind white paints and mirrors used on radiators.](figures/out/ch02_spectrum.svg){#fig:solarearthspec width=90%}
 
 ### Radiative Equilibrium
 
