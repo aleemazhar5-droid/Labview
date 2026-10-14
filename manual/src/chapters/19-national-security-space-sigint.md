@@ -53,9 +53,9 @@ Military imaging satellites use the same physics as civil Earth observation (Cha
 
 ### Revisit and Constellation Design
 
-For many military purposes the critical parameter is not resolution but **revisit** — how often a target can be observed. A single agile imaging satellite in a sun-synchronous orbit can view a mid-latitude target only about once every two to three days in daylight; doubling the number of satellites roughly halves the wait (@fig:revisit). Radar satellites, which can image at night as well, have about twice as many opportunities. To watch a target several times per day, a constellation of a dozen or more satellites — or satellites in mid-inclination orbits, which pass over mid-latitudes more often and at varying local times — is needed. This is why both governments and commercial operators have moved towards larger constellations of smaller satellites.
+For many military purposes the critical parameter is not resolution but **revisit** — how often a target can be observed. A single agile imaging satellite in a sun-synchronous orbit can view a mid-latitude target only about once every two to three days in daylight; doubling the number of satellites roughly halves the wait (@fig:isrrevisit). Radar satellites, which can image at night as well, have about twice as many opportunities. To watch a target several times per day, a constellation of a dozen or more satellites — or satellites in mid-inclination orbits, which pass over mid-latitudes more often and at varying local times — is needed. This is why both governments and commercial operators have moved towards larger constellations of smaller satellites.
 
-![Simulated mean time between looks at a target at 35° N as a function of the number of agile imaging satellites.](figures/out/ch19_revisit.svg){#fig:revisit width=84%}
+![Simulated mean time between looks at a target at 35° N as a function of the number of agile imaging satellites.](figures/out/ch19_revisit.svg){#fig:isrrevisit width=84%}
 
 | Country | System (public name) | Type | Notes |
 |---|---|---|---|

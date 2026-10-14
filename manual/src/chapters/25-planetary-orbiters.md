@@ -186,7 +186,7 @@ NASA's **MESSENGER** (2011–2015) was the first Mercury orbiter. It found that 
 
 ### Small Bodies
 
-Orbiting small bodies demands precise navigation in very weak gravity. NASA's **NEAR Shoemaker** orbited Eros for a year and landed on it in 2001; **Dawn** orbited Vesta (2011–12) and Ceres (2015–18), finding bright salt deposits on Ceres; ESA's **Rosetta** accompanied comet 67P/Churyumov–Gerasimenko for two years (2014–2016) as it passed perihelion. The sample-return missions Hayabusa2 and OSIRIS-REx also mapped their asteroids from orbit before collecting samples (Chapter 29). ESA's **Hera** will arrive at the binary asteroid Didymos–Dimorphos in December 2026 to measure the effects of NASA's DART impact of 2022, and NASA's **Psyche** will orbit the metal-rich asteroid Psyche from 2029.
+Orbiting small bodies demands precise navigation in very weak gravity. NASA's **NEAR Shoemaker** orbited Eros for a year and landed on it in 2001; **Dawn** orbited Vesta (2011–12) and Ceres (2015–18), finding bright salt deposits on Ceres; ESA's **Rosetta** accompanied comet 67P/Churyumov–Gerasimenko for two years (2014–2016) as it passed perihelion. The sample-return missions Hayabusa2 and OSIRIS-REx also mapped their asteroids from orbit before collecting samples (Chapter 29). ESA's **Hera** will arrive at the binary asteroid Didymos–Dimorphos in November 2026 — a month earlier than first planned — to measure the effects of NASA's DART impact of 2022, and NASA's **Psyche** will orbit the metal-rich asteroid Psyche from 2029.
 
 | Mission | Agency | Target | Arrival | Status (Oct 2026) |
 |---|---|---|---|---|
@@ -199,7 +199,7 @@ Orbiting small bodies demands precise navigation in very weak gravity. NASA's **
 | Tianwen-1 orbiter | CNSA | Mars | 2021 | Operating |
 | Juno | NASA | Jupiter | 2016 | Extended operations uncertain after 2025 |
 | BepiColombo (MPO, Mio) | ESA, JAXA | Mercury | Nov 2026 | Orbit insertion |
-| Hera | ESA | Didymos–Dimorphos | Dec 2026 | Approach |
+| Hera | ESA | Didymos–Dimorphos | Nov 2026 | Final approach |
 | Europa Clipper, JUICE | NASA, ESA | Jupiter system | 2030, 2031 | En route |
 | Psyche | NASA | Asteroid Psyche | 2029 | En route |
 

@@ -33,9 +33,9 @@ In October 2026 the publicly available catalogue maintained by the US Space Forc
 
 ### Where the Objects Are
 
-Objects are not evenly distributed (@fig:density). The spatial density in LEO peaks sharply at 450–570 km, where most Starlink satellites fly, and shows a broader band of old debris and rocket bodies at 700–1 000 km — the region of the 2007 Chinese ASAT test, the 2009 Iridium–Cosmos collision and many older break-ups. Debris at these higher altitudes will remain for decades to centuries because the atmosphere is too thin to remove it quickly. Other concentrations are found in the geostationary ring, where about 1 000 objects, active and dead, crowd a narrow belt, and in the MEO navigation orbits.
+Objects are not evenly distributed (@fig:debrisdensity). The spatial density in LEO peaks sharply at 450–570 km, where most Starlink satellites fly, and shows a broader band of old debris and rocket bodies at 700–1 000 km — the region of the 2007 Chinese ASAT test, the 2009 Iridium–Cosmos collision and many older break-ups. Debris at these higher altitudes will remain for decades to centuries because the atmosphere is too thin to remove it quickly. Other concentrations are found in the geostationary ring, where about 1 000 objects, active and dead, crowd a narrow belt, and in the MEO navigation orbits.
 
-![Spatial density of catalogued objects in low Earth orbit by altitude and type (October 2026).](figures/out/ch21_density.svg){#fig:density width=94%}
+![Spatial density of catalogued objects in low Earth orbit by altitude and type (October 2026).](figures/out/ch21_density.svg){#fig:debrisdensity width=94%}
 
 Plotting every object by altitude and inclination (@fig:altinc) reveals the structure of the population: vertical streaks of satellites in the same orbital planes, the dense band of sun-synchronous orbits at 97–99°, the shells of Starlink and OneWeb, and clouds of debris spread in altitude around the orbits of the satellites and stages that broke up.
 
@@ -60,9 +60,9 @@ Most catalogued debris comes from a few hundred **fragmentation events** (@fig:f
 
 ### Other Sources
 
-Smaller debris also comes from **mission-related objects** (lens covers, bolts, adapters released during deployment), **solid-rocket-motor** slag and aluminium-oxide dust, **paint flakes** and degraded insulation shed by ageing spacecraft (@fig:mli), and droplets of sodium–potassium coolant leaked by Soviet nuclear-powered radar satellites of the 1980s. Natural **micrometeoroids** — dust from comets and asteroids — add a background flux that dominates for sizes below about 0.1 mm.
+Smaller debris also comes from **mission-related objects** (lens covers, bolts, adapters released during deployment), **solid-rocket-motor** slag and aluminium-oxide dust, **paint flakes** and degraded insulation shed by ageing spacecraft (@fig:mlishield), and droplets of sodium–potassium coolant leaked by Soviet nuclear-powered radar satellites of the 1980s. Natural **micrometeoroids** — dust from comets and asteroids — add a background flux that dominates for sizes below about 0.1 mm.
 
-![Damage to a multi-layer insulation blanket on the Zarya module of the International Space Station, photographed during a spacewalk in 2007. Long-term exposure to micrometeoroids, debris and atomic oxygen degrades exterior materials.](figures/photos/ch21_mli.jpg){#fig:mli width=62%}
+![Damage to a multi-layer insulation blanket on the Zarya module of the International Space Station, photographed during a spacewalk in 2007. Long-term exposure to micrometeoroids, debris and atomic oxygen degrades exterior materials.](figures/photos/ch21_mli.jpg){#fig:mlishield width=62%}
 
 ## Why Debris Is Dangerous
 
@@ -166,9 +166,9 @@ International efforts to limit debris began in the 1990s. The **Inter-Agency Spa
 
 : Selected debris-mitigation guidelines and rules. {#tbl:mitigation}
 
-The 25-year guideline was set when LEO held a few thousand objects; with tens of thousands of satellites, it is now widely considered too lax. The US Federal Communications Commission's **five-year rule**, in force since 2024 for satellites it licenses, and ESA's **Zero Debris** approach, which aims to stop creating debris by 2030, reflect the tightening of expectations. @fig:lifetime shows why altitude matters: satellites below about 500 km re-enter naturally within a few years, while those above about 700 km may stay up for a century or more unless they carry propulsion to lower their orbits.
+The 25-year guideline was set when LEO held a few thousand objects; with tens of thousands of satellites, it is now widely considered too lax. The US Federal Communications Commission's **five-year rule**, in force since 2024 for satellites it licenses, and ESA's **Zero Debris** approach, which aims to stop creating debris by 2030, reflect the tightening of expectations. @fig:debrislifetime shows why altitude matters: satellites below about 500 km re-enter naturally within a few years, while those above about 700 km may stay up for a century or more unless they carry propulsion to lower their orbits.
 
-![Approximate orbital lifetime versus initial altitude for different ballistic coefficients and solar activity levels.](figures/out/ch21_lifetime.svg){#fig:lifetime width=86%}
+![Approximate orbital lifetime versus initial altitude for different ballistic coefficients and solar activity levels.](figures/out/ch21_lifetime.svg){#fig:debrislifetime width=86%}
 
 ### Compliance
 

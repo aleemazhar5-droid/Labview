@@ -76,9 +76,9 @@ Non-geostationary constellations must protect GEO networks. ITU **equivalent pow
 
 ## Link Budgets and Terminals
 
-The link-budget method of Chapter 7 determines whether a link closes. @fig:waterfall shows the budget of a typical Ku-band direct-to-home television downlink as a "waterfall": a satellite EIRP of 52 dBW is attenuated by a free-space loss of about 206 dB over 38 000 km; a 60 cm dish with a low-noise block converter recovers about 36 dB of gain against a system noise temperature of about 120 K; and in a 27 MHz channel the resulting carrier-to-noise ratio is about 15 dB — enough for the DVB-S2 8PSK rate-3/4 waveform with a margin of more than 6 dB for rain.
+The link-budget method of Chapter 7 determines whether a link closes. @fig:satwaterfall shows the budget of a typical Ku-band direct-to-home television downlink as a "waterfall": a satellite EIRP of 52 dBW is attenuated by a free-space loss of about 206 dB over 38 000 km; a 60 cm dish with a low-noise block converter recovers about 36 dB of gain against a system noise temperature of about 120 K; and in a 27 MHz channel the resulting carrier-to-noise ratio is about 15 dB — enough for the DVB-S2 8PSK rate-3/4 waveform with a margin of more than 6 dB for rain.
 
-![Link budget of a Ku-band direct-to-home television downlink, shown as a waterfall of gains and losses.](figures/out/ch17_waterfall.svg){#fig:waterfall width=96%}
+![Link budget of a Ku-band direct-to-home television downlink, shown as a waterfall of gains and losses.](figures/out/ch17_waterfall.svg){#fig:satwaterfall width=96%}
 
 Modern systems adapt their waveforms continuously. The **DVB-S2X** standard offers more than 100 combinations of modulation (from QPSK to 256APSK) and coding, achieving spectral efficiencies from below 0.5 to more than 5 bit/s/Hz, within about 1 dB of the Shannon limit. Since 2022 the 3GPP mobile standards (Release 17 onward) have included **non-terrestrial networks (NTN)**, allowing satellites to be integrated into 5G — the basis for direct-to-device services.
 
@@ -128,19 +128,19 @@ LEO communication constellations are not new. Iridium (66 satellites, 1998), Glo
 
 ### Starlink
 
-SpaceX's **Starlink** has become by far the largest satellite system ever built (@fig:constellations, @fig:starlinkgrowth). Its first 60 production-type satellites were launched in May 2019; by mid-October 2026 about 11 000 were in orbit, launched mostly by SpaceX's own reusable Falcon 9 rockets in batches of 20–30 satellites. Key features of its design include:
+SpaceX's **Starlink** has become by far the largest satellite system ever built (@fig:commconst, @fig:starlinkgrowth). Its first 60 production-type satellites were launched in May 2019; by mid-October 2026 about 11 000 were in orbit, launched mostly by SpaceX's own reusable Falcon 9 rockets in batches of 20–30 satellites. Key features of its design include:
 
 - **Flat-panel satellites** stacked in the fairing and released together, each with phased-array antennas for user beams (Ku-band), parabolic or phased-array antennas for gateways (Ka- and E-band), a single large solar array and **Hall-effect thrusters** using krypton or argon for orbit raising, station-keeping and de-orbiting.
-- **Low altitudes** — mostly 480–560 km, in "shells" at inclinations of 43°, 53°, 70° and 97.6° (@fig:shells). At these altitudes, failed satellites re-enter within about five years by atmospheric drag, which limits long-term debris; in 2026 SpaceX began lowering many satellites towards about 480 km.
+- **Low altitudes** — mostly 480–560 km, in "shells" at inclinations of 43°, 53°, 70° and 97.6° (@fig:commshells). At these altitudes, failed satellites re-enter within about five years by atmospheric drag, which limits long-term debris; in 2026 SpaceX began lowering many satellites towards about 480 km.
 - **Laser inter-satellite links** on all recent satellites, forming an optical mesh network that carries traffic across oceans and to places without nearby gateways (@fig:lasermesh).
 - **Rapid iteration**: successive versions (v0.9, v1.0, v1.5, V2 Mini) have increased capacity per satellite. The much larger **V3** satellites, designed for about 1 Tbit/s of downlink capacity each, require the Starship launch vehicle; the first V3 satellites were deployed on Starship's fourteenth flight in September 2026.
 - **Direct to Cell** satellites with large antennas that connect to ordinary phones (see below).
 
-![Active satellites in the main broadband and mobile communication constellations in October 2026 (logarithmic scale).](figures/out/ch17_constellations.svg){#fig:constellations width=90%}
+![Active satellites in the main broadband and mobile communication constellations in October 2026 (logarithmic scale).](figures/out/ch17_constellations.svg){#fig:commconst width=90%}
 
 ![Starlink satellites launched per year and cumulatively, 2019 to mid-October 2026.](figures/out/ch17_starlink.svg){#fig:starlinkgrowth width=84%}
 
-![Orbital shells of the main LEO communication constellations, plotted from the October 2026 satellite catalogue. Each constellation uses a few distinct combinations of altitude and inclination.](figures/out/ch17_shells.svg){#fig:shells width=90%}
+![Orbital shells of the main LEO communication constellations, plotted from the October 2026 satellite catalogue. Each constellation uses a few distinct combinations of altitude and inclination.](figures/out/ch17_shells.svg){#fig:commshells width=90%}
 
 ![Laser inter-satellite links create an optical mesh network in space, routing traffic between distant users and gateways.](figures/out/ch17_lasermesh.svg){#fig:lasermesh width=94%}
 
@@ -165,7 +165,7 @@ SpaceX's **Starlink** has become by far the largest satellite system ever built 
 | O3b mPOWER | SES (Luxembourg) | 13 / 13 | 8 062 km (MEO) | Ka | Enterprise, cruise, government |
 | IRIS² | EU | ≈ 300 (LEO + MEO) / — | LEO and MEO | Ka and others | Government and commercial |
 
-: Major non-geostationary communication constellations (approximate). {#tbl:constellations}
+: Major non-geostationary communication constellations (approximate). {#tbl:commconst}
 
 ### Challenges
 

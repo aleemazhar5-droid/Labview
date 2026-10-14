@@ -136,3 +136,17 @@
 - Tianwen-2: launched May 2025; arrived Kamo'oalewa ~mid-2026; sample return ~2027; then comet 311P ~2034.
 - ESCAPADE: launched 13 Nov 2025 on New Glenn NG-2 (first booster landing); loiter then Earth flyby late 2026; Mars ~2027.
 - Voyager 1 reaches one light-day (~25.9 billion km) on 18 Nov 2026.
+
+## Probes and flybys (checked Oct 2026)
+- Voyager 1 LECP shut off 17 Apr 2026 after an unexpected power drop seen 27 Feb 2026 during a roll; V1 now has 2 operating science instruments (PWS plasma waves, MAG). V2 LECP off Mar 2025; V1 CRS off Feb 2025. RTGs lose ~4 W/yr; < half original power.
+- 3I/ATLAS: discovered 1 Jul 2025 (ATLAS Chile); perihelion ~29 Oct 2025 at ~1.36 AU; observed by STEREO-A, SOHO, GOES-19 CCOR-1 near perihelion; Mars orbiters early Oct 2025; JUICE JANUS Nov 2025 (CO2-dominated coma); SPHEREx Dec 2025 (water 20× stronger post-perihelion).
+- DART: Dimorphos period −33.0 ± 1.0 min (3σ); β ≈ 3.6 (2.2–4.9 depending on density). 2026 Science Advances (Makadia et al.): Didymos heliocentric Δv −11.7 ± 1.3 µm/s, heliocentric β 2.0 ± 0.3; densities ~2600 (Didymos), ~1540 kg/m³ (Dimorphos).
+- Hera: arrival Nov 2026 (a month early); 93-min braking burn planned 15 Oct 2026.
+- Lucy: Eurybates/Queta 12 Aug 2027; Polymele 15 Sep 2027; Leucus 18 Apr 2028; Orus 11 Nov 2028; Patroclus–Menoetius Mar 2033.
+- New Horizons: extended mission through leaving Kuiper Belt (~2028–29); budget uncertain.
+- Comet Interceptor: launch 2028/29 (Ariane 6), CDR passed Dec 2024; waits at Sun–Earth L2.
+- Tianwen-4: proposed ~2029–30 launch, Jupiter 2035, Callisto orbit ~2038, Uranus sub-probe flyby ~2045.
+- Dragonfly: launch window 5–25 Jul 2028 on Falcon Heavy; CDR Apr 2025; arrival 2034.
+- JUICE Earth flyby 28 Sep 2026: 8,640 km over Indian Ocean, +3.5 km/s, 20° bend; next Earth Jan 2029; Jupiter Jul 2031.
+- ESA Ramses (Apophis): approved at Nov 2025 Ministerial; OHB Italia contract 10 Feb 2026 (€81.2M); launch Apr 2028 on H3 with DESTINY+; arrival Feb 2029 (Apophis Earth flyby 13 Apr 2029).
+- NEO Surveyor: target launch Sep 2027 (commitment June 2028), Falcon 9.

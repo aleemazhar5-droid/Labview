@@ -67,7 +67,7 @@ The three periods differ by orders of magnitude (@fig:periods): gyration in micr
 
 ### The Van Allen Radiation Belts
 
-The first US satellite, **Explorer 1** (1958), carried a Geiger counter designed by James Van Allen of the University of Iowa. It recorded puzzling drop-outs — later understood as saturation by intense radiation — revealing that the Earth is surrounded by belts of trapped energetic particles. The **radiation belts** (@fig:belts) consist of:
+The first US satellite, **Explorer 1** (1958), carried a Geiger counter designed by James Van Allen of the University of Iowa. It recorded puzzling drop-outs — later understood as saturation by intense radiation — revealing that the Earth is surrounded by belts of trapped energetic particles. The **radiation belts** (@fig:radbelts) consist of:
 
 - An **inner belt** at L ≈ 1.2–2, dominated by protons of tens to hundreds of MeV, created mainly by the decay of neutrons produced by cosmic rays hitting the atmosphere (cosmic-ray albedo neutron decay). It is very stable.
 - An **outer belt** at L ≈ 3–7, dominated by electrons of hundreds of keV to several MeV, which varies by orders of magnitude within hours during storms, as wave–particle interactions accelerate and scatter electrons.
@@ -75,7 +75,7 @@ The first US satellite, **Explorer 1** (1958), carried a Geiger counter designed
 
 NASA's twin **Van Allen Probes** (2012–2019) transformed understanding of the belts: within days of launch they discovered a transient **third belt** (@fig:thirdbelt), showed that electrons are accelerated locally by "chorus" waves inside the belts, and found a sharp barrier at about 11 000 km that ultra-relativistic electrons cannot cross. Engineering models of the trapped radiation environment, such as AE8/AP8 and their successors AE9/AP9/SPM, are used to design spacecraft (Chapter 2).
 
-![Schematic radial profiles of trapped protons and electrons in the radiation belts. The outer electron belt varies greatly with geomagnetic activity.](figures/out/ch23_belts.svg){#fig:belts width=86%}
+![Schematic radial profiles of trapped protons and electrons in the radiation belts. The outer electron belt varies greatly with geomagnetic activity.](figures/out/ch23_belts.svg){#fig:radbelts width=86%}
 
 ![The Van Allen Probes discovered in September 2012 that a third, transient radiation belt (in the middle) can form between the inner and outer belts. Visualisation by NASA.](figures/photos/ch23_belt3.jpg){#fig:thirdbelt width=64%}
 

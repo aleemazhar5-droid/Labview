@@ -135,7 +135,7 @@ At Jupiter, sunlight is 27 times weaker than at the Earth; at Saturn, 90 times (
 ![Solar irradiance as a function of distance from the Sun. Large solar arrays have powered missions out to Jupiter; beyond, radioisotope power is required.](figures/out/ch24_power.svg){#fig:solarpower width=86%}
 
 ::: figrow
-![Europa Clipper — NASA's largest planetary spacecraft, with solar arrays spanning 30.5 m — being unpacked at Kennedy Space Center in May 2024 before its launch in October 2024.](figures/photos/ch24_clipper.jpg){#fig:clipper}
+![Europa Clipper — NASA's largest planetary spacecraft, with solar arrays spanning 30.5 m — being unpacked at Kennedy Space Center in May 2024 before its launch in October 2024.](figures/photos/ch24_clipper.jpg){#fig:clippercraft}
 
 ![One of Lucy's two 7.3 m circular solar arrays being deployed in a test in August 2021. Lucy is visiting Trojan asteroids at the distance of Jupiter's orbit using solar power.](figures/photos/ch24_lucy.jpg){#fig:lucy}
 :::
@@ -175,7 +175,7 @@ Deep-space missions follow the project life cycle of Chapter 4, but over unusual
 | Mercury | BepiColombo (ESA/JAXA), Mercury orbit insertion November 2026 |
 | Mars | Mars Odyssey, MRO, MAVEN, Mars Express, ExoMars TGO, Tianwen-1 orbiter, Hope; Curiosity and Perseverance rovers; ESCAPADE twin smallsats en route; MMX launching to Phobos in October 2026 |
 | Jupiter | Juno (in orbit since 2016; extended operations uncertain after 2025); JUICE (arrival 2031) and Europa Clipper (arrival 2030) en route |
-| Asteroids and comets | Lucy (Trojans), Psyche (arrival 2029), Hera (Didymos–Dimorphos, arrival December 2026), OSIRIS-APEX (Apophis, 2029), Hayabusa2 extended mission (2031), Tianwen-2 (Kamoʻoalewa, sample return ≈ 2027) |
+| Asteroids and comets | Lucy (Trojans), Psyche (arrival 2029), Hera (Didymos–Dimorphos, arrival November 2026), OSIRIS-APEX (Apophis, 2029), Hayabusa2 extended mission (2031), Tianwen-2 (Kamoʻoalewa, sample return ≈ 2027) |
 | Outer Solar System and beyond | New Horizons (Kuiper Belt), Voyager 1 and 2 (interstellar space) |
 
 : Selected deep-space missions in operation or en route in October 2026. {#tbl:deepfleet}

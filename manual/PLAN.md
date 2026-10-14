@@ -52,7 +52,7 @@ Part VII — Space Environmental Science
 Part VIII — Deep Space Exploration
 - [x] 24 Deep-Space Mission Design
 - [x] 25 Planetary Orbiters
-- [ ] 26 Space Probes and Flyby Missions
+- [x] 26 Space Probes and Flyby Missions
 - [ ] 27 Landers and Entry, Descent & Landing
 - [ ] 28 Planetary Rovers and Aerial Explorers
 - [ ] 29 Sample-Return Missions

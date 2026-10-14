@@ -115,7 +115,7 @@ Geostationary satellites are the backbone of missile warning: three or four can 
 
 ### Phases of Ballistic-Missile Flight
 
-A ballistic missile's flight has three phases (@fig:trajectories):
+A ballistic missile's flight has three phases (@fig:bmtrajectories):
 
 - **Boost**: the rocket engines burn for about 1–5 minutes, accelerating the payload to about 7 km/s for an intercontinental missile. This is when the plume is brightest and space-based infrared sensors see it best.
 - **Midcourse**: after burnout, the warhead and any decoys coast above the atmosphere on an elliptical arc, reaching an apogee of about 1 000–1 300 km for a minimum-energy ICBM trajectory over 10 000 km and taking 20–25 minutes. Without a plume, the objects are cold and dim; they are tracked mainly by radars and by sensitive sensors observing their thermal emission against cold space.
@@ -123,7 +123,7 @@ A ballistic missile's flight has three phases (@fig:trajectories):
 
 Submarine-launched missiles can fly **depressed trajectories** — lower and faster — reducing warning time to about 10 minutes. These timelines (@fig:ewtimeline) leave national leaders only minutes to assess an attack, which is why fast, reliable warning from space is so important for crisis stability.
 
-![Computed trajectories of an intercontinental ballistic missile and a depressed-trajectory submarine-launched missile, with a schematic hypersonic glide vehicle for comparison. The inset expands the first 2 500 km.](figures/out/ch20_trajectories.svg){#fig:trajectories width=96%}
+![Computed trajectories of an intercontinental ballistic missile and a depressed-trajectory submarine-launched missile, with a schematic hypersonic glide vehicle for comparison. The inset expands the first 2 500 km.](figures/out/ch20_trajectories.svg){#fig:bmtrajectories width=96%}
 
 ![Illustrative timeline of a ballistic-missile attack and its detection. Space-based infrared sensors provide the first warning within minutes, long before the missile rises above the radar horizon.](figures/out/ch20_warning.svg){#fig:ewtimeline width=96%}
 
@@ -141,7 +141,7 @@ Early-warning satellites provide the first **cue** to a missile-defence system. 
 
 ## Hypersonic Glide Vehicles and the Tracking Layer
 
-**Hypersonic glide vehicles (HGVs)**, now deployed by Russia (Avangard) and China (DF-17), are boosted by rockets but then glide through the upper atmosphere at 30–60 km altitude and speeds above Mach 5, manoeuvring over thousands of kilometres (@fig:trajectories). They challenge existing warning systems in three ways: their low altitude keeps them below the horizon of ground radars until late; their glide phase is much dimmer than a rocket plume, although the vehicle is heated by atmospheric friction; and their manoeuvres make their target uncertain.
+**Hypersonic glide vehicles (HGVs)**, now deployed by Russia (Avangard) and China (DF-17), are boosted by rockets but then glide through the upper atmosphere at 30–60 km altitude and speeds above Mach 5, manoeuvring over thousands of kilometres (@fig:bmtrajectories). They challenge existing warning systems in three ways: their low altitude keeps them below the horizon of ground radars until late; their glide phase is much dimmer than a rocket plume, although the vehicle is heated by atmospheric friction; and their manoeuvres make their target uncertain.
 
 Tracking HGVs requires sensors that are closer and that can follow dim, hot objects against the Earth background through their whole flight. This is the motivation for **proliferated low-Earth-orbit tracking constellations** (@fig:ewlayers):
 
@@ -195,7 +195,7 @@ Reliable early warning is stabilising: if leaders know they will receive unambig
 ::: example
 **Example: warning time for an ICBM attack**
 
-Using the computed trajectory of @fig:trajectories (burnout at 7.0 km/s and 17° flight-path angle at 200 km altitude):
+Using the computed trajectory of @fig:bmtrajectories (burnout at 7.0 km/s and 17° flight-path angle at 200 km altitude):
 
 1. *Boost*: about 3 minutes; the plume becomes visible to a 2.7 µm sensor once it climbs above about 8–10 km, about 40–60 s after launch.
 2. *Detection and assessment*: two or more satellites confirm the launch and compute an initial trajectory within about 1–2 minutes of the plume becoming visible.
