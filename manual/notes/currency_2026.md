@@ -84,3 +84,10 @@
 - MethaneSAT lost 20 Jun 2025. GOSAT-GW launched 29 Jun 2025 (last H-IIA, F50).
 - OroraTech FOREST-20 (Oct 2026): 20 thermal sats in orbit; constellr SkyBee-1 Jan 2025 (Transporter-12).
 - Sentinel-2C launched Sep 2024 (last Vega); Sentinel-2D ~2028; CIMR-A 2029; CO2M first expansion mission (≈2027); CHIME, LSTM ~2028-29.
+
+## SAR (checked 14 Oct 2026)
+- NISAR launched 30 Jul 2025 GSLV-F16; 747 km orbit; first L-band image 21 Aug 2025 (Mount Desert Island, Maine); science phase from early Nov 2025 (day 100).
+- Sentinel-1B failed Dec 2021 (mission ended Aug 2022); Sentinel-1C launched 5 Dec 2024 (Vega-C); Sentinel-1D 4 Nov 2025 (Ariane 62, VA? 4th A6), 693 km, 2 184 kg, TAS; 1C+1D 180° apart.
+- BIOMASS (P-band) launched 29 Apr 2025 Vega-C.  ALOS-4 (L-band PALSAR-3) Jul 2024 (H3 F3).
+- ICEYE: 76 launched (Jul 2026, Transporter-17), Gen4 up to 16 cm; ~56 active in SATCAT; production 50/yr -> 100/yr 2027.
+- Active (CelesTrak name-match, Oct 2026): Capella 9, Umbra ≈5-12, StriX 11, QPS-SAR 11, COSMO-SkyMed/CSG 7, RCM 3 + RADARSAT-2, SAOCOM 2, Yaogan 167 (mixed).

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="396.36pt" height="194.237067pt" viewBox="0 0 396.36 194.237067" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-14T19:30:55.716893</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 194.237067 
+L 396.36 194.237067 
+L 396.36 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 217.71 167.921067 
+L 260.676 136.673067 
+L 307.548 167.921067 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #c9b98f; stroke: #8b7d5a; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 10.692 167.921067 
+L 385.668 167.921067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #8b7d5a; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 57.564 39.023067 
+L 260.676 136.673067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #1f6fb2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 96.624 23.399067 
+L 260.676 136.673067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #d9772b; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 11.4732 156.203067 
+L 173.9628 156.203067 
+Q 178.65 156.203067 178.65 151.515867 
+L 178.65 117.924267 
+Q 178.65 113.237067 173.9628 113.237067 
+L 11.4732 113.237067 
+Q 6.786 113.237067 6.786 117.924267 
+L 6.786 151.515867 
+Q 6.786 156.203067 11.4732 156.203067 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #ffffff; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 241.9272 89.801067 
+L 377.0748 89.801067 
+Q 381.762 89.801067 381.762 85.113867 
+L 381.762 31.992267 
+Q 381.762 27.305067 377.0748 27.305067 
+L 241.9272 27.305067 
+Q 237.24 27.305067 237.24 31.992267 
+L 237.24 85.113867 
+Q 237.24 89.801067 241.9272 89.801067 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #ffffff; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 62.67 28.658067 
+Q 77.094 21.446067 91.518 14.234067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 67.142136 28.658067 
+L 62.67 28.658067 
+L 65.353282 25.080358 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #0b2e4f; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 87.045864 14.234067 
+L 91.518 14.234067 
+L 88.834718 17.811776 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #0b2e4f; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #1b1f24" transform="translate(27.461531 131.603275)">Interferometric phase  φ = 4π (R₂ − R₁) / λ</text>
+    <text style="font-size: 6.6px; font-family: 'Inter'; fill: #1b1f24" transform="translate(17.983313 141.546781)">(+ topography, deformation, atmosphere, noise)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.5px; font-family: 'Inter'; fill: #1b1f24" transform="translate(241.9272 40.847804)">One fringe (2π) =</text>
+    <text style="font-size: 6.5px; font-family: 'Inter'; fill: #1b1f24" transform="translate(241.9272 50.496431)">• λ/2 of motion along the line of sight</text>
+    <text style="font-size: 6.5px; font-family: 'Inter'; fill: #1b1f24" transform="translate(241.9272 60.641192)">  (2.8 cm at C-band, 12 cm at L-band)</text>
+    <text style="font-size: 6.5px; font-family: 'Inter'; fill: #1b1f24" transform="translate(241.9272 70.340601)">• height of ambiguity λR sinθ / (2 B_perp)</text>
+    <text style="font-size: 6.5px; font-family: 'Inter'; fill: #1b1f24" transform="translate(241.9272 79.989229)">  of topography</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 6.8px; font-family: 'Inter'; text-anchor: middle; fill: #1b1f24" x="41.94" y="21.9667" transform="rotate(-0 41.94 21.9667)">pass 1</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.8px; font-family: 'Inter'; text-anchor: start; fill: #1b1f24" x="110.295" y="9.4675" transform="rotate(-0 110.295 9.4675)">pass 2 (days later)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.5px; font-family: 'Inter'; text-anchor: middle; fill: #1f6fb2" x="147.402" y="106.200339" transform="rotate(-0 147.402 106.200339)">R₁</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.5px; font-family: 'Inter'; text-anchor: middle; fill: #d9772b" x="190.368" y="74.952339" transform="rotate(-0 190.368 74.952339)">R₂</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.8px; font-family: 'Inter'; text-anchor: middle; fill: #0b2e4f" x="69.282" y="14.1547" transform="rotate(-0 69.282 14.1547)">baseline B</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 54.75168 37.929387 
+L 60.37632 37.929387 
+L 60.37632 32.304747 
+L 54.75168 32.304747 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #c8cdd3; stroke: #444444; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 54.0486 37.050537 
+L 45.61164 37.050537 
+L 45.61164 33.183597 
+L 54.0486 33.183597 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #2a4e8a; stroke: #1b2d4f; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 54.75168 35.117067 
+L 54.0486 35.117067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #444444; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 61.0794 37.050537 
+L 69.51636 37.050537 
+L 69.51636 33.183597 
+L 61.0794 33.183597 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #2a4e8a; stroke: #1b2d4f; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 60.37632 35.117067 
+L 61.0794 35.117067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #444444; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 93.81168 22.305387 
+L 99.43632 22.305387 
+L 99.43632 16.680747 
+L 93.81168 16.680747 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #c8cdd3; stroke: #444444; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 93.1086 21.426537 
+L 84.67164 21.426537 
+L 84.67164 17.559597 
+L 93.1086 17.559597 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #2a4e8a; stroke: #1b2d4f; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 93.81168 19.493067 
+L 93.1086 19.493067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #444444; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 100.1394 21.426537 
+L 108.57636 21.426537 
+L 108.57636 17.559597 
+L 100.1394 17.559597 
+z
+" clip-path="url(#pcaff1bd81b)" style="fill: #2a4e8a; stroke: #1b2d4f; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 99.43632 19.493067 
+L 100.1394 19.493067 
+" clip-path="url(#pcaff1bd81b)" style="fill: none; stroke: #444444; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcaff1bd81b">
+   <rect x="2.88" y="3.869067" width="390.6" height="187.488"/>
+  </clipPath>
+ </defs>
+</svg>
