@@ -100,3 +100,11 @@
 - Sentinel-6B launched 17 Nov 2025 (Falcon 9). Sea-level rise rate 2.1 mm/yr (1993) -> 4.5 mm/yr (2023), ~10 cm since 1993 (NASA).
 - DMSP SSMIS: NOAA ended public processing mid-2025 (permanent), DoD users continue; satellites near end of life ~2026.
 - ECMWF AIFS Single operational 25 Feb 2025; AIFS ENS operational 1 Jul 2025; AIFS wave runs from 12 May 2026.
+
+## Satcom (checked 14 Oct 2026)
+- Starlink ≈12 M customers in 160+ countries (Jun 2026); S-1 filing 10.3 M at 31 Mar 2026. DTC partners T-Mobile (T-Satellite), Rogers, KDDI, Telstra, Optus, Salt, Entel, VEON; ~7.4 M monthly devices (blog - hedge).
+- SpaceX agreed (Sep 2025) to buy EchoStar AWS-4/H-block spectrum (~$17 B) for next-gen DTC (hedge wording).
+- AST SpaceMobile: 13 launched by Aug 2026 (6 Block 1 + 7 Block 2); BlueBird 7 lost after New Glenn launch Apr 2026; target ~45 in orbit in 2026; Block 2 up to 120 Mbps per cell.
+- ViaSat-3 F2 launch ~Nov 2025 (Atlas V); Telesat Lightspeed launches from ~2026, service 2027; SES completed Intelsat acquisition Jul 2025; Viasat bought Inmarsat 2023; Kuiper renamed Amazon Leo (Nov 2025).
+- Amazon Leo: FCC 50% milestone (1,618 sats) July 2026; Amazon asked (Jan 2026) 24-month extension; FCC Space Bureau granted limited waiver with conditions (spectral priority demotion). ~300+ in orbit Jun 2026, ~397 active Oct 2026 (CelesTrak). Full-constellation milestone 2029.
+- !! New Glenn exploded on pad during static-fire test 28 May 2026 (Blue Origin) - check launch chapter.
