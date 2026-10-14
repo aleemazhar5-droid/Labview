@@ -130,3 +130,9 @@
 - TraCSS: pre-production in 2026, funding contested. ClearSpace-1 (PROBA-1, launched 2001): ~2028-29 on Vega-C. ADRAS-J2: FY2027 on Isar Spectrum (Andoya). ADRAS-J 2024 approached H-IIA stage to ~15 m.
 - SMILE (ESA-CAS) launched 19 May 2026 on Vega-C (VV29, first Avio-operated), to HEO 5,000 x 121,000 km. TRACERS launched 23 Jul 2025. Cluster re-entries 2024.
 - Space weather: SC25 smoothed max 160.9 (Oct 2024). G4+ storm days: 2023-03-24, 2023-04-23, 2024-03-24, 2024-05-10/11 (Kp9, Ap 271), 2024-08-12, 2024-10-10, 2025-01-01, 2025-11-12 (Kp 9-), 2026-01-19 (Kp 9-).
+
+## Deep space (checked 14 Oct 2026)
+- MMX: H3 F10 launch scheduled 20 Oct 2026 04:41 JST (window to 7 Nov); Mars arrival ~2027; Phobos ops to 2030; return FY2031.
+- Tianwen-2: launched May 2025; arrived Kamo'oalewa ~mid-2026; sample return ~2027; then comet 311P ~2034.
+- ESCAPADE: launched 13 Nov 2025 on New Glenn NG-2 (first booster landing); loiter then Earth flyby late 2026; Mars ~2027.
+- Voyager 1 reaches one light-day (~25.9 billion km) on 18 Nov 2026.
