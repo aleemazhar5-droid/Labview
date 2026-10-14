@@ -50,3 +50,15 @@
   base). Sceye airship + SoftBank pre-commercial HAPS in Japan 2026. BAE PHASA-35 stratospheric trials Dec 2024.
 - NASA SPB Wanaka 2025: HIWIND flight 17.6 days; second SPB launched May 2025 (planned up to 100 days).
 - Space Perspective: financial distress Jan 2025, acquired by EOS X Space (Spain) July 2025.
+- New Shepard: PAUSED for ≥2 years (announced 2026-01-30) to refocus on lunar lander; record 38 flights, 98 people
+  above Kármán line, >200 research payloads; last crewed flight NS-38 on 2026-01-22.
+- Virgin Galactic: Delta-class first ship at Spaceport America; flight test planned Q3 2026, rocket-powered
+  spaceflight Q4 2026; commercial ramp 2027; ~650 backlog; seats $750k. (VSS Unity retired after Galactic 07, June 2024.)
+- NASA Sounding Rocket Program: ~20 missions/yr (21 planned 2025); Black Brant (Magellan) 99.4% success last 500.
+- Dream Chaser: Sept 2025 CRS-2 modification removed NASA's fixed 7 cargo flights; first flight = free-flyer demo
+  (no ISS docking) targeted late 2026 on Vulcan; NASA may order ISS flights later.
+- X-37B: OTV-7 Falcon Heavy Dec 29 2023 → landed Mar 7 2025 (434 days, first aerobraking manoeuvres). OTV-8
+  (USSF-36) launched Aug 21/22 2025 on Falcon 9, testing laser comms & quantum inertial sensor; still in orbit (as known).
+- ESA Space Rider: first flight NET 2028 (Vega-C, Kourou), drop tests/landing milestones 2026.
+- Reaction Engines (SABRE) entered administration Oct 2024.
+- ISRO RLV-LEX landing experiments: LEX-01 Apr 2023, LEX-02 Mar 2024, LEX-03 Jun 2024 (Pushpak).
