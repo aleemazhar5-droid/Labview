@@ -150,3 +150,7 @@
 - JUICE Earth flyby 28 Sep 2026: 8,640 km over Indian Ocean, +3.5 km/s, 20° bend; next Earth Jan 2029; Jupiter Jul 2031.
 - ESA Ramses (Apophis): approved at Nov 2025 Ministerial; OHB Italia contract 10 Feb 2026 (€81.2M); launch Apr 2028 on H3 with DESTINY+; arrival Feb 2029 (Apophis Earth flyby 13 Apr 2029).
 - NEO Surveyor: target launch Sep 2027 (commitment June 2028), Falcon 9.
+
+## Landers (checked Oct 2026)
+- 2026 is a gap year for lunar landings: last success Blue Ghost M1 (2 Mar 2025). Chang'e-7 missed its 23–24 Aug 2026 window ("does not meet launch conditions"), now 2027. Blue Moon MK1 "Endurance" slipped to early 2027 after the May 2026 New Glenn pad explosion; IM-3 → Q1 2027 (Reiner Gamma); Blue Ghost M2 (far side) → 2027; Astrobotic Griffin-1 NET Nov 2026 (Mons Mouton).
+- InSight: 2023 Nature — molten silicate layer above core; core radius revised to ~1,650–1,700 km (from 1,830). 2025 Nature (Bi et al.) — solid inner core radius ~613 ± 67 km (contested).
