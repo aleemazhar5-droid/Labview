@@ -1,0 +1,37 @@
+{
+ "date": "2026-10-14",
+ "source": "CelesTrak SATCAT, active payloads matched by name",
+ "optical": {
+  "Planet Dove (Flock/SuperDove)": 92,
+  "Jilin-1 (Chang Guang)": 45,
+  "Gaofen (China, govt.)": 36,
+  "Satellogic NewSat": 18,
+  "BlackSky Global/Gen-3": 16,
+  "Planet SkySat": 14,
+  "SuperView (China Siwei)": 13,
+  "Vantor WorldView/Legion/GeoEye": 10,
+  "Planet Pelican": 9,
+  "Cartosat (India)": 7,
+  "Airbus Pléiades/Neo": 4,
+  "Sentinel-2 (EU)": 3,
+  "Landsat (USA)": 2
+ },
+ "sar": {
+  "ICEYE": 56,
+  "Capella": 9,
+  "Umbra": 5,
+  "Sentinel-1": 3,
+  "Synspective StriX": 11,
+  "QPS-SAR": 11,
+  "Yaogan (China, military)": 167,
+  "NISAR": 1,
+  "COSMO-SkyMed": 7,
+  "RADARSAT": 4,
+  "TerraSAR/TanDEM-X": 2,
+  "PAZ": 1,
+  "ALOS-2/4": 2,
+  "SAOCOM": 2,
+  "EOS-04/RISAT": 3,
+  "BIOMASS": 1
+ }
+}

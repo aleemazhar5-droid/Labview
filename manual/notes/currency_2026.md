@@ -71,3 +71,16 @@
   safety (decay time at solar min from 4+ yr to months); followed Dec 2025 sat anomaly at ~418 km creating debris.
 - GCAT in-orbit counts (Oct 2026): Starlink 10,655; OneWeb 654; Amazon Leo (Kuiper) 392; Qianfan 239; Iridium 106;
   Globalstar 85; Planet Flock 109; Spire Lemur 82; ICEYE 46; SDA 42.
+
+## EO/IR (checked 14 Oct 2026)
+- Landsat 7 decommissioned 4 Jun 2025 (science data to Jan 2024). Landsat 8 (2013) + 9 (2021) operating.
+- Landsat Next: FY2026 PBR "restructured" (3-sat superspectral, 26 bands, NET 2030/31); House report kept $183M & 3-sat; outcome open -> describe as "under review".
+- FY2026 NASA Earth Science enacted ≈ $2.15B (P.L. 119-74, CRS). 2026 Senior Review for Terra/Aqua/Aura/OCO-2/3 extensions.
+- WorldView Legion: 6 sats launched May 2024 - 4 Feb 2025 (2 SSO, 4 mid-inclination); Maxar Intelligence renamed Vantor Oct 2025.
+- Planet Pelican: 5 launched 2025, 3 more 3 May 2026 (incl. Sweden sovereign) -> 8 (≈9); Gen 2 (30 cm class) from late 2026; plan 32. Tanager-1 (Carbon Mapper/Planet/JPL) hyperspectral launched Aug 2024.
+- BlackSky Gen-3 35 cm: 4+ on orbit early 2026, target 8-9 by end 2026.
+- Albedo Clarity-1 VLEO (10 cm VIS / 2 m TIR target) launched Mar 2025 Transporter-13; lost comms after ~9 months, company pivoted to VLEO buses (Wikipedia - hedge).
+- Jilin-1 ≈ 57 in orbit with that name, Chang Guang ≈ 82 active (KeepTrack Jul 2026); target 300.
+- MethaneSAT lost 20 Jun 2025. GOSAT-GW launched 29 Jun 2025 (last H-IIA, F50).
+- OroraTech FOREST-20 (Oct 2026): 20 thermal sats in orbit; constellr SkyBee-1 Jan 2025 (Transporter-12).
+- Sentinel-2C launched Sep 2024 (last Vega); Sentinel-2D ~2028; CIMR-A 2029; CO2M first expansion mission (≈2027); CHIME, LSTM ~2028-29.
