@@ -121,3 +121,10 @@
 - Next-Gen OPIR GEO-1 (USSF-57, Lockheed/RTX payload): planned NET Mar/May 2026 on Vulcan - NOT launched per GCAT by mid-Oct 2026 -> say "awaiting launch in late 2026". 2 GEO + 2 Polar (Northrop, ~2028).
 - Russia EKS Tundra/Kupol: Kosmos-2510 (2015), 2518 (2017), 2541 (2019), 2546 (2020), + 2552 (2021), 2563 (2022) -> ~6.
 - 2026 US NS launches (GCAT): NROL-105/172/179 Starshield, USSF-87 GSSAP (Vulcan, 12 Feb 2026), SBST launches (Aug-Sep 2026).
+
+## SSA / debris (checked 14 Oct 2026)
+- ESA Space Environment Report 2025 (data to end-2024): ~40,000 tracked, ~11,000 active payloads; >1.2 million >1 cm, >50,000 >10 cm (ESA text; press: 54,000 >10 cm, 130 M 1 mm-1 cm).
+- CelesTrak Oct 2026: 35,012 catalogued in orbit (20,112 PAY incl. 17,212 active; 12,549 DEB; 2,296 R/B).
+- Top fragmentations (catalogued/in orbit): FY-1C 3534/2314; Cosmos 1408 1806/4; Cosmos 2251 1716/612; LM-6A 2022 800/613; Pegasus HAPS 753/56; LM-6A 2024 705/574; Iridium 33 656/115.
+- Re-entries: ~2,500 catalogued objects in 2022, ~2,000/yr since.
+- TraCSS: pre-production in 2026, funding contested. ClearSpace-1 (PROBA-1, launched 2001): ~2028-29 on Vega-C. ADRAS-J2: FY2027 on Isar Spectrum (Andoya). ADRAS-J 2024 approached H-IIA stage to ~15 m.
