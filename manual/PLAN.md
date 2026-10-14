@@ -54,7 +54,7 @@ Part VIII — Deep Space Exploration
 - [x] 25 Planetary Orbiters
 - [x] 26 Space Probes and Flyby Missions
 - [x] 27 Landers and Entry, Descent & Landing
-- [ ] 28 Planetary Rovers and Aerial Explorers
+- [x] 28 Planetary Rovers and Aerial Explorers
 - [ ] 29 Sample-Return Missions
 Part IX — Human Spaceflight and Habitation
 - [ ] 30 Human Spaceflight Fundamentals and Life Support

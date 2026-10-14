@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="496.406125pt" height="242.457336pt" viewBox="0 0 496.406125 242.457336" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-14T21:11:32.490463</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 242.457336 
+L 496.406125 242.457336 
+L 496.406125 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 136.406125 208.008 
+L 493.526125 208.008 
+L 493.526125 2.88 
+L 136.406125 2.88 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 133.659048 16.968088 
+L 139.153202 16.968088 
+L 139.153202 16.968088 
+L 133.659048 16.968088 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #b23a48"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 133.659048 16.968088 
+L 139.153202 16.968088 
+L 139.153202 16.968088 
+L 133.659048 16.968088 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #7f8c8d"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 133.659048 16.968088 
+L 139.153202 16.968088 
+L 139.153202 16.968088 
+L 133.659048 16.968088 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #1f6fb2"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 133.659048 16.968088 
+L 139.153202 16.968088 
+L 139.153202 16.968088 
+L 133.659048 16.968088 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #d9772b"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 133.659048 16.968088 
+L 139.153202 16.968088 
+L 139.153202 16.968088 
+L 133.659048 16.968088 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #2e8b57"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 136.406125 208.008 
+L 136.406125 2.88 
+" clip-path="url(#p8aba52653a)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m4b1270f407" d="M 0 0 
+L 0 3.5 
+" style="stroke: #3e4851; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4b1270f407" x="136.406125" y="208.008" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="136.406125" y="222.758" transform="rotate(-0 136.406125 222.758)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 205.083048 208.008 
+L 205.083048 2.88 
+" clip-path="url(#p8aba52653a)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m4b1270f407" x="205.083048" y="208.008" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="205.083048" y="222.758" transform="rotate(-0 205.083048 222.758)">10</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 273.759971 208.008 
+L 273.759971 2.88 
+" clip-path="url(#p8aba52653a)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m4b1270f407" x="273.759971" y="208.008" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 8px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="273.759971" y="222.758" transform="rotate(-0 273.759971 222.758)">20</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 342.436894 208.008 
+L 342.436894 2.88 
+" clip-path="url(#p8aba52653a)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m4b1270f407" x="342.436894" y="208.008" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="342.436894" y="222.758" transform="rotate(-0 342.436894 222.758)">30</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 411.113817 208.008 
+L 411.113817 2.88 
+" clip-path="url(#p8aba52653a)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m4b1270f407" x="411.113817" y="208.008" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="411.113817" y="222.758" transform="rotate(-0 411.113817 222.758)">40</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 479.79074 208.008 
+L 479.79074 2.88 
+" clip-path="url(#p8aba52653a)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m4b1270f407" x="479.79074" y="208.008" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="479.79074" y="222.758" transform="rotate(-0 479.79074 222.758)">50</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9px; font-family: 'Inter'; text-anchor: middle; fill: #1b1f24" x="314.966125" y="237.406438" transform="rotate(-0 314.966125 237.406438)">Total distance driven (km)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13">
+      <defs>
+       <path id="m945791aa41" d="M 0 0 
+L -3.5 0 
+" style="stroke: #3e4851; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="16.968088" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="20.164963" transform="rotate(-0 129.406125 20.164963)">Opportunity (Mars, 2004–18)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="30.579766" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="33.776641" transform="rotate(-0 129.406125 33.776641)">Perseverance (Mars, 2021– ; early 2026)</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="44.191445" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="47.38832" transform="rotate(-0 129.406125 47.38832)">Lunokhod 2 (Moon, 1973)</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="57.803124" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="60.999999" transform="rotate(-0 129.406125 60.999999)">Curiosity (Mars, 2012– ; 2026)</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="71.414803" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="74.611678" transform="rotate(-0 129.406125 74.611678)">Apollo 17 LRV (Moon, 1972)</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="85.026482" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="88.223357" transform="rotate(-0 129.406125 88.223357)">Apollo 15 LRV (Moon, 1971)</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="98.638161" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="101.835036" transform="rotate(-0 129.406125 101.835036)">Apollo 16 LRV (Moon, 1972)</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="112.249839" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="115.446714" transform="rotate(-0 129.406125 115.446714)">Lunokhod 1 (Moon, 1970–71)</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="125.861518" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="129.058393" transform="rotate(-0 129.406125 129.058393)">Spirit (Mars, 2004–10)</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="139.473197" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="142.670072" transform="rotate(-0 129.406125 142.670072)">Zhurong (Mars, 2021–22)</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="153.084876" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="156.281751" transform="rotate(-0 129.406125 156.281751)">Yutu-2 (Moon far side, 2019– )</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="166.696555" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="169.89343" transform="rotate(-0 129.406125 169.89343)">Yutu (Moon, 2013–16)</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="180.308234" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="183.505109" transform="rotate(-0 129.406125 183.505109)">Sojourner (Mars, 1997)</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m945791aa41" x="136.406125" y="193.919912" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="129.406125" y="197.116787" transform="rotate(-0 129.406125 197.116787)">Pragyan (Moon, 2023)</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_8">
+    <path d="M 136.406125 12.204 
+L 446.55111 12.204 
+L 446.55111 21.732175 
+L 136.406125 21.732175 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #b23a48"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 136.406125 25.815679 
+L 424.849202 25.815679 
+L 424.849202 35.343854 
+L 136.406125 35.343854 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #b23a48"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 136.406125 39.427358 
+L 404.246125 39.427358 
+L 404.246125 48.955533 
+L 136.406125 48.955533 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #7f8c8d"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 136.406125 53.039036 
+L 390.51074 53.039036 
+L 390.51074 62.567212 
+L 136.406125 62.567212 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #b23a48"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 136.406125 66.650715 
+L 381.58274 66.650715 
+L 381.58274 76.178891 
+L 136.406125 76.178891 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #1f6fb2"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 136.406125 80.262394 
+L 327.327971 80.262394 
+L 327.327971 89.790569 
+L 136.406125 89.790569 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #1f6fb2"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 136.406125 93.874073 
+L 319.77351 93.874073 
+L 319.77351 103.402248 
+L 136.406125 103.402248 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #1f6fb2"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 136.406125 107.485752 
+L 208.516894 107.485752 
+L 208.516894 117.013927 
+L 136.406125 117.013927 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #7f8c8d"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 136.406125 121.097431 
+L 189.493387 121.097431 
+L 189.493387 130.625606 
+L 136.406125 130.625606 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #b23a48"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 136.406125 134.709109 
+L 149.592094 134.709109 
+L 149.592094 144.237285 
+L 136.406125 144.237285 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #d9772b"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 136.406125 148.320788 
+L 147.46311 148.320788 
+L 147.46311 157.848964 
+L 136.406125 157.848964 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #d9772b"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 136.406125 161.932467 
+L 137.189042 161.932467 
+L 137.189042 171.460642 
+L 136.406125 171.460642 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #d9772b"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 136.406125 175.544146 
+L 137.092894 175.544146 
+L 137.092894 185.072321 
+L 136.406125 185.072321 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #b23a48"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 136.406125 189.155825 
+L 137.092894 189.155825 
+L 137.092894 198.684 
+L 136.406125 198.684 
+z
+" clip-path="url(#p8aba52653a)" style="fill: #2e8b57"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 136.406125 208.008 
+L 136.406125 2.88 
+" style="fill: none; stroke: #5b6670; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 136.406125 208.008 
+L 493.526125 208.008 
+" style="fill: none; stroke: #5b6670; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="449.984956" y="19.259836" transform="rotate(-0 449.984956 19.259836)">45.2 km</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="428.283048" y="32.871514" transform="rotate(-0 428.283048 32.871514)">42.0 km</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="407.679971" y="46.483193" transform="rotate(-0 407.679971 46.483193)">39.0 km</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="393.944587" y="60.094872" transform="rotate(-0 393.944587 60.094872)">37.0 km</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="385.016587" y="73.706551" transform="rotate(-0 385.016587 73.706551)">35.7 km</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="330.761817" y="87.31823" transform="rotate(-0 330.761817 87.31823)">27.8 km</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="323.207356" y="100.929909" transform="rotate(-0 323.207356 100.929909)">26.7 km</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="211.95074" y="114.541587" transform="rotate(-0 211.95074 114.541587)">10.5 km</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="192.927233" y="128.153266" transform="rotate(-0 192.927233 128.153266)">7.7 km</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="153.02594" y="141.764945" transform="rotate(-0 153.02594 141.764945)">1.9 km</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="150.896956" y="155.376624" transform="rotate(-0 150.896956 155.376624)">1.6 km</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="140.622888" y="168.988303" transform="rotate(-0 140.622888 168.988303)">0.11 km</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="140.52674" y="182.599982" transform="rotate(-0 140.52674 182.599982)">0.10 km</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 6.3px; font-family: 'Inter'; text-anchor: start" x="140.52674" y="196.21166" transform="rotate(-0 140.52674 196.21166)">0.10 km</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_24">
+     <path d="M 362.1055 160.121672 
+L 374.1055 160.121672 
+L 374.1055 155.921672 
+L 362.1055 155.921672 
+z
+" style="fill: #b23a48"/>
+    </g>
+    <g id="text_36">
+     <text style="font-size: 6px; font-family: 'Inter'; text-anchor: start" x="378.9055" y="160.121672" transform="rotate(-0 378.9055 160.121672)">NASA Mars rovers</text>
+    </g>
+    <g id="patch_25">
+     <path d="M 362.1055 170.381438 
+L 374.1055 170.381438 
+L 374.1055 166.181438 
+L 362.1055 166.181438 
+z
+" style="fill: #7f8c8d"/>
+    </g>
+    <g id="text_37">
+     <text style="font-size: 6px; font-family: 'Inter'; text-anchor: start" x="378.9055" y="170.381438" transform="rotate(-0 378.9055 170.381438)">Soviet Lunokhods</text>
+    </g>
+    <g id="patch_26">
+     <path d="M 362.1055 180.641203 
+L 374.1055 180.641203 
+L 374.1055 176.441203 
+L 362.1055 176.441203 
+z
+" style="fill: #1f6fb2"/>
+    </g>
+    <g id="text_38">
+     <text style="font-size: 6px; font-family: 'Inter'; text-anchor: start" x="378.9055" y="180.641203" transform="rotate(-0 378.9055 180.641203)">Apollo Lunar Roving Vehicles (crewed)</text>
+    </g>
+    <g id="patch_27">
+     <path d="M 362.1055 190.900969 
+L 374.1055 190.900969 
+L 374.1055 186.700969 
+L 362.1055 186.700969 
+z
+" style="fill: #d9772b"/>
+    </g>
+    <g id="text_39">
+     <text style="font-size: 6px; font-family: 'Inter'; text-anchor: start" x="378.9055" y="190.900969" transform="rotate(-0 378.9055 190.900969)">Chinese rovers</text>
+    </g>
+    <g id="patch_28">
+     <path d="M 362.1055 201.160734 
+L 374.1055 201.160734 
+L 374.1055 196.960734 
+L 362.1055 196.960734 
+z
+" style="fill: #2e8b57"/>
+    </g>
+    <g id="text_40">
+     <text style="font-size: 6px; font-family: 'Inter'; text-anchor: start" x="378.9055" y="201.160734" transform="rotate(-0 378.9055 201.160734)">Indian rover</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8aba52653a">
+   <rect x="136.406125" y="2.88" width="357.12" height="205.128"/>
+  </clipPath>
+ </defs>
+</svg>

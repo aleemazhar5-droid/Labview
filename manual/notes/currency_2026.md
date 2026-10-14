@@ -154,3 +154,11 @@
 ## Landers (checked Oct 2026)
 - 2026 is a gap year for lunar landings: last success Blue Ghost M1 (2 Mar 2025). Chang'e-7 missed its 23–24 Aug 2026 window ("does not meet launch conditions"), now 2027. Blue Moon MK1 "Endurance" slipped to early 2027 after the May 2026 New Glenn pad explosion; IM-3 → Q1 2027 (Reiner Gamma); Blue Ghost M2 (far side) → 2027; Astrobotic Griffin-1 NET Nov 2026 (Mons Mouton).
 - InSight: 2023 Nature — molten silicate layer above core; core radius revised to ~1,650–1,700 km (from 1,830). 2025 Nature (Bi et al.) — solid inner core radius ~613 ± 67 km (contested).
+
+## Rovers (checked Oct 2026)
+- Perseverance: Sapphire Canyon sample from Cheyava Falls — potential biosignature (Nature, Sept 2025); climbed Jezero rim (~500 m); early 2026 >42 km driven, 33 of 43 tubes filled. MSR: FY2026 appropriation provided no funds ("does not support the existing MSR program"); ~$110M "Mars Future Missions"; cost had reached ~$11B, return ≥2040. Tianwen-3: launch 2028, return 2031.
+- Curiosity: >37 km, ~1.35 km elevation gain (2026 blog), boxwork terrain 2025–26.
+- VIPER revived Sept 2025: Blue Origin CLPS task order ($190M potential) on 2nd Blue Moon MK1, late 2027.
+- LTV: 2024 three teams (Intuitive Machines Moon RACER, Lunar Outpost Lunar Dawn, Astrolab FLEX); 2026 task orders reportedly to Astrolab ($219M) and Lunar Outpost ($220M) for delivery ~2028 (secondary source).
+- Yutu-2: still active Sept 2025 (stalled 2024), ~1,613 m total; longest-lived lunar rover.
+- MMX: launch 19 Oct 2026 21:41 CEST on H3 (window to 7 Nov); IDEFIX 25 kg rover lands on Phobos 2029, 100 days; samples back ~2031.

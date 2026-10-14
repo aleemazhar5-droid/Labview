@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="396.36pt" height="162pt" viewBox="0 0 396.36 162" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-14T21:11:33.061620</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 162 
+L 396.36 162 
+L 396.36 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.3792 77.094 
+L 72.4068 77.094 
+Q 77.094 77.094 77.094 72.4068 
+L 77.094 34.9092 
+Q 77.094 30.222 72.4068 30.222 
+L 15.3792 30.222 
+Q 10.692 30.222 10.692 34.9092 
+L 10.692 72.4068 
+Q 10.692 77.094 15.3792 77.094 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #eaf1f7; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 89.5932 77.094 
+L 146.6208 77.094 
+Q 151.308 77.094 151.308 72.4068 
+L 151.308 34.9092 
+Q 151.308 30.222 146.6208 30.222 
+L 89.5932 30.222 
+Q 84.906 30.222 84.906 34.9092 
+L 84.906 72.4068 
+Q 84.906 77.094 89.5932 77.094 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #eaf1f7; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 163.8072 77.094 
+L 220.8348 77.094 
+Q 225.522 77.094 225.522 72.4068 
+L 225.522 34.9092 
+Q 225.522 30.222 220.8348 30.222 
+L 163.8072 30.222 
+Q 159.12 30.222 159.12 34.9092 
+L 159.12 72.4068 
+Q 159.12 77.094 163.8072 77.094 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #eaf1f7; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 238.0212 77.094 
+L 295.0488 77.094 
+Q 299.736 77.094 299.736 72.4068 
+L 299.736 34.9092 
+Q 299.736 30.222 295.0488 30.222 
+L 238.0212 30.222 
+Q 233.334 30.222 233.334 34.9092 
+L 233.334 72.4068 
+Q 233.334 77.094 238.0212 77.094 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #eaf1f7; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 312.2352 77.094 
+L 369.2628 77.094 
+Q 373.95 77.094 373.95 72.4068 
+L 373.95 34.9092 
+Q 373.95 30.222 369.2628 30.222 
+L 312.2352 30.222 
+Q 307.548 30.222 307.548 34.9092 
+L 307.548 72.4068 
+Q 307.548 77.094 312.2352 77.094 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #eaf1f7; stroke: #0b2e4f; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(32.376375 50.828801)">Stereo</text>
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(28.695375 61.059199)">cameras</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(99.00225 50.937926)">3-D terrain</text>
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(110.462063 60.363387)">map</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(179.741813 50.793363)">Hazard</text>
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(171.032062 61.496824)">assessment</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(258.589125 50.793363)">Path</text>
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(251.227125 61.089574)">planning</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(323.989875 50.937926)">Drive and</text>
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(327.210188 61.827574)">localise</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 77.8752 53.658 
+Q 81 53.658 82.783159 53.658 
+" clip-path="url(#p8f8d96cb1a)" style="fill: none; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 78.783159 51.658 
+L 82.783159 53.658 
+L 78.783159 55.658 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #0b2e4f; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 152.0892 53.658 
+Q 155.214 53.658 156.997159 53.658 
+" clip-path="url(#p8f8d96cb1a)" style="fill: none; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 152.997159 51.658 
+L 156.997159 53.658 
+L 152.997159 55.658 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #0b2e4f; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 226.3032 53.658 
+Q 229.428 53.658 231.211159 53.658 
+" clip-path="url(#p8f8d96cb1a)" style="fill: none; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 227.211159 51.658 
+L 231.211159 53.658 
+L 227.211159 55.658 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #0b2e4f; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 300.5172 53.658 
+Q 303.642 53.658 305.425159 53.658 
+" clip-path="url(#p8f8d96cb1a)" style="fill: none; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 301.425159 51.658 
+L 305.425159 53.658 
+L 301.425159 55.658 
+z
+" clip-path="url(#p8f8d96cb1a)" style="fill: #0b2e4f; stroke: #0b2e4f; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 338.957518 27.378665 
+Q 192.320097 -45.055111 46.885562 26.785366 
+" style="fill: none; stroke: #d9772b; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 50.910437 26.804825 
+L 46.885562 26.785366 
+L 49.316054 23.577141 
+z
+" style="fill: #d9772b; stroke: #d9772b; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(17.39575 110.752492)">Image pairs of the</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(24.473922 118.25425)">terrain ahead</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(95.553531 110.752492)">Height of every</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(99.646016 118.25425)">point in view</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(171.639156 107.001613)">Slopes, rocks,</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(168.445188 114.503371)">steps scored for</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(163.288047 122.005129)">the rover's footprint</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(244.250844 107.001613)">Choose the arc</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(242.4325 114.503371)">that makes most</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(243.944719 122.005129)">progress safely</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(316.915813 107.001613)">Visual odometry</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(314.027969 114.503371)">corrects for wheel</text>
+    <text style="font-size: 6.2px; font-family: 'Inter'; fill: #1b1f24" transform="translate(324.491922 122.005129)">slip; repeat</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: middle; fill: #d9772b" x="192.321" y="11.139879" transform="rotate(-0 192.321 11.139879)">Loop repeats every few metres — on Perseverance, while the rover keeps driving</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.6px; font-family: 'Inter'; text-anchor: middle; fill: #7f8c8d" x="198.18" y="151.755879" transform="rotate(-0 198.18 151.755879)">Ground controllers set the goal and the 'keep-out' zones; the rover finds its own way.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8f8d96cb1a">
+   <rect x="2.88" y="2.88" width="390.6" height="156.24"/>
+  </clipPath>
+ </defs>
+</svg>
