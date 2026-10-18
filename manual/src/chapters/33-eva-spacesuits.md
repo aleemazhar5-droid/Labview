@@ -16,9 +16,9 @@ The history of EVA is a history of learning how hard it is. @fig:evasuits shows 
 
 ### First Steps Outside: Voskhod and Gemini
 
-On 18 March 1965 Alexei Leonov left Voskhod 2 through an inflatable airlock and floated for about 12 minutes at the end of a tether. His Berkut suit, pressurised to 0.4 atmospheres, ballooned so much in vacuum that his feet and hands pulled away from the boots and gloves, and he could not fit back into the airlock. Without telling the ground, he bled the suit down to about 0.27 atmospheres — accepting a risk of decompression sickness — squeezed in head first, and only then could turn round to close the hatch. The first lesson of EVA: a pressurised suit is a balloon whose shape must be controlled.
+On 18 March 1965 Alexei Leonov left Voskhod 2 through an inflatable airlock and floated for about 12 minutes at the end of a tether. His Berkut suit, pressurised to 0.4 atmospheres, ballooned so much in vacuum that his feet and hands pulled away from the boots and gloves, and he could not fit back into the airlock. He switched the suit to its reserve setting of about 0.27 atmospheres, accepting a risk of decompression sickness, and struggled back inside; his memoir's account of going in head first is more dramatic than his post-flight report. The first lesson of EVA: a pressurised suit is a balloon whose shape must be controlled.
 
-Ed White followed on Gemini 4 on 3 June 1965 (@fig:edwhite), using a hand-held gas gun to manoeuvre for some 20 minutes. Most of the Gemini spacewalks that followed proved far harder than expected. On Gemini 9A in June 1966 Eugene Cernan struggled for two hours to don a manoeuvring backpack stowed on the spacecraft's adapter. With nothing to brace against, every push moved his body rather than the task; his heart rate reportedly reached about 180 beats per minute and his visor fogged until he could barely see. Richard Gordon on Gemini 11 was similarly exhausted.
+Ed White followed on Gemini 4 on 3 June 1965 (@fig:edwhite) and spent about 20 minutes outside; his hand-held gas gun ran dry after about three minutes, leaving him to pull on his tether. Most of the Gemini spacewalks that followed proved far harder than expected. On Gemini 9A in June 1966 Eugene Cernan spent most of a two-hour spacewalk struggling to reach and put on a manoeuvring backpack stowed on the spacecraft's adapter. With nothing to brace against, every push moved his body rather than the task; his heart rate reportedly reached about 180 beats per minute and his visor fogged until he could barely see. Richard Gordon on Gemini 11 was similarly exhausted.
 
 ![Ed White during the first American spacewalk, Gemini 4, 3 June 1965. The gold-coated visor protects his eyes from sunlight; the umbilical supplies oxygen and a tether; he holds the hand-held manoeuvring unit.](figures/photos/ch33_white.jpg){#fig:edwhite width=52%}
 
@@ -46,7 +46,7 @@ The **Hubble Space Telescope** turned EVA into a precision trade. Hubble was des
 
 ### Building and Keeping the Space Station
 
-The ISS was assembled in orbit between 1998 and 2011, and spacewalks connected every module, truss segment and cable that robots could not. @fig:issevas shows the result: from December 1998 to September 2026, there were 284 spacewalks totalling about 1 790 hours; NASA's itemised list shows a peak of 23 in 2007, when Shuttle assembly flights and station crews worked outside almost monthly. Since the Shuttle's retirement, spacewalks have mostly been maintenance — replacing pumps, batteries and failed electronics, installing new roll-out solar arrays — at a rate of about nine a year. The longest ISS EVA, by Jim Voss and Susan Helms in March 2001, lasted 8 h 56 min.
+The ISS was assembled in orbit between 1998 and 2011, and spacewalks connected every module, truss segment and cable that robots could not. @fig:issevas shows the result: from December 1998 to September 2026, there were 284 spacewalks totalling about 1 790 hours; NASA's itemised list shows a peak of 23 in 2007, when Shuttle assembly flights and station crews worked outside almost monthly. Since the Shuttle's retirement, spacewalks have mostly been maintenance — replacing pumps, batteries and failed electronics, installing new roll-out solar arrays — at a rate of about eight a year. The longest ISS EVA, by Jim Voss and Susan Helms in March 2001, lasted 8 h 56 min.
 
 ![Spacewalks at the International Space Station per year and hours spent outside, December 1998 to September 2026. The 2024 dip followed water leaks and other faults in the ageing US suits; US spacewalks resumed in 2025–26.](figures/out/ch33_issevas.svg){#fig:issevas width=96%}
 
@@ -56,7 +56,7 @@ In 2024 only three spacewalks took place: one US EVA in June ended after 31 minu
 
 The Soviet **Orlan** suits, first used outside Salyut 6 in December 1977, are semi-rigid: a single-piece aluminium torso with a rear hatch formed by the hinged backpack, so a cosmonaut climbs in from behind in a few minutes without help. The current **Orlan-MKS**, in use on the ISS since 2017, works at 40 kPa, has about 7 hours of autonomy, an onboard computer and automatic thermal control, and is rated for 15–20 spacewalks over five to six years (@fig:orlaneva). Russia delivered new Orlan-MKS suits to the ISS in 2025 and 2026.
 
-China's **Feitian** suit was derived from the Orlan. Zhai Zhigang wore the first version for China's first spacewalk, about 20 minutes long, from Shenzhou-7 on 27 September 2008. The second generation, in use at the Tiangong station since July 2021, supports up to 8 hours outside; Chinese sources report that its design life has been extended from 15 to 20 spacewalks. On 17 December 2024 Cai Xuzhe and Song Lingdong of Shenzhou-19 stayed outside for 9 h 06 min, the longest spacewalk ever, and by mid-2026 Chinese crews had made more than 25 spacewalks, many to fit debris shields to the station.
+China's **Feitian** suit was derived from the Orlan and, according to Chinese state media, also works at about 40 kPa. Zhai Zhigang wore the first version for China's first spacewalk, about 20 minutes long, from Shenzhou-7 on 27 September 2008. The second generation, in use at the Tiangong station since July 2021, supports up to 8 hours outside; Chinese sources report that its design life has been extended from 15 to 20 spacewalks. On 17 December 2024 Cai Xuzhe and Song Lingdong of Shenzhou-19 stayed outside for 9 h 06 min, the longest spacewalk ever. By September 2026 the second-generation suits had supported 27 spacewalks at Tiangong, many of them to fit debris shields to the station.
 
 ![Cosmonaut Alexey Zubritsky in an Orlan suit during a Russian spacewalk on 28 October 2025. The blue stripes distinguish the two cosmonauts; the bulky backpack is also the suit's entry hatch.](figures/photos/ch33_orlan.jpg){#fig:orlaneva width=56%}
 
@@ -67,7 +67,7 @@ The first commercial spacewalk took place on 12 September 2024 on the privately 
 | A7L / A7LB + PLSS | NASA (Apollo) | 25.8 kPa | 82–96 kg | 4 h; 8 h from Apollo 15 | 1969 |
 | Shuttle/ISS EMU | NASA | 29.6 kPa | ≈ 145 kg (ISS) | 7 h + 1 h reserve | 1983 |
 | Orlan-MKS | Roscosmos | 40 kPa | ≈ 110 kg | ≈ 7 h | 2017 (Orlan 1977) |
-| Feitian (2nd gen.) | CMSA | ≈ 40 kPa (not published) | 120–130 kg | up to 8 h | 2021 (1st gen. 2008) |
+| Feitian (2nd gen.) | CMSA | ≈ 40 kPa (reported) | 120–130 kg | up to 8 h | 2021 (1st gen. 2008) |
 | SpaceX EVA suit | SpaceX | ≈ 34 kPa | not published | umbilical, no backpack | 2024 |
 | Axiom AxEMU | Axiom / NASA | variable (xEMU heritage) | not published | ≥ 8 h (goal) | planned 2027–28 |
 
@@ -87,19 +87,19 @@ Every kilopascal above the minimum makes the suit stiffer. An inflated fabric tu
 
 $$ M \approx \pi\, p\, r^3 $$
 
-For an elbow-sized tube, 5.5 cm in radius, this is about 15 N·m at 29.6 kPa and 30 N·m at 56.5 kPa; for a knee it is three times larger (@fig:suitpressure b). An astronaut flexing an arm hundreds of times a day against such moments tires within an hour. Low pressure is therefore the first defence of mobility, and clever joints are the second. The price of low pressure is decompression sickness, discussed below.
+For an elbow-sized tube, 5.5 cm in radius, this is about 15 N·m at 29.6 kPa and 30 N·m at 56.5 kPa; for a knee it is three times larger (@fig:suitpressure b). An astronaut flexing an arm hundreds of times a day against such moments would tire quickly. Low pressure is therefore the first defence of mobility, and clever joints are the second. The price of low pressure is decompression sickness, discussed below.
 
 ![Why suits are pressurised to 26–57 kPa. (a) Oxygen pressure in the lungs for a pure-oxygen suit: about 25 kPa matches breathing sea-level air. (b) Moment needed to fold a plain inflated tube of different radii, which grows in proportion to pressure.](figures/out/ch33_pressure.svg){#fig:suitpressure width=98%}
 
 ### Layers
 
-The wall of a suit has three functional groups (@fig:evasuit). Next to the skin, a **liquid cooling and ventilation garment (LCVG)** — a stretch-mesh undergarment threaded with about 90 m of thin plastic tubing in the EMU — carries cool water over the body and collects ventilation gas from the limbs. Over it the **pressure garment** has two layers: a gas-tight **bladder** of urethane-coated nylon, and a **restraint layer** of strong polyester fabric that carries the pressure load and fixes the suit's shape, so the bladder never stretches. Outside is the **thermal micrometeoroid garment (TMG)**: a neoprene-coated nylon liner, several layers of aluminised film acting as multilayer insulation (Chapter 5), and an outer shell of Ortho-Fabric, a weave of Gore-Tex, Kevlar and Nomex that resists abrasion, fire and small particles. The outer surface can exceed +120 °C in sunlight and fall below −150 °C in shadow.
+The wall of a suit has three functional groups (@fig:evasuit). Next to the skin, a **liquid cooling and ventilation garment (LCVG)** — a stretch-mesh undergarment threaded with about 90 m of thin plastic tubing in the EMU — carries cool water over the body and collects ventilation gas from the limbs. Over it the **pressure garment** has two layers: a gas-tight **bladder** of urethane-coated nylon, and a **restraint layer** of strong polyester fabric that carries the pressure load and fixes the suit's shape, so the bladder never stretches. Outside is the **thermal micrometeoroid garment (TMG)**: a neoprene-coated nylon liner, several layers of aluminised film acting as multilayer insulation (Chapter 5), and an outer shell of Ortho-Fabric, a weave of Gore-Tex, Kevlar and Nomex that resists abrasion, fire and small particles. The suit's surroundings range from about +120 °C in sunlight to −120 °C in shadow.
 
 ### Joints and Mobility
 
 The aim of joint design is a **constant-volume joint**: one whose internal volume, and therefore the work done against the gas, stays nearly the same as it bends. Three techniques are used. **Convolutes** are bellows-like folds that fill on the inside of the bend as the outside opens. **Flat-pattern joints** use sewn gores and restraint cables or webbing along the axis of the joint, so the fabric on one side shortens as the other lengthens. **Rotary bearings** — sealed rings at the shoulder, upper arm, wrist, waist and hip — let a limb rotate with almost no change in volume. Hard parts carry loads: the EMU's **hard upper torso** is a fibreglass shell to which the arms, helmet, lower torso and backpack attach, and the Orlan, Feitian and AxEMU extend this to a rear-entry hard torso.
 
-Fit matters as much as design: in a suit that is too large the joints of suit and body no longer coincide; one too small presses on shoulders and knees. In a NASA review, 14 of 22 astronauts reported shoulder injuries related to EVA training or flight, many from working in the EMU's hard torso with arms overhead in the pool.
+Fit matters as much as design: in a suit that is too large the joints of suit and body no longer coincide; one too small presses on shoulders and knees. In a small NASA survey, 14 of 22 EVA astronauts reported EVA-related shoulder injuries, most of them during training in the pool, where the hard torso restricts shoulder movement, especially when working upside down.
 
 ### Gloves and Hands
 
@@ -123,7 +123,7 @@ The suit is a closed loop, so oxygen is needed only to replace what the astronau
 
 ### Removing Carbon Dioxide
 
-Apollo backpacks and early Shuttle EMUs absorbed carbon dioxide in disposable **lithium hydroxide (LiOH)** cartridges (the chemistry is described in Chapter 30). The ISS EMU uses regenerable **metal oxide (METOX)** canisters based on silver oxide, which absorb about 0.54 kg of carbon dioxide and are then regenerated in an oven on the station at about 200 °C. The next generation, used in NASA's xEMU prototype and the AxEMU, uses a **rapid cycle amine (RCA)** swing bed: two small beds of amine sorbent alternate every few minutes, one absorbing carbon dioxide and water while the other is exposed to vacuum to release them. Because the beds regenerate continuously, CO₂ capacity no longer limits EVA duration (@tbl:plsstech).
+Apollo backpacks and early Shuttle EMUs absorbed carbon dioxide in disposable **lithium hydroxide (LiOH)** cartridges (the chemistry is described in Chapter 30). The ISS EMU uses regenerable **metal oxide (METOX)** canisters based on silver oxide, which absorb about 0.54 kg of carbon dioxide and are then regenerated by baking in an oven on the station, which takes more than 1 kW for up to 14 hours. The next generation, used in NASA's xEMU prototype and the AxEMU, uses a **rapid cycle amine (RCA)** swing bed: two small beds of amine sorbent alternate every few minutes, one absorbing carbon dioxide and water while the other is exposed to vacuum to release them. Because the beds regenerate continuously, CO₂ capacity no longer limits EVA duration (@tbl:plsstech).
 
 ::: example
 **Example: carbon dioxide removal for a 7-hour EVA**
@@ -139,7 +139,7 @@ An astronaut works for 7 hours at an average metabolic rate of 250 W, with a res
 
 ### Rejecting Heat
 
-The astronaut's metabolic heat, typically 200–300 W and sometimes much more, must be removed without air to carry it away. A radiator would be far too large (see the example below), so the PLSS throws away water. In a **sublimator**, feedwater flows to one side of a porous metal plate whose other side faces vacuum. Water in the pores freezes, and the ice sublimates — turns directly to vapour — absorbing 2.83 MJ per kilogram. The process regulates itself: more heat sublimates ice faster. NASA's newer **spacesuit water membrane evaporator (SWME)**, used in the xEMU design, evaporates water through hydrophobic hollow fibres and is less sensitive to contamination, which has blocked sublimator plates in the past.
+The astronaut's metabolic heat, typically 200–300 W and sometimes much more, must be removed without air to carry it away. A radiator alone would be impractical (see the example below), so the PLSS throws away water. In a **sublimator**, feedwater flows to one side of a porous metal plate whose other side faces vacuum. Water in the pores freezes, and the ice sublimates — turns directly to vapour — absorbing 2.83 MJ per kilogram. The process regulates itself: more heat sublimates ice faster. NASA's newer **spacesuit water membrane evaporator (SWME)**, used in the xEMU design, evaporates water through hydrophobic hollow fibres and is less sensitive to contamination, which has blocked sublimator plates in the past.
 
 ::: example
 **Example: water for a sublimator**
@@ -147,12 +147,12 @@ The astronaut's metabolic heat, typically 200–300 W and sometimes much more, m
 The PLSS must reject 300 W for a 7-hour EVA using a sublimator (latent heat 2.83 MJ/kg).
 
 1. Water rate: 300 / 2.83 × 10⁶ = 1.06 × 10⁻⁴ kg/s = **0.38 kg/h**.
-2. For 7 hours: **2.7 kg**. The EMU carries about 3.8 kg of feedwater, enough for 10 hours at 300 W but only 6.4 hours at the 470 W for which the suit is sized for short periods.
+2. For 7 hours: **2.7 kg**. The EMU carries about 3.8 kg of feedwater, enough for 10 hours at 300 W but only 6.4 hours at 470 W (1 600 Btu/h), the highest rate for which the EMU was designed.
 3. Apollo's extended backpacks carried 5.2 kg of water for 8-hour lunar EVAs, an average capacity of 5.2 × 2.83 × 10⁶ / 28 800 ≈ **510 W** — more than the EMU, for the heavier work of lunar surface EVAs.
-4. A suit radiator would need 300 / (0.9 × 5.67 × 10⁻⁸ × 280⁴) ≈ **0.96 m²** of surface viewing cold space — about the area of the whole suit, half of which faces the Sun or the ground at any time.
+4. A suit radiator would need 300 / (0.9 × 5.67 × 10⁻⁸ × 280⁴) ≈ **0.96 m²** of surface viewing only cold space — roughly half the outer area of a suit, much of which faces the Sun, the Earth or the spacecraft at any moment.
 :::
 
-@fig:evametab puts these numbers together. Average metabolic rates on ISS assembly spacewalks were 223–296 W, with peaks above 1 000 W; Apollo lunar EVAs averaged about 290 W. At such rates the CO₂ canister and the oxygen run out before the water, and all three give roughly the 7 hours plus reserve for which the EMU is rated. A 2024 NASA review concluded that EVAs of 6.5 hours are reasonable while average metabolic rates stay below about 290 W (1 000 Btu/h).
+@fig:evametab puts these numbers together. Average metabolic rates on 16 ISS assembly spacewalks in 2001–02 were 223–296 W, with peaks above 1 000 W; Apollo lunar EVAs averaged about 290 W. At such rates the CO₂ canister runs out first, then the oxygen, and the water last; the first two give roughly the 7 hours plus reserve for which the EMU is sized. A 2024 NASA review concluded that EVAs of 6.5 hours are reasonable while average metabolic rates stay below about 290 W (1 000 Btu/h).
 
 ![Metabolic rates and consumables. (a) Measured averages and peaks for ISS assembly and Apollo lunar spacewalks. (b) Endurance set by each consumable for EMU-like capacities as a function of average metabolic rate.](figures/out/ch33_metab.svg){#fig:evametab width=98%}
 
@@ -242,7 +242,7 @@ The best simulation of weightlessness on Earth is neutral buoyancy. NASA's **Neu
 
 ### Timelines and Workload
 
-A typical ISS spacewalk lasts 6–7 hours, plus about as much again for suit checks, prebreathe, depressurisation and post-EVA servicing. The timeline is planned to the minute, with "get-ahead" tasks and pre-agreed stopping points. Flight controllers estimate metabolic rate from oxygen use and cooling-water temperatures, because consumables and heat limit the day (@fig:evametab). NASA measures **EVA efficiency** as EVA time divided by the total crew time it consumes; for ISS protocols this is only about 0.4–0.5.
+A typical ISS spacewalk lasts 6–7 hours, plus about as much again for suit checks, prebreathe, depressurisation and post-EVA servicing. The timeline is planned to the minute, with "get-ahead" tasks and pre-agreed stopping points. Flight controllers estimate metabolic rate from oxygen use and cooling-water temperatures, because consumables and heat limit the day (@fig:evametab). NASA measures **EVA efficiency** as EVA time divided by the crew time spent preparing for it and cleaning up afterwards; this was only about 0.4 for ISS protocols and 0.5 for the Shuttle's.
 
 ### When Things Go Wrong
 
@@ -262,7 +262,7 @@ Serious EVA incidents have been few, but each taught a lesson (@tbl:evaincidents
 
 ### Lessons from Apollo
 
-Gravity on the Moon is one sixth of Earth's, so the 82–96 kg Apollo suit and backpack felt like only 14–16 kg, but the suit's stiff legs and the low traction made normal walking awkward. Astronauts found that a **loping** gait, bounding from foot to foot, or a two-footed hop, was faster and less tiring, and falls were common but usually harmless. Apollo 11–14 crews walked, with backpacks limited to 4 hours; Apollo 15–17 carried the **Lunar Roving Vehicle (LRV)** and 8-hour backpacks. @fig:lunareva shows how surface time and range grew: the Apollo 17 crew spent 22 h 04 min outside over three EVAs and drove 35.9 km, up to 7.6 km from their lander.
+Gravity on the Moon is one sixth of Earth's, so the 82–96 kg Apollo suit and backpack felt like only 14–16 kg, but the suit's stiff legs and the low traction made normal walking awkward. Astronauts found that a **loping** gait, bounding from foot to foot, or a two-footed hop, was faster and less tiring, and falls were common but usually harmless. Apollo 11–14 crews walked, with backpacks rated for about 4 hours; Apollo 15–17 carried the **Lunar Roving Vehicle (LRV)** and 8-hour backpacks. @fig:lunareva shows how surface time and range grew: the Apollo 17 crew spent 22 h 04 min outside over three EVAs and drove 35.9 km, up to 7.6 km from their lander.
 
 ![Apollo surface EVAs. (a) Time outside per landing, by EVA. (b) Distances driven with the Lunar Roving Vehicle on Apollo 15–17; the farthest point from the lander was limited by the need to be able to walk back if the rover failed.](figures/out/ch33_lunar.svg){#fig:lunareva width=98%}
 
@@ -272,9 +272,9 @@ Lunar dust was the biggest surprise. The regolith is made of sharp, glassy fragm
 
 ### Artemis Suits
 
-NASA decided in 2022 to buy lunar and station suits as a service rather than build them, under its **Exploration Extravehicular Activity Services (xEVAS)** contracts. Collins Aerospace withdrew in 2024, leaving Axiom Space as the sole provider. Axiom's **AxEMU** is derived from NASA's xEMU prototype (@fig:axemuphoto): a rear-entry suit with a hard upper torso, interchangeable arms and legs to fit people from the 1st to the 99th percentile in size, mobility joints at the hips and knees that let the wearer kneel and squat, and an xEMU-style backpack. Its goals include EVAs of at least 8 hours and at least two hours in the permanently shadowed craters near the lunar south pole, where temperatures fall below −200 °C.
+NASA decided in 2022 to buy lunar and station suits as a service rather than build them, under its **Exploration Extravehicular Activity Services (xEVAS)** contracts. Collins Aerospace withdrew in 2024, leaving Axiom Space as the sole provider. Axiom's **AxEMU** is derived from NASA's xEMU prototype (@fig:axemuphoto): a rear-entry suit with a hard upper torso, interchangeable parts intended to fit at least 90 % of the US male and female population, mobility joints at the hips and knees that let the wearer kneel and squat, and an xEMU-style backpack. Its goals include EVAs of at least 8 hours and at least two hours in the permanently shadowed craters near the lunar south pole, where temperatures fall below −200 °C.
 
-By early 2026 Axiom had completed its own design review and more than 850 hours of crewed pressurised tests; qualification was planned to run to mid-2027, with a first suit flying in Earth orbit in 2027. In April 2026 NASA's Office of Inspector General warned that the schedule had little or no margin for the first landing, now planned for Artemis IV in 2028, and that development times averaging 8.7 years for past suits would imply a delay to about 2031. In September 2026 NASA and Axiom were reported to be studying a simpler, lighter suit configuration for the first landing. China, meanwhile, unveiled its **Wangyu** lunar suit in 2024 for a crewed landing planned before 2030.
+By early 2026 Axiom had completed its own design review and more than 850 hours of crewed pressurised tests; qualification was planned to run to mid-2027, with a first suit flying in Earth orbit in 2027. In April 2026 NASA's Office of Inspector General warned that the schedule had little or no margin for the first landing, now planned for Artemis IV in 2028, and that delays in line with recent spaceflight programmes (about 8.7 years on average from contract to test flight) could push suit demonstrations to 2031. In September 2026 NASA and Axiom were reported to be studying a simpler, lighter suit configuration for the first landing. China, meanwhile, unveiled its **Wangyu** lunar suit in 2024 for a crewed landing planned before 2030.
 
 ::: figrow
 ![Gene Cernan in the lunar module after the second Apollo 17 EVA in December 1972, his suit coated with lunar dust.](figures/photos/ch33_cernan.jpg){#fig:cernandust width=92%}
@@ -293,7 +293,7 @@ Mars adds problems that the Moon does not (@tbl:moonmarsenv).
 | Heat rejection | sublimator | sublimator | evaporator or radiator; sublimator unreliable |
 | Dust | none | sharp, electrostatic | fine, windblown, perchlorates |
 | Return to safety | ≈ 30 min to airlock | walkback limit | walkback limit; no quick return to Earth |
-| Spacewalks | ≈ 10 a year | a few per early landing | many over a long stay |
+| Spacewalks | ≈ 8 a year | a few per early landing | many over a long stay |
 
 : How the environment changes spacesuit design. {#tbl:moonmarsenv}
 

@@ -268,7 +268,7 @@ def metab():
     K = 1.163  # W per kcal/h
     B = 0.2931  # W per Btu/h
     rows = [("Resting", 90, 90, None, GREY, "≈ 90 W"),
-            ("ISS assembly EVAs\n(2001–03, 17 EVAs)", 191.5 * K, 254.9 * K, 965.3 * K, BLUE, "averages 223–296 W"),
+            ("ISS assembly EVAs\n(2001–02, 16 EVAs)", 191.5 * K, 254.9 * K, 965.3 * K, BLUE, "averages 223–296 W"),
             ("Apollo lunar EVAs", 1000 * B, 1000 * B, 2200 * B, ORANGE, "average ≈ 290 W")]
     for i, (n, lo, hi, mx, c, t) in enumerate(rows):
         y = len(rows) - 1 - i
@@ -281,7 +281,7 @@ def metab():
         a1.text(lo - 7, y + 0.27, t, fontsize=6.2, ha="left", va="bottom", color=INK, zorder=5,
                 bbox=dict(fc="white", ec="none", pad=0.6))
     a1.axvline(1600 * B, color=RED, lw=0.9, ls="--")
-    a1.text(1600 * B + 14, 2.55, "EMU sized for\n1 h at 470 W", fontsize=6.1, color=RED, va="top")
+    a1.text(1600 * B + 14, 2.55, "EMU designed for\nup to 470 W", fontsize=6.1, color=RED, va="top")
     a1.set_yticks(range(len(rows)))
     a1.set_yticklabels([r[0] for r in rows][::-1], fontsize=6.6)
     a1.set_xlim(0, 1200)
@@ -302,7 +302,7 @@ def metab():
     a2.set_ylabel("Endurance (h)")
     a2.set_title("(b) Which consumable runs out first", loc="left", fontsize=8.6)
     a2.legend(fontsize=6.1, loc="upper right", handlelength=1.4)
-    fig.text(0.99, 0.01, "(a) Averages and peaks from NASA ISS assembly data (Katuntsev et al. 2004) and Apollo reports. "
+    fig.text(0.99, 0.01, "(a) ISS assembly EVAs on STS-104 to STS-113 (Katuntsev, Osipov and Gernhardt 2004, via NASA) and Apollo data. "
              "(b) Weir equation, RQ 0.85, 20.4 kJ per litre O₂; all metabolic heat\nrejected by sublimation "
              "(2.83 MJ/kg); suit leakage and heat leaks ignored. Capacities approximate those of the ISS EMU.",
              ha="right", va="bottom", fontsize=6.0, color=GREY)
@@ -414,7 +414,7 @@ def lunar():
     ax.set_ylim(0, 27)
     ax.grid(axis="x", visible=False)
     ax.axvspan(2.5, 5.5, color=GOLD, alpha=0.10, lw=0)
-    ax.text(1.0, 12.5, "on foot,\n4-h backpacks", fontsize=6.3, ha="center", color=GREY)
+    ax.text(1.0, 12.5, "on foot, backpacks\nrated ≈ 4 h", fontsize=6.3, ha="center", color=GREY)
     ax.text(4.0, 24.8, "rover missions, 8-h backpacks", fontsize=6.3, ha="center", color="#8A6E14")
     ax.legend(loc="upper left", fontsize=6.2)
     ax.set_xlim(-0.5, 5.5)

@@ -66,6 +66,9 @@ def timeline():
     y_iss = len(rows) - 1 - 6
     ax.barh(y_iss, 2030.9 - 2026.8, left=2026.8, height=0.62, color="none", edgecolor="white", hatch="////",
             lw=0, zorder=3)
+    y_tg = len(rows) - 1 - 9
+    ax.barh(y_tg, 2036.0 - 2026.8, left=2026.8, height=0.62, color="none", edgecolor="white", hatch="////",
+            lw=0, zorder=3)
     ax.axvline(2026.8, color=GREY, lw=0.8, ls="--", zorder=1)
     ax.text(2026.6, len(rows) - 0.35, "Oct 2026", fontsize=6.6, color=GREY, ha="right", va="bottom")
     ax.annotate("continuously crewed since Nov 2000", xy=(2000.84, y_iss - 0.31), xytext=(1999.5, y_iss - 1.0),
@@ -365,7 +368,7 @@ def volume():
         ("Mir", 45.0, 438, RED, (6, -6)),
         ("Salyut 7", 33.5, 237, RED, (6, -6)),
         ("ISS (388 m³, 7 crew)", 388 / 7, 374, VIOLET, (-10, 8)),
-        ("Tiangong (122 m³, 3 crew)", 122 / 3, 186, GOLD, (-12, 9)),
+        ("Tiangong (122 m³, 3 crew)", 122 / 3, 204, GOLD, (-12, 9)),
         ("Haven-1 (45 m³, 4 crew)", 45 / 4, 14, GREEN, (6, 3)),
         ("Orion (≈9 m³, 4 crew)", 9 / 4, 21, GREY, (6, -2)),
     ]
@@ -461,7 +464,7 @@ def gravity():
     pts = [
         (223.6, 2.0, "1 g at 2 rpm: r = 224 m", (420, 4.0)),
         (55.9, 4.0, "1 g at 4 rpm: r = 56 m", (110, 10.0)),
-        (830, 1.0, "Stanford torus (1975 study):\nr ≈ 830 m, 1 rpm, 1 g", (420, 0.38)),
+        (895, 1.0, "Stanford torus (1975 study):\nr ≈ 0.9 km, 1 rpm, ≈ 1 g", (420, 0.38)),
         (38, 3.0, "von Braun wheel (1952):\nr ≈ 38 m, 3 rpm, ≈ 0.38 g", (3.5, 0.75)),
         (2.8, 17.9, "short-arm human centrifuge\n(1 g at the feet)", (4.5, 32.0)),
     ]
