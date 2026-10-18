@@ -16,7 +16,7 @@ Each station since 1971 has taught how to keep people in orbit longer, with less
 
 ### Salyut and Skylab
 
-The Soviet Union launched the first station, **Salyut 1**, on 19 April 1971: a single 18-tonne cylinder with about 100 m³ of pressurised volume. Its first crew, on Soyuz 10, could not open the hatch after docking. The second, aboard Soyuz 11, spent 23 days on board, but on 30 June 1971 Georgy Dobrovolsky, Vladislav Volkov and Viktor Patsayev died during their return when a pressure-equalisation valve was jolted open as the descent module separated, venting its air to space. They are the only people to have died above the atmosphere, and since then Soyuz crews have worn pressure suits for launch and re-entry. Three military **Almaz** stations also flew under the Salyut name.
+The Soviet Union launched the first station, **Salyut 1**, on 19 April 1971: a single 18-tonne cylinder with about 100 m³ of pressurised volume. Its first crew, on Soyuz 10, could not open the hatch after docking. The second, aboard Soyuz 11, spent 23 days on board, but on 30 June 1971 Georgy Dobrovolsky, Vladislav Volkov and Viktor Patsayev died during their return when a pressure-equalisation valve was jolted open as the descent module separated, venting its air to space. They are the only people to have died above the atmosphere, and since then Soyuz crews have worn pressure suits for launch and re-entry.
 
 The United States converted a Saturn V third stage into **Skylab**, launched on 14 May 1973 — a 77-tonne station with 361 m³ of volume, still the most spacious single module ever flown (@fig:skylabphoto). Sixty-three seconds into the launch its micrometeoroid shield tore away, ripping off one solar wing and jamming the other. The first crew, Pete Conrad, Joe Kerwin and Paul Weitz, put up a parasol sunshade to cool the overheating workshop and cut free the jammed wing during a spacewalk — the first major in-orbit repair. Three crews spent 28, 59 and 84 days on board, operating the Apollo Telescope Mount solar observatory. High solar activity then expanded the upper atmosphere, and Skylab re-entered on 11 July 1979 over the Indian Ocean and Western Australia, before the Space Shuttle could boost it.
 
@@ -25,6 +25,18 @@ The United States converted a Saturn V third stage into **Skylab**, launched on 
 ### Mir
 
 **Mir** grew from a core module launched on 20 February 1986 into a 130-tonne complex of seven modules by 1996 (@fig:mirphoto), the first station assembled in orbit. It was occupied for 4 592 days, including almost ten years without a break (1989–99), and in 1994–95 the physician Valeri Polyakov stayed 437 days, still the record for a single spaceflight. Between 1995 and 1998 nine Space Shuttle missions docked with Mir, and seven NASA astronauts lived on board — the rehearsal for the ISS. Mir also taught hard lessons: in February 1997 a burning oxygen-generating canister filled it with smoke, and in June 1997 a remotely piloted Progress struck and punctured the Spektr module, which the crew had to seal off, losing much of the station's power. Mir was deliberately de-orbited into the South Pacific on 23 March 2001.
+
+| Station | Operator | In orbit | Mass (t) | Pressurised volume (m³) | Notable for |
+|---|---|---|---|---|---|
+| Salyut 1 | USSR | 1971 | 18.4 | ≈ 100 | First station |
+| Skylab | USA | 1973–79 | 77 | 361 | Largest module |
+| Salyut 6, 7 | USSR | 1977–91 | 19–20 | ≈ 90 | Progress resupply |
+| Mir | USSR, Russia | 1986–2001 | ≈ 130 | ≈ 350 | First modular station |
+| ISS | 5 agencies | 1998– | ≈ 420 | 1 005 | Crewed since 2000 |
+| Tiangong-1, -2 | China | 2011–19 | 8.5 | ≈ 15 | Docking, refuelling tests |
+| Tiangong | China | 2021– | ≈ 70 | ≈ 340 | Crewed since 2022 |
+
+: Space stations that have been crewed. Masses exclude visiting vehicles. {#tbl:stationhistory}
 
 ::: figrow
 ![Skylab photographed by the departing Skylab 4 crew in February 1974. The gold sunshade erected by the first crew covers the workshop, which lost one of its two large solar wings during launch; the windmill-shaped arrays belong to the Apollo Telescope Mount.](figures/photos/ch32_skylab.jpg){#fig:skylabphoto}
@@ -36,23 +48,11 @@ The United States converted a Saturn V third stage into **Skylab**, launched on 
 
 The ISS combined the American Freedom station design with the planned Mir-2. Five agencies — NASA, Roscosmos, the European Space Agency (ESA), the Japan Aerospace Exploration Agency (JAXA) and the Canadian Space Agency (CSA) — representing 15 countries are partners. The Russian-built, US-funded Zarya module was launched on 20 November 1998 and the US Unity node two weeks later; the first resident crew, Expedition 1, arrived on 2 November 2000. Assembly took 42 flights — 37 Space Shuttle missions and five Russian launches — and the last major Russian module, the Prichal docking node, arrived in November 2021. On 2 November 2025 the station marked 25 years of continuous occupation, with more than 290 people from 26 countries having visited.
 
-![The ISS photographed from Crew Dragon Endeavour after undocking in November 2021. The pressurised modules run vertically through the centre; the 109 m truss carries the solar-array wings, and the newer, narrower roll-out arrays (iROSAs) can be seen in front of the original ones.](figures/photos/ch32_iss2021.jpg){#fig:issflyaround width=66%}
+![The ISS photographed from Crew Dragon Endeavour after undocking in November 2021. The pressurised modules run vertically through the centre; the 109 m truss carries the solar-array wings, and the newer, narrower roll-out arrays (iROSAs) can be seen in front of the original ones.](figures/photos/ch32_iss2021.jpg){#fig:issflyaround width=58%}
 
 ### China's Tiangong
 
 China followed a step-by-step path. **Tiangong-1** (2011), an 8.5-tonne laboratory, received the uncrewed Shenzhou 8 and two crews in 2012 and 2013, then re-entered uncontrolled in April 2018. **Tiangong-2** (2016) hosted a 30-day mission and tested in-orbit refuelling by the Tianzhou-1 freighter in 2017. The modular **Tiangong** station began with the 22.5-tonne Tianhe core module on 29 April 2021; the Wentian and Mengtian laboratory modules (July and October 2022) completed a T-shaped station of about 70 tonnes — around 100 tonnes with docked spacecraft — with about 340 m³ of pressurised volume. It orbits at about 390 km and 41.5° inclination, normally carries three astronauts (six during crew handovers), and was the first crewed station to use **Hall-effect electric thrusters** for reboost. In November 2025, when the Shenzhou-20 return capsule was found to have a cracked window, China launched the uncrewed Shenzhou-22 as a replacement lifeboat within weeks.
-
-| Station | Operator | In orbit | Mass (t) | Pressurised volume (m³) | Notable for |
-|---|---|---|---|---|---|
-| Salyut 1 | USSR | 1971 | 18.4 | ≈ 100 | First station; Soyuz 11 crew lost |
-| Skylab | USA | 1973–79 | 77 | 361 | Largest single module; in-orbit repairs |
-| Salyut 6 / 7 | USSR | 1977–82 / 1982–91 | 19–20 | ≈ 90 | Two ports; Progress resupply |
-| Mir | USSR / Russia | 1986–2001 | ≈ 130 | ≈ 350 | First modular station; 437-day stay |
-| ISS | 5 agencies | 1998– | ≈ 420 | 1 005 | Continuously crewed since 2000 |
-| Tiangong-1 / -2 | China | 2011–18 / 2016–19 | 8.5 | ≈ 15 | Docking and refuelling tests |
-| Tiangong | China | 2021– | ≈ 70 (≈ 100 with ships) | ≈ 340 | Hall thrusters; crewed since 2022 |
-
-: Space stations that have been crewed. Masses exclude visiting vehicles unless stated. {#tbl:stationhistory}
 
 ## The International Space Station in Detail
 
@@ -68,11 +68,11 @@ The station has two halves (@fig:isslayout). The **Russian Orbital Segment** inc
 
 Electrical power comes from eight **solar-array wings**, each about 35 m long, mounted in pairs on rotating joints at the ends of the truss so that they can track the Sun. Their silicon cells, designed for 15 years, have degraded; by about 2020 the arrays generated roughly 160 kW in sunlight. Since 2021 NASA has installed **ISS Roll-Out Solar Arrays (iROSAs)** — flexible blankets that unroll from a compact canister, each producing more than 20 kW — in front of the old wings, partly shading them (@fig:irosaeva). Six iROSAs installed by 2023 raised the output to about 215 kW, and the final pair arrived in October 2026 aboard the CRS-35 Cargo Dragon for installation by spacewalk. Part of the power charges 24 lithium-ion batteries (which replaced 48 nickel–hydrogen batteries in 2017–21) for the eclipse; NASA quotes 75–90 kW as the power available to users after charging and conversion losses. The US segment distributes power at 160 V direct current, converted to 124 V for users; the Russian segment uses 28 V.
 
-![NASA astronauts Josh Cassada and Frank Rubio installing an iROSA on the starboard truss during a spacewalk in December 2022. The rolled-up array canister is on the left; the older, gold-coloured array wing is behind them.](figures/photos/ch32_irosa.jpg){#fig:irosaeva width=58%}
-
 ### Thermal Control
 
 Every watt the station uses ends up as heat that must be radiated to space. Inside the US segment, two water loops — a low-temperature loop at about 4 °C and a moderate-temperature loop at about 17 °C — collect heat from cold plates and air heat exchangers. Water is safe in the cabin but would freeze outside, so heat exchangers pass the heat to the **External Active Thermal Control System**, two independent loops of liquid ammonia that circulate through six radiator assemblies on the truss — three on each side, each of eight panels and each rejecting about 11.7 kW, 70 kW in all. The radiators rotate to keep edge-on to the Sun. Separate radiators cool the power electronics at the array roots. Ammonia leaks and pump failures have required several repair spacewalks.
+
+![NASA astronauts Josh Cassada and Frank Rubio installing an iROSA on the starboard truss during a spacewalk in December 2022. The rolled-up array canister is on the left; the older, gold-coloured array wing is behind them.](figures/photos/ch32_irosa.jpg){#fig:irosaeva width=58%}
 
 ### Attitude Control and Reboost
 
@@ -92,10 +92,6 @@ Voice, telemetry and commands travel over S-band, and high-rate data and video o
 
 The station normally hosts seven people — four launched on Crew Dragon and three on Soyuz, with seats swapped between the vehicles so that each segment always has trained crew. Nearly 3 000 investigations from more than 108 countries have used its racks, freezers, glove boxes, furnaces and external platforms, from protein crystal growth and combustion to Earth observation and the Alpha Magnetic Spectrometer. Total spending by all partners is often estimated at more than US$ 150 billion. NASA's Inspector General put NASA's own cost at about US$ 3 billion per year for operations and transport, or about US$ 4.1 billion per year including research and related activities — about 16 % of NASA's budget.
 
-### An Ageing Station
-
-The oldest ISS modules have been in orbit since 1998. Since 2019 air has been leaking from the **PrK**, a small tunnel between Zvezda's main compartment and its aft docking port, through hairline cracks. In April 2024 the leak reached about 1.7 kg of air per day; NASA rated it its highest-level safety risk, and the hatch is normally kept closed. NASA and Roscosmos have not agreed on the root cause. After repeated sealing, the leak was reported stopped in January 2026, but it returned in May, and on 5 June 2026 five crew members briefly sheltered in their Crew Dragon while Russian engineers sealed one of two leak points. Such ageing problems — leaks, worn pumps and joints, degraded arrays — are a main reason for retiring the station around 2030.
-
 | Parameter | Value |
 |---|---|
 | Mass; dimensions | ≈ 420 t; 109 m × 73 m |
@@ -110,6 +106,10 @@ The oldest ISS modules have been in orbit since 1998. Since 2019 air has been le
 | Docking ports | Up to 8 vehicles at once (Soyuz, Progress, Dragon, Cygnus, HTV-X) |
 
 : International Space Station key figures (2026). {#tbl:issspecs}
+
+### An Ageing Station
+
+The oldest ISS modules have been in orbit since 1998. Since 2019 air has been leaking from the **PrK**, a small tunnel between Zvezda's main compartment and its aft docking port, through hairline cracks. In April 2024 the leak reached about 1.7 kg of air per day; NASA rated it its highest-level safety risk, and the hatch is normally kept closed. NASA and Roscosmos have not agreed on the root cause. After repeated sealing, the leak was reported stopped in January 2026, but it returned in May, and on 5 June 2026 five crew members briefly sheltered in their Crew Dragon while Russian engineers sealed one of two leak points. Such ageing problems — leaks, worn pumps and joints, degraded arrays — are a main reason for retiring the station around 2030.
 
 ## Engineering a Station
 
@@ -136,7 +136,7 @@ where $\rho$ is the air density, $a$ the orbit radius, $\mu$ Earth's gravitation
 | 450 | 1.0 | 2 / 7 / 22 | 1.1 | 4.3 |
 | 500 | 0.4 | 1 / 3 / 11 | 0.5 | 11 |
 
-: Drag penalty of altitude for a 450 t station with B = 150 kg/m², computed with the model of @fig:stndecay (I_sp = 290 s). {#tbl:stnaltitude}
+: Drag penalty of altitude for a 450 t station with B = 150 kg/m², computed with the model of @fig:stndecay (specific impulse 290 s). {#tbl:stnaltitude}
 
 ::: example
 **Example: annual reboost for an ISS-class station**
@@ -146,10 +146,10 @@ Take a station of 450 t, including docked vehicles, with an average drag area $C
 1. Orbital speed: $v = \sqrt{\mu/a} = \sqrt{3.986\times10^{14}/6.788\times10^{6}}$ = 7 663 m/s.
 2. Drag deceleration: $\rho v^2/(2B)$ = 2.3 × 10⁻¹² × 7 663² / 300 = 4.5 × 10⁻⁷ m/s² — about 50 billionths of g.
 3. Over a year (3.16 × 10⁷ s) this accumulates to **Δv ≈ 14 m/s**, and the orbit would sink by about 68 m per day (2.1 km per month) if not corrected.
-4. With thrusters of $I_{sp}$ = 290 s ($v_e$ = 2 844 m/s), the propellant is $m(1 - e^{-\Delta v/v_e})$ = 450 000 × (1 − e^{−14.1/2 844}) ≈ **2.2 t per year**.
-5. At solar maximum the density is about three times higher: Δv ≈ 40 m/s and **6.3 t per year**. Hall thrusters with $I_{sp}$ ≈ 1 600 s would need only about 0.4 t at moderate activity, but their low thrust means they must run for much of every orbit.
+4. With thrusters of $I_{sp}$ = 290 s ($v_e$ = 2 844 m/s), the propellant is $m(1 - e^{-\Delta v/v_e}) = 450\,000 \times (1 - e^{-14.1/2\,844})$ ≈ **2.2 t per year**.
+5. At solar maximum the density is about three times higher: Δv ≈ 40 m/s and **6.3 t per year**. Hall thrusters ($I_{sp}$ ≈ 1 600 s) would need only about 0.4 t at moderate activity.
 
-The reported ISS average of about 7 t of propellant per year is higher because it also covers attitude control, debris avoidance and propellant for the visiting freighters' own manoeuvres.
+The reported ISS average of about 7 t per year is higher because it also covers attitude control and debris avoidance.
 :::
 
 ### Power and Thermal Budgets
@@ -168,7 +168,7 @@ The performance of a shield is described by its **ballistic limit**: the diamete
 
 $$d_c = 3.918\; t_w^{2/3}\, \rho_p^{-1/3}\, \rho_b^{-1/9}\, (V\cos\theta)^{-2/3}\, S^{1/3} \left(\frac{\sigma}{70}\right)^{1/3}$$
 
-in centimetres, with rear-wall thickness $t_w$ and bumper spacing $S$ in cm, projectile and bumper densities $\rho_p$ and $\rho_b$ in g/cm³, speed $V$ in km/s, impact angle $\theta$ and the wall's yield strength $\sigma$ in thousands of pounds per square inch. Doubling the spacing increases $d_c$ by 26 %; a single wall of the same mass stops particles four to five times smaller. The ISS stuffed Whipple shields are designed to stop particles of about 1.3 cm at typical impact conditions. Larger, catalogued objects are avoided by manoeuvring, but objects between about 1 and 10 cm can be neither shielded against nor tracked (Chapter 21).
+in cm, with wall thickness $t_w$ and spacing $S$ in cm, projectile and bumper densities $\rho_p$, $\rho_b$ in g/cm³, speed $V$ in km/s, impact angle $\theta$ and wall yield strength $\sigma$ in ksi. Doubling the spacing increases $d_c$ by 26 %; a single wall of the same mass stops particles four to five times smaller. The ISS stuffed Whipple shields are designed to stop particles of about 1.3 cm at typical impact conditions. Larger, catalogued objects are avoided by manoeuvring, but objects between about 1 and 10 cm can be neither shielded against nor tracked (Chapter 21).
 
 ![(a) Ballistic limit of a Whipple shield and of a single aluminium wall of equal mass, from NASA's empirical equations. (b) Probability that a 100 m² module suffers no penetration, for the three wall designs, using the illustrative flux model of Chapter 2.](figures/out/ch32_mmod.svg){#fig:stnmmod width=98%}
 
@@ -181,7 +181,7 @@ A laboratory module exposes 100 m² of effective area to impacts. Typical debris
 2. **Flux.** The cumulative flux of particles larger than $d_c$ is read from the illustrative ISS-altitude curve of Chapter 2, which follows the shape of NASA's ORDEM debris model: about 1.5 × 10⁻³ per m² per year above 1.5 mm, 7 × 10⁻⁵ above 6.8 mm and 2 × 10⁻⁵ above 13 mm.
 3. **Expected penetrations** in ten years: $N = F A T$ = 1.5, 0.073 and 0.021 respectively.
 4. Impacts are random, so the **probability of no penetration** is $P = e^{-N}$: **0.22** for the single wall, **0.93** for the Whipple shield and **0.98** for the stuffed Whipple.
-5. A whole station with ten such modules would multiply $N$ by ten: PNP falls to about 0.81 even with the best shields. Not every penetration is catastrophic — a small hole leaks slowly enough for the crew to find and seal it — so NASA also estimates the probability of crew evacuation or loss with tools such as BUMPER and MSCSurv.
+5. Ten such modules multiply $N$ by ten: PNP falls to about 0.81 even with the best shields. Not every penetration is catastrophic — a small hole leaks slowly enough to be found and sealed — so NASA also estimates the risk of evacuation or crew loss with tools such as BUMPER and MSCSurv.
 :::
 
 The ISS has suffered damage. Impacts chip its windows, which is why the Cupola has external shutters; a debris strike punched a 5 mm hole in Canadarm2's thermal blanket in 2021; and in December 2022 the coolant radiator of a docked Soyuz, MS-22, was punctured, probably by a micrometeoroid, so that it had to return uncrewed and a replacement Soyuz was launched. After Russia destroyed its Kosmos 1408 satellite in an anti-satellite test on 15 November 2021, the crew sheltered in their docked spacecraft while the station passed through the debris cloud.
@@ -194,7 +194,7 @@ Volume is measured in three ways. **Pressurised volume** is everything inside th
 
 In weightlessness there is no natural up or down, but designers still give every module a consistent "floor" and "ceiling", with lighting overhead and labels the right way up, because people orient faster and make fewer mistakes. Handrails and foot restraints replace chairs, and fan and pump noise is a persistent habitability problem. Windows matter for morale as much as for operations: the Cupola, installed in 2010, gives a panoramic view used for robotics and photography (@fig:cupolacrew).
 
-![ESA astronaut Sophie Adenot and NASA astronaut Jack Hathaway in the Cupola in May 2026, monitoring the automated approach of a Cargo Dragon.](figures/photos/ch32_cupola.jpg){#fig:cupolacrew width=46%}
+![ESA astronaut Sophie Adenot and NASA astronaut Jack Hathaway in the Cupola in May 2026, monitoring the automated approach of a Cargo Dragon.](figures/photos/ch32_cupola.jpg){#fig:cupolacrew width=42%}
 
 ## Supplying a Station
 
@@ -203,6 +203,8 @@ In weightlessness there is no natural up or down, but designers still give every
 Even recycling about 98 % of its water (Chapter 30), a crew of seven consumes several tonnes of food, gases, clothing and hygiene items a year, and the station also needs propellant, spares and experiments. Cargo vehicles differ in how much they carry up (**up-mass**), whether they can carry unpressurised cargo such as pumps and batteries outside, whether they can refuel and reboost the station, and whether anything comes back (**down-mass**) (@fig:stnlogistics, @tbl:cargovehicles). Most freighters are loaded with rubbish before they leave and burn up on re-entry; apart from small items carried in crew capsules, only Dragon — and in future Dream Chaser — returns experiments and failed hardware to Earth.
 
 ![Cargo capacity per flight of station supply vehicles. Most freighters burn up with the station's waste; Cargo Dragon is currently the only vehicle that returns cargo.](figures/out/ch32_logistics.svg){#fig:stnlogistics width=92%}
+
+JAXA's **HTV-X**, successor to the HTV, made its first flight on an H3 rocket on 26 October 2025; it was captured by Canadarm2 on 29 October (@fig:htvx1). Northrop Grumman's larger **Cygnus XL**, about a third roomier than its predecessor, first flew in September 2025 (@fig:cygnusxl). Sierra Space's winged **Dream Chaser** has repeatedly slipped: in September 2025 NASA removed its guaranteed ISS flights, and its first mission is a free-flying demonstration on a Vulcan rocket planned for late 2026 at the earliest.
 
 | Vehicle | Operator | Since | Arrival | Up / down (t) | Notes |
 |---|---|---|---|---|---|
@@ -215,8 +217,6 @@ Even recycling about 98 % of its water (Chapter 30), a crew of seven consumes se
 | ATV; HTV | ESA; JAXA | 2008–14; 2009–20 | Docking; berthing | 7.7; 6 / 0 | Retired |
 
 : Station cargo vehicles (October 2026). {#tbl:cargovehicles}
-
-JAXA's **HTV-X**, successor to the HTV, made its first flight on an H3 rocket on 26 October 2025; it was captured by Canadarm2 on 29 October (@fig:htvx1). Northrop Grumman's larger **Cygnus XL**, about a third roomier than its predecessor, first flew in September 2025 (@fig:cygnusxl). Sierra Space's winged **Dream Chaser** has repeatedly slipped: in September 2025 NASA removed its guaranteed ISS flights, and its first mission is a free-flying demonstration on a Vulcan rocket planned for late 2026 at the earliest.
 
 ::: figrow
 ![JAXA's first HTV-X in the grip of Canadarm2 on 29 October 2025, carrying about 5.8 t of supplies.](figures/photos/ch32_htvx.jpg){#fig:htvx1}
@@ -276,9 +276,15 @@ In June 2024 NASA awarded SpaceX a contract worth up to US$ 843 million for the 
 
 NASA wants to buy services on commercial stations rather than own one. Its **Commercial LEO Destinations (CLD)** programme gave Space Act Agreements worth US$ 415.6 million in December 2021 to Blue Origin, Nanoracks (now part of Voyager, for Starlab) and Northrop Grumman (which later joined Starlab); Axiom Space separately holds a contract to attach modules to the ISS. The programme was restructured repeatedly in 2025–26: an August 2025 directive lowered the minimum capability NASA would require, a proposal in March 2026 to attach a government-owned core module to the ISS was dropped in June, and on 9 October 2026 NASA issued its final request for proposals for firm-fixed-price contracts covering development, certification and services, with proposals due on 8 December 2026 and two or more awards expected in spring 2027. Because a commercial station must be certified and crewed before the ISS is deorbited, and schedules keep slipping, a gap in continuous US presence in orbit is possible (@tbl:futurestations).
 
+**Vast**'s **Haven-1** would host four-person crews arriving by Crew Dragon for about two weeks at a time; Vast proposes a larger multi-module **Haven-2** for the NASA competition. **Axiom Space**, which has flown private crews to the ISS since 2022, changed its plan in December 2024 so that its first module, a power and thermal module, will attach to the ISS and later depart to join a habitat module as a free-flying station. **Starlab** is a single 8 m-diameter station to be launched fully outfitted on one Starship.
+
+### National Stations: China, Russia and India
+
+If the ISS ends on schedule, China's Tiangong will be the only government station in low Earth orbit, and its planned six-module expansion would double it. Russia's **Russian Orbital Station (ROS)** was redesigned in December 2025 to use the ISS's 51.6° orbit rather than a near-polar one, with its first modules attached to the ISS from about 2028. India's **Bharatiya Antariksh Station (BAS)** builds on the Gaganyaan crew vehicle and the SpaDeX docking experiment; its first module, of about 10 t, is to be launched on an LVM-3.
+
 | Station | Developer | First launch (planned) | Configuration | Status, October 2026 |
 |---|---|---|---|---|
-| Haven-1 | Vast | NET Q1 2027, Falcon 9 | 14 t single module, 45 m³; 4 crew for ≈ 2 weeks | Integration and tests; Haven Demo flew Nov 2025 |
+| Haven-1 | Vast | NET Q1 2027 | 14 t, 45 m³; 4 crew for ≈ 2 weeks | Integration and tests; Haven Demo flew Nov 2025 |
 | Axiom Station | Axiom Space | ≈ 2028 | Power module first on ISS, then joins Hab-1 to fly free | Modules in production |
 | Starlab | Voyager, Airbus and partners | NET 2029, one Starship launch | 8 m diameter, ≈ 450 m³, 4 crew | Critical design review Feb 2026 |
 | Orbital Reef | Blue Origin, Sierra Space | Not announced | Multi-module, LIFE habitats | Few public milestones |
@@ -288,15 +294,9 @@ NASA wants to buy services on commercial stations rather than own one. Its **Com
 
 : Successors and new stations (status as of October 2026). {#tbl:futurestations}
 
-**Vast**'s **Haven-1** would host four-person crews arriving by Crew Dragon for about two weeks at a time; Vast proposes a larger multi-module **Haven-2** for the NASA competition. **Axiom Space**, which has flown private crews to the ISS since 2022, changed its plan in December 2024 so that its first module, a power and thermal module, will attach to the ISS and later depart to join a habitat module as a free-flying station. **Starlab** is a single 8 m-diameter station to be launched fully outfitted on one Starship.
-
-### National Stations: China, Russia and India
-
-If the ISS ends on schedule, China's Tiangong will be the only government station in low Earth orbit, and its planned six-module expansion would double it. Russia's **Russian Orbital Station (ROS)** was redesigned in December 2025 to use the ISS's 51.6° orbit rather than a near-polar one, with its first modules attached to the ISS from about 2028. India's **Bharatiya Antariksh Station (BAS)** builds on the Gaganyaan crew vehicle and the SpaDeX docking experiment; its first module, of about 10 t, is to be launched on an LVM-3.
-
 ### Gateway and Surface Habitats
 
-The **Lunar Gateway**, a small station planned for a near-rectilinear halo orbit around the Moon, was to begin with a Power and Propulsion Element (PPE) and a Habitation and Logistics Outpost (HALO). The FY2026 budget request proposed cancelling it, and on 24 March 2026 NASA paused Gateway "in its current form" in favour of a lunar surface base; by August 2026 the HALO hardware was being repurposed for lunar-surface demonstration missions, and the PPE was reported to be under study for other uses. Its future as a station is therefore uncertain.
+The **Lunar Gateway**, a small station planned for a near-rectilinear halo orbit around the Moon, was to begin with a Power and Propulsion Element (PPE) and a Habitation and Logistics Outpost (HALO). The FY2026 budget request proposed cancelling it, and on 24 March 2026 NASA paused Gateway "in its current form" in favour of a lunar surface base; by August 2026 the HALO hardware was being repurposed for lunar-surface demonstration missions, and the PPE was reported to be under study for other uses. Its future as a station is uncertain.
 
 On the surface, NASA's Artemis Base Camp concept foresees a pressurised rover and a fixed surface habitat near the lunar south pole. Surface habitats gain gravity, local materials and a planet that blocks half the sky, but must cope with abrasive dust, temperature swings of almost 300 °C on the Moon and no magnetic field. A 1 m layer of regolith (density about 1.5 g/cm³) provides about 150 g/cm² of shielding — enough against solar particle events, though several metres are needed to remove most of the cosmic-ray dose. Proposals include covering inflatable habitats with bagged regolith, sintering or 3D-printing regolith into walls, and using lava tubes (Chapters 30 and 41).
 
@@ -306,7 +306,7 @@ On the surface, NASA's Artemis Base Camp concept foresees a pressurised rover an
 Station operations are moving towards autonomy. The ISS already uses automated fault detection and procedure execution, and NASA's **Astrobee** — three cube-shaped free-flying robots that navigate Kibo with cameras and fans (@fig:astrobeekoch) — has been used since 2019 to test autonomous inventory, inspection and mapping. DLR's **CIMON**, an AI-powered floating assistant with voice interaction, flew from 2018, and JAXA's Int-Ball camera drone films crew activities. Machine-learning models are being trained on years of station telemetry to predict failures of pumps, fans and CMGs before they happen, and commercial stations plan to operate with very small ground teams and no permanent crew. Chapter 46 discusses AI for human spaceflight in detail.
 :::
 
-![NASA astronaut Christina Koch testing the mobility of an Astrobee free-flying robot in the Kibo laboratory in July 2019.](figures/photos/ch32_astrobee.jpg){#fig:astrobeekoch width=50%}
+![NASA astronaut Christina Koch testing the mobility of an Astrobee free-flying robot in the Kibo laboratory in July 2019.](figures/photos/ch32_astrobee.jpg){#fig:astrobeekoch width=42%}
 
 ::: key
 **Key takeaways**

@@ -192,7 +192,7 @@ Without prebreathe, R is 2.70 for the EMU, 2.32 for a 34.5 kPa suit and 2.00 for
 
 ### Prebreathe Protocols
 
-Four hours in a suit breathing oxygen wastes crew time, so shorter protocols were developed (@tbl:prebreathetbl). The Shuttle's **staged decompression** lowered the whole cabin to 70.3 kPa for at least 12 hours before EVA days; in practice crews spent an average of more than 40 hours at this pressure. The ISS cannot lower its whole cabin, so two other approaches are used. In the **campout**, the EVA crew sleep in the closed Quest airlock at 70.3 kPa for up to 8 h 40 min before the EVA. In **exercise prebreathe**, the astronaut breathes oxygen while pedalling vigorously; exercise increases blood flow and speeds nitrogen removal, cutting the required time to about two hours. The **in-suit light exercise (ISLE)** protocol replaces hard exercise with light movement in the suit after 40 minutes on a mask and a 20-minute partial depressurisation. NASA has never had a Type II DCS case in spaceflight, and no DCS was reported in more than 140 Shuttle EVAs.
+Four hours in a suit breathing oxygen wastes crew time, so shorter protocols were developed (@tbl:prebreathetbl). The Shuttle's **staged decompression** lowered the whole cabin to 70.3 kPa for at least 12 hours before EVA days; in practice crews spent an average of more than 40 hours at this pressure. The ISS cannot lower its whole cabin, so other approaches are used. In the **campout**, the EVA crew sleep in the closed Quest airlock at 70.3 kPa for up to 8 h 40 min before the EVA. In **exercise prebreathe**, the astronaut breathes oxygen while pedalling vigorously; exercise increases blood flow and speeds nitrogen removal, cutting the required time to about two hours. The **in-suit light exercise (ISLE)** protocol replaces hard exercise with light movement in the suit after 40 minutes on a mask and a 20-minute partial depressurisation. NASA has never had a Type II DCS case in spaceflight, and no DCS was reported in more than 140 Shuttle EVAs.
 
 | Protocol | Main steps | Typical duration | Used on |
 |---|---|---|---|
@@ -266,15 +266,15 @@ Gravity on the Moon is one sixth of Earth's, so the 82–96 kg Apollo suit and b
 
 ![Apollo surface EVAs. (a) Time outside per landing, by EVA. (b) Distances driven with the Lunar Roving Vehicle on Apollo 15–17; the farthest point from the lander was limited by the need to be able to walk back if the rover failed.](figures/out/ch33_lunar.svg){#fig:lunareva width=98%}
 
-The rover was a safety system as well as a vehicle. Traverses were planned so that, if the rover broke down at the farthest point, both astronauts could walk back to the lander within the consumables left in their backpacks, with the backup oxygen supply as a last reserve. This **walkback limit** is the surface equivalent of the 30-minute get-back time in orbit, and it will constrain Artemis traverses too until pressurised rovers are available.
+The rover was a safety system as well as a vehicle. Traverses were planned so that, if the rover broke down at the farthest point, both astronauts could walk back to the lander on the consumables left in their backpacks. This **walkback limit** is the surface equivalent of the 30-minute get-back time in orbit, and it will constrain Artemis traverses too until pressurised rovers are available.
 
 Lunar dust was the biggest surprise. The regolith is made of sharp, glassy fragments never rounded by wind or water, and it clings electrostatically to everything. After three days on the Moon, Apollo 17 suits were grey to the knees, their bearings were harder to turn and their outer fabric was abraded; dust in the cabin irritated the crew's eyes and lungs (@fig:cernandust). Gloves wore fastest, and astronauts' hands and fingers were sore after hours of gripping tools.
 
 ### Artemis Suits
 
-NASA decided in 2022 to buy lunar and station suits as a service rather than build them, under its **Exploration Extravehicular Activity Services (xEVAS)** contracts. Collins Aerospace withdrew in 2024, leaving Axiom Space as the sole provider. Axiom's **AxEMU** is derived from NASA's xEMU prototype (@fig:axemuphoto): a rear-entry suit with a hard upper torso, interchangeable arms and legs to fit people from the 1st to the 99th percentile in size, mobility joints at the hips and knees that let the wearer kneel and squat, and an xEMU-style backpack with a rapid-cycle-amine scrubber and a water membrane evaporator. Its goals include EVAs of at least 8 hours and at least two hours in the permanently shadowed craters near the lunar south pole, where temperatures fall below −200 °C.
+NASA decided in 2022 to buy lunar and station suits as a service rather than build them, under its **Exploration Extravehicular Activity Services (xEVAS)** contracts. Collins Aerospace withdrew in 2024, leaving Axiom Space as the sole provider. Axiom's **AxEMU** is derived from NASA's xEMU prototype (@fig:axemuphoto): a rear-entry suit with a hard upper torso, interchangeable arms and legs to fit people from the 1st to the 99th percentile in size, mobility joints at the hips and knees that let the wearer kneel and squat, and an xEMU-style backpack. Its goals include EVAs of at least 8 hours and at least two hours in the permanently shadowed craters near the lunar south pole, where temperatures fall below −200 °C.
 
-By early 2026 Axiom had completed its own design review and more than 850 hours of crewed pressurised tests. A year-long qualification campaign was planned to run to mid-2027, with a first suit flying in Earth orbit in 2027 for checkout. In April 2026 NASA's Office of Inspector General warned that the schedule had little or no margin for the first landing, now planned for Artemis IV in 2028, and that development times averaging 8.7 years for past suits would imply a delay to about 2031. In September 2026 NASA and Axiom were reported to be studying a simpler, lighter suit configuration for the first landing. China, meanwhile, unveiled its **Wangyu** lunar suit in 2024 for a crewed landing planned before 2030.
+By early 2026 Axiom had completed its own design review and more than 850 hours of crewed pressurised tests; qualification was planned to run to mid-2027, with a first suit flying in Earth orbit in 2027. In April 2026 NASA's Office of Inspector General warned that the schedule had little or no margin for the first landing, now planned for Artemis IV in 2028, and that development times averaging 8.7 years for past suits would imply a delay to about 2031. In September 2026 NASA and Axiom were reported to be studying a simpler, lighter suit configuration for the first landing. China, meanwhile, unveiled its **Wangyu** lunar suit in 2024 for a crewed landing planned before 2030.
 
 ::: figrow
 ![Gene Cernan in the lunar module after the second Apollo 17 EVA in December 1972, his suit coated with lunar dust.](figures/photos/ch33_cernan.jpg){#fig:cernandust width=92%}
@@ -284,7 +284,7 @@ By early 2026 Axiom had completed its own design review and more than 850 hours 
 
 ### Suits for Mars
 
-Mars adds problems that the Moon does not (@tbl:moonmarsenv). Its gravity, 0.38 g, makes suit mass more than twice as burdensome as on the Moon, so a Mars suit must be much lighter than the AxEMU. Its thin carbon dioxide atmosphere, about 0.6 kPa, carries heat by convection, so insulation that works in vacuum works less well. The surface pressure is close to the triple point of water, 0.61 kPa, so a sublimator will not work reliably, and evaporative coolers lose efficiency. An amine scrubber that regenerates by exposure to "vacuum" must vent against an atmosphere that is itself 95 % carbon dioxide, so it needs heating or a different sorbent. Martian dust is finer than lunar dust, is lifted by wind and contains perchlorates, which are toxic. Suits must also be maintained and repaired on site for months.
+Mars adds problems that the Moon does not (@tbl:moonmarsenv).
 
 | Factor | ISS orbit | Moon | Mars |
 |---|---|---|---|
@@ -296,6 +296,8 @@ Mars adds problems that the Moon does not (@tbl:moonmarsenv). Its gravity, 0.38 
 | Spacewalks | ≈ 10 a year | a few per early landing | many over a long stay |
 
 : How the environment changes spacesuit design. {#tbl:moonmarsenv}
+
+Its gravity, 0.38 g, makes suit mass more than twice as burdensome as on the Moon, so a Mars suit must be much lighter than the AxEMU. Its thin carbon dioxide atmosphere, about 0.6 kPa, carries heat by convection, so insulation that works in vacuum works less well. The surface pressure is close to the triple point of water, 0.61 kPa, so a sublimator will not work reliably, and evaporative coolers lose efficiency. An amine scrubber that regenerates by exposure to "vacuum" must vent against an atmosphere that is itself 95 % carbon dioxide, so it needs heating or a different sorbent. Martian dust is finer than lunar dust, is lifted by wind and contains perchlorates, which are toxic. Suits must also be maintained and repaired on site for months.
 
 ### Suitports and Rear-Entry Suits
 

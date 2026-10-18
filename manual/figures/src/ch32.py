@@ -53,7 +53,7 @@ def timeline():
         ("Russian ROS (planned)", 2028.0, 2036.0, RED, "p"),
         ("Bharatiya Antariksh Stn (planned)", 2028.9, 2036.0, ORANGE, "p"),
     ]
-    fig, ax = plt.subplots(figsize=(7.0, 4.3))
+    fig, ax = plt.subplots(figsize=(7.0, 3.9))
     for i, (name, t0, t1, col, kind) in enumerate(rows):
         y = len(rows) - 1 - i
         if kind == "s":
@@ -104,7 +104,7 @@ def isslayout():
         ax.plot([p[0], q[0]], [p[1], q[1]], **ln)
 
     # main axis (aft at left, forward at right)
-    mod(8, y0, 18, h, "Zvezda\n(service module)", RU, RED)
+    mod(6, y0, 20, h, "Zvezda\n(service module)", RU, RED)
     mod(27, y0, 12, h, "Zarya\n(FGB)", RU, RED)
     box(ax, 39.6, y0 + 2.7, 2.8, 3.6, "", fc="#EEE", ec="#777", r=0.4)
     mod(43, y0 - 0.5, 11, h + 1, "Unity\n(Node 1)", US, BLUE)
@@ -139,23 +139,23 @@ def isslayout():
     # Harmony side ports
     mod(73.5, y0 + 13, 8, 7, "PMA-3\nIDA-3", "#EEE", "#777", fs=5.7)
     link((77.5, y0 + h + 0.5), (77.5, y0 + 13))
-    mod(87, y0 + 13, 17, 8, "Kibo PM (JAXA)", JP, GREEN)
+    mod(87, y0 + 13, 20, 8, "Kibo PM (JAXA)", JP, GREEN)
     link((82, y0 + h + 0.5), (87, y0 + 16))
-    mod(89.5, y0 + 24, 12, 5.5, "Kibo ELM", JP, GREEN, fs=6.0)
-    link((95.5, y0 + 21), (95.5, y0 + 24))
-    mod(107, y0 + 13.5, 13, 7, "Kibo exposed\nfacility", JP, GREEN, fs=5.8)
-    link((104, y0 + 17), (107, y0 + 17))
+    mod(91, y0 + 24, 12, 5.5, "Kibo ELM", JP, GREEN, fs=6.0)
+    link((97, y0 + 21), (97, y0 + 24))
+    mod(110, y0 + 13.5, 14, 7, "Kibo exposed\nfacility", JP, GREEN, fs=5.8)
+    link((107, y0 + 17), (110, y0 + 17))
     mod(73.5, y0 - 13, 8, 7, "CBM\nport", "#F4F6F8", GREY, fs=5.7)
     link((77.5, y0 - 0.5), (77.5, y0 - 6))
-    mod(87, y0 - 13, 17, 8, "Columbus (ESA)", EU, GOLD)
+    mod(87, y0 - 13, 20, 8, "Columbus (ESA)", EU, GOLD)
     link((82, y0 - 0.5), (87, y0 - 9))
     # truss
-    box(ax, 57, y0 + 37, 32, 7, "Integrated truss (S0 on Destiny): 109 m,\n8 array wings + iROSAs, radiators",
+    box(ax, 52, y0 + 37, 40, 7, "Integrated truss (S0 on Destiny): 109 m,\n8 array wings + iROSAs, radiators",
         fc="#E3E7EB", ec="#5B6670", fs=5.8, r=0.6)
     link((70, y0 + h), (70, y0 + 37))
     # visiting vehicles
     vv = dict(fontsize=5.8, color=ORANGE, style="italic")
-    ax.text(7, y0 + 4.5, "Soyuz/\nProgress", ha="right", va="center", **vv)
+    ax.text(5, y0 + 4.5, "Soyuz/\nProgress", ha="right", va="center", **vv)
     ax.text(22.5, y0 + 16.5, "Soyuz/Progress", ha="left", va="center", **vv)
     ax.text(23, y0 - 24.8, "Soyuz/Progress", ha="left", va="center", **vv)
     ax.text(33, y0 - 14.5, "Soyuz/\nProgress", ha="center", va="top", **vv)
@@ -175,7 +175,7 @@ def isslayout():
 
 # ---------------------------------------------------------------------------------------------
 def decay():
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.3))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.05))
     for lv, col, lab in LEVELS:
         a = RE + 420e3
         t = 0.0
@@ -221,8 +221,8 @@ def decay():
         ax2.text(x + 2, 0.06, t, fontsize=6.4, color=GREY, rotation=90, va="bottom")
     ax2.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:g}"))
     ax2.legend(loc="upper right", fontsize=6.2)
-    fig.text(0.99, 0.01, "Model: da/dt = −ρ√(μa)/B with B = m/(C_D A) = 150 kg/m² (450 t, C_D A ≈ 3 000 m²); "
-             "MSIS-like density table of Chapter 2; chemical I_sp = 290 s, Hall I_sp = 1 600 s.",
+    fig.text(0.99, 0.01, "Model: da/dt = −ρ√(μa)/B with B = m/(C$_D$A) = 150 kg/m² (450 t, C$_D$A ≈ 3 000 m²); "
+             "MSIS-like density table of Chapter 2; chemical I$_{sp}$ = 290 s, Hall I$_{sp}$ = 1 600 s.",
              ha="right", va="bottom", fontsize=5.9, color=GREY)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "ch32_decay")
@@ -230,7 +230,7 @@ def decay():
 
 # ---------------------------------------------------------------------------------------------
 def powerthermal():
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.25))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.05))
     h = 420.0
     r = RE / 1e3 + h
     P = 2 * np.pi * np.sqrt((r * 1e3) ** 3 / MU) / 60
@@ -274,7 +274,7 @@ def powerthermal():
     ax2.axvspan(0, 6, color=SKY, alpha=0.25)
     ax2.text(6.8, 18, "ammonia\nloops ≈ 0–6 °C", fontsize=6.3, color=NAVY, va="bottom")
     ax2.legend(loc="upper right", fontsize=6.0)
-    fig.text(0.99, 0.01, "(a) Path efficiencies 0.65 (via battery) and 0.85 (direct). (b) q = ε η σ(T⁴ − T_sink⁴), "
+    fig.text(0.99, 0.01, "(a) Path efficiencies 0.65 (via battery) and 0.85 (direct). (b) q = ε η σ(T⁴ − T$_{sink}$⁴), "
              "ε = 0.85, fin efficiency η = 0.85; one radiating face.", ha="right", va="bottom", fontsize=5.9,
              color=GREY)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
@@ -314,7 +314,7 @@ def flux(dcm):
 
 
 def mmod():
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.3))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.05))
     V = np.linspace(1.5, 15, 300)
     w0 = [whipple_dc(v, 0) * 10 for v in V]
     w45 = [whipple_dc(v, 45) * 10 for v in V]
@@ -340,7 +340,7 @@ def mmod():
     for d, col, lab in [(single_dc(9, th=45), RED, "Single wall"), (whipple_dc(9, 45), BLUE, "Whipple"),
                         (1.3, GREEN, "Stuffed Whipple")]:
         F = flux(d)
-        ax2.plot(yrs, np.exp(-F * A * yrs), color=col, label=f"{lab}: d_c = {d * 10:.1f} mm")
+        ax2.plot(yrs, np.exp(-F * A * yrs), color=col, label=f"{lab}: d$_c$ = {d * 10:.1f} mm")
         ax2.plot(10, np.exp(-F * A * 10), "o", color=col, ms=3.5)
         pv = np.exp(-F * A * 10)
         ax2.text(10.3, pv + (0.015 if pv > 0.95 else -0.02), f"{pv:.2f}", fontsize=6.4, color=col,
@@ -461,7 +461,7 @@ def gravity():
     pts = [
         (223.6, 2.0, "1 g at 2 rpm: r = 224 m", (420, 4.0)),
         (55.9, 4.0, "1 g at 4 rpm: r = 56 m", (110, 10.0)),
-        (830, 1.0, "Stanford torus (1975 study):\nr ≈ 830 m, 1 rpm, 1 g", (420, 0.42)),
+        (830, 1.0, "Stanford torus (1975 study):\nr ≈ 830 m, 1 rpm, 1 g", (420, 0.38)),
         (38, 3.0, "von Braun wheel (1952):\nr ≈ 38 m, 3 rpm, ≈ 0.38 g", (3.5, 0.75)),
         (2.8, 17.9, "short-arm human centrifuge\n(1 g at the feet)", (4.5, 32.0)),
     ]

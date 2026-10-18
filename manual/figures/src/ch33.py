@@ -343,8 +343,8 @@ def issevas():
     ax.legend(h1 + h2, l1 + l2, loc="upper right", fontsize=6.4)
     ax.set_xticks(range(2000, 2027, 2))
     ax.tick_params(axis="x", labelsize=7)
-    fig.text(0.99, 0.01, "Data: NASA itemised list of ISS spacewalks (US and Russian), accessed October 2026; "
-             "283 spacewalks, ≈1 790 h, December 1998 – September 2026.",
+    fig.text(0.99, 0.01, "Data: NASA itemised list of ISS spacewalks (US and Russian), accessed October 2026, corrected for "
+             "duplicates: 283 of NASA's total of 284, ≈1 790 h, December 1998 – September 2026.",
              ha="right", va="bottom", fontsize=6.0, color=GREY)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "ch33_issevas")
@@ -362,7 +362,7 @@ def history():
             ("Feitian (China)", [(2008.7, 2008.9), (2021.5, 2026.8)], GOLD, "Shenzhou-7; Tiangong"),
             ("SpaceX EVA suit", [(2024.7, 2024.9)], GREY, "Polaris Dawn"),
             ("Axiom AxEMU (US)", [(2027.0, 2030.0)], VIOLET, "planned: ISS test 2027, Moon 2028+"),
-            ("Wangyu lunar suit (China)", [(2029.0, 2031.0)], GOLD, "planned: landing before 2030")]
+            ("Wangyu lunar suit (China)", [(2028.5, 2030.0)], GOLD, "planned: landing before 2030")]
     n = len(rows)
     for i, (name, spans, c, t) in enumerate(rows):
         y = n - 1 - i
