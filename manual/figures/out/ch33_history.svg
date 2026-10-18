@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="480.888562pt" height="238.392pt" viewBox="0 0 480.888562 238.392" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-18T14:10:17.894534</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 238.392 
+L 480.888562 238.392 
+L 480.888562 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 95.719562 200.530273 
+L 473.184562 200.530273 
+L 473.184562 2.88 
+L 95.719562 2.88 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 106.660577 200.530273 
+L 106.660577 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="mbdc6bbb4eb" d="M 0 0 
+L 0 3.5 
+" style="stroke: #3e4851; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="106.660577" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="106.660577" y="214.311523" transform="rotate(-0 106.660577 214.311523)">1965</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 134.013113 200.530273 
+L 134.013113 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="134.013113" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="134.013113" y="214.311523" transform="rotate(-0 134.013113 214.311523)">1970</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 161.365649 200.530273 
+L 161.365649 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="161.365649" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="161.365649" y="214.311523" transform="rotate(-0 161.365649 214.311523)">1975</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 188.718186 200.530273 
+L 188.718186 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="188.718186" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="188.718186" y="214.311523" transform="rotate(-0 188.718186 214.311523)">1980</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 216.070722 200.530273 
+L 216.070722 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="216.070722" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="216.070722" y="214.311523" transform="rotate(-0 216.070722 214.311523)">1985</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 243.423258 200.530273 
+L 243.423258 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="243.423258" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="243.423258" y="214.311523" transform="rotate(-0 243.423258 214.311523)">1990</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 270.775794 200.530273 
+L 270.775794 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="270.775794" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="270.775794" y="214.311523" transform="rotate(-0 270.775794 214.311523)">1995</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 298.128331 200.530273 
+L 298.128331 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="298.128331" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="298.128331" y="214.311523" transform="rotate(-0 298.128331 214.311523)">2000</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_17">
+      <path d="M 325.480867 200.530273 
+L 325.480867 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="325.480867" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="325.480867" y="214.311523" transform="rotate(-0 325.480867 214.311523)">2005</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_19">
+      <path d="M 352.833403 200.530273 
+L 352.833403 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="352.833403" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="352.833403" y="214.311523" transform="rotate(-0 352.833403 214.311523)">2010</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_21">
+      <path d="M 380.185939 200.530273 
+L 380.185939 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="380.185939" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="380.185939" y="214.311523" transform="rotate(-0 380.185939 214.311523)">2015</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_23">
+      <path d="M 407.538476 200.530273 
+L 407.538476 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="407.538476" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="407.538476" y="214.311523" transform="rotate(-0 407.538476 214.311523)">2020</text>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_25">
+      <path d="M 434.891012 200.530273 
+L 434.891012 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="434.891012" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="434.891012" y="214.311523" transform="rotate(-0 434.891012 214.311523)">2025</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_27">
+      <path d="M 462.243548 200.530273 
+L 462.243548 2.88 
+" clip-path="url(#pf0fe554f11)" style="fill: none; stroke: #d5dde5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#mbdc6bbb4eb" x="462.243548" y="200.530273" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 7px; font-family: 'Inter'; text-anchor: middle; fill: #3e4851" x="462.243548" y="214.311523" transform="rotate(-0 462.243548 214.311523)">2030</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_29">
+      <defs>
+       <path id="m4f24d91e3f" d="M 0 0 
+L -3.5 0 
+" style="stroke: #3e4851; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="187.22689" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="190.472202" transform="rotate(-0 88.719562 190.472202)">Wangyu lunar suit (China)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="168.222056" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="171.467368" transform="rotate(-0 88.719562 171.467368)">Axiom AxEMU (US)</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="149.217222" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="152.462534" transform="rotate(-0 88.719562 152.462534)">SpaceX EVA suit</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="130.212388" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="133.4577" transform="rotate(-0 88.719562 133.4577)">Feitian (China)</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="111.207554" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="114.452866" transform="rotate(-0 88.719562 114.452866)">Shuttle / ISS EMU (US)</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="92.20272" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="95.448032" transform="rotate(-0 88.719562 95.448032)">Orlan family (USSR/Russia)</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="73.197886" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="76.443198" transform="rotate(-0 88.719562 76.443198)">Apollo A7L / A7LB (US)</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="54.193052" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="57.438364" transform="rotate(-0 88.719562 57.438364)">Yastreb (USSR)</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_37">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="35.188218" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="38.43353" transform="rotate(-0 88.719562 38.43353)">Gemini G4C (US)</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#m4f24d91e3f" x="95.719562" y="16.183384" style="fill: #3e4851; stroke: #3e4851; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 6.7px; font-family: 'Inter'; text-anchor: end; fill: #3e4851" x="88.719562" y="19.428696" transform="rotate(-0 88.719562 19.428696)">Berkut (USSR)</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 95.719562 200.530273 
+L 95.719562 2.88 
+" style="fill: none; stroke: #5b6670; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 95.719563 200.530273 
+L 473.184563 200.530273 
+" style="fill: none; stroke: #5b6670; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 106.660577 21.409713 
+L 109.395831 21.409713 
+L 109.395831 10.957054 
+L 106.660577 10.957054 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #b23a48; stroke: #b23a48; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 108.301729 40.414547 
+L 117.054541 40.414547 
+L 117.054541 29.961888 
+L 108.301729 29.961888 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #1f6fb2; stroke: #1f6fb2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 128.542606 59.419381 
+L 131.27786 59.419381 
+L 131.27786 48.966722 
+L 128.542606 48.966722 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #b23a48; stroke: #b23a48; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 131.27786 78.424215 
+L 156.442193 78.424215 
+L 156.442193 67.971556 
+L 131.27786 67.971556 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #1f6fb2; stroke: #1f6fb2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 177.23012 97.429049 
+L 444.737925 97.429049 
+L 444.737925 86.97639 
+L 177.23012 86.97639 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #b23a48; stroke: #b23a48; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 206.77086 116.433883 
+L 444.737925 116.433883 
+L 444.737925 105.981224 
+L 206.77086 105.981224 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #1f6fb2; stroke: #1f6fb2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 345.721744 135.438717 
+L 348.456997 135.438717 
+L 348.456997 124.986058 
+L 345.721744 124.986058 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #c9a227; stroke: #c9a227; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 415.744236 135.438717 
+L 444.737925 135.438717 
+L 444.737925 124.986058 
+L 415.744236 124.986058 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #c9a227; stroke: #c9a227; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 433.24986 154.443551 
+L 435.985113 154.443551 
+L 435.985113 143.990892 
+L 433.24986 143.990892 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: #7f8c8d; stroke: #7f8c8d; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 445.832026 173.448385 
+L 462.243548 173.448385 
+L 462.243548 162.995726 
+L 445.832026 162.995726 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: url(#heb1f36f21f); stroke: #6d4c9f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 456.773041 192.453219 
+L 467.714055 192.453219 
+L 467.714055 182.00056 
+L 456.773041 182.00056 
+z
+" clip-path="url(#pf0fe554f11)" style="fill: url(#h02da6bcfa5); stroke: #c9a227; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: start; fill: #1b1f24" x="112.678135" y="18.402378" transform="rotate(-0 112.678135 18.402378)">Leonov, first spacewalk</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: start; fill: #1b1f24" x="120.336845" y="37.407212" transform="rotate(-0 120.336845 37.407212)">Gemini 4–12</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: start; fill: #1b1f24" x="134.013113" y="56.412046" transform="rotate(-0 134.013113 56.412046)">Soyuz 4/5 crew transfer</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: start; fill: #1b1f24" x="159.724497" y="75.41688" transform="rotate(-0 159.724497 75.41688)">Moon 1969–72, Skylab 1973–74</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: start; fill: #ffffff" x="182.700628" y="94.421714" transform="rotate(-0 182.700628 94.421714)">Salyut 6, Salyut 7, Mir, ISS; Orlan-MKS from 2017</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: start; fill: #ffffff" x="212.241367" y="113.426548" transform="rotate(-0 212.241367 113.426548)">STS-6 1983; Hubble; ISS</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: end; fill: #1b1f24" x="342.439439" y="132.431382" transform="rotate(-0 342.439439 132.431382)">Shenzhou-7; Tiangong</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: end; fill: #1b1f24" x="429.967555" y="151.436216" transform="rotate(-0 429.967555 151.436216)">Polaris Dawn</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: end; fill: #1b1f24" x="442.549722" y="170.44105" transform="rotate(-0 442.549722 170.44105)">planned: ISS test 2027, Moon 2028+</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 6.1px; font-family: 'Inter'; text-anchor: end; fill: #1b1f24" x="453.490736" y="189.445884" transform="rotate(-0 453.490736 189.445884)">planned: landing before 2030</text>
+   </g>
+  </g>
+  <g id="text_35">
+   <text style="font-size: 6px; font-family: 'Inter'; text-anchor: end; fill: #7f8c8d" x="478.008562" y="234.064734" transform="rotate(-0 478.008562 234.064734)">Bars: years each suit type was used for spacewalks (hatched: planned, status October 2026). Red: Soviet/Russian; blue: NASA; gold: China.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf0fe554f11">
+   <rect x="95.719562" y="2.88" width="377.465" height="197.650273"/>
+  </clipPath>
+ </defs>
+ <defs>
+  <pattern id="heb1f36f21f" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
+   <rect x="0" y="0" width="73" height="73" fill="#ffffff"/>
+   <path d="M -36 36 
+L 36 -36 
+M -33 39 
+L 39 -33 
+M -30 42 
+L 42 -30 
+M -27 45 
+L 45 -27 
+M -24 48 
+L 48 -24 
+M -21 51 
+L 51 -21 
+M -18 54 
+L 54 -18 
+M -15 57 
+L 57 -15 
+M -12 60 
+L 60 -12 
+M -9 63 
+L 63 -9 
+M -6 66 
+L 66 -6 
+M -3 69 
+L 69 -3 
+M 0 72 
+L 72 0 
+M 3 75 
+L 75 3 
+M 6 78 
+L 78 6 
+M 9 81 
+L 81 9 
+M 12 84 
+L 84 12 
+M 15 87 
+L 87 15 
+M 18 90 
+L 90 18 
+M 21 93 
+L 93 21 
+M 24 96 
+L 96 24 
+M 27 99 
+L 99 27 
+M 30 102 
+L 102 30 
+M 33 105 
+L 105 33 
+M 36 108 
+L 108 36 
+" style="fill: #6d4c9f; stroke: #6d4c9f; stroke-width: 1.0; stroke-linecap: butt; stroke-linejoin: miter"/>
+  </pattern>
+  <pattern id="h02da6bcfa5" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
+   <rect x="0" y="0" width="73" height="73" fill="#ffffff"/>
+   <path d="M -36 36 
+L 36 -36 
+M -33 39 
+L 39 -33 
+M -30 42 
+L 42 -30 
+M -27 45 
+L 45 -27 
+M -24 48 
+L 48 -24 
+M -21 51 
+L 51 -21 
+M -18 54 
+L 54 -18 
+M -15 57 
+L 57 -15 
+M -12 60 
+L 60 -12 
+M -9 63 
+L 63 -9 
+M -6 66 
+L 66 -6 
+M -3 69 
+L 69 -3 
+M 0 72 
+L 72 0 
+M 3 75 
+L 75 3 
+M 6 78 
+L 78 6 
+M 9 81 
+L 81 9 
+M 12 84 
+L 84 12 
+M 15 87 
+L 87 15 
+M 18 90 
+L 90 18 
+M 21 93 
+L 93 21 
+M 24 96 
+L 96 24 
+M 27 99 
+L 99 27 
+M 30 102 
+L 102 30 
+M 33 105 
+L 105 33 
+M 36 108 
+L 108 36 
+" style="fill: #c9a227; stroke: #c9a227; stroke-width: 1.0; stroke-linecap: butt; stroke-linejoin: miter"/>
+  </pattern>
+ </defs>
+</svg>
