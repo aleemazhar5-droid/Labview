@@ -1,0 +1,231 @@
+#!/usr/bin/env python3
+"""Generate the data-driven appendix sections.
+
+  python3 tools/make_appendices.py launches   -> src/appendix_data/E-launches.md  (GCAT launch tables)
+  python3 tools/make_appendices.py credits    -> src/chapters/J-image-credits.md  (from credits.json + usage)
+
+Launch data: Jonathan McDowell's GCAT (planet4589.org/space/gcat, CC-BY 4.0), raw TSVs in data/raw.
+"""
+import collections
+import csv
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+RAW = ROOT / "data/raw"
+SRC = ROOT / "src"
+
+
+def load(name):
+    with open(RAW / name, encoding="utf-8", errors="replace") as f:
+        hdr = f.readline().lstrip("#").rstrip("\n").split("\t")
+        rows = []
+        for r in csv.reader(f, delimiter="\t"):
+            if not r or r[0].startswith("#"):
+                continue
+            rows.append({h: (r[i].strip() if i < len(r) else "") for i, h in enumerate(hdr)})
+    return rows
+
+
+def esc(s):
+    return s.replace("|", "/")
+
+
+# ---------------------------------------------------------------- launch tables
+GROUPS = {"US": "USA", "SU": "USSR/Russia", "RU": "USSR/Russia", "CN": "China", "F": "Europe",
+          "I-ESA": "Europe", "I-ARIANE": "Europe", "J": "Japan", "IN": "India", "KZ": "USSR/Russia"}
+COLS = ["USA", "USSR/Russia", "China", "Europe", "Japan", "India", "Other"]
+SITE_EN = {"Baykonur": "Baikonur", "Canaveral": "Cape Canaveral", "Kennedy": "Kennedy Space Center",
+           "Vostochniy": "Vostochny", "Kirimati": "Pacific Ocean (Sea Launch)", "Huang Hai": "Yellow Sea (sea launch)",
+           "Hainan CLS": "Hainan commercial site (Wenchang)", "Pt Arguello": "Point Arguello", "Kagoshima": "Uchinoura (Kagoshima)",
+           "Wallops MARS": "Wallops (MARS)", "Wallops I": "Wallops Island", "Mahia": "Mahia (Rocket Lab LC-1)"}
+RENAME = [("Chang Zheng", "Long March"), ("Kuaizhou", "Kuaizhou"), ("Zhuque", "Zhuque")]
+
+
+def family(lv):
+    lv = lv.strip()
+    for a, b in RENAME:
+        lv = lv.replace(a, b)
+    m = re.match(r"(Long March \d+)", lv)
+    if m:
+        return m.group(1)
+    for key in ("Space Shuttle", "Falcon 9", "Falcon Heavy", "Starship", "Electron", "Soyuz", "Atlas V", "Ariane 6", "Ariane 5",
+                "Vega", "H-3", "H3", "H-IIA", "PSLV", "GSLV", "LVM3", "Proton", "Angara", "Delta IV", "Vulcan",
+                "New Glenn", "Kuaizhou", "Ceres", "Zhuque", "Kinetica", "Gravity", "Tianlong", "Jielong",
+                "Firefly Alpha", "Alpha", "Minotaur", "Pegasus", "Antares", "Nuri", "Epsilon", "Kairos"):
+        if lv.startswith(key):
+            return key
+    return lv.split()[0] if lv else "?"
+
+
+def launches_md():
+    orgs = {o["Code"]: o for o in load("orgs.tsv")}
+    sites = {s["Site"]: s for s in load("sites.tsv")}
+    L = load("launch.tsv")
+
+    def agency_state(code):
+        o = orgs.get(code.split("/")[0])
+        return o["StateCode"] if o else "?"
+
+    def group(row):
+        if row["Agency"].startswith("RLAB"):
+            return "USA"
+        st = agency_state(row["Agency"])
+        g = GROUPS.get(st)
+        if g:
+            return g
+        if st.startswith("I-") or st in ("F", "D", "I", "UK", "GB", "E", "S", "N"):
+            return "Europe"
+        return "Other"
+
+    def site_name(row):
+        s = sites.get(row["Launch_Site"])
+        nm = (s.get("ShortName") or s.get("Name") or row["Launch_Site"]) if s else row["Launch_Site"]
+        return SITE_EN.get(nm, nm)
+
+    def site_short(row):
+        s = sites.get(row["Launch_Site"])
+        nm = (s.get("ShortName") or row["Launch_Site"]) if s else row["Launch_Site"]
+        return {"Baykonur": "Baikonur", "Vostochniy": "Vostochny", "Huang Hai": "Yellow Sea",
+                "Hainan CLS": "Hainan (comm.)"}.get(nm, nm)
+
+    orb = [r for r in L if r["LaunchCode"][:1] in ("O", "D") and r["Launch_Date"][:4].isdigit()]
+    by_year = collections.defaultdict(collections.Counter)
+    fails = collections.Counter()
+    fam_all = collections.Counter()
+    fam_fail = collections.Counter()
+    fam_first = {}
+    site_all = collections.Counter()
+    for r in orb:
+        y = int(r["Launch_Date"][:4])
+        g = group(r)
+        by_year[y][g] += 1
+        f = r["LaunchCode"][1:2] == "F"
+        if f:
+            fails[y] += 1
+        fam = family(r["LV_Type"])
+        fam_all[fam] += 1
+        fam_fail[fam] += f
+        fam_first.setdefault(fam, y)
+        site_all[site_name(r)] += 1
+    updated = "13 October 2026"
+    out = []
+    out.append("## Orbital Launch Attempts by Year\n")
+    out.append(f"Orbital launch attempts (successful or not) by the country or region of the launching organisation, "
+               f"1957 to {updated}. Rocket Lab's launches from New Zealand count as US. Source: GCAT (J. McDowell, "
+               f"CC-BY 4.0).\n")
+    out.append("| Year | " + " | ".join(COLS) + " | Total | Failures |")
+    out.append("|" + "---|" * (len(COLS) + 3))
+    for y in sorted(by_year):
+        c = by_year[y]
+        tot = sum(c.values())
+        out.append(f"| {y}{'*' if y == 2026 else ''} | " + " | ".join(str(c.get(k, 0) or "–") for k in COLS) +
+                   f" | {tot} | {fails.get(y, 0) or '–'} |")
+    out.append("\n: Orbital launch attempts per year, 1957–2026 (* 2026 to 13 October). {#tbl:apxlaunchyears}\n")
+
+    out.append("## Most-Launched Vehicle Families\n")
+    out.append("| Family | First orbital attempt | Attempts | Failures | Success rate |")
+    out.append("|---|---|---|---|---|")
+    for fam, n in fam_all.most_common(30):
+        rate = 100 * (n - fam_fail[fam]) / n
+        out.append(f"| {esc(fam)} | {fam_first[fam]} | {n:,} | {fam_fail[fam]} | {rate:.1f} % |".replace(",", " "))
+    out.append("\n: The thirty most-launched orbital vehicle families (to 13 October 2026). {#tbl:apxfamilies}\n")
+
+    out.append("## Busiest Launch Sites\n")
+    out.append("| Launch site | Orbital launch attempts |")
+    out.append("|---|---|")
+    for s, n in site_all.most_common(25):
+        out.append(f"| {esc(s)} | {n:,} |".replace(",", " "))
+    out.append("\n: The twenty-five busiest orbital launch sites of all time (to 13 October 2026). {#tbl:apxsites}\n")
+
+    for year, tag in [(2025, "2025"), (2026, "2026, to 13 October")]:
+        rows = [r for r in orb if r["Launch_Date"].startswith(str(year))]
+        out.append(f"## Orbital Launch Log: {tag}\n")
+        out.append(f"All {len(rows)} orbital launch attempts. ✗ marks a failure to reach orbit. Times are UTC.\n")
+        out.append("::: small\n")
+        out.append("| No. | Date (UTC) | Vehicle | Site | Mission / payload | |")
+        out.append("|---|---|---|---|---|---|")
+        for i, r in enumerate(rows, 1):
+            d = r["Launch_Date"][5:11].strip()
+            lv = r["LV_Type"]
+            for a, b in RENAME:
+                lv = lv.replace(a, b)
+            mission = r["Mission"] if r["Mission"] not in ("-", "") else r["Flight"]
+            mission = mission[:42]
+            mark = "✗" if r["LaunchCode"][1:2] == "F" else ""
+            out.append(f"| {i} | {d} | {esc(lv)} | {esc(site_short(r))} | {esc(mission)} | {mark} |")
+        out.append(f"\n: Orbital launch attempts in {tag}. {{#tbl:apxlog{year}}}\n")
+        out.append(":::\n")
+    (SRC / "appendix_data").mkdir(exist_ok=True)
+    p = SRC / "appendix_data/E-launches.md"
+    p.write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(p, sum(len(by_year[y]) for y in by_year), "years")
+    # assemble the appendix: curated head + curated tables (if any) + generated launch tables
+    head = SRC / "appendix_data/E-head.md"
+    cur = SRC / "appendix_data/E-curated.md"
+    parts = [head.read_text(encoding="utf-8")] if head.exists() else []
+    if cur.exists():
+        parts.append(cur.read_text(encoding="utf-8"))
+    parts.append(p.read_text(encoding="utf-8"))
+    dst = SRC / "chapters/E-mission-vehicle-databases.md"
+    dst.write_text("\n\n".join(parts), encoding="utf-8")
+    print(dst)
+
+
+# ---------------------------------------------------------------- image credits
+def credits_md():
+    cred = json.loads((ROOT / "figures/photos/credits.json").read_text())
+    from structure import PARTS  # noqa: E402
+    used = collections.OrderedDict()
+    titles = {}
+    for f in sorted((SRC / "chapters").glob("*.md")):
+        key = f.name.split("-")[0]
+        if not key[0].isdigit():
+            continue
+        txt = f.read_text(encoding="utf-8")
+        m = re.search(r"^title:\s*(.+)$", txt, re.M)
+        titles[key] = m.group(1).strip().strip('"') if m else key
+        keys = [f"ch{key}"] if (ROOT / f"figures/photos/ch{key}.jpg").exists() else []
+        keys += re.findall(r"figures/photos/([A-Za-z0-9_\-]+)\.jpg", txt)
+        used[key] = list(dict.fromkeys(keys))
+    out = ["---", "title: Image Credits", "abstract: Sources of the photographs and images reproduced in this manual.",
+           "---", "",
+           "All photographs in this manual come from the NASA Image and Video Library (images.nasa.gov) and are in "
+           "the public domain in the United States, unless stated otherwise in the caption. NASA does not endorse "
+           "this publication. Images are listed by chapter in order of appearance, with the NASA identifier, title "
+           "and date; the full record can be found at https://images.nasa.gov/details/ followed by the identifier. "
+           "All charts and diagrams were drawn for this manual from the sources cited in their captions.", ""]
+    parts = [p for p in PARTS if p.get("photo")]
+    out.append("## Part Opening Images\n")
+    out.append("| Part | NASA ID | Title | Date |")
+    out.append("|---|---|---|---|")
+    for p in parts:
+        c = cred.get(p["photo"], {})
+        out.append(f"| {p['num']} | {esc(c.get('nasa_id', '–'))} | {esc(c.get('title', '')[:70])} | {c.get('date', '')} |")
+    out.append("\n: Part opening images. {#tbl:apxcreditparts}\n")
+    for key, keys in used.items():
+        if not keys:
+            continue
+        out.append(f"## Chapter {int(key)}: {titles[key]}\n")
+        out.append("| Image | NASA ID | Title | Date |")
+        out.append("|---|---|---|---|")
+        for k in keys:
+            c = cred.get(k, {})
+            label = "Chapter opening" if k == f"ch{key}" else k.split("_", 1)[-1]
+            out.append(f"| {esc(label)} | {esc(c.get('nasa_id', '–'))} | {esc((c.get('title') or '')[:70])} | "
+                       f"{c.get('date', '')} |")
+        out.append(f"\n: Images in Chapter {int(key)}. {{#tbl:apxcredit{key}}}\n")
+    p = SRC / "chapters/J-image-credits.md"
+    p.write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(p, sum(len(v) for v in used.values()), "images")
+
+
+if __name__ == "__main__":
+    sys.path.insert(0, str(ROOT / "tools"))
+    what = sys.argv[1:] or ["launches", "credits"]
+    if "launches" in what:
+        launches_md()
+    if "credits" in what:
+        credits_md()

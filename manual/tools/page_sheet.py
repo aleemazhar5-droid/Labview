@@ -12,7 +12,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 nn, out = sys.argv[1], sys.argv[2]
 pages = [int(p) for p in sys.argv[3:]]
-pdf = ROOT / f"build/pdf/ch{int(nn):02d}.pdf"
+pdf = ROOT / (f"build/pdf/ch{int(nn):02d}.pdf" if nn.isdigit() else f"build/pdf/ch{nn}.pdf")
 with tempfile.TemporaryDirectory() as td:
     if pages:
         for p in pages:

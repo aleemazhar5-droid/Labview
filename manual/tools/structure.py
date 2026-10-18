@@ -15,7 +15,7 @@ PARTS = [
              "suborbital tourist vehicles, and winged spaceplanes that return from orbit like gliders."},
     {"num": "III", "title": "Satellites in Earth Orbit", "photo": "part3",
      "chapters": ["11", "12"],
-     "desc": "More than twelve thousand active satellites now circle the Earth. This Part explains where they fly "
+     "desc": "About sixteen thousand active satellites now circle the Earth. This Part explains where they fly "
              "(LEO, MEO, GEO and special orbits), how constellations are designed, how a satellite bus is built, "
              "and the families of payload instruments they carry."},
     {"num": "IV", "title": "Earth Observation and Remote Sensing", "photo": "part4",
@@ -26,7 +26,7 @@ PARTS = [
     {"num": "V", "title": "Communication and Navigation Satellites", "photo": "part5",
      "chapters": ["17", "18"],
      "desc": "Satellites carry television, internet, phone calls and the timing signals that keep banks, power "
-             "grids and phones synchronized. Part V explains communication payloads, broadband mega-constellations, "
+             "grids and phones synchronised. Part V explains communication payloads, broadband mega-constellations, "
              "direct-to-device service and the four global navigation systems: GPS, GLONASS, Galileo and BeiDou."},
     {"num": "VI", "title": "Military, Intelligence and Space Security", "photo": "part6",
      "chapters": ["19", "20", "21"],
@@ -136,8 +136,8 @@ A4 format · Fourteen Parts · Forty-seven chapters · Ten appendices</div></div
 <h4>About this edition</h4>
 <p>This manual was written to be read by students, engineers, analysts, managers and curious readers. Each topic
 starts with plain-language explanations and builds up to the equations, numbers and design trade-offs that
-practicing engineers use. Facts, mission status and program milestones are current to October 2026; space
-programs change quickly, so dates of future events should be read as plans, not certainties.</p>
+practising engineers use. Facts, mission status and programme milestones are current to October 2026; space
+programmes change quickly, so dates of future events should be read as plans, not certainties.</p>
 <h4>Figures, photographs and data</h4>
 <p>Diagrams, charts and graphs were drawn specifically for this manual from published physical relationships
 and public data. Photographs are from the NASA Image and Video Library and are used under NASA's media usage
@@ -146,7 +146,7 @@ with each image and in Appendix J. NASA does not endorse this publication. Numer
 performance) are representative published figures and may differ slightly between sources and mission phases.</p>
 <h4>Safety and responsibility</h4>
 <p>This is an educational reference. It is not a design standard, a flight rule, or a substitute for the
-requirements, analyses and verification processes of a qualified engineering organization. Chapters dealing with
+requirements, analyses and verification processes of a qualified engineering organisation. Chapters dealing with
 military and intelligence systems use only openly published information and describe principles, not
 operational or classified details.</p>
 <h4>How numbers are written</h4>
@@ -162,13 +162,13 @@ sources with an automated pipeline (pandoc, Chromium, pypdf); the sources and bu
 def _preface(page_html, root):
     return page_html("Preface", """
 <div class="front-title">Preface and How to Use This Manual</div>
-<p>Space is no longer a niche. In 2025 the world launched more than 320 orbital rockets — more than in any previous
-year — and the number of active satellites passed twelve thousand. A single company now lands and re-flies orbital
+<p>Space is no longer a niche. In 2025 the world made about 330 orbital launch attempts — more than in any previous
+year — and by late 2026 about sixteen thousand active satellites were in orbit, two-thirds of them Starlinks. A single company now lands and re-flies orbital
 boosters every few days, governments are building lunar landers with private partners, and the same smartphone
 that streams a video can receive a signal from four navigation constellations and, increasingly, from satellites
 directly. Behind all of this is a large, interconnected <em>ecosystem</em> of vehicles, instruments, ground systems,
 science, regulation and business.</p>
-<p>This manual describes that ecosystem from end to end. It is organized in fourteen Parts that follow the journey
+<p>This manual describes that ecosystem from end to end. It is organised in fourteen Parts that follow the journey
 of space systems from the edge of space to the edge of the Solar System:</p>
 <ul>
 <li><b>Part I — Foundations</b> gives the physics and engineering every other Part relies on: the space environment,
@@ -205,8 +205,8 @@ connect related figures, tables and sections. Suggested paths:</p>
 <div class="data"><p><strong>Data box</strong></p><p>Key numbers for a system or mission.</p></div>
 <div class="ai"><p><strong>AI in practice</strong></p><p>How artificial intelligence is used for the topic at hand.</p></div>
 <h3>A note on accuracy and currency</h3>
-<p>Space programs evolve weekly: launch dates slip, missions end, and new vehicles fly. The information here reflects
-publicly available sources as of October 2026. Where a program's future was uncertain at that date (for example,
+<p>Space programmes evolve weekly: launch dates slip, missions end, and new vehicles fly. The information here reflects
+publicly available sources as of October 2026. Where a programme's future was uncertain at that date (for example,
 proposed cancellations in government budgets), the manual says so. Performance figures are representative values
 from official fact sheets, peer-reviewed literature and agency documentation; readers designing real systems
 should always go to the primary source listed in Appendix I.</p>
