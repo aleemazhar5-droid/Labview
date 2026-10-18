@@ -57,10 +57,10 @@ Part VIII — Deep Space Exploration
 - [x] 28 Planetary Rovers and Aerial Explorers
 - [x] 29 Sample-Return Missions
 Part IX — Human Spaceflight and Habitation
-- [ ] 30 Human Spaceflight Fundamentals and Life Support
-- [ ] 31 Crewed Spacecraft
-- [ ] 32 Space Stations and Habitats
-- [ ] 33 Extravehicular Activity Systems
+- [x] 30 Human Spaceflight Fundamentals and Life Support
+- [x] 31 Crewed Spacecraft
+- [x] 32 Space Stations and Habitats
+- [x] 33 Extravehicular Activity Systems
 Part X — Launch Systems and Infrastructure
 - [ ] 34 Launch Vehicle Engineering
 - [ ] 35 Rocket Propulsion
