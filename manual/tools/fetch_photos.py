@@ -4,11 +4,14 @@
   python3 tools/fetch_photos.py --search "space shuttle launch"   # list candidates
   python3 tools/fetch_photos.py                                    # download everything in photo_list.json
   python3 tools/fetch_photos.py --only key1,key2 --force
+  python3 tools/fetch_photos.py --add ch30_iss=iss071e000123,ch30_suit=jsc2020e012345   # register + fetch (lock-safe)
 
 photo_list.json:  { "key": {"id": "NASA_ID"} | {"q": "query", "pick": 0}, ... }
 Images are resized (max 1500 px), saved as figures/photos/<key>.jpg; credits go to figures/photos/credits.json.
 """
 import argparse
+import contextlib
+import fcntl
 import io
 import json
 import sys
@@ -25,6 +28,26 @@ LIST = ROOT / "figures/photo_list.json"
 CRED = PHOTOS / "credits.json"
 API = "https://images-api.nasa.gov"
 UA = {"User-Agent": "aerospace-manual-builder/1.0 (educational reference manual)"}
+
+
+@contextlib.contextmanager
+def locked(path):
+    """Exclusive advisory lock so that several agents can update the shared JSON files safely."""
+    lock = path.with_suffix(path.suffix + ".lock")
+    with open(lock, "w") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(fh, fcntl.LOCK_UN)
+
+
+def merge_credits(new):
+    """Merge freshly fetched credit entries into credits.json under the lock (re-reading it first)."""
+    with locked(CRED):
+        cur = json.loads(CRED.read_text()) if CRED.exists() else {}
+        cur.update(new)
+        CRED.write_text(json.dumps(cur, indent=1, sort_keys=True))
 
 
 def get(url, tries=4):
@@ -125,23 +148,55 @@ def main():
     ap.add_argument("--year", type=int)
     ap.add_argument("--only", default="")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--add", default="", help="key=NASA_ID[,key=NASA_ID...]: add to photo_list.json and fetch")
+    ap.add_argument("--remove", default="", help="key[,key...]: delete from photo_list.json, credits.json and disk")
     a = ap.parse_args()
     if a.search:
         for r in search(a.search, n=20, year_start=a.year):
             print(f"{r['id']:34s} {r['date']} {r['center']:5s} {r['title'][:80]}")
         return
     PHOTOS.mkdir(parents=True, exist_ok=True)
-    spec = json.loads(LIST.read_text())
+    if a.remove:
+        keys = [k for k in a.remove.split(",") if k]
+        with locked(LIST):
+            spec = json.loads(LIST.read_text())
+            for k in keys:
+                spec.pop(k, None)
+            LIST.write_text(json.dumps(spec, indent=1))
+        with locked(CRED):
+            cur = json.loads(CRED.read_text()) if CRED.exists() else {}
+            for k in keys:
+                cur.pop(k, None)
+            CRED.write_text(json.dumps(cur, indent=1, sort_keys=True))
+        for k in keys:
+            (PHOTOS / f"{k}.jpg").unlink(missing_ok=True)
+        print("removed", ", ".join(keys))
+        return
+    if a.add:
+        pairs = [x.split("=", 1) for x in a.add.split(",") if "=" in x]
+        with locked(LIST):
+            spec = json.loads(LIST.read_text())
+            for k, v in pairs:
+                spec[k.strip()] = {"id": v.strip()}
+            LIST.write_text(json.dumps(spec, indent=1))
+        a.only = ",".join(k.strip() for k, _ in pairs)
+    with locked(LIST):
+        spec = json.loads(LIST.read_text())
     credits = json.loads(CRED.read_text()) if CRED.exists() else {}
     only = set(x for x in a.only.split(",") if x)
     for key, s in spec.items():
         if only and key not in only:
             continue
+        fresh = {}
         try:
-            process(key, s, credits, force=a.force or bool(only))
+            process(key, s, fresh if (a.force or only) else credits, force=a.force or bool(only))
         except Exception as e:  # noqa: BLE001
             print(f"!! {key}: {e}")
-        CRED.write_text(json.dumps(credits, indent=1, sort_keys=True))
+        if fresh:
+            merge_credits(fresh)
+            credits.update(fresh)
+    if not only and not a.force:
+        merge_credits(credits)
 
 
 if __name__ == "__main__":

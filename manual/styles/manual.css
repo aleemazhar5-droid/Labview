@@ -200,3 +200,11 @@ blockquote { margin: 0.6em 1.5em; color: #3b4651; font-style: italic; }
 .center { text-align: center; }
 .muted { color: var(--muted); }
 .smallprint { font-size: 8.4pt; }
+/* review questions at the end of each chapter */
+.questions { margin: 0.8em 0 1em; padding: 7pt 11pt 6pt; border-radius: 2px; font-size: 9.6pt; line-height: 1.45;
+  border-left: 4pt solid var(--navy, #0B2E4F); background: #F2F5F8; }
+.questions > p:first-child strong:first-child { font-family: var(--sans); font-size: 8.4pt; letter-spacing: 0.08em;
+  text-transform: uppercase; display: block; margin-bottom: 2pt; color: #0B2E4F; }
+.questions ol { margin: 0.2em 0 0.3em; padding-left: 1.4em; }
+.questions li { margin-bottom: 0.15em; }
+.questions p:last-child { margin-bottom: 0.2em; }

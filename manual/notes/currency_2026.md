@@ -162,3 +162,8 @@
 - LTV: 2024 three teams (Intuitive Machines Moon RACER, Lunar Outpost Lunar Dawn, Astrolab FLEX); 2026 task orders reportedly to Astrolab ($219M) and Lunar Outpost ($220M) for delivery ~2028 (secondary source).
 - Yutu-2: still active Sept 2025 (stalled 2024), ~1,613 m total; longest-lived lunar rover.
 - MMX: launch 19 Oct 2026 21:41 CEST on H3 (window to 7 Nov); IDEFIX 25 kg rover lands on Phobos 2029, 100 days; samples back ~2031.
+
+## Sample return (checked Oct 2026)
+- Tianwen-2: launched 29 May 2025; arrived at Kamoʻoalewa June–July 2026 (CNSA announced ~6 Jul); mapping; asteroid spins every 28 min; sampling pending; departs ~24 Apr 2027; capsule lands ~29 Nov 2027. New spectra less red → may be ordinary asteroid rather than lunar ejecta.
+- Bennu (Jan 2025): 14 of 20 protein amino acids + 19 non-protein; all five nucleobases; ammonia-rich; 11 evaporite minerals from brine (Nature, McCoy).
+- Chandrayaan-4: approved Sep 2024; two LVM-3 launches, five modules docked in orbit; ~3 kg from near south pole; launch 2027–28.
