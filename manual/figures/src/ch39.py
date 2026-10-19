@@ -174,7 +174,7 @@ GANTT = [
 
 
 def gantt():
-    fig, ax = plt.subplots(figsize=(7.0, 6.4))
+    fig, ax = plt.subplots(figsize=(7.0, 5.9))
     n = len(GANTT)
     for i, (name, band, s, e, planned) in enumerate(GANTT):
         y = n - 1 - i
@@ -608,7 +608,7 @@ def orbits():
         ("Earth-trailing solar orbit", [("Kepler (at retirement 2018)", 1.70e8, 1.70e8),
                                         ("Spitzer (at shutdown 2020)", 2.656e8, 2.656e8)], VIOLET),
     ]
-    fig, ax = plt.subplots(figsize=(7.0, 3.6))
+    fig, ax = plt.subplots(figsize=(7.0, 3.05))
     y = 0
     yt, yl = [], []
     for g, items, c in groups:

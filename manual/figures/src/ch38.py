@@ -84,7 +84,7 @@ def thermal():
     lam = np.logspace(np.log10(1e-6), np.log10(1e-3), 600)
     D, eps = 6.5, 0.05
     omega = np.pi * (lam / D) ** 2           # solid angle of a beam of radius lambda/D
-    fig, ax = plt.subplots(figsize=(6.6, 3.4))
+    fig, ax = plt.subplots(figsize=(6.6, 2.8))
     for T, col, lab, yl in [(290, RED, "Telescope at 290 K\n(Hubble, ground)", 1e-4),
                             (40, BLUE, "40 K (JWST)", 1e-10), (7, VIOLET, "7 K", 1e-10),
                             (2.725, GREY, "Cosmic microwave\nbackground, 2.7 K", 1e-10)]:
@@ -100,6 +100,7 @@ def thermal():
                 f"Galaxy AB = {m} ({fs * 1e6:.2f} µJy)", fontsize=6.2, color=GREEN, va="bottom")
     ax.set_xscale("log"); ax.set_yscale("log")
     ax.set_xlim(1, 1000); ax.set_ylim(1e-12, 1e3)
+    ax.set_yticks([1e-12, 1e-9, 1e-6, 1e-3, 1, 1e3]); ax.minorticks_off()
     ax.set_xticks([1, 2, 5, 10, 20, 50, 100, 200, 500, 1000])
     ax.set_xticklabels(["1", "2", "5", "10", "20", "50", "100", "200", "500", "1 000"])
     ax.set_xlabel("Wavelength (µm)")
@@ -108,7 +109,7 @@ def thermal():
     ax.axvspan(5, 28, color=LIGHT, zorder=0)
     fig.text(0.99, 0.01, "Model: emissivity 0.05 × Planck function, integrated over a beam of radius λ/D for a "
              "6.5 m aperture; 1 Jy = 10⁻²⁶ W m⁻² Hz⁻¹.", ha="right", va="bottom", fontsize=5.9, color=GREY)
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "ch38_thermal")
 
 
@@ -267,8 +268,7 @@ def snr():
     ax.text(20.2, 11.5, "SNR = 10", fontsize=6.2, color=GREY)
     s, S, B = _snr(25.0, 2.4, 3600.)
     ax.plot(25, s, "o", color=NAVY, ms=4, zorder=5)
-    ax.annotate(f"Worked example: V = 25,\n2.4 m, 1 h → SNR ≈ {float(s):.0f}", (25, s), xytext=(26.1, 220),
-                fontsize=6.2, arrowprops=dict(arrowstyle="-", color=GREY, lw=0.6))
+    ax.text(24.85, s * 0.8, f"SNR ≈ {float(s):.0f}", fontsize=6.2, color=NAVY, va="top", ha="right")
     ax.set_yscale("log")
     ax.set_xlim(20, 33); ax.set_ylim(0.3, 3000)
     ax.set_xlabel("Visual magnitude of a point source (V)")
@@ -333,7 +333,7 @@ def sunshield():
     a2.set_xticks(n)
     a2.set_xlabel("Layer (1 faces the Sun)")
     a2.set_ylabel("Temperature (K)")
-    a2.set_ylim(0, 400); a2.set_xlim(0.7, 5.6)
+    a2.set_ylim(0, 490); a2.set_xlim(0.7, 5.6)
     a2.legend(fontsize=6.0, loc="upper right")
     a2.set_title("(b) Simple radiative model", fontsize=7.6)
     fig.text(0.99, 0.01, "Model: layer 1 at 360 K; sealed: four gaps with ε = 0.05 faces, layer 5 radiating to space; "
@@ -389,12 +389,13 @@ def orbits():
     th = np.linspace(0, 2 * np.pi, 400)
     r = sa * (1 - e ** 2) / (1 + e * np.cos(th))
     a.plot(r * np.cos(th) / 1e3, r * np.sin(th) / 1e3, color=RED, lw=1.1)
-    a.text(-70, -62, "Chandra\n12 650 × 136 200 km", fontsize=5.9, color=RED, ha="center", va="top")
+    a.annotate("Chandra\n12 650 ×\n136 200 km", xy=(-140, -20), xytext=(-215, -215), fontsize=5.9, color=RED,
+               ha="center", va="center", arrowprops=dict(arrowstyle="-", color=RED, lw=0.5))
     rp2, ra2 = RE + 119000, RE + 364000
     sa2, e2 = (rp2 + ra2) / 2, (ra2 - rp2) / (ra2 + rp2)
     r2 = sa2 * (1 - e2 ** 2) / (1 + e2 * np.cos(th))
     a.plot(r2 * np.cos(th + 2.2) / 1e3, r2 * np.sin(th + 2.2) / 1e3, color=GREEN, lw=1.0)
-    a.text(130, 175, "TESS\n(13.7 d)", fontsize=5.9, color=GREEN, ha="center")
+    a.text(130, 175, "TESS\n(≈14 d)", fontsize=5.9, color=GREEN, ha="center")
     a.add_patch(Circle((0, 0), 384.4, fc="none", ec=GREY, lw=0.7, ls="--"))
     a.text(0, -400, "Moon's orbit", fontsize=5.9, color=GREY, ha="center", va="top")
     a.text(30, 30, "Hubble\n470 km", fontsize=5.9, color=BLUE, ha="left")
