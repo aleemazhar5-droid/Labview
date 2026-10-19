@@ -451,6 +451,8 @@ def index_html(chapters, info, start):
     entries = []
     pages_text = []   # (abs page, normalized text)
     for ch in chapters:
+        if ch.key in ("G", "H", "J"):          # acronym list, glossary and credits would match everything
+            continue
         for i, t in enumerate(info[ch.key]["texts"]):
             tt = re.sub(r"-\s*\n\s*", "", t)
             tt = re.sub(r"\s+", " ", tt).lower()
@@ -462,16 +464,17 @@ def index_html(chapters, info, start):
         parts = [x.strip() for x in line.split("|")]
         head = parts[0]
         variants = [v.lower() for v in (parts[1:] or [head])]
-        pats = [re.compile(r"(?<![a-z0-9])" + re.escape(v) + r"(?![a-z0-9])") for v in variants]
-        hits = []
+        pats = [re.compile(r"(?<![a-z0-9])" + re.escape(v) + r"(?:e?s)?(?![a-z0-9])") for v in variants]
+        counts = {}
         for p, tt in pages_text:
-            if any(pt.search(tt) for pt in pats):
-                hits.append(p)
-        if not hits:
+            n = sum(len(pt.findall(tt)) for pt in pats)
+            if n:
+                counts[p] = n
+        if not counts:
             continue
-        if len(hits) > 14:
-            hits = hits[:14]
-        entries.append((head, hits))
+        if len(counts) > 12:      # keep the pages where the term is most prominent
+            counts = dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:12])
+        entries.append((head, sorted(counts)))
     entries.sort(key=lambda e: e[0].lower().lstrip("'\""))
     out, letter = [], None
     for head, hits in entries:
@@ -480,13 +483,21 @@ def index_html(chapters, info, start):
         if L != letter:
             letter = L
             out.append(f'<div class="letter">{L}</div>')
-        links = ", ".join(f'<a href="{REF}p/{p}">{p}</a>' for p in compress_pages(hits))
+        links = ", ".join(f'<a href="{REF}p/{a}">{a}</a>' if a == b else f'<a href="{REF}p/{a}">{a}</a>–{b}'
+                          for a, b in compress_pages(hits))
         out.append(f'<div class="ie">{esc(head)}, {links}</div>')
     return page_html("Index", f'<div class="toc-title">Index</div><div class="index">{"".join(out)}</div>')
 
 
 def compress_pages(hits):
-    return sorted(set(hits))
+    """Group consecutive pages into (first, last) runs."""
+    runs = []
+    for p in sorted(set(hits)):
+        if runs and p == runs[-1][1] + 1:
+            runs[-1][1] = p
+        else:
+            runs.append([p, p])
+    return [tuple(r) for r in runs]
 
 
 def part_html(part):
