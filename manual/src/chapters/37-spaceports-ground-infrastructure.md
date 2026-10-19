@@ -27,7 +27,7 @@ Earth's rotation carries the pad east at 465 m/s × cos φ: 463 m/s at Kourou, 4
 
 Kourou lies at 5.24° N; Baikonur at 45.96° N. Assume a 200 km parking orbit (7 784 m/s).
 
-1. **ISS orbit (51.64°).** From Kourou, sin *Az* = cos 51.64° / cos 5.24° = 0.6209 / 0.9958 = 0.6235, so *Az* = 38.6°. From Baikonur, sin *Az* = 0.6209 / 0.6950 = 0.8934, so *Az* = 63.2°.
+1. **ISS orbit (51.64°).** From Kourou, sin *Az* = cos 51.64° / cos 5.24° = 0.6206 / 0.9958 = 0.6232, so *Az* = 38.6°. From Baikonur, sin *Az* = 0.6206 / 0.6952 = 0.8927, so *Az* = 63.2°.
 2. **Rotation gain.** Kourou's surface moves at 463 m/s, Baikonur's at 323 m/s. The speed the rocket must add is the vector difference between orbital velocity and ground velocity, $\sqrt{v^2 - 2 v v_r \sin Az + v_r^2}$. This gives a gain of 280 m/s at Kourou and 287 m/s at Baikonur: the equatorial site's extra rotation points across the orbit and is wasted.
 3. **Geostationary transfer.** Launching due east, Kourou reaches a transfer orbit inclined about 5°. Baikonur's drop zones keep its launches at 51.5° or more, so a satellite would have to remove 51.6° of inclination at apogee, where it moves at 1.60 km/s and must reach 3.07 km/s. The combined burn is $\Delta v = \sqrt{v_1^2 + v_2^2 - 2 v_1 v_2 \cos \Delta i}$ = 1.49 km/s from Kourou against 2.43 km/s from Baikonur.
 4. **Propellant.** With a 320 s apogee engine ($v_e$ = 3.14 km/s), the propellant share of the satellite's mass is $1 - e^{-\Delta v / v_e}$: 38 % from Kourou and 54 % from Baikonur. This is why Proton's Breeze-M upper stage performs most of the plane change itself in a long, multi-burn ascent, and why Europe built its spaceport near the equator.
@@ -54,9 +54,9 @@ Geometry says which orbits a site *could* reach; safety says which it *may*. Roc
 
 ![Initial launch corridors from four spaceports in the Americas: great-circle paths for the first 2 200 km on the azimuth needed for each inclination.](figures/out/ch37_corridors.png){#fig:corridormap width=96%}
 
-The corridors leave a fingerprint in the orbits each site actually uses (@fig:incflown). Baikonur, deep inside Kazakhstan, drops its stages in designated zones on the steppe; partly to keep them out of China, it launches no lower than about 51.5°, which is why the ISS orbits at 51.6°. Palmachim, on Israel's coast, launches westward over the Mediterranean to avoid overflying its neighbours, so every satellite launched from Israel flies a retrograde orbit inclined 139–143°. Sriharikota's polar launches must turn ("dog-leg") to avoid Sri Lanka, one reason India is building a second spaceport farther south. Florida had not launched into a polar orbit since February 1969 until a Falcon 9 flew south along the coast on 30 August 2020; this "polar corridor" has since carried the PACE satellite and, in April 2025, the first crewed polar flight, Fram2.
+The corridors leave a fingerprint in the orbits each site actually uses (@fig:incflown). Baikonur, deep inside Kazakhstan, drops its stages in designated zones on the steppe; partly to keep them out of China, it launches no lower than about 51.5°, which is why the ISS orbits at 51.6°. Palmachim, on Israel's coast, launches westward over the Mediterranean to avoid overflying its neighbours, so every satellite launched from Israel flies a retrograde orbit inclined 139–143°. Sriharikota's polar launches must turn ("dog-leg") to avoid Sri Lanka, one reason India is building a second spaceport farther south. Florida had not launched into a polar orbit since February 1969 until a Falcon 9 flew south along the coast on 30 August 2020; this "polar corridor" has since carried the PACE satellite and, in 2025, the first crewed polar flight, Fram2.
 
-![Inclinations reached by successful orbital launches from 15 spaceports, 2010–2026, against the band each site's latitude allows (shaded). Clusters reveal the corridors: 51.6° at Baikonur, 43° and 53° (Starlink) at the Cape, 97–98° at Vandenberg, Taiyuan and Jiuquan, 139–143° at Palmachim. Open circles are geostationary missions whose upper stages removed inclination in orbit.](figures/out/ch37_incflown.svg){#fig:incflown width=100%}
+![Inclinations reached by successful orbital launches from 15 spaceports, 2010–2026, against the band each site's latitude allows (shaded). Clusters reveal the corridors: 51.6° at Baikonur, 43° and 53° (Starlink) at the Cape, 97–98° at Vandenberg, Taiyuan and Jiuquan, 139–143° at Palmachim. Open circles, below the site's latitude, are mostly geostationary missions whose upper stages removed inclination in orbit.](figures/out/ch37_incflown.svg){#fig:incflown width=100%}
 
 ### Weather, Logistics and Politics
 
@@ -81,7 +81,7 @@ About 40 sites, counting airfields used for air launch, have sent rockets toward
 | Cape Canaveral SFS & Kennedy Space Center (USA) | 28.5° N | SLC-40, LC-39A (Falcon 9, Falcon Heavy); SLC-41 (Atlas V, Vulcan); LC-36 (New Glenn); LC-39B (SLS) | 109 | Busiest site; Starship pads at LC-39A and SLC-37 under construction |
 | Vandenberg SFB (USA) | 34.7° N | SLC-4E (Falcon 9); SLC-6 (Falcon, being rebuilt); SLC-2W (Firefly Alpha); SLC-8 (Minotaur) | 66 | Polar and sun-synchronous launches south over the Pacific |
 | Starbase, Texas (USA) | 26.0° N | Pads 1 and 2 (Starship) | 5 | Up to 25 launches a year approved in 2025 |
-| Jiuquan (China) | 41.0° N | LC-43/91 (Long March 2F, crews); LC-43/94–95 (Long March 2C/2D, 4); commercial pads (Kuaizhou, Ceres-1, Zhuque, Long March 12B) | 34 | China's crewed launch site, in the Gobi Desert |
+| Jiuquan (China) | 41.0° N | LC-43/91 (Long March 2F, crews); LC-43/94 (Long March 2C/2D, 4B/4C); commercial pads (Kuaizhou, Ceres-1, Zhuque, Long March 12B) | 34 | China's crewed launch site, in the Gobi Desert |
 | Wenchang (China) | 19.6° N | LC-101 (Long March 5), LC-201 (Long March 7/7A), LC-301 (Long March 10); commercial Pads 1–2 (Long March 8, 12, 10B) | 21 | Coastal; heavy lift, station cargo and lunar missions |
 | Xichang (China) | 28.2° N | LC-2, LC-3 (Long March 3A/3B/3C) | 19 | Geostationary and BeiDou launches; stages fall inland |
 | Mahia, LC-1 (New Zealand) | 39.3° S | LC-1A, LC-1B (Electron) | 17 | Private; up to 120 launch opportunities a year |
@@ -105,7 +105,7 @@ Europe's spaceport is the **Guiana Space Centre** at Kourou, run by the French s
 
 ### Russia and Kazakhstan
 
-**Baikonur**, on the Kazakh steppe, launched Sputnik and Gagarin and is still Russia's only site for crews and ISS cargo. Soyuz rockets are assembled horizontally, rolled to the pad by train and raised by a hydraulic erector (@fig:soyuzrail). On 27 November 2025, during the launch of Soyuz MS-28, the mobile service cabin under the rocket at Site 31, not properly secured after retraction, fell into the flame trench. With Gagarin's original pad retired in 2019, Russia briefly had no pad for crewed flights; more than 150 workers rebuilt the cabin, installing 19 m members weighing 17 t each, and the pad was cleared for a Progress launch in March 2026. Site 45 flew the first Soyuz-5 on a suborbital test on 30 April 2026.
+**Baikonur**, on the Kazakh steppe, launched Sputnik and Gagarin and is still Russia's only site for crews and ISS cargo. Soyuz rockets are assembled horizontally, rolled to the pad by train and raised by a hydraulic erector (@fig:soyuzrail). On 27 November 2025, during the launch of Soyuz MS-28, the mobile service cabin under the rocket at Site 31, not properly secured after retraction, fell into the flame trench. With Gagarin's original pad retired in 2019, Russia briefly had no pad for crewed flights; more than 150 workers rebuilt the cabin, installing 19 m structural members of about 17 t, and the pad was cleared for a Progress launch in March 2026. Site 45 flew the first Soyuz-5 on a suborbital test on 30 April 2026.
 
 ::: figrow
 ![A Soyuz rocket rolled out by train to Site 31 at Baikonur, September 2023. Assembled horizontally, it travels on the transporter-erector that will raise it at the pad.](figures/photos/ch37_soyuzrail.jpg){#fig:soyuzrail}
@@ -125,7 +125,7 @@ China has four state launch centres and a growing commercial sector. **Jiuquan**
 
 India's **Satish Dhawan Space Centre** on Sriharikota Island has two pads; in January 2025 the government approved a third (₹3 985 crore, about four years to build) for the Next Generation Launch Vehicle. **Kulasekarapattinam**, at 8.4° N in Tamil Nadu, is being built for SSLV and private rockets, with a first launch planned for 2027.
 
-Japan launches H3 from the Yoshinobu complex at **Tanegashima**, where rockets are stacked in an assembly building and moved to the pad on a mobile launcher (@fig:tanegashima). The H-IIA made its final flight in June 2025; H3 failed in December 2025 and returned to flight in mid-2026. The solid Epsilon S, delayed by two motor explosions in tests, was being prepared at **Uchinoura** for a launch by March 2027. South Korea's **Naro Space Center** launched Nuri successfully in November 2025, the first time with industry as prime contractor, and again in October 2026.
+Japan launches H3 from the Yoshinobu complex at **Tanegashima**, where rockets are stacked in an assembly building and moved to the pad on a mobile launcher (@fig:tanegashima). The H-IIA made its final flight in June 2025; H3 failed in December 2025 and returned to flight in mid-2026. The solid Epsilon S, delayed by two motor explosions in ground tests, is due to fly from **Uchinoura** by March 2027. South Korea's **Naro Space Center** launched Nuri successfully in November 2025, the first time with Hanwha Aerospace building the rocket, and again in October 2026.
 
 ![An H-IIA rocket carrying the Global Precipitation Measurement Core Observatory rolls out on its mobile launcher to Launch Pad 1 at Tanegashima in February 2014. The red-and-white masts are lightning towers.](figures/photos/ch37_h2a.jpg){#fig:tanegashima width=40%}
 
@@ -133,7 +133,7 @@ Israel launches Shavit rockets from **Palmachim** air base; Iran uses the **Imam
 
 ### New and Small Spaceports
 
-Small launchers have prompted a wave of new sites, many at high latitudes where polar orbits can be reached over empty sea (@tbl:newspaceports). Isar Aerospace's Spectrum failed 30 s into its first flight from **Andøya**, Norway, in March 2025 but reached orbit on 5 September 2026 — the first orbital launch from continental Western Europe. RFA One stood on the pad at **SaxaVord** in Shetland in July 2026 but was removed for investigation.
+Small launchers have prompted a wave of new sites, many at high latitudes where polar orbits can be reached over empty sea (@tbl:newspaceports). Isar Aerospace's Spectrum failed 30 s into its first flight from **Andøya**, Norway, in March 2025 but reached orbit on 5 September 2026 — the first orbital launch from continental Western Europe.
 
 | Spaceport | Latitude | Operator and vehicle | Status (October 2026) |
 |-----------|----|--------------|----------------|
@@ -162,7 +162,7 @@ The exhaust, at 2–4 km/s and up to about 3 000 °C, passes through a hole in t
 
 ### Water: Deluge and Sound Suppression
 
-Ignition creates a sharp pressure pulse, the **ignition overpressure**, which reflects from the trench onto the rocket; on the first Space Shuttle flight in 1981 it knocked off or damaged 164 heat-shield tiles. Lift-off also radiates about 200 dB of sound power, which shakes the payload (Chapter 34). The cure is water sprayed into the exhaust and over the mount, which absorbs energy as it is shattered into droplets and turned to steam. At Pad 39B a 400 000-gallon (1.5 million litre) tower empties in under 30 s, at a peak of about 70 m³/s (@fig:wetflow); the Shuttle's 300 000 gallons flowed for 41 s, starting 6.6 s before main-engine start; Ariane 6 receives about a quarter of an Olympic pool in 20 s. Most of the white cloud seen at lift-off is this water turned to steam.
+Ignition creates a sharp pressure pulse, the **ignition overpressure**, which reflects from the trench onto the rocket; on the first Space Shuttle flight in 1981 it caused most of the damage to the orbiter's heat shield, on which 16 tiles were lost and 148 damaged. Lift-off also radiates about 200 dB of sound power, which shakes the payload (Chapter 34). The cure is water sprayed into the exhaust and over the mount, which absorbs energy as it is shattered into droplets and turned to steam. At Pad 39B a 400 000-gallon (1.5 million litre) tower empties in under 30 s, at a peak of about 70 m³/s (@fig:wetflow); the Shuttle's 300 000 gallons, released just before main-engine ignition, emptied in 41 s; Ariane 6 receives about a quarter of an Olympic pool in 20 s. Most of the white cloud seen at lift-off is this water turned to steam.
 
 ![A test of the Pad 39B sound-suppression system in September 2019: water pours over the SLS mobile launcher and through its flame hole into the trench.](figures/photos/ch37_wetflow.jpg){#fig:wetflow width=60%}
 
@@ -182,7 +182,7 @@ A pad is also a cryogenic plant (@tbl:padcommodities). NASA's newest hydrogen sp
 | Liquid hydrogen (LH₂) | −253 °C | 71 | Fuel (SLS, Ariane 6, H3, Centaur) | Invisible flame; leaks; embrittlement |
 | Liquid methane (LCH₄) | −162 °C | 422 | Fuel (Starship, Vulcan, New Glenn, Zhuque) | Flammable vapour cloud |
 | RP-1 kerosene | Ambient; Falcon 9 chills to about −7 °C | ≈ 810 | Fuel (Falcon, Soyuz, Electron, Long March 6/7) | Fire |
-| Hydrazine, MMH, N₂O₄ | Ambient, sealed | 1 000–1 450 | Spacecraft thrusters; some upper stages | Toxic, carcinogenic; ignite on contact |
+| Hydrazine, MMH, N₂O₄ | Ambient, sealed | 870–1 450 | Spacecraft thrusters; some upper stages | Toxic, carcinogenic; ignite on contact |
 | Helium, nitrogen | Gas at 20–40 MPa | — | Pressurant; purges | Asphyxiation; stored energy |
 
 : Commodities stored and handled at a typical launch site. {#tbl:padcommodities}
@@ -213,7 +213,7 @@ Before each launch the range defines **hazard areas** where falling stages, fair
 
 ### Recovery Fleets and Landing Zones
 
-Reusable rockets have turned ranges into recovery operations. SpaceX's three autonomous **droneships**, two in the Atlantic and one in the Pacific, wait about 600 km downrange for boosters (@fig:corridormap), and other ships collect fairing halves from the sea. Boosters that fly back land on concrete **landing zones**; at Cape Canaveral Landing Zone 1 was retired when its lease ended in July 2025, and LZ-40 beside SLC-40 took its first booster on 13 February 2026. Dragon capsules have splashed down off California since 2025, after pieces of their jettisoned trunks reached land in Australia and North Carolina. Blue Origin lands New Glenn boosters on the ship *Jacklyn*, and in July 2026 China caught a Long March 10B first stage in a net of cables on the ship *Linghangzhe*.
+Reusable rockets have turned ranges into recovery operations. SpaceX's autonomous **droneships** — one in the Atlantic and one in the Pacific since a third was reassigned to Starship in April 2026 — wait about 600 km downrange for Falcon boosters (@fig:corridormap); other ships collect fairing halves. Boosters that fly back land on concrete **landing zones**; at Cape Canaveral Landing Zone 1 was retired when its lease ended in July 2025, and LZ-40 beside SLC-40 took its first booster on 13 February 2026. Dragon capsules have splashed down off California since 2025, after pieces of their jettisoned trunks reached land in Australia and North Carolina. Blue Origin lands New Glenn boosters on the ship *Jacklyn*, and in July 2026 China caught a Long March 10B first stage in a net of cables on the ship *Linghangzhe*.
 
 ## The Launch Campaign and Countdown
 
@@ -254,7 +254,7 @@ Weather causes about half of all scrubs at Cape Canaveral: in 2020 the 45th Weat
 | Cumulus clouds | Within 18.5 km of cumulus with tops colder than freezing, unless distance rules are met |
 | Thick clouds | Flight through a layer more than 1.4 km thick extending into freezing temperatures |
 | Electric field | Field mills within 9.3 km of the pad read more than ±1 500 V/m (or ±1 000 V/m under some conditions) in the last 15 min |
-| Abort weather | Wind, waves or rain at more than 50 downrange splashdown sites exceed the limits for a Dragon abort |
+| Abort weather | Conditions at any of 50+ downrange sites would exceed Dragon's abort splashdown limits |
 
 : Weather launch commit criteria for a crewed Falcon 9 from Florida (NASA fact sheet, abridged). {#tbl:wxcriteria}
 
@@ -283,7 +283,7 @@ When a criterion is violated the count **holds**; if the problem cannot be clear
 
 ### Noise and Sonic Booms
 
-A rocket's **sound power** is a small fraction η, the **acoustic efficiency**, of the mechanical power of its jet, ½ × thrust × exhaust speed. Measurements 1.4–1.8 km from the Artemis I launch gave SLS a sound power level of 202.4 dB (re 1 pW) and an efficiency of 0.33 %, below the 0.5 % long assumed; Falcon 9 radiates about 196 dB and the Saturn V about 205 dB. Treating the rocket as a source above hard ground gives the levels of @fig:launchnoise. The model reproduces SLS's measured 137 dB at 1.43 km and predicts 123 dB at 10 km from Super Heavy, close to the 125 dB recorded by Brigham Young University researchers about 10 km from Starbase on Starship Flight 5. The 120 dB contour lies about 4.5 km from a Falcon 9, 9 km from SLS and 14 km from Super Heavy.
+A rocket's **sound power** is a small fraction η, the **acoustic efficiency**, of the mechanical power of its jet, ½ × thrust × exhaust speed. Measurements 1.4–1.8 km from the Artemis I launch gave SLS a sound power level of 202.4 dB (re 1 pW) and an efficiency of 0.33 %, below the 0.5 % long assumed; Falcon 9 radiates about 196 dB and the Saturn V about 205 dB. Treating the rocket as a source above hard ground gives the levels of @fig:launchnoise. The model reproduces SLS's measured 137 dB at 1.43 km and predicts 123 dB at 10 km from Super Heavy, close to the 125 dB recorded by Brigham Young University researchers about 10 km from Starbase on Starship Flight 5. The 120 dB contour lies about 4.5 km from a Falcon 9, 9 km from SLS and 13 km from Super Heavy.
 
 ![Maximum overall sound level against distance for five launch vehicles, from their sound power assuming hemispherical spreading over hard ground and a 5 dB directivity gain. Points are measurements at the Artemis I launch and during Starship Flight 5.](figures/out/ch37_noise.svg){#fig:launchnoise width=92%}
 
@@ -291,7 +291,7 @@ The model ignores absorption by the air, small at the low frequencies (10–100 
 
 ### Debris, Wildlife and Water
 
-Spaceports often share land with wildlife because their safety zones keep people out: Kennedy Space Center lies within the Merritt Island National Wildlife Refuge, Starbase among protected tidal flats, and Vandenberg's coast hosts nesting shorebirds and seals. Operators control lighting that disorients nesting sea turtles, monitor deluge water (which picks up hydrochloric acid from solid motors) and survey debris thrown out at lift-off. Downrange, falling stages have contaminated drop zones in Kazakhstan and China with the toxic fuel UDMH.
+Spaceports often share land with wildlife because their safety zones keep people out: Kennedy Space Center shares its land with the Merritt Island National Wildlife Refuge, Starbase among protected tidal flats, and Vandenberg's coast hosts nesting shorebirds and seals. Operators control lighting that disorients nesting sea turtles, monitor deluge water (which picks up hydrochloric acid from solid motors) and survey debris thrown out at lift-off. Downrange, falling stages have contaminated drop zones in Kazakhstan and China with the toxic fuel UDMH.
 
 ### Licensing and Environmental Review
 
@@ -309,7 +309,7 @@ A rocket launched from an aircraft or a ship can choose its latitude and azimuth
 
 | System | Platform | Flights | Period | Status (2026) |
 |---------|----------|---------|-----|------|
-| Pegasus (Northrop Grumman) | L-1011 *Stargazer* (earlier NB-52) | 46, of which 4 failed or partly failed | 1990–2026 | Flown occasionally |
+| Pegasus (Northrop Grumman) | L-1011 *Stargazer* (earlier NB-52) | 46, of which 3 failed and 2 partly failed | 1990–2026 | Flown occasionally |
 | LauncherOne (Virgin Orbit) | Boeing 747 *Cosmic Girl* | 6, of which 4 succeeded | 2020–23 | Company closed 2023 |
 | Sea Launch (Zenit-3SL) | *Odyssey* platform at the equator, 154° W | 36, of which 3 failed | 1999–2014 | Ended; platform moved to Russia |
 | Chinese sea launches | Barges and ships in the Yellow and South China Seas | 28, all successful | 2019–26 | Expanding |
@@ -328,7 +328,7 @@ As launch rates climb, ranges are turning to software (Chapter 47). Scheduling s
 
 - A site at latitude φ can launch directly into inclinations from φ to 180° − φ, with sin *Az* = cos *i* / cos φ. Rotation adds 465 m/s × cos *i*; latitude matters most for geostationary missions.
 - Safety corridors decide which azimuths are allowed, explaining Baikonur's 51.6°, Palmachim's retrograde orbits and Florida's polar corridor of 2020.
-- In 2025 Florida (109) and Vandenberg (66) hosted more than half of the world's 330 orbital attempts; China flew 93 times, and Rocket Lab's Mahia site outflew Russia.
+- In 2025 Florida (109) and Vandenberg (66) hosted more than half of the world's 330 orbital attempts; China flew 93 times, and Rocket Lab's Mahia site alone matched all 17 Russian launches.
 - A pad combines a flame trench and deflector, a deluge of up to 70 m³/s, umbilical towers, lightning masts and a cryogenic farm. Rockets are stacked vertically and carried out, integrated horizontally and erected, or built on the pad.
 - The range tracks the flight, clears hazard areas in the sky and at sea, and recovers boosters, fairings and capsules.
 - Weather causes about half of Florida's scrubs; on a July afternoon the chance of launching on a given day can fall below one in two.

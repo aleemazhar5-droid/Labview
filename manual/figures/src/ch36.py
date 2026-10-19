@@ -471,7 +471,7 @@ CAP = [  # name, first flight, max LEO payload (t), country, flying in 2026 (Non
     ("Long March 5", 2016, 25.0, "China", True, (2017.8, 33.0, "center", 1)),
     ("Electron", 2017, 0.3, "USA", True, (2016.2, 0.3, "right", 0)),
     ("LVM3", 2017, 10.0, "India", True, (2017.8, 8.7, "left", 0)),
-    ("Falcon Heavy", 2018, 63.8, "USA", True, (2017.2, 63.8, "right", 0)),
+    ("Falcon Heavy", 2018, 63.8, "USA", True, (2017.2, 55.0, "right", 0)),
     ("SLS Block 1", 2022, 95.0, "USA", True, (2021.2, 95.0, "right", 0)),
     ("Vega C", 2022, 3.3, "Europe", True, (2022.8, 3.3, "left", 0)),
     ("Starship (V3)", 2023, 100.0, "USA", True, (2023.8, 112.0, "left", 0)),
@@ -483,7 +483,7 @@ CAP = [  # name, first flight, max LEO payload (t), country, flying in 2026 (Non
     ("Kinetica-2", 2026, 12.0, "China", True, (2026.8, 11.4, "left", 0)),
     ("Long March 10B", 2026, 16.0, "China", True, (2026.8, 15.8, "left", 0)),
     ("Vikram-1", 2026, 0.35, "India", True, (2026.8, 0.35, "left", 0)),
-    ("Long March 10 (2027)", 2027, 70.0, "China", None, (2026.2, 72.0, "right", 0)),
+    ("Long March 10 (2027)", 2027, 70.0, "China", None, (2026.2, 78.0, "right", 0)),
 ]
 
 

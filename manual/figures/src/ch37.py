@@ -473,7 +473,7 @@ def noise():
         ("Falcon 9", 7.607e6, 2770, BLUE, 196.0),
         ("SLS Block 1 (Artemis I)", 39.1e6, None, ORANGE, 202.4),
         ("Saturn V (estimate)", 34.8e6, None, VIOLET, 204.7),
-        ("Super Heavy (33 Raptors)", 33 * 2.45e6, 3200, RED, None),
+        ("Super Heavy (33 Raptor 2)", 33 * 2.26e6, 3200, RED, None),
     ]
     eta, Q = 0.003, 5.0
     r = np.logspace(np.log10(300), np.log10(50000), 300)
@@ -507,7 +507,7 @@ def noise():
     ax.legend(fontsize=6.0, loc="upper right", frameon=False)
     fig.text(0.99, 0.01, "L$_p$ = L$_W$ + 5 dB (directivity) − 10 log₁₀(2πr²): hemispherical spreading over hard ground, "
              "no atmospheric absorption. L$_W$ = 10 log₁₀(η·½·F·v$_e$ / 1 pW) with η = 0.3 %, or measured/estimated "
-             "values (Kellison & Gee 2023, 2024).", ha="right", va="bottom", fontsize=5.9, color=GREY, wrap=True)
+             "values (Kellison & Gee 2023, 2024). Super Heavy: 33 × 2.26 MN, v$_e$ ≈ 3.2 km/s.", ha="right", va="bottom", fontsize=5.9, color=GREY, wrap=True)
     fig.tight_layout(rect=(0, 0.07, 1, 1))
     save(fig, "ch37_noise")
     for n, lw, rr in rows:
