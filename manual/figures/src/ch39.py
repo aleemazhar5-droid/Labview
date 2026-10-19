@@ -540,11 +540,12 @@ def transit():
     a1.axvline(11.2, color=GREY, lw=0.7, ls="--")
     a1.text(10.4, 2.0, "Jupiter", fontsize=6.3, color=INK, rotation=90, va="bottom")
     a1.scatter([1.0], [83.9], color=INK, s=14, zorder=4)
-    a1.annotate("84 ppm", xy=(1.0, 83.9), xytext=(1.6, 30), fontsize=6.4,
+    a1.annotate("84 ppm", xy=(1.0, 83.9), xytext=(1.12, 36), fontsize=6.4,
                 arrowprops=dict(arrowstyle="-", color=GREY, lw=0.6))
-    for v, t in [(60, "≈60 ppm/h: TESS best (bright star)"), (20, "≈20 ppm/6.5 h: Kepler (12th mag)")]:
+    for v, t in [(60, "≈60 ppm in 1 h: TESS requirement (bright star)"), (20, "≈20 ppm in 6.5 h: Kepler goal (12th mag)")]:
         a1.axhline(v, color=NAVY, lw=0.7, ls=":")
-        a1.text(14.5, v * 1.12, t, fontsize=6.0, ha="right", va="bottom", color=INK)
+        a1.text(14.5, v * 1.12, t, fontsize=6.0, ha="right", va="bottom", color=INK,
+                bbox=dict(fc="white", ec="none", pad=0.6))
     a1.set_xscale("log")
     a1.set_yscale("log")
     a1.set_xlim(0.5, 15)
@@ -553,8 +554,8 @@ def transit():
     a1.set_xticklabels(["0.5", "1", "2", "5", "10"])
     a1.set_xlabel("Planet radius (Earth radii)")
     a1.set_ylabel("Transit depth (ppm)")
-    a1.legend(loc="upper left", fontsize=6.1)
-    a1.set_title("(a) Transit depth (R_p / R_*)²", loc="left", fontsize=8.6)
+    a1.legend(loc="upper left", fontsize=6.1, frameon=True, facecolor="white", edgecolor="#D5DDE5", framealpha=1.0)
+    a1.set_title("(a) Transit depth $(R_p/R_\\star)^2$", loc="left", fontsize=8.6)
 
     # atmospheric signal: 2 H Rp / R*^2 x 5 scale heights (values from NASA Exoplanet Archive, mu assumed)
     k, mH, G = 1.380649e-23, 1.6735e-27, 6.674e-11
@@ -570,23 +571,25 @@ def transit():
         g = G * m * ME / (r * RE) ** 2
         H = k * T / (mu * mH * g)
         names.append(nme)
-        sig.append(5 * 2 * H * r * RE / (rs * RS) ** 2 * 1e6)
+        sig.append(2 * H * r * RE / (rs * RS) ** 2 * 1e6)
     y = np.arange(len(pl))[::-1]
     a2.barh(y, sig, color=[BLUE, BLUE, BLUE, GREEN, GREEN, GREY], height=0.6, edgecolor="white")
     for yy, s in zip(y, sig):
-        a2.text(s * 1.2, yy, f"{s:.3g} ppm", va="center", fontsize=6.3, color=INK)
+        txt = f"{s:.0f} ppm" if s >= 10 else f"{s:.2g} ppm"
+        a2.text(s * 1.2, yy, txt, va="center", fontsize=6.3, color=INK, zorder=5,
+                bbox=dict(fc="white", ec="none", pad=0.6))
     a2.set_yticks(y)
     a2.set_yticklabels(names, fontsize=6.5)
     a2.set_xscale("log")
-    a2.set_xlim(0.3, 3e4)
+    a2.set_xlim(0.08, 3e3)
     a2.axvline(20, color=NAVY, lw=0.7, ls=":")
-    a2.text(22, 5.45, "≈20 ppm: practical\nJWST noise floor", fontsize=6.0, color=INK, va="center")
-    a2.set_xlabel("Spectral feature amplitude, 5 scale heights (ppm)")
+    a2.text(24, 0.0, "≈20 ppm: indicative\nJWST precision", fontsize=6.0, color=INK, va="center")
+    a2.set_xlabel("Signal of one atmospheric scale height (ppm)")
     a2.grid(axis="y", visible=False)
     a2.tick_params(axis="y", length=0)
     a2.set_title("(b) Signal of an atmosphere in transmission", loc="left", fontsize=8.6)
-    fig.text(0.99, 0.005, "Scale height H = kT/(μ m_H g) with T = equilibrium temperature; feature ≈ 2·5H·R_p/R_*². "
-             "Planet and star data: NASA Exoplanet Archive; μ = 2.3 (H₂) or 28–29 (N₂-rich) assumed.",
+    fig.text(0.99, 0.005, "Scale height H = kT/(μ m_H g), T = equilibrium temperature; signal = 2H·Rp/R*²; strong bands "
+             "span 2–5 H. Data: NASA Exoplanet Archive; μ = 2.3 (H₂) or 28–29 (N₂-rich) assumed.",
              ha="right", va="bottom", fontsize=6.0, color=GREY)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "ch39_transit")
@@ -599,11 +602,11 @@ def orbits():
     groups = [
         ("Low Earth orbit", [("Swift (Oct 2026)", 278, 282), ("Hubble", 468, 471), ("Fermi", 487, 498),
                              ("NuSTAR", 532, 542), ("IXPE", 528, 537)], BLUE),
-        ("High Earth orbit", [("Chandra", 12650, 136200), ("XMM-Newton", 7000, 114000),
-                              ("TESS (2:1 lunar resonance)", 108000, 375000)], ORANGE),
+        ("High Earth orbit", [("Chandra", 12650, 136200), ("XMM-Newton", 29480, 91640),
+                              ("TESS (2:1 lunar resonance)", 119090, 364460)], ORANGE),
         ("Sun–Earth L2", [("JWST, Gaia, Euclid, Roman,\nPlanck, Herschel, eROSITA", 1.2e6, 1.8e6)], GREEN),
-        ("Earth-trailing solar orbit", [("Kepler (at retirement 2018)", 1.51e8, 1.51e8),
-                                        ("Spitzer (at shutdown 2020)", 2.65e8, 2.65e8)], VIOLET),
+        ("Earth-trailing solar orbit", [("Kepler (at retirement 2018)", 1.70e8, 1.70e8),
+                                        ("Spitzer (at shutdown 2020)", 2.656e8, 2.656e8)], VIOLET),
     ]
     fig, ax = plt.subplots(figsize=(7.0, 3.6))
     y = 0
@@ -617,7 +620,9 @@ def orbits():
             yt.append(y)
             yl.append(name)
             y -= 1
-        ax.text(1.4e9, y + 0.5 + len(items) / 2, g, fontsize=7.0, color=c, weight="bold", ha="right", va="center")
+        gx = {"Low Earth orbit": 2.0e3, "High Earth orbit": 1.2e6, "Earth-trailing solar orbit": 8e7}.get(g, 1.4e9)
+        gha = "left" if g in ("Low Earth orbit", "High Earth orbit") else "right"
+        ax.text(gx, y + 0.5 + len(items) / 2, g, fontsize=7.0, color=c, weight="bold", ha=gha, va="center")
         y -= 0.6
     refs = [(35786, "GEO 35 786 km"), (384400, "Moon 384 400 km"), (1.496e8, "1 AU")]
     for v, t in refs:
@@ -632,7 +637,7 @@ def orbits():
     ax.grid(axis="y", visible=False)
     ax.tick_params(axis="y", length=0)
     fig.text(0.99, 0.005, "Bars: perigee–apogee (Earth orbits, CelesTrak elements Oct 2026) or approximate range of "
-             "distance for L2 halo orbits. Dots: distance at end of mission.", ha="right", va="bottom",
+             "distance for L2 halo orbits. Dots: distance at end of mission (JPL Horizons).", ha="right", va="bottom",
              fontsize=6.0, color=GREY)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     save(fig, "ch39_orbits")

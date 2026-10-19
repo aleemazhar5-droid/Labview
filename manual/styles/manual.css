@@ -208,3 +208,7 @@ blockquote { margin: 0.6em 1.5em; color: #3b4651; font-style: italic; }
 .questions ol { margin: 0.2em 0 0.3em; padding-left: 1.4em; }
 .questions li { margin-bottom: 0.15em; }
 .questions p:last-child { margin-bottom: 0.2em; }
+
+/* glossary: two compact columns per letter */
+.glossary { column-count: 2; column-gap: 7mm; font-size: 8.8pt; line-height: 1.38; }
+.glossary p { break-inside: avoid; margin: 0 0 4.5pt 0; text-align: left; hyphens: auto; }

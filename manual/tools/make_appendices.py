@@ -3,6 +3,7 @@
 
   python3 tools/make_appendices.py launches   -> src/appendix_data/E-launches.md  (GCAT launch tables)
   python3 tools/make_appendices.py credits    -> src/chapters/J-image-credits.md  (from credits.json + usage)
+  python3 tools/make_appendices.py acronyms   -> src/chapters/G-acronyms.md       (extracted + appendix_data/G-acronyms-extra.tsv)
 
 Launch data: Jonathan McDowell's GCAT (planet4589.org/space/gcat, CC-BY 4.0), raw TSVs in data/raw.
 """
@@ -222,6 +223,138 @@ def credits_md():
     print(p, sum(len(v) for v in used.values()), "images")
 
 
+# ---------------------------------------------------------------- acronyms
+SMALL = {"of", "and", "the", "for", "in", "on", "to", "a", "an", "de", "du", "des", "la", "le", "et", "with", "by",
+         "at", "&", "from", "or", "per", "für", "di", "del", "y", "da", "e"}
+
+
+def _spell(words, acr):
+    """Return n if the last n words spell the acronym (initials, word prefixes, hyphen parts, small words skipped)."""
+    A = "".join(c for c in acr if c.isalnum()).lower()
+
+    def rec(ws, i, j):
+        if j == len(A):
+            return i == len(ws)
+        if i == len(ws):
+            return False
+        w = ws[i]
+        wl = w.lower()
+        if wl in SMALL and rec(ws, i + 1, j):
+            return True
+        parts = [p for p in re.split(r"[-/]", wl) if p]
+        if len(parts) > 1:                    # hyphenated: each part may give its initial, or be skipped if small
+            def hp(k, jj):
+                if k == len(parts):
+                    return rec(ws, i + 1, jj)
+                p = parts[k]
+                if jj < len(A) and p[0] == A[jj] and hp(k + 1, jj + 1):
+                    return True
+                return p in SMALL and hp(k + 1, jj)
+            if hp(0, j):
+                return True
+        k = 0
+        while k < len(wl) and j + k < len(A) and wl[k] == A[j + k]:
+            k += 1
+            if rec(ws, i + 1, j + k):
+                return True
+        return False
+
+    for n in range(1, min(len(words), 12) + 1):
+        ws = words[-n:]
+        if ws[0].lower() in SMALL:
+            continue
+        if rec(ws, 0, 0):
+            return n
+    return None
+
+
+def acronyms_md():
+    found = collections.defaultdict(collections.Counter)
+    where = collections.defaultdict(list)
+    files = sorted((SRC / "chapters").glob("*.md"))
+    for f in files:
+        key = f.name.split("-")[0]
+        if key in ("G", "H", "J"):
+            continue
+        t = f.read_text(encoding="utf-8")
+        t = re.sub(r"!\[.*?\]\(.*?\)\{.*?\}", " ", t)
+        t = re.sub(r"[*_`]", "", t)
+        for m in re.finditer(r"\(([A-Z][A-Za-z0-9\-/&]{1,11})[,;)]", t):
+            acr = m.group(1)
+            if sum(c.isupper() for c in acr) < 2:
+                continue
+            seg = t[max(0, m.start() - 220):m.start()]
+            seg = re.split(r"[.;:()\n\[\]|—–!?]", seg)[-1]
+            toks = list(re.finditer(r"[\w’'\-/&]+", seg))
+            if not toks:
+                continue
+            words = [x.group(0) for x in toks]
+            a2 = acr[:-1] if acr.endswith("s") and acr[-2:-1].isupper() else acr
+            n = _spell(words, a2)
+            if not n:
+                continue
+            exp = seg[toks[-n].start():].strip().rstrip(",")
+            exp = re.sub(r"\s+", " ", exp)
+            if a2 != acr and exp.endswith("s"):
+                exp = exp[:-1]
+            found[a2][exp] += 1
+            if key not in where[a2]:
+                where[a2].append(key)
+    extra = {}
+    xf = SRC / "appendix_data/G-acronyms-extra.tsv"
+    if xf.exists():
+        for line in xf.read_text(encoding="utf-8").splitlines():
+            if line.strip() and not line.startswith("#"):
+                a, e = line.split("\t", 1)
+                extra[a.strip()] = e.strip()
+
+    def tidy(variants):
+        # prefer a variant that is written in lower case somewhere (a common noun); else the most common one
+        lower = [v for v in variants if v[:1].islower()]
+        e = lower[0] if lower else variants[0]
+        w = e.split()
+        if len(w) > 1 and e[:1].isupper() and e[1:2].islower() and all(x[:1].islower() or x.lower() in SMALL for x in w[1:]):
+            e = e[:1].lower() + e[1:]
+        return e
+
+    rows = {}
+    for a, c in found.items():
+        rows[a] = (tidy([v for v, _ in c.most_common()]), where[a])
+    for a, e in extra.items():
+        if e == "-":
+            rows.pop(a, None)
+        else:
+            rows[a] = (e, rows.get(a, ("", []))[1])
+
+    def ch(keys):
+        nums = [str(int(k)) if k.isdigit() else k for k in keys]
+        return ", ".join(nums[:4]) + (" …" if len(nums) > 4 else "")
+
+    out = ["---", "title: Acronyms and Abbreviations",
+           "abstract: The acronyms and abbreviations used in this manual, with their meanings and the chapters in which "
+           "they are defined or mainly used.", "---", "",
+           "Space engineering is notoriously rich in acronyms. This list gives every acronym that is spelled out in the "
+           "chapters, together with common ones used without definition. The last column gives the chapters where each "
+           "is defined or mainly used (letters denote appendices). Acronyms in other languages are followed by the "
+           "English meaning where helpful. Units and chemical formulae are not listed; see Appendix A.", ""]
+    groups = collections.OrderedDict()
+    for a in sorted(rows, key=lambda x: (x.upper(), x)):
+        first = a[0].upper()
+        groups.setdefault(first if first.isalpha() else "#", []).append(a)
+    for g, items in groups.items():
+        out.append(f"## {g}\n")
+        out.append("::: small")
+        out.append("| Acronym | Meaning | Chapters |")
+        out.append("|------|----------------------|----|")
+        for a in items:
+            e, k = rows[a]
+            out.append(f"| **{esc(a)}** | {esc(e)} | {ch(k)} |")
+        out.append(":::\n")
+    p = SRC / "chapters/G-acronyms.md"
+    p.write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(p, len(rows), "acronyms")
+
+
 if __name__ == "__main__":
     sys.path.insert(0, str(ROOT / "tools"))
     what = sys.argv[1:] or ["launches", "credits"]
@@ -229,3 +362,5 @@ if __name__ == "__main__":
         launches_md()
     if "credits" in what:
         credits_md()
+    if "acronyms" in what:
+        acronyms_md()
