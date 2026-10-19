@@ -67,7 +67,7 @@ Part X — Launch Systems and Infrastructure
 - [x] 36 Launch Vehicles of the World
 - [x] 37 Spaceports and Ground Infrastructure
 Part XI — Space Observatories
-- [ ] 38 Space Telescope Engineering
+- [x] 38 Space Telescope Engineering
 - [ ] 39 Great Observatories and Deep-Space Telescopes
 Part XII — Emerging Frontiers
 - [ ] 40 In-Space Servicing, Assembly and Manufacturing
