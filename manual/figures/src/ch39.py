@@ -85,7 +85,6 @@ def emcoverage():
     axs.tick_params(axis="x", which="both", bottom=False, labelbottom=False)
     axs.text(np.sqrt(xmin * 0.3 * UM), 0.5, "Absorbed by the atmosphere: observe from space", ha="center", va="center",
              fontsize=6.6, color="white")
-    axs.text(0.55 * UM, 0.5, "visible", ha="center", va="center", fontsize=6.0, color=INK)
     axs.text(3e-1, 0.5, "radio window", ha="center", va="center", fontsize=6.4, color=INK)
     axs.text(0.0, 1.25, "Earth's atmosphere (schematic): dark = opaque, mid = partial windows, light = transparent",
              transform=axs.transAxes, fontsize=6.6, color=GREY, ha="left", va="bottom")
@@ -102,7 +101,7 @@ def emcoverage():
                 ax.add_patch(Rectangle((lo, y - 0.32), hi - lo, 0.64, fc=c, ec="white", lw=0.6))
     ax.set_yticks(range(n))
     ax.set_yticklabels([r[0] + ("  (planned)" if r[3] else "") for r in rows][::-1], fontsize=7.0)
-    ax.set_ylim(-0.7, n - 0.3)
+    ax.set_ylim(-1.5, n + 0.5)
     ax.set_xscale("log")
     ax.set_xlim(xmin, xmax)
     ax.set_xlabel("Wavelength (m)")
@@ -113,20 +112,20 @@ def emcoverage():
                (7.5e-7, 1e-3, "infrared"), (1e-3, 1e-1, "microwave"), (1e-1, 30, "radio")]
     for a, b, t in regions:
         ax.axvline(b, color="#C9D2DA", lw=0.6, zorder=0)
-        ax.text(np.sqrt(a * b), n - 0.05, t, ha="center", va="bottom", fontsize=6.6, color=GREY, style="italic")
+        ax.text(np.sqrt(a * b), n - 0.15, t, ha="center", va="center", fontsize=6.6, color=GREY, style="italic")
     # energy markers
     for e, t in [(1e9, "1 GeV"), (1e6, "1 MeV"), (1e3, "1 keV"), (1.0, "1 eV")]:
         lam = HC / e
-        ax.plot([lam, lam], [-0.7, -0.35], color=GREY, lw=0.7)
-        ax.text(lam * 1.3, -0.55, t, fontsize=6.2, color=GREY, va="center", ha="left")
+        ax.plot([lam, lam], [-1.5, -0.95], color=GREY, lw=0.7)
+        ax.text(lam * 1.4, -1.2, t, fontsize=6.2, color=GREY, va="center", ha="left")
     handles = [Patch(fc=BAND_COL[b], ec="none", label=BAND_NAME[b]) for b in ["gamma", "xray", "opt", "ir", "mw"]]
     handles.append(Patch(fc="white", ec=GREY, hatch="////", label="planned"))
-    ax.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 0.03), fontsize=6.6, ncol=2,
+    ax.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 0.06), fontsize=6.6, ncol=2,
               frameon=True, facecolor="white", edgecolor="#D5DDE5")
     fig.text(0.99, 0.005, "Ranges are the nominal bands of each mission's instruments (energy E = hc/λ). Hubble: current "
              "instruments; XRISM Resolve above 1.7 keV while its gate valve stays closed.", ha="right", va="bottom",
              fontsize=6.0, color=GREY)
-    fig.subplots_adjust(left=0.22, right=0.98, top=0.95, bottom=0.08)
+    fig.subplots_adjust(left=0.22, right=0.98, top=0.95, bottom=0.10)
     save(fig, "ch39_emcoverage")
 
 
@@ -193,7 +192,8 @@ def gantt():
             ax.text(s - 0.3, y, name, ha="right", va="center", fontsize=6.7, color=INK)
         else:
             ax.text(s - 0.3, y, name, ha="right", va="center", fontsize=6.7, color=INK)
-    ax.axvline(NOW, color=RED, lw=1.0, ls="--")
+    nplan = sum(1 for g in GANTT if g[4])
+    ax.plot([NOW, NOW], [nplan - 0.5, n + 0.4], color=RED, lw=1.0, ls="--")
     ax.text(NOW + 0.3, n + 0.1, "Oct 2026", color=RED, fontsize=7, va="bottom", ha="left")
     ax.set_xlim(1981, 2041)
     ax.set_ylim(-0.8, n + 1.0)
@@ -218,42 +218,42 @@ def gantt():
 # 3. Aperture vs launch year and survey etendue
 # ---------------------------------------------------------------------------------------------
 def apertures():
-    data = [  # name, year, aperture (m), band, planned, label offset (dx, dy factor)
-        ("IRAS", 1983.1, 0.57, "ir", False, (0.6, 1.0)),
-        ("Hubble", 1990.3, 2.4, "opt", False, (0.7, 1.0)),
-        ("ISO", 1995.9, 0.60, "ir", False, (0.7, 0.9)),
-        ("Chandra*", 1999.6, 1.2, "xray", False, (-1.0, 1.25)),
-        ("Spitzer", 2003.6, 0.85, "ir", False, (0.7, 0.92)),
-        ("Kepler", 2009.2, 0.95, "opt", False, (-6.0, 1.22)),
-        ("Herschel", 2009.4, 3.5, "ir", False, (-6.7, 1.0)),
-        ("Planck", 2009.4, 1.5, "mw", False, (-5.3, 1.0)),
-        ("WISE", 2009.95, 0.40, "ir", False, (0.7, 1.0)),
-        ("Gaia", 2013.97, 1.45, "opt", False, (0.6, 0.86)),
-        ("TESS", 2018.3, 0.105, "opt", False, (0.7, 1.0)),
-        ("CHEOPS", 2019.97, 0.32, "opt", False, (0.7, 1.0)),
-        ("JWST", 2021.98, 6.5, "ir", False, (-4.6, 1.0)),
-        ("Euclid", 2023.5, 1.2, "opt", False, (0.6, 0.85)),
-        ("SPHEREx", 2025.2, 0.20, "ir", False, (0.6, 1.0)),
-        ("Roman", 2026.66, 2.4, "opt", False, (0.6, 0.85)),
-        ("Xuntian", 2027.5, 2.0, "opt", True, (0.6, 1.08)),
-        ("PLATO (x26)", 2027.05, 0.12, "opt", True, (0.6, 0.9)),
-        ("Ariel", 2029.5, 1.1, "ir", True, (0.6, 1.0)),
-        ("PRIMA", 2033.0, 1.8, "ir", True, (0.6, 1.0)),
-        ("HWO", 2041.0, 6.0, "opt", True, (-4.0, 1.25)),
+    data = [  # name, year, aperture (m), band, planned, label x, label y, ha
+        ("IRAS", 1983.1, 0.57, "ir", False, 1984.0, 0.57, "left"),
+        ("Hubble", 1990.3, 2.4, "opt", False, 1991.2, 2.4, "left"),
+        ("ISO", 1995.9, 0.60, "ir", False, 1996.8, 0.60, "left"),
+        ("Chandra*", 1999.6, 1.2, "xray", False, 1998.7, 1.2, "right"),
+        ("Spitzer", 2003.6, 0.85, "ir", False, 2002.7, 0.85, "right"),
+        ("Kepler", 2009.2, 0.95, "opt", False, 2010.2, 0.95, "left"),
+        ("Herschel", 2009.4, 3.5, "ir", False, 2008.4, 3.5, "right"),
+        ("Planck", 2009.4, 1.5, "mw", False, 2008.4, 1.5, "right"),
+        ("WISE", 2009.95, 0.40, "ir", False, 2010.9, 0.40, "left"),
+        ("Gaia", 2013.97, 1.45, "opt", False, 2014.9, 1.45, "left"),
+        ("TESS", 2018.3, 0.105, "opt", False, 2017.4, 0.105, "right"),
+        ("CHEOPS", 2019.97, 0.32, "opt", False, 2020.9, 0.32, "left"),
+        ("JWST", 2021.98, 6.5, "ir", False, 2021.0, 6.5, "right"),
+        ("Euclid", 2023.5, 1.2, "opt", False, 2023.5, 0.97, "center"),
+        ("SPHEREx", 2025.2, 0.20, "ir", False, 2026.1, 0.20, "left"),
+        ("Roman", 2026.66, 2.4, "opt", False, 2025.8, 2.4, "right"),
+        ("Xuntian", 2027.5, 2.0, "opt", True, 2028.2, 2.65, "left"),
+        ("PLATO (26 cameras)", 2027.05, 0.12, "opt", True, 2028.0, 0.12, "left"),
+        ("Ariel", 2029.5, 1.1, "ir", True, 2030.4, 1.1, "left"),
+        ("PRIMA", 2033.0, 1.8, "ir", True, 2033.9, 1.8, "left"),
+        ("HWO concept", 2041.0, 6.0, "opt", True, 2040.0, 6.0, "right"),
     ]
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 3.4), gridspec_kw=dict(width_ratios=[1.15, 1.0]))
-    for name, yr, d, band, planned, (dx, fy) in data:
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 3.5), gridspec_kw=dict(width_ratios=[1.5, 1.0]))
+    for name, yr, d, band, planned, lx, ly, ha in data:
         c = BAND_COL[band]
         if planned:
             a1.scatter(yr, d, s=30, facecolor="white", edgecolor=c, linewidth=1.2, zorder=3)
         else:
             a1.scatter(yr, d, s=30, color=c, edgecolor="white", linewidth=0.8, zorder=3)
-        a1.text(yr + dx, d * fy, name, fontsize=6.3, va="center", ha="left", color=INK)
+        a1.text(lx, ly, name, fontsize=6.3, va="top" if ha == "center" else "center", ha=ha, color=INK)
     a1.set_yscale("log")
-    a1.set_ylim(0.07, 12)
+    a1.set_ylim(0.07, 40)
     a1.set_xlim(1980, 2046)
-    a1.set_yticks([0.1, 0.2, 0.5, 1, 2, 5, 10])
-    a1.set_yticklabels(["0.1", "0.2", "0.5", "1", "2", "5", "10"])
+    a1.set_yticks([0.1, 0.2, 0.5, 1, 2, 5, 10, 20])
+    a1.set_yticklabels(["0.1", "0.2", "0.5", "1", "2", "5", "10", "20"])
     a1.set_ylabel("Primary mirror diameter (m)")
     a1.set_xlabel("Launch year")
     a1.set_title("(a) Aperture of space telescopes", loc="left", fontsize=8.6)
@@ -261,7 +261,7 @@ def apertures():
                for b in ["xray", "opt", "ir", "mw"]]
     handles.append(Line2D([0], [0], marker="o", ls="", markerfacecolor="white", markeredgecolor=GREY, markersize=5,
                           label="planned / concept"))
-    a1.legend(handles=handles, loc="upper left", fontsize=6.1, ncol=1)
+    a1.legend(handles=handles, loc="upper left", fontsize=6.1, ncol=2, columnspacing=0.8, handletextpad=0.3)
 
     # etendue A*Omega of main survey camera
     et = [  # name, aperture m, FoV deg2, kind
@@ -277,7 +277,7 @@ def apertures():
     ]
     names, vals, cols = [], [], []
     for nme, d, fov, k in et:
-        area = 4 * np.pi * 0.0525 ** 2 if d is None else np.pi * (d / 2) ** 2
+        area = np.pi * 0.0525 ** 2 if d is None else np.pi * (d / 2) ** 2   # TESS: each camera sees 1/4 of the field
         if nme.startswith("JWST"):
             area = 25.4
         names.append(nme)
@@ -298,7 +298,7 @@ def apertures():
     a2.tick_params(axis="y", length=0)
     a2.set_title("(b) Survey power: area × field of view", loc="left", fontsize=8.6)
     fig.text(0.99, 0.005, "*Chandra: outer diameter of nested grazing-incidence mirrors. HWO: ~6 m concept, 2040s. "
-             "Étendue uses geometric aperture area (JWST 25.4 m²) and the field of the main survey camera.",
+             "Étendue uses geometric aperture area (JWST 25.4 m²) and the field of the main survey camera(s).",
              ha="right", va="bottom", fontsize=6.0, color=GREY)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "ch39_apertures")
@@ -369,9 +369,9 @@ def exoplanets():
     a1.set_ylim(0, 1650)
     a1.set_ylabel("Planets confirmed per discovery year")
     a1.grid(axis="x", visible=False)
-    a1.annotate("Kepler bulk\nvalidation (2014)", xy=(2014, 880), xytext=(2001.5, 950), fontsize=6.4,
+    a1.annotate("Kepler bulk\nvalidation (2014)", xy=(2014, 880), xytext=(2004.5, 860), fontsize=6.4,
                 arrowprops=dict(arrowstyle="-", color=GREY, lw=0.7), color=INK)
-    a1.annotate("Kepler statistical\nvalidation (2016)", xy=(2016, 1504), xytext=(2001.5, 1390), fontsize=6.4,
+    a1.annotate("Kepler statistical\nvalidation (2016)", xy=(2016.4, 1480), xytext=(2018.0, 1330), fontsize=6.4,
                 arrowprops=dict(arrowstyle="-", color=GREY, lw=0.7), color=INK)
     a1.annotate("TESS era", xy=(2021, 570), xytext=(2017.2, 760), fontsize=6.4,
                 arrowprops=dict(arrowstyle="-", color=GREY, lw=0.7), color=INK)
@@ -384,10 +384,11 @@ def exoplanets():
         cum = np.cumsum(series[k])
         tot += series[k]
         a2.plot(years, cum, color=colors[k], lw=1.6)
-        a2.text(2026.6, cum[-1], f"{k} {cum[-1]:,}".replace(",", " "), fontsize=6.2, va="center", color=INK)
+        nudge = {"Transit": 0.86, "Direct imaging": 1.2, "Other": 0.78}.get(k, 1.0)
+        a2.text(2026.6, cum[-1] * nudge, f"{k} {cum[-1]:,}".replace(",", " "), fontsize=6.2, va="center", color=INK)
     ct = np.cumsum(tot)
     a2.plot(years, ct, color=NAVY, lw=2.0)
-    a2.text(2026.6, ct[-1], f"All {int(ct[-1]):,}".replace(",", " "), fontsize=6.4, va="center", color=INK,
+    a2.text(2026.6, ct[-1] * 1.18, f"All {int(ct[-1]):,}".replace(",", " "), fontsize=6.4, va="center", color=INK,
             weight="bold")
     a2.set_yscale("log")
     a2.set_ylim(1, 1.5e4)
@@ -436,21 +437,27 @@ def lookbackfig():
     dc = np.array([dcom(z) for z in zz]) * GLY_PER_MPC
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 3.3))
     x = 1 + zz
-    a1.plot(x, lbs, color=BLUE, label="Look-back time")
-    a1.plot(x, ages, color=ORANGE, label="Age of the Universe then")
-    marks = [(1.0, "z = 1"), (6.0, "z = 6"), (10.6, "GN-z11\n(10.6)"), (14.44, "MoM-z14\n(14.44)"), (1100, "CMB\n(1100)")]
-    for z, t in marks:
-        a1.axvline(1 + z, color="#C9D2DA", lw=0.7, zorder=0)
-        a1.text(1 + z, 7.2 if z not in (1.0,) else 4.0, t, fontsize=6.0, ha="center", va="center", color=INK,
-                bbox=dict(fc="white", ec="none", pad=0.5))
-    a1.set_xscale("log")
-    a1.set_xlim(1.01, 1600)
-    a1.set_ylim(0, 14.5)
-    a1.set_xticks([1, 2, 3, 5, 11, 16, 101, 1101])
-    a1.set_xticklabels(["0", "1", "2", "4", "10", "15", "100", "1100"])
-    a1.set_xlabel("Redshift z (axis scaled as 1 + z)")
+    zl = np.linspace(0, 20, 400)
+    a1.plot(zl, [lookback(z) for z in zl], color=BLUE, label="Look-back time (light-travel time)")
+    a1.plot(zl, [age(z) for z in zl], color=ORANGE, label="Age of the Universe when light left")
+    for z, t in [(6.0, "z = 6"), (10.6, "GN-z11"), (14.44, "MoM-z14")]:
+        a1.axvline(z, color="#C9D2DA", lw=0.8, ls="--", zorder=0)
+        a1.text(z, 15.0, t, fontsize=6.3, ha="center", va="center", color=INK)
+    z14 = 14.44
+    a1.scatter([z14, z14], [lookback(z14), age(z14)], color=INK, s=12, zorder=4)
+    a1.annotate(f"{lookback(z14):.2f} Gyr ago", xy=(z14, lookback(z14)), xytext=(15.6, 11.4), fontsize=6.3,
+                arrowprops=dict(arrowstyle="-", color=GREY, lw=0.6), color=INK)
+    a1.annotate(f"{age(z14) * 1000:.0f} Myr after\nthe Big Bang", xy=(z14, age(z14)), xytext=(15.6, 2.4),
+                fontsize=6.3, arrowprops=dict(arrowstyle="-", color=GREY, lw=0.6), color=INK)
+    a1.annotate(f"z = 1: {lookback(1):.1f} Gyr ago,\nUniverse {age(1):.1f} Gyr old", xy=(1.0, lookback(1)),
+                xytext=(2.4, 6.3), fontsize=6.3, arrowprops=dict(arrowstyle="-", color=GREY, lw=0.6), color=INK)
+    a1.text(19.8, 4.7, f"CMB (z ≈ 1100): {age(1100) * 1e3:.2f} Myr", fontsize=6.0, ha="right", color=GREY)
+    a1.set_xlim(0, 20)
+    a1.set_ylim(0, 15.8)
+    a1.set_xticks([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
+    a1.set_xlabel("Redshift z")
     a1.set_ylabel("Time (billion years)")
-    a1.legend(loc="center left", fontsize=6.5, bbox_to_anchor=(0.0, 0.33))
+    a1.legend(loc="center right", fontsize=6.3, bbox_to_anchor=(1.0, 0.56))
     a1.set_title("(a) Look-back time and cosmic age", loc="left", fontsize=8.6)
 
     lt = lbs   # light-travel distance in Gly equals look-back time in Gyr
@@ -492,9 +499,10 @@ def redshiftlines():
              (5.3, 28.5, "JWST MIRI (4.9–28.5 µm)", "#F6DDE1")]
     for lo, hi, t, c in bands:
         ax.axhspan(lo, hi, color=c, zorder=0)
-        ax.text(15.8, np.sqrt(lo * hi) * (1.0 if hi < 20 else 0.7), t, ha="right", va="center", fontsize=6.6,
-                color=INK)
+        ax.text(15.8, np.sqrt(lo * hi) * (1.0 if hi < 20 else 1.45), t, ha="right", va="center", fontsize=6.6,
+                color=INK, zorder=5, bbox=dict(fc=c, ec="none", pad=1.2))
     ax.axhline(0.6, color=ORANGE, lw=0.7, ls=":", zorder=1)
+    ax.text(6.2, 0.585, "JWST short-wavelength limit 0.6 µm", fontsize=6.0, color=INK, va="top", ha="left")
     for name, l0, c in lines:
         ax.plot(z, l0 * (1 + z), color=c, lw=1.7, label=name)
     for zr, t in [(10.6, "GN-z11"), (14.44, "MoM-z14")]:
@@ -508,7 +516,7 @@ def redshiftlines():
     ax.set_xlabel("Redshift z")
     ax.set_ylabel("Observed wavelength (µm)")
     ax.legend(loc="upper left", fontsize=6.6, frameon=True, facecolor="white", edgecolor="#D5DDE5")
-    fig.text(0.99, 0.005, "λ_observed = λ_emitted (1 + z). Shading: wavelength range of the instruments; "
+    fig.text(0.99, 0.005, "λ(observed) = λ(emitted) × (1 + z). Shading: wavelength range of the instruments; "
              "Earth's atmosphere blocks most light beyond 2.5 µm and below 0.3 µm.",
              ha="right", va="bottom", fontsize=6.0, color=GREY)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
@@ -524,8 +532,8 @@ RE_KM, RSUN_KM = 6371.0, 695700.0
 def transit():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 3.3), gridspec_kw=dict(width_ratios=[1.1, 1.0]))
     rp = np.logspace(np.log10(0.5), np.log10(15), 200)
-    for rs, c, t in [(1.0, ORANGE, "Sun-like star (1.0 R☉)"), (0.5, GREEN, "K/M dwarf (0.5 R☉)"),
-                     (0.2, RED, "M dwarf (0.2 R☉)"), (0.12, VIOLET, "TRAPPIST-1 (0.12 R☉)")]:
+    for rs, c, t in [(1.0, ORANGE, "Sun-like star (1.0 R$_\\odot$)"), (0.5, GREEN, "K dwarf (0.5 R$_\\odot$)"),
+                     (0.2, RED, "M dwarf (0.2 R$_\\odot$)"), (0.12, VIOLET, "TRAPPIST-1 (0.12 R$_\\odot$)")]:
         a1.plot(rp, (rp * RE_KM / (rs * RSUN_KM)) ** 2 * 1e6, color=c, label=t)
     a1.axvline(1.0, color=GREY, lw=0.7, ls="--")
     a1.text(1.04, 2.0, "Earth", fontsize=6.3, color=INK, rotation=90, va="bottom")

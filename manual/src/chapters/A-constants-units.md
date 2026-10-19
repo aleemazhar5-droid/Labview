@@ -165,7 +165,7 @@ Radio engineers express ratios that span many orders of magnitude in decibels: a
 | dBsm | 1 m² (radar cross-section) | a 1U CubeSat ≈ −20 dBsm at high frequency |
 | dBc | carrier power | spurious emission 60 dBc below the carrier |
 
-: Decibel conventions used in link budgets (Chapter 6). {#tbl:apxdb}
+: Decibel conventions used in link budgets (Chapter 7). {#tbl:apxdb}
 
 ## Time Scales and Epochs
 
