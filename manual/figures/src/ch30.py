@@ -18,7 +18,7 @@ def records():
          (1973.87, 84.0, "Skylab 4"), (1977.95, 96.4, ""), (1978.45, 139.6, ""), (1979.15, 175.0, ""),
          (1980.27, 184.8, "Salyut 6"), (1982.37, 211.4, ""), (1984.10, 237.0, "Salyut 7"),
          (1987.10, 326.5, ""), (1987.97, 365.9, ""), (1994.02, 437.7, "")]
-    ax.text(1988.3, 300, "Titov & Manarov", fontsize=5.9, ha="left", va="top", color=INK)
+    ax.text(1988.0, 520, "Titov & Manarov", fontsize=5.9, ha="center", va="bottom", color=INK)
     ax.text(1994.6, 437.7 * 1.22, "Polyakov 437.7 d (Mir)", fontsize=5.9, ha="left", va="bottom", color=INK)
     xs = [r[0] for r in R] + [2026.8]
     ys = [r[1] for r in R] + [R[-1][1]]
@@ -28,11 +28,13 @@ def records():
         if t:
             dy = 1.9 if y < 300 else 1.0
             ax.text(x - 0.4, y * dy, t, fontsize=5.9, ha="right" if y < 300 else "center", va="bottom", color=INK)
-    L = [(1998.6, 379.6, "Avdeev 380 d (1998–99)", 40, "left"),
+    L = [(1991.38, 311.8, "Krikalev 312 d (1991–92)", 20, "left"),
+         (1998.6, 379.6, "Avdeev 380 d (1998–99)", 40, "left"),
          (2015.24, 340.4, "Kelly & Kornienko 340 d", 20, "right"),
          (2019.2, 328.6, "Koch 329 d (women's record)", 10, "right"),
-         (2022.72, 370.9, "Rubio & Prokopyev 371 d", 5, "right"),
-         (2023.71, 373.8, "Kononenko & Chub 374 d", 2.5, "right")]
+         (2021.27, 355.1, "Vande Hei & Dubrov 355 d", 5, "right"),
+         (2022.72, 370.9, "Rubio & Prokopyev 371 d", 2.5, "right"),
+         (2023.71, 373.8, "Kononenko & Chub 374 d", 1.25, "right")]
     ax.scatter([l[0] for l in L], [l[1] for l in L], s=16, marker="D", color=ORANGE, zorder=5,
                label="Other flights longer than 300 days")
     for x, y, t, yl, ha in L:

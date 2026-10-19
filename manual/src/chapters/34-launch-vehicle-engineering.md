@@ -65,14 +65,14 @@ Reaching an inclination *lower* than the site latitude needs a **dog-leg** (stee
 2. Earth-rotation gain: 465 × cos 53° = 280 m/s, instead of 409 m/s for a due-east launch.
 3. Insertion into a 200 km parking orbit (7 784 m/s), then a Hohmann transfer to 500 km: 86 m/s to raise apogee plus 85 m/s to circularise (Chapter 3).
 4. Ascent losses from @fig:lvdvbudget: 0.92 + 0.62 + 0.02 + 0.06 = 1.62 km/s.
-5. Ideal Δv = 7 784 − 280 + 1 620 + 172 ≈ 9 300 m/s, 0.30 km/s more than the due-east 200 km orbit — roughly 1.5 t of the reference vehicle's payload. This is one reason constellations are often deployed low and raise their own orbits with electric propulsion.
+5. Ideal Δv = 7 784 − 280 + 1 620 + 172 ≈ 9 300 m/s, 0.30 km/s more than the due-east 200 km orbit — about 2.3 t of droneship payload in the model of @fig:lvperf. This is one reason constellations are often deployed low and raise their own orbits with electric propulsion.
 :::
 
 ## Staging
 
 ### Why One Stage Is Not Enough
 
-Every stage carries structure — tanks, engines, plumbing, avionics — that becomes dead weight once its propellant is gone. It is described by the **structural ratio** ε = $m_s/(m_s + m_p)$, the structure's share of a loaded stage; good modern stages achieve ε ≈ 0.05–0.10. A single stage with an average specific impulse of 330 s that must deliver 9.3 km/s needs a mass ratio of $e^{9300/3236}$ = 17.7: only 5.6 % of the lift-off mass may remain at burnout. If structure alone takes 8 %, the rocket cannot reach orbit even empty. This is the fundamental difficulty of **single-stage-to-orbit** vehicles, studied for decades but never flown (Chapter 10).
+Every stage carries structure — tanks, engines, plumbing, avionics — that becomes dead weight once its propellant is gone. It is described by the **structural ratio** ε = $m_s/(m_s + m_p)$, the structure's share of a loaded stage; good modern stages achieve ε ≈ 0.05–0.10. A single stage with an average specific impulse of 330 s that must deliver 9.3 km/s needs a mass ratio of $e^{9300/3236}$ = 17.7: only 5.6 % of the lift-off mass may remain at burnout. If structure alone takes 8 %, the rocket cannot reach orbit even empty. This is the fundamental difficulty of **single-stage-to-orbit** vehicles, studied for decades but never flown to orbit (Chapter 10).
 
 ### The Rocket Equation for Several Stages
 
@@ -91,7 +91,7 @@ Take Isp = 330 s ($v_e$ = 3 236 m/s), Δv = 9.3 km/s and a lift-off mass of 550 
 
 1. One stage, ε = 0.08: the final-to-initial mass ratio is $e^{-9300/3236}$ = 0.0565, less than ε, so no payload is possible. Even with an exceptionally light structure (ε = 0.05) the payload fraction is (0.0565 − 0.05)/0.95 = 0.7 %, or 3.8 t.
 2. Two equal stages, ε = 0.08: each provides 4.65 km/s, so $e^{-4650/3236}$ = 0.238; each stage's payload ratio is (0.238 − 0.08)/0.92 = 0.171, and the overall fraction is 0.171² = 2.9 %, or **16 t**.
-3. With ε = 0.06 this rises to 3.6 % (19.6 t); with ε = 0.10 it falls to 2.3 % (12.9 t). Each percentage point of structural ratio is worth about 3 t of payload — which is why engineers fight for every kilogram of tank wall.
+3. With ε = 0.06 this rises to 3.6 % (19.6 t); with ε = 0.10 it falls to 2.3 % (12.9 t). Each percentage point of structural ratio is worth about 1.7 t of payload, a tenth of the total, which is why engineers fight for every kilogram of tank wall.
 :::
 
 ### Serial, Parallel and Cross-Feed
@@ -145,13 +145,13 @@ A launch vehicle is essentially a stack of thin-walled pressure vessels with eng
 
 ![Anatomy of a two-stage kerosene launch vehicle. The first stage carries its oxygen tank above its fuel tank, with a common dome between them and a feed line running through the fuel tank; the composite interstage houses the second stage's vacuum engine; the fairing, lined with acoustic blankets, encloses the payload on its adapter.](figures/out/ch34_anatomy.svg){#fig:lvanatomy width=100%}
 
-**Aluminium alloys** have been the standard since the 1950s (@tbl:tankmaterials). The Saturn V, the original Shuttle external tank and SLS use alloy 2219, which welds well and stays tough at cryogenic temperatures. **Aluminium–lithium** alloys are lighter and stiffer: the Shuttle's Super Lightweight Tank, first flown on STS-91 in June 1998, used alloy 2195, about 30 % stronger and 5 % less dense than 2219, and weighed 3 400 kg less than its predecessor. Falcon 9's tanks are aluminium–lithium joined by **friction-stir welding**, in which a rotating tool stirs the metal together below its melting point. Al–Li is harder to weld and less tolerant of flaws, and SLS returned to 2219.
+**Aluminium alloys** have been the standard since the 1950s (@tbl:tankmaterials). The Saturn V's first stage, the original Shuttle external tank and the SLS core stage use alloy 2219, which welds well and stays tough at cryogenic temperatures. **Aluminium–lithium** alloys are lighter and stiffer: the Shuttle's Super Lightweight Tank, first flown on STS-91 in June 1998, used alloy 2195, about 30 % stronger and 5 % less dense than 2219, and weighed 3 400 kg less than its predecessor. Falcon 9's tanks are aluminium–lithium joined by **friction-stir welding**, in which a rotating tool stirs the metal together below its melting point. Al–Li is harder to weld and less tolerant of flaws, and SLS returned to 2219.
 
 **Stainless steel**, used in the balloon tanks of Atlas and Centaur, has returned in SpaceX's Starship. It is heavier but cheap, easy to weld, stronger when cold, and keeps its strength at several hundred degrees Celsius — an advantage for a stage that must survive re-entry. **Carbon-fibre composites** promise the lightest tanks; Rocket Lab's Electron uses them throughout, and its larger Neutron is built around composite tanks, although voids found in a composite tank dome helped push Neutron's first launch into 2027. Composite tanks must resist micro-cracking, leakage and, for oxygen, ignition.
 
 | Material | Density (g/cm³) | Typical strength (MPa) | Strength / density vs 2219 | Examples |
 |---|---|---|---|---|
-| Aluminium 2219 | 2.84 | 420–460 | 1.0 | Saturn V, SLS core stage |
+| Aluminium 2219 | 2.84 | 420–460 | 1.0 | Saturn V S-IC, SLS core stage |
 | Aluminium–lithium (e.g. 2195) | 2.71 | 550–600 | ≈ 1.4 | Shuttle SLWT (2195), Falcon 9 |
 | Stainless steel (300 series) | 7.9 | 500–600 (more when cold) | ≈ 0.5 | Atlas, Centaur, Starship |
 | Carbon-fibre/epoxy laminate | 1.55–1.6 | 600–1 000 | ≈ 3 | Electron, Neutron, interstages |
@@ -163,7 +163,7 @@ A **common bulkhead** — a single dome separating the two propellants — saves
 ::: figrow
 ![A completed liquid-hydrogen tank barrel for the SLS core stage lifted off the Vertical Weld Center at NASA's Michoud Assembly Facility in February 2025. The orthogrid stiffening machined into the inner surface is visible.](figures/photos/ch34_barrel2.jpg){#fig:orthogridbarrel}
 
-![The SLS liquid-hydrogen tank structural test article being placed in a test stand at NASA Marshall in January 2019. In December 2019 a twin of this tank was loaded to more than 260 % of its expected flight loads before it buckled and ruptured.](figures/photos/ch34_lh2tank.jpg){#fig:lh2testarticle}
+![The SLS liquid-hydrogen tank structural test article being placed in a test stand at NASA Marshall in January 2019. In December 2019 this test article was loaded to more than 260 % of its expected flight loads before it buckled and ruptured.](figures/photos/ch34_lh2tank.jpg){#fig:lh2testarticle}
 :::
 
 ### Pressurisation
@@ -196,7 +196,7 @@ The **payload fairing** is a two-piece shell, usually carbon-fibre composite, li
 
 ### Control and Redundancy
 
-Liquid engines are mounted on **gimbals** and swivelled by a few degrees for **thrust vector control** (TVC). Actuators are hydraulic or, increasingly, electromechanical: Falcon's first-stage actuators use high-pressure kerosene from the engine as hydraulic fluid, removing a separate hydraulic system, while Vega's solid first stage and Starship's Raptors use electric actuators. Single-engine stages control roll with small thrusters, such as Falcon's nitrogen cold-gas jets. Most rockets are aerodynamically unstable — their centre of pressure lies ahead of the centre of gravity — so the control loop must actively hold them straight without reacting to structural vibration or propellant slosh. Returning boosters steer with **grid fins**, lattice-like surfaces that work at hypersonic speed and fold flat during ascent.
+Liquid engines are mounted on **gimbals** and swivelled by a few degrees for **thrust vector control** (TVC). Actuators are hydraulic or, increasingly, electromechanical: Falcon's first-stage actuators use high-pressure kerosene from the engine as hydraulic fluid, removing a separate hydraulic system, while the solid first stage of Vega-C and Starship's Raptors use electric actuators. Single-engine stages control roll with small thrusters, such as Falcon's nitrogen cold-gas jets. Most rockets are aerodynamically unstable — their centre of pressure lies ahead of the centre of gravity — so the control loop must actively hold them straight without reacting to structural vibration or propellant slosh. Returning boosters steer with **grid fins**, lattice-like surfaces that work at hypersonic speed and fold flat during ascent.
 
 Avionics are **fault tolerant**: Falcon uses a three-string architecture that votes between triplicated computers and sensors. Several engines give propulsion redundancy — Falcon 9 can shut down a misbehaving first-stage engine and burn the others longer (Chapter 35). A study by The Aerospace Corporation, cited in the Falcon user's guide, found that 91 % of launch failures in the two decades before 2001 were caused by engines, avionics or stage separation, the areas where redundancy and simplicity pay off most.
 
@@ -240,7 +240,7 @@ Satellites are verified against these environments with margin. A **qualificatio
 
 ### Reading a Performance Curve
 
-The other key part of a user's guide is the **performance curve** — payload against target orbit. @fig:lvperf shows the reference vehicle's, from a rocket-equation model calibrated to the trajectory simulation. For orbits reaching far from Earth the natural measure is the **characteristic energy** $C_3 = v_\infty^2$ (Chapter 24): negative for bound orbits (−60.6 km²/s² for a 200 km circular orbit, −16.4 km²/s² for GTO), zero for escape, and about 10 km²/s² for a fast trip to Mars. For low orbits, payload falls gently with altitude and with inclination. The model reproduces Falcon 9's published expendable capabilities well: 23.2 t to a 200 km orbit (published 22.8 t) and 8.4 t to GTO (8.3 t).
+The other key part of a user's guide is the **performance curve** — payload against target orbit. @fig:lvperf shows the reference vehicle's, from a rocket-equation model calibrated to the trajectory simulation. For orbits reaching far from Earth the natural measure is the **characteristic energy** $C_3 = v_\infty^2$ (Chapter 24): negative for bound orbits (−60.6 km²/s² for a 200 km circular orbit, −16.4 km²/s² for GTO), zero for escape, and about 10 km²/s² for a typical trip to Mars. For low orbits, payload falls gently with altitude and with inclination. The model reproduces Falcon 9's published expendable capabilities well: 23.2 t to a 200 km orbit (published 22.8 t) and 8.4 t to GTO (8.3 t).
 
 ![Left: payload of the reference vehicle versus orbital energy for three booster-recovery modes, compared with published Falcon 9 values (crosses) and the full trajectory simulation (circles). Right: payload to circular orbits of different altitude and inclination with droneship recovery.](figures/out/ch34_perf.svg){#fig:lvperf width=98%}
 
@@ -248,7 +248,7 @@ The other key part of a user's guide is the **performance curve** — payload ag
 
 ### Landing a Booster
 
-For most of the space age every stage was thrown away. The Space Shuttle (Chapter 10) recovered its orbiter and boosters but needed months of refurbishment. The modern approach, pioneered by SpaceX's first Falcon 9 landing in December 2015 and first re-flight in 2017, flies the booster back under its own power to a vertical landing on legs. It must keep propellant for up to three burns: a **boostback** burn to reverse its course; an **entry burn** to slow down before the dense atmosphere, limiting heating and loads; and a **landing burn**, timed so that velocity reaches zero just as the legs touch down, because even at minimum throttle one engine lifts more than the empty stage weighs. In a **return to launch site** (RTLS) the booster cancels its downrange velocity and flies back to a landing zone near the pad; in a **droneship** landing it continues on its ballistic arc to an autonomous barge hundreds of kilometres downrange, with no boostback burn.
+For most of the space age every stage was thrown away. The Space Shuttle (Chapter 10) recovered its orbiter and boosters but needed months of refurbishment. The modern approach, pioneered by SpaceX's first Falcon 9 landing in December 2015 and first re-flight in 2017, flies the booster back under its own power to a vertical landing on legs. It must keep propellant for up to three burns: a **boostback** burn to reverse its course; an **entry burn** to slow down before the dense atmosphere, limiting heating and loads; and a **landing burn**, timed so that velocity reaches zero just as the legs touch down, because even at minimum throttle one engine lifts more than the empty stage weighs. In a **return to launch site** (RTLS) the booster cancels its downrange velocity and flies back to a landing zone near the pad; in a **droneship** landing it continues on its ballistic arc to an autonomous barge hundreds of kilometres downrange, usually without a boostback burn.
 
 @fig:lvrecovery shows both for the reference vehicle. Every kilogram kept in the booster is a kilogram not used to accelerate the upper stage, so the first stage cuts off earlier and slower. In the simulation a droneship landing keeps 22 t of propellant and costs 18 % of the LEO payload; RTLS keeps 45 t and costs 33 %. GTO missions need a faster staging speed and so more braking: the penalties grow to 26 % and 46 %. Falcon 9's published figures show larger penalties (22.8 and 17.5 t to LEO; 8.3, 5.5 and 3.5 t to GTO), partly because the model ignores the legs, grid fins and performance reserves.
 
@@ -259,7 +259,7 @@ For most of the space age every stage was thrown away. The Space Shuttle (Chapte
 
 The reference booster has a dry mass of 25.6 t, plus 1.5 t of unusable residual propellant. Its exhaust speed is 3.06 km/s in vacuum and 2.78 km/s at sea level. Work backwards from touchdown with $m_{before} = m_{after}\, e^{\Delta v/v_e}$:
 
-1. **Droneship.** Landing burn, 0.44 km/s at sea level: 27.1 t × $e^{0.44/2.78}$ = 31.8 t. Entry burn, 1.23 km/s: 31.8 × $e^{1.23/3.06}$ = 47.6 t. Propellant kept at MECO: 47.6 − 25.6 = **22.0 t**.
+1. **Droneship.** Landing burn, 0.44 km/s at sea level: 27.1 t × $e^{0.44/2.78}$ = 31.8 t. Entry burn, 1.23 km/s: 31.8 × $e^{1.23/3.06}$ = 47.5 t. Propellant kept at MECO: 47.5 − 25.6 = **21.9 t** (simulation: 22.0 t).
 2. **RTLS.** At MECO the stage is moving downrange at 1.87 km/s. Landing burn 0.38 km/s: 27.1 × $e^{0.38/2.78}$ = 31.1 t; entry burn 0.21 km/s: 33.3 t; boostback burn 2.32 km/s: 33.3 × $e^{2.32/3.06}$ = 71.0 t. Propellant kept: **45.4 t**, more than twice as much.
 3. Payload: in the simulation each tonne kept in the booster costs about 0.17–0.19 t of LEO payload, roughly one tonne for every five to six held back, because the upper stage still provides most of the Δv. RTLS suits light payloads, where saving the time and cost of a droneship voyage matters more than the lost mass.
 :::
@@ -268,7 +268,7 @@ The reference booster has a dry mass of 25.6 t, plus 1.5 t of unusable residual 
 
 Falcon has turned landing into routine. SpaceX made its 600th Falcon booster landing on 19 April 2026, and the fleet leader, B1067, flew for the 37th time on 25 August 2026. By February 2025 SpaceX had also re-flown fairing halves, recovered from the sea, on 307 missions. Between flights engines, heat shielding, grid fins and legs are inspected and a few parts replaced; Falcon Heavy's side boosters routinely land side by side (@fig:fhdualland).
 
-Others are following. Blue Origin's New Glenn landed its first booster in November 2025 and re-flew it in April 2026. China recovered its first orbital booster on 10 July 2026, when the first stage of the new **Long March 10B** was caught at sea on its maiden flight by hooks that snagged cables tensioned over a net on the ship *Linghangzhe*; in August 2026 LandSpace's stainless-steel **Zhuque-3** landed on legs in the Gobi Desert, although a fire broke out after touchdown. SpaceX's Super Heavy booster is caught by the launch tower's mechanical "chopstick" arms instead of landing on legs: the first catch came on Starship Flight 5 on 13 October 2024 and was repeated on Flights 7 and 8 in 2025, and a caught booster re-flew on Flight 9. On 28 September 2026 Starship reached orbit for the first time on Flight 14; catching the ship, needed to make the whole vehicle reusable, was planned for a later flight.
+Others are following. Blue Origin's New Glenn landed its first booster in November 2025 and re-flew it in April 2026. China recovered its first orbital booster on 10 July 2026, when the first stage of the new **Long March 10B** was caught at sea on its maiden flight by hooks that snagged cables tensioned over a net on the ship *Linghangzhe*; in August 2026 LandSpace's stainless-steel **Zhuque-3** landed on legs at a desert site in Gansu province, although a fire broke out after touchdown. SpaceX's Super Heavy booster is caught by the launch tower's mechanical "chopstick" arms instead of landing on legs: the first catch came on Starship Flight 5 on 13 October 2024 and was repeated on Flights 7 and 8 in 2025, and a caught booster re-flew on Flight 9. On 28 September 2026 Starship reached orbit for the first time on Flight 14; catching the ship, needed to make the whole vehicle reusable, was planned for a later flight.
 
 ![Falcon Heavy's two side boosters returning to Landing Zones 1 and 2 at Cape Canaveral after launching the GOES-U weather satellite in June 2024.](figures/photos/ch34_fhland2.jpg){#fig:fhdualland width=38%}
 
@@ -276,7 +276,7 @@ Others are following. Blue Origin's New Glenn landed its first booster in Novemb
 
 Reuse matters because hardware dominates launch cost: flying a first stage ten or thirty times spreads the cost of most of a vehicle's engines and structure. It pays only at a high flight rate, because factories, recovery ships and launch teams are fixed costs. Falcon 9 flew 165 times in 2025, half of all orbital launch attempts worldwide, and Starlink satellites made up 3 169 of the 4 511 payloads launched that year — an in-house customer that keeps the fleet busy.
 
-@tbl:launchcostkg compares launch prices per kilogram; list prices are not costs, and rockets rarely fly full. A 2018 NASA analysis found that vehicles introduced between 1970 and 2000 averaged about $18 500 per kilogram to LEO (2018 dollars), the Space Shuttle $61 700, and Falcon 9 at its advertised price $2 700 — a twentieth of the Shuttle. Prices have since risen with inflation and demand: in 2026 SpaceX listed a dedicated Falcon 9 at $74 million and rideshare at $350 000 for 50 kg to sun-synchronous orbit. Cheaper access has transformed demand: the mass launched to orbit grew from about 400 t in 2015 to about 3 500 t in 2025.
+@tbl:launchcostkg compares launch prices per kilogram; list prices are not costs, and rockets rarely fly full. A 2018 NASA analysis found that vehicles introduced between 1970 and 2000 averaged about $18 500 per kilogram to LEO (2018 dollars), the Space Shuttle $61 700, and Falcon 9 at its advertised price $2 700 — less than a twentieth of the Shuttle's figure. Prices have since risen with inflation and demand: in 2026 SpaceX listed a dedicated Falcon 9 at $74 million and rideshare at $350 000 for 50 kg to sun-synchronous orbit. Cheaper access has transformed demand: the mass launched to orbit grew from about 400 t in 2015 to about 3 500 t in 2025.
 
 | Vehicle | First flight | Price per launch | Payload to LEO | Price per kg |
 |---|---|---|---|---|
@@ -295,11 +295,11 @@ Reuse matters because hardware dominates launch cost: flying a first stage ten o
 
 ### How Often Do Rockets Fail?
 
-Of 330 orbital launch attempts in 2025, 11 failed — 3.3 %. @fig:lvreliability puts this in context using Jonathan McDowell's General Catalog of Artificial Space Objects (GCAT). In the late 1950s a third or more of all launches failed; the five-year average fell below 10 % in the mid-1970s and has stayed at roughly 3–8 % since, even as the launch rate tripled after 2020. The right-hand panel shows that **reliability is learned**. Across the 100 vehicle families first flown since 1980, 38 % of maiden flights failed, 23 % of second flights and 15 % of third flights; from the 21st to the 50th flight the rate was 4 %, and beyond the 50th, 0.7 %. New vehicles meet combinations of conditions that no ground test fully reproduces. Mature vehicles are very reliable: by October 2026 Falcon 9 had made 695 orbital attempts with 2 failures (99.7 %), and Soyuz more than 1 180 with 97.4 % success (Appendix E).
+Of 330 orbital launch attempts in 2025, 11 failed — 3.3 %. @fig:lvreliability puts this in context using Jonathan McDowell's General Catalog of Artificial Space Objects (GCAT). In the late 1950s a third or more of all launches failed; the five-year average fell below 10 % in the early 1970s and has stayed at roughly 3–8 % since the mid-1970s, even as the launch rate tripled after 2020. The right-hand panel shows that **reliability is learned**. Across the 100 vehicle families first flown since 1980, 38 % of maiden flights failed, 23 % of second flights and 15 % of third flights; from the 21st to the 50th flight the rate was 4 %, and beyond the 50th, 0.7 %. New vehicles meet combinations of conditions that no ground test fully reproduces. Mature vehicles are very reliable: by October 2026 Falcon 9 had made 695 orbital attempts with 2 failures (99.7 %), and Soyuz more than 1 180 with 97.4 % success (Appendix E).
 
 ![Left: orbital launch attempts per year since 1957, split into successes and failures, with the five-year running failure rate. Right: the share of flights that failed as a function of flight number within each vehicle family, for families first flown before and after 1980.](figures/out/ch34_reliability.svg){#fig:lvreliability width=90%}
 
-A few flights say little about a new vehicle. With *k* failures in *n* flights a reasonable estimate of failure probability is (*k* + ½)/(*n* + 1), the mean of the Jeffreys distribution used for the error bars of @fig:lvreliability. A rocket with ten successes in ten flights thus has an estimated failure probability of about 5 % and a 90 % upper bound near 17 %; only after about a hundred clean flights does the bound fall to a few per cent.
+A few flights say little about a new vehicle. With *k* failures in *n* flights a reasonable estimate of failure probability is (*k* + ½)/(*n* + 1), the mean of the Jeffreys distribution used for the error bars of @fig:lvreliability. A rocket with ten successes in ten flights thus has an estimated failure probability of about 5 %, and the upper end of its 90 % interval lies near 17 %; only a hundred clean flights bring it below 2 %.
 
 ### Why Rockets Fail
 
@@ -313,20 +313,20 @@ Propulsion causes the largest share of failures; Chapter 35 describes the engine
 | Proton-M, Jul 2013 | Angular-rate sensors installed upside down | Error-proof mounting; inspection |
 | Falcon 9 CRS-7, Jun 2015 | Strut holding a helium COPV in the upper-stage oxygen tank broke | Test critical small parts individually |
 | Falcon 9 AMOS-6, Sep 2016 | Oxygen trapped in a COPV overwrap ignited during fuelling on the pad | Understand cryogenic loading; change procedures |
-| H3 flight 8, Dec 2025 | Second stage failed to restart; preliminary findings point to damage at fairing separation | Separation events can damage hardware |
+| H3 flight 8, Dec 2025 | Bonded composite payload adapter, delaminated in manufacture, failed under fairing-separation shock; satellite lost | Shock exposes hidden flaws; bolted adapter adopted |
 
 : Launch failures outside the main engines and their lessons. {#tbl:lvfailures}
 
 ### Investigations and Testing
 
-After a failure the operator leads a **mishap investigation** — in the United States under FAA oversight — and the vehicle is grounded until the cause is understood and the fix accepted. The evidence is mainly telemetry, analysed with fault trees that work through every possible cause. Falcon 9's Starlink 9-3 failure of 11 July 2024 shows the process at its fastest. An oxygen leak was traced to a pressure-sensor line cracked by vibration fatigue and a loose clamp; it chilled the engine's ignition system and caused a hard start at relight (Chapter 35). SpaceX removed the line, inspected clamps across the fleet, and the FAA cleared the vehicle on 25 July. Investigations take longer when the cause is unclear: New Glenn's third flight in April 2026, on which one upper-stage engine produced too little thrust, and the H3 failure of December 2025 were both still being analysed months later.
+After a failure the operator leads a **mishap investigation** — in the United States under FAA oversight — and the vehicle is grounded until the cause is understood and the fix accepted. The evidence is mainly telemetry, analysed with fault trees that work through every possible cause. Falcon 9's Starlink 9-3 failure of 11 July 2024 shows the process at its fastest. An oxygen leak was traced to a pressure-sensor line cracked by vibration fatigue and a loose clamp; it chilled the engine's ignition system and caused a hard start at relight (Chapter 35). SpaceX removed the line, inspected clamps across the fleet, and the FAA cleared the vehicle on 25 July. Investigations take longer when the cause is less obvious. On New Glenn's third flight, in April 2026, one upper-stage engine fell short of full thrust, stranding its satellite in too low an orbit; five weeks later the FAA accepted Blue Origin's finding that a cryogenic leak had frozen a hydraulic line. Japan's H3 needed six months: its December 2025 failure was traced to a manufacturing flaw in its bonded carbon-fibre payload adapter that grew under the shock of fairing separation. With a bolted adapter, H3 flew successfully again in June and August 2026.
 
 The guiding rule of testing is **test like you fly**: components are qualified on test stands, stages are fired whole (Chapter 35), complete vehicles perform a **static fire** on the pad, and structures are tested to failure to learn their true margins. Two philosophies coexist. The traditional approach spends years on analysis and ground testing to make the first flight as safe as possible. The **iterative**, hardware-rich approach builds cheaper test articles, flies early and expects to lose some — SpaceX's approach with Starship, which lost several upper stages in 2025 before reaching orbit in 2026. Both converge on the lesson of @fig:lvreliability: reliability is demonstrated by flying.
 
 ::: ai
 **AI in launch-vehicle engineering**
 
-Convex optimisation already flies: the G-FOLD algorithm, developed at NASA's Jet Propulsion Laboratory, computes fuel-optimal landing trajectories in milliseconds with guaranteed convergence, and SpaceX has described landing Falcon 9 boosters with automatically generated convex-optimisation code. Machine learning is being added around such guaranteed algorithms: anomaly-detection models scan thousands of telemetry channels during static fires and flights for patterns that precede failures, learned surrogates predict aerodynamic loads and engine behaviour, and design-optimisation loops use them to explore millions of configurations in the time a traditional simulation explores a few. Flight-critical software still rests on verifiable algorithms; Chapters 45 and 47 discuss autonomy, AI-assisted design and their assurance.
+Convex optimisation already flies: the G-FOLD algorithm, developed at NASA's Jet Propulsion Laboratory, computes fuel-optimal landing trajectories in milliseconds with guaranteed convergence, and SpaceX has described landing Falcon 9 boosters with automatically generated convex-optimisation code. Machine learning is being added around such algorithms: anomaly detectors scan thousands of telemetry channels for patterns that precede failures, and learned surrogates of loads and engine behaviour speed up design optimisation. Flight-critical software still rests on verifiable algorithms (Chapters 45 and 47).
 :::
 
 ::: key
@@ -348,9 +348,9 @@ Convex optimisation already flies: the G-FOLD algorithm, developed at NASA's Jet
 2. Show that the Earth-rotation gain for a launch into an orbit of inclination *i* is 465 m/s × cos *i*, whatever the site latitude. What is it for a 97.5° sun-synchronous orbit?
 3. A 4 000 kg geostationary satellite with a 320 s apogee engine is launched from Kourou or from Cape Canaveral. Estimate the difference in the propellant it needs.
 4. For stages with Isp 340 s and ε = 0.07, compute the payload fraction of one, two and three identical stages for Δv = 9.4 km/s.
-5. Why do launch vehicles fly a gravity turn? What is max-qα and how is it managed on the day of launch?
+5. Why do launch vehicles fly a gravity turn? What is max-qα, and how is it managed on launch day?
 6. Explain the purpose of a throttle bucket and why acceleration rises during each stage's burn.
-7. Compare aluminium–lithium, stainless steel and carbon composite for a propellant tank. Why might a designer choose stainless steel for a reusable stage?
+7. Compare aluminium–lithium, stainless steel and composite tanks. Why might a reusable stage use steel?
 8. What is POGO, and how is it suppressed?
 9. A satellite's lowest lateral natural frequency is 8 Hz. Why might the launch provider object, and what analysis would settle the question?
 10. Estimate the propellant a 25 t booster must keep for a 3 km/s return-to-launch-site profile with Isp 300 s, and explain why the payload penalty is much smaller than the propellant kept.

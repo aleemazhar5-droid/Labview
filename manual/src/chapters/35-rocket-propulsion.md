@@ -4,9 +4,9 @@ hero: ch35
 abstract: A rocket engine is a machine for throwing mass backwards as fast as possible. This chapter explains how engines and motors produce thrust and how performance is measured — specific impulse, characteristic velocity and thrust coefficient — and how a converging–diverging nozzle turns hot gas into a supersonic jet whose performance depends on altitude. It compares liquid, solid and hybrid propellants, explains the cycles that feed liquid engines, from pressure-fed thrusters to full-flow staged combustion and battery-driven pumps, and describes turbopumps, injectors, combustion instability, cooling, throttling and 3-D printing. It covers solid-motor ballistics, hybrid physics and engine testing, using the engines of 2026 as examples.
 ---
 
-Every launch vehicle and almost every spacecraft moves by the same principle: it carries its own propellant, releases the propellant's chemical energy as heat, and expels the hot products backwards through a nozzle at several kilometres per second. The reaction to that stream of mass is **thrust**. Engines burning liquid propellants are called **rocket engines**; those with propellant cast as a solid block are **rocket motors**.
+Every launch vehicle and almost every spacecraft moves by one principle: it carries its own propellant, releases the propellant's chemical energy as heat, and expels the hot products backwards through a nozzle at several kilometres per second. The reaction to that stream of mass is **thrust**. Engines burning liquid propellants are called **rocket engines**; those with propellant cast as a solid block are **rocket motors**.
 
-A Super Heavy booster lights 33 Raptor engines that together produce 80–90 MN — eight to nine thousand tonnes-force — while a Rutherford engine on Rocket Lab's Electron weighs 35 kg and produces 25 kN. Both obey the same few equations. Chapter 34 shows how engines are combined into stages and derives the rocket equation, Chapter 36 surveys the world's launch vehicles, and Chapter 6 covers spacecraft thrusters and electric propulsion.
+A Super Heavy booster lights 33 Raptor engines that together produce about 80 MN — more than eight thousand tonnes-force — while a Rutherford engine on Rocket Lab's Electron weighs 35 kg and produces 25 kN. Both obey the same few equations. Chapter 34 shows how engines are combined into stages and derives the rocket equation, Chapter 36 surveys the world's launch vehicles, and Chapter 6 covers spacecraft thrusters and electric propulsion.
 
 ## How a Rocket Makes Thrust
 
@@ -32,7 +32,7 @@ Two further parameters separate the work of the combustion chamber from that of 
 
 $$\dot m = \frac{p_c A_t}{c^*}, \qquad F = C_F\, p_c A_t, \qquad c = c^* C_F$$
 
-The **characteristic velocity** $c^*$ ("c-star") depends only on the combustion gas — its temperature $T_c$, mean molar mass $\mathcal M$ and ratio of specific heats γ. It is 1 500–1 600 m/s for solid propellants, about 1 800 m/s for kerosene or methane with oxygen and 2 300–2 400 m/s for hydrogen–oxygen. The ratio of measured to theoretical $c^*$, the **c\* efficiency** (typically 95–99 %), tells test engineers how well the injector mixes and burns the propellants. The **thrust coefficient** $C_F$, typically 1.3–2.0, measures how much the nozzle amplifies the force that the chamber pressure would exert on the throat alone; it depends only on γ, the **expansion ratio** ε = $A_e/A_t$ and the ambient pressure.
+The **characteristic velocity** $c^*$ ("c-star") depends only on the combustion gas — its temperature $T_c$, mean molar mass $\mathcal M$ and ratio of specific heats γ. It is 1 500–1 600 m/s for solid propellants, about 1 800 m/s for kerosene or methane with oxygen and 2 300–2 400 m/s for hydrogen–oxygen. The ratio of measured to theoretical $c^*$, the **c\* efficiency** (typically 95–99 %), shows how well the injector mixes and burns the propellants. The **thrust coefficient** $C_F$, typically 1.3–2.0, measures how much the nozzle amplifies the force that the chamber pressure would exert on the throat alone; it depends only on γ, the **expansion ratio** ε = $A_e/A_t$ and the ambient pressure.
 
 ## Nozzle Flow
 
@@ -42,7 +42,7 @@ The nozzle turns heat into directed motion. For the **ideal rocket** — steady,
 
 $$v_e = \sqrt{\frac{2\gamma}{\gamma-1}\,\frac{R_u T_c}{\mathcal M}\left[1-\left(\frac{p_e}{p_c}\right)^{(\gamma-1)/\gamma}\right]}$$
 
-where $R_u$ = 8 314 J/(kmol·K). Exhaust velocity therefore rises with $\sqrt{T_c/\mathcal M}$: light exhaust matters as much as a hot flame. Hydrogen–oxygen burns slightly cooler than kerosene–oxygen, but its exhaust (mean molar mass about 13.5 kg/kmol) is much lighter than kerosene's (about 23.5). With γ = 1.2 and a pressure ratio of 1 000 the formula gives 4 200 m/s for hydrogen and 3 270 m/s for kerosene. And because the bracket approaches 1 slowly, higher pressure ratios buy little extra velocity.
+where $R_u$ = 8 314 J/(kmol·K). Exhaust velocity therefore rises with $\sqrt{T_c/\mathcal M}$: light exhaust matters as much as a hot flame. Hydrogen–oxygen burns slightly cooler than kerosene–oxygen, but its exhaust (mean molar mass about 13.5 kg/kmol) is much lighter than kerosene's (about 23.5). With γ = 1.2 and a pressure ratio of 1 000 the formula gives 4 200 m/s for hydrogen and 3 270 m/s for kerosene. Because the bracket approaches 1 slowly, higher pressure ratios add little velocity.
 
 ### Area, Mach Number and the Throat
 
@@ -50,7 +50,7 @@ Subsonic gas accelerates in a narrowing duct, supersonic gas in a widening one, 
 
 $$\frac{A}{A_t} = \frac{1}{M}\left[\frac{2}{\gamma+1}\left(1+\frac{\gamma-1}{2}M^2\right)\right]^{\frac{\gamma+1}{2(\gamma-1)}}$$
 
-![The de Laval nozzle. (a) Area ratio needed to reach each Mach number for several values of γ, with the expansion ratios of three real engines. (b) Pressure, temperature, velocity and Mach number along a nozzle with ε = 40: pressure halves before the throat, and most of the velocity is gained within a few throat diameters downstream of it.](figures/out/ch35_nozzleflow.svg){#fig:nozzleflow width=98%}
+![The de Laval nozzle. (a) Area ratio needed to reach each Mach number for several values of γ, with the expansion ratios of three real engines. (b) Pressure, temperature, velocity and Mach number along a nozzle with ε = 40: pressure falls by almost half before the throat, and most of the velocity is gained within a few throat diameters downstream of it.](figures/out/ch35_nozzleflow.svg){#fig:nozzleflow width=98%}
 
 Once the throat is **choked**, no disturbance can travel upstream, so the mass flow depends only on chamber conditions and throat area; designers size an engine by choosing $p_c$ and $A_t$ first. A simple 15° conical nozzle loses 1.7 % of thrust because the exhaust leaves at an angle (divergence factor $(1+\cos α)/2$ = 0.983); most engines use a contoured **bell nozzle** that gives the same performance at about 80 % of the cone's length.
 
@@ -64,7 +64,7 @@ With the same chamber, a nozzle of ε = 16 gives 300 s at sea level and 330 s in
 
 ![The 27 Merlin engines of a Falcon Heavy at lift-off with NASA's Nancy Grace Roman Space Telescope on 30 August 2026. The sea-level engines are slightly over-expanded at lift-off.](figures/photos/ch35_fh27.jpg){#fig:fh27engines width=56%}
 
-Real engines fall short of the ideal because of incomplete mixing, boundary-layer losses, exhaust divergence and chemistry that cannot keep pace with the falling temperature. Comparing published vacuum Isp with ideal values computed for each engine's own conditions gives about 92 % for the Merlin 1D, 94 % for the RD-180, 95 % for Raptor, 97 % for the RL10B-2 and 98 % for the RS-25; solid motors lose a little more because alumina droplets lag behind the gas.
+Real engines fall short of the ideal through incomplete mixing, boundary-layer losses, exhaust divergence and chemistry that lags the falling temperature. Comparing published vacuum Isp with ideal values computed for each engine's own conditions gives about 92 % for the Merlin 1D, 94 % for the RD-180, 95 % for Raptor, 97 % for the RL10B-2 and 98 % for the RS-25; solid motors lose a little more because alumina droplets lag behind the gas.
 
 ::: example
 **Example: specific impulse of the RS-25 from c\* and the thrust coefficient**
@@ -73,7 +73,7 @@ The RS-25 burns hydrogen and oxygen at a mixture ratio of 6.0, with $p_c$ = 20.6
 
 1. **Characteristic velocity.** An equilibrium calculation gives a theoretical $c^*$ of 2 322 m/s; with a c\* efficiency of 99 %, $c^*$ = 2 299 m/s.
 2. **Exit pressure.** With γ = 1.2 the area–Mach relation gives $M_e$ = 4.6 for ε = 69 and $p_e/p_c$ = 0.001 05, so $p_e$ = 21.6 kPa.
-3. **Thrust coefficient.** In vacuum $C_F$ = 1.818 (momentum) + 0.109 (pressure term $p_e ε/p_c$) = 1.927. At sea level subtract $p_a ε/p_c$ = 0.339: $C_F$ = 1.587.
+3. **Thrust coefficient.** In vacuum $C_F$ = 1.855 (momentum) + 0.072 (pressure term $p_e ε/p_c$) = 1.927. At sea level subtract $p_a ε/p_c$ = 0.339: $C_F$ = 1.587.
 4. **Specific impulse.** $I_{sp} = c^* C_F/g_0$ = 2 299 × 1.927 / 9.807 = **452 s** in vacuum (published: 452.3 s) and 372 s at sea level (published: 366 s).
 5. **Throat size.** $A_t = F/(C_F p_c)$ = 2 279 000 / (1.927 × 20.6 × 10⁶) = 0.0574 m², a throat 27 cm across. The mass flow $p_c A_t/c^*$ is **514 kg/s** — a tonne of propellant every two seconds.
 :::
@@ -97,7 +97,7 @@ A good combination releases much energy per kilogram, produces light exhaust, is
 
 **Liquid hydrogen with liquid oxygen** (LOX/LH₂) gives the highest Isp of any practical chemical combination, but hydrogen is a cryogenic liquid at 20 K with a density of only 71 kg/m³; its tanks are huge, must be insulated against boil-off, and can embrittle metals. Hydrogen powers upper stages and core stages that burn from the ground up (RS-25, Vulcain 2.1, LE-9, YF-77). Engines run fuel-rich, at O/F 5–6 instead of the stoichiometric 7.9, because lighter exhaust and smaller hydrogen tanks more than repay the lost energy.
 
-**Kerosene with oxygen** (LOX/RP-1, a highly refined kerosene) is dense and cheap, and the fuel is stored at room temperature; its drawbacks are lower Isp and **coking** — carbon deposits in cooling channels and soot on turbines — which complicates reuse. SpaceX chills Falcon 9's oxygen well below its boiling point and its kerosene below room temperature to pack more propellant into the tanks. **Methane with oxygen** ("methalox") sits between the two: better Isp than kerosene, far denser than hydrogen, little coking, and a boiling point (112 K) close to that of oxygen (90 K), so the tanks can share a bulkhead and each propellant can pressurise its own tank with its own vapour. Methane can also be made on Mars. China's Zhuque-2 was the first methane-fuelled rocket to reach orbit, on 12 July 2023, followed by Vulcan (January 2024), New Glenn (2025) and, in September 2026, Starship.
+**Kerosene with oxygen** (LOX/RP-1, a highly refined kerosene) is dense and cheap, and the fuel is stored at room temperature; its drawbacks are lower Isp and **coking** — carbon deposits in cooling channels and soot on turbines — which complicates reuse. SpaceX chills Falcon 9's oxygen well below its boiling point and its kerosene below room temperature to pack more propellant into the tanks. **Methane with oxygen** ("methalox") sits between the two: better Isp than kerosene, far denser than hydrogen, little coking, and a boiling point (112 K) close to that of oxygen (90 K), so the tanks can share a bulkhead and each propellant can pressurise its own tank with its own vapour. Methane can also be made on Mars. China's Zhuque-2 was the first methane-fuelled rocket to reach orbit, on 12 July 2023, followed by, among others, Vulcan (January 2024), New Glenn (January 2025), China's Zhuque-3 (December 2025) and, in September 2026, Starship.
 
 **Storable hypergolic propellants** — nitrogen tetroxide (NTO) with monomethylhydrazine (MMH), unsymmetrical dimethylhydrazine (UDMH) or UH25 (UDMH with 25 % hydrazine hydrate) — ignite on contact and stay liquid at room temperature for years. They power spacecraft (Chapter 6), some upper stages and India's Vikas engine, but are highly toxic.
 
@@ -118,13 +118,13 @@ A good combination releases much energy per kilogram, produces light exhaust, is
 
 A stage's tanks, structure and drag grow with the *volume* of its propellant, not its mass. For a fixed tank volume the total impulse is proportional to the **density impulse** $ρ\, I_{sp}$, where ρ is the bulk density of the combination. By this measure kerosene (370 kg·s/L) beats hydrogen (165 kg·s/L) by more than a factor of two, and solids (about 500 kg·s/L) do better still (@fig:densityimpulse). This is why most first stages and strap-on boosters burn kerosene, methane or solid propellant, while hydrogen is favoured for upper stages, where every second of Isp is multiplied through the rocket equation.
 
-![The density–impulse trade. Each line shows how theoretical vacuum Isp and bulk density change as the mixture ratio varies; dots mark typical engines, and grey curves join combinations with equal density impulse.](figures/out/ch35_densityisp.svg){#fig:densityimpulse width=82%}
+![The density–impulse trade. Each line shows how theoretical vacuum Isp and bulk density change as the mixture ratio varies; dots mark mixture ratios typical of real engines, and grey curves join combinations with equal density impulse.](figures/out/ch35_densityisp.svg){#fig:densityimpulse width=82%}
 
 ## Liquid-Propellant Engines
 
 ### Feeding the Chamber
 
-Propellants must reach the injector at a pressure 20–30 % above chamber pressure, so that the injector's pressure drop isolates the feed system from fluctuations in the chamber. The simplest method is to pressurise the tanks with helium (**pressure-fed**). But tank wall thickness grows with pressure ($t = p r/σ$ for a cylinder of radius $r$ and allowable stress σ): a 3 m diameter aluminium-alloy tank needs walls 1.5 mm thick at 0.3 MPa but 15 mm at 3 MPa. Pressure-fed engines are therefore limited to chamber pressures of about 0.7–2 MPa and to spacecraft and small stages. Large stages keep their tanks at a few bar and raise the pressure with **turbopumps** — pumps driven by a turbine — and the way the turbine is powered defines the **engine cycle** (@fig:enginecycles, @tbl:cyclecompare).
+Propellants must reach the injector at a pressure 20–30 % above chamber pressure, so that the injector's pressure drop isolates the feed system from chamber fluctuations. The simplest method is to pressurise the tanks with helium (**pressure-fed**). But tank wall thickness grows with pressure ($t = p r/σ$ for a cylinder of radius $r$ and allowable stress σ): a 3 m diameter aluminium-alloy tank needs walls 1.5 mm thick at 0.3 MPa but 15 mm at 3 MPa. Pressure-fed engines are therefore limited to chamber pressures of about 0.7–2 MPa and to spacecraft and small stages. Large stages keep their tanks at a few bar and raise the pressure with **turbopumps** — pumps driven by a turbine — and the way the turbine is powered defines the **engine cycle** (@fig:enginecycles, @tbl:cyclecompare).
 
 ### Engine Cycles
 
@@ -134,16 +134,16 @@ A **gas generator** burns a few per cent of the propellants very fuel-rich (belo
 
 In **staged combustion**, a **preburner** burns all of one propellant with a little of the other, and the hot gas drives the turbine and then flows into the main chamber, so nothing is wasted. The Soviet Union pioneered the **oxidiser-rich** version — the RD-253 (1965), NK-33 and the RD-170 family, including the RD-180 and RD-191 — which needs special alloys because hot oxygen attacks most metals; the YF-100, BE-4 and Archimedes use it too. The RS-25 uses the **fuel-rich** version, with one preburner for each turbopump. **Full-flow staged combustion** (FFSC) passes *all* of both propellants through turbines — a fuel-rich preburner drives the fuel pump and an oxygen-rich one the oxygen pump — giving cooler turbines and no need for a seal between fuel-rich gas and oxygen on one shaft. After Soviet and US ground demonstrators, SpaceX's Raptor, first flown in 2019, became the only FFSC engine to fly; Raptor 3 runs at about 33 MPa, the highest chamber pressure of any flying engine.
 
-Rocket Lab's Rutherford replaces the turbine with two brushless electric motors of about 37 kW each, spinning near 40 000 rpm on lithium-polymer batteries. The pumps are simple and easy to control, but battery mass grows with power and burn time, so the **electric-pump** cycle suits only small engines; Electron's second stage even jettisons spent battery packs in flight.
+Rocket Lab's Rutherford replaces the turbine with two brushless electric motors of about 37 kW each, spinning near 40 000 rpm on lithium-polymer batteries. The pumps are simple and easy to control, but battery mass grows with power and burn time, so the **electric-pump** cycle suits only small engines; Electron's second stage even jettisons spent batteries in flight.
 
 | Cycle | What drives the turbine | Typical *p*~c~ (MPa) | Strengths | Weaknesses | Examples |
 |---|---|---|---|---|---|
 | Pressure-fed | No turbine: tank pressure | 0.7–2 | Simplest; easy restarts | Heavy tanks; low Isp | Spacecraft engines, AJ10, Aestus |
 | Gas generator | Small fuel-rich combustor; exhaust dumped | 5–12 | Simple, easy to develop | Wastes a few per cent of flow | Merlin, F-1, Vulcain 2.1, CE-20 |
 | Expander (closed / bleed) | Fuel heated in the cooling jacket | 4–6 / ≈ 10 | Benign failures; restartable | Heat pickup limits size | RL10, Vinci; LE-9, BE-3U |
-| Staged combustion | Preburner gas, then main chamber | 18–27 | High Isp and pressure | Complex; hot oxygen (ox-rich) | RD-180, BE-4, YF-100; RS-25 |
+| Staged combustion | Preburner gas, then main chamber | 10–27 | High Isp and pressure | Complex; hot oxygen (ox-rich) | RD-180, BE-4, YF-100; RS-25 |
 | Full-flow staged comb. | Two preburners; all flow through turbines | 30–33 | Cooler turbines; no interpropellant seal | Most complex | Raptor |
-| Electric pump | Battery and electric motors | ≈ 1–2 | Simple; precise control | Battery mass | Rutherford |
+| Electric pump | Battery and electric motors | Low (not published) | Simple; precise control | Battery mass | Rutherford |
 
 : Liquid-engine cycles compared. {#tbl:cyclecompare}
 
@@ -167,12 +167,12 @@ The chamber is also an organ pipe. If heat release couples with a pressure wave,
 ::: history
 **Taming the F-1**
 
-The F-1, which produced 6.8 MN at sea level, remains the most powerful single-chamber liquid engine ever flown. In June 1962 one destroyed itself on the test stand through high-frequency instability. Rocketdyne and NASA spent more than three years and about 2 000 full-scale tests on injector and baffle variants, setting off small explosive charges inside the running chamber to trigger instability deliberately. The final design, with copper baffles and a modified injection pattern, damped such disturbances within about 45 ms. No F-1 failed in flight: 65 engines powered 13 Saturn V launches. Bomb tests remain part of qualification.
+The F-1, which produced 6.8 MN at sea level, remains the most powerful single-chamber liquid engine ever flown. In June 1962 one destroyed itself on the test stand through high-frequency instability. Rocketdyne and NASA spent more than three years and about 2 000 full-scale tests on injector and baffle variants, setting off small charges inside the running chamber to trigger instability. The final design, with copper baffles and a modified injection pattern, damped such disturbances within about 45 ms. No F-1 failed in flight: 65 engines powered 13 Saturn V launches.
 :::
 
 ### Cooling
 
-Near the throat of a high-pressure engine the heat flux exceeds 100 MW/m², about a thousand times that of a kitchen hot-plate, and the gas is hotter than any structural metal can survive. In **regenerative cooling** the fuel flows through channels in the wall before injection, returning the heat to the chamber; modern chambers use copper alloys with milled channels, while the RS-25 nozzle is made of 1 080 brazed tubes (@fig:sts93tubes). **Film cooling** protects the wall with a layer of fuel; **ablative** walls char and erode slowly; **radiation-cooled** nozzle extensions of niobium alloy or carbon–carbon (Merlin Vacuum, RL10B-2) glow and radiate their heat to space; and **dump cooling** passes a little hydrogen through the Vulcain 2 nozzle extension and out of its exit.
+Near the throat of a high-pressure engine the heat flux exceeds 100 MW/m², about a thousand times that of a kitchen hot-plate, and the gas is hotter than any structural metal can survive. In **regenerative cooling** the fuel flows through channels in the wall before injection, returning the heat to the chamber; modern chambers use copper alloys with milled channels, while the RS-25 nozzle is made of 1 080 brazed tubes (@fig:sts93tubes). **Film cooling** protects the wall with a layer of fuel or, on Vulcain 2, re-injected turbine exhaust; **ablative** walls char and erode slowly; **radiation-cooled** nozzle extensions of niobium alloy or carbon–carbon (Merlin Vacuum, RL10B-2) glow and radiate their heat to space; and **dump cooling** passes a little fuel through the wall of a nozzle extension and out of its exit.
 
 ![Coolant tubes inside main engine No. 3 of Space Shuttle Columbia after STS-93 in July 1999. A pin ejected from the injector at ignition punctured three tubes; the resulting hydrogen leak made the engines shut down 0.16 s early, leaving Columbia about 5 m/s short.](figures/photos/ch35_tubes.jpg){#fig:sts93tubes width=44%}
 
@@ -182,7 +182,7 @@ Merlin is ignited by **TEA–TEB**, a mixture of triethylaluminium and triethylb
 
 ### Additive Manufacturing
 
-Rocket engines suit **additive manufacturing** (metal 3-D printing): they are made in small numbers, from costly alloys, with complex internal passages. Laser powder-bed fusion now produces injectors, chambers with integral cooling channels (including NASA's GRCop copper alloys), manifolds and pump housings in one piece instead of dozens of brazed parts. Rutherford is mostly printed; Raptor 3 integrated much of its plumbing into printed parts; and up to half of Prometheus by mass is printed, part of its aim to cost a tenth as much as Vulcain 2. Porosity, rough passages and uncertain fatigue life mean printed parts still need extensive testing.
+Rocket engines suit **additive manufacturing** (metal 3-D printing): they are built in small numbers from costly alloys with complex internal passages. Laser powder-bed fusion now produces injectors, chambers with integral cooling channels (including NASA's GRCop copper alloys), manifolds and pump housings in one piece instead of dozens of brazed parts. Rutherford is mostly printed; Raptor still uses printed parts, and Raptor 3 moved much of its plumbing into the engine's main structure; and up to half of Prometheus by mass is printed, part of its aim to cost a tenth as much as Vulcain 2. Porosity, rough passages and uncertain fatigue life mean printed parts still need extensive testing.
 
 ![Engineers at NASA's Marshall Space Flight Center prepare a 3-D printed turbopump for a test in 2016. At full power it pumped 2.3 m³ of liquid methane per minute, enough for an engine of about 156 kN.](figures/photos/ch35_amturbo.jpg){#fig:amturbopump width=46%}
 
@@ -190,7 +190,7 @@ Rocket engines suit **additive manufacturing** (metal 3-D printing): they are ma
 
 @tbl:enginespecs and @fig:enginemap compare the main engines of 2026. Chamber pressures have risen from about 7 MPa for the F-1 to 33 MPa for Raptor 3, making engines smaller for their thrust; methane has become the fuel of new reusable boosters in the United States, China and Europe; and thrust-to-weight ratios of 140–185 for the newest kerosene and methane engines, against about 54 for the RS-25, show the weight penalty of pumping hydrogen.
 
-Several engines changed status in 2025–26. Raptor 3 first flew on Starship Flight 12 on 22 May 2026. Blue Origin is raising the BE-4 to about 2.85 MN with subcooled propellants, but a New Glenn booster exploded during a pre-launch hot fire on 28 May 2026, a failure traced to the main oxygen valve of one BE-4. India hot-fired the CE-20 at an uprated 22 tonnes-force in 2026, Prometheus awaits hop tests on Europe's Themis demonstrator, and Rocket Lab moved the first launch of Neutron, with its Archimedes engines, to 2027 after problems with a composite tank.
+Several engines changed status in 2025–26. Raptor 3 first flew on Starship Flight 12 on 22 May 2026. Blue Origin is raising the BE-4 to about 2.85 MN with subcooled propellants, but a New Glenn booster exploded in a pre-launch hot fire on 28 May 2026 (@tbl:propfailures). India hot-fired the CE-20 at an uprated 22 tonnes-force in 2026, Prometheus awaits hop tests on Europe's Themis demonstrator, and Rocket Lab moved the first launch of Neutron, with its Archimedes engines, to 2027 after problems with a composite tank.
 
 | Engine | Cycle | Propellants | Thrust SL / vac (kN) | *I*~sp~ vac (s) | *p*~c~ (MPa) | T/W |
 |---|---|---|---|---|---|---|
@@ -200,7 +200,7 @@ Several engines changed status in 2025–26. Raptor 3 first flew on Starship Fli
 | RS-25 (US) | SC fuel-rich | LOX/LH₂ | 1 859 / 2 279 | 452 | 20.6 | 54 |
 | BE-4 (US) | SC ox-rich | LOX/CH₄ | 2 450 → 2 850 | — | 13.4 | — |
 | BE-3U (US) | Exp. bleed | LOX/LH₂ | — / 711 → 890 | — | — | — |
-| RL10B-2 (US) | Expander | LOX/LH₂ | — / 110 | 465.5 | 4.4 | 40 |
+| RL10B-2 (US) | Expander | LOX/LH₂ | — / 110 | 465.5 | 4.4 | ≈ 37 |
 | RD-180 (RU) | SC ox-rich | LOX/RP-1 | 3 830 / 4 150 | 338 | 26.7 | 71 |
 | RD-191 (RU) | SC ox-rich | LOX/RP-1 | 1 920 / 2 090 | 337 | 25.8 | 85 |
 | Vulcain 2.1 (EU) | GG | LOX/LH₂ | — / ≈ 1 370 | ≈ 432 | 11.7 | — |
@@ -215,9 +215,9 @@ Several engines changed status in 2025–26. Raptor 3 first flew on Starship Fli
 | Vikas (IN) | GG | NTO/UH25 | 737 / 821 | 293 | 5.85 | — |
 | CE-20 (IN) | GG | LOX/LH₂ | — / ≈ 200 | 442 | 6.0 | ≈ 35 |
 
-: Launch-vehicle engines in 2026. GG = gas generator, SC = staged combustion, FFSC = full-flow staged combustion. Raptor Isp: vacuum value of the sea-level engine; Rutherford and Archimedes vacuum figures: vacuum versions; arrows: uprating announced in 2025. T/W from sea-level thrust where available; "—" not published. CN China, EU Europe, IN India, JP Japan, NZ New Zealand, RU Russia. Sources: manufacturers and agencies, checked October 2026. {#tbl:enginespecs}
+: Launch-vehicle engines in 2026. GG = gas generator, SC = staged combustion, FFSC = full-flow staged combustion. Raptor Isp: vacuum value of the sea-level engine; Rutherford and Archimedes vacuum figures: vacuum versions; arrows: uprating announced in 2025. T/W from sea-level thrust where available, otherwise vacuum thrust; "—" not published. CN China, EU Europe, IN India, JP Japan, NZ New Zealand, RU Russia. Sources: manufacturers and agencies, checked October 2026. {#tbl:enginespecs}
 
-![Launch-vehicle engines of 2026. (a) Thrust and vacuum specific impulse; marker shape gives the propellant, colour the cycle. (b) Chamber pressure: staged-combustion engines run two to three times higher than gas-generator engines.](figures/out/ch35_enginemap.svg){#fig:enginemap width=96%}
+![Launch-vehicle engines of 2026. (a) Thrust and vacuum specific impulse; marker shape gives the propellant, colour the cycle. (b) Chamber pressure: most staged-combustion engines run two to three times higher than gas-generator engines, although the methane-fuelled BE-4 and Archimedes use moderate pressures.](figures/out/ch35_enginemap.svg){#fig:enginemap width=96%}
 
 ## Solid Rocket Motors
 
@@ -258,7 +258,7 @@ A solid motor cannot be throttled, so its thrust history is designed into the gr
 
 The largest motors are built from **segments** joined at the launch site by **field joints** sealed with O-rings. On 28 January 1986, at about 2 °C, cold O-rings in the aft field joint of Challenger's right booster failed to seal; hot gas escaped, breached the external tank, and the vehicle broke up 73 s after lift-off, killing all seven crew. The redesigned joint added a capture feature, a third O-ring and heaters.
 
-NASA's Space Launch System uses five-segment boosters, each producing about 16 MN — together more than 75 % of lift-off thrust — for 126 s. The first composite-cased Booster Obsolescence and Life Extension (BOLE) motor ran for more than two minutes on 26 June 2025, but its nozzle suffered an anomaly near the end of the burn (@fig:boletest). Europe uses **monolithic** carbon-fibre motors: the P120C serves Ariane 6 and Vega-C, and the larger P160C first flew on Ariane 6 in June 2026. Vulcan's GEM 63XL boosters lost a nozzle in October 2024 and suffered an apparent burn-through in February 2026, after which the US Space Force paused national-security launches on Vulcan; an improved motor was static-fired in April 2026, and Vulcan had not flown again by early autumn (@tbl:solidmotors). A large solid motor cannot be switched off: range safety destroys it by splitting the case, and some missile upper stages used **thrust-termination ports** that vent the chamber forwards to cancel thrust.
+NASA's Space Launch System uses five-segment boosters, each producing about 16 MN — together more than 75 % of lift-off thrust — for 126 s. The first composite-cased Booster Obsolescence and Life Extension (BOLE) motor ran for more than two minutes on 26 June 2025, but its nozzle suffered an anomaly near the end of the burn (@fig:boletest). Europe uses **monolithic** carbon-fibre motors: the P120C serves Ariane 6 and Vega-C, and the larger P160C first flew on Ariane 6 in June 2026. Vulcan's GEM 63XL boosters lost a nozzle in October 2024 and suffered an apparent burn-through in February 2026, after which the US Space Force paused national-security launches on Vulcan; an improved motor was static-fired in April 2026, and Vulcan had not flown again by mid-October 2026 (@tbl:solidmotors). A large solid motor cannot be switched off; range safety destroys it by splitting the case.
 
 | Motor (vehicle) | Propellant (t) | Max thrust (kN) | *I*~sp~ vac (s) | Burn (s) | Case |
 |---|---|---|---|---|---|
@@ -289,21 +289,21 @@ Hybrids have flown on SpaceShipOne and SpaceShipTwo, whose RocketMotorTwo burned
 
 ### Test Stands and Campaigns
 
-Engines are developed by testing: combustion stability, turbopump dynamics and chamber life cannot yet be predicted well enough to fly without hot fire. A programme moves from component tests — injector elements, preburners, a turbopump on a "powerpack" rig — to complete engines, complete stages, and often the whole vehicle on the pad before each flight. Development engines are run beyond their limits.
+Engines are developed by testing: combustion stability, turbopump dynamics and chamber life cannot yet be predicted well enough to skip hot fire. A programme moves from component tests — injector elements, preburners, a turbopump on a "powerpack" rig — to complete engines, stages and often the whole vehicle on the pad. Development engines are run beyond their limits.
 
-NASA's **Stennis Space Center** in Mississippi tested every Space Shuttle main engine and tests the RS-25s for SLS: its Fred Haise (A-1) stand certified the new production RS-25 at up to 113 % power, and a January 2026 hot fire cleared engine 2063 for Artemis IV, while the B-2 stand fired the complete SLS core stage in 2021 (shown under the chapter title). SpaceX's **McGregor** site in Texas has about a dozen stands on which every Merlin and Raptor is fired before delivery. At the German Aerospace Center's **Lampoldshausen** site the P5 stand tests Vulcain 2.1, P4.1 tests Vinci under simulated altitude conditions, and P5.2 fires the complete Ariane 6 upper stage. Upper-stage engines with large nozzles are fired in **altitude-simulation** facilities, vacuum chambers in which the exhaust, passing through a diffuser, helps hold the low pressure (@fig:merlinstand, @fig:rl10chamber).
+NASA's **Stennis Space Center** in Mississippi tested every Space Shuttle main engine and tests the RS-25s for SLS: its Fred Haise (A-1) stand certified the new production RS-25 in 2023, running it at up to 113 % power, and a January 2026 hot fire cleared engine 2063 for Artemis IV, while the B-2 stand fired the complete SLS core stage in 2021 (shown under the chapter title). SpaceX's **McGregor** site in Texas has about a dozen stands on which Merlin and Raptor engines are fired before delivery. At the German Aerospace Center's **Lampoldshausen** site the P5 stand tests Vulcain 2.1, P4.1 tests Vinci under simulated altitude conditions, and P5.2 fires the complete Ariane 6 upper stage. Upper-stage engines with large nozzles are fired in **altitude-simulation** facilities, vacuum chambers in which the exhaust, passing through a diffuser, helps hold the low pressure (@fig:merlinstand, @fig:rl10chamber).
 
 ::: figrow
-![A Merlin engine firing on a test stand at SpaceX's McGregor facility in Texas, where every engine is fired before it flies.](figures/photos/ch35_merlintest.jpg){#fig:merlinstand width=86%}
+![A Merlin engine mounted on a test stand at SpaceX's McGregor facility in Texas, where engines are hot-fired before they fly.](figures/photos/ch35_merlintest.jpg){#fig:merlinstand width=86%}
 
-![An RL10 in the vacuum test chamber at Aerojet Rocketdyne's West Palm Beach facility, Florida, in 2016, before it flew on the Centaur stage of an Atlas V for a crewed Starliner mission.](figures/photos/ch35_rl10.jpg){#fig:rl10chamber width=77%}
+![An RL10 in the vacuum test chamber at Aerojet Rocketdyne's West Palm Beach facility, Florida, in 2016. It was one of two engines built for the Centaur upper stage of the Atlas V that would launch Starliner's crewed flight test.](figures/photos/ch35_rl10.jpg){#fig:rl10chamber width=77%}
 :::
 
 **Qualification** shows that a design meets its requirements with margin: engines are run for several times their mission duration, at the corners of the allowed ranges of thrust, mixture ratio and inlet conditions, and through many starts. The RS-25 has accumulated more than 1.1 million seconds of hot fire. Every flight engine then passes an **acceptance test** to catch defects.
 
 ### Engine-Out and Failure Modes
 
-Clustering allows engine-out survival. Falcon 9 lost an engine on the CRS-1 mission in October 2012 and still delivered Dragon to orbit; on Starship Flight 12 one of 33 Raptor 3s shut down early without preventing the booster from reaching its planned trajectory. Controllers shut an engine down when a **redline** — a limit on pressure, temperature, speed or vibration — is crossed, and many vehicles are held down for a few seconds after ignition so that a fault can stop the launch (@tbl:propfailures).
+Clustering allows engine-out survival: Falcon 9 lost an engine on the CRS-1 mission in October 2012 and still delivered Dragon to orbit; on Starship Flight 12 one of 33 Raptor 3s shut down early during ascent, yet the vehicle still reached its planned trajectory. Controllers shut an engine down when a **redline** — a limit on pressure, temperature, speed or vibration — is crossed, and many vehicles are held down for a few seconds after ignition so that a fault can stop the launch (@tbl:propfailures).
 
 | Event | What happened | Consequence or lesson |
 |---|---|---|
@@ -318,19 +318,19 @@ Clustering allows engine-out survival. Falcon 9 lost an engine on the CRS-1 miss
 
 ## Beyond Chemical Propulsion
 
-Chemical rockets are limited by the energy stored in their propellants: hydrogen and oxygen release about 13 MJ per kilogram, which in practice caps vacuum Isp near 470 s. Missions that need large velocity changes over months use **electric propulsion**, which accelerates ions or plasma to 15–50 km/s at tiny thrust (Chapter 6); nuclear thermal rockets, solar sails and more speculative ideas are discussed in Chapter 42. 
+Chemical rockets are limited by the energy stored in their propellants: hydrogen and oxygen release about 13 MJ per kilogram, which in practice caps vacuum Isp near 470 s. Missions that need large velocity changes over months use **electric propulsion**, which accelerates ions or plasma to 15–50 km/s at tiny thrust (Chapter 6); nuclear thermal rockets, solar sails and other advanced concepts are covered in Chapter 42. 
 
 ::: ai
 **AI in rocket propulsion**
 
-Combustion instability suits machine learning because it is hard to predict from first principles but leaves signatures in pressure data. Researchers at DLR and the University of Cambridge trained Bayesian neural networks on pressure signals from a hydrogen–oxygen research combustor and forecast the onset of instability about half a second ahead — early enough for a controller to react. Engine teams also use machine-learning surrogates of slow simulations to optimise injectors, and anomaly detection on hot-fire sensor data. **Computational engineering** tools generate whole engine geometries from requirements: in December 2024 the Dubai company LEAP 71 hot-fired a 5 kN kerosene–oxygen aerospike designed largely by its software and printed in copper. Chapter 47 discusses AI in design and manufacturing; certification still rests on hot fire.
+Combustion instability suits machine learning because it is hard to predict from first principles but leaves signatures in pressure data. Researchers at DLR and the University of Cambridge trained Bayesian neural networks on pressure signals from a hydrogen–oxygen research combustor and forecast the onset of instability about half a second ahead — early enough for a controller to react. Engine teams also use machine-learning surrogates of slow simulations and anomaly detection on hot-fire data. **Computational engineering** tools generate whole engine geometries from requirements: in December 2024 the Dubai company LEAP 71 hot-fired a 5 kN kerosene–oxygen aerospike designed largely by its software and printed in copper. Chapter 47 discusses AI in design and manufacturing; certification still rests on hot fire.
 :::
 
 ::: key
 **Key takeaways**
 
 - Thrust is $\dot m v_e + (p_e - p_a)A_e$; specific impulse $F/(\dot m g_0)$ measures propellant efficiency, while $c^*$ and $C_F$ separate the performance of the chamber from that of the nozzle.
-- A de Laval nozzle chokes at the throat, so $\dot m = p_c A_t/c^*$; exhaust velocity grows with $\sqrt{T_c/\mathcal M}$, which is why hydrogen gives 450–465 s.
+- A de Laval nozzle chokes at the throat, so $\dot m = p_c A_t/c^*$; exhaust velocity grows with $\sqrt{T_c/\mathcal M}$, which is why hydrogen engines reach 420–465 s.
 - Nozzles are sized for altitude: sea-level engines use expansion ratios of about 15–40 to avoid flow separation, vacuum engines 60–280.
 - Propellants trade Isp against density, storability and handling; dense propellants suit first stages, hydrogen upper stages, and methane has become the fuel of new reusable boosters.
 - Engine cycles differ in how they drive the turbopumps: gas generators are simple, expanders benign, staged combustion efficient; full-flow Raptor 3 reaches 33 MPa.

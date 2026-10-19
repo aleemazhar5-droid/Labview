@@ -85,12 +85,12 @@ The energy deposited per kilogram of tissue is the **absorbed dose**, in grays (
 
 @tbl:raddoserates lists measured dose rates. A six-month ISS mission gives about 70–160 mSv, depending on the solar cycle; Scott Kelly received 146 mSv in 340 days. Outside the magnetosphere the rate jumps: the Radiation Assessment Detector on the Curiosity rover measured 1.84 mSv per day during its cruise to Mars in 2011–12 and 0.64 mSv per day on the surface, where the planet blocks half the sky. On the Moon, China's Chang'e 4 lander measured about 1.4 mSv per day.
 
-In 2022 NASA adopted a single **career limit of 600 mSv** effective dose for all astronauts, regardless of age or sex. It corresponds to a calculated mean 3 % risk of dying from radiation-induced cancer for the most sensitive group (a 35-year-old woman), and replaced earlier limits that allowed older men a higher dose than young women. For comparison, radiation workers on Earth are limited to an average of 20 mSv per year. NASA also requires that shielding keep the dose from a large SPE — modelled on the October 1989 event — below 250 mSv. @fig:crewdose compares mission doses with the limit: low-Earth-orbit and lunar missions fit comfortably, but a Mars mission does not.
+In 2022 NASA adopted a single **career limit of 600 mSv** effective dose for all astronauts, regardless of age or sex. It corresponds to a calculated mean 3 % risk of dying from radiation-induced cancer for the most sensitive group (a 35-year-old woman), and replaced earlier limits that allowed older men a higher dose than young women. For comparison, international recommendations limit radiation workers on Earth to an average of 20 mSv per year. NASA also requires that shielding keep the dose from a large SPE — modelled on the October 1989 event — below 250 mSv. @fig:crewdose compares mission doses with the limit: low-Earth-orbit and lunar missions fit comfortably, but a Mars mission does not.
 
 | Environment | Dose rate | Notes |
 |---|---|---|
 | Earth's surface | ≈ 0.007 mSv/day | 2.4 mSv per year world average |
-| ISS (400 km, 51.6°) | 0.4–0.8 mSv/day | Mostly trapped protons and GCRs |
+| ISS (400 km, 51.6°) | 0.4–0.9 mSv/day | Mostly trapped protons and GCRs |
 | Lunar surface | ≈ 1.4 mSv/day | Chang'e 4, 2019 (solar minimum) |
 | Interplanetary cruise | ≈ 1.8 mSv/day | Curiosity RAD, 2011–12 |
 | Mars surface | ≈ 0.64 mSv/day | Curiosity RAD, 2012–13 |
@@ -148,7 +148,7 @@ A lower-pressure cabin with more oxygen shortens prebreathe dramatically. NASA's
 
 | Vehicle or regime | Total pressure | O₂ fraction | O₂ partial pressure | N₂ ratio to 29.6 kPa suit |
 |---|---|---|---|---|
-| Mercury, Gemini, Apollo (in flight) | 34.5 kPa | 100 % | 34.5 kPa | ≈ 0 |
+| Mercury, Gemini, Apollo (in flight) | 34–38 kPa | 100 % | 34–38 kPa | ≈ 0 |
 | Skylab (1973–74) | 34.5 kPa | ≈ 72 % | 24.8 kPa | 0.33 |
 | ISS, Soyuz, Shuttle, Crew Dragon, Orion | 101.3 kPa | 21 % | 21.3 kPa | 2.70 |
 | Shuttle pre-EVA; ISS campout | 70.3 kPa | 26.5 % | 18.6 kPa | 1.75 |
@@ -156,13 +156,13 @@ A lower-pressure cabin with more oxygen shortens prebreathe dramatically. NASA's
 
 : Cabin atmospheres of crewed spacecraft. The last column is the tissue nitrogen pressure after long exposure divided by the suit pressure; higher values need longer oxygen prebreathe. {#tbl:cabinatmospheres}
 
-Early US spacecraft used pure oxygen at 34.5 kPa to save mass: thinner walls, simpler life support, no nitrogen tanks. Soviet spacecraft used sea-level air, a choice the ISS inherited at the cost of long prebreathe.
+Early US spacecraft used pure oxygen at about 35 kPa to save mass: thinner walls, simpler life support, no nitrogen tanks. Soviet spacecraft used sea-level air, a choice the ISS inherited at the cost of long prebreathe.
 
 ## The Human Metabolic Budget
 
 A crew member burns food with oxygen. NASA's *Baseline Values and Assumptions Document* (BVAD) defines a reference astronaut of 82 kg who exercises for 90 minutes a day (@tbl:metabolicbudget). The ratio of carbon dioxide produced to oxygen consumed — the **respiratory quotient** — is about 0.86, so more carbon dioxide is exhaled, by mass, than oxygen inhaled. The body also makes about half a kilogram of water a day from food and loses about three kilograms as vapour that the cabin air system must condense.
 
-Two lessons stand out from @fig:metabolicbal. Water dominates — a person handles over 5 kg of it a day — which is why water recycling pays off fastest. And although oxygen is a small mass, it must be supplied, and carbon dioxide removed, continuously: a few hours of failure can be dangerous.
+Two lessons stand out from @fig:metabolicbal. Water dominates — about 4.5 kg of it passes through a person every day, four-fifths of the total — which is why water recycling pays off fastest. And although oxygen is a small mass, it must be supplied, and carbon dioxide removed, continuously: a few hours of failure can be dangerous.
 
 ![Daily mass balance of one crew member. Inputs and outputs balance at 5.67 kg per day; most of the mass flowing through a person is water.](figures/out/ch30_massbal.svg){#fig:metabolicbal width=96%}
 
@@ -184,7 +184,7 @@ Two lessons stand out from @fig:metabolicbal. Water dominates — a person handl
 
 Carbon dioxide is toxic well before it displaces oxygen. Concentrations of a few per cent cause headaches, rapid breathing and impaired thinking, and above about 5–10 % they become incapacitating. ISS crews reported headaches at partial pressures of about 3–5 mmHg, and analysis showed that the odds of a headache doubled with every 1 mmHg increase; NASA-STD-3001 now limits the one-hour average to 3 mmHg (0.4 kPa).
 
-Small cabins leave little margin (@fig:co2buildup a). In a capsule with 2.5 m³ of air per person it climbs by 7 mmHg per hour, reaching 1 % in about 45 minutes and 2 % in under two hours; on the ISS, with about 130 m³ per person, the same rise takes about a day and a half. With scrubbing, the steady-state level is inversely proportional to the air flow the scrubber cleans (panel b).
+Small cabins leave little margin (@fig:co2buildup a). If the scrubber stops at 2.5 mmHg in a capsule with 2.5 m³ of air per person, the level climbs by 7 mmHg per hour, reaching 1 % in about 45 minutes and 2 % in under two hours; on the ISS, whose pressurised volume of about 900 m³ gives some 130 m³ per person for a crew of seven, the same rise takes about a day and a half. With scrubbing, the steady-state level is inversely proportional to the air flow the scrubber cleans (panel b).
 
 ![Carbon dioxide in a closed cabin. (a) Rise in partial pressure after carbon dioxide removal stops, for different free gas volumes per crew member. (b) Steady-state partial pressure as a function of the effective scrubber flow.](figures/out/ch30_co2.svg){#fig:co2buildup width=98%}
 
@@ -210,11 +210,11 @@ The **environmental control and life support system (ECLSS)** controls pressure 
 
 Short missions use **lithium hydroxide** canisters that are thrown away when full: Apollo, the Shuttle and Crew Dragon all used them. The most famous are those of Apollo 13. After the oxygen-tank explosion in April 1970 the three astronauts sheltered in the lunar module, whose round canisters were sized for two people for two days; the command module's spare canisters were square. Engineers in Houston devised a way to connect them with plastic bags, cardboard and tape, and the crew built the "mailbox" from instructions read up to them (@fig:mailbox). Soyuz uses potassium superoxide, which absorbs carbon dioxide and releases oxygen, with LiOH as a supplement.
 
-Long missions need **regenerable** systems. The ISS Carbon Dioxide Removal Assembly (**CDRA**) and the Russian **Vozdukh** pass cabin air through beds of zeolite — a mineral with molecular-sized pores — that adsorb carbon dioxide; a full bed is heated and exposed to vacuum to drive the gas out while a second bed takes over. Desiccant beds first remove water, which would block the zeolite, and return it to the cabin. A redesigned Four Bed CO₂ Scrubber, delivered in 2021, now serves as a primary system. Orion uses an **amine swing bed**, regenerated by exposure to vacuum every few minutes — compact, but it vents some water overboard.
+Long missions need **regenerable** systems. The ISS Carbon Dioxide Removal Assembly (**CDRA**) passes cabin air through beds of zeolite — a mineral with molecular-sized pores — that adsorb carbon dioxide; a full bed is heated and exposed to vacuum to drive the gas out while a second bed takes over. Desiccant beds first remove water, which would block the zeolite, and return it to the cabin. The Russian **Vozdukh** works on the same swing principle with three beds of an amine sorbent. A redesigned Four Bed CO₂ Scrubber, delivered in 2021, now serves as a primary system. Orion uses an **amine swing bed**, regenerated by exposure to vacuum every few minutes — compact, but it vents some water overboard.
 
 ### Making Oxygen
 
-Short missions carry oxygen as high-pressure gas or cryogenic liquid. The ISS makes its own by **electrolysis** of water: the US Oxygen Generation Assembly (@fig:ogsrack) and the Russian Elektron split water into oxygen for the cabin and hydrogen. Each kilogram of oxygen requires 1.13 kg of water and roughly 6 kWh of electrical energy. Backup oxygen comes from tanks delivered by cargo vehicles and from **solid-fuel oxygen generators** — "candles" of lithium perchlorate that release oxygen when burned. A candle on Mir caught fire in February 1997, filling the station with smoke.
+Short missions carry oxygen as high-pressure gas or cryogenic liquid. The ISS makes its own by **electrolysis** of water: the US Oxygen Generation Assembly (@fig:ogsrack) and the Russian Elektron split water into oxygen for the cabin and hydrogen. Each kilogram of oxygen requires 1.13 kg of water and, even for an ideal cell, about 5 kWh of electrical energy; real electrolysers need more. Backup oxygen comes from tanks delivered by cargo vehicles and from **solid-fuel oxygen generators** — "candles" of lithium perchlorate that release oxygen when burned. A candle on Mir caught fire in February 1997, filling the station with smoke.
 
 ![The "mailbox" built by the Apollo 13 crew to use the command module's square lithium hydroxide canisters in the lunar module, April 1970.](figures/photos/ch30_mailbox.jpg){#fig:mailbox width=36%}
 
@@ -244,19 +244,19 @@ The ISS **Water Recovery System** (@fig:wrsrack) has two parts. The **Urine Proc
 
 Toilets use air flow instead of gravity to carry waste away; the compact Universal Waste Management System, installed on the ISS in 2020, also flies on Orion. Faeces are stored and burned up in departing cargo vehicles, and crews wash with wet towels and rinseless shampoo. Smoke detectors sit in the ventilation ducts. From 2015 the US segment's carbon dioxide extinguishers were replaced by water-mist units, because carbon dioxide would create an atmosphere the crew's emergency masks cannot filter. In a fire the crew stops the ventilation, removes power, dons oxygen masks and, if necessary, retreats to the docked vehicles.
 
+### Open and Closed Loops
+
+Recycling hardware is heavy, consumes power and needs spares, while stored consumables cost mass every day, so the choice depends on mission duration (@fig:eclsstrade). An analysis of ISS hardware for a four-person, 450-day Mars transit found that the complete regenerative system, with three sets of spares, has a mass of 7 062 kg and replaces about 32 kg of supplies per day. It pays for itself after about 220 days — about 240 days if the residual resupply of oxygen and filters is counted — and halves the life support mass of a 450-day transit. Carbon dioxide removal pays off within about three months, but the oxygen generator, with its heavy spares, takes 557 days.
+
 | Function | Open loop | ISS US segment | ISS Russian segment | Capsules |
 |---|---|---|---|---|
-| CO₂ removal | LiOH canisters | CDRA, Four Bed CO₂ Scrubber (zeolite) | Vozdukh (zeolite) | LiOH (Dragon); amine swing bed (Orion); KO₂ (Soyuz) |
+| CO₂ removal | LiOH canisters | CDRA, Four Bed CO₂ Scrubber (zeolite) | Vozdukh (amine beds) | LiOH (Dragon); amine swing bed (Orion); KO₂ (Soyuz) |
 | O₂ supply | Gas or liquid tanks | Electrolysis (OGA) | Electrolysis (Elektron); candles | Tanks |
 | CO₂ reduction | None, CO₂ discarded | Sabatier (since 2010) | None | None |
 | Water | Stored, or fuel-cell water (Apollo, Shuttle) | Urine and brine processors, WPA: 98 % | Condensate recovery | Stored |
 | Trace gases | Charcoal | Charcoal and catalytic oxidiser | Similar system | Charcoal, filters |
 
 : ECLSS technologies of crewed spacecraft. {#tbl:eclsstech}
-
-### Open and Closed Loops
-
-Recycling hardware is heavy, consumes power and needs spares, while stored consumables cost mass every day, so the choice depends on mission duration (@fig:eclsstrade). An analysis of ISS hardware for a four-person, 450-day Mars transit found that the complete regenerative system, with three sets of spares, has a mass of 7 062 kg and replaces about 32 kg of supplies per day. It pays for itself after about 220 days — about 240 days if the residual resupply of oxygen and filters is counted — and halves the life support mass of a 450-day transit. Carbon dioxide removal pays off within about three months, but the oxygen generator, with its heavy spares, takes 557 days.
 
 ![Open versus closed life support. (a) Cumulative mass of life support supplies for four crew with open-loop storage and with an ISS-type regenerative system. (b) Days needed for each ISS subsystem to save its own mass, including three sets of spares.](figures/out/ch30_trade.svg){#fig:eclsstrade width=98%}
 
@@ -267,7 +267,7 @@ The ultimate step is a **bioregenerative** system, in which plants and microbes 
 ::: example
 **Example: consumables for a 30-day lunar surface mission**
 
-Three astronauts spend 30 days on the Moon with open-loop life support. Use the BVAD values: oxygen 0.89 kg, water 3.2 kg, food 1.83 kg (packaged) per crew member per day, and LiOH at the Shuttle rate of 1.75 kg per crew-day, scaled up for a CO₂ output of 1.085 kg (the canister rating assumes 1.0 kg).
+Three astronauts spend 30 days on the Moon with open-loop life support. Use the BVAD values: oxygen 0.89 kg, water 3.2 kg, food 1.83 kg (packaged) per crew member per day, and LiOH at the Shuttle rate of 1.75 kg per crew-day, scaled up for a CO₂ output of 1.085 kg (assuming the canister rating corresponds to the older 1.0 kg design value).
 
 1. Crew-days: 3 × 30 = **90**.
 2. Oxygen: 90 × 0.89 = **80 kg**.
@@ -311,7 +311,7 @@ Many more crews have survived serious failures: the Apollo 13 explosion (1970); 
 
 ### Human-Rating Requirements
 
-NASA's requirements are set out in its human-rating process (NPR 8705.2C, with technical requirements in NASA-STD-8719.29 since 2023) and in **NASA-STD-3001**, whose Volume 1 covers crew health, including radiation limits, and Volume 2 (Revision F, July 2026) habitability and the cabin environment. Key principles are that the system must tolerate at least one failure — two for many critical functions — without catastrophe, unless a component is designed for minimum risk (like structures and pressure vessels); that the crew can abort and escape; and that the crew can monitor and control the vehicle manually.
+NASA's requirements are set out in its human-rating process (NPR 8705.2C, with technical requirements in NASA-STD-8719.29 since 2023) and in **NASA-STD-3001**, whose Volume 1 covers crew health, including radiation limits, and Volume 2 (Revision F, July 2026) habitability and the cabin environment. Key principles are that the system must tolerate at least one failure without catastrophe — with the actual level (one, two or more) set by safety analysis — unless a component is designed for minimum risk (like structures and pressure vessels); that the crew can abort and escape; and that the crew can monitor and control the vehicle manually.
 
 Risk is also set as a number: NASA's Commercial Crew Program required that the probability of **loss of crew** on a mission of up to 210 days to the ISS be no worse than 1 in 270, and no worse than 1 in 500 for ascent and entry. NASA later estimated that the first Shuttle flight in 1981 carried a risk of about 1 in 12, and the mature Shuttle about 1 in 90 — consistent with two losses in 135 flights. Reliability and risk analysis (Chapter 4) identifies the dominant contributors, but experience shows that the largest risks are often the ones nobody modelled.
 

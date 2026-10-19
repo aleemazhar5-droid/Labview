@@ -62,10 +62,10 @@ Part IX — Human Spaceflight and Habitation
 - [x] 32 Space Stations and Habitats
 - [x] 33 Extravehicular Activity Systems
 Part X — Launch Systems and Infrastructure
-- [ ] 34 Launch Vehicle Engineering
-- [ ] 35 Rocket Propulsion
-- [ ] 36 Launch Vehicles of the World
-- [ ] 37 Spaceports and Ground Infrastructure
+- [x] 34 Launch Vehicle Engineering
+- [x] 35 Rocket Propulsion
+- [x] 36 Launch Vehicles of the World
+- [x] 37 Spaceports and Ground Infrastructure
 Part XI — Space Observatories
 - [ ] 38 Space Telescope Engineering
 - [ ] 39 Great Observatories and Deep-Space Telescopes

@@ -31,7 +31,7 @@ def timeline_fig():
     planned = [
         ("Starliner", 2028.0, 2030.5),
         ("Orion", 2027.5, 2030.5),
-        ("Gaganyaan", 2027.0, 2030.5, IN),
+        ("Gaganyaan", 2027.75, 2030.5, IN),
         ("Mengzhou", 2028.0, 2030.5, CN),
         ("Starship HLS / Blue Moon", 2028.0, 2030.5, US),
     ]
@@ -413,7 +413,7 @@ def abort_schem():
     x0 = 58
     rows = [("", "Tower", "Pusher"),
             ("Thrust-to-weight", "≈ 7–13", "≈ 4–6"),
-            ("Burn time", "1–5 s", "≈ 5–6 s"),
+            ("Burn time", "1–5 s", "≈ 5–10 s"),
             ("Available", "pad → jettison", "pad → orbit"),
             ("Mass to orbit", "jettisoned", "carried"),
             ("Re-use", "lost each flight", "with capsule"),
@@ -443,7 +443,7 @@ def abort_sep(kind, case, tmax=8.0, dt=0.002):
         m, T0, tb, CdA, dm = 16000.0, 1.8e6, 3.0, 0.8 * np.pi * 5.0 ** 2 / 4, 2000.0
     else:
         m, T0, tb, CdA, dm = 12500.0, 8 * 71e3, 6.0, 0.8 * np.pi * 4.0 ** 2 / 4, 1200.0
-    v0 = 0.0 if case == "pad" else 420.0           # m/s at max-Q (≈ Mach 1.4 at 11 km, q ≈ 32 kPa)
+    v0 = 0.0 if case == "pad" else 420.0           # m/s at max-Q (≈ Mach 1.4 at 11 km, q ≈ 31 kPa)
     h0 = 0.0 if case == "pad" else 11000.0
     gam = np.radians(90 if case == "pad" else 60)
     mb, CdAb = 300e3, 0.5 * np.pi * 3.7 ** 2 / 4   # booster after capsule separation
@@ -501,7 +501,7 @@ def abortsim():
     a2.text(6.9, 11.5, "solid: pad abort\ndashed: max-Q abort — drag\neats into thrust, then\ndecelerates the capsule", fontsize=5.8,
             color=GREY, ha="right", va="top")
     fig.text(0.99, 0.01, "1-D model along the flight path. Tower: 16 t abort vehicle, 1.8 MN regressive thrust for 3 s. "
-                         "Pusher: 12.5 t, 8 × 71 kN for 6 s. Max-Q: 420 m/s at 11 km (q ≈ 32 kPa), C_D ≈ 0.8; booster 300 t.",
+                         "Pusher: 12.5 t, 8 × 71 kN for 6 s. Max-Q: 420 m/s at 11 km (q ≈ 31 kPa), C_D ≈ 0.8; booster 300 t.",
              ha="right", va="bottom", fontsize=5.9, color=GREY)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "ch31_abortsim")

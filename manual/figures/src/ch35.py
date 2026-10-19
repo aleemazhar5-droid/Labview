@@ -231,7 +231,7 @@ def altitude():
     ax2.set_xlabel("Altitude (km)")
     ax2.set_ylabel("Specific impulse (s)")
     ax2.legend(loc="lower right", fontsize=6.4, frameon=False)
-    ax2.text(7.0, 225, "dotted: flow\nwould separate", fontsize=6.2, color=BLUE, va="center")
+    ax2.text(10.0, 162, "dotted: flow\nwould separate", fontsize=6.2, color=BLUE, va="center")
     ax2.set_title("(b) Isp during ascent", loc="left", fontsize=8.6)
     fig.text(0.99, 0.01, "Ideal rocket, γ = 1.2, chamber pressure 10 MPa, c* = 1 800 m/s (typical of LOX/RP-1 or LOX/CH₄); "
              "US Standard Atmosphere; Summerfield separation criterion pe ≈ 0.4 pa.",
