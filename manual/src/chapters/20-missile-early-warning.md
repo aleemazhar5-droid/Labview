@@ -222,3 +222,16 @@ Machine learning helps reject clutter and false alarms, classify infrared events
 - Hypersonic glide vehicles are driving a shift to proliferated LEO and MEO tracking constellations.
 - Early-warning satellites also detect nuclear detonations, bolides and other infrared events; their reliability is central to strategic stability.
 :::
+
+::: questions
+**Review questions**
+
+1. Why do missile-warning sensors observe in the 2.7 µm and 4.3 µm absorption bands rather than in atmospheric windows?
+2. What angle does the Earth subtend from geostationary orbit? How many 10 µrad pixels would a staring sensor need across that angle?
+3. Compare scanning and staring infrared sensors for missile warning.
+4. Describe three sources of clutter and how processing rejects them.
+5. Why do early-warning constellations combine geostationary satellites with highly elliptical orbits?
+6. Outline the phases of an ICBM's flight and how much warning space-based sensors provide in each case for land-based and submarine-launched missiles.
+7. Why do hypersonic glide vehicles require a new tracking layer in LEO or MEO?
+8. Why is the reliability of early-warning satellites important for strategic stability?
+:::

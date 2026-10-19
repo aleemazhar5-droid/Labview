@@ -288,3 +288,16 @@ The environmental specification feeds the verification programme: thermal-vacuum
 - Micrometeoroids and debris strike at 10–20 km/s; Whipple shields defeat particles up to about 1 cm, and larger objects must be tracked and avoided.
 - Launch imposes quasi-static, sine, random, acoustic and shock loads that often size the structure; environmental testing reproduces these on the ground.
 :::
+
+::: questions
+**Review questions**
+
+1. Why does atmospheric density at 400 km change by about a factor of ten over a solar cycle, and what does this mean for satellite lifetime?
+2. With a scale height of 60 km, by what factor does density fall between 400 km and 450 km altitude?
+3. A plate at 1 au faces the Sun with α = 0.2 and ε = 0.8 on its sunlit face and loses heat only from that face. Estimate its equilibrium temperature.
+4. What is atomic oxygen, at which altitudes does it matter most, and how are exposed materials protected?
+5. Distinguish surface charging from internal (deep dielectric) charging. In which orbits is each most severe?
+6. Explain the differences between total ionising dose, displacement damage and single-event effects, and give one mitigation for each.
+7. How does a Whipple shield work, and why must objects larger than about 1 cm be tracked and avoided instead?
+8. List the main mechanical loads during launch and explain why they, rather than the space environment, often size a spacecraft's structure.
+:::

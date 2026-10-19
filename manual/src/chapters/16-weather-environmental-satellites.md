@@ -226,3 +226,16 @@ Artificial intelligence is transforming every stage of the chain: on-board cloud
 - Satellites monitor the ozone layer, air quality (now hourly from geostationary orbit), greenhouse gases, clouds, precipitation and the Earth's energy budget.
 - Altimetry shows global sea level rising about 10 cm since 1993 at an accelerating rate; passive microwave records show Arctic summer sea ice declining about 12 % per decade; gravity missions weigh the ice sheets' losses.
 :::
+
+::: questions
+**Review questions**
+
+1. Why are both geostationary and polar-orbiting satellites needed for weather forecasting? What does each do best?
+2. Explain how infrared and microwave sounders measure temperature at different heights using weighting functions.
+3. Why are GNSS radio-occultation measurements described as "unbiased", and why are they valuable for anchoring other observations?
+4. What is data assimilation? Why has forecast skill improved by about one day per decade?
+5. How do AI weather-forecast models differ from physics-based numerical models, and what are their present limitations?
+6. Why is air-quality monitoring from geostationary orbit an important advance over polar-orbiting measurements?
+7. Global mean sea level has risen about 10 cm since 1993. What is the average rate, and why is the present rate higher than the average?
+8. Which satellite techniques measure sea ice, ice-sheet mass and soil moisture? Give one mission for each.
+:::

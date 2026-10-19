@@ -248,3 +248,16 @@ Higher levels of autonomy — onboard planning and scheduling, autonomous naviga
 - C&DH uses radiation-hardened or mitigated commercial processors, EDAC-protected memory and deterministic buses (1553, CAN, SpaceWire, TSN); rad-hard processors lag commercial ones by a decade or more.
 - Flight software is layered (RTOS + framework + applications), rigorously verified and reprogrammable; hierarchical FDIR and safe modes protect the spacecraft between ground contacts.
 :::
+
+::: questions
+**Review questions**
+
+1. Compare spin stabilisation with three-axis stabilisation and give one advantage of each.
+2. List four attitude sensors and rank them by typical accuracy.
+3. Why do reaction wheels need momentum management, and which actuators are used to unload them?
+4. A reaction wheel can store 2 N m s. A constant disturbance torque of 10 µN m acts on the spacecraft. How long does the wheel take to saturate if it starts at zero speed?
+5. Compare cold gas, hydrazine monopropellant, bipropellant and Hall-effect propulsion in specific impulse and thrust, and give a typical application of each.
+6. A 200 kg satellite (initial mass) needs a Δv of 300 m/s. Compare the propellant mass needed with hydrazine (*I*~sp~ = 225 s) and with a Hall thruster (*I*~sp~ = 1 500 s).
+7. Why do space-qualified processors lag commercial processors by a decade or more, and how can commercial parts be used safely?
+8. Describe the layers of a typical flight-software architecture and the role of safe mode in fault protection.
+:::

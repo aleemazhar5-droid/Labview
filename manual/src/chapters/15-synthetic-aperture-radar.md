@@ -295,3 +295,16 @@ SAR images are difficult for humans to interpret but well suited to machine lear
 - Interferometry measures topography (SRTM, TanDEM-X) and ground deformation with millimetre precision; persistent-scatterer time series monitor cities and infrastructure across whole continents.
 - The SAR fleet now combines systematic government missions (Sentinel-1, NISAR, BIOMASS, ALOS-4) with fast-growing commercial constellations of 100 kg smallsats.
 :::
+
+::: questions
+**Review questions**
+
+1. Why can a SAR image through clouds, smoke and darkness while an optical imager cannot?
+2. A SAR transmits a chirp of 300 MHz bandwidth. What is its slant-range resolution, and what is its ground-range resolution at an incidence angle of 35°?
+3. A stripmap SAR has a 3.2 m long antenna. What is its approximate azimuth resolution, and why does it not depend on range?
+4. Explain how the pulse repetition frequency constrains the minimum antenna area of a SAR.
+5. Compare X-, C- and L-band SAR for forest mapping, sea-ice monitoring and high-resolution imaging of ports.
+6. Describe foreshortening, layover and shadow, and explain what causes speckle.
+7. In C-band differential interferometry (λ = 5.55 cm), how much line-of-sight ground motion does one full interferometric fringe represent?
+8. How have commercial SAR constellations of 100 kg satellites changed what SAR can deliver, compared with large government missions?
+:::

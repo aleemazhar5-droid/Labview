@@ -290,3 +290,16 @@ Table: Key standards and handbooks for space systems engineering. {#tbl:standard
 - MBSE (SysML v2) connects requirements, design and analysis in a single model; verification closes every requirement by test, analysis, inspection or demonstration.
 - "Test as you fly": many famous failures (Mars Polar Lander, Mars Climate Orbiter) were interface or end-to-end test gaps, not exotic physics.
 :::
+
+::: questions
+**Review questions**
+
+1. Why is most of a project's life-cycle cost committed during the early phases, even though little money has been spent by then?
+2. Outline the project phases from Pre-A to F and name the major reviews that close Phase B and Phase C.
+3. Rewrite the requirement "The satellite shall have a good camera" so that it is necessary, unambiguous and verifiable.
+4. Why do mass and power budgets carry larger margins early in a project? How do the margins change as the design matures?
+5. Two identical units are flown in active parallel redundancy, each with a reliability of 0.90 over the mission. What is the reliability of the pair? What assumption does this answer rely on?
+6. What is a technology readiness level? Why is TRL 6 normally expected by the preliminary design review?
+7. Distinguish verification from validation and list the four verification methods, with an example of each.
+8. Explain the principle "test as you fly" using one of the mission failures discussed in this chapter.
+:::

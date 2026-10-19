@@ -272,3 +272,16 @@ AI is used to detect objects and changes in imagery, classify radio emitters fro
 - Five destructive ASAT tests have created thousands of debris fragments; the 2007 Chinese test left debris that will persist for decades. Jamming, spoofing and cyber attacks are now routine in conflicts.
 - International law applies in space, but there is no ban on conventional space weapons; norms such as the DA-ASAT test moratorium aim to improve stability.
 :::
+
+::: questions
+**Review questions**
+
+1. List the mission areas of national-security space and give one example system for each.
+2. Why was Corona so important, and how did it work?
+3. Distinguish ELINT, COMINT and FISINT.
+4. Two satellites measure a time difference of arrival of 2.0 µs for the same radar pulse. What path-length difference does this represent, and what locus on the Earth's surface does it define?
+5. How does FDOA geolocation work, and why do commercial RF-geolocation companies fly satellites in clusters?
+6. Explain why national-security architectures are moving from a few exquisite satellites to proliferated constellations.
+7. Why are destructive anti-satellite tests especially harmful to all space users? Use the 2007 test as an example.
+8. What legal principles apply to military activities in space, and what is the purpose of the moratorium on destructive direct-ascent ASAT tests?
+:::

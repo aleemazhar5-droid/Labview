@@ -55,7 +55,7 @@ def atmos():
         if t != "Vis":
             ax.text(np.sqrt(a * b), 156, t, fontsize=6.2, color="white", ha="center", va="center", weight="bold",
                     zorder=6)
-    for x, y, t in [(5e-7, 26, "Optical window:\nreaches the ground"), (0.1, 60, "Radio window:\nreaches the ground"),
+    for x, y, t in [(5.5e-7, 21, "Optical\nwindow"), (0.1, 60, "Radio window:\nreaches the ground"),
                     (1e-4, 31, "Water vapour\nbands"), (5e-14, 52, "Compton scattering\nand pair production")]:
         ax.text(x, y, t, fontsize=6.0, ha="center", va="center", color=INK, zorder=6)
     ax.annotate("Photoelectric\nabsorption", xy=(3e-10, 60), xytext=(1.5e-12, 92), fontsize=6.0, ha="center",
@@ -87,7 +87,7 @@ def thermal():
     fig, ax = plt.subplots(figsize=(6.6, 3.4))
     for T, col, lab, yl in [(290, RED, "Telescope at 290 K\n(Hubble, ground)", 1e-4),
                             (40, BLUE, "40 K (JWST)", 1e-10), (7, VIOLET, "7 K", 1e-10),
-                            (2.725, GREY, "Cosmic microwave\nbackground, 2.7 K", 3e-12)]:
+                            (2.725, GREY, "Cosmic microwave\nbackground, 2.7 K", 1e-10)]:
         e = 1.0 if T == 2.725 else eps
         f = e * planck_nu(lam, T) * omega / 1e-26  # Jy in the beam
         ax.plot(lam * 1e6, f, color=col, lw=1.6 if T != 2.725 else 1.1, ls="-" if T != 2.725 else "--")
@@ -104,7 +104,7 @@ def thermal():
     ax.set_xticklabels(["1", "2", "5", "10", "20", "50", "100", "200", "500", "1 000"])
     ax.set_xlabel("Wavelength (µm)")
     ax.set_ylabel("Thermal emission in one\nresolution element (Jy)")
-    ax.text(5.3, 3e-12, "MIRI\n5–28 µm", fontsize=6.0, ha="left", va="center", color=NAVY)
+    ax.text(5.3, 1e-11, "MIRI\n5–28 µm", fontsize=6.0, ha="left", va="center", color=NAVY)
     ax.axvspan(5, 28, color=LIGHT, zorder=0)
     fig.text(0.99, 0.01, "Model: emissivity 0.05 × Planck function, integrated over a beam of radius λ/D for a "
              "6.5 m aperture; 1 Jy = 10⁻²⁶ W m⁻² Hz⁻¹.", ha="right", va="bottom", fontsize=5.9, color=GREY)
@@ -121,7 +121,7 @@ def resolution():
         I = ((2 * j1(x) - eps_o ** 2 * 2 * j1(eps_o * x)) / x) ** 2 / (1 - eps_o ** 2) ** 2
         a1.plot(u, I, color=col, lw=1.4, label=lab)
     a1.axvline(1.22, color=GREY, ls="--", lw=0.8)
-    a1.text(1.26, 0.62, "First dark ring\nθ = 1.22 λ/D", fontsize=6.0, color=GREY)
+    a1.text(1.3, 0.45, "First dark ring\nθ = 1.22 λ/D", fontsize=6.0, color=GREY)
     sig = 1.03 / 2.355 * 3
     a1.plot(u, np.exp(-u ** 2 / (2 * sig ** 2)) * 0.11, color=GREEN, lw=1.0, ls=":")
     a1.text(1.45, 0.16, "Seeing disc (3× wider, same light)", fontsize=5.9, color=GREEN, ha="left")
@@ -130,7 +130,7 @@ def resolution():
     a1.set_title("(a) Airy pattern of a circular aperture", fontsize=7.6)
     a1.legend(fontsize=6.0, loc="upper right")
     a1.set_xlim(0, 3.2); a1.set_ylim(0, 1.05)
-    ins = a1.inset_axes([0.57, 0.33, 0.3, 0.3])
+    ins = a1.inset_axes([0.66, 0.36, 0.3, 0.3])
     g = np.linspace(-3.2, 3.2, 241)
     X, Y = np.meshgrid(g, g)
     r = np.pi * np.hypot(X, Y) + 1e-9
@@ -146,7 +146,7 @@ def resolution():
         a2.plot(D, 1.22 * lam / D * 206264.8, color=col, lw=1.4, label=lab)
     a2.axhspan(0.4, 1.0, color=LIGHT, zorder=0)
     a2.text(11, 0.62, "Ground seeing 0.4–1″", fontsize=6.0, color=NAVY, va="center")
-    for d, lam, t, xt, yt in [(2.4, 0.5e-6, "Hubble", 0.9, 0.012), (6.5, 2e-6, "JWST", 16, 0.16),
+    for d, lam, t, xt, yt in [(2.4, 0.5e-6, "Hubble", 7, 0.006), (6.5, 2e-6, "JWST", 16, 0.16),
                               (0.85, 24e-6, "Spitzer", 0.28, 30), (3.5, 250e-6, "Herschel", 12, 70)]:
         th = 1.22 * lam / d * 206264.8
         a2.plot(d, th, "o", color=INK, ms=3.5, zorder=5)
@@ -194,8 +194,8 @@ def highenergy():
     a.text(25, 32, "Paraboloids", fontsize=6.0, ha="right", color=NAVY)
     a.text(33, 32, "Hyperboloids", fontsize=6.0, ha="left", color=NAVY)
     a.text(4, -31, "X-rays", fontsize=6.0, color=ORANGE)
-    a.text(66, 22, "Nested shells reflect\nat grazing angles\n< 1° (angles\nexaggerated here)", fontsize=5.9,
-           ha="center", color=INK)
+    a.text(78, 31, "Nested shells reflect\nat grazing angles\n< 1° (angles\nexaggerated here)", fontsize=5.9,
+           ha="center", va="top", color=INK)
     a.set_title("(a) Wolter-I grazing-incidence mirrors", fontsize=7.3)
     # (b) coded mask
     b = axs[1]
@@ -324,7 +324,8 @@ def sunshield():
     a2.plot(n, Ts, "s-", color=GREY, lw=1.4, ms=4, label="Sealed stack (no edge loss)")
     a2.plot(n, Tv, "o-", color=BLUE, lw=1.6, ms=4, label="Vented layers (each passes ~10 %)")
     for i in range(5):
-        a2.text(n[i] + 0.1, Tv[i] + (4 if i else -14), f"{Tv[i]:.0f} K", fontsize=6.0, color=BLUE, va="bottom")
+        a2.text(n[i] + 0.1 if i else 0.72, Tv[i] + 4 if i else Tv[i] - 30, f"{Tv[i]:.0f} K", fontsize=6.0,
+                color=BLUE, va="bottom")
         if i:
             a2.text(n[i], Ts[i] + 9, f"{Ts[i]:.0f} K", fontsize=6.0, color=GREY, ha="center", va="bottom")
     a2.axhspan(0, 50, color=LIGHT, zorder=0)

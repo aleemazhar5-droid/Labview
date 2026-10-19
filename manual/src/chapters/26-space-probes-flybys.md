@@ -290,3 +290,16 @@ Flybys and impacts happen too fast and too far away for ground control, so they 
 - DART showed that a kinetic impactor can change an asteroid's orbit: Dimorphos's period shortened by 33 minutes, with ejecta multiplying the push about 3.6 times. Hera arrives in November 2026 to measure the result.
 - The Voyagers crossed the heliopause in 2012 and 2018 and are now sampling interstellar space; Voyager 1 reaches one light-day from Earth in November 2026.
 :::
+
+::: questions
+**Review questions**
+
+1. Why are flybys the cheapest way to reach a new world, and what are their scientific limitations?
+2. What is B-plane targeting, and why must a flyby be navigated so precisely?
+3. Voyager 1 returns 160 bit/s from about 172 AU. With the same antennas and transmitter, what rate would it have had at 86 AU?
+4. Plutonium-238 has a half-life of 87.7 years. What fraction of its heat output remains after 49 years? Why has the electrical output of the Voyager RTGs fallen faster than this?
+5. Why did the Galileo probe experience a peak deceleration of about 228 g? What does this imply for the design of entry probes?
+6. What did DART demonstrate, and what is the momentum-enhancement factor β? Why did β exceed 1?
+7. How do flyby sequences protect against faults when the spacecraft is too far away for real-time ground control?
+8. What are the heliopause and interstellar space, and what have the Voyagers measured there?
+:::

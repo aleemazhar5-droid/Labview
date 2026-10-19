@@ -312,3 +312,16 @@ On its 23rd flight, an uncrewed New Shepard mission carrying research payloads, 
 - Commercial crewed suborbital flights began in 2021; New Shepard flew 98 people before pausing in 2026, and Virgin Galactic plans to resume with its Delta class in late 2026–2027.
 - Suborbital trajectories are also used for hypersonic and re-entry testing; range safety, wind weighting and impact-dispersion analysis are central to all operations.
 :::
+
+::: questions
+**Review questions**
+
+1. What distinguishes a suborbital flight from an orbital one? Can a suborbital flight reach higher than the International Space Station?
+2. Ignoring drag and taking *g* = 9.5 m/s², estimate the time a sounding rocket with an apogee of 300 km spends above 100 km.
+3. Why do sounding rockets remain the only way to make in-situ measurements in the 50–150 km region?
+4. Compare drop towers, parabolic flights, sounding rockets and orbital stations as microgravity platforms in duration, quality of microgravity and cost.
+5. Describe the main stages of a sounding-rocket mission, from proposal to recovery.
+6. Compare the vehicle architectures and flight profiles of New Shepard and SpaceShipTwo.
+7. What are wind weighting and impact-dispersion analysis, and why are they central to range safety?
+8. What are the main technical and economic obstacles to suborbital point-to-point passenger transport?
+:::

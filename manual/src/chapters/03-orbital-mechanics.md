@@ -340,3 +340,17 @@ Table: Example Δv budget for a geostationary communications satellite (15-year 
 - Rendezvous is governed by the counter-intuitive Clohessy–Wiltshire dynamics; orbit determination combines measurements and force models to produce states with covariance.
 - Interplanetary missions are designed with patched conics, Lambert solutions and porkchop plots; gravity assists and Lagrange-point orbits extend what is possible with limited propellant.
 :::
+
+::: questions
+**Review questions**
+
+1. Use the vis-viva equation to find the speeds at perigee and apogee of a transfer orbit with perigee altitude 250 km and apogee altitude 35 786 km.
+2. Calculate the period of a circular orbit at 700 km altitude.
+3. List the six classical orbital elements. Which describe the orbit's size and shape, which its orientation, and which the satellite's position?
+4. Why are two-line element sets unsuitable for precise collision assessment or precise pointing?
+5. Explain how the Earth's *J*₂ term makes sun-synchronous orbits possible, and why such orbits are slightly retrograde.
+6. Calculate the Hohmann-transfer Δv from a 300 km circular orbit to geostationary radius, ignoring the plane change. Why is the plane change usually combined with the apogee burn?
+7. In the Clohessy–Wiltshire frame, what happens when a chaser spacecraft makes a small burn forward along its velocity? Why is this counter-intuitive?
+8. What is a porkchop plot, and what does a mission designer read from it?
+9. Describe the five Lagrange points of the Sun–Earth system and name a mission that uses L1 and one that uses L2.
+:::

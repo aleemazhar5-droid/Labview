@@ -227,3 +227,16 @@ Machine learning is used to associate observations with catalogue objects, detec
 - Conjunction assessment uses the probability of collision in the encounter plane; operators typically manoeuvre above about 1 in 10 000.
 - Mitigation rules are tightening — from the 25-year guideline to the FCC five-year rule and ESA's Zero Debris approach; active removal missions such as ADRAS-J2 and ClearSpace-1 are preparing to remove debris.
 :::
+
+::: questions
+**Review questions**
+
+1. How many objects are catalogued in Earth orbit in 2026, how many are active payloads, and how many debris objects larger than 1 cm are estimated to exist?
+2. Calculate the kinetic energy of a 1 cm aluminium sphere (density 2 700 kg/m³) at 10 km/s, and compare it with a 1-tonne car at 12 m/s.
+3. Which events created the largest amounts of debris still in orbit?
+4. Why are objects of 1–10 cm in LEO the most dangerous class for operational satellites?
+5. What is the Kessler syndrome? Why do studies conclude that removing large derelict objects is more effective than removing small fragments?
+6. How is the probability of collision for a conjunction calculated, and what thresholds do operators use to decide on a manoeuvre?
+7. Compare the 25-year guideline, the FCC five-year rule and ESA's Zero Debris approach.
+8. Describe two active debris-removal techniques and the missions planned to demonstrate them.
+:::

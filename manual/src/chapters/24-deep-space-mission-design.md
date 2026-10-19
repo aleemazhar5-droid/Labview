@@ -211,3 +211,16 @@ Machine learning and global optimisation are accelerating trajectory design (sea
 - Solar power works to about Jupiter; beyond, RTGs are needed. Radiation vaults protect electronics at Jupiter.
 - Planetary protection categories govern cleanliness and sample return; flagship missions take 15–20 years from concept to science.
 :::
+
+::: questions
+**Review questions**
+
+1. List six constraints that make deep-space missions harder than Earth-orbit missions.
+2. Calculate the Δv needed to depart from a 200 km circular parking orbit with a C3 of 10 km²/s².
+3. Why do Mars launch opportunities recur every 26 months, and why are some windows better than others?
+4. Explain how a gravity assist can increase a spacecraft's speed relative to the Sun without violating energy conservation.
+5. How did Dawn achieve a total Δv of about 11 km/s, and why would that have been impossible with chemical propulsion?
+6. Compare orbit insertion by propulsive burn, aerobraking and aerocapture.
+7. Describe range, Doppler and ΔDOR tracking, and the information each provides.
+8. Why is solar power practical out to about Jupiter but not beyond? What do missions to the outer Solar System use instead?
+:::

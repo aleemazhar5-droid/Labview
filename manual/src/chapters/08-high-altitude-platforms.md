@@ -240,3 +240,16 @@ The stratosphere above 30 km has less than 1 % of sea-level pressure and conditi
 - HAPS — solar aircraft, airships and steerable balloons — aim to be persistent "pseudo-satellites" for telecom and Earth observation; the energy balance of the night limits fixed-wing HAPS to lower latitudes with current batteries.
 - After earlier boom-and-bust cycles, HAPS are approaching commercial service in the mid-2020s, supported by ITU spectrum decisions and defence demand; balloons remain the cheapest route to near-space science.
 :::
+
+::: questions
+**Review questions**
+
+1. Why is the stratosphere near 20 km attractive for persistent platforms? Mention winds, weather and distance to the ground.
+2. At 36 km the air density is about 0.007 2 kg/m³. Estimate the helium volume needed to float a total mass of 3 500 kg (gondola, ballast and envelope), assuming the gas and the air are at the same temperature and pressure.
+3. Explain the difference between zero-pressure and super-pressure balloons. Why must a zero-pressure balloon drop ballast at night?
+4. Describe the three main HAPS architectures and give one advantage and one limitation of each.
+5. Why does the energy balance of the night restrict solar-powered fixed-wing HAPS to lower latitudes and summer seasons?
+6. How did Loon steer its balloons without propulsion? What data and algorithms made this possible?
+7. What does a radiosonde measure, and why do weather services still launch hundreds every day in the satellite era?
+8. Why is near space a useful test bed for space hardware and instruments? Give two examples.
+:::

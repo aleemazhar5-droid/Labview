@@ -277,3 +277,16 @@ The remaining chapters follow a logical sequence. Part I builds the foundations:
 - Space is hard because of the energy needed to reach orbit, the hostile environment, and the near-impossibility of repair; reusability and mass production are changing the economics.
 - International treaties set principles, while national licences, ITU spectrum rules and debris guidelines govern day-to-day activities.
 :::
+
+::: questions
+**Review questions**
+
+1. Why is reaching an altitude of 100 km not enough to stay in orbit? What horizontal speed is needed in low Earth orbit?
+2. Name the four segments of a space system and describe one interface between two of them that could cause a mission to fail.
+3. Classify each of the following by mission purpose and by size class: a 3U CubeSat that images crops, a 6-tonne geostationary communication satellite, and a Mars rover.
+4. Describe how the number of orbital launch attempts per year has changed since 2015, and identify the main reasons for the change.
+5. Roughly what fraction of the US$686 billion space economy in 2025 was commercial? Give two examples each of commercial and government space activities.
+6. Give three reasons why space is "hard", and for each describe an engineering approach used to overcome it.
+7. What principles does the Outer Space Treaty establish? Which other rules and bodies govern spectrum use and debris mitigation in practice?
+8. Choose one engineering discipline described in this chapter and explain how it contributes to a satellite mission from design to operations.
+:::

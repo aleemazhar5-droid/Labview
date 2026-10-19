@@ -232,3 +232,16 @@ Machine learning helps receivers detect and classify interference and spoofing, 
 - Jamming and spoofing have become widespread; authentication (Galileo OSNMA), robust receivers and complementary PNT (including LEO PNT) are the responses.
 - GNSS is now used at the Moon: LuGRE made the first lunar GNSS fix in 2025.
 :::
+
+::: questions
+**Review questions**
+
+1. Why does a GNSS receiver need signals from at least four satellites? What are the four unknowns?
+2. The GPS C/A code has a chipping rate of 1.023 Mchip/s and carries data at 50 bit/s. What processing gain does despreading provide, in decibels?
+3. GPS clocks gain about 38.5 µs per day relative to the ground because of relativity. What ranging error would accumulate in one day if this were not corrected?
+4. A receiver sees satellites with a PDOP of 1.8, and the user equivalent range error is 1.2 m. Estimate the position error.
+5. List the main sources in the GNSS error budget and explain how dual-frequency receivers remove the largest of them.
+6. Compare SBAS, RTK and PPP in accuracy, coverage and what they need from the user.
+7. How do jamming and spoofing work, and how does Galileo OSNMA help against spoofing?
+8. Why are low-Earth-orbit PNT systems being developed, and what did LuGRE demonstrate at the Moon?
+:::

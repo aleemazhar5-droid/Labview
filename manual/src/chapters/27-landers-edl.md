@@ -239,3 +239,16 @@ Landing is the most autonomous phase of any mission, and modern landers rely on 
 - Venus landers survive for hours at 465 °C and 92 bar; Huygens landed on Titan under parachutes; small-body landers must avoid bouncing off in micro-gravity.
 - Landers have revealed Mars's interior, water ice at its high latitudes and the surfaces of Venus and Titan; in 2026 a new wave of commercial and national lunar landers was preparing for 2027.
 :::
+
+::: questions
+**Review questions**
+
+1. Calculate the specific kinetic energy that must be removed when landing from lunar orbit (1.68 km/s) and at Mars entry (5.5 km/s).
+2. A lunar lander needs a Δv of 2.0 km/s with engines of 320 s specific impulse. What fraction of its initial mass must be propellant?
+3. Why do airless bodies require fully propulsive descent, and why do gravity losses add 10–20 % to the Δv?
+4. Why have recent commercial lunar landers tipped over? What design and navigation lessons follow?
+5. Describe the Mars EDL sequence from entry to touchdown for a sky-crane landing.
+6. How have guided entry and terrain-relative navigation reduced the size of Mars landing ellipses?
+7. How did the Venera landers survive on the surface of Venus, and for how long?
+8. Why is landing on a comet or small asteroid difficult? What happened to Philae?
+:::

@@ -263,3 +263,16 @@ Modern satellite networks are too complex to manage by hand. Machine learning pr
 - Direct-to-device services connect ordinary phones by using very large antennas in orbit and 3GPP non-terrestrial-network standards.
 - Laser links are now routine between satellites; data-relay satellites keep low-orbit spacecraft in near-continuous contact.
 :::
+
+::: questions
+**Review questions**
+
+1. Trace the evolution of communication satellites from Echo to LEO broadband constellations and give one key innovation at each stage.
+2. Calculate the one-way propagation delay of a link through a geostationary satellite (two legs of 38 000 km) and through a 550 km LEO satellite (two legs of 1 000 km).
+3. Why does rain fade increase with frequency? Describe three techniques used to keep Ka-band links available.
+4. What are EPFD limits and ITU milestone rules, and why do they matter for new constellations?
+5. Compare bent-pipe and regenerative transponders.
+6. Explain how frequency reuse with many spot beams increases the capacity of a high-throughput satellite.
+7. Why do direct-to-device services need very large antennas in orbit?
+8. How do laser inter-satellite links and data-relay satellites change the design of a LEO constellation's ground segment?
+:::

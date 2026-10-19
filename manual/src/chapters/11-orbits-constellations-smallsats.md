@@ -332,3 +332,16 @@ The rapid growth of constellations raises four sustainability issues:
 - GEO is a limited resource managed through ITU slots and station-keeping boxes, now evolving towards software-defined and smaller satellites.
 - CubeSats and small satellites, rideshare launches and orbital transfer vehicles made space accessible to universities, start-ups and new nations; sustainability rules (5-year disposal, ITU milestones, brightness mitigation) are evolving with them.
 :::
+
+::: questions
+**Review questions**
+
+1. List six mission characteristics that depend on the choice of orbit.
+2. A satellite at 550 km altitude serves users down to 25° elevation. Calculate the Earth central angle and the ground radius of its coverage circle.
+3. Explain Walker delta notation *i*: *T*/*P*/*F*, using a GNSS constellation as an example.
+4. Why do broadband constellations need thousands of satellites when a few dozen could cover the whole Earth?
+5. How are satellites launched into one plane redistributed into several planes without large plane-change manoeuvres?
+6. When do geostationary satellites experience eclipses, and how long can an eclipse last?
+7. What features of the CubeSat standard made small satellites affordable? What are the main reliability concerns?
+8. Describe three rules or practices that aim to keep low Earth orbit sustainable and limit the effect of constellations on astronomy.
+:::

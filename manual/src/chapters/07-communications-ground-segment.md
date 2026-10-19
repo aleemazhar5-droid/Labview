@@ -227,3 +227,17 @@ Key CCSDS standards include Space Packets (133.0), TM/TC/AOS frames (132.0/232.0
 - The ground segment includes stations, mission control, flight dynamics, planning and payload data processing; polar stations and relay satellites maximise contact time; the DSN's three complexes provide continuous deep-space coverage.
 - CCSDS standards enable interoperability; DTN extends the Internet to intermittent space links.
 :::
+
+::: questions
+**Review questions**
+
+1. Distinguish TT&C links from payload data links and give typical frequency bands for each.
+2. Calculate the gain of a 3.7 m ground antenna with 60 % efficiency at 8.2 GHz.
+3. Calculate the free-space path loss at 2.2 GHz over a slant range of 2 000 km.
+4. Write the link equation for *C*/*N*₀ and explain each term. Why does −228.6 dBW/(K Hz) appear?
+5. Why do modern links use LDPC or turbo codes? What does "within 1–2 dB of the Shannon limit" mean?
+6. Give two advantages and two disadvantages of laser communication compared with radio.
+7. Why are many ground stations for polar-orbiting satellites located at high latitudes?
+8. Why does deep-space communication need very large antennas and three stations spaced around the world?
+9. What problem does delay- and disruption-tolerant networking solve, and how?
+:::

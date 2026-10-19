@@ -205,3 +205,16 @@ Rovers are among the most autonomous robots ever built. Besides autonomous navig
 - Rovers established that Mars was once habitable; Perseverance has cached samples, one with a potential biosignature, whose return to Earth is uncertain.
 - Ingenuity proved that aircraft can fly on Mars; Dragonfly will fly on Titan, where flight is easiest of all.
 :::
+
+::: questions
+**Review questions**
+
+1. Compare the Lunokhod rovers, the Apollo Lunar Roving Vehicle and the Mars rovers in purpose, mobility and power.
+2. Explain how a rocker-bogie suspension works and why it suits rough terrain.
+3. What are the advantages and disadvantages of solar power and MMRTG power for Mars rovers?
+4. Why must rover operations be planned sol by sol? How have autonomous navigation and visual odometry increased driving distances?
+5. What evidence have rovers found that Mars was once habitable?
+6. For an ideal rotor, hover power scales as (*mg*)^3/2^/√(ρ*A*). Compare the hover power of the same vehicle on Titan (ρ = 5.4 kg/m³, *g* = 1.35 m/s²) with that on Earth (ρ = 1.225 kg/m³, *g* = 9.81 m/s²).
+7. Why was Ingenuity's first flight a major engineering achievement given Mars's thin atmosphere?
+8. What special challenges do rovers face at the lunar poles?
+:::

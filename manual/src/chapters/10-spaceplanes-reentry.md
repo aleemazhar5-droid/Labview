@@ -240,3 +240,16 @@ The reusability revolution of the 2010s came not from spaceplanes but from **ver
 - The Shuttle proved reusable spaceflight but was expensive because of refurbishment; Columbia and Challenger taught lasting safety lessons.
 - Today's spaceplanes are uncrewed or cargo vehicles (X-37B, Chinese spaceplane, Dream Chaser, Space Rider, ISRO RLV); air-breathing SSTO remains a research goal, while reusable rocket stages dominate in practice.
 :::
+
+::: questions
+**Review questions**
+
+1. Calculate the kinetic energy per kilogram of a vehicle entering at 7.8 km/s and at 11 km/s. Why does only a small fraction of this energy reach the vehicle as heat?
+2. Explain the "blunt-body insight" of Allen and Eggers. Why are re-entry capsules blunt rather than pointed?
+3. Use the Allen–Eggers result to estimate the peak deceleration of a ballistic entry at 7.8 km/s with a 3° entry angle, taking a scale height of 7 km. How does a lift-to-drag ratio of 0.3 change the result?
+4. What is the entry corridor? What happens if the entry angle is too shallow or too steep?
+5. Why does communications blackout occur during re-entry, and how has it been overcome for some vehicles?
+6. Compare ablative and reusable thermal protection systems, giving two examples of each and the missions they suit.
+7. What made the Space Shuttle expensive to operate, and what safety lessons did the Challenger and Columbia accidents teach?
+8. What is "design for demise"? Why does it matter for satellites that re-enter uncontrolled?
+:::

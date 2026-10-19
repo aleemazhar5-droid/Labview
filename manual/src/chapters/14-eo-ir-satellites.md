@@ -307,3 +307,16 @@ Optical imaging is where AI in space is most mature. On-board neural networks sc
 - Imaging spectrometers record hundreds of narrow bands, identifying minerals, plant chemistry and methane plumes from individual facilities.
 - MODIS is ending after more than two decades; VIIRS and Sentinel-3 continue the global record.
 :::
+
+::: questions
+**Review questions**
+
+1. Calculate the diffraction-limited ground resolution of a telescope with a 1.1 m aperture at 0.55 µm from 500 km altitude.
+2. What is time-delay integration, and why do very-high-resolution imagers need it?
+3. Why does ground sample distance degrade when an agile satellite images far off nadir?
+4. How are stereo pairs collected, and what products are made from them?
+5. Explain the trade between resolution and revisit using the PlanetScope constellation as an example.
+6. Why is the 3.9 µm band so sensitive to small fires? Use Planck's law in your answer.
+7. What is an imaging spectrometer's "hypercube", and how can imaging spectroscopy detect methane from individual facilities?
+8. Why are Landsat and Sentinel-2 data often combined, and what must be done to harmonise them?
+:::

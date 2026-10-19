@@ -331,3 +331,16 @@ Machine learning now underpins most large-scale EO mapping. Deep convolutional n
 - Data progress from Level 0 to Level 4; analysis-ready data, open standards (COG, STAC, Zarr) and cloud platforms let users analyse petabytes without downloading them.
 - Classification, change detection and time-series analysis, with rigorous accuracy assessment, turn images into information. Free and open Landsat and Copernicus data have made EO a global public good.
 :::
+
+::: questions
+**Review questions**
+
+1. Using Wien's law, find the wavelength of peak emission for the Sun (5 772 K) and for the Earth's surface (300 K). What does this imply for optical and thermal sensors?
+2. Why does the sky look blue, and why do Earth-observation sensors avoid the strong water-vapour and CO₂ absorption bands for surface imaging?
+3. Calculate the NDVI for a vegetated pixel (red reflectance 0.05, near-infrared 0.45) and for bare soil (red 0.25, near-infrared 0.30).
+4. Describe the four resolutions of a remote-sensing system and give an example of a trade-off between two of them.
+5. Why can two imagers with the same ground sample distance produce images of very different quality?
+6. Why does orthorectification need a digital elevation model? What happens to geolocation accuracy in mountainous terrain without one?
+7. A classification is checked at 500 points: 180 forest correctly mapped, 20 forest mapped as non-forest, 30 non-forest mapped as forest and 270 non-forest correct. Calculate the overall accuracy and the user's and producer's accuracies for forest.
+8. What are analysis-ready data, and how do cloud platforms and standards such as COG and STAC change the way users work with satellite archives?
+:::

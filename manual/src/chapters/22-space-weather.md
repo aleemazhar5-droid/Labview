@@ -232,3 +232,16 @@ Machine learning is used to predict flares from magnetograms, estimate CME arriv
 - L1 monitors give 15–60 minutes of warning of a storm's severity; coronagraphs give 1–3 days of warning of CME arrival but not of its magnetic orientation.
 - New observatories launched in 2024–2025 (Proba-3, PUNCH, SWFO-L1, IMAP) and a planned L5 mission (Vigil) aim to improve forecasts.
 :::
+
+::: questions
+**Review questions**
+
+1. Order flare X-rays, solar energetic particles and coronal mass ejections by how quickly they reach the Earth, and explain the difference.
+2. A CME travels from the Sun to the Earth at an average speed of 1 500 km/s. How long does it take to arrive?
+3. A solar-wind monitor at L1 is 1.5 million km upstream of the Earth. How much warning does it give for solar wind travelling at 500 km/s?
+4. Explain the Kp, Ap and Dst indices and the NOAA G scale. What made the May 2024 storm notable?
+5. Why did 38 Starlink satellites re-enter shortly after launch in February 2022?
+6. How do geomagnetic storms induce currents in power grids, and which grids are most at risk?
+7. Why can coronagraphs predict when a CME will arrive but not how strong the resulting storm will be?
+8. Describe three design measures that make a satellite tolerant of space weather.
+:::

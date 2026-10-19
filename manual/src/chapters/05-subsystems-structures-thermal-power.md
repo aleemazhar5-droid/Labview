@@ -255,3 +255,16 @@ Table: Representative characteristics of a 500 kg-class LEO Earth-observation sa
 - Beyond Jupiter or on dark, dusty surfaces, RTGs (≈ 6 % efficient) provide power for decades; fission power is being developed for the Moon.
 - Mechanisms are high-risk items: use torque margins, redundancy, proper lubrication and realistic deployment testing.
 :::
+
+::: questions
+**Review questions**
+
+1. Why are spacecraft structures usually sized by stiffness rather than strength? Why do launch vehicles specify minimum fundamental frequencies?
+2. Explain why honeycomb sandwich panels are so widely used in spacecraft structures.
+3. A radiator with emittance 0.85 views deep space and must reject 500 W at 290 K. Estimate its area, ignoring absorbed environmental heat.
+4. Describe four passive and two active thermal control techniques, and give a typical application of each.
+5. A LEO spacecraft needs 800 W during a 35-minute eclipse. Size the battery capacity for a 30 % depth of discharge, ignoring losses.
+6. Why are solar arrays sized for end-of-life conditions? List three factors that reduce array output during a mission.
+7. Why do missions beyond Jupiter use radioisotope power, and what are its main drawbacks?
+8. Why are mechanisms considered high-risk items, and how is that risk reduced?
+:::

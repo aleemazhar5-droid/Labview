@@ -241,3 +241,16 @@ Planetary scientists use machine learning to detect craters, landslides, dust de
 - Key discoveries include water ice at the lunar and Mercurian poles, Mars's watery past and atmospheric loss, Venus's volcanic surface, Jupiter's dilute core, and Enceladus's ocean plumes.
 - In 2026, orbiters operate at the Moon, Mars and Jupiter; BepiColombo and Hera arrive at Mercury and Didymos, and Europa Clipper and JUICE are en route to Jupiter.
 :::
+
+::: questions
+**Review questions**
+
+1. Give four kinds of science that an orbiter can do better than a flyby or a lander.
+2. Why are only a few low lunar orbits stable for long periods? What are frozen orbits?
+3. A spacecraft arrives at Mars with *v*~∞~ = 2.65 km/s. Calculate the Δv to enter a circular orbit 400 km above the surface in one burn at periapsis.
+4. Why do many Mars orbiters first capture into a long elliptical orbit and then aerobrake? What are the risks of aerobraking?
+5. Explain why a radiation vault is needed at Jupiter and how Juno's orbit was designed to limit radiation dose.
+6. How do Mars orbiters act as relays for surface missions, and why does this increase the data returned by rovers?
+7. Describe three major discoveries made by planetary orbiters.
+8. Why are orbiters around Jupiter and Saturn deliberately crashed into the planet at the end of their missions?
+:::

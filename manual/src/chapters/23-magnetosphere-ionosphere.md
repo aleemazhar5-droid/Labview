@@ -224,3 +224,16 @@ Neural networks trained on decades of satellite and ground data now predict geom
 - The ionosphere's D, E, F1 and F2 layers reflect HF radio below the plasma frequency (f_p ≈ 9√n_e Hz) and delay and scintillate satellite signals.
 - Geospace is monitored by ground networks and missions from Explorer 1 to SMILE (2026), and described by standard models used throughout space engineering.
 :::
+
+::: questions
+**Review questions**
+
+1. The Earth's equatorial surface field is about 30 µT. Estimate the field at the equator of the L = 6.6 shell (geostationary distance) using the dipole law.
+2. The magnetopause stand-off distance scales as the solar-wind dynamic pressure to the power −1/6. If the pressure rises eightfold from its typical value, how far does a 10 *R*~E~ magnetopause move inwards?
+3. Describe the three periodic motions of a charged particle trapped in the Earth's magnetic field.
+4. Why is the outer radiation belt much more variable than the inner belt? What is the slot region?
+5. What is the South Atlantic Anomaly, and why does it matter for satellites and astronauts in low orbit?
+6. Explain how magnetic reconnection with a southward interplanetary magnetic field drives geomagnetic activity.
+7. Why are aurorae mostly green and red? At what altitudes is each colour produced?
+8. Calculate the plasma frequency for an electron density of 10¹² m⁻³. What happens to HF radio waves below and above this frequency?
+:::

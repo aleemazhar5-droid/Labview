@@ -287,3 +287,16 @@ For communications satellites, available power largely determines capacity. Over
 - Microwave radiometers, radars, GNSS radio occultation and lidars measure the atmosphere and surface in all weather; magnetometers and particle instruments sample space plasmas.
 - Performance is described by GSD, MTF, SNR, NEΔT, spectral resolution, radiometric accuracy and geolocation; calibration from the laboratory to the Moon and vicarious sites makes measurements trustworthy.
 :::
+
+::: questions
+**Review questions**
+
+1. Why have most satellite manufacturers moved to standard bus product lines? What are hosted payloads?
+2. List the interfaces between a payload and its bus that must be specified and verified.
+3. Which detector materials are used for visible, short-wave infrared and thermal-infrared imaging, and which require cooling?
+4. Compare framing, whisk-broom and push-broom imaging architectures.
+5. A push-broom imager at 500 km altitude has 8 µm pixels and a 4 m focal length. What is its ground sample distance at nadir? What aperture is needed for its diffraction-limited resolution at 0.6 µm to match that GSD?
+6. How does GNSS radio occultation measure atmospheric temperature and humidity profiles?
+7. Explain why calibration is needed before launch, in orbit and with vicarious sites, and give an example of each.
+8. Why is a communication satellite's payload capability usually described by its power?
+:::
