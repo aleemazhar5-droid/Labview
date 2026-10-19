@@ -258,7 +258,7 @@ Two SIGINT satellites fly 80 km apart at 600 km altitude. A ship's navigation ra
 ::: ai
 **AI in national-security space**
 
-AI is used to detect objects and changes in imagery, classify radio emitters from their signal characteristics, fuse data from many sensors, detect anomalous satellite behaviour, plan collections across large constellations and support battle management. These uses raise questions about reliability, adversarial manipulation and human control, discussed in Chapters 46 and 47.
+AI is used to detect objects and changes in imagery, classify radio emitters from their signal characteristics, fuse data from many sensors, detect anomalous satellite behaviour, plan collections across large constellations and support battle management. These uses raise questions about reliability, adversarial manipulation and human control, discussed in Chapters 50 and 53.
 :::
 
 ::: key

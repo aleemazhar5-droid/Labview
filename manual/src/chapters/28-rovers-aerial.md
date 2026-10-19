@@ -192,7 +192,7 @@ At 89.5° S during southern summer, the Sun stays about 2° above a flat horizon
 ::: ai
 **AI on rovers**
 
-Rovers are among the most autonomous robots ever built. Besides autonomous navigation, Curiosity and Perseverance use **AEGIS**, software that selects rocks in navigation-camera images and aims the laser spectrometer at them without waiting for the ground; Perseverance's PIXL uses **adaptive sampling**, deciding on board where to dwell longer on interesting mineral grains, and an onboard scheduler rearranges activities when tasks run faster or slower than planned. On the ground, machine-learning classifiers of terrain type (sand, bedrock, sharp rocks) trained on orbital and rover images help plan routes that spare the wheels. Future rovers will combine these into "science autonomy" — recognising what is scientifically interesting and acting on it (Chapters 45 and 46).
+Rovers are among the most autonomous robots ever built. Besides autonomous navigation, Curiosity and Perseverance use **AEGIS**, software that selects rocks in navigation-camera images and aims the laser spectrometer at them without waiting for the ground; Perseverance's PIXL uses **adaptive sampling**, deciding on board where to dwell longer on interesting mineral grains, and an onboard scheduler rearranges activities when tasks run faster or slower than planned. On the ground, machine-learning classifiers of terrain type (sand, bedrock, sharp rocks) trained on orbital and rover images help plan routes that spare the wheels. Future rovers will combine these into "science autonomy" — recognising what is scientifically interesting and acting on it (Chapters 48 and 51).
 :::
 
 ::: key

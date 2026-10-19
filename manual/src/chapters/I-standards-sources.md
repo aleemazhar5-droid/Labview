@@ -42,7 +42,7 @@ This manual explains principles and gives typical numbers. Real projects are bui
 | Electrical and power | ECSS-E-ST-20C | Electrical and electronic | 5 |
 | Propulsion | ECSS-E-ST-35C | Propulsion general requirements | 6, 35 |
 | Attitude and orbit control | ECSS-E-ST-60-30C | Satellite attitude and orbit control system requirements | 6 |
-| Software | ECSS-E-ST-40C; ECSS-Q-ST-80C; NASA NPR 7150.2; RTCA DO-178C | Software engineering; software product assurance; NASA software requirements; airborne software (often used as a reference) | 6, 47 |
+| Software | ECSS-E-ST-40C; ECSS-Q-ST-80C; NASA NPR 7150.2; RTCA DO-178C | Software engineering; software product assurance; NASA software requirements; airborne software (often used as a reference) | 6, 53 |
 | EEE components | ECSS-Q-ST-60C; NASA EEE-INST-002 | Electrical, electronic and electromechanical components; parts selection and screening | 5, 12 |
 | Ground segment and operations | ECSS-E-ST-70C | Ground systems and operations | 7 |
 | Space data links | CCSDS 131.0-B, 132.0-B, 231.0-B, 232.0-B, 732.0-B, 732.1-B | TM and TC synchronisation and coding; TM, TC, AOS and Unified Space Data Link protocols | 7 |
@@ -59,9 +59,9 @@ This manual explains principles and gives typical numbers. Real projects are bui
 | Launch and re-entry safety | FAA 14 CFR Part 450; DAFMAN 91-710 | US commercial launch and re-entry licensing; range safety user requirements | 34, 37 |
 | Human spaceflight | NASA-STD-3001 Vols 1 and 2; NASA Human Integration Design Handbook | Crew health and human-system design requirements | 30–33 |
 | Planetary protection | COSPAR Policy on Planetary Protection; NASA NPR 8715.24 | Contamination control for missions to other worlds | 24, 29 |
-| Machine learning in space software | ECSS-E-HB-40-02A (15 November 2024) | Machine learning qualification handbook | 43, 47 |
-| AI management and risk | ISO/IEC 22989:2022; ISO/IEC 23053:2022; ISO/IEC 23894:2023; ISO/IEC 42001:2023; NIST AI RMF 1.0 (2023) | AI concepts; ML framework; AI risk management; AI management systems | 47 |
-| AI regulation and aviation guidance | Regulation (EU) 2024/1689 (EU AI Act); EASA AI Concept Paper Issue 2 (2024) | Risk-based regulation of AI systems; guidance for machine-learning applications in aviation | 47 |
+| Machine learning in space software | ECSS-E-HB-40-02A (15 November 2024) | Machine learning qualification handbook | 45, 53 |
+| AI management and risk | ISO/IEC 22989:2022; ISO/IEC 23053:2022; ISO/IEC 23894:2023; ISO/IEC 42001:2023; NIST AI RMF 1.0 (2023) | AI concepts; ML framework; AI risk management; AI management systems | 53 |
+| AI regulation and aviation guidance | Regulation (EU) 2024/1689 (EU AI Act); EASA AI Concept Paper Issue 2 (2024) | Risk-based regulation of AI systems; guidance for machine-learning applications in aviation | 53 |
 
 : Selected standards and guidelines cited in this manual. {#tbl:apxstandards}
 :::
@@ -80,8 +80,8 @@ Most figures in this manual that show real data were computed from the following
 | NASA Planetary Fact Sheets (NSSDCA) | Planetary data and mission records | Appendix C |
 | NOAA Space Weather Prediction Center; SILSO (Royal Observatory of Belgium) | Solar-wind data, geomagnetic indices, sunspot number | Chapters 22, 23 |
 | NASA Exoplanet Archive | Confirmed exoplanets and their properties | Chapter 39 |
-| Copernicus Data Space Ecosystem; USGS EarthExplorer | Sentinel and Landsat imagery and products | Chapters 13–16, 44 |
-| ECMWF (ERA5 reanalysis, open forecast data) | Weather and climate data for numerical and machine-learning models | Chapters 16, 44 |
+| Copernicus Data Space Ecosystem; USGS EarthExplorer | Sentinel and Landsat imagery and products | Chapters 13–16, 46 |
+| ECMWF (ERA5 reanalysis, open forecast data) | Weather and climate data for numerical and machine-learning models | Chapters 16, 47 |
 | ESA DISCOS and the annual ESA Space Environment Report | Debris and re-entry statistics | Chapter 21 |
 | UCS Satellite Database (to 2023) | Active satellites by purpose and owner | Chapters 1, 11 |
 | NASA Technical Reports Server (ntrs.nasa.gov) | NASA technical reports, conference papers and mission documents | All |

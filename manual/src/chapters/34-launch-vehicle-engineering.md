@@ -326,7 +326,7 @@ The guiding rule of testing is **test like you fly**: components are qualified o
 ::: ai
 **AI in launch-vehicle engineering**
 
-Convex optimisation already flies: the G-FOLD algorithm, developed at NASA's Jet Propulsion Laboratory, computes fuel-optimal landing trajectories in milliseconds with guaranteed convergence, and SpaceX has described landing Falcon 9 boosters with automatically generated convex-optimisation code. Machine learning is being added around such algorithms: anomaly detectors scan thousands of telemetry channels for patterns that precede failures, and learned surrogates of loads and engine behaviour speed up design optimisation. Flight-critical software still rests on verifiable algorithms (Chapters 45 and 47).
+Convex optimisation already flies: the G-FOLD algorithm, developed at NASA's Jet Propulsion Laboratory, computes fuel-optimal landing trajectories in milliseconds with guaranteed convergence, and SpaceX has described landing Falcon 9 boosters with automatically generated convex-optimisation code. Machine learning is being added around such algorithms: anomaly detectors scan thousands of telemetry channels for patterns that precede failures, and learned surrogates of loads and engine behaviour speed up design optimisation. Flight-critical software still rests on verifiable algorithms (Chapters 52 and 53).
 :::
 
 ::: key

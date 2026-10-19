@@ -64,11 +64,12 @@ PARTS = [
              "Moon and asteroids, and move with new kinds of propulsion. Part XII explains the engineering and "
              "the economics behind these frontiers."},
     {"num": "XIII", "title": "Artificial Intelligence in the Space Ecosystem", "photo": "part13",
-     "chapters": ["43", "44", "45", "46", "47"],
+     "chapters": ["43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53"],
      "desc": "Artificial intelligence now runs on satellites, plans rover drives, forecasts the weather, screens "
-             "collision warnings and designs rocket parts. Part XIII explains the AI methods, the hardware that "
-             "runs them in space, and their applications across every segment of the space ecosystem — with the "
-             "verification and governance needed to trust them."},
+             "collision warnings and designs rocket parts. Part XIII is an in-depth guide in eleven chapters: the "
+             "foundations of machine learning and deep learning, the data and hardware that make AI work in orbit, "
+             "its applications in Earth observation, weather, autonomy, operations, security, science, exploration, "
+             "design and business — and the assurance and governance needed to trust it."},
     {"num": "XIV", "title": "Appendices and Reference Data", "photo": "part14",
      "chapters": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
      "desc": "Constants, equations, planetary data, frequency bands, mission databases, a timeline, acronyms, "
@@ -179,7 +180,7 @@ support national security and space situational awareness, and study space weath
 <li><b>Parts VIII–IX</b> leave Earth orbit: robotic deep-space exploration and human spaceflight.</li>
 <li><b>Parts X–XII</b> cover how we get to space (launch systems and spaceports), how we look at the universe
 (space telescopes), and the emerging frontiers of in-space manufacturing, space resources and advanced propulsion.</li>
-<li><b>Part XIII</b> is a detailed treatment of <b>artificial intelligence</b> across the whole space ecosystem.</li>
+<li><b>Part XIII</b> is an in-depth, eleven-chapter treatment of <b>artificial intelligence</b> across the whole space ecosystem: foundations (Chapters 43–45), applications (Chapters 46–52) and trustworthy AI (Chapter 53).</li>
 <li><b>Part XIV</b> contains reference data: constants, equations, planetary data, frequency bands, mission
 databases, a timeline, acronyms, a glossary, sources and image credits.</li>
 </ul>
@@ -189,13 +190,13 @@ and a list of its sections, and cross-references (shown as <span style="color:#1
 connect related figures, tables and sections. Suggested paths:</p>
 <table><thead><tr><th>If you are…</th><th>Start with</th><th>Then read</th></tr></thead><tbody>
 <tr><td>New to space engineering</td><td>Chapters 1, 2, 3</td><td>Any application chapter; return to Chapters 4–7 as needed</td></tr>
-<tr><td>A satellite or payload engineer</td><td>Chapters 4–7, 11–12</td><td>Part IV (EO), Part V (comms/nav), Chapter 43–45 (AI onboard)</td></tr>
-<tr><td>Working in Earth observation or climate</td><td>Chapters 13–16</td><td>Chapter 44 (AI for EO, weather and climate)</td></tr>
-<tr><td>Working in defence or space security</td><td>Chapters 19–21</td><td>Chapters 22 (space weather), 46 (AI for SSA)</td></tr>
-<tr><td>A planetary or deep-space engineer</td><td>Chapters 3, 24</td><td>Chapters 25–29, 42 (propulsion), 45 (autonomy)</td></tr>
+<tr><td>A satellite or payload engineer</td><td>Chapters 4–7, 11–12</td><td>Part IV (EO), Part V (comms/nav), Chapter 45 (edge AI in orbit)</td></tr>
+<tr><td>Working in Earth observation or climate</td><td>Chapters 13–16</td><td>Chapters 46–47 (AI for EO, weather and climate)</td></tr>
+<tr><td>Working in defence or space security</td><td>Chapters 19–21</td><td>Chapters 22 (space weather), 50 (AI for SSA and defence)</td></tr>
+<tr><td>A planetary or deep-space engineer</td><td>Chapters 3, 24</td><td>Chapters 25–29, 42 (propulsion), 48 (autonomy)</td></tr>
 <tr><td>Interested in human spaceflight</td><td>Chapters 30–33</td><td>Chapters 10 (reentry), 31 (crewed spacecraft), 36 (launchers)</td></tr>
 <tr><td>A launch or propulsion engineer</td><td>Chapters 34–37</td><td>Chapters 9–10, 42</td></tr>
-<tr><td>An AI or data scientist entering space</td><td>Chapter 1, Part XIII</td><td>Chapters 13, 21, 24 for domain context</td></tr>
+<tr><td>An AI or data scientist entering space</td><td>Chapter 1, Chapters 43–45</td><td>Chapters 13, 21, 24 for domain context, then Chapters 46–53</td></tr>
 </tbody></table>
 <h3>Special boxes</h3>
 <div class="key"><p><strong>Key concept</strong></p><p>The one idea in a section you should remember.</p></div>

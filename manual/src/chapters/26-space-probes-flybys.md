@@ -277,7 +277,7 @@ No spacecraft is yet on its way to explore the interstellar medium deliberately.
 ::: ai
 **Autonomy and AI on flyby missions**
 
-Flybys and impacts happen too fast and too far away for ground control, so they were among the first uses of onboard autonomy. **AutoNav**, developed for Deep Space 1 (1999–2001), navigated by images of asteroids against the stars and steered Deep Impact's impactor into Tempel 1. DART's **SMART Nav** found Dimorphos in its camera images an hour before impact and guided the spacecraft into the centre of the 150 m target. Lucy uses an autonomous **terminal tracking** system that keeps an asteroid centred in its instruments' fields of view during the fastest part of each flyby. Machine-learning tools are now used on the ground to plan encounter sequences, to detect new moons, rings and plumes in flyby images, and to search survey data for near-Earth asteroids and interstellar objects (Chapter 46).
+Flybys and impacts happen too fast and too far away for ground control, so they were among the first uses of onboard autonomy. **AutoNav**, developed for Deep Space 1 (1999–2001), navigated by images of asteroids against the stars and steered Deep Impact's impactor into Tempel 1. DART's **SMART Nav** found Dimorphos in its camera images an hour before impact and guided the spacecraft into the centre of the 150 m target. Lucy uses an autonomous **terminal tracking** system that keeps an asteroid centred in its instruments' fields of view during the fastest part of each flyby. Machine-learning tools are now used on the ground to plan encounter sequences, to detect new moons, rings and plumes in flyby images, and to search survey data for near-Earth asteroids and interstellar objects (Chapter 51).
 :::
 
 ::: key

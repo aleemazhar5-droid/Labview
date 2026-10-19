@@ -281,7 +281,7 @@ The result — a satellite of about 100 kg with a deployable antenna — is clos
 ::: ai
 **AI and SAR**
 
-SAR images are difficult for humans to interpret but well suited to machine learning, which is now used for ship and aircraft detection, sea-ice classification, despeckling, flood and building-damage mapping, and translating SAR into optical-like images. Deep learning also helps unwrap interferometric phase, separate atmospheric noise from deformation in InSAR time series, and detect anomalies in millions of persistent scatterers — for example, early warning of landslides or structural failures. Chapter 44 discusses these methods.
+SAR images are difficult for humans to interpret but well suited to machine learning, which is now used for ship and aircraft detection, sea-ice classification, despeckling, flood and building-damage mapping, and translating SAR into optical-like images. Deep learning also helps unwrap interferometric phase, separate atmospheric noise from deformation in InSAR time series, and detect anomalies in millions of persistent scatterers — for example, early warning of landslides or structural failures. Chapter 46 discusses these methods.
 :::
 
 ::: key

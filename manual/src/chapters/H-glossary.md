@@ -24,9 +24,9 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Albedo.** The fraction of incoming sunlight that a body or surface reflects. Earth's average is about 0.3 (2, 13).
 
-**Analysis-ready data.** Satellite data already corrected and formatted (for example to surface reflectance on a standard grid) so that users can analyse it without further processing (13, 44).
+**Analysis-ready data.** Satellite data already corrected and formatted (for example to surface reflectance on a standard grid) so that users can analyse it without further processing (13, 46).
 
-**Anomaly.** (1) In orbital mechanics, an angle giving a body's position along its orbit — true, eccentric or mean anomaly (3). (2) In operations, any unexpected behaviour of a spacecraft (45).
+**Anomaly.** (1) In orbital mechanics, an angle giving a body's position along its orbit — true, eccentric or mean anomaly (3). (2) In operations, any unexpected behaviour of a spacecraft (49).
 
 **Antenna gain.** How strongly an antenna concentrates power in its main direction compared with an isotropic antenna, usually in dBi (7).
 
@@ -48,7 +48,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Attitude.** The orientation of a spacecraft in space. The attitude determination and control subsystem measures and controls it (6).
 
-**Autonomy.** The ability of a spacecraft or ground system to make decisions and act without human intervention. ECSS defines levels E1 (ground control) to E4 (goal-oriented on-board operations) (45).
+**Autonomy.** The ability of a spacecraft or ground system to make decisions and act without human intervention. ECSS defines levels E1 (ground control) to E4 (goal-oriented on-board operations) (48).
 :::
 
 ## B
@@ -104,7 +104,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Constellation.** A group of satellites working together, arranged in planes and phases to provide coverage (11).
 
-**Convolutional neural network (CNN).** A *neural network* that applies learned filters across an image; the standard tool for image classification and detection (43).
+**Convolutional neural network (CNN).** A *neural network* that applies learned filters across an image; the standard tool for image classification and detection (44).
 
 **Coronagraph.** An instrument that blocks the light of a star inside a telescope so faint nearby objects, such as planets, can be seen (38).
 
@@ -124,11 +124,11 @@ Terms in *italics* within a definition have their own entry. The number in brack
 ## D
 
 ::: glossary
-**Data assimilation.** Combining observations with a numerical model to produce the best estimate of the state of a system, such as the atmosphere for a weather forecast (16, 44).
+**Data assimilation.** Combining observations with a numerical model to produce the best estimate of the state of a system, such as the atmosphere for a weather forecast (16, 47).
 
 **Decibel (dB).** Ten times the base-10 logarithm of a power ratio (A, D).
 
-**Deep learning.** *Machine learning* with neural networks of many layers (43).
+**Deep learning.** *Machine learning* with neural networks of many layers (44).
 
 **Deep Space Network.** NASA's three ground stations, at Goldstone, Madrid and Canberra, about 120° apart in longitude, which communicate with deep-space missions (7, 24).
 
@@ -138,13 +138,13 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Diffraction limit.** The finest angular detail an optical system can resolve, set by the wavelength divided by the aperture diameter (14, 38).
 
-**Digital twin.** A continuously updated computer model of a physical system used to predict its behaviour and test operations (45, 47).
+**Digital twin.** A continuously updated computer model of a physical system used to predict its behaviour and test operations (49, 52).
 
 **Direct-to-device.** Satellite service to unmodified mobile phones, using terrestrial mobile spectrum (17).
 
 **Dispersion (launch).** The spread of possible trajectories or impact points around the nominal, used in range safety (37).
 
-**Distribution shift.** A change between the data on which an AI model was trained and the data it meets in operation, often degrading performance (43, 47).
+**Distribution shift.** A change between the data on which an AI model was trained and the data it meets in operation, often degrading performance (43, 53).
 
 **Docking / berthing.** Joining two spacecraft. In docking the active vehicle flies into contact; in berthing a robotic arm moves one vehicle onto the other's port (31, 32).
 
@@ -196,7 +196,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 ::: glossary
 **Fairing (payload fairing).** The aerodynamic nose cone that protects payloads during ascent and is jettisoned above the dense atmosphere (34).
 
-**Fault detection, isolation and recovery (FDIR).** The on-board logic that detects faults, identifies the failed unit and switches to a safe configuration or a redundant unit (6, 45).
+**Fault detection, isolation and recovery (FDIR).** The on-board logic that detects faults, identifies the failed unit and switches to a safe configuration or a redundant unit (6, 48).
 
 **Field of regard / field of view.** The region a sensor can be pointed at / the region it sees at one instant (13).
 
@@ -208,7 +208,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Formation flying.** Two or more spacecraft keeping a precise relative position, for example for interferometry (11).
 
-**Foundation model.** A large *machine-learning* model trained on broad data, usually with *self-supervised learning*, that can be adapted to many tasks (43, 44).
+**Foundation model.** A large *machine-learning* model trained on broad data, usually with *self-supervised learning*, that can be adapted to many tasks (44, 46).
 
 **Free-space path loss.** The spreading loss of a radio signal with distance between isotropic antennas (7, D).
 
@@ -358,7 +358,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Mission control centre.** The facility from which a mission is commanded and monitored (7).
 
-**Model compression.** Reducing an AI model's size and computational cost — by *quantisation*, pruning or distillation — so that it can run on limited hardware such as spacecraft processors (43).
+**Model compression.** Reducing an AI model's size and computational cost — by *quantisation*, pruning or distillation — so that it can run on limited hardware such as spacecraft processors (45).
 
 **Molniya orbit.** A highly elliptical, 12-hour orbit with 63.4° inclination, giving long dwell over high northern latitudes (11).
 
@@ -376,13 +376,13 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Near-rectilinear halo orbit (NRHO).** A highly elongated *halo orbit* around the Moon, planned for the Gateway station (32).
 
-**Neural network.** A machine-learning model made of layers of simple connected units ("neurons") whose connection weights are learned from data (43).
+**Neural network.** A machine-learning model made of layers of simple connected units ("neurons") whose connection weights are learned from data (43, 44).
 
 **Nodal precession (regression of the nodes).** The slow rotation of an orbital plane about the Earth's axis caused by the *equatorial bulge* (3).
 
 **Noise temperature.** A way of expressing noise power as the temperature of an equivalent resistor (7).
 
-**Nowcasting.** Forecasting weather for the next few hours, largely by extrapolating the latest observations (16, 44).
+**Nowcasting.** Forecasting weather for the next few hours, largely by extrapolating the latest observations (16, 47).
 
 **Nuclear thermal propulsion.** Heating hydrogen in a nuclear reactor and expanding it through a nozzle, giving roughly twice the specific impulse of chemical rockets (42).
 :::
@@ -394,7 +394,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Occultation.** The passing of one body in front of another; radio and GNSS signals passing through an atmosphere during occultation are used to measure its profile (16, 26).
 
-**On-board processing.** Processing data on the spacecraft, for example to filter clouds or detect events, rather than downlinking raw data (12, 43).
+**On-board processing.** Processing data on the spacecraft, for example to filter clouds or detect events, rather than downlinking raw data (12, 45).
 
 **Optical depth.** A measure of how much a medium attenuates light; an optical depth of 1 transmits 37 % (13).
 
@@ -422,7 +422,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Phased array.** An antenna made of many elements whose relative phases are controlled to steer the beam electronically (17).
 
-**Physics-informed machine learning.** Machine-learning models constrained or guided by known physical laws (43).
+**Physics-informed machine learning.** Machine-learning models constrained or guided by known physical laws (44).
 
 **Pixel.** One element of a digital image or detector array (13).
 
@@ -434,7 +434,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Polar orbit.** An orbit with inclination near 90°, passing over both poles (11).
 
-**Pose estimation.** Determining the position and orientation of an object, such as a target spacecraft, from sensor data (45).
+**Pose estimation.** Determining the position and orientation of an object, such as a target spacecraft, from sensor data (48).
 
 **Precession.** A slow rotation of the axis of a spinning body or of an orbital plane (3, 6).
 
@@ -450,7 +450,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 ## Q–R
 
 ::: glossary
-**Quantisation (AI).** Representing a model's weights and activations with fewer bits, for example 8-bit integers instead of 32-bit floating point (43).
+**Quantisation (AI).** Representing a model's weights and activations with fewer bits, for example 8-bit integers instead of 32-bit floating point (45).
 
 **Quaternion.** A four-number representation of attitude that avoids the singularities of Euler angles (6).
 
@@ -468,7 +468,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Regolith.** The layer of loose, broken rock and dust covering a planetary surface (27, 41).
 
-**Reinforcement learning.** Machine learning in which an agent learns a policy by trial and error, guided by rewards (43, 45).
+**Reinforcement learning.** Machine learning in which an agent learns a policy by trial and error, guided by rewards (43, 48).
 
 **Relay satellite.** A satellite that forwards communications between other spacecraft and the ground, such as TDRS or Queqiao (7).
 
@@ -492,7 +492,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 ## S
 
 ::: glossary
-**Safe mode.** A minimal, stable spacecraft configuration entered automatically after a fault, waiting for ground instructions (6, 45).
+**Safe mode.** A minimal, stable spacecraft configuration entered automatically after a fault, waiting for ground instructions (6, 48).
 
 **Sample return.** A mission that collects material from another body and brings it to Earth (29).
 
@@ -504,11 +504,11 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Segmented mirror.** A large mirror made of smaller segments controlled to act as one surface, as on JWST (38).
 
-**Self-supervised learning.** Machine learning in which a model learns from unlabelled data by predicting hidden parts of its input (43).
+**Self-supervised learning.** Machine learning in which a model learns from unlabelled data by predicting hidden parts of its input (44).
 
 **Semi-major axis (a).** Half the longest diameter of an ellipse; it determines an orbit's period and energy (3).
 
-**Sensor fusion.** Combining data from different sensors to obtain better estimates than any single sensor (6, 44).
+**Sensor fusion.** Combining data from different sensors to obtain better estimates than any single sensor (6, 48).
 
 **Servicing (on-orbit).** Inspecting, repairing, refuelling or upgrading a spacecraft in orbit (40).
 
@@ -560,7 +560,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Supervised learning.** Machine learning from examples labelled with the correct answer (43).
 
-**Surrogate model (emulator).** A fast approximate model, often learned from data, that stands in for a slow physical simulation (43).
+**Surrogate model (emulator).** A fast approximate model, often learned from data, that stands in for a slow physical simulation (44).
 
 **Swath.** The width of the strip of ground imaged by a satellite on each pass (13).
 
@@ -576,7 +576,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Telecommand.** Instructions sent from the ground to a spacecraft (7).
 
-**Terrain-relative navigation.** Navigating during descent by comparing camera images with onboard maps, used by Perseverance and SLIM to land precisely (27, 45).
+**Terrain-relative navigation.** Navigating during descent by comparing camera images with onboard maps, used by Perseverance and SLIM to land precisely (27, 48).
 
 **Thermal vacuum test.** Testing a spacecraft in a chamber that reproduces space vacuum and temperature extremes (4).
 
@@ -592,7 +592,7 @@ Terms in *italics* within a definition have their own entry. The number in brack
 
 **Transfer orbit.** An intermediate orbit between two others, such as a geostationary transfer orbit (3).
 
-**Transformer.** A neural-network architecture based on attention, used in large language models and increasingly for images and weather (43).
+**Transformer.** A neural-network architecture based on attention, used in large language models and increasingly for images and weather (44).
 
 **Transit method.** Detecting an exoplanet by the small dip in starlight as it passes in front of its star (39).
 
@@ -610,13 +610,13 @@ Terms in *italics* within a definition have their own entry. The number in brack
 ## U–Z
 
 ::: glossary
-**Uncertainty quantification.** Estimating how confident a model's predictions are (43).
+**Uncertainty quantification.** Estimating how confident a model's predictions are (44).
 
 **Unsupervised learning.** Machine learning that finds structure in unlabelled data, for example clustering (43).
 
 **Upper stage.** The final stage(s) of a launch vehicle, which deliver the payload to orbit (34).
 
-**Validation / verification.** Verification shows that a product meets its specified requirements ("built it right"); validation shows that it meets the user's real needs ("built the right thing") (4, 47).
+**Validation / verification.** Verification shows that a product meets its specified requirements ("built it right"); validation shows that it meets the user's real needs ("built the right thing") (4, 53).
 
 **Vernal equinox.** The direction from the Earth to the Sun at the March equinox, used as the reference direction in celestial coordinates (3).
 

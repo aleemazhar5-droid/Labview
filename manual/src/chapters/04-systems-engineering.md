@@ -128,7 +128,7 @@ The James Webb Space Telescope grew in cost from an initial estimate of about US
 
 ## Technology Readiness
 
-**Technology Readiness Levels (TRLs)** — invented at NASA in the 1970s and now an international standard (ISO 16290) — measure how mature a technology is (@fig:trl). Most agencies require all critical technologies to reach **TRL 6** (prototype demonstrated in a relevant environment) by PDR. Technologies at TRL 3–5 cross the "valley of death", where research funding ends but projects are not yet willing to adopt them. Related scales include Manufacturing Readiness Levels (MRL) and Software/AI readiness frameworks (Chapter 47).
+**Technology Readiness Levels (TRLs)** — invented at NASA in the 1970s and now an international standard (ISO 16290) — measure how mature a technology is (@fig:trl). Most agencies require all critical technologies to reach **TRL 6** (prototype demonstrated in a relevant environment) by PDR. Technologies at TRL 3–5 cross the "valley of death", where research funding ends but projects are not yet willing to adopt them. Related scales include Manufacturing Readiness Levels (MRL) and Software/AI readiness frameworks (Chapter 53).
 
 ![The nine Technology Readiness Levels. Projects typically require TRL 6 for critical technologies by the Preliminary Design Review.](figures/out/ch04_trl.svg){#fig:trl width=92%}
 
@@ -177,14 +177,14 @@ Programmes also distinguish **risk classes**. NASA's NPR 8705.4 defines Class A 
 
 ## Model-Based Systems Engineering
 
-Traditionally, the system design lived in hundreds of documents, spreadsheets and drawings, with inconsistencies discovered late. **Model-based systems engineering (MBSE)** replaces documents with a single, connected digital model of requirements, structure, behaviour and parameters (@fig:mbse). The standard language is **SysML** (Systems Modeling Language); **SysML v2**, formally adopted by the Object Management Group in 2025, adds a precise textual notation and an API that lets engineering tools exchange data automatically. MBSE tools link to CAD, finite-element, thermal, orbit and cost models, so that a change in one place propagates everywhere — the foundation of the "digital thread" and **digital twin** concepts (Chapter 45).
+Traditionally, the system design lived in hundreds of documents, spreadsheets and drawings, with inconsistencies discovered late. **Model-based systems engineering (MBSE)** replaces documents with a single, connected digital model of requirements, structure, behaviour and parameters (@fig:mbse). The standard language is **SysML** (Systems Modeling Language); **SysML v2**, formally adopted by the Object Management Group in 2025, adds a precise textual notation and an API that lets engineering tools exchange data automatically. MBSE tools link to CAD, finite-element, thermal, orbit and cost models, so that a change in one place propagates everywhere — the foundation of the "digital thread" and **digital twin** concepts (Chapter 52).
 
 ![Model-based systems engineering links requirements, operations, structure, behaviour and parametric analyses in one authoritative system model, connected to specialist engineering tools.](figures/out/ch04_mbse.svg){#fig:mbse width=90%}
 
 ::: ai
 **AI in practice — assistants for systems engineers**
 
-Large language models are increasingly used to check requirement quality (ambiguity, missing "shall", non-verifiable wording), to trace requirements to design elements, to search lessons-learned databases and to draft SysML models from text. Agencies including NASA and ESA are evaluating such tools under strict data-security rules. Chapter 47 discusses how AI outputs must themselves be verified before they enter a controlled baseline.
+Large language models are increasingly used to check requirement quality (ambiguity, missing "shall", non-verifiable wording), to trace requirements to design elements, to search lessons-learned databases and to draft SysML models from text. Agencies including NASA and ESA are evaluating such tools under strict data-security rules. Chapter 52 discusses how AI outputs must themselves be verified before they enter a controlled baseline.
 :::
 
 ## Verification and Validation

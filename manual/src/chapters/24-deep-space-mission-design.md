@@ -196,7 +196,7 @@ With a bipropellant engine of 320 s specific impulse, the 0.95 km/s of spacecraf
 ::: ai
 **AI in deep-space mission design**
 
-Machine learning and global optimisation are accelerating trajectory design (searching enormous spaces of gravity-assist sequences and low-thrust profiles), autonomous navigation and fault protection, scheduling of DSN antennas, and the analysis of returned data. Future spacecraft will need far greater on-board autonomy to explore distant worlds with hours of communication delay (Chapters 45 and 46).
+Machine learning and global optimisation are accelerating trajectory design (searching enormous spaces of gravity-assist sequences and low-thrust profiles), autonomous navigation and fault protection, scheduling of DSN antennas, and the analysis of returned data. Future spacecraft will need far greater on-board autonomy to explore distant worlds with hours of communication delay (Chapters 48 and 51).
 :::
 
 ::: key

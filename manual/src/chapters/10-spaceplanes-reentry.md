@@ -78,7 +78,7 @@ A lifting vehicle steers by **rolling its lift vector**: flying with lift "up" k
 - **Orion skip-entry guidance** can dip into the atmosphere, climb out, and re-enter to extend range to more than 8 000 km, so that a lunar return can always reach a landing zone off California; for Artemis II NASA used a less aggressive profile.
 - **Mars entry guidance** (MSL, Mars 2020) used Apollo-derived bank control to reduce the landing ellipse from about 100 km to 20 km × 7 km, enabling landing in Gale and Jezero craters (Chapter 27).
 
-Modern research applies numerical predictor–corrector guidance and convex optimisation, increasingly with onboard computing power that would have been unthinkable in the Apollo era (Chapter 45).
+Modern research applies numerical predictor–corrector guidance and convex optimisation, increasingly with onboard computing power that would have been unthinkable in the Apollo era (Chapter 48).
 
 ### Descent and Landing
 

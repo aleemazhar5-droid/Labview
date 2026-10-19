@@ -135,7 +135,7 @@ China plans to reach the goal first. **Tianwen-3**, to be launched on two Long M
 ::: ai
 **AI in sample-return missions**
 
-Touch-and-go sampling depends on autonomous navigation: OSIRIS-REx used **Natural Feature Tracking**, comparing images taken during its descent with an onboard catalogue of Bennu's boulders to update its trajectory and to abort automatically if it was heading for a hazard, and Hayabusa2 navigated using target markers it dropped on the surface. On Earth, machine learning segments X-ray computed-tomography scans of thousands of particles to classify minerals and find rare grains without destroying them, and helps curators track every fragment as samples are subdivided among hundreds of laboratories (Chapter 46).
+Touch-and-go sampling depends on autonomous navigation: OSIRIS-REx used **Natural Feature Tracking**, comparing images taken during its descent with an onboard catalogue of Bennu's boulders to update its trajectory and to abort automatically if it was heading for a hazard, and Hayabusa2 navigated using target markers it dropped on the surface. On Earth, machine learning segments X-ray computed-tomography scans of thousands of particles to classify minerals and find rare grains without destroying them, and helps curators track every fragment as samples are subdivided among hundreds of laboratories (Chapter 51).
 :::
 
 ::: key

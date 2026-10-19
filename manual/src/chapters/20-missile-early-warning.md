@@ -208,7 +208,7 @@ Using the computed trajectory of @fig:bmtrajectories (burnout at 7.0 km/s and 17
 ::: ai
 **AI in missile warning**
 
-Machine learning helps reject clutter and false alarms, classify infrared events from their spectral and temporal signatures, fuse data from many satellites and radars into tracks, and discriminate warheads from decoys. Because errors could have grave consequences, these uses demand rigorous verification and human oversight (Chapters 46 and 47).
+Machine learning helps reject clutter and false alarms, classify infrared events from their spectral and temporal signatures, fuse data from many satellites and radars into tracks, and discriminate warheads from decoys. Because errors could have grave consequences, these uses demand rigorous verification and human oversight (Chapters 50 and 53).
 :::
 
 ::: key

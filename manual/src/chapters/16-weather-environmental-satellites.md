@@ -212,7 +212,7 @@ A channel with $\tau_0 = 4$ peaks at about 10 km; one with $\tau_0 = 600$ at abo
 ::: ai
 **AI in weather and environmental monitoring**
 
-Artificial intelligence is transforming every stage of the chain: on-board cloud detection and data compression, fast neural-network radiative-transfer models for data assimilation, nowcasting of thunderstorms from geostationary imagery, retrieval of precipitation and atmospheric composition, and global AI forecast models such as ECMWF's AIFS. Chapter 44 discusses AI for weather, climate and Earth-system science in depth.
+Artificial intelligence is transforming every stage of the chain: on-board cloud detection and data compression, fast neural-network radiative-transfer models for data assimilation, nowcasting of thunderstorms from geostationary imagery, retrieval of precipitation and atmospheric composition, and global AI forecast models such as ECMWF's AIFS. Chapter 47 discusses AI for weather, climate and Earth-system science in depth.
 :::
 
 ::: key

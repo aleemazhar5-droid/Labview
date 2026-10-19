@@ -45,7 +45,7 @@ Structural design is driven by:
 
 ### Materials
 
-Aluminium alloys remain the workhorse of spacecraft structures — cheap, easy to machine and well characterised. Titanium is used for highly loaded fittings and for its low thermal conductivity; carbon-fibre reinforced polymers (CFRP) give the highest stiffness per unit mass and near-zero thermal expansion, ideal for optical benches and antenna reflectors; beryllium offers extreme stiffness for lightweight mirrors (JWST); Invar and Super-Invar give dimensional stability (@fig:materials). Additive manufacturing (3-D printing) of titanium, aluminium and polymer parts is now routine, allowing topology-optimised brackets that are 30–60 % lighter than machined parts (Chapter 47).
+Aluminium alloys remain the workhorse of spacecraft structures — cheap, easy to machine and well characterised. Titanium is used for highly loaded fittings and for its low thermal conductivity; carbon-fibre reinforced polymers (CFRP) give the highest stiffness per unit mass and near-zero thermal expansion, ideal for optical benches and antenna reflectors; beryllium offers extreme stiffness for lightweight mirrors (JWST); Invar and Super-Invar give dimensional stability (@fig:materials). Additive manufacturing (3-D printing) of titanium, aluminium and polymer parts is now routine, allowing topology-optimised brackets that are 30–60 % lighter than machined parts (Chapter 52).
 
 ![Specific stiffness and specific strength of common spacecraft structural materials. Composites and beryllium dominate where stiffness per kilogram matters most.](figures/out/ch05_materials.svg){#fig:materials width=88%}
 

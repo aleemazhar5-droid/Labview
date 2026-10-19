@@ -226,7 +226,7 @@ Landing is only the beginning. A lander must then survive the local environment:
 ::: ai
 **AI and autonomy for landing**
 
-Landing is the most autonomous phase of any mission, and modern landers rely on computer vision. Terrain-relative navigation systems detect craters or match image patches with onboard maps; hazard-detection systems turn lidar or stereo images into maps of slope and roughness and select a safe spot within seconds; and SLIM's vision-based navigation demonstrated 100 m landing accuracy. On the ground, deep-learning models trained on orbital images detect boulders and craters to map hazards at candidate landing sites — for the Artemis south-pole sites, they have catalogued millions of boulders from LRO images. Future landers will combine these into fully autonomous "land anywhere" systems (Chapters 45 and 46).
+Landing is the most autonomous phase of any mission, and modern landers rely on computer vision. Terrain-relative navigation systems detect craters or match image patches with onboard maps; hazard-detection systems turn lidar or stereo images into maps of slope and roughness and select a safe spot within seconds; and SLIM's vision-based navigation demonstrated 100 m landing accuracy. On the ground, deep-learning models trained on orbital images detect boulders and craters to map hazards at candidate landing sites — for the Artemis south-pole sites, they have catalogued millions of boulders from LRO images. Future landers will combine these into fully autonomous "land anywhere" systems (Chapters 48 and 51).
 :::
 
 ::: key

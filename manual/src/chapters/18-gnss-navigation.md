@@ -217,7 +217,7 @@ GNSS signals are increasingly used above the constellations. In geostationary an
 ::: ai
 **AI in satellite navigation**
 
-Machine learning helps receivers detect and classify interference and spoofing, mitigate multipath in cities by learning which signals are reflected, fuse GNSS with cameras, lidar and inertial sensors in autonomous vehicles, and forecast ionospheric conditions. On the ground, AI models improve orbit and clock predictions and monitor the health of the constellation. Chapters 45 and 46 discuss these applications.
+Machine learning helps receivers detect and classify interference and spoofing, mitigate multipath in cities by learning which signals are reflected, fuse GNSS with cameras, lidar and inertial sensors in autonomous vehicles, and forecast ionospheric conditions. On the ground, AI models improve orbit and clock predictions and monitor the health of the constellation. Chapters 47 and 49 discuss these applications.
 :::
 
 ::: key

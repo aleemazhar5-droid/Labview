@@ -74,11 +74,17 @@ Part XII — Emerging Frontiers
 - [ ] 41 Space Resources and Asteroid Mining
 - [ ] 42 Advanced Propulsion
 Part XIII — Artificial Intelligence in the Space Ecosystem
-- [ ] 43 AI Foundations for Space Systems
-- [ ] 44 AI in Earth Observation, Weather and Climate
-- [ ] 45 AI for Autonomy, GNC and Mission Operations
-- [ ] 46 AI for SSA, Defense, Science, Exploration and Human Spaceflight
-- [ ] 47 AI Across Design, Manufacturing, Launch and the Space Business; Assurance and Governance
+- [ ] 43 AI Foundations: Machine Learning for Space Engineers
+- [ ] 44 Deep Learning, Foundation Models and Generative AI
+- [ ] 45 Data, Computing Hardware and Edge AI in Orbit
+- [ ] 46 AI for Earth Observation
+- [ ] 47 AI for Weather, Climate and Space Weather
+- [ ] 48 AI for Autonomy, Navigation and Robotics
+- [ ] 49 AI for Mission Operations, Communications and Networks
+- [ ] 50 AI for Space Situational Awareness, Defence and Security
+- [ ] 51 AI for Space Science, Planetary Exploration and Human Spaceflight
+- [ ] 52 AI in Spacecraft Design, Manufacturing, Launch and the Space Business
+- [ ] 53 Trustworthy AI for Space: Assurance, Security, Governance and Outlook
 Appendices
 - [x] A Constants, Units and Conversions
 - [x] B Equation Quick Reference

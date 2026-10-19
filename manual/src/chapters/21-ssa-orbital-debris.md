@@ -213,7 +213,7 @@ A conjunction data message predicts that an Earth-observation satellite will pas
 ::: ai
 **AI for space situational awareness**
 
-Machine learning is used to associate observations with catalogue objects, detect manoeuvres and break-ups, characterise objects from light curves and radar data, improve drag and orbit predictions, prioritise conjunction alerts and recommend avoidance manoeuvres. As constellations grow, automated and AI-assisted coordination between operators will become essential (Chapter 46).
+Machine learning is used to associate observations with catalogue objects, detect manoeuvres and break-ups, characterise objects from light curves and radar data, improve drag and orbit predictions, prioritise conjunction alerts and recommend avoidance manoeuvres. As constellations grow, automated and AI-assisted coordination between operators will become essential (Chapter 50).
 :::
 
 ::: key

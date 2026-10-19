@@ -186,7 +186,7 @@ Table: Radiation effects, typical causes and mitigations. {#tbl:radeffects}
 | Single-event burnout / gate rupture | Heavy ions | Permanent destruction of power devices | Voltage derating (e.g., operate at < 50–75 % of rated V_DS), rad-hard MOSFETs |
 | Single-event functional interrupt (SEFI) | Heavy ions | Processor or FPGA hangs | Watchdog timers, reset logic, configuration scrubbing |
 
-Electronic parts are classified by their tolerance. Commercial off-the-shelf (COTS) parts often survive 5–30 krad(Si) and can be susceptible to latch-up; **radiation-tolerant** parts are characterised to 30–100 krad; **radiation-hardened** parts are designed for 100 krad to more than 1 Mrad and are latch-up immune. Rad-hard parts are expensive and lag commercial technology by one to two decades in performance — a major reason why AI processors in space are a challenge (Chapter 43).
+Electronic parts are classified by their tolerance. Commercial off-the-shelf (COTS) parts often survive 5–30 krad(Si) and can be susceptible to latch-up; **radiation-tolerant** parts are characterised to 30–100 krad; **radiation-hardened** parts are designed for 100 krad to more than 1 Mrad and are latch-up immune. Rad-hard parts are expensive and lag commercial technology by one to two decades in performance — a major reason why AI processors in space are a challenge (Chapter 45).
 
 ![Illustrative annual total ionising dose behind spherical aluminium shielding for four orbits. MEO is the harshest common orbit; LEO at ISS altitude is comparatively benign. Shielding is effective against electrons (MEO, GEO) but less effective against high-energy protons.](figures/out/ch02_dose_depth.svg){#fig:dosedepth width=88%}
 

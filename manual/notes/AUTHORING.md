@@ -28,7 +28,12 @@ state (no add/commit/push/checkout/stash). Put temporary files in your scratchpa
 - **7–10 photographs** from the NASA Image and Video Library (real hardware, crews, missions).
 - **4–6 tables** (comparisons, specifications, timelines, budgets).
 - **2–3 worked examples** (`::: example`) with real numbers that you have computed in Python first.
-- One **AI callout** (`::: ai`) linking the topic to the AI chapters (43–47).
+- One **AI callout** (`::: ai`) linking the topic to the AI chapters of Part XIII: 43 AI foundations; 44 deep learning,
+  foundation models and generative AI; 45 data, computing hardware and edge AI in orbit; 46 AI for Earth observation;
+  47 AI for weather, climate and space weather; 48 AI for autonomy, navigation and robotics; 49 AI for mission operations,
+  communications and networks; 50 AI for SSA, defence and security; 51 AI for space science, planetary exploration and
+  human spaceflight; 52 AI in design, manufacturing, launch and the space business; 53 trustworthy AI (assurance,
+  security, governance, outlook).
 - **Key takeaways** (`::: key`, 5–7 bullets) then **Review questions** (`::: questions`, 8–10 numbered).
 - The chapter's hero image `figures/photos/chNN.jpg` already exists (shown under the title). Do not replace it.
 

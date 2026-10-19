@@ -292,7 +292,7 @@ The result is a satellite of roughly 150–250 kg — similar to commercial syst
 ::: ai
 **AI on EO/IR satellites**
 
-Optical imaging is where AI in space is most mature. On-board neural networks screen out cloudy images before downlink (ESA's Φ-sat-1 first demonstrated this in 2020), detect ships, aircraft and vehicles, and generate alerts within minutes of collection. On the ground, deep learning performs super-resolution, pan-sharpening, cloud removal and automatic change detection over entire countries. Chapters 44 and 45 discuss these applications in detail.
+Optical imaging is where AI in space is most mature. On-board neural networks screen out cloudy images before downlink (ESA's Φ-sat-1 first demonstrated this in 2020), detect ships, aircraft and vehicles, and generate alerts within minutes of collection. On the ground, deep learning performs super-resolution, pan-sharpening, cloud removal and automatic change detection over entire countries. Chapters 45 and 46 discuss these applications in detail.
 :::
 
 ::: key

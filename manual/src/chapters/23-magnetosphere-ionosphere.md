@@ -210,7 +210,7 @@ An airline crew over the North Atlantic must contact a ground station 3 000 km a
 ::: ai
 **AI in magnetospheric and ionospheric physics**
 
-Neural networks trained on decades of satellite and ground data now predict geomagnetic indices, map radiation-belt electron fluxes, forecast ionospheric total electron content and scintillation, and reconstruct three-dimensional ionospheric structure from sparse GNSS observations. Physics-informed machine learning combines these data-driven models with the conservation laws of plasma physics (Chapters 44 and 46).
+Neural networks trained on decades of satellite and ground data now predict geomagnetic indices, map radiation-belt electron fluxes, forecast ionospheric total electron content and scintillation, and reconstruct three-dimensional ionospheric structure from sparse GNSS observations. Physics-informed machine learning combines these data-driven models with the conservation laws of plasma physics (Chapters 44 and 47).
 :::
 
 ::: key

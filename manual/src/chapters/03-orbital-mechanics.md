@@ -224,7 +224,7 @@ where $x$ is radial, $y$ along-track and $z$ cross-track. Their solutions produc
 
 ![Relative motion of a chaser near a target in a 400 km orbit, from the Clohessy–Wiltshire solutions. Each trajectory starts from a simple initial condition and is shown for two orbits.](figures/out/ch03_cw.svg){#fig:cw width=92%}
 
-Fast rendezvous profiles now let crews reach the ISS in about 3 hours (Soyuz and Progress since 2020) instead of the traditional 2 days; Crew Dragon typically takes 15–30 hours. Autonomous rendezvous uses relative GNSS, laser rangefinders (lidar) and cameras (Chapter 45).
+Fast rendezvous profiles now let crews reach the ISS in about 3 hours (Soyuz and Progress since 2020) instead of the traditional 2 days; Crew Dragon typically takes 15–30 hours. Autonomous rendezvous uses relative GNSS, laser rangefinders (lidar) and cameras (Chapter 48).
 
 ## Orbit Determination
 

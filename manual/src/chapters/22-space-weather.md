@@ -219,7 +219,7 @@ Taking E = 5 V/km along a 200 km high-voltage line, the driving voltage is 1 000
 ::: ai
 **AI in space weather**
 
-Machine learning is used to predict flares from magnetograms, estimate CME arrival times, forecast geomagnetic indices from solar-wind data, nowcast GIC and ionospheric scintillation, and model thermospheric density for satellite drag. NASA and NOAA have explored deep-learning models that predict regional geomagnetic disturbances about 30 minutes ahead from L1 data. Chapter 46 discusses these applications.
+Machine learning is used to predict flares from magnetograms, estimate CME arrival times, forecast geomagnetic indices from solar-wind data, nowcast GIC and ionospheric scintillation, and model thermospheric density for satellite drag. NASA and NOAA have explored deep-learning models that predict regional geomagnetic disturbances about 30 minutes ahead from L1 data. Chapter 47 discusses these applications.
 :::
 
 ::: key

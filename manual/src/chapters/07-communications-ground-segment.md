@@ -132,7 +132,7 @@ and that, for any rate below capacity, a code exists that makes errors arbitrari
 
 ![Bit error rate versus Eb/N0 for uncoded and coded transmission. Modern turbo and LDPC codes operate within about 1–2 dB of the Shannon limit, a gain of roughly 9 dB over uncoded transmission — equivalent to an eightfold increase in transmitter power or antenna area.](figures/out/ch07_ber.svg){#fig:ber width=86%}
 
-Data is also **compressed** before transmission. CCSDS standards include lossless compression (CCSDS 121.0, based on Rice coding), image compression (CCSDS 122.0, wavelet-based) and multispectral/hyperspectral compression (CCSDS 123.0). Onboard AI that discards cloudy images or extracts only events of interest is an increasingly powerful form of "compression" (Chapter 44).
+Data is also **compressed** before transmission. CCSDS standards include lossless compression (CCSDS 121.0, based on Rice coding), image compression (CCSDS 122.0, wavelet-based) and multispectral/hyperspectral compression (CCSDS 123.0). Onboard AI that discards cloudy images or extracts only events of interest is an increasingly powerful form of "compression" (Chapter 45).
 
 ## Optical (Laser) Communications
 
@@ -165,7 +165,7 @@ The **ground segment** comprises all the ground facilities needed to operate the
 - **Ground stations** with antennas, RF equipment (low-noise amplifiers, high-power amplifiers, up/down-converters), modems/baseband units, timing, and network connections.
 - **Mission operations centre (MOC)** — the control room where flight controllers monitor telemetry, send commands, and respond to anomalies, using a **mission control system** (e.g., ESA's SCOS-2000 and its successor EGS-CC, NASA's ITOS and AMMOS, or open-source frameworks such as Yamcs and OpenMCT).
 - **Flight dynamics** — orbit determination, manoeuvre planning, attitude reconstruction, collision avoidance, and product generation (ephemerides, pointing predictions).
-- **Mission planning and scheduling** — turning user requests into conflict-free activity timelines that respect power, thermal, data-volume and visibility constraints (Chapter 45 discusses AI planners).
+- **Mission planning and scheduling** — turning user requests into conflict-free activity timelines that respect power, thermal, data-volume and visibility constraints (Chapter 49 discusses AI planners).
 - **Payload data ground segment (PDGS)** — receiving, processing, calibrating, archiving and distributing payload data. Processing levels follow a standard ladder: Level 0 (raw, time-ordered), Level 1 (calibrated, geolocated), Level 2 (geophysical variables), Level 3 (gridded, composited), Level 4 (model output) (Chapter 13).
 - **Security** — encryption and authentication of telecommands (e.g., CCSDS Space Data Link Security), network segmentation, intrusion detection, and protection of ground systems, which are the most frequently attacked part of space systems.
 

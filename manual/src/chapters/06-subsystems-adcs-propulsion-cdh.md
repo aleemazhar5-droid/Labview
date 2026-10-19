@@ -203,7 +203,7 @@ Spacecraft computers lag their terrestrial counterparts by 10–20 years in perf
 
 ![Approximate integer performance of spaceflight processors over time. Commercial processors with radiation mitigation (e.g., the Snapdragon on the Ingenuity Mars helicopter) offer orders-of-magnitude more performance than rad-hard parts but less proven reliability.](figures/out/ch06_processors.svg){#fig:processors width=90%}
 
-A widening alternative is to fly **commercial (COTS)** processors, FPGAs and GPUs with **mitigation**: screening and radiation testing, triple modular redundancy in FPGA logic, watchdogs, error-correcting memory, current-limited power with automatic latch-up recovery, and frequent memory scrubbing. Short-duration LEO missions, mega-constellations and technology demonstrations increasingly use this approach — the Ingenuity helicopter on Mars ran on a Qualcomm Snapdragon 801 smartphone processor for nearly three years. Reconfigurable **FPGAs** (e.g., AMD/Xilinx Kintex UltraScale and Versal space-grade parts, Microchip RTG4 and RT PolarFire) process high-rate payload data and run neural networks (Chapter 43).
+A widening alternative is to fly **commercial (COTS)** processors, FPGAs and GPUs with **mitigation**: screening and radiation testing, triple modular redundancy in FPGA logic, watchdogs, error-correcting memory, current-limited power with automatic latch-up recovery, and frequent memory scrubbing. Short-duration LEO missions, mega-constellations and technology demonstrations increasingly use this approach — the Ingenuity helicopter on Mars ran on a Qualcomm Snapdragon 801 smartphone processor for nearly three years. Reconfigurable **FPGAs** (e.g., AMD/Xilinx Kintex UltraScale and Versal space-grade parts, Microchip RTG4 and RT PolarFire) process high-rate payload data and run neural networks (Chapter 45).
 
 **Memory** must cope with single-event upsets. Program memory is often in radiation-tolerant PROM, MRAM or protected Flash; working memory in SDRAM with **error detection and correction (EDAC)** that corrects single-bit errors and detects double-bit errors, continuously **scrubbed** in the background. Mass memories use NAND Flash with file systems (CCSDS File Delivery Protocol for ground transfer) and capacities from gigabits on CubeSats to tens of terabits on Earth-observation satellites.
 
@@ -237,7 +237,7 @@ Spacecraft are out of contact much of the time — a LEO satellite sees a given 
 
 ![The hierarchy of fault detection, isolation and recovery. Fast local responses handle simple faults; system-level safe mode and ground intervention handle complex ones.](figures/out/ch06_fdir.svg){#fig:fdir width=82%}
 
-Higher levels of autonomy — onboard planning and scheduling, autonomous navigation, opportunistic science and model-based diagnosis — are increasingly implemented with artificial intelligence techniques, discussed in depth in Chapter 45.
+Higher levels of autonomy — onboard planning and scheduling, autonomous navigation, opportunistic science and model-based diagnosis — are increasingly implemented with artificial intelligence techniques, discussed in depth in Chapters 48 and 49.
 
 ::: key
 **Key takeaways**

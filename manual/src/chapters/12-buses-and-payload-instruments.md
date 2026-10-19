@@ -211,7 +211,7 @@ A measurement is only useful if it is accurate and comparable over time and betw
 
 ### The Payload Data Chain
 
-Inside the instrument, photons or radio signals become information through a chain of steps: detector → analogue signal conditioning → **analogue-to-digital conversion** (typically 12–16 bits for imagers) → **non-uniformity correction** and binning → **compression** (lossless or near-lossless, CCSDS 121/122/123) → formatting into packets with time and attitude tags → **mass memory** → downlink. Increasingly, an onboard processor or AI accelerator analyses the data before downlink — detecting clouds, ships, fires or scientific events — and sends only what matters (Chapters 43–44). On the ground, processing turns raw data (Level 0) into calibrated, geolocated products (Level 1) and geophysical variables (Level 2 and above), described in Chapter 13.
+Inside the instrument, photons or radio signals become information through a chain of steps: detector → analogue signal conditioning → **analogue-to-digital conversion** (typically 12–16 bits for imagers) → **non-uniformity correction** and binning → **compression** (lossless or near-lossless, CCSDS 121/122/123) → formatting into packets with time and attitude tags → **mass memory** → downlink. Increasingly, an onboard processor or AI accelerator analyses the data before downlink — detecting clouds, ships, fires or scientific events — and sends only what matters (Chapters 45–46). On the ground, processing turns raw data (Level 0) into calibrated, geolocated products (Level 1) and geophysical variables (Level 2 and above), described in Chapter 13.
 
 
 ## Designing an Optical Payload: Radiometry and SNR

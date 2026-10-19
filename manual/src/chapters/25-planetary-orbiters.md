@@ -229,7 +229,7 @@ A new Mars orbiter must image the surface at the same local time each day (to ke
 ::: ai
 **AI for planetary orbiters**
 
-Planetary scientists use machine learning to detect craters, landslides, dust devils and new impacts in millions of orbital images, to map minerals from hyperspectral data, and to prioritise downlink of the most interesting observations. On board, autonomous instruments can detect transient events — such as plumes, storms or impacts — and decide what to observe and return (Chapter 46).
+Planetary scientists use machine learning to detect craters, landslides, dust devils and new impacts in millions of orbital images, to map minerals from hyperspectral data, and to prioritise downlink of the most interesting observations. On board, autonomous instruments can detect transient events — such as plumes, storms or impacts — and decide what to observe and return (Chapter 51).
 :::
 
 ::: key

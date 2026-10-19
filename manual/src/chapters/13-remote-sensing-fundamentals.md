@@ -316,7 +316,7 @@ The entire workflow can run in a few minutes on a cloud platform at zero data co
 ::: ai
 **AI in remote sensing (preview)**
 
-Machine learning now underpins most large-scale EO mapping. Deep convolutional networks and vision transformers segment buildings, roads and fields; detect ships, aircraft and vehicles; and classify land cover. **Geospatial foundation models** pre-trained on millions of unlabelled images — such as NASA–IBM's Prithvi, Clay, SatMAE and Google's AlphaEarth Foundations embeddings — can be fine-tuned for new tasks with few labels. Part XIII (Chapters 43–47) covers these methods in depth, including on-board AI that decides which images to keep and downlink.
+Machine learning now underpins most large-scale EO mapping. Deep convolutional networks and vision transformers segment buildings, roads and fields; detect ships, aircraft and vehicles; and classify land cover. **Geospatial foundation models** pre-trained on millions of unlabelled images — such as NASA–IBM's Prithvi, Clay, SatMAE and Google's AlphaEarth Foundations embeddings — can be fine-tuned for new tasks with few labels. Part XIII (Chapters 43–53) covers these methods in depth, including on-board AI that decides which images to keep and downlink.
 :::
 
 ::: key

@@ -244,7 +244,7 @@ To see how the material of Part I comes together, consider the preliminary desig
 
 **Payload optics.** GSD = altitude × pixel pitch / focal length. With 5.5 µm pixels: $f = 525\,000 \times 5.5\times10^{-6} / 5 = 0.58$ m. A 9 cm-aperture compact catadioptric telescope with a 580 mm focal length fits in about 4U; at f/6.4 the diffraction limit at 800 nm ($2.44\lambda N \approx 12.5$ µm spot diameter) is acceptable for 5 m GSD with some MTF loss. A 4 096-pixel line array gives a 20 km swath.
 
-**Data budget.** Imaging Europe's croplands ≈ 2 million km² per 5 days per satellite with 5 bands × 12 bits at 5 m: $2\times10^{6}\,\text{km}^2 / 5\ \text{days} \times (10^6/25)\ \text{pixels/km}^2 \times 60\ \text{bits} \approx 1\times10^{12}$ bits/day ≈ 1 Tbit/day before compression. With 3:1 compression and onboard cloud screening (Chapter 44) removing about half, the downlink requirement is ≈ 170 Gbit/day. An X-band transmitter at 200 Mbit/s needs about 14 minutes of contact per day — two or three passes over a high-latitude station.
+**Data budget.** Imaging Europe's croplands ≈ 2 million km² per 5 days per satellite with 5 bands × 12 bits at 5 m: $2\times10^{6}\,\text{km}^2 / 5\ \text{days} \times (10^6/25)\ \text{pixels/km}^2 \times 60\ \text{bits} \approx 1\times10^{12}$ bits/day ≈ 1 Tbit/day before compression. With 3:1 compression and onboard cloud screening (Chapter 45) removing about half, the downlink requirement is ≈ 170 Gbit/day. An X-band transmitter at 200 Mbit/s needs about 14 minutes of contact per day — two or three passes over a high-latitude station.
 
 **Power budget.**
 
@@ -308,7 +308,7 @@ Formation flying requires precise relative navigation (carrier-phase differentia
 Operating thousands of satellites is impossible with traditional mission control, where a team watches each spacecraft. Constellation operators rely on:
 
 - **Automation** — automated planning and scheduling of ground contacts, autonomous orbit maintenance and collision avoidance, automated anomaly detection and recovery; humans manage by exception.
-- **Fleet management** — configuration management of thousands of identical vehicles, software updates over the air, health trending with machine learning (Chapter 45).
+- **Fleet management** — configuration management of thousands of identical vehicles, software updates over the air, health trending with machine learning (Chapter 49).
 - **Ground networks** — hundreds of gateways (Starlink operates more than 150 gateway sites) and cloud-based processing.
 - **Replenishment** — continuous launches to replace satellites that reach end of life (typically after five years in LEO) and to upgrade technology.
 - **Space traffic coordination** — sharing ephemerides and manoeuvre plans with other operators and with space-surveillance organisations (Chapter 21).

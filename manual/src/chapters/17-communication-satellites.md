@@ -248,7 +248,7 @@ This is why broadband constellations are sized by **capacity**, not coverage, an
 ::: ai
 **AI in satellite communications**
 
-Modern satellite networks are too complex to manage by hand. Machine learning predicts traffic demand and rain fades, allocates beams, frequencies and power dynamically on software-defined satellites, routes traffic through laser meshes, detects interference and jamming, and plans collision-avoidance manoeuvres for thousands of satellites. Chapter 45 discusses AI for satellite operations and networks.
+Modern satellite networks are too complex to manage by hand. Machine learning predicts traffic demand and rain fades, allocates beams, frequencies and power dynamically on software-defined satellites, routes traffic through laser meshes, detects interference and jamming, and plans collision-avoidance manoeuvres for thousands of satellites. Chapter 49 discusses AI for satellite operations and networks.
 :::
 
 ::: key
