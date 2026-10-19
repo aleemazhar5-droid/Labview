@@ -80,15 +80,15 @@ Part XIII — Artificial Intelligence in the Space Ecosystem
 - [ ] 46 AI for SSA, Defense, Science, Exploration and Human Spaceflight
 - [ ] 47 AI Across Design, Manufacturing, Launch and the Space Business; Assurance and Governance
 Appendices
-- [ ] A Constants, Units and Conversions
-- [ ] B Equation Quick Reference
-- [ ] C Solar System Data
-- [ ] D Radio Frequency Bands and Allocations
-- [ ] E Mission and Vehicle Databases
-- [ ] F Timeline of Spaceflight
-- [ ] G Acronyms and Abbreviations
-- [ ] H Glossary
-- [ ] I Standards, Sources and Further Reading
+- [x] A Constants, Units and Conversions
+- [x] B Equation Quick Reference
+- [x] C Solar System Data
+- [x] D Radio Frequency Bands and Allocations
+- [x] E Mission and Vehicle Databases
+- [x] F Timeline of Spaceflight
+- [x] G Acronyms and Abbreviations
+- [x] H Glossary
+- [x] I Standards, Sources and Further Reading
 - [ ] J Image Credits
 - [ ] Index
 
