@@ -283,7 +283,7 @@ Cryogenic propellants make this hard. Liquid oxygen boils at −183 °C and meth
 
 How many tanker flights a landing needs depends on assumptions that SpaceX has not published in detail. Public estimates range from about 10 (SpaceX) to the "high teens" (NASA officials). @fig:tankerflights shows how the number depends on how much each tanker delivers and how fast the depot loses propellant.
 
-![Propellant transfer for a lunar lander. (a) Tanker flights needed to load the lander, versus propellant delivered per tanker, for different depot boil-off rates. (b) Propellant in the depot during a campaign with one tanker every 6 or 12 days: slower launch rates lose more to boil-off.](figures/out/ch40_tankerflights.svg){#fig:tankerflights width=96%}
+![Propellant transfer for a lunar lander. (a) Tanker flights needed to load the lander, versus propellant delivered per tanker, for different depot boil-off rates. (b) Propellant in the depot during a campaign with one tanker every 6 or 12 days: slower launch rates lose more to boil-off.](figures/out/ch40_tankers.svg){#fig:tankerflights width=96%}
 
 ::: example
 **Example: how many tankers for a lunar landing?**
