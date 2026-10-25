@@ -74,7 +74,7 @@ Part XII — Emerging Frontiers
 - [x] 41 Space Resources and Asteroid Mining
 - [x] 42 Advanced Propulsion
 Part XIII — Artificial Intelligence in the Space Ecosystem
-- [ ] 43 AI Foundations: Machine Learning for Space Engineers
+- [x] 43 AI Foundations: Machine Learning for Space Engineers
 - [ ] 44 Deep Learning, Foundation Models and Generative AI
 - [ ] 45 Data, Computing Hardware and Edge AI in Orbit
 - [ ] 46 AI for Earth Observation

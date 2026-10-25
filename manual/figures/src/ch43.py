@@ -487,7 +487,7 @@ def rocpr():
     cx.plot(ts, P, color=GREEN, lw=1.2)
     cx.plot(ts, R, color=ORANGE, lw=1.2)
     cx.plot(ts, F, color=VIOLET, lw=1.2, ls="--")
-    cx.text(0.1, 0.94, f"accuracy ≥ {100 * min(A):.1f} % everywhere;\n'never fire' scores "
+    cx.text(0.1, 0.94, f"accuracy ≥ {100 * min(A):.1f} % for\nall thresholds shown;\n'never fire': "
             f"{100 * (1 - yte.mean()):.1f} %", fontsize=6.1, color=INK, ha="left", va="top")
     print(f"  min accuracy over thresholds 0.05-0.95: {min(A):.4f}")
     cx.text(0.66, 0.60, "precision", fontsize=6.5, color=GREEN, weight="bold")
@@ -500,7 +500,7 @@ def rocpr():
     cx.set_ylabel("Score")
     cx.set_ylim(0, 1.02)
     cx.set_title("Scores versus threshold", fontsize=8.6)
-    cx.annotate(f"best F1 = {F[kb]:.2f}", (ts[kb], F[kb]), xytext=(0.30, 0.30), fontsize=6.3, color=VIOLET,
+    cx.annotate(f"best F1 = {F[kb]:.2f}", (ts[kb], F[kb]), xytext=(0.12, 0.10), fontsize=6.3, color=VIOLET,
                 arrowprops=dict(arrowstyle="-", color=VIOLET, lw=0.5))
     for a_, t_ in zip(axs, "abc"):
         panel_tag(a_, t_)
@@ -781,7 +781,7 @@ TL_A = [  # 1980-2011
     (1999.4, 2, "Remote Agent flies\non Deep Space 1", "demo"),
     (2004.3, 2, "EO-1 onboard\nplanner (ASE)", "op"),
     (2005.1, 2, "MEXAR2 plans Mars\nExpress downlinks", "op"),
-    (1985.5, 1, "Regression SST\nfrom AVHRR", "op"),
+    (1981.9, 1, "Regression SST\nfrom AVHRR", "op"),
     (1989.5, 1, "k-NN national forest\ninventory (Finland)", "op"),
     (1993.5, 1, "SKICAT decision\ntrees (sky survey)", "res"),
     (2004.3, 1, "EO-1 onboard\nSVM classifiers", "op"),
@@ -845,7 +845,7 @@ def timeline():
     from matplotlib.transforms import Bbox
     fig = plt.figure(figsize=(7.0, 6.3))
     gs = fig.add_gridspec(2, 1, height_ratios=[1, 1.22], hspace=0.12)
-    panels = [(fig.add_subplot(gs[0]), TL_A, TL_A_GEN, (1975.2, 2012.7), 1982.6, [2, 1], "a",
+    panels = [(fig.add_subplot(gs[0]), TL_A, TL_A_GEN, (1973.4, 2012.7), 1981.0, [2, 1], "a",
                "1980–2011: rules, schedulers and the first learned classifiers", 3.5),
               (fig.add_subplot(gs[1]), TL_B, TL_B_GEN, (2008.25, 2026.95), 2011.6, [1, 0], "b",
                "2012–2026: deep learning reaches orbit", 4.4)]
