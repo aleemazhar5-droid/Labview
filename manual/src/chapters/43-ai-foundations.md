@@ -372,10 +372,6 @@ A requirement says that an onboard event detector must have a false-alarm rate o
 
 In operations a model becomes one component of a data system (@fig:mlpipeline): it may run on the ground, in a processing chain or cloud service, or — after verification on flight-like hardware — on the spacecraft itself, where it can decide what to downlink or whether to retask the sensor (Chapter 45). In JPL's Dynamic Targeting experiment on the CogniSAT-6 cubesat in July–August 2025, the satellite looked about 74–90 seconds ahead along its track, analysed the image for cloud on board and then pointed its camera at the clearest scenes.
 
-![Where machine learning sits in a space data system (top) and the nine-step workflow for building and operating a model (bottom). Models run on the ground or, once verified, are uplinked to the spacecraft; new labels and error reports from users feed retraining when performance drifts.](figures/out/ch43_pipeline.svg){#fig:mlpipeline width=84%}
-
-Operations bring **distribution shift**: instruments degrade and are recalibrated, new satellites have slightly different spectral responses, and models meet new regions and seasons. The remedy is monitoring inputs and outputs, comparing predictions with independent reference data, and retraining when performance falls. A model must also be versioned and documented like any other flight or ground software, with its training data, test results and known limitations recorded (Chapter 53).
-
 ::: note
 **Practice: building an onboard cloud screen for a new imager**
 
@@ -390,17 +386,21 @@ Operations bring **distribution shift**: instruments degrade and are recalibrate
 9. **Monitor.** Compare flagged fractions with ground cloud masks; retrain after recalibration or for new regions.
 :::
 
+![Where machine learning sits in a space data system (top) and the nine-step workflow for building and operating a model (bottom). Models run on the ground or, once verified, are uplinked to the spacecraft; new labels and error reports from users feed retraining when performance drifts.](figures/out/ch43_pipeline.svg){#fig:mlpipeline width=92%}
+
+Operations bring **distribution shift**: instruments degrade and are recalibrated, new satellites have slightly different spectral responses, and models meet new regions and seasons. The remedy is monitoring inputs and outputs, comparing predictions with independent reference data, and retraining when performance falls. A model must also be versioned and documented like any other flight or ground software, with its training data, test results and known limitations recorded (Chapter 53).
+
 ## Road Map of Part XIII
 
 The rest of Part XIII builds on these foundations (@tbl:part13roadmap): Chapters 44 and 45 cover deep-learning methods, data and computers; Chapters 46–52 apply them to each domain of the space ecosystem; and Chapter 53 asks how learned systems can be verified, secured and governed well enough to be trusted.
 
 | Chapter | Topic | Main themes |
-|-----|------------------------------|------------------------|
-| 44 | Deep learning, foundation models and generative AI | How do CNNs, transformers and pre-trained models work? |
-| 45 | Data, computing hardware and edge AI in orbit | Which data, labels and processors does AI need on board? |
+|----|---------------------------|---------------------------------|
+| 44 | Deep learning, foundation models and generative AI | CNNs, transformers, pre-trained and generative models |
+| 45 | Data, computing hardware and edge AI in orbit | Data, labels, processors for onboard AI |
 | 46 | AI for Earth observation | Mapping, change detection, disasters, image triage |
-| 47 | AI for weather, climate and space weather | AI forecasts versus physics; flare and storm prediction |
-| 48 | AI for autonomy, navigation and robotics | Planners, AutoNav, learned guidance, reinforcement learning |
+| 47 | AI for weather, climate and space weather | AI forecasts versus physics; flares and storms |
+| 48 | AI for autonomy, navigation and robotics | Planners, AutoNav, learned guidance, RL |
 | 49 | AI for mission operations, communications and networks | Anomaly detection, scheduling, cognitive radio |
 | 50 | AI for space situational awareness, defence and security | Tracking, conjunctions, intelligence |
 | 51 | AI for space science, planetary exploration and human spaceflight | Planet finding, planetary data, crew support |
@@ -412,13 +412,12 @@ The rest of Part XIII builds on these foundations (@tbl:part13roadmap): Chapters
 ::: key
 **Key takeaways**
 
-- Symbolic AI writes knowledge down as rules, plans and constraints; machine learning learns it from examples; deep learning and foundation models use very large neural networks. Space systems combine them, with verifiable logic guarding learned parts.
-- AI reached space in waves: expert systems and schedulers (CLIPS, STS-26, SPIKE), classical machine learning (regression SST, EO-1's onboard SVM, random-forest land cover), deep learning from about 2017 and foundation models in the 2020s; most AI flying in 2026 is still demonstration.
-- Learning minimises empirical risk, usually by (stochastic) gradient descent; the learning rate must stay below $2/\lambda_{\max}$ of the loss curvature, and standardised inputs converge faster.
-- Flexible models overfit: regularisation, early stopping and validation data control the bias–variance trade-off; learning curves show whether more data or a better model is needed.
-- Spatial and temporal autocorrelation leak information between randomly split samples; split by blocks, regions, time or mission, or a model can look excellent (R² = 0.80) and be useless in a new region.
-- Classical methods — regression, k-NN, trees, forests, boosting, SVMs, k-means, PCA, Gaussian processes, the Kalman filter — underpin most operational products and are the baselines to beat.
-- For rare events accuracy is meaningless: report precision, recall, PR curves and skill scores at a threshold set by real costs, with confidence intervals — measuring a 1 % false-alarm rate to ±0.2 % needs about 9 500 independent negatives.
+- Symbolic AI writes knowledge down as rules and plans; machine learning learns it from examples. Space systems combine them, with verifiable logic guarding learned parts.
+- AI reached space in waves — expert systems and schedulers, classical machine learning, deep learning, foundation models; most AI flying in 2026 is still demonstration.
+- Learning minimises empirical risk by (stochastic) gradient descent, with learning rates below $2/\lambda_{\max}$; regularisation, early stopping and validation data control overfitting.
+- Spatial and temporal autocorrelation leak information between random splits; split by block, region, time or mission, or a useless model can score R² = 0.80.
+- Classical methods — regression, k-NN, trees, forests, boosting, SVMs, k-means, PCA, Gaussian processes, Kalman filters — still underpin most operational products.
+- For rare events report precision, recall and skill scores with confidence intervals, not accuracy; a 1 % false-alarm rate needs about 9 500 independent negatives to measure to ±0.2 %.
 :::
 
 ::: questions
