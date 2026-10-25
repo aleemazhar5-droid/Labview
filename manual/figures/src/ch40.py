@@ -170,11 +170,12 @@ def capture():
             ("Envisat (8.2 t)", 1.3e5, RED)]
     for name, I, c in objs:
         a2.plot(w, I * wr, color=c, lw=1.5, label=name)
-    for H, lab in [(1, "small-satellite wheel ≈ 1 N·m·s"), (50, "large wheel ≈ 50 N·m·s"),
+    for H, lab in [(1, "small-satellite wheel ≈ 1 N·m·s"), (100, "large wheel ≈ 100 N·m·s"),
                    (4760, "ISS control-moment gyro 4 760 N·m·s")]:
         a2.axhline(H, color=GREY, ls="--", lw=0.8)
-        a2.text(0.105, H * 1.3, lab, fontsize=5.9, color=GREY, va="bottom",
-                bbox=dict(fc="white", ec="none", pad=0.3, alpha=0.85))
+        right = H == 100
+        a2.text(9.5 if right else 0.105, H * 1.3, lab, fontsize=5.9, color=GREY, va="bottom",
+                ha="right" if right else "left", bbox=dict(fc="white", ec="none", pad=0.3, alpha=0.85))
     a2.set_xscale("log"); a2.set_yscale("log")
     a2.set_xlim(0.1, 10); a2.set_ylim(1e-2, 1e5)
     a2.set_xlabel("Tumble rate (°/s)", fontsize=7)
@@ -199,7 +200,7 @@ def interfaces():
               "Robotic refuelling coupling", "Magnetic docking plate", "Net or harpoon (no fixture)"]
     notes = ["MEV-1, MEV-2 (2020–21): no preparation\nneeded; works on most GEO buses",
              "Shuttle, ISS (Canadarm2), Tiangong:\nprepared client; very reliable",
-             "MRV/RSGS, ClearSpace-1, OSAM-1 design:\nring and bolt holes on most satellites",
+             "MRV/RSGS, OSAM-1 design (planned):\nring and bolt holes on most satellites",
              "RRM tools (unprepared valves);\nRAFTI, ASSIST (prepared ports)",
              "ELSA-d (2021), ELSA-M: plate\nfitted to client before launch",
              "RemoveDEBRIS tests (2018–19): for\ntumbling debris; hard to control"]
