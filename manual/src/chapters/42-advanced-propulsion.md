@@ -69,7 +69,7 @@ Hall thrusters (Chapter 6) used to wear out as ions eroded their ceramic channel
 
 ### Gridded Ion Engines
 
-Among gridded ion engines, NASA's 6.9 kW **NEXT-C** reaches an Isp of about 4 190 s with 0.24 N of thrust, and a laboratory NEXT engine ran for more than 50 000 hours. NEXT-C flew on the DART asteroid-deflection mission as a demonstration, but when it was first fired in December 2021 an anomaly appeared in the spacecraft's power electronics, and DART, which did not need it, relied on hydrazine thrusters (Chapter 26). The faint blue glow of the ion beam is the technology's signature (@fig:ds1ionglow).
+Among gridded ion engines, NASA's 6.9 kW **NEXT-C** reaches an Isp of about 4 190 s with 0.24 N of thrust, and a laboratory NEXT engine ran for more than 48 000 hours. NEXT-C flew on the DART asteroid-deflection mission as a technology demonstration that the mission did not depend on; when it was first fired, in December 2021, an anomaly appeared in the spacecraft's power electronics (Chapter 26). The faint blue glow of the ion beam is the technology's signature (@fig:ds1ionglow).
 
 ### Magnetoplasmadynamic Thrusters and VASIMR
 
@@ -78,9 +78,9 @@ Above about 100 kW, electromagnetic devices take over. A **magnetoplasmadynamic 
 The **Variable Specific Impulse Magnetoplasma Rocket (VASIMR)** of Ad Astra Rocket Company has no electrodes: radio waves ionise argon, a second antenna heats the ions at their cyclotron frequency, and a magnetic nozzle turns their gyration into exhaust. The VX-200 prototype reached 200 kW in 2009 and was measured at 72 % efficiency, about 4 900 s and 5.7 N; in July 2021 the VX-200SS ran for 88 hours at 80 kW. VASIMR has not flown; the fast crewed missions linked to it would need tens of megawatts at specific powers far beyond today's.
 
 ::: figrow
-![Engineers at NASA Glenn position the third 12 kW AEPS flight thruster for acceptance testing in a vacuum chamber in 2025.](figures/photos/ch42_aeps.jpg){#fig:aepsaccept}
+![Engineers at NASA Glenn with the third 12 kW AEPS flight thruster during its acceptance-test campaign in 2025.](figures/photos/ch42_aeps.jpg){#fig:aepsaccept}
 
-![A xenon ion engine of the type flown on Deep Space 1 under test in a JPL vacuum chamber; the faint blue glow is the ion beam.](figures/photos/ch42_ds1ion.jpg){#fig:ds1ionglow width=67%}
+![A prototype of the xenon ion engine flown on Deep Space 1, seen through a port of a JPL vacuum chamber during a long-duration test; the faint blue glow is the ion beam.](figures/photos/ch42_ds1ion.jpg){#fig:ds1ionglow width=67%}
 :::
 
 ### Field-Emission, Electrospray and Air-Breathing Thrusters
@@ -131,7 +131,7 @@ The United States tested about twenty nuclear rocket reactors between 1959 and 1
 
 ### DRACO and After
 
-In 2023 DARPA and NASA started **DRACO** (Demonstration Rocket for Agile Cislunar Operations), with Lockheed Martin building the spacecraft and BWX Technologies the HALEU reactor, aiming for an in-orbit test as early as 2027. NASA's budget request for 2026 then provided nothing for nuclear thermal or nuclear electric propulsion, and in mid-2025 DARPA closed DRACO, citing the experiment's cost, the difficulty of ground testing and the falling cost of conventional launch. Congress nevertheless set aside at least US$ 110 million for nuclear thermal propulsion in NASA's 2026 appropriation, which the administrator told the Senate in April 2026 NASA would spend. Russian and Chinese work, mostly on nuclear-electric systems, is hard to judge from public sources.
+In 2023 NASA joined DARPA's **DRACO** (Demonstration Rocket for Agile Cislunar Operations), which chose Lockheed Martin to build the spacecraft and BWX Technologies the HALEU reactor, aiming for an in-orbit test as early as 2027. NASA's budget request for 2026 then provided nothing for nuclear thermal or nuclear electric propulsion, and in mid-2025 DARPA closed DRACO, citing the experiment's cost, the difficulty of ground testing and the falling cost of conventional launch. Congress nevertheless set aside at least US$ 110 million for nuclear thermal propulsion in NASA's 2026 appropriation, which the administrator told the Senate in April 2026 NASA would spend. Russian and Chinese work, mostly on nuclear-electric systems, is hard to judge from public sources.
 
 ### Faster to Mars
 
@@ -146,7 +146,7 @@ A transfer vehicle must deliver 60 t (habitat and lander) from a 400 km LEO into
 
 1. **Chemical (Isp 450 s, $v_e$ = 4.41 km/s).** Mass ratio $R = e^{5.49/4.41}$ = 3.47. If tanks, engines and structure weigh 12 % of the propellant, the final mass is $m_f = 60/[1 − 0.12(R − 1)]$ = 85.3 t and the initial mass $m_0 = R\,m_f$ = **296 t**, of which 211 t is propellant.
 2. **Nuclear thermal (Isp 900 s, $v_e$ = 8.83 km/s).** $R = e^{5.49/8.83}$ = 1.86. Bulky hydrogen tanks weigh 20 % of the propellant, plus 10 t of engines and shielding: $m_f = (60 + 10)/(1 − 0.20 × 0.86)$ = 84.6 t and $m_0$ = **158 t**, with 73 t of propellant.
-3. The nuclear vehicle needs about half the mass in LEO. Spending the same 300 t on it instead shortens the trip to about **118 days**, cutting the crew's dose in transit from about 0.33 Sv to 0.22 Sv.
+3. The nuclear vehicle needs about half the mass in LEO. Spending the same 300 t on it instead shortens the trip to about **118 days**, cutting the crew's dose in transit from about 0.32 Sv to 0.21 Sv.
 4. The price is hydrogen's low density (71 kg/m³): 73 t fills about 1 000 m³, to be kept at 20 K for months (Chapter 40 discusses boil-off).
 :::
 
@@ -166,7 +166,7 @@ Policy then accelerated. A NASA directive in August 2025 called for a lunar reac
 
 ### SR-1 Freedom
 
-The most ambitious near-term project is **Space Reactor-1 (SR-1) Freedom**, announced by NASA Administrator Jared Isaacman in March 2026 as the first spacecraft to use a fission reactor for propulsion beyond Earth orbit. A reactor designed by Idaho National Laboratory, fuelled with HALEU uranium dioxide and cooled by heat pipes, will produce at least 20 kWe through a closed Brayton converter supplied by Sierra Lobo. It sits behind a boron-carbide shield at the end of a boom with radiator fins and will be switched on only after leaving Earth orbit, to drive the xenon Hall thrusters of the repurposed Gateway PPE (built by Lanteris Space Systems, part of Intuitive Machines since January 2026) through an electric-propulsion system of up to 48 kW. SR-1 is due to launch in December 2028 and reach Mars about a year later with three Ingenuity-derived helicopters (the SkyFall mission) to scout landing sites; its reported cost is about US$ 2.1 billion without them. The schedule is tight — the reactor was still being designed in October 2026 — but SR-1 would be the first US reactor launched in more than 60 years. Russia's proposed megawatt-class "Zeus" nuclear tug has shown no public progress since 2021.
+The most ambitious near-term project is **Space Reactor-1 (SR-1) Freedom**, announced by NASA Administrator Jared Isaacman in March 2026 as the first spacecraft to use a fission reactor for propulsion beyond Earth orbit. A reactor designed by Idaho National Laboratory, fuelled with HALEU uranium dioxide and cooled by heat pipes, will produce at least 20 kWe through a closed Brayton converter supplied by Sierra Lobo. It sits behind a boron-carbide shield at the end of a boom with radiator fins and will be switched on only after leaving Earth orbit, to drive the xenon Hall thrusters of the repurposed Gateway PPE (built by Lanteris Space Systems, part of Intuitive Machines since January 2026) through an electric-propulsion system of up to 48 kW. SR-1 is due to launch in December 2028 and reach Mars about a year later with three Ingenuity-derived helicopters (the SkyFall mission) to scout landing sites; its reported cost is about US$ 2.1 billion without them. The schedule is tight — the reactor was still being designed in October 2026 — but SR-1 would be the first US reactor launched in more than 60 years. Russia's proposed megawatt-class "Zeus" nuclear tug has reported little public progress since 2021.
 
 ![A 10 kW Stirling power-conversion unit for NASA's Fission Surface Power Technology Demonstration Unit at Glenn Research Center; four such units would turn 180 kW of reactor heat into 40 kW of electricity.](figures/photos/ch42_fsptdu.jpg){#fig:fsptdu width=46%}
 
@@ -210,7 +210,7 @@ where 0.385 is cos²α sin α at the optimum angle (@fig:sailperf b).
 
 ### Sails Flown So Far
 
-JAXA's **IKAROS**, launched with the Venus orbiter Akatsuki in 2010, was the first interplanetary solar sail. It unfolded a 14 m square of 7.5 µm polyimide film by spinning, carried thin-film solar cells and steered with liquid-crystal panels of switchable reflectivity; JAXA measured a force of 1.12 mN. NASA's **NanoSail-D2** and The Planetary Society's **LightSail 2** followed in Earth orbit; LightSail 2 raised its orbit by about 2 km in its first days of sailing. NASA's 86 m² **NEA Scout**, launched on Artemis I in 2022, was never heard from (@fig:neascoutdeploy), and the nearly 1 700 m² **Solar Cruiser** was not confirmed for flight and was closed out in 2023. The **Advanced Composite Solar Sail System (ACS3)**, a 16 kg, 12-unit CubeSat, deployed an 80 m² sail on four 7 m carbon-fibre composite booms in August 2024 (@fig:acs3orbit). One boom was later reported bent and the sail was not actively steered, but the deployment proved booms that larger sails will need.
+JAXA's **IKAROS**, launched with the Venus orbiter Akatsuki in 2010, was the first interplanetary solar sail. It unfolded a 14 m square of 7.5 µm polyimide film by spinning, carried thin-film solar cells and steered with liquid-crystal panels of switchable reflectivity; JAXA measured a force of 1.12 mN. NASA's **NanoSail-D2** and The Planetary Society's **LightSail 2** followed in Earth orbit; LightSail 2 raised its apogee by about 2 km in its first days of sailing. NASA's 86 m² **NEA Scout**, launched on Artemis I in 2022, was never heard from (@fig:neascoutdeploy), and the nearly 1 700 m² **Solar Cruiser** was not confirmed for flight and was closed out in 2023. The **Advanced Composite Solar Sail System (ACS3)**, a 16 kg, 12-unit CubeSat, deployed an 80 m² sail on four 7 m carbon-fibre composite booms in August 2024 (@fig:acs3orbit). One boom was later reported bent and the sail was not actively steered, but the deployment proved booms that larger sails will need.
 
 ::: figrow
 ![Engineers at NASA's Marshall Space Flight Center deploy a flight-like engineering unit of the 86 m² NEA Scout solar sail, first unfurled there in August 2016.](figures/photos/ch42_neascout.jpg){#fig:neascoutdeploy}
@@ -262,13 +262,13 @@ A 2 g probe (1 g sail, 1 g chip) with a 4.1 m perfectly reflecting sail is pushe
 
 ### Fusion and Antimatter
 
-Fusion releases about four times more energy per kilogram than fission, and its charged products could in principle be directed out as exhaust by magnetic fields (@fig:fuelenergy). The British Interplanetary Society's **Project Daedalus** (1973–78) designed an uncrewed two-stage probe of about 54 000 t — mostly deuterium–helium-3 pellets ignited by electron beams 250 times a second — to carry a 450 t payload to Barnard's Star, 5.9 light-years away, at 12 % of the speed of light in about 50 years. Earlier, **Project Orion** (1958–65) studied a ship pushed by small nuclear explosions, until the 1963 test-ban treaty ended it.
+Fusion releases about four times more energy per kilogram than fission, and its charged products could in principle be directed out as exhaust by magnetic fields (@fig:fuelenergy). The British Interplanetary Society's **Project Daedalus** (1973–78) designed an uncrewed two-stage probe of about 54 000 t — mostly deuterium–helium-3 pellets ignited by electron beams 250 times a second — to carry a 450 t payload to Barnard's Star, 5.9 light-years away, at 12 % of the speed of light in about 50 years. Earlier, **Project Orion** (1958–65) studied a ship pushed by small nuclear explosions, until the 1963 Partial Test Ban Treaty and lack of funding ended it.
 
 ![Energy released per kilogram of reacting fuel and the corresponding ideal exhaust speed, computed from reaction energies. Each step from chemistry to fission, fusion and annihilation multiplies the energy by orders of magnitude.](figures/out/ch42_energy.svg){#fig:fuelenergy width=90%}
 
 No fusion device has yet produced more energy than its whole system consumes. The US National Ignition Facility first achieved ignition in December 2022, releasing 3.15 MJ from a capsule heated by 2.05 MJ of laser light, but its lasers drew about 300 MJ from the grid. Compact propulsion concepts such as the **Direct Fusion Drive**, based on the Princeton field-reversed configuration, are estimated to give 2.5–5 N per megawatt of fusion power at about 10 000 s; they remain small laboratory experiments.
 
-Matter–antimatter annihilation converts all of the mass into energy: 1 g of antimatter meeting 1 g of matter releases 1.8 × 10¹⁴ J, as much as a 43-kiloton explosion. But antimatter is made in particle accelerators one particle at a time, at minute efficiency. CERN makes about 10¹² antiprotons a day, and all it has ever produced amounts to less than 10 nanograms; at that rate a gram would take billions of years. Antimatter rockets remain thought experiments.
+Matter–antimatter annihilation converts all of the mass into energy: 1 g of antimatter meeting 1 g of matter releases 1.8 × 10¹⁴ J, as much as a 43-kiloton explosion. But antimatter is made in particle accelerators one particle at a time, at minute efficiency. CERN makes about 10¹² antiprotons a day, and all it has ever produced amounts to less than 10 nanograms; at that rate a gram would take more than a billion years. Antimatter rockets remain thought experiments.
 
 ## Breathing Air and Detonating Fuel
 
@@ -280,9 +280,9 @@ A hydrogen–oxygen rocket carries about 6 kg of oxygen for every kilogram of hy
 
 ### Rotating Detonation Engines
 
-Conventional rocket engines burn propellant at almost constant pressure. In a **rotating detonation engine (RDE)**, propellants injected into an annular channel are consumed by one or more detonation waves — shock waves coupled to combustion — racing around the annulus at about 2 km/s, thousands of times a second. Detonation raises the pressure as it burns, so analyses predict a higher specific impulse for the same propellants, and the thin reaction zone allows a much shorter chamber. In July 2021 Nagoya University and JAXA flew an RDE in space for the first time on the S-520-31 sounding rocket, producing about 500 N for 6 seconds. At NASA's Marshall Space Flight Center a 3D-printed copper-alloy rotating detonation rocket engine (RDRE) produced more than 18 kN in 2022 and fired for 251 seconds at more than 26 kN in September 2023 (@fig:rdrefire); in May 2025 the US company Venus Aerospace flew an RDRE-powered test vehicle from Spaceport America. Stabilising the waves and cooling the walls are the main challenges.
+Conventional rocket engines burn propellant at almost constant pressure. In a **rotating detonation engine (RDE)**, propellants injected into an annular channel are consumed by one or more detonation waves — shock waves coupled to combustion — racing around the annulus at about 2 km/s, thousands of times a second. Detonation raises the pressure as it burns, so analyses predict a higher specific impulse for the same propellants, and the thin reaction zone allows a much shorter chamber. In July 2021 Nagoya University and JAXA flew an RDE in space for the first time on the S-520-31 sounding rocket, producing about 500 N for 6 seconds. At NASA's Marshall Space Flight Center a 3D-printed copper-alloy rotating detonation rocket engine (RDRE) produced about 18 kN (4 000 lbf) in 2022 and fired for 251 seconds at more than 25 kN (5 800 lbf) in September 2023 (@fig:rdrefire); in May 2025 the US company Venus Aerospace flew an RDRE-powered test vehicle from Spaceport America. Stabilising the waves and cooling the walls are the main challenges.
 
-![A 251-second hot fire of a full-scale, 3D-printed rotating detonation rocket engine at NASA's Marshall Space Flight Center in 2023, producing more than 26 kN (5 800 lbf) of thrust.](figures/photos/ch42_rdre.jpg){#fig:rdrefire width=52%}
+![A 251-second hot fire of a full-scale, 3D-printed rotating detonation rocket engine at NASA's Marshall Space Flight Center in 2023, producing more than 25 kN (5 800 lbf) of thrust.](figures/photos/ch42_rdre.jpg){#fig:rdrefire width=52%}
 
 ## Propellantless and Exotic Ideas
 
@@ -298,14 +298,14 @@ Two propellant-free techniques already serve missions: gravity assists (Chapter 
 
 ### Reactionless Drives and Warp Drives
 
-Every working propulsion system conserves momentum: something — exhaust, photons, the solar wind, a planet's magnetic field — must carry momentum the other way. The **EmDrive**, a closed, tapered microwave cavity proposed around 2001, was claimed to produce thrust without exhaust; a NASA Eagleworks paper in 2016 reported about 1.2 mN per kilowatt. Tests at TU Dresden with new thrust balances and suspensions reproduced the apparent thrust and then made it disappear: it came from thermal expansion of the mountings and from currents in the power cables interacting with Earth's magnetic field. The 2021 results bounded any anomalous force below that of a photon rocket of the same power — 3.3 µN per kilowatt, the push of simply shining the microwaves into space — more than a thousand times below the earlier claims. "Mach-effect" thrusters tested the same way also failed to show real thrust.
+Every working propulsion system conserves momentum: something — exhaust, photons, the solar wind, a planet's magnetic field — must carry momentum the other way. The **EmDrive**, a closed, tapered microwave cavity proposed around 2001, was claimed to produce thrust without exhaust; a NASA Eagleworks paper in 2016 reported about 1.2 mN per kilowatt. Tests at TU Dresden with new thrust balances and suspensions reproduced the apparent thrust and then made it disappear: it came from thermal expansion of the mountings and from currents in the power cables interacting with Earth's magnetic field. The 2021 results bounded any anomalous force below that of a photon rocket of the same power — 3.3 µN per kilowatt, the push of simply shining the microwaves into space — hundreds to thousands of times below the earlier claims. "Mach-effect" thrusters tested the same way also failed to show real thrust.
 
 In 1994 Miguel Alcubierre showed that Einstein's equations allow, mathematically, a "warp bubble" that contracts space ahead of a ship and expands it behind, carrying it faster than light without local motion. It needs negative energy density — "exotic matter" unknown in bulk — and the first estimates of the energy required exceeded the mass-energy of the observable universe. Later designs cut the energy enormously but not to zero, and a bubble could not be steered from inside, because its front edge would lie beyond the reach of any signal from the ship. Warp drives remain an exercise in general relativity, not a propulsion technology.
 
 ::: ai
 **AI in advanced propulsion**
 
-Plasma thrusters are hard to model: electrons in a Hall thruster cross the magnetic field far faster than classical collisions allow, and no first-principles theory yet predicts this "anomalous" transport. Researchers have used Bayesian inference and machine learning on plasma measurements to build data-driven transport models and fast design surrogates. In fusion, reinforcement learning has controlled the shape of a tokamak plasma at EPFL's TCV device (2022). Mission designers train neural networks to approximate optimal low-thrust control and explore millions of trajectories quickly, and fleets with thousands of Hall thrusters produce telemetry suited to anomaly detection (Chapters 48 and 52).
+Plasma thrusters are hard to model: electrons in a Hall thruster cross the magnetic field far faster than classical collisions allow, and no first-principles theory yet predicts this "anomalous" transport. Researchers have used Bayesian inference and machine learning on plasma measurements to build data-driven transport models and fast design surrogates. In fusion, reinforcement learning has controlled the shape of a tokamak plasma at EPFL's TCV device (2022). Neural networks also approximate optimal low-thrust control for fast trajectory searches, and Hall-thruster fleets supply telemetry for anomaly detection (Chapters 48 and 52).
 :::
 
 ::: key
@@ -315,7 +315,7 @@ Plasma thrusters are hard to model: electrons in a Hall thruster cross the magne
 - Electric propulsion is scaling up (12 kW AEPS built, 100 kW run), but 100-day Mars trips need about 1 kW/kg.
 - Nuclear thermal rockets (850–950 s) roughly halve the LEO mass of a six-month Mars transfer; DRACO was cancelled in 2025.
 - Space fission power is returning: SR-1 Freedom (≥ 20 kWe, nuclear-electric) is planned for December 2028, Lunar Reactor-1 for 2030.
-- Sails flown reach about 0.05 mm/s²; a one-year trip to Mars's distance needs about 11 g/m².
+- Sails flown so far reach at most about 0.05 mm/s²; a one-year trip to Mars's distance needs about 11 g/m².
 - A 100 GW laser could push a gram-scale sail to about 0.2c in minutes, but the engineering is unsolved and Starshot is paused.
 - Scramjets, detonation engines and tethers serve niches; reactionless and warp drives fail the tests of physics.
 :::
@@ -326,9 +326,9 @@ Plasma thrusters are hard to model: electrons in a Hall thruster cross the magne
 1. Compare mass ratios for Δv = 10 km/s at $v_e$ = 4.4, 8.8 and 40 km/s. Why not raise $v_e$ without limit?
 2. A 50 kW Hall-thruster system works at 60 % efficiency and 2 500 s. What is its thrust, and how long would it take to give a 20 t spacecraft 5 km/s?
 3. Define specific power α. Using @fig:neptriptime, explain why a 40-day crewed trip to Mars is unrealistic with present technology.
-4. How does a nuclear thermal rocket achieve about twice the specific impulse of a hydrogen–oxygen engine? What roles do the moderator, control drums and shield play?
+4. Why does a nuclear thermal rocket reach twice the Isp of a hydrogen–oxygen engine? What do its moderator, control drums and shield do?
 5. Why was DRACO cancelled, and why is ground-testing an NTR harder now than in the 1960s?
-6. A 1 MWe nuclear-electric system has 25 % efficient Brayton converters and radiators at 500 K (emissivity 0.9). Estimate the radiator area and explain why radiators dominate NEP mass.
+6. A 1 MWe NEP system has 25 % efficient converters and radiators at 500 K (emissivity 0.9). Estimate the radiator area.
 7. A 4 kg CubeSat carries a 40 m² sail. Calculate its characteristic acceleration at 1 AU (η = 0.85) and the time to spiral out to 1.5 AU.
 8. Why does a laser sail's push collapse beyond a certain distance, and how does doubling the array diameter change it?
 9. How does a rotating detonation engine work? Describe two tests made since 2021.
