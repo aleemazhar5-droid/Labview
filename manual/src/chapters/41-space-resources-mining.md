@@ -156,7 +156,7 @@ A plant mines regolith containing 5 % ice by mass and must produce 100 t of wate
 1. Regolith processed: 19 kg per kilogram of water, so **1 900 t a year**, or 5.2 t a day.
 2. Ideal thermal energy (@fig:iceenergy): warming the regolith 1.61 MJ, warming the ice 0.24 MJ, sublimation 2.83 MJ — **4.7 MJ** per kilogram of water; 9.4 MJ/kg if only half the heat reaches the feedstock.
 3. Electrolysis at 70 % efficiency: 15.9 / 0.7 = 22.7 MJ/kg. Total about **32 MJ** (8.9 kWh) per kilogram of water.
-4. Annual energy: 100 000 kg × 32 MJ = 3.2 TJ; divided by the 3.16 × 10⁷ s in a year, an average of **about 100 kW**, day and night — the output of the fission reactor NASA plans to have ready for the Moon by about 2030 — before liquefaction and losses.
+4. Annual energy: 100 000 kg × 32 MJ = 3.2 TJ; divided by the 3.16 × 10⁷ s in a year, an average of **about 100 kW**, day and night — the output that NASA's 2025 directive set for a lunar fission reactor around 2030, although the 2026 draft procurement for the first unit, Lunar Reactor-1, asks for at least 20 kWe — before liquefaction and losses.
 5. Products: 11.2 t of hydrogen and 88.8 t of oxygen. At a mixture ratio of 6 : 1 the hydrogen supports 78 t of propellant, leaving 22 t of oxygen for breathing or an oxygen-rich engine.
 :::
 
