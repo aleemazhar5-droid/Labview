@@ -1061,16 +1061,19 @@
   "id": "GSFC_20171208_Archive_e001576"
  },
  "ch44_ai4mars": {
-  "id": "PIA23897"
+  "id": "PIA23897",
+  "crop": [
+   0.0,
+   0.226,
+   1.0,
+   0.81
+  ]
  },
  "ch44_marscraters": {
   "id": "PIA24040"
  },
  "ch44_sdo": {
   "id": "KSC-2009-6419"
- },
- "ch44_landsat9": {
-  "id": "KSC-20210708-PH-RNB01_0049"
  },
  "ch44_vegas": {
   "id": "GSFC_20171208_Archive_e001700"
@@ -1080,9 +1083,6 @@
  },
  "ch44_milton": {
   "id": "iss072e029135"
- },
- "ch44_helene": {
-  "id": "iss072e001649"
  },
  "ch44_landsat9b": {
   "id": "KSC-20210816-PH-RNB01_0090"
