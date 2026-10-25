@@ -71,7 +71,7 @@ Part XI — Space Observatories
 - [x] 39 Great Observatories and Deep-Space Telescopes
 Part XII — Emerging Frontiers
 - [x] 40 In-Space Servicing, Assembly and Manufacturing
-- [ ] 41 Space Resources and Asteroid Mining
+- [x] 41 Space Resources and Asteroid Mining
 - [ ] 42 Advanced Propulsion
 Part XIII — Artificial Intelligence in the Space Ecosystem
 - [ ] 43 AI Foundations: Machine Learning for Space Engineers

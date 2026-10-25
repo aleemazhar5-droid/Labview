@@ -20,7 +20,7 @@ The rocket equation (Chapter 34), $\Delta v = v_e \ln(m_0/m_f)$, makes the mass 
 
 With hydrogen–oxygen stages of specific impulse 450 s whose empty mass is 10 % of their propellant, each kilogram delivered to LLO needs 2.9 kg in LEO and about 73 kg at lift-off; each kilogram on the lunar surface needs 5.3 kg in LEO and 132 kg at lift-off. Propellant made on the Moon starts in a far shallower gravity well — escape velocity 2.4 km/s against Earth's 11.2 km/s, with no atmosphere. A reusable tanker that carries lunar propellant to LLO, keeping enough to fly back down, burns only about 1.1 kg for every kilogram it delivers: a gear ratio of 2.1 instead of 73. Delivery to the Earth–Moon L1 point, a proposed depot site, costs 2.7.
 
-The comparison reverses in LEO. A tanker can brake into LEO in the atmosphere (aerobraking), needing only about 2.8 km/s, but then needs the full 5.9 km/s to return. Each kilogram delivered costs 34 kg of lunar propellant — worse than launching from Earth — or about 4 if the tanker refuels at L1 on the way back. Lunar propellant is most valuable close to the Moon.
+The comparison reverses in LEO. A tanker can brake into LEO in the atmosphere (aerobraking), needing only about 2.8 km/s, but then needs the full 5.9 km/s to return. Each kilogram delivered costs 34 kg of lunar propellant — worse than launching from Earth — or about 5 if the tanker refuels with lunar propellant at L1 on the way back. Lunar propellant is most valuable close to the Moon.
 
 ### When Does Local Production Pay?
 
@@ -60,7 +60,7 @@ Regolith also holds **solar-wind** atoms implanted into grain surfaces, hydrogen
 
 ### Ice at the Poles
 
-The Moon's spin axis is tilted only 1.54° to the ecliptic, so crater floors near the poles never see the Sun (Chapter 28). In these **permanently shadowed regions (PSRs)** the Diviner radiometer on NASA's Lunar Reconnaissance Orbiter (LRO) measures temperatures below 40 K, and about 25 K in the coldest places. Water molecules from comets, asteroids, volcanic gases or the solar wind hop across the surface until they land in such a **cold trap** and freeze. @fig:icestability shows why: exposed ice at 114 K loses about a metre per billion years by sublimation, but at 150 K it loses kilometres. Carbon dioxide ice needs temperatures below about 60 K.
+The Moon's spin axis is tilted only 1.54° to the ecliptic, so crater floors near the poles never see the Sun (Chapter 28). In these **permanently shadowed regions (PSRs)** the Diviner radiometer on NASA's Lunar Reconnaissance Orbiter (LRO) measures temperatures below 40 K, and about 25 K in the coldest places. Water molecules from comets, asteroids, volcanic gases or the solar wind hop across the surface until they land in such a **cold trap** and freeze. @fig:icestability shows why: exposed ice at 114 K loses about a metre per billion years by sublimation, but at 150 K it loses hundreds of kilometres. Carbon dioxide ice needs temperatures below about 60 K.
 
 ![Sublimation loss of exposed water and carbon dioxide ice in vacuum. Water ice survives for billions of years only below about 110–115 K, on permanently shadowed crater floors; CO₂ ice only in the coldest.](figures/out/ch41_icestab.svg){#fig:icestability width=90%}
 
@@ -90,7 +90,7 @@ Mars offers two resources almost everywhere: an atmosphere that is 95 % carbon d
 
 Asteroids are classified by their reflectance spectra; three classes matter most:
 
-- **C-type** (carbonaceous) asteroids are dark, dominate the outer main belt and match carbonaceous chondrites; the most primitive, CI chondrites, hold water equivalent to about 18 % of their mass in clays, plus 3–4 % carbon, as samples from Ryugu and Bennu confirm (Chapter 29).
+- **C-type** (carbonaceous) asteroids are dark, dominate the outer main belt and match carbonaceous chondrites; the most primitive, CI chondrites, hold water equivalent to 13–20 % of their mass, mostly in clays, plus 3–4 % carbon. Samples from Ryugu and Bennu are similar clay- and carbon-rich material, though Ryugu's grains hold only about 7 % water (Chapter 29).
 - **S-type** (stony) asteroids dominate the inner belt and the known near-Earth population. They match ordinary chondrites, which in the H group contain 15–19 % iron–nickel metal; NEAR Shoemaker confirmed such a composition at the 34 km Eros in 2000–01 (@fig:erosmosaic).
 - **M-type** asteroids have spectra and radar echoes suggestive of metal. Iron meteorites, their likely counterparts, are about 90 % iron and 5–10 % nickel, with 10–40 ppm of **platinum-group metals** (platinum, palladium, rhodium, iridium, osmium, ruthenium) — several times the grade of the richest ores on Earth, which hold a few grams per tonne.
 
@@ -111,7 +111,7 @@ For mining, the important asteroids are the **near-Earth asteroids (NEAs)**, who
 | Resource | Where | Typical concentration | Main products | Key uncertainty |
 |------------------|----------------------|-------------------------|-----------------|------------------|
 | Polar water ice | Lunar cold traps (≈ 40 000 km²) | 0 to > 10 %; LCROSS 5.6 % | Water, H₂, O₂ | Amount, depth, patchiness |
-| Oxides in regolith | Whole Moon | O 41–45 %, Fe ≤ 15 %, Al ≤ 14 % | O₂, Fe, Si, Al, Ti | Energy per kg |
+| Oxides in regolith | Whole Moon | O 41–45 %, Fe ≤ 15 %, Al ≤ 15 % | O₂, Fe, Si, Al, Ti | Energy per kg |
 | Solar-wind volatiles | Lunar regolith, esp. Ti-rich mare | H tens of ppm; ³He ≈ 4–20 ppb | H₂O, ³He | Very low grade |
 | Atmospheric CO₂ | All of Mars | 95 % of a 0.6 kPa atmosphere | O₂, CO, CH₄ (with H₂) | Power, dust |
 | Water on Mars | Poles, buried ice, soil | ≈ 2 % in soil to near-pure ice | Water, H₂ | Depth and access |
@@ -134,7 +134,7 @@ Three process chains dominate ISRU planning (@fig:isruchains): water from lunar 
 | Molten regolith electrolysis | Any regolith | ≈ 1 600 °C | O₂, Fe, Si, Al | 420–450 | Lab; Blue Alchemist |
 | Molten salt (FFC) electrolysis | Any regolith | ≈ 900–950 °C | O₂, metal alloy powder | 400–430 | Lab (ESA, Metalysis) |
 | Solid-oxide CO₂ electrolysis | Mars atmosphere | ≈ 800 °C | O₂, CO | — | Flown: MOXIE, 122 g O₂ |
-| Sabatier reaction | CO₂ + H₂ | 300–400 °C | CH₄, H₂O | — | Operating on ISS since 2010 |
+| Sabatier reaction | CO₂ + H₂ | 300–400 °C | CH₄, H₂O | — | Used on ISS from 2010 |
 
 : Main ISRU processes. Maximum oxygen yields are theoretical, for typical lunar soils. {#tbl:isruprocesses}
 
@@ -187,9 +187,9 @@ A hydrogen-reduction plant processes high-titanium mare soil containing 10 % ilm
 
 On Mars the feedstock comes to the plant. NASA's **Mars Oxygen In-Situ Resource Utilisation Experiment (MOXIE)**, a 17 kg unit inside Perseverance (@fig:moxieinstall), compressed Martian air from about 0.6 kPa to near 100 kPa and passed it over solid-oxide electrolysis cells at 800 °C, where a current split carbon dioxide: $2\mathrm{CO_2} \rightarrow 2\mathrm{CO} + \mathrm{O_2}$. In 16 runs between April 2021 and August 2023, by day and night and in every season, it made 122 g of oxygen, at up to 12 g an hour and 98 % purity or better.
 
-NASA estimates that a crewed Mars ascent vehicle would need about 25 t of oxygen; made over the 14 months before a crew arrives, that requires 2.4 kg an hour — 200 times MOXIE's best rate — and tens of kilowatts. Methane comes from the **Sabatier reaction**, $\mathrm{CO_2} + 4\mathrm{H_2} \rightarrow \mathrm{CH_4} + 2\mathrm{H_2O}$, over a nickel or ruthenium catalyst at 300–400 °C (used on the ISS since 2010), with hydrogen from Martian ice or brought from Earth. A methane–oxygen engine burns about 3.6 kg of oxygen per kilogram of methane, so oxygen from the air alone supplies 78 % of the propellant — one reason SpaceX's Starship burns methane.
+NASA estimates that a crewed Mars ascent vehicle would need about 25 t of oxygen; made over the 14 months before a crew arrives, that requires 2.4 kg an hour — 200 times MOXIE's best rate — and tens of kilowatts. Methane comes from the **Sabatier reaction**, $\mathrm{CO_2} + 4\mathrm{H_2} \rightarrow \mathrm{CH_4} + 2\mathrm{H_2O}$, over a nickel or ruthenium catalyst at 300–400 °C (used on the ISS from 2010), with hydrogen from Martian ice or brought from Earth. A methane–oxygen engine burns about 3.6 kg of oxygen per kilogram of methane, so oxygen from the air alone supplies 78 % of the propellant — one reason SpaceX's Starship burns methane.
 
-![Engineers lower MOXIE into the body of the Perseverance rover in 2020. The experiment made the first oxygen produced on another planet.](figures/photos/ch41_moxie.jpg){#fig:moxieinstall width=58%}
+![Engineers lower MOXIE into the body of the Perseverance rover at JPL before launch. The experiment made the first oxygen produced on another planet.](figures/photos/ch41_moxie.jpg){#fig:moxieinstall width=58%}
 
 ### Building with Regolith
 
@@ -239,7 +239,7 @@ Two missions launched on one Falcon 9 in February 2025 showed how hard the work 
 
 ### Next Steps on the Ground
 
-NASA's half-tonne **VIPER** rover carries a neutron spectrometer, a near-infrared spectrometer, MSolo and a TRIDENT drill to map polar ice (Chapter 28). Cancelled in July 2024 over cost growth, it was revived in September 2025 with a task order worth up to US\$ 190 million for Blue Origin to land it near Mons Mouton in late 2027 on the second Blue Moon MK1 — which depends on the first MK1 flight, delayed to early 2027 by a New Glenn booster explosion in May 2026.
+NASA's half-tonne **VIPER** rover carries a neutron spectrometer, a near-infrared spectrometer, MSolo and a TRIDENT drill to map polar ice (Chapter 28). Cancelled in July 2024 over cost growth, it was revived in September 2025 with a task order worth up to US\$ 190 million for Blue Origin to land it near Mons Mouton in late 2027 on the second Blue Moon MK1 — which depends on the first MK1 flight, delayed to early 2027 after a New Glenn booster exploded during a static-fire test in May 2026.
 
 China's **Chang'e 7** — orbiter, lander, rover and a small "hopper" designed to jump into a shadowed crater and analyse its water — missed its August 2026 launch window and is expected in 2027. ESA's **PROSPECT** drill and gas laboratory, first developed for Russia's Luna 27, will fly on Intuitive Machines' IM-4 in 2027. The ISRO–JAXA **LUPEX** (Chandrayaan-5) lander and rover is planned for around 2028, as is China's **Chang'e 8**, which will test resource use and construction.
 
@@ -257,7 +257,7 @@ A second generation started with smaller, cheaper missions (@tbl:miningcompanies
 
 - **AstroForge** (founded 2022) aims to mine platinum-group metals from metallic NEAs. Brokkr-1, launched in April 2023 to test refining asteroid-like material in orbit, could not be commanded reliably. Odin, a 100 kg, US\$ 3.5 million spacecraft that rode with IM-2 in February 2025 to fly past the possibly metallic asteroid 2022 OB5, was declared lost in March. DeepSpace-2, designed to land on 2022 OB5, was completed in June 2026 and is to ride on IM-3 in 2027.
 - **Karman+** (Denver) raised US\$ 20 million in 2025 to rendezvous with an NEA and extract about 1 kg of material around 2027, aiming to sell water and regolith to servicing tugs.
-- **TransAstra** proposes "optical mining", using concentrated sunlight to drive volatiles out of an asteroid enclosed in a bag, and tested a small capture bag on the ISS in 2025.
+- **TransAstra** proposes "optical mining", using concentrated sunlight to drive volatiles out of an asteroid enclosed in a bag, and reported testing a 1 m capture bag inside the ISS's Bishop airlock in October 2025.
 - **Interlune** plans to harvest lunar helium-3 (see above).
 
 | Company | Founded | Target | Missions flown | Outcome or status (Oct 2026) |
@@ -275,7 +275,7 @@ A second generation started with smaller, cheaper missions (@tbl:miningcompanies
 
 A space resource can be sold in two markets. **In space**, the competitor is material launched from Earth: propellant in lunar orbit is worth what it costs to deliver from Earth, thousands of dollars per kilogram, but that market barely exists yet. **On Earth**, the competitor is terrestrial mining, and the product must be worth enough per kilogram to pay for its return.
 
-Platinum is the usual example. World mine supply is about 170 t a year, and the price is volatile: in 2026 it reached a record of about US\$ 2 900 per troy ounce in January, fell to about US\$ 1 540 in July and stood near US\$ 1 700 (US\$ 55 000 per kilogram) in October. @fig:ptprice uses a simple constant-elasticity demand model, in which a 1 % increase in supply lowers the price by 1/ε %, where ε is the **price elasticity of demand**. If demand is inelastic (ε = 0.3), the miner's revenue peaks at only about US\$ 1.2 billion a year, at 73 t a year; at ε = 0.6 the peak is US\$ 3.0 billion at 255 t a year. A single 100 m metallic asteroid with 20 ppm of platinum-group metals would hold about 50 t of them — enough, if it were all platinum and sold in one year, to cut the price by between a quarter and more than a half. Space mining for Earth markets caps its own revenue.
+Platinum is the usual example. World mine supply is about 170 t a year, and the price is volatile: in 2026 it reached a record of about US\$ 2 900 per troy ounce in January, fell to about US\$ 1 540 in July and stood near US\$ 1 650 (about US\$ 53 000 per kilogram) in mid-October. @fig:ptprice uses a simple constant-elasticity demand model, in which a 1 % increase in supply lowers the price by 1/ε %, where ε is the **price elasticity of demand**. If demand is inelastic (ε = 0.3), the miner's revenue peaks at only about US\$ 1.2 billion a year, at 73 t a year; at ε = 0.6 the peak is US\$ 2.9 billion at 255 t a year. A single 100 m metallic asteroid of bulk density 5 000 kg/m³ with 20 ppm of platinum-group metals would hold about 50 t of them — enough, if it were all platinum and sold in one year, to cut the price by between about a quarter and more than a half. Space mining for Earth markets caps its own revenue.
 
 ![Why space metals cannot be valued at today's prices. (a) Platinum price as space-mined supply is added, for three demand elasticities. (b) The miner's annual revenue, which peaks when demand is inelastic.](figures/out/ch41_economics.svg){#fig:ptprice width=90%}
 

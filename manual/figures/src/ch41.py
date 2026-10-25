@@ -130,9 +130,9 @@ def composition():
     hchon = norm({"O": 35.7, "Fe": 27.5, "Si": 16.9, "Mg": 14.0, "S": 2.0, "Ca": 1.25, "Al": 1.13, "Ni": 1.6,
                   "other": 1.4})
     iron = norm({"Fe": 91.0, "Ni": 8.0, "other": 1.0})
-    rows = [("Lunar highland soil\n(Apollo 16)", highland, "O 45 %, Al 14 %, Ca 11 %"),
-            ("Lunar mare soil\n(Apollo 11, high-Ti)", mare, "O 41 %, Fe 12 %, Ti 4.7 %"),
-            ("Mars soil\n(Gale crater)", mars, "O 42 %, Fe 15 %, H₂O ≈ 2 %"),
+    rows = [("Lunar highland soil\n(Apollo 16)", highland, "O 45 %, Al 14.5 %, Ca 11 %"),
+            ("Lunar mare soil\n(Apollo 11, high-Ti)", mare, "O 42 %, Fe 12 %, Ti 4.7 %"),
+            ("Mars soil\n(Gale crater)", mars, "O 43 %, Fe 15 %, H₂O ≈ 2 %"),
             ("C-type asteroid\n(CI chondrite)", ci, "H₂O-equivalent ≈ 18 %, C 3.5 %"),
             ("S-type asteroid\n(H chondrite)", hchon, "Fe–Ni metal grains ≈ 15–19 %"),
             ("M-type asteroid\n(iron meteorite)", iron, "Fe–Ni ≈ 99 %; Pt-group ≈ 10–40 ppm")]
@@ -497,7 +497,7 @@ def neadv():
 # 8. Economics: what extra supply does to price and revenue
 # ---------------------------------------------------------------------------------------------
 def economics():
-    p0 = 55.0          # US$ thousand per kg (≈ US$ 1 700 per troy ounce, October 2026)
+    p0 = 53.0          # US$ thousand per kg (≈ US$ 1 650 per troy ounce, mid-October 2026)
     s0 = 170.0         # tonnes per year mined platinum
     x = np.linspace(0, 500, 501)
     fig, (a, b) = plt.subplots(1, 2, figsize=(7.0, 3.1))
@@ -527,8 +527,8 @@ def economics():
     b.set_ylabel("Miner's revenue (US\\$ billion per year)", fontsize=7.6)
     b.set_title("(b) Revenue saturates", fontsize=8.6)
     b.legend(loc="upper right", fontsize=6.2)
-    fig.text(0.99, 0.01, "Illustrative constant-elasticity demand P = P₀(1 + X/S₀)^(−1/ε) with P₀ = US\\$ 55 000/kg "
-             "(≈ US\\$ 1 700 per troy ounce, October 2026; the price ranged\nfrom about US\\$ 1 540 to 2 920 per ounce during 2026) "
+    fig.text(0.99, 0.01, "Illustrative constant-elasticity demand P = P₀(1 + X/S₀)^(−1/ε) with P₀ = US\\$ 53 000/kg "
+             "(≈ US\\$ 1 650 per troy ounce, mid-October 2026; the price ranged\nfrom about US\\$ 1 540 to 2 920 per ounce during 2026) "
              "and S₀ = 170 t/yr (world mine supply, WPIC 2025).",
              ha="right", va="bottom", fontsize=5.8, color=GREY)
     fig.tight_layout(rect=(0, 0.08, 1, 1))
