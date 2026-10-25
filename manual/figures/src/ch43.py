@@ -962,7 +962,7 @@ def taxonomy():
              "Gradient boosting: Sentinel-2 cloud probability\n"
              "Support vector machines: EO-1 onboard classifiers\n"
              "k-means, PCA: unsupervised maps, IASI compression")
-    ax.text(68.5, 41.2, ml_ex, fontsize=6.1, color=INK, ha="center", va="top", linespacing=1.3, zorder=5)
+    ax.text(68.5, 41.4, ml_ex, fontsize=6.1, color=INK, ha="center", va="top", linespacing=1.22, zorder=5)
     ax.text(72.5, 28.6, "Deep learning", fontsize=7.8, weight="bold", color=VIOLET, ha="center", va="top", zorder=5)
     ax.text(72.5, 25.8, "many-layer neural networks\nCNN: Φsat-1 cloud screening\nLSTM: SMAP telemetry anomalies",
             fontsize=6.0, color=INK, ha="center", va="top", linespacing=1.25, zorder=5)

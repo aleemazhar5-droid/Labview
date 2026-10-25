@@ -86,7 +86,7 @@ def ptmap():
         ("Hall", (1200, 3000), (5e-3, 5.4), GREEN, (1290, 0.05), "left"),
         ("Gridded ion", (2500, 4500), (1e-3, 0.25), BLUE, (2500, 3.4e-4), "left"),
         ("MPD (pulsed / steady)", (1500, 6000), (1, 100), RED, (1700, 3.0e2), "left"),
-        ("VASIMR (ground tests)", (3000, 30000), (0.5, 6), VIOLET, (15000, 0.2), "center"),
+        ("VASIMR (ground tests)", (3000, 5500), (0.5, 6), VIOLET, (6300, 0.3), "left"),
         ("FEEP, electrospray", (1000, 10000), (1e-6, 1e-3), GOLD, (3200, 3.0e-7), "center"),
         ("Fusion concepts", (1e4, 1e6), (1, 1e5), "#8C564B", (1e5, 3e5), "center"),
     ]
