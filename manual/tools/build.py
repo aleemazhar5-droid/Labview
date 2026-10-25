@@ -83,6 +83,35 @@ def norm(s):
     return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 
+NBSP = "\u00a0"
+_UNITS = ("%|‰|°C|°F|°|K|nm|µm|mm|cm|m|km|Mm|kg|g|mg|t|kt|Mt|Gt|s|ms|µs|ns|min|h|d|yr|Hz|kHz|MHz|GHz|THz|"
+          "mW|W|kW|MW|GW|TW|Wh|kWh|MWh|J|kJ|MJ|GJ|TJ|N|kN|MN|mN|µN|Pa|kPa|MPa|GPa|hPa|bar|mbar|µbar|V|kV|mV|A|mA|"
+          "dB|dBi|dBic|dBW|dBm|dBK|dBHz|au|AU|ly|pc|kpc|Mpc|sr|rad|mrad|µrad|nrad|mas|Gy|mGy|Sv|mSv|µSv|"
+          "bit|kbit|Mbit|Gbit|Tbit|bit/s|B|kB|MB|GB|TB|PB|EB|ppm|ppb|psi|lbf|ft|lb|L|mL|eV|keV|MeV|GeV|TeV|"
+          "g₀|R_E|R⊕|kg/m²|m/s|km/s|m/s²|mm/s²|N·m|N·m·s|Wh/kg|W/kg|kW/kg|W/m²|kW/m²")
+_RE_THOUSANDS = re.compile(r"(?<=\d) (?=\d{3}(?!\d))")
+_RE_UNIT = re.compile(r"(?<=\d) (?=(?:" + _UNITS + r")(?![\w]))")
+
+
+def nbsp_typography(body):
+    """Keep thousands groups ("1 300") and number–unit pairs ("5.4 km/s") on one line."""
+    from bs4 import NavigableString
+    for node in list(body.find_all(string=True)):
+        if not isinstance(node, NavigableString) or not re.search(r"\d ", node):
+            continue
+        skip = False
+        for par in node.parents:
+            if par.name in ("script", "style", "code", "pre") or "math" in (par.get("class") or []):
+                skip = True
+                break
+        if skip:
+            continue
+        new = _RE_UNIT.sub(NBSP, _RE_THOUSANDS.sub(NBSP, str(node)))
+        if new != str(node):
+            node.replace_with(NavigableString(new))
+
+
+
 class Chapter:
     def __init__(self, path):
         self.path = path
@@ -116,6 +145,7 @@ class Chapter:
     def first_pass(self):
         soup = BeautifulSoup(pandoc(self.md), "lxml")
         body = soup.body
+        nbsp_typography(body)
         for h1 in body.find_all("h1"):
             h1.decompose()
         n2 = n3 = 0
