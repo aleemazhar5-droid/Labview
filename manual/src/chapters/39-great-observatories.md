@@ -28,7 +28,7 @@ The price is high. A space telescope must fit inside a fairing about 5 m across,
 
 ### Where Space Telescopes Fly
 
-The orbit trades access, thermal environment and observing efficiency (@fig:obsorbits). **Low Earth orbit (LEO)**, used by Hubble, Fermi, NuSTAR and IXPE, is cheap to reach and shielded by Earth's magnetic field, but Earth hides most targets for part of every 95-minute orbit and warms the spacecraft. X-ray telescopes such as Chandra use **highly elliptical orbits** (HEO) reaching a third of the way to the Moon, above the radiation belts for most of the time. The cold, quiet observatories — WMAP, Planck, Herschel, Gaia, JWST, Euclid and Roman — use a **halo orbit around the Sun–Earth L2 point**, 1.5 million km beyond Earth (Chapter 3), where the Sun, Earth and Moon always lie on one side and one sunshield can block all three. Kepler and Spitzer used **Earth-trailing solar orbits**, drifting slowly away; when they were switched off they were 170 and 266 million km from Earth.
+The orbit trades access, thermal environment and observing efficiency (@fig:obsorbits). **Low Earth orbit (LEO)**, used by Hubble, Fermi, NuSTAR and IXPE, is cheap to reach and shielded by Earth's magnetic field, but Earth hides most targets for part of every 95-minute orbit and warms the spacecraft. X-ray telescopes such as Chandra use **highly elliptical orbits** (HEO) reaching a third of the way to the Moon, above the radiation belts for most of the time. The cold, quiet observatories — WMAP, Planck, Herschel, Gaia, JWST, Euclid and Roman — use **halo or Lissajous orbits around the Sun–Earth L2 point**, 1.5 million km beyond Earth (Chapter 3), where the Sun, Earth and Moon always lie on one side and one sunshield can block all three. Kepler and Spitzer used **Earth-trailing solar orbits**, drifting slowly away; when they were switched off they were 170 and 266 million km from Earth.
 
 ![Where astronomical observatories fly, from the low orbits of Hubble and the X-ray and gamma-ray missions to the Sun–Earth L2 point and Earth-trailing solar orbits.](figures/out/ch39_orbits.svg){#fig:obsorbits width=82%}
 
@@ -55,7 +55,7 @@ Because the error was known exactly, it could be corrected exactly, like prescri
 
 Hubble measured the expansion rate of the Universe, the **Hubble constant**, to about 10 % (72 ± 8 km/s per megaparsec) in 2001, and its observations of distant supernovae helped show in 1998 that the expansion is accelerating — the evidence for **dark energy**. Its **Deep Fields** (1995, 2004), long exposures of apparently empty sky, revealed thousands of galaxies and traced how they grew. It found that almost every large galaxy has a central supermassive black hole and made the first detection of an exoplanet's atmosphere (2001). Its images, such as the "Pillars of Creation" (@fig:obspillars), are among the best-known scientific pictures ever made.
 
-**Hubble in 2026.** On 19 September 2026 Hubble completed its 200 000th orbit, after more than 1.7 million observations. Of the six gyroscopes installed in 2009, two still work, and since June 2024 Hubble has used only one, keeping the other as a spare. This **one-gyro mode** halves the sky it can reach at any moment and initially cut observations by about a tenth, but there have been no safe-mode events since. Drag is slowly lowering the orbit, now about 470 km: the Space Telescope Science Institute (STScI) puts the chance of re-entry before 2032 below 10 %, with a median date in late 2033. NASA declined a privately funded Crew Dragon reboost in June 2024, citing risks to the telescope, but said in 2026 that it would consider a reboost if operating costs fell; STScI has meanwhile been told to plan for budgets about a fifth lower.
+**Hubble in 2026.** On 19 September 2026 Hubble completed its 200 000th orbit, after more than 1.7 million observations. Of the six gyroscopes installed in 2009, two still work, and since June 2024 Hubble has used only one, keeping the other as a spare. This **one-gyro mode** halves the sky it can reach at any moment and initially cut observations by about a tenth, but STScI reported no safe-mode events in the two years that followed. Drag is slowly lowering the orbit, now about 470 km: the Space Telescope Science Institute (STScI) puts the chance of re-entry before 2032 below 10 %, with a median date in late 2033. NASA declined a privately funded Crew Dragon reboost in June 2024, citing risks to the telescope, but said in 2026 that it would consider a reboost if operating costs fell; STScI has meanwhile been told to plan for budgets about a fifth lower.
 
 ### Compton Gamma Ray Observatory
 
@@ -76,10 +76,10 @@ Chandra sees the hot Universe: million-degree gas in galaxy clusters, the remnan
 ::: figrow
 ![The "Pillars of Creation" in the Eagle Nebula, re-imaged by Hubble in near-infrared light in 2014. Infrared light passes through much of the dust, revealing stars behind and inside the columns of cold gas.](figures/photos/ch39_pillars.jpg){#fig:obspillars width=80%}
 
-![The Crab Nebula, the remnant of a supernova seen in 1054, combining radio (Very Large Array), infrared (Spitzer), visible (Hubble), ultraviolet (XMM-Newton) and X-ray (Chandra) data. The X-rays (purple-white) come from the most energetic particles near the central pulsar.](figures/photos/ch39_crab.jpg){#fig:obscrab width=80%}
+![The Crab Nebula, the remnant of a supernova seen in 1054, combining radio (Very Large Array), infrared (Spitzer), visible (Hubble), ultraviolet (XMM-Newton) and X-ray (Chandra) data. The X-rays (purple) come from the most energetic particles near the central pulsar.](figures/photos/ch39_crab.jpg){#fig:obscrab width=80%}
 :::
 
-Chandra has also become a symbol of budget pressure. NASA's requests for 2025 and 2026 proposed winding it down to save about US$ 70 million a year; Congress refused, and the 2026 appropriation (signed in January 2026) gave astrophysics US$ 1.595 billion and Chandra at least US$ 63 million, enough for a "minimum-cost mission". The 2027 request would cut astrophysics by about 65 %, to US$ 552 million, ending Chandra and Fermi; a House committee rejected the cut, but no 2027 budget had been enacted in October 2026.
+Chandra has also become a symbol of budget pressure. NASA's requests for 2025 and 2026 proposed winding it down to save about US$ 70 million a year; Congress refused, and the 2026 appropriation (signed in January 2026) gave astrophysics US$ 1.595 billion and Chandra at least US$ 63 million, enough for a "minimum-cost mission". The 2027 request would cut astrophysics by about 65 %, to US$ 552 million, ending Chandra and Fermi; a House committee rejected the cut, but no 2027 budget had been enacted in October 2026, and a stopgap continuing resolution held NASA at its 2026 level until 11 December.
 
 ### Spitzer Space Telescope
 
@@ -100,7 +100,7 @@ JWST's mirror and sunshield were launched folded (@fig:obsjwstmirror). Its deplo
 The first images were released on 12 July 2022. The first deep field (@fig:obsdeepfield), a 12.5-hour exposure of the galaxy cluster SMACS 0723, reached infrared depths beyond those of Hubble's deepest fields, which had taken weeks. Image quality and background beat requirements. One surprise was **micrometeoroid** damage: an impact in May 2022 slightly distorted one segment, and JWST now limits the time it points towards its direction of orbital motion, where impacts are most energetic.
 
 ::: figrow
-![JWST's 18-segment primary mirror, fully assembled at NASA's Goddard Space Flight Center in 2016.](figures/photos/ch39_jwstmirror.jpg){#fig:obsjwstmirror}
+![The last of JWST's 18 primary-mirror segments being lowered into place by a robotic arm at NASA's Goddard Space Flight Center in February 2016, completing the mirror.](figures/photos/ch39_jwstmirror.jpg){#fig:obsjwstmirror}
 
 ![JWST's first deep field (2022): the cluster SMACS 0723 acts as a gravitational lens, stretching background galaxies into arcs.](figures/photos/ch39_deepfield.jpg){#fig:obsdeepfield width=76%}
 :::
@@ -156,7 +156,7 @@ where $\Omega_r \approx 9\times10^{-5}$ is the small contribution of radiation a
 ::: example
 **Example: look-back time to redshift 14**
 
-A galaxy's spectrum shows the Lyman break at 1.82 µm. How long ago did its light leave, and how old was the Universe then?
+A galaxy's spectrum shows the Lyman break at 1.824 µm. How long ago did its light leave, and how old was the Universe then?
 
 1. **Redshift.** $1 + z = 1.824/0.1216 = 15.0$, so $z$ = 14.0. The break lies beyond Hubble's 1.7 µm limit; only JWST can measure it.
 2. **Quick estimate.** At this redshift matter dominates, $H(z) \approx H_0\sqrt{\Omega_m}(1+z)^{3/2}$, and the integral gives $t \approx \tfrac{2}{3}\,(1/H_0)/[\sqrt{\Omega_m}(1+z)^{3/2}]$. With $1/H_0$ = 14.44 Gyr: $t \approx \tfrac{2}{3} \times 14.44/(0.557 \times 58.1)$ = **0.298 Gyr**.
@@ -198,9 +198,9 @@ When a planet of radius $R_p$ crosses a star of radius $R_\star$, the star dims 
 
 NASA's **Kepler** (2009–18) used a 0.95 m Schmidt telescope and a 95-megapixel camera covering 115 square degrees (@fig:obskepler) to measure about 150 000 stars in Cygnus and Lyra every 30 minutes for four years. When a second reaction wheel failed in 2013, engineers balanced the spacecraft against sunlight pressure, and the **K2** mission observed fields along the ecliptic until the propellant ran out in October 2018. Kepler showed that planets are the rule rather than the exception, that the commonest planets in the Galaxy are between Earth and Neptune in size — a type absent from the Solar System — and that a substantial fraction of Sun-like stars (estimates range from about one in ten to one in two) have an Earth-sized planet in the habitable zone.
 
-![(a) Transit depth versus planet radius for four types of star, with the photometric precision of Kepler and TESS. (b) Signal of one atmospheric scale height in transmission for selected planets: hydrogen-rich planets give tens to hundreds of ppm, rocky planets with nitrogen-rich air only a few ppm.](figures/out/ch39_transit.svg){#fig:obstransit width=98%}
+![(a) Transit depth versus planet radius for four types of star, with the photometric precision of Kepler and TESS. (b) Signal of one atmospheric scale height in transmission for selected planets: hydrogen-rich planets give tens to hundreds of ppm, rocky planets with nitrogen-rich air from a fraction of a ppm (Earth around the Sun) to about 15 ppm (TRAPPIST-1 e around a tiny star).](figures/out/ch39_transit.svg){#fig:obstransit width=98%}
 
-The **Transiting Exoplanet Survey Satellite (TESS)**, launched in 2018, has four 10.5 cm cameras covering a 24° × 96° strip of sky, which it observes for 27 days before moving on. It has covered more than 98 % of the sky, concentrating on bright, nearby stars whose planets can be weighed from the ground and studied by JWST. By October 2026 it had identified 8 151 candidate planets and 1 012 confirmed ones, and it continues in its third extended mission. ESA's **CHEOPS** (2019), a 32 cm telescope, measures the radii of known planets precisely.
+The **Transiting Exoplanet Survey Satellite (TESS)**, launched in 2018, has four 10.5 cm cameras covering a 24° × 96° strip of sky, which it observes for 27 days before moving on. It has covered more than 98 % of the sky, concentrating on bright, nearby stars whose planets can be weighed from the ground and studied by JWST. By October 2026 it had flagged 8 151 "TESS Objects of Interest" — possible planets, some later shown to be false alarms — and 1 012 of its discoveries were confirmed planets; it continues in its third extended mission. ESA's **CHEOPS** (2019), a 32 cm telescope, measures the radii of known planets precisely.
 
 ::: example
 **Example: can TESS find an Earth twin?**
@@ -210,7 +210,7 @@ An Earth-sized planet orbits a Sun-like star (1.0 $R_\odot$, 1.0 $M_\odot$) once
 1. **Depth**: $\delta = (6\,371/695\,700)^2$ = 8.4 × 10⁻⁵ = **84 ppm**.
 2. **Duration** of a central transit: $T \approx (P/\pi)\,(R_\star/a)$ = (8 766 h/π) × (695 700/149.6 million) = **13.0 hours**.
 3. **Noise over one transit**: 60 ppm/√13 = 16.6 ppm, giving a signal-to-noise ratio of 84/16.6 = **5.0**.
-4. **Detection** conventionally needs a ratio of about 7.1, i.e. (7.1/5.0)² ≈ **2 transits** — two years of continuous observation. TESS watches most stars for only 27 days, so it essentially cannot find Earth twins, and only 0.47 % of such systems transit at all. That is the job of PLATO, which will stare at the same fields for two years or more.
+4. **Detection** conventionally needs a ratio of about 7.1, i.e. (7.1/5.0)² ≈ **2 transits** — a continuous baseline of more than a year. TESS watches most stars for only 27 days, so it essentially cannot find Earth twins, and only 0.47 % of such systems transit at all. That is the job of PLATO, which will stare at the same fields for two years or more.
 5. **Around a small red dwarf** (0.2 $R_\odot$), the same planet in the habitable zone (about 0.07 AU) orbits in 14 days with a depth of **2 100 ppm**. Even with three times the noise from the fainter star, one 1.5-hour transit gives a ratio of about 14, and TESS sees two transits per sector. This is why most known small temperate planets — and those JWST can study — orbit red dwarfs.
 :::
 
@@ -236,24 +236,24 @@ ESA's **Gaia** (2013–25) measured the positions, distances and motions of near
 
 ### Mapping the Dark Universe: Euclid, SPHEREx, Roman and Xuntian
 
-**Euclid** (ESA, July 2023), a 1.2 m telescope with a 0.53-square-degree field — over a hundred times that of Hubble's main camera — is mapping a third of the sky in six years to measure the shapes of more than a billion galaxies. Their tiny, coherent distortions by intervening matter (**weak gravitational lensing**) and the clustering of galaxies reveal how dark matter is distributed and how dark energy has driven the expansion. Its first quick release (March 2025) covered 63 square degrees and 26 million galaxies; the first cosmology release begins in November 2026. NASA's **SPHEREx** (March 2025) splits light into 102 colours from 0.75 to 5 µm with a 20 cm telescope; it completed the first of four planned all-sky spectral maps in December 2025, seeking imprints of **cosmic inflation** — the extremely rapid expansion thought to have occurred in the first instant after the Big Bang — and surveying interstellar ices.
+**Euclid** (ESA, July 2023), a 1.2 m telescope with a 0.53-square-degree field — over a hundred times that of Hubble's main camera — is mapping a third of the sky in six years to measure the shapes of more than a billion galaxies. Their tiny, coherent distortions by intervening matter (**weak gravitational lensing**) and the clustering of galaxies reveal how dark matter is distributed and how dark energy has driven the expansion. Its first quick release (March 2025) covered 63 square degrees and 26 million galaxies; the first major data release (DR1) begins in November 2026 with images and catalogues of about 1 900 square degrees, while the weak-lensing and clustering products needed for cosmology follow in mid-2027. NASA's **SPHEREx** (March 2025) splits light into 102 colours from 0.75 to 5 µm with a 20 cm telescope; it completed the first of four planned all-sky spectral maps in December 2025, seeking imprints of **cosmic inflation** — the extremely rapid expansion thought to have occurred in the first instant after the Big Bang — and surveying interstellar ices.
 
-The **Nancy Grace Roman Space Telescope** (NASA, about US$ 4 billion) pairs a 2.4 m mirror, donated by the US National Reconnaissance Office, with a 300-megapixel camera whose field is about 200 times that of Hubble's infrared camera. Launched on a Falcon Heavy on 30 August 2026, ahead of schedule (@fig:obsroman), it was being commissioned on its way to L2 in October 2026, with first science images expected in early 2027. Over five years it will map dark energy, find more than a thousand planets towards the Galactic centre by **gravitational microlensing** (the brief brightening of a background star as a planet passes in front of it) and test a coronagraph designed to suppress starlight by 10⁸ or more.
+The **Nancy Grace Roman Space Telescope** (NASA, about US$ 4 billion) pairs a 2.4 m mirror, donated by the US National Reconnaissance Office, with a 300-megapixel camera whose field is about 200 times that of Hubble's infrared camera. Launched on a Falcon Heavy on 30 August 2026, ahead of schedule (@fig:obsroman), it was being commissioned on its way to L2 in October 2026, with first science images expected in early 2027. Over five years it will map dark energy, find more than a thousand planets towards the Galactic centre by **gravitational microlensing** (the brief brightening of a background star as a planet passes in front of it) and test a coronagraph required to detect planets 10⁷ times fainter than their star (ground tests reached better than 5 × 10⁻⁸), a step towards the 10¹⁰ needed for Earth twins.
 
 ::: figrow
-![The Kepler spacecraft in a clean room at Ball Aerospace in Boulder, Colorado, in 2008. The sunshade covers the opening of the telescope tube.](figures/photos/ch39_kepler.jpg){#fig:obskepler width=74%}
+![The Kepler spacecraft in a clean room at Ball Aerospace in Boulder, Colorado, in 2008. The white dust cover on the sunshade was jettisoned after launch.](figures/photos/ch39_kepler.jpg){#fig:obskepler width=74%}
 
 ![The Nancy Grace Roman Space Telescope being encapsulated in its Falcon Heavy payload fairing at Kennedy Space Center on 21 August 2026, nine days before launch.](figures/photos/ch39_romanfairing.jpg){#fig:obsroman width=74%}
 :::
 
-China's 2 m **Xuntian** survey telescope (CSST, 1.1-square-degree field) is to be launched in 2027 into the orbit of the Tiangong station, where it can dock for servicing. ESA's **PLATO**, with 26 small cameras, is due for launch on Ariane 6 in January 2027 to find Earth-sized planets in the habitable zones of Sun-like stars, and **Ariel** (2029) will measure the atmospheres of about a thousand exoplanets.
+China's 2 m **Xuntian** survey telescope (CSST, 1.1-square-degree field) is to be launched in 2027 into the orbit of the Tiangong station, where it can dock for servicing. ESA's **PLATO**, with 26 small cameras, is due for launch on Ariane 6 in early 2027 (ESA's mission page gives April) to find Earth-sized planets in the habitable zones of Sun-like stars, and **Ariel** (2029) will measure the atmospheres of about a thousand exoplanets.
 
 ## High-Energy and Time-Domain Astronomy
 
 X-ray and gamma-ray observatories study the most violent events in the Universe, many lasting seconds to days, so high-energy astronomy is a **time-domain** discipline: wide-field monitors detect a burst and narrow-field telescopes swing onto it within minutes.
 
 - **Fermi** (NASA, 2008) combines the Large Area Telescope (20 MeV to over 300 GeV), which surveys the whole gamma-ray sky every three hours and has catalogued about 7 000 sources, with a burst monitor (8 keV–40 MeV). On 17 August 2017 it detected a short gamma-ray burst 1.7 seconds after LIGO and Virgo recorded gravitational waves from merging neutron stars, opening **multi-messenger astronomy**.
-- **Swift** (NASA, 2004) could turn to a new burst within one to two minutes and observe it with X-ray and ultraviolet/optical telescopes, localising well over a thousand bursts. The high solar activity of 2024–25 made its orbit decay much faster than predicted. NASA paid Katalyst Space US$ 30 million for a robotic spacecraft to grab Swift and raise its orbit; launched on a Pegasus XL on 3 July 2026, it suffered attitude-control problems, and the attempt was abandoned on 19 August. On 19 October 2026 Swift was at about 280 km and falling fast, with re-entry expected within weeks.
+- **Swift** (NASA, 2004) could turn to a new burst in about a minute and observe it with X-ray and ultraviolet/optical telescopes; it observed more than 2 000 gamma-ray bursts. The high solar activity of 2024–25 made its orbit decay much faster than predicted. NASA paid Katalyst Space US$ 30 million for a robotic spacecraft to grab Swift and raise its orbit; launched on a Pegasus XL on 3 July 2026, it suffered attitude-control problems, and the attempt was abandoned on 19 August. Below 275 km drag prevented steady pointing: Swift made its last observation on 20 October 2026, NASA ended the mission on 23 October, and re-entry is expected within weeks.
 - **NuSTAR** (NASA, 2012) was the first telescope to focus hard X-rays (3–79 keV), using a 10 m mast unfolded in orbit for the long focal length grazing-incidence optics need. **IXPE** (NASA–Italy, 2021) measures X-ray **polarisation**, revealing the geometry of magnetic fields in pulsars and black-hole jets.
 - **XRISM** (JAXA with NASA and ESA, 2023) carries **Resolve**, a microcalorimeter that measures each X-ray photon's energy from the tiny temperature rise it causes in a detector at 0.05 K, with 20–30 times finer spectral resolution than X-ray CCDs. Its protective gate valve has failed to open, blocking X-rays below about 1.7 keV, but it works superbly at higher energies and operations have been extended to 2030.
 - **eROSITA**, the German telescope on Russia's Spektr-RG (2019), completed four all-sky X-ray surveys before being idled in February 2022 after Russia's invasion of Ukraine; its July 2026 release lists about two million sources.
@@ -275,16 +275,16 @@ The next frontier is not light at all. The **Laser Interferometer Space Antenna 
 |---|---|---|---|---|---|---|
 | Hubble | NASA/ESA | 0.115–1.7 µm | 2.4 m | LEO 470 km | 1990 | One-gyro mode |
 | Chandra | NASA | 0.1–10 keV | 1.2 m | HEO | 1999 | Minimum-cost |
-| Swift | NASA | γ, X-ray, UV | 0.3 m | LEO 280 km | 2004 | Re-entering |
+| Swift | NASA | γ, X-ray, UV | 0.3 m | LEO 265 km | 2004 | Ended Oct 2026 |
 | Fermi | NASA | 8 keV–300 GeV | Detectors | LEO 490 km | 2008 | Budget threat |
 | TESS | NASA | 0.6–1.0 µm | 4 × 10.5 cm | HEO | 2018 | Extended |
 | JWST | NASA/ESA/CSA | 0.6–28.5 µm | 6.5 m | L2 | 2021 | Cycle 5 |
 | Euclid | ESA | 0.55–2.0 µm | 1.2 m | L2 | 2023 | Surveying |
-| XRISM | JAXA/NASA | 1.7–12 keV | 2 × 0.45 m | LEO 550 km | 2023 | Operating |
+| XRISM | JAXA/NASA | 1.7–12 keV | 2 × 0.45 m | LEO 525 km | 2023 | Operating |
 | Einstein Probe | CAS/ESA | 0.3–10 keV | Lobster-eye | LEO 600 km | 2024 | Operating |
 | SPHEREx | NASA | 0.75–5.0 µm | 0.2 m | LEO 650 km | 2025 | Surveying |
 | Roman | NASA | 0.48–2.3 µm | 2.4 m | L2 | 2026 | Commissioning |
-| PLATO | ESA | 0.5–1.0 µm | 26 × 0.12 m | L2 | 2027 | At launch site |
+| PLATO | ESA | 0.5–1.0 µm | 26 × 0.12 m | L2 | 2027 | Final testing |
 | Xuntian | China | 0.25–1.0 µm | 2 m | LEO | 2027 | Building |
 | Ariel | ESA | 0.5–7.8 µm | 1.1 × 0.7 m | L2 | 2029 | Building |
 | PRIMA | NASA | 24–235 µm | 1.8 m | L2 | 2033 | Selected |

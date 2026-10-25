@@ -19,11 +19,13 @@ def stage_ratio(dv_kms, isp=450.0, eps=0.10):
     return 1.0 + (1.0 + eps) * mp, mp
 
 
-def tanker_ratio(dv_kms, isp=450.0, dry=10.0, load=30.0):
-    """Reusable lunar tanker: propellant produced on the Moon per kg delivered (net of return reserve)."""
+def tanker_ratio(dv_kms, isp=450.0, dry=10.0, load=30.0, dv_back=None):
+    """Reusable lunar tanker: propellant produced on the Moon per kg delivered (net of the reserve kept to fly
+    back to the surface, which needs dv_back; equal to dv_kms unless aerobraking helps only one way)."""
     r = np.exp(dv_kms * 1000.0 / (isp * G0))
+    rb = np.exp((dv_back if dv_back else dv_kms) * 1000.0 / (isp * G0))
     ascent = (dry + load) * (r - 1.0)
-    reserve = dry * (r - 1.0)
+    reserve = dry * (rb - 1.0)
     net = load - reserve
     return (ascent + load) / net
 
@@ -33,26 +35,28 @@ LAUNCH = 25.0           # kg lifted off Earth per kg placed in LEO (4 % payload 
 
 def gear():
     fig, (a, b) = plt.subplots(1, 2, figsize=(7.0, 3.3), gridspec_kw=dict(width_ratios=[1.05, 1.0]))
-    dests = [("Low Earth orbit", 0.0, 2.8), ("Earth–Moon L1", 3.8, 2.5), ("Low lunar orbit", 4.0, 1.9),
-             ("Lunar surface", 5.9, 0.0)]
+    dests = [("Low Earth orbit", 0.0, 2.8, 5.9), ("Earth–Moon L1", 3.8, 2.5, 2.5), ("Low lunar orbit", 4.0, 1.9, 1.9),
+             ("Lunar surface", 5.9, 0.0, 0.0)]
     y = np.arange(len(dests))
     earth = [LAUNCH * stage_ratio(d[1])[0] for d in dests]
-    moon = [tanker_ratio(d[2]) if d[2] > 0 else 1.0 for d in dests]
+    moon = [tanker_ratio(d[2], dv_back=d[3]) if d[2] > 0 else 1.0 for d in dests]
     a.barh(y - 0.19, earth, height=0.36, color=BLUE, label="from Earth (lift-off mass)", zorder=2)
     a.barh(y + 0.19, moon, height=0.36, color=ORANGE, label="from the Moon (lunar propellant)", zorder=2)
     for yi, e, m in zip(y, earth, moon):
         a.text(e * 1.08, yi - 0.19, f"{e:.0f}", va="center", fontsize=6.8, color=BLUE)
-        a.text(m * 1.08, yi + 0.19, f"{m:.1f}" + (" (used on site)" if m == 1.0 else ""), va="center", fontsize=6.8,
+        extra = " (used on site)" if m == 1.0 else (" (tanker must climb back out)" if m > 20 else "")
+        a.text(m * 1.08, yi + 0.19, (f"{m:.0f}" if m > 20 else f"{m:.1f}") + extra, va="center", fontsize=6.8,
                color=ORANGE)
     a.set_xscale("log")
-    a.set_xlim(0.8, 600)
+    a.set_xlim(0.8, 1500)
     a.set_yticks(y)
     a.set_yticklabels([d[0] for d in dests], fontsize=7.4)
     a.invert_yaxis()
     a.grid(axis="y", visible=False)
     a.set_xlabel("kg leaving the source per kg of propellant delivered", fontsize=7.6)
     a.set_title("(a) The gear ratio", fontsize=8.6)
-    a.legend(loc="upper right", fontsize=6.5, handlelength=1.2)
+    a.text(0.88, -0.19, "Earth lift-off mass", va="center", ha="left", fontsize=6.3, color="white", zorder=3)
+    a.text(0.88, 0.19, "lunar propellant", va="center", ha="left", fontsize=6.3, color="white", zorder=3)
 
     p = np.logspace(0, 2.3, 200)
     earth_ls = LAUNCH * stage_ratio(5.9)[0]            # Earth lift-off per kg landed on the Moon
@@ -75,11 +79,11 @@ def gear():
     b.set_title("(b) When does lunar propellant pay?", fontsize=8.6)
     b.legend(loc="lower left", fontsize=6.3, handlelength=2.0)
     fig.text(0.99, 0.01, "Launcher: 4 % of lift-off mass reaches LEO. Earth-sourced: expendable LOX/LH₂ stages, Isp 450 s, "
-             "dry mass 10 % of propellant; Δv LEO→L1 3.8, →LLO 4.0, →lunar surface 5.9 km/s.\n"
-             "Moon-sourced: reusable LOX/LH₂ tanker (10 t dry, 30 t loaded) keeps propellant to return; Δv surface→LLO 1.9, "
-             "→L1 2.5, →LEO 2.8 km/s (aerobraking). Plant and tanker mass in (b) landed from Earth.",
+             "dry mass 10 % of propellant;\nΔv LEO→L1 3.8, →LLO 4.0, →lunar surface 5.9 km/s. Moon-sourced: reusable "
+             "LOX/LH₂ tanker (10 t dry, 30 t loaded) keeps\npropellant to return; Δv surface→LLO 1.9, →L1 2.5, →LEO 2.8 km/s "
+             "(aerobraking; 5.9 km/s back). Plant and tanker mass in (b) landed from Earth.",
              ha="right", va="bottom", fontsize=5.8, color=GREY)
-    fig.tight_layout(rect=(0, 0.075, 1, 1))
+    fig.tight_layout(rect=(0, 0.10, 1, 1))
     save(fig, "ch41_gear")
 
 
@@ -159,9 +163,9 @@ def composition():
     ax.legend(handles, [e for e, _ in elements], ncol=12, loc="lower left", bbox_to_anchor=(-0.02, 1.0),
               fontsize=6.3, handlelength=1.0, columnspacing=0.8, handletextpad=0.3)
     fig.text(0.99, 0.01, "Element fractions from average oxide analyses (lunar soils 64501-type and 10084; MSL Rocknest "
-             "with ≈ 2 % H₂O), CI (Lodders 2003), H-chondrite and iron-meteorite averages. Representative values only.",
+             "with ≈ 2 % H₂O),\nCI (Lodders 2003), H-chondrite and iron-meteorite averages. Representative values only.",
              ha="right", va="bottom", fontsize=5.8, color=GREY)
-    fig.tight_layout(rect=(0, 0.04, 0.80, 1))
+    fig.tight_layout(rect=(0, 0.07, 0.79, 1))
     save(fig, "ch41_composition")
 
 
@@ -193,11 +197,12 @@ def icestab():
     T = np.linspace(30, 400, 800)
     lw = loss_m_per_gyr(p_h2o(T), T, 18.015, 930.0)
     lc = loss_m_per_gyr(p_co2(T), T, 44.01, 1560.0)
-    zones = [(25, 60, "#DCE8F5", "coldest\ncrater\nfloors"), (60, 110, "#EAF1F7", "typical\npermanently\nshadowed\nregions"),
-             (180, 260, "#FFF1E0", "sunlit polar\nterrain"), (360, 400, "#FBE3D6", "equator\nat noon")]
-    for t0, t1, col, txt in zones:
+    zones = [(25, 60, "#DCE8F5", "coldest\ncrater\nfloors", 3e17, "top"),
+             (60, 110, "#EAF1F7", "typical\npermanently\nshadowed\nregions", 3e17, "top"),
+             (180, 260, "#FFF1E0", "sunlit polar\nterrain", 3e-12, "bottom"), (360, 400, "#FBE3D6", "equator\nat noon", 3e-12, "bottom")]
+    for t0, t1, col, txt, yy, va in zones:
         ax.axvspan(t0, t1, color=col, zorder=0)
-        ax.text((t0 + t1) / 2, 3e17, txt, ha="center", va="top", fontsize=6.2, color=NAVY, linespacing=1.1,
+        ax.text((t0 + t1) / 2, yy, txt, ha="center", va=va, fontsize=6.2, color=NAVY, linespacing=1.1,
                 bbox=dict(fc="white", ec="none", pad=0.8, alpha=0.7))
     ax.plot(T, lw, color=BLUE, lw=1.8, label="water ice (H₂O)")
     ax.plot(T, lc, color=ORANGE, lw=1.8, label="carbon dioxide ice (CO₂)")
@@ -216,7 +221,7 @@ def icestab():
     ax.set_xlim(25, 400)
     ax.set_xlabel("Surface temperature (K)", fontsize=7.8)
     ax.set_ylabel("Sublimation loss of exposed ice (m per 10⁹ years)", fontsize=7.4)
-    ax.legend(loc="lower right", fontsize=6.8)
+    ax.legend(loc="lower right", fontsize=6.8, bbox_to_anchor=(0.99, 0.2))
     fig.text(0.99, 0.01, "Free sublimation into vacuum (Hertz–Knudsen) with ice vapour pressure from Murphy & Koop (2005) and "
              "CO₂ from Clausius–Clapeyron; a regolith cover slows the loss further.", ha="right", va="bottom",
              fontsize=5.8, color=GREY)
@@ -340,9 +345,9 @@ def iceenergy():
     b.legend(loc="upper right", fontsize=6.4)
     b.set_xlabel("Ice content (regolith processed per kg of water)", fontsize=7.4)
     fig.text(0.99, 0.01, "Regolith starts at 40 K; specific heat from Hayne et al. (2017), ice c ≈ 7.7·T J/(kg·K), "
-             "sublimation 2.83 MJ/kg. Solid lines assume all heat reaches the feedstock and all vapour is captured.",
+             "sublimation 2.83 MJ/kg.\nSolid lines assume all heat reaches the feedstock and all vapour is captured.",
              ha="right", va="bottom", fontsize=5.8, color=GREY)
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.tight_layout(rect=(0, 0.075, 1, 1))
     save(fig, "ch41_iceenergy")
 
 
@@ -412,8 +417,8 @@ def o2yield():
     b.bar(x, sens, bottom=react, width=0.6, color="#B9A47E", label="heating the regolith (no heat recovery)", zorder=2)
     for xi, r_, s_ in zip(x, react, sens):
         tot = r_ + s_
-        b.text(xi, min(tot, 128) + 2, f"{tot:.0f}", ha="center", va="bottom", fontsize=6.4)
-    b.set_ylim(0, 150)
+        b.text(xi, tot + 2, f"{tot:.0f}", ha="center", va="bottom", fontsize=6.4)
+    b.set_ylim(0, 160)
     b.set_xticks(x)
     b.set_xticklabels(procs, fontsize=5.9)
     b.set_ylabel("Energy per kg of oxygen (MJ)", fontsize=7.4)
@@ -421,10 +426,10 @@ def o2yield():
     b.grid(axis="x", visible=False)
     b.legend(loc="upper right", fontsize=6.2)
     fig.text(0.99, 0.01, "Typical Apollo 16 and Apollo 11 soil oxides; 90 % of ilmenite reduced; reaction energy = enthalpy of "
-             "formation of the reduced oxides (298 K). Process temperatures 1 300 K (H₂), 1 200 K (FFC), 1 900 K (molten);\n"
-             "fusion 0.48 MJ/kg. Real plants add electrical and thermal losses, and can recover much of the sensible heat.",
+             "formation of the reduced oxides (298 K).\nProcess temperatures 1 300 K (H₂), 1 200 K (FFC), 1 900 K (molten); "
+             "fusion 0.48 MJ/kg. Real plants add electrical and thermal\nlosses, and can recover much of the sensible heat.",
              ha="right", va="bottom", fontsize=5.8, color=GREY)
-    fig.tight_layout(rect=(0, 0.07, 1, 1))
+    fig.tight_layout(rect=(0, 0.10, 1, 1))
     save(fig, "ch41_o2yield")
 
 
@@ -481,10 +486,10 @@ def neadv():
     b.set_title("(b) Cumulative, by size", fontsize=8.6)
     b.legend(loc="lower right", fontsize=6.4)
     fig.text(0.99, 0.01, "42 782 NEAs from the JPL Small-Body Database (19 Oct 2026). Idealised two-impulse transfer from a "
-             "400 km orbit to the asteroid's aphelion, plane change split optimally; phasing and launch windows ignored.\n"
-             "Size from absolute magnitude H (≤ 22 ≈ 140 m, ≤ 17.75 ≈ 1 km, albedo 0.14). Real missions usually need more Δv; "
+             "400 km orbit to the asteroid's aphelion,\nplane change split optimally; phasing and launch windows ignored. "
+             "Size from absolute magnitude H (≤ 22 ≈ 140 m, ≤ 17.75 ≈ 1 km,\nalbedo 0.14). Real missions usually need more Δv; "
              "Earth and lunar flybys can reduce it.", ha="right", va="bottom", fontsize=5.8, color=GREY)
-    fig.tight_layout(rect=(0, 0.075, 1, 1))
+    fig.tight_layout(rect=(0, 0.10, 1, 1))
     save(fig, "ch41_neadv")
 
 
@@ -492,7 +497,7 @@ def neadv():
 # 8. Economics: what extra supply does to price and revenue
 # ---------------------------------------------------------------------------------------------
 def economics():
-    p0 = 65.0          # US$ thousand per kg (≈ US$ 2 000 per troy ounce)
+    p0 = 55.0          # US$ thousand per kg (≈ US$ 1 700 per troy ounce, October 2026)
     s0 = 170.0         # tonnes per year mined platinum
     x = np.linspace(0, 500, 501)
     fig, (a, b) = plt.subplots(1, 2, figsize=(7.0, 3.1))
@@ -505,27 +510,28 @@ def economics():
             xm = s0 * eps / (1 - eps)
             rm = xm * 1e3 * p0 * (1 + xm / s0) ** (-1 / eps) * 1e3 / 1e9
             b.plot([xm], [rm], "o", color=col, ms=4)
-            b.annotate(f"max US\\$ {rm:.1f} bn\nat {xm:.0f} t/yr", (xm, rm), xytext=(xm + 40, rm + (2.2 if eps > 0.5 else 0.4)),
-                       fontsize=6.2, color=col, arrowprops=dict(arrowstyle="-", color=col, lw=0.6))
+            b.annotate(f"max US\\$ {rm:.1f} bn\nat {xm:.0f} t/yr", (xm, rm), xytext=(xm + (70 if eps > 0.5 else 40), rm + (1.1 if eps > 0.5 else 0.4)),
+                       fontsize=6.2, va="bottom", color=col, arrowprops=dict(arrowstyle="-", color=col, lw=0.6))
     b.plot(x, x * p0 / 1e3, color=GREY, lw=1.0, ls="--", label="if price did not fall")
     a.axvline(s0, color=GREY, lw=0.8, ls=":")
-    a.text(s0 + 6, 60, "added supply =\ntoday's world\nmine output", fontsize=6.2, color=GREY, va="top")
+    a.text(s0 + 6, 41, "added supply =\ntoday's world\nmine output", fontsize=6.2, color=GREY, va="top")
     a.set_xlim(0, 500)
-    a.set_ylim(0, 70)
+    a.set_ylim(0, 60)
     a.set_xlabel("Platinum added by space mining (t/yr)", fontsize=7.6)
     a.set_ylabel("Market price (US\\$ thousand per kg)", fontsize=7.6)
     a.set_title("(a) Price falls as supply grows", fontsize=8.6)
     a.legend(loc="upper right", fontsize=6.3)
     b.set_xlim(0, 500)
-    b.set_ylim(0, 12)
+    b.set_ylim(0, 10)
     b.set_xlabel("Platinum added by space mining (t/yr)", fontsize=7.6)
     b.set_ylabel("Miner's revenue (US\\$ billion per year)", fontsize=7.6)
     b.set_title("(b) Revenue saturates", fontsize=8.6)
     b.legend(loc="upper right", fontsize=6.2)
-    fig.text(0.99, 0.01, "Illustrative constant-elasticity demand P = P₀(1 + X/S₀)^(−1/ε) with P₀ = US\\$ 65 000/kg "
-             "(≈ US\\$ 2 000 per troy ounce, 2026) and S₀ = 170 t/yr (world mine supply, WPIC 2025).",
+    fig.text(0.99, 0.01, "Illustrative constant-elasticity demand P = P₀(1 + X/S₀)^(−1/ε) with P₀ = US\\$ 55 000/kg "
+             "(≈ US\\$ 1 700 per troy ounce, October 2026; the price ranged\nfrom about US\\$ 1 540 to 2 920 per ounce during 2026) "
+             "and S₀ = 170 t/yr (world mine supply, WPIC 2025).",
              ha="right", va="bottom", fontsize=5.8, color=GREY)
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
     save(fig, "ch41_economics")
 
 

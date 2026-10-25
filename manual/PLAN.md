@@ -68,7 +68,7 @@ Part X — Launch Systems and Infrastructure
 - [x] 37 Spaceports and Ground Infrastructure
 Part XI — Space Observatories
 - [x] 38 Space Telescope Engineering
-- [ ] 39 Great Observatories and Deep-Space Telescopes
+- [x] 39 Great Observatories and Deep-Space Telescopes
 Part XII — Emerging Frontiers
 - [ ] 40 In-Space Servicing, Assembly and Manufacturing
 - [ ] 41 Space Resources and Asteroid Mining

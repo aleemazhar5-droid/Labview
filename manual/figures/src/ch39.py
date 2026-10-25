@@ -164,7 +164,7 @@ GANTT = [
     ("SVOM", "gamma", 2024.47, None, False),
     ("SPHEREx", "ir", 2025.2, None, False),
     ("Roman", "opt", 2026.66, None, False),
-    ("PLATO", "opt", 2027.05, 2031.0, True),
+    ("PLATO", "opt", 2027.25, 2031.25, True),
     ("Xuntian (CSST)", "opt", 2027.5, 2037.0, True),
     ("Ariel", "ir", 2029.5, 2033.5, True),
     ("PRIMA", "ir", 2033.0, 2038.0, True),
@@ -208,7 +208,7 @@ def gantt():
     ax.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 0.0), fontsize=6.6, ncol=1, frameon=True,
               facecolor="white", edgecolor="#D5DDE5")
     fig.text(0.99, 0.005, "Bars run from launch to end of science operations. Planned bars start at the launch target "
-             "(Oct 2026) and show nominal mission length; Swift was expected to re-enter in late 2026.",
+             "(Oct 2026) and show nominal mission length; Swift ended science on 20 Oct 2026 ahead of re-entry.",
              ha="right", va="bottom", fontsize=6.0, color=GREY)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
     save(fig, "ch39_gantt")
@@ -236,7 +236,7 @@ def apertures():
         ("SPHEREx", 2025.2, 0.20, "ir", False, 2026.1, 0.20, "left"),
         ("Roman", 2026.66, 2.4, "opt", False, 2025.8, 2.4, "right"),
         ("Xuntian", 2027.5, 2.0, "opt", True, 2028.2, 2.65, "left"),
-        ("PLATO (26 cameras)", 2027.05, 0.12, "opt", True, 2028.0, 0.12, "left"),
+        ("PLATO (26 cameras)", 2027.25, 0.12, "opt", True, 2028.2, 0.12, "left"),
         ("Ariel", 2029.5, 1.1, "ir", True, 2030.4, 1.1, "left"),
         ("PRIMA", 2033.0, 1.8, "ir", True, 2033.9, 1.8, "left"),
         ("HWO concept", 2041.0, 6.0, "opt", True, 2040.0, 6.0, "right"),
@@ -600,7 +600,7 @@ def transit():
 # ---------------------------------------------------------------------------------------------
 def orbits():
     groups = [
-        ("Low Earth orbit", [("Swift (Oct 2026)", 278, 282), ("Hubble", 468, 471), ("Fermi", 487, 498),
+        ("Low Earth orbit", [("Swift (24 Oct 2026)", 263, 267), ("Hubble", 468, 471), ("Fermi", 487, 498),
                              ("NuSTAR", 532, 542), ("IXPE", 528, 537)], BLUE),
         ("High Earth orbit", [("Chandra", 12650, 136200), ("XMM-Newton", 29480, 91640),
                               ("TESS (2:1 lunar resonance)", 119090, 364460)], ORANGE),
