@@ -83,7 +83,7 @@ def ptmap():
         ("Launch engines", (280, 465), (2e4, 1e7), NAVY, (360, 2.2e7), "center"),
         ("Nuclear thermal", (800, 950), (2e4, 1e6), ORANGE, (1500, 3.0e5), "left"),
         ("Arcjets, resistojets", (300, 800), (0.01, 0.5), SKY, (330, 3.0e-3), "left"),
-        ("Hall\nthrusters", (1200, 3000), (5e-3, 5.4), GREEN, (1260, 0.12), "left"),
+        ("Hall", (1200, 3000), (5e-3, 5.4), GREEN, (1290, 0.05), "left"),
         ("Gridded ion", (2500, 4500), (1e-3, 0.25), BLUE, (2500, 3.4e-4), "left"),
         ("MPD (pulsed / steady)", (1500, 6000), (1, 100), RED, (1700, 3.0e2), "left"),
         ("VASIMR (ground tests)", (3000, 30000), (0.5, 6), VIOLET, (15000, 0.2), "center"),
@@ -96,13 +96,13 @@ def ptmap():
         ax.text(lx, ly, name, fontsize=6.6, color=col if col not in (GOLD, SKY) else INK, ha=ha, va="center", zorder=5,
                 weight="bold")
     isp = np.logspace(1, 6.3, 50)
-    for P, lab, xi in [(1, "1 W", 7e5), (1e3, "1 kW", 2.6e4), (1e6, "1 MW", 7e5), (1e9, "1 GW", 1.3e6),
-                       (1e12, "1 TW", 2.5e5)]:
+    for P, lab, xi in [(1, "1 W", 1.4e6), (1e3, "1 kW", 1.4e6), (1e6, "1 MW", 1.4e6), (1e9, "1 GW", 1.4e6),
+                       (1e12, "jet power 1 TW", 3.0e5)]:
         F = 2 * P / (G0 * isp)
         ax.plot(isp, F, color=GREY, lw=0.7, ls=":", zorder=1)
-        ax.text(xi, 2 * P / (G0 * xi) * 1.6, f"jet power {lab}", fontsize=6.0, color=GREY, rotation=-24,
+        ax.text(xi, 2 * P / (G0 * xi) * 1.6, lab, fontsize=6.2, color=GREY, rotation=-24,
                 ha="center", va="bottom")
-    ax.text(1.9e6, 1.2e-2, "solar sails: no propellant, I_sp → ∞\n(1 km² sail at 1 AU ≈ 8 N)", fontsize=6.4,
+    ax.text(1.9e6, 3.2e-2, "solar sails: no propellant, I_sp → ∞\n(1 km² sail at 1 AU ≈ 8 N)", fontsize=6.4,
             color=INK, ha="right", va="center", bbox=dict(fc="white", ec="none", pad=1.0))
     ax.set_xscale("log")
     ax.set_yscale("log")
@@ -222,14 +222,14 @@ def ntpnep():
     label(ax, 36, 52.5, "TP", fs=6.6, weight="bold")
     label(ax, 36, 58.2, "turbopump", fs=6.2, color=GREY)
     ax.add_patch(Rectangle((44, 43), 4, 19, fc="#8E9AA6", ec=NAVY, lw=0.8, zorder=3))
-    label(ax, 46, 40.6, "shield", fs=6.2, color=GREY)
+    label(ax, 45, 40.6, "shield", fs=6.2, color=GREY)
     ax.add_patch(Rectangle((48, 43), 14, 19, fc="#F2C9A0", ec=NAVY, lw=0.9, zorder=3))
     for k in range(6):
         ax.add_patch(Rectangle((49.2 + k * 2.1, 44.5), 1.2, 16, fc=ORANGE, ec="none", zorder=4))
     ax.add_patch(Circle((62, 43), 1.4, fc=GREY, ec=NAVY, lw=0.6, zorder=5))
     ax.add_patch(Circle((62, 62), 1.4, fc=GREY, ec=NAVY, lw=0.6, zorder=5))
     label(ax, 61, 66.0, "reactor core: uranium fuel\n≈ 2 500–2 800 K", fs=6.3)
-    label(ax, 64.5, 40.6, "control drums", fs=6.2, color=GREY, ha="left")
+    label(ax, 58.5, 40.3, "control drums", fs=6.2, color=GREY)
     ax.add_patch(Polygon([(62, 48), (62, 57), (67, 55), (76, 62), (76, 43), (67, 50)], closed=True, fc="#D7DDE3",
                          ec=NAVY, lw=0.9, zorder=3))
     for dy in (-5, 0, 5):
@@ -256,7 +256,7 @@ def ntpnep():
     box(ax, 68, 19, 15, 6.5, "xenon tank", fc="#DCEBFA", fs=6.5, r=1.0)
     arrow(ax, (75.5, 19), (75.5, 16), color=NAVY, lw=1.0, ms=7)
     ax.add_patch(Polygon([(32, 17.4), (44, 17.4), (47, 22), (35, 22)], fc="#BFD5E9", ec=NAVY, lw=0.7, zorder=2))
-    label(ax, 48, 21, "radiator rejects\n≈ 70–80 % of the heat", fs=6.2, color=GREY, ha="left")
+    label(ax, 30, 19.8, "radiator rejects\n≈ 70–80 % of the heat", fs=6.2, color=GREY, ha="right")
     for dy in (-3.5, 0, 3.5):
         arrow(ax, (84, 9.5 + dy), (93, 9.5 + dy * 1.4), color=GREEN, lw=1.2, ms=7)
     label(ax, 95, 9.5, "ions\n20–50\nkm/s", fs=6.4, color=GREEN, ha="left")
@@ -480,9 +480,9 @@ def sail():
     b.set_xlabel("Characteristic acceleration (mm/s²)")
     b.set_ylabel("Time from 1 AU (years)")
     b.set_title("(b) Spiralling from Earth's orbit", fontsize=8.6)
-    b.legend(fontsize=6.4, loc="upper right")
+    b.legend(fontsize=6.4, loc="lower left")
     fig.text(0.99, 0.01, "a_c = 2ηP/(cσ), P/c = 4.54 µN/m² at 1 AU; σ uses total spacecraft mass. (b) Lines: quasi-circular spiral, "
-             "cone angle 35.3°, T = √μ |r₁^1.5 − r₀^1.5| / (3 × 0.385 a_c r₀²).\nDots: numerical flat-sail trajectories "
+             "cone angle 35.3°, T = √(μ/r₀) |(r/r₀)^1.5 − 1| / (3 × 0.385 a_c).\nDots: numerical flat-sail trajectories "
              "steered to change orbital energy fastest — time to first reach the distance, without matching the "
              "planet's velocity.",
              ha="right", va="bottom", fontsize=5.9, color=GREY)
@@ -616,7 +616,7 @@ def tether():
     for xx, yy in [(8, 22), (17, 22), (8, 33), (17, 33), (8, 41), (17, 41), (45, 33), (54, 33), (63, 33),
                    (45, 50), (54, 50), (63, 50)]:
         ax.text(xx, yy, "⊗", fontsize=7, color=SKY, ha="center", va="center", zorder=2)
-    label(ax, 3, 13.5, "magnetic field B: into the page\n(northward)", fs=6.2, color=SKY, ha="left")
+    label(ax, 3, 15.8, "magnetic field B: into the page (north)", fs=6.2, color=SKY, ha="left")
     ax.plot([34, 34], [20, 52], color=INK, lw=1.6, zorder=4)
     satellite(ax, 34, 54, s=1.3)
     ax.add_patch(Circle((34, 19), 1.6, fc="#C8CDD3", ec="#444", lw=0.5, zorder=5))
