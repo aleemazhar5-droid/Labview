@@ -72,14 +72,14 @@ A good requirement is:
 
 *Mission objective:* "Map crop health across Europe every five days."
 
-*System requirement:* "The system shall acquire multispectral imagery of all land between 35° N and 72° N with a revisit time of no more than 5 days and a ground sampling distance of 10 m or better in the red, green, blue and near-infrared bands."
+*System requirement:* "The system shall acquire multispectral imagery of all land between 35° N and 72° N. The revisit time shall be no more than 5 days, and the ground sampling distance shall be 10 m or better in the red, green, blue and near-infrared bands."
 
-*Derived requirements:* the constellation shall consist of two satellites in a 786 km sun-synchronous orbit phased 180° apart (orbit analysis); the instrument swath shall be ≥ 290 km (coverage analysis); the instrument focal length and detector pitch shall give 10 m GSD (optics design); the data-handling subsystem shall store ≥ 2.4 Tbit and the X-band downlink shall transmit ≥ 520 Mbit/s (data budget). These numbers are, in fact, those of ESA's Sentinel-2 mission (Chapter 14).
+*Derived requirements:* the constellation shall consist of two satellites in a 786 km sun-synchronous orbit phased 180° apart (orbit analysis). The instrument swath shall be ≥ 290 km (coverage analysis), and the instrument focal length and detector pitch shall give 10 m GSD (optics design). The data-handling subsystem shall store ≥ 2.4 Tbit and the X-band downlink shall transmit ≥ 520 Mbit/s (data budget). These numbers are, in fact, those of ESA's Sentinel-2 mission (Chapter 14).
 :::
 
 ### Concept of Operations
 
-A **concept of operations (ConOps)** describes how the system will be used from the user's viewpoint: the mission phases (launch, early orbit, commissioning, nominal operations, contingencies, disposal), what the spacecraft does on a typical day, who commands it and how often, how data flows to users, and how anomalies are handled. Writing the ConOps early exposes missing requirements — for example, a need for autonomy because ground contacts are only a few minutes per orbit.
+A **concept of operations (ConOps)** describes how the system will be used from the user's viewpoint. It covers the mission phases (launch, early orbit, commissioning, nominal operations, contingencies, disposal) and what the spacecraft does on a typical day. It also covers who commands it and how often, how data flows to users, and how anomalies are handled. Writing the ConOps early exposes missing requirements — for example, a need for autonomy because ground contacts are only a few minutes per orbit.
 
 ## Architecture and Trade Studies
 
@@ -91,7 +91,7 @@ The **architecture** is the high-level structure of the system: what elements ex
 - Own ground stations, a commercial ground network or optical relay through GEO?
 - Chemical, electric or no propulsion?
 
-Alternatives are compared in **trade studies**. A transparent method is to define weighted criteria (e.g., performance 30 %, cost 25 %, risk 20 %, schedule 15 %, growth potential 10 %), score each option, and test the sensitivity of the result to the weights. A trade study is only as good as its assumptions, so the assumptions must be documented.
+Alternatives are compared in **trade studies**. A transparent method is to define weighted criteria (e.g., performance 30 %, cost 25 %, risk 20 %, schedule 15 %, growth potential 10 %). The method then scores each option and tests how sensitive the result is to the weights. A trade study is only as good as its assumptions, so the assumptions must be documented.
 
 ## Technical Budgets and Margins
 
@@ -116,14 +116,14 @@ The systems engineer maintains a set of **budgets** — tables that allocate a l
 
 ### Margins and Contingency
 
-Early in a project the estimates are uncertain, and history shows that mass and power almost always *grow* as the design matures. Projects therefore hold **contingency** (allowance for growth in the estimate of each item, larger for new designs than for heritage hardware) and **margin** (system-level reserve between the total estimate and the hard limit). @fig:margins shows typical guidance.
+Early in a project the estimates are uncertain, and history shows that mass and power almost always *grow* as the design matures. Projects therefore hold **contingency** and **margin**. Contingency is an allowance for growth in the estimate of each item, larger for new designs than for heritage hardware. Margin is a system-level reserve between the total estimate and the hard limit. @fig:margins shows typical guidance.
 
 ![Typical recommended margins as a function of project phase. Margins are largest when uncertainty is largest and are progressively released as the design matures.](figures/out/ch04_margins.svg){#fig:margins width=86%}
 
 ::: warning
 **Failure lesson — running out of margin**
 
-The James Webb Space Telescope grew in cost from an initial estimate of about US$1–3.5 billion to about US$10 billion, and its launch slipped from 2007 to 2021, in part because the technical complexity of the deployable sunshield and mirror had been underestimated and early reserves were insufficient. The telescope ultimately performed better than its requirements — but the experience led NASA to require cost and schedule reserves to be budgeted at the 70 % confidence level ("joint confidence level", JCL) for major projects.
+The James Webb Space Telescope grew in cost from an initial estimate of about US$1–3.5 billion to about US$10 billion, and its launch slipped from 2007 to 2021. This was in part because the technical complexity of the deployable sunshield and mirror had been underestimated, and early reserves were too small. The telescope ultimately performed better than its requirements. But the experience led NASA to require cost and schedule reserves for major projects to be budgeted at the 70 % confidence level ("joint confidence level", JCL).
 :::
 
 ## Technology Readiness
@@ -140,7 +140,7 @@ The James Webb Space Telescope grew in cost from an initial estimate of about US
 
 $$R(t) = e^{-\lambda t}, \qquad \text{MTTF} = 1/\lambda$$
 
-Failure rates are often given in **FITs** (failures in $10^9$ device-hours). Before and after this period, the "bathtub curve" rises (@fig:reliability): early *infant mortality* failures are weeded out by burn-in, screening and environmental testing; *wear-out* (battery capacity fade, bearing wear, propellant depletion, solar cell degradation) limits life at the end.
+Failure rates are often given in **FITs** (failures in $10^9$ device-hours). Before and after this period, the "bathtub curve" rises (@fig:reliability). Early *infant mortality* failures are weeded out by burn-in, screening and environmental testing. At the end, *wear-out* (battery capacity fade, bearing wear, propellant depletion, solar cell degradation) limits life.
 
 For components in series (all must work), reliabilities multiply: $R_{sys} = \prod R_i$. For parallel redundancy (any one suffices), unreliabilities multiply: $R_{sys} = 1 - \prod(1 - R_i)$.
 
@@ -169,11 +169,11 @@ Table: Extract of a failure modes, effects and criticality analysis (FMECA) for 
 
 ## Risk Management
 
-A **risk** is a potential future event that would harm the project, characterised by its **likelihood** and **consequence**. Risks are recorded in a risk register, scored on a **5 × 5 matrix** (@fig:riskmatrix), assigned an owner, and handled by one of four strategies: *mitigate* (reduce likelihood or consequence), *accept*, *transfer* (e.g., insurance or contract terms), or *avoid* (change the design). Mitigation plans include "burn-down" steps tied to milestones, so that progress is visible.
+A **risk** is a potential future event that would harm the project, characterised by its **likelihood** and **consequence**. Risks are recorded in a risk register, scored on a **5 × 5 matrix** (@fig:riskmatrix) and assigned an owner. Each is handled by one of four strategies: *mitigate* (reduce likelihood or consequence), *accept*, *transfer* (e.g., insurance or contract terms), or *avoid* (change the design). Mitigation plans include "burn-down" steps tied to milestones, so that progress is visible.
 
 ![A 5 × 5 risk matrix. Each risk (R1–R5) is plotted by likelihood and consequence; mitigation actions aim to move risks out of the red zone before key reviews.](figures/out/ch04_risk_matrix.svg){#fig:riskmatrix width=72%}
 
-Programmes also distinguish **risk classes**. NASA's NPR 8705.4 defines Class A (highest priority, lowest risk tolerance — e.g., JWST, crewed systems) to Class D (higher risk accepted for lower cost — many small science missions), plus a "do no harm" category for very low-cost CubeSats. The class determines parts quality, redundancy, review depth and test requirements. ESA and other agencies use similar tailoring.
+Programmes also distinguish **risk classes**. NASA's NPR 8705.4 defines Class A to Class D, plus a "do no harm" category for very low-cost CubeSats. Class A has the highest priority and lowest risk tolerance (e.g., JWST, crewed systems). Class D accepts higher risk for lower cost (many small science missions). The class determines parts quality, redundancy, review depth and test requirements. ESA and other agencies use similar tailoring.
 
 ## Model-Based Systems Engineering
 
@@ -206,7 +206,7 @@ The **verification matrix** lists every requirement, its method, the verificatio
 
 ### Model Philosophy
 
-Projects choose how many physical models to build (@fig:models). A classic approach builds a **structural-thermal model (STM)** to verify mechanical and thermal design, an **engineering model (EM)** to verify functions and interfaces, a **qualification model (QM)** tested to qualification levels (typically flight levels plus 3–6 dB for vibration and ±10 °C beyond predicted temperatures), and a **flight model (FM)** tested to acceptance levels. The cheaper **protoflight** approach tests the single flight model to qualification levels for acceptance durations, accepting a slightly higher risk of fatigue damage.
+Projects choose how many physical models to build (@fig:models). A classic approach builds a **structural-thermal model (STM)** to verify mechanical and thermal design, and an **engineering model (EM)** to verify functions and interfaces. It also builds a **qualification model (QM)** tested to qualification levels (typically flight levels plus 3–6 dB for vibration and ±10 °C beyond predicted temperatures). Finally, it builds a **flight model (FM)** tested to acceptance levels. The cheaper **protoflight** approach tests the single flight model to qualification levels for acceptance durations, accepting a slightly higher risk of fatigue damage.
 
 ![Model philosophies. Classic approaches qualify a dedicated model before building the flight unit; protoflight approaches qualify and accept the flight unit itself.](figures/out/ch04_models.svg){#fig:models width=94%}
 
@@ -246,19 +246,19 @@ In 1999 NASA's Mars Polar Lander was probably lost because its software interpre
 - **Electrical, electronic and electromechanical (EEE) parts**: selection from approved lists, screening (burn-in, X-ray), radiation testing, counterfeit avoidance, derating (operating parts well below their maximum ratings).
 - **Materials and processes**: outgassing, flammability, stress corrosion, atomic-oxygen resistance.
 - **Software product assurance**: coding standards, independent verification and validation (IV&V), software criticality classes (e.g., NASA Class A–E; ECSS criticality A–D).
-- **Safety**: hazard analyses for launch-site operations (pressurised systems, pyrotechnics, batteries, propellants), launch-range safety, crew safety for human-rated systems, and re-entry casualty risk (the probability of injuring someone on the ground from re-entering debris must normally be below 1 in 10 000).
+- **Safety**: hazard analyses for launch-site operations (pressurised systems, pyrotechnics, batteries, propellants), launch-range safety, crew safety for human-rated systems, and re-entry casualty risk. The probability of injuring someone on the ground from re-entering debris must normally be below 1 in 10 000.
 
 ## Cost and Schedule
 
 ### Estimating Cost
 
-Space projects are estimated by three methods: **analogy** (scaling from a similar past project), **parametric** (cost-estimating relationships, CERs, that relate cost to mass, power, complexity and heritage — NASA's Project Cost Estimating Capability (PCEC), the USAF Unmanned Space Vehicle Cost Model, the Aerospace Corporation's Small Satellite Cost Model), and **engineering build-up** (summing labour and materials for every work-package). Mature projects use all three and reconcile the results.
+Space projects are estimated by three methods: **analogy** (scaling from a similar past project), **parametric** and **engineering build-up** (summing labour and materials for every work-package). The parametric method uses cost-estimating relationships (CERs) that relate cost to mass, power, complexity and heritage. Examples are NASA's Project Cost Estimating Capability (PCEC), the USAF Unmanned Space Vehicle Cost Model and the Aerospace Corporation's Small Satellite Cost Model. Mature projects use all three and reconcile the results.
 
-Typical cost elements for a science mission are: spacecraft bus (25–35 %), instruments (20–35 %), project management/systems engineering/mission assurance (10–15 %), integration and test (5–10 %), launch (10–25 %), and operations and data analysis (10–20 %). Reserves of 25–50 % are typical before PDR.
+Typical cost elements for a science mission are the spacecraft bus (25–35 %), instruments (20–35 %) and project management/systems engineering/mission assurance (10–15 %). The others are integration and test (5–10 %), launch (10–25 %), and operations and data analysis (10–20 %). Reserves of 25–50 % are typical before PDR.
 
 ### Schedule
 
-Space schedules are dominated by long-lead items (detectors, star trackers, reaction wheels, radiation-hardened processors, propellant tanks), by integration and test (which cannot be easily parallelised), and by launch windows, which for planetary missions occur only every one to two years. A slip of a few weeks in delivering a Mars mission can delay launch by 26 months — as happened to ESA's ExoMars rover, delayed from 2020 to 2022 and then to 2028 after cooperation with Russia ended.
+Space schedules are dominated by long-lead items (detectors, star trackers, reaction wheels, radiation-hardened processors, propellant tanks). They are also dominated by integration and test, which cannot be easily parallelised, and by launch windows. For planetary missions, launch windows occur only every one to two years. A slip of a few weeks in delivering a Mars mission can delay launch by 26 months. This happened to ESA's ExoMars rover, delayed from 2020 to 2022 and then to 2028 after cooperation with Russia ended.
 
 ## Standards and Bodies of Knowledge
 

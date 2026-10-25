@@ -14,7 +14,7 @@ A **suborbital** trajectory is one whose path intersects the Earth's surface: th
 - **Test flights** of orbital vehicles (for example Starship's early flights and launch-abort tests) and **hypersonic test vehicles**;
 - **Ballistic missiles**, which follow suborbital trajectories (discussed only as context in Chapter 20).
 
-The energy needed is much smaller than for orbit. Rising vertically to 100 km requires a burnout speed of about 1.4 km/s (ignoring drag and the height gained during the burn); reaching 300 km requires about 2.4 km/s; 1 000 km about 4 km/s — compared with roughly 9.4 km/s, including losses, to reach low Earth orbit.
+The energy needed is much smaller than for orbit. Rising vertically to 100 km requires a burnout speed of about 1.4 km/s (ignoring drag and the height gained during the burn). Reaching 300 km requires about 2.4 km/s, and 1 000 km about 4 km/s. By comparison, reaching low Earth orbit needs roughly 9.4 km/s, including losses.
 
 ::: key
 **Key concept — suborbital flight is a vertical cannon shot**
@@ -30,29 +30,29 @@ Neglecting drag above the atmosphere, a vertically launched rocket with burnout 
 
 $$\frac{v_b^2}{2} - \frac{\mu}{R + h_b} = -\frac{\mu}{R + h_{apo}} \quad\Rightarrow\quad h_{apo} = \frac{R + h_b}{1 - \dfrac{v_b^2 (R + h_b)}{2\mu}} - R$$
 
-For low apogees this reduces to the flat-Earth result $h_{apo} \approx h_b + v_b^2/2g$. Sounding rockets are not launched exactly vertically — typically at 80–88° elevation — so that spent stages and the payload fall into a designated impact area downrange (@fig:trajectories); the launch elevation and azimuth are adjusted for winds before each launch (**wind weighting**), because unguided rockets weathercock into the wind while their fins are effective at low speed.
+For low apogees this reduces to the flat-Earth result $h_{apo} \approx h_b + v_b^2/2g$. Sounding rockets are not launched exactly vertically but typically at 80–88° elevation, so that spent stages and the payload fall into a designated impact area downrange (@fig:trajectories). The launch elevation and azimuth are adjusted for winds before each launch (**wind weighting**). This is because unguided rockets weathercock into the wind while their fins are effective at low speed.
 
 ![Computed altitude–time and altitude–downrange profiles for five representative sounding rockets after motor burnout. Higher apogees mean longer flights and longer impact ranges.](figures/out/ch09_trajectories.svg){#fig:trajectories width=100%}
 
 ### Microgravity Time
 
-The time spent above a given altitude depends only on the apogee (@fig:microtime). Because drag is negligible above about 100 km, a sounding rocket provides residual accelerations of only $10^{-5}$–$10^{-6}$ g once its attitude control system has stopped firing — better than the International Space Station, where crew motion, pumps and fans create disturbances.
+The time spent above a given altitude depends only on the apogee (@fig:microtime). Because drag is negligible above about 100 km, a sounding rocket provides residual accelerations of only $10^{-5}$–$10^{-6}$ g once its attitude control system has stopped firing. This is better than the International Space Station, where crew motion, pumps and fans create disturbances.
 
 ![Time spent above 100 km and above 80 km as a function of apogee for a vertical ballistic flight, with typical quoted weightless times for several vehicles.](figures/out/ch09_micro_time.svg){#fig:microtime width=86%}
 
 ### Re-entry
 
-On the way down, the payload re-enters at roughly the speed it had at burnout. For a 300 km apogee this is about 2.3 km/s — enough to produce significant aerodynamic heating and decelerations of 20–50 g, but far milder than orbital re-entry. Payloads that are to be recovered carry a parachute system, deployed at about 5 km altitude after the payload has slowed to subsonic speed; recovery is by helicopter over land (White Sands, Esrange) or by ship at sea (Wallops, Andøya).
+On the way down, the payload re-enters at roughly the speed it had at burnout. For a 300 km apogee this is about 2.3 km/s — enough to produce significant aerodynamic heating and decelerations of 20–50 g, but far milder than orbital re-entry. Payloads that are to be recovered carry a parachute system, deployed at about 5 km altitude after the payload has slowed to subsonic speed. Recovery is by helicopter over land (White Sands, Esrange) or by ship at sea (Wallops, Andøya).
 
 ## Sounding Rockets
 
 ### History
 
-The first scientific rockets were captured German V-2 missiles, launched from White Sands, New Mexico, from 1946. They carried cosmic-ray counters, spectrographs and cameras, and in October 1946 returned the first photographs of Earth from above 100 km. Purpose-built sounding rockets followed: the US Aerobee (from 1947), Viking and Nike-based vehicles; the British Skylark (1957–2005, 441 launches); the Canadian Black Brant (from 1961); and many others in France, Japan, India, the USSR and China.
+The first scientific rockets were captured German V-2 missiles, launched from White Sands, New Mexico, from 1946. They carried cosmic-ray counters, spectrographs and cameras, and in October 1946 returned the first photographs of Earth from above 100 km. Purpose-built sounding rockets followed: the US Aerobee (from 1947), Viking and Nike-based vehicles, and the British Skylark (1957–2005, 441 launches). Others were the Canadian Black Brant (from 1961) and many more in France, Japan, India, the USSR and China.
 
 Sounding rockets made fundamental discoveries:
 
-- **X-ray astronomy** was born on 18 June 1962, when an Aerobee rocket launched by Riccardo Giacconi's team detected the first X-ray source outside the Solar System, Scorpius X-1 — work recognised with the 2002 Nobel Prize in Physics.
+- **X-ray astronomy** was born on 18 June 1962. That day, an Aerobee rocket launched by Riccardo Giacconi's team detected the first X-ray source outside the Solar System, Scorpius X-1. This work was recognised with the 2002 Nobel Prize in Physics.
 - The **solar extreme-ultraviolet and X-ray spectrum** was first measured from rockets in the late 1940s and 1950s.
 - Rocket measurements mapped the **ionosphere**, the **mesosphere** and the **thermosphere**, and discovered phenomena such as the airglow layers and the auroral electrojet.
 - India's space programme began with a Nike-Apache launched from a church at **Thumba** in November 1963.
@@ -62,7 +62,7 @@ Sounding rockets made fundamental discoveries:
 A typical modern sounding rocket (@fig:anatomy) has one to four solid-propellant motor stages, fins for aerodynamic stability, and a payload made of modular cylindrical sections:
 
 - **Motors.** Military-surplus motors (Terrier, Talos, Nike) and purpose-built motors (Black Brant, Nihka, Oriole, Brazil's S-30/S-31, Germany's improved Orion and ESA/DLR's Rheinmetall-built motors) give total burn times of 30–90 seconds.
-- **Ignition and despin module.** Rockets are spun at a few revolutions per second during powered flight for stability (by canted fins and spin motors), then despun with **yo-yo weights** — masses on cables that unwind and carry away angular momentum.
+- **Ignition and despin module.** Rockets are spun at a few revolutions per second during powered flight for stability (by canted fins and spin motors). They are then despun with **yo-yo weights** — masses on cables that unwind and carry away angular momentum.
 - **Telemetry and power.** S-band transmitters send data at up to tens of Mbit/s; batteries provide power for 10–20 minutes.
 - **Attitude control system (ACS).** Cold-gas thrusters and gyros, often with a Sun sensor or star tracker, point instruments to arcseconds (for solar and astronomical payloads) or hold the payload still (for microgravity).
 - **Experiment modules.** The scientific instruments, often with vacuum doors that open above the atmosphere.
@@ -96,7 +96,7 @@ Table: Selected sounding rockets in current or recent use. {#tbl:sounders}
 
 ### Launch Ranges
 
-Sounding rockets need ranges with large unpopulated impact areas, tracking radars and telemetry stations, and safety infrastructure (@fig:ranges). Major ranges include NASA's **Wallops Flight Facility** (Virginia), **White Sands Missile Range** (New Mexico), **Poker Flat Research Range** (Alaska, operated by the University of Alaska Fairbanks for auroral science), the **Andøya Space** range and **SvalRak** (Norway), **Esrange** (Sweden), **Woomera** (Australia), **Kwajalein** (Marshall Islands, for equatorial ionosphere studies), **Alcântara** and **Barreira do Inferno** (Brazil), **Thumba** (India), **Uchinoura** (Japan) and **El Arenosillo** (Spain). High-latitude ranges let rockets fly directly into the aurora.
+Sounding rockets need ranges with large unpopulated impact areas, tracking radars and telemetry stations, and safety infrastructure (@fig:ranges). Major ranges include NASA's **Wallops Flight Facility** (Virginia), **White Sands Missile Range** (New Mexico) and **Poker Flat Research Range** (Alaska, operated by the University of Alaska Fairbanks for auroral science). Others are the **Andøya Space** range and **SvalRak** (Norway), **Esrange** (Sweden), **Woomera** (Australia) and **Kwajalein** (Marshall Islands, for equatorial ionosphere studies). There are also **Alcântara** and **Barreira do Inferno** (Brazil), **Thumba** (India), **Uchinoura** (Japan) and **El Arenosillo** (Spain). High-latitude ranges let rockets fly directly into the aurora.
 
 ![Selected sounding-rocket and suborbital launch sites.](figures/out/ch09_ranges.png){#fig:ranges width=96%}
 
@@ -111,7 +111,7 @@ Sounding rockets need ranges with large unpopulated impact areas, tracking radar
 Sounding rockets remain irreplaceable for several kinds of science:
 
 - **In-situ measurement of the mesosphere and lower thermosphere (50–150 km)** — the "ignorosphere", too high for balloons and too low for satellites. Rockets carry neutral and ion mass spectrometers, Langmuir probes, electric-field booms and particle detectors directly through the region. They also release **chemical tracers** — trimethylaluminium, barium, sodium, lithium — that glow or scatter sunlight so that ground cameras can measure winds and electric fields (@fig:vapor).
-- **Auroral and ionospheric physics** — rockets fly through auroral arcs to measure the particles and fields that create them; multi-rocket campaigns (e.g., NASA's Grand Challenge Initiative – Cusp, 2019) and rocket–satellite conjunctions resolve spatial and temporal structure.
+- **Auroral and ionospheric physics** — rockets fly through auroral arcs to measure the particles and fields that create them. Multi-rocket campaigns (e.g., NASA's Grand Challenge Initiative – Cusp, 2019) and rocket–satellite conjunctions resolve spatial and temporal structure.
 - **Solar physics** — high-resolution ultraviolet and X-ray instruments that test concepts for future satellites (Hi-C, CLASP, FOXSI, MaGIXS) observe the Sun for about 5 minutes per flight.
 - **Astrophysics** — ultraviolet and X-ray spectroscopy of hot gas, galaxies and the diffuse background (e.g., CIBER, FIRE, the Micro-X microcalorimeter).
 - **Planetary science** — rockets observed Comet Halley, Comet Hale-Bopp and planetary atmospheres in the ultraviolet.
@@ -122,7 +122,7 @@ Sounding rockets remain irreplaceable for several kinds of science:
 
 ### Anatomy of a Mission: From Proposal to Flight
 
-A NASA sounding-rocket mission typically takes two to three years from selection to launch — fast by space standards. A principal investigator proposes an experiment through NASA's Research Opportunities in Space and Earth Sciences (ROSES); once selected, the Wallops team assigns a mission manager and works with the scientists through a requirements definition meeting, design review and mission readiness review. Payload integration and testing at Wallops (vibration, spin balance, bend tests, mass properties, horizontal and vertical sequence tests with the real telemetry and attitude systems) takes a few weeks. The payload is then shipped to the range, where a launch window of one to three weeks is held for the right geophysical or astronomical conditions: an active aurora overhead, a solar target at the right elevation, or dark skies for an astronomical observation.
+A NASA sounding-rocket mission typically takes two to three years from selection to launch — fast by space standards. A principal investigator proposes an experiment through NASA's Research Opportunities in Space and Earth Sciences (ROSES). Once the experiment is selected, the Wallops team assigns a mission manager. The team works with the scientists through a requirements definition meeting, design review and mission readiness review. Payload integration and testing at Wallops (vibration, spin balance, bend tests, mass properties, horizontal and vertical sequence tests with the real telemetry and attitude systems) takes a few weeks. The payload is then shipped to the range, where a launch window of one to three weeks is held for the right geophysical or astronomical conditions. Examples are an active aurora overhead, a solar target at the right elevation, or dark skies for an astronomical observation.
 
 @fig:sequence shows the sequence of events for a typical Black Brant IX solar or astronomy mission.
 
@@ -160,7 +160,7 @@ Many of these instruments are recovered and reflown, and their technologies feed
 
 ### Technology Demonstration and Training
 
-Sounding rockets also serve as cheap, fast test beds — "a space mission in a year" — for new technologies before they fly on satellites: star trackers, detectors, deployable booms, atmospheric re-entry experiments, telemetry systems and attitude-control software. NASA's **Flight Opportunities** programme buys flights on commercial suborbital vehicles for the same purpose. Equally important, sounding rockets train scientists and engineers: a graduate student can design, build, launch and analyse an instrument within a PhD. Student programmes include NASA's RockOn and RockSat-X, ESA/DLR/SNSA's REXUS/BEXUS, and many university rocketry teams.
+Sounding rockets also serve as cheap, fast test beds — "a space mission in a year" — for new technologies before they fly on satellites. These include star trackers, detectors, deployable booms, atmospheric re-entry experiments, telemetry systems and attitude-control software. NASA's **Flight Opportunities** programme buys flights on commercial suborbital vehicles for the same purpose. Equally important, sounding rockets train scientists and engineers: a graduate student can design, build, launch and analyse an instrument within a PhD. Student programmes include NASA's RockOn and RockSat-X, ESA/DLR/SNSA's REXUS/BEXUS, and many university rocketry teams.
 
 ## Microgravity Research Platforms
 
@@ -189,19 +189,19 @@ The TEXUS missions launched on VSB-30 rockets from Esrange reach about 260 km. U
 
 ### From the X-15 to SpaceShipOne
 
-The first humans to make suborbital spaceflights were the Mercury astronauts **Alan Shepard** (Freedom 7, 5 May 1961, 187 km apogee) and **Gus Grissom** (Liberty Bell 7), launched on Redstone rockets. Between 1959 and 1968 the **North American X-15** rocket plane, air-launched from a B-52 at about 13.7 km, made 199 flights, reaching Mach 6.7 and, on 13 flights, altitudes above 80 km; two flights by Joe Walker in 1963 exceeded 100 km (maximum 107.8 km). The X-15 programme provided much of the knowledge of hypersonic flight, reaction controls and pressure suits used later in the Space Shuttle.
+The first humans to make suborbital spaceflights were the Mercury astronauts **Alan Shepard** (Freedom 7, 5 May 1961, 187 km apogee) and **Gus Grissom** (Liberty Bell 7), launched on Redstone rockets. Between 1959 and 1968 the **North American X-15** rocket plane, air-launched from a B-52 at about 13.7 km, made 199 flights. It reached Mach 6.7 and, on 13 flights, altitudes above 80 km. Two flights by Joe Walker in 1963 exceeded 100 km (maximum 107.8 km). The X-15 programme provided much of the knowledge of hypersonic flight, reaction controls and pressure suits used later in the Space Shuttle.
 
-In 2004 **SpaceShipOne**, built by Scaled Composites with funding from Paul Allen, became the first privately developed crewed vehicle to reach space, winning the US$10 million **Ansari X Prize** with two flights above 100 km within two weeks. Its innovations — a hybrid rocket motor (rubber fuel with nitrous oxide oxidiser) and a "feathering" wing that folds upward to stabilise re-entry like a shuttlecock — were carried into Virgin Galactic's SpaceShipTwo.
+In 2004 **SpaceShipOne**, built by Scaled Composites with funding from Paul Allen, became the first privately developed crewed vehicle to reach space. It won the US$10 million **Ansari X Prize** with two flights above 100 km within two weeks. Its innovations — a hybrid rocket motor (rubber fuel with nitrous oxide oxidiser) and a "feathering" wing that folds upward to stabilise re-entry like a shuttlecock — were carried into Virgin Galactic's SpaceShipTwo.
 
 ### Blue Origin New Shepard
 
-**New Shepard** is a fully reusable, vertically launched suborbital system named after Alan Shepard (@fig:profiles). A single-stage booster powered by one BE-3PM liquid-hydrogen/liquid-oxygen engine (≈ 490 kN) lifts a pressurised capsule with six large windows and six seats. After main engine cut-off at about 55–60 km, the capsule separates and coasts to an apogee of about 105–107 km, giving 3–4 minutes of weightlessness. The booster returns and lands vertically on a pad near the launch site using its engine and drag brakes; the capsule descends under three main parachutes, firing a retro-thrust system just before touchdown in the West Texas desert. The capsule has a launch escape motor that can pull it away from a failing booster — used successfully in an uncrewed in-flight test in 2016 and in the NS-23 booster failure in September 2022.
+**New Shepard** is a fully reusable, vertically launched suborbital system named after Alan Shepard (@fig:profiles). A single-stage booster powered by one BE-3PM liquid-hydrogen/liquid-oxygen engine (≈ 490 kN) lifts a pressurised capsule with six large windows and six seats. After main engine cut-off at about 55–60 km, the capsule separates and coasts to an apogee of about 105–107 km, giving 3–4 minutes of weightlessness. The booster returns and lands vertically on a pad near the launch site using its engine and drag brakes. The capsule descends under three main parachutes, firing a retro-thrust system just before touchdown in the West Texas desert. The capsule has a launch escape motor that can pull it away from a failing booster — used successfully in an uncrewed in-flight test in 2016 and in the NS-23 booster failure in September 2022.
 
 New Shepard began crewed flights on 20 July 2021 with Jeff Bezos aboard. By January 2026 it had flown 38 times, carried 98 people above the Kármán line and more than 200 research payloads. On 30 January 2026 Blue Origin announced that it would **pause New Shepard flights for at least two years** to redirect resources to its lunar lander programme.
 
 ### Virgin Galactic SpaceShipTwo and the Delta Class
 
-Virgin Galactic's **SpaceShipTwo** is air-launched from the carrier aircraft **VMS Eve** at about 14 km. Its hybrid rocket motor fires for about 60 seconds, accelerating the spaceplane to about Mach 3 and an apogee of about 85–90 km — above the US 80 km astronaut boundary but below the Kármán line. The twin tail booms then feather upward for a stable, self-correcting re-entry, after which the vehicle glides to a runway landing at Spaceport America, New Mexico. The programme suffered a fatal accident in 2014, when the first vehicle (VSS Enterprise) broke up after its feather was unlocked prematurely during a powered test flight, killing co-pilot Michael Alsbury. Its successor, **VSS Unity**, flew commercial missions from June 2023 (Galactic 01) to June 2024 (Galactic 07) and was then retired. Virgin Galactic is building a new **Delta-class** fleet designed to fly twice a week with six passengers each; as of mid-2026 the company planned flight tests of the first Delta ship in the third quarter of 2026 and rocket-powered spaceflight in the fourth quarter, with commercial service ramping up in 2027.
+Virgin Galactic's **SpaceShipTwo** is air-launched from the carrier aircraft **VMS Eve** at about 14 km. Its hybrid rocket motor fires for about 60 seconds, accelerating the spaceplane to about Mach 3. The spaceplane reaches an apogee of about 85–90 km — above the US 80 km astronaut boundary but below the Kármán line. The twin tail booms then feather upward for a stable, self-correcting re-entry, after which the vehicle glides to a runway landing at Spaceport America, New Mexico. The programme suffered a fatal accident in 2014, when the first vehicle (VSS Enterprise) broke up after its feather was unlocked prematurely during a powered test flight, killing co-pilot Michael Alsbury. Its successor, **VSS Unity**, flew commercial missions from June 2023 (Galactic 01) to June 2024 (Galactic 07) and was then retired. Virgin Galactic is building a new **Delta-class** fleet designed to fly twice a week with six passengers each. As of mid-2026, the company planned flight tests of the first Delta ship in the third quarter of 2026 and rocket-powered spaceflight in the fourth quarter. Commercial service was planned to ramp up in 2027.
 
 ![Comparison of the New Shepard vertical-launch profile and the SpaceShipTwo air-launched profile.](figures/out/ch09_suborbital_profiles.svg){#fig:profiles width=98%}
 
@@ -220,26 +220,26 @@ Table: Crewed suborbital vehicles. {#tbl:crewedsub}
 
 ### Engineering of Crewed Suborbital Vehicles
 
-**Hybrid propulsion.** SpaceShipOne and SpaceShipTwo use **hybrid rocket motors**, which combine a liquid or gaseous oxidiser with a solid fuel (@fig:hybrid). Because the fuel and oxidiser are stored separately and only mix in the combustion port, a hybrid cannot detonate like a mixed solid propellant and can be shut down by closing the oxidiser valve. Nitrous oxide is attractive because it is self-pressurising (its vapour pressure is about 50 bar at room temperature), avoiding pumps; HTPB rubber or polyamide fuels are cheap and inert. Hybrids have lower regression rates (the speed at which the fuel surface burns back) and lower Isp (≈ 250 s) than liquid engines, and their combustion can be rough; paraffin-based fuels, which form a liquid layer that sheds droplets into the flow, burn three to four times faster.
+**Hybrid propulsion.** SpaceShipOne and SpaceShipTwo use **hybrid rocket motors**, which combine a liquid or gaseous oxidiser with a solid fuel (@fig:hybrid). Because the fuel and oxidiser are stored separately and only mix in the combustion port, a hybrid cannot detonate like a mixed solid propellant and can be shut down by closing the oxidiser valve. Nitrous oxide is attractive because it is self-pressurising (its vapour pressure is about 50 bar at room temperature), avoiding pumps; HTPB rubber or polyamide fuels are cheap and inert. Hybrids have lower regression rates (the speed at which the fuel surface burns back) and lower Isp (≈ 250 s) than liquid engines. Their combustion can also be rough. Paraffin-based fuels, which form a liquid layer that sheds droplets into the flow, burn three to four times faster.
 
 ![Principle of a hybrid rocket motor as used on SpaceShipOne and SpaceShipTwo.](figures/out/ch09_hybrid.svg){#fig:hybrid width=88%}
 
-**Liquid-hydrogen propulsion and reusability.** New Shepard's BE-3PM engine burns liquid hydrogen and liquid oxygen at high efficiency and can be deeply throttled (to about 20 % of full thrust) for the vertical landing. The booster uses a ring fin and wedge fins for aerodynamic stability on descent, drag brakes to slow down, and the engine for a final landing burn — an approach later scaled up for orbital boosters (Chapter 34).
+**Liquid-hydrogen propulsion and reusability.** New Shepard's BE-3PM engine burns liquid hydrogen and liquid oxygen at high efficiency and can be deeply throttled (to about 20 % of full thrust) for the vertical landing. The booster uses a ring fin and wedge fins for aerodynamic stability on descent, drag brakes to slow down, and the engine for a final landing burn. This approach was later scaled up for orbital boosters (Chapter 34).
 
-**Escape systems.** A crew capsule escape system must pull the crew away from a failing booster at any point in flight, faster than an explosion can propagate. New Shepard's solid escape motor in the capsule base delivers a short, high-acceleration impulse (about 10 g). SpaceShipTwo, being a winged vehicle released from a carrier aircraft, has no escape system; its safety relies on the reliability of the hybrid motor and on the feather mechanism, which was redesigned with an inhibit after the 2014 accident.
+**Escape systems.** A crew capsule escape system must pull the crew away from a failing booster at any point in flight, faster than an explosion can propagate. New Shepard's solid escape motor in the capsule base delivers a short, high-acceleration impulse (about 10 g). SpaceShipTwo is a winged vehicle released from a carrier aircraft, and it has no escape system. Its safety relies on the reliability of the hybrid motor and on the feather mechanism. The feather mechanism was redesigned with an inhibit after the 2014 accident.
 
 **Cabin and environment.** Suborbital cabins are pressurised to about sea-level conditions, with oxygen masks for emergencies (SpaceShipTwo pilots wear pressure suits; New Shepard passengers do not). Seats are designed for re-entry decelerations of 5–6 g in the "eyeballs-in" direction, which healthy adults tolerate well. Medical screening is lighter than for orbital flight: people in their 80s and 90s have flown, including Wally Funk (82) in 2021 and William Shatner (90) in 2021.
 
 ### Passenger Experience and Safety
 
-A suborbital passenger experiences 3–4 g during ascent (New Shepard) or up to about 3.5 g along the axis and 6 g during the pull-out on re-entry (SpaceShipTwo), 3–4 minutes of weightlessness, and a view of the Earth's curvature against a black sky. Training takes one to a few days. In the United States, the **Commercial Space Launch Amendments Act of 2004** established an "informed consent" regime: passengers ("spaceflight participants") must be told the risks, and the FAA regulates public safety rather than occupant safety; a "learning period" moratorium on occupant-safety regulation has been extended repeatedly by Congress. Suborbital flights are therefore not certified like airliners.
+A suborbital passenger experiences 3–4 g during ascent (New Shepard), or up to about 3.5 g along the axis and 6 g during the pull-out on re-entry (SpaceShipTwo). The passenger also gets 3–4 minutes of weightlessness, and a view of the Earth's curvature against a black sky. Training takes one to a few days. In the United States, the **Commercial Space Launch Amendments Act of 2004** established an "informed consent" regime. Passengers ("spaceflight participants") must be told the risks, and the FAA regulates public safety rather than occupant safety. Congress has repeatedly extended a "learning period" moratorium on occupant-safety regulation. Suborbital flights are therefore not certified like airliners.
 
 ::: data
 **Data box — who counts as an astronaut?**
 
 - **FAI (international records body):** 100 km (Kármán line).
 - **US Air Force, NASA, FAA:** 50 statute miles (80.5 km).
-- **FAA Commercial Space Astronaut Wings:** awarded 2004–2021 to crew (not passengers) who reached 50 miles; the programme ended in January 2022, after which names of all who reach the altitude are listed on the FAA website.
+- **FAA Commercial Space Astronaut Wings:** awarded 2004–2021 to crew (not passengers) who reached 50 miles. The programme ended in January 2022. Since then, the names of all who reach the altitude are listed on the FAA website.
 - **Virgin Galactic flights** (≈ 86–89 km) cross the US boundary but not the FAI boundary; **New Shepard flights** cross both.
 :::
 
@@ -248,8 +248,8 @@ A suborbital passenger experiences 3–4 g during ascent (New Shepard) or up to 
 Suborbital trajectories are ideal for testing vehicles and materials at hypersonic speeds (above Mach 5):
 
 - **Re-entry experiments** — heat-shield materials and capsule shapes, e.g., NASA's IRVE inflatable re-entry experiments on Black Brant rockets (2009–2012), ESA's EXPERT and the Intermediate eXperimental Vehicle (IXV, 2015, launched on Vega to 412 km).
-- **Air-breathing hypersonic propulsion** — NASA's X-43A scramjet (2004, Mach 9.6, launched on a Pegasus booster from a B-52) and the USAF/DARPA X-51A Waverider (2013, Mach 5.1 for 210 s), Australia's HIFiRE programme (sounding rockets from Woomera), and many more recent national programmes.
-- **Commercial hypersonic test services** — Rocket Lab's **HASTE** (a suborbital variant of Electron, flying from Wallops since 2023) and several start-ups provide flights for defence hypersonic testing, reflecting a large increase in US Department of Defense test cadence.
+- **Air-breathing hypersonic propulsion** — NASA's X-43A scramjet (2004, Mach 9.6, launched on a Pegasus booster from a B-52) and the USAF/DARPA X-51A Waverider (2013, Mach 5.1 for 210 s). Other examples are Australia's HIFiRE programme (sounding rockets from Woomera) and many more recent national programmes.
+- **Commercial hypersonic test services** — Rocket Lab's **HASTE** (a suborbital variant of Electron, flying from Wallops since 2023) and several start-ups provide flights for defence hypersonic testing. This reflects a large increase in US Department of Defense test cadence.
 
 ![NASA's B-52B carrier aircraft takes off from Edwards Air Force Base in 2004 carrying the third X-43A scramjet research vehicle mounted on a Pegasus booster. The X-43A reached Mach 9.6 — the fastest flight of an air-breathing vehicle.](figures/photos/ch09_x43.jpg){#fig:x43 width=80%}
 
@@ -289,11 +289,11 @@ Table: Milestones of suborbital and sounding-rocket flight. {#tbl:submilestones}
 
 ## Suborbital Point-to-Point Transport
 
-Rocket-powered point-to-point travel — reaching anywhere on Earth in under an hour on a suborbital trajectory — has been proposed for passengers (SpaceX's "Earth to Earth" Starship concept) and for rapid military cargo delivery (the US Air Force/Space Force "Rocket Cargo" Vanguard programme, studying delivery of up to 100 t anywhere in about 90 minutes). A flight from New York to Shanghai would require a burnout speed of roughly 6–7 km/s, accelerations of about 3–4 g, and a re-entry comparable to an orbital vehicle. The challenges are cost per flight, noise and sonic booms near cities, safety certification, and the need for spaceports at sea or far from populated areas.
+Rocket-powered point-to-point travel would reach anywhere on Earth in under an hour on a suborbital trajectory. It has been proposed for passengers (SpaceX's "Earth to Earth" Starship concept) and for rapid military cargo delivery. The US Air Force/Space Force "Rocket Cargo" Vanguard programme is studying delivery of up to 100 t anywhere in about 90 minutes. A flight from New York to Shanghai would require a burnout speed of roughly 6–7 km/s, accelerations of about 3–4 g, and a re-entry comparable to an orbital vehicle. The challenges are cost per flight, noise and sonic booms near cities, safety certification, and the need for spaceports at sea or far from populated areas.
 
 ## Operations, Safety and Regulation
 
-A sounding-rocket or suborbital launch is planned against strict **range safety** criteria. Analysts compute the impact dispersion of each stage and payload from Monte Carlo simulations including motor performance, winds and misalignments; launch is allowed only if the expected casualty risk to the public ($E_c$) is below limits such as $10^{-4}$ per mission (US FAA Part 450 and range commanders' standards). Unguided vehicles may carry a thrust termination or flight termination system. Winds are measured with balloons shortly before launch to set the launcher elevation and azimuth. Aircraft and shipping are kept clear of hazard areas by NOTAMs (notices to air missions) and navigational warnings.
+A sounding-rocket or suborbital launch is planned against strict **range safety** criteria. Analysts compute the impact dispersion of each stage and payload from Monte Carlo simulations including motor performance, winds and misalignments. Launch is allowed only if the expected casualty risk to the public ($E_c$) is below limits such as $10^{-4}$ per mission (US FAA Part 450 and range commanders' standards). Unguided vehicles may carry a thrust termination or flight termination system. Winds are measured with balloons shortly before launch to set the launcher elevation and azimuth. Aircraft and shipping are kept clear of hazard areas by NOTAMs (notices to air missions) and navigational warnings.
 
 Commercial suborbital vehicles in the United States are licensed by the FAA Office of Commercial Space Transportation under **14 CFR Part 450** (streamlined launch and re-entry licensing, fully in force since 2021). In Europe, national laws (France, the UK, Norway, Sweden) govern sounding-rocket ranges, and EASA is developing a framework for suborbital vehicles that take off and land like aircraft.
 
@@ -306,7 +306,7 @@ On its 23rd flight, an uncrewed New Shepard mission carrying research payloads, 
 ::: key
 **Key takeaways**
 
-- Suborbital flights reach space without orbital speed; weightless time scales roughly with the square root of the height above 100 km (≈ 3 min at 105 km, ≈ 6 min at 260 km, ≈ 13 min at 700 km).
+- Suborbital flights reach space without orbital speed. Weightless time scales roughly with the square root of the height above 100 km (≈ 3 min at 105 km, ≈ 6 min at 260 km, ≈ 13 min at 700 km).
 - Sounding rockets, flown since 1946, remain unique for in-situ study of the 50–150 km region, auroral physics, solar and astrophysical observations, technology tests and training; NASA flies about 20 per year.
 - Microgravity platforms range from drop towers (seconds) to sounding rockets (minutes) to orbital stations (months), each trading duration, quality and cost.
 - Commercial crewed suborbital flights began in 2021; New Shepard flew 98 people before pausing in 2026, and Virgin Galactic plans to resume with its Delta class in late 2026–2027.

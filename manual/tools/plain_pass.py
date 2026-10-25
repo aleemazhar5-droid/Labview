@@ -72,6 +72,7 @@ def extract(out, keys):
 
 
 def tokens(s):
+    s = re.sub(r"(?<=[A-Z])\$", "§", s)          # currency such as US$ 500 is not maths
     refs = re.findall(r"@(?:fig|tbl|sec|eq):[\w-]+", s)
     maths = re.findall(r"\$[^$]+\$", s)
     links = re.findall(r"\]\([^)]*\)", s)

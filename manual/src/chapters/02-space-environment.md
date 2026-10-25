@@ -6,7 +6,7 @@ abstract: A spacecraft must survive two very different environments - the short,
 
 ## Why the Environment Drives Design
 
-A spacecraft engineer's first question about any mission is *where* the spacecraft will fly, because the environment determines most design decisions: the thickness of shielding, the type of electronic parts, the thermal coatings, the solar array degradation margin, the propellant needed to fight drag, and even the shape of the vehicle. Many famous failures — from the early Telstar 1 satellite, killed in 1962 by radiation from a high-altitude nuclear test, to the loss of 38 newly launched Starlink satellites to a minor geomagnetic storm in February 2022 — were environmental failures.
+A spacecraft engineer's first question about any mission is *where* the spacecraft will fly, because the environment determines most design decisions. It sets the thickness of shielding, the type of electronic parts, the thermal coatings and the solar array degradation margin. It also sets the propellant needed to fight drag, and even the shape of the vehicle. Many famous failures were environmental failures. An early example is the Telstar 1 satellite, killed in 1962 by radiation from a high-altitude nuclear test. A recent one is the loss of 38 newly launched Starlink satellites to a minor geomagnetic storm in February 2022.
 
 The space environment can be divided into the following components, each discussed in this chapter:
 
@@ -36,11 +36,11 @@ In a column of gas in hydrostatic equilibrium, the pressure falls exponentially 
 
 $$\rho(h) = \rho_0 \exp\left(-\frac{h-h_0}{H}\right), \qquad H = \frac{k_B T}{m g}$$
 
-where $H$ is the **scale height** — the height over which density falls by a factor of $e \approx 2.72$. Near the ground $H \approx 8.5$ km; at 400 km, where the gas is hot and light, $H$ is about 50–60 km. Because $H$ depends on temperature, and thermospheric temperature depends on the Sun, **density at a given LEO altitude can change by a factor of ten or more** between solar minimum and solar maximum, and by a factor of two to five within hours during a geomagnetic storm (@fig:density).
+where $H$ is the **scale height** — the height over which density falls by a factor of $e \approx 2.72$. Near the ground $H \approx 8.5$ km; at 400 km, where the gas is hot and light, $H$ is about 50–60 km. The value of $H$ depends on temperature, and thermospheric temperature depends on the Sun. So **density at a given LEO altitude can change by a factor of ten or more** between solar minimum and solar maximum. It can also change by a factor of two to five within hours during a geomagnetic storm (@fig:density).
 
 ![Neutral density of the upper atmosphere for low and high solar activity. At typical LEO altitudes, the density — and therefore the drag on a satellite — varies by about an order of magnitude over the 11-year solar cycle.](figures/out/ch02_density.svg){#fig:density width=88%}
 
-Solar activity is tracked by two indices that drive the atmospheric models (NRLMSIS 2.0, JB2008, DTM-2020): the **F10.7 index**, the solar radio flux at 10.7 cm wavelength (a proxy for EUV output; typically 70 at solar minimum and 150–250 at maximum), and the geomagnetic **Ap / Kp indices**, which measure the heating of the upper atmosphere by the solar wind (Chapter 22).
+Solar activity is tracked by two indices that drive the atmospheric models (NRLMSIS 2.0, JB2008, DTM-2020). The **F10.7 index** is the solar radio flux at 10.7 cm wavelength (a proxy for EUV output), typically 70 at solar minimum and 150–250 at maximum. The geomagnetic **Ap / Kp indices** measure the heating of the upper atmosphere by the solar wind (Chapter 22).
 
 ### Atmospheric Drag
 
@@ -52,7 +52,7 @@ where $A$ is the cross-sectional area and $C_D$ is the drag coefficient (typical
 
 $$\frac{da}{dt} = -\frac{\rho\,\sqrt{\mu\, a}}{B}$$
 
-Counter-intuitively, drag makes a satellite *speed up*: as it loses energy it sinks to a lower orbit, where the orbital speed is higher. The decay accelerates as the satellite descends into denser air, so most of a satellite's orbital life is spent at the higher altitudes and the final descent from 200 km takes only days. @fig:lifetime shows typical orbital lifetimes.
+Counter-intuitively, drag makes a satellite *speed up*: as it loses energy it sinks to a lower orbit, where the orbital speed is higher. The decay accelerates as the satellite descends into denser air. So most of a satellite's orbital life is spent at the higher altitudes, and the final descent from 200 km takes only days. @fig:lifetime shows typical orbital lifetimes.
 
 ![Approximate orbital lifetime versus initial altitude for three ballistic coefficients. A satellite at 400 km with m/(C_D A) = 100 kg/m² lasts about one to three years; at 600 km it lasts decades; at 800 km it lasts more than a century. The 5-year line marks the US FCC post-mission disposal rule (2022) for LEO satellites.](figures/out/ch02_lifetime.svg){#fig:lifetime width=90%}
 
@@ -74,7 +74,7 @@ On 3 February 2022, 49 Starlink satellites were released into a low 210 × 340 k
 
 ### Very Low Earth Orbit (VLEO)
 
-Orbits below about 350 km are attracting interest for high-resolution imaging (resolution improves in proportion to distance), lower latency and natural debris removal. Satellites such as ESA's GOCE (operated at 255 km from 2009 to 2013 using an ion engine to cancel drag), Japan's SLATS/Tsubame (as low as 167 km, 2017–2019) and a new generation of commercial VLEO imagers use streamlined shapes, electric propulsion and atmosphere-resistant materials. Some concepts even scoop up atmospheric gas to feed an electric thruster ("air-breathing electric propulsion").
+Orbits below about 350 km are attracting interest for high-resolution imaging (resolution improves in proportion to distance), lower latency and natural debris removal. Satellites such as ESA's GOCE, Japan's SLATS/Tsubame and a new generation of commercial VLEO imagers use streamlined shapes, electric propulsion and atmosphere-resistant materials. GOCE operated at 255 km from 2009 to 2013, using an ion engine to cancel drag. SLATS/Tsubame flew as low as 167 km (2017–2019). Some concepts even scoop up atmospheric gas to feed an electric thruster ("air-breathing electric propulsion").
 
 ## Vacuum
 
@@ -118,7 +118,7 @@ A 1U CubeSat (10 cm cube) is covered in solar cells (α = 0.91, ε = 0.85). In a
 $P_{in} \approx \alpha S A_{sun} + \alpha a S F A_{earth} + \varepsilon\, q_{IR} F A_{earth} + P_{int}$
 $\approx 0.91\times1361\times0.015 + 0.91\times0.3\times1361\times0.5\times0.01 + 0.85\times240\times0.5\times 0.01 + 1 \approx 18.6+1.9+1.0+1 \approx 22.5$ W
 
-The satellite radiates from 0.06 m², so $T = \left(22.5/(0.85\times5.67\times10^{-8}\times0.06)\right)^{1/4} \approx 290$ K (17 °C). In eclipse (35 minutes of a 95-minute orbit) only Earth IR and internal power remain (≈2 W), and the equilibrium would be about 150 K; thermal mass slows the cooling so that the real minimum is typically −10 to −30 °C. Batteries (operating range typically 0–40 °C for charging) usually need heaters or careful placement.
+The satellite radiates from 0.06 m², so $T = \left(22.5/(0.85\times5.67\times10^{-8}\times0.06)\right)^{1/4} \approx 290$ K (17 °C). In eclipse (35 minutes of a 95-minute orbit) only Earth IR and internal power remain (≈2 W), and the equilibrium would be about 150 K. Thermal mass slows the cooling, so the real minimum is typically −10 to −30 °C. Batteries (operating range typically 0–40 °C for charging) usually need heaters or careful placement.
 :::
 
 ### Eclipses and Thermal Cycling
@@ -171,7 +171,7 @@ Radiation affects spacecraft in three main ways:
 
 - **Total ionising dose (TID).** Energy deposited by ionisation accumulates over the mission, trapping charge in oxides of transistors and shifting their threshold voltages and leakage currents until circuits fail. Dose is measured in gray (Gy = 1 J/kg) or, traditionally, **rad** (1 rad = 0.01 Gy), quoted for silicon as krad(Si).
 - **Displacement damage dose (DDD).** Protons and neutrons knock atoms out of the crystal lattice, degrading solar cells, optocouplers, CCD and CMOS image sensors (more "hot pixels", worse charge-transfer efficiency) and bipolar transistors.
-- **Single-event effects (SEEs).** A single heavy ion or energetic proton deposits a dense track of charge that can flip a memory bit (**single-event upset, SEU**), disturb an analogue output (**single-event transient, SET**), latch a CMOS circuit into a high-current state that can burn it out (**single-event latch-up, SEL**), or destroy power MOSFETs (**single-event burnout, SEB; single-event gate rupture, SEGR**).
+- **Single-event effects (SEEs).** A single heavy ion or energetic proton deposits a dense track of charge. This can flip a memory bit (**single-event upset, SEU**) or disturb an analogue output (**single-event transient, SET**). It can also latch a CMOS circuit into a high-current state that can burn it out (**single-event latch-up, SEL**), or destroy power MOSFETs (**single-event burnout, SEB; single-event gate rupture, SEGR**).
 
 @tbl:radeffects summarises effects and mitigations.
 
@@ -186,7 +186,7 @@ Table: Radiation effects, typical causes and mitigations. {#tbl:radeffects}
 | Single-event burnout / gate rupture | Heavy ions | Permanent destruction of power devices | Voltage derating (e.g., operate at < 50–75 % of rated V_DS), rad-hard MOSFETs |
 | Single-event functional interrupt (SEFI) | Heavy ions | Processor or FPGA hangs | Watchdog timers, reset logic, configuration scrubbing |
 
-Electronic parts are classified by their tolerance. Commercial off-the-shelf (COTS) parts often survive 5–30 krad(Si) and can be susceptible to latch-up; **radiation-tolerant** parts are characterised to 30–100 krad; **radiation-hardened** parts are designed for 100 krad to more than 1 Mrad and are latch-up immune. Rad-hard parts are expensive and lag commercial technology by one to two decades in performance — a major reason why AI processors in space are a challenge (Chapter 45).
+Electronic parts are classified by their tolerance. Commercial off-the-shelf (COTS) parts often survive 5–30 krad(Si) and can be susceptible to latch-up. By contrast, **radiation-tolerant** parts are characterised to 30–100 krad, while **radiation-hardened** parts are designed for 100 krad to more than 1 Mrad and are latch-up immune. Rad-hard parts are expensive and lag commercial technology by one to two decades in performance — a major reason why AI processors in space are a challenge (Chapter 45).
 
 ![Illustrative annual total ionising dose behind spherical aluminium shielding for four orbits. MEO is the harshest common orbit; LEO at ISS altitude is comparatively benign. Shielding is effective against electrons (MEO, GEO) but less effective against high-energy protons.](figures/out/ch02_dose_depth.svg){#fig:dosedepth width=88%}
 
@@ -199,7 +199,7 @@ The susceptibility of a device to single-event effects is measured in particle a
 ::: note
 **Engineering note — radiation design margin**
 
-Agencies require a **radiation design margin (RDM)** — the ratio of a part's tested capability to the predicted mission dose at its location. NASA and ESA practice is typically RDM ≥ 2 for TID (with lot-specific test data), rising for parts with large lot-to-lot variability. Dose predictions use standard models: AE8/AP8 or the newer **AE9/AP9-IRENE** for trapped particles, ESP/PSYCHIC or SAPPHIRE for solar protons, and ISO 15390 or Badhwar–O'Neill for cosmic rays, combined with ray-tracing through a 3-D model of the spacecraft (sector analysis) to find the shielding at each part.
+Agencies require a **radiation design margin (RDM)** — the ratio of a part's tested capability to the predicted mission dose at its location. NASA and ESA practice is typically RDM ≥ 2 for TID (with lot-specific test data), rising for parts with large lot-to-lot variability. Dose predictions use standard models: AE8/AP8 or the newer **AE9/AP9-IRENE** for trapped particles, ESP/PSYCHIC or SAPPHIRE for solar protons, and ISO 15390 or Badhwar–O'Neill for cosmic rays. These are combined with ray-tracing through a 3-D model of the spacecraft (sector analysis) to find the shielding at each part.
 :::
 
 ## Micrometeoroids and Orbital Debris
@@ -211,7 +211,7 @@ Two kinds of small particles strike spacecraft at hypervelocity:
 - **Micrometeoroids** — natural dust from comets and asteroids. They arrive from all directions at 11–72 km/s (average about 20 km/s), with annual showers such as the Perseids and Leonids adding short peaks. About 30–40 tonnes of meteoroid material enter Earth's atmosphere every day.
 - **Orbital debris** — artificial objects: fragments from explosions and collisions, paint flakes, solid-rocket-motor slag and aluminium-oxide dust, and dead satellites. In LEO, debris impacts occur at an average of about 10 km/s, mainly from directions near the velocity vector.
 
-For particles smaller than about 0.1 mm, meteoroids dominate; for larger particles in LEO, debris dominates. Objects larger than about 10 cm in LEO (1 m in GEO) are tracked and catalogued (Chapter 21); the roughly one million objects between 1 and 10 cm are not tracked and cannot be avoided, yet they carry enough energy to destroy a satellite. A 1 cm aluminium sphere at 10 km/s has a kinetic energy of about 70 kJ — similar to a small car at 50 km/h.
+For particles smaller than about 0.1 mm, meteoroids dominate; for larger particles in LEO, debris dominates. Objects larger than about 10 cm in LEO (1 m in GEO) are tracked and catalogued (Chapter 21). The roughly one million objects between 1 and 10 cm are not tracked and cannot be avoided. Yet they carry enough energy to destroy a satellite. A 1 cm aluminium sphere at 10 km/s has a kinetic energy of about 70 kJ — similar to a small car at 50 km/h.
 
 ![Illustrative cumulative flux of meteoroids and orbital debris at ISS altitude. The steep size dependence means that small impacts are frequent but survivable, while the rare large impacts are catastrophic.](figures/out/ch02_mmod_flux.svg){#fig:mmodflux width=88%}
 
@@ -223,7 +223,7 @@ The standard protection is the **Whipple shield**, invented by astronomer Fred W
 
 ![The Long Duration Exposure Facility (LDEF), a 9.7-tonne bus-sized cylinder carrying 57 experiments, being retrieved by Space Shuttle Columbia in January 1990 after almost six years in orbit. LDEF's surfaces recorded more than 30 000 impact craters visible to the naked eye and remain a cornerstone data set for meteoroid, debris and atomic-oxygen models.](figures/photos/ch02_ldef.jpg){#fig:ldef width=78%}
 
-Shield performance is described by **ballistic limit equations** (BLEs) — empirical fits to hypervelocity gun tests (light-gas guns reach about 7 km/s) and hydrocode simulations that give the critical particle diameter $d_c$ that just perforates the rear wall as a function of velocity, impact angle, particle density and shield geometry. Combining the BLE with the flux model gives the **probability of no penetration (PNP)** over the mission, typically required to be above 0.95–0.99 for critical elements. Tools include NASA's BUMPER and ESA's ESABASE2/Debris.
+Shield performance is described by **ballistic limit equations** (BLEs). These are empirical fits to hypervelocity gun tests (light-gas guns reach about 7 km/s) and hydrocode simulations. They give the critical particle diameter $d_c$ that just perforates the rear wall, as a function of velocity, impact angle, particle density and shield geometry. Combining the BLE with the flux model gives the **probability of no penetration (PNP)** over the mission, typically required to be above 0.95–0.99 for critical elements. Tools include NASA's BUMPER and ESA's ESABASE2/Debris.
 
 ::: data
 **Data box — MMOD on the ISS and Hubble**
@@ -231,7 +231,7 @@ Shield performance is described by **ballistic limit equations** (BLEs) — empi
 - The ISS has been struck by many thousands of small particles; impact pits are regularly found on windows (the Cupola windows have external shutters for protection), radiators and handrails.
 - In 2021 an untracked object punched a 5 mm hole through the thermal blanket of the Canadarm2 boom — the arm continued to work.
 - Solar arrays returned from Hubble servicing missions (1993, 2002) showed thousands of impact features, used to calibrate debris models.
-- The ISS performs a debris-avoidance manoeuvre when a tracked object's collision probability exceeds about 1 in 10 000 (or about 1 in 100 000 if the manoeuvre is easy); it has manoeuvred more than 40 times since 1999.
+- The ISS performs a debris-avoidance manoeuvre when a tracked object's collision probability exceeds about 1 in 10 000 (or about 1 in 100 000 if the manoeuvre is easy). It has manoeuvred more than 40 times since 1999.
 :::
 
 ## Mechanical Environments: Launch and Microgravity
@@ -250,7 +250,7 @@ The most mechanically severe minutes of a spacecraft's life are during launch. L
 
 ### Microgravity
 
-Once in orbit, the spacecraft and everything in it are in free fall. Residual accelerations of $10^{-6}$ to $10^{-3}$ g arise from drag, gravity gradient, rotation, crew motion and machinery. Microgravity matters for fluid management (propellant does not settle at the bottom of a tank; see Chapter 6), for heat transfer (no buoyant convection, so boiling and combustion behave differently), for deployable structures (which must be tested on the ground with gravity-offloading rigs), and for the human body (Chapter 30). It is also a resource: in-space manufacturing (Chapter 40) exploits it to make materials impossible to make on Earth.
+Once in orbit, the spacecraft and everything in it are in free fall. Residual accelerations of $10^{-6}$ to $10^{-3}$ g arise from drag, gravity gradient, rotation, crew motion and machinery. Microgravity matters for fluid management, because propellant does not settle at the bottom of a tank (see Chapter 6). It matters for heat transfer: there is no buoyant convection, so boiling and combustion behave differently. It also matters for deployable structures, which must be tested on the ground with gravity-offloading rigs, and for the human body (Chapter 30). It is also a resource: in-space manufacturing (Chapter 40) exploits it to make materials impossible to make on Earth.
 
 ## Environments Beyond Earth Orbit
 
@@ -272,7 +272,7 @@ Table: Representative environmental challenges for planetary missions. {#tbl:pla
 
 ## Designing for the Environment: Standards and Tools
 
-Engineers capture the environment in a project **environmental specification**, derived from standards such as **ECSS-E-ST-10-04C** (space environment), **NASA-STD-7009**/**NASA-HDBK-1001** (terrestrial and natural space environments), **ISO 15390** (cosmic rays), the **AE9/AP9** models, **ORDEM 3.2** and **MASTER-8** (debris), **MEM 3** (meteoroids) and **NRLMSIS 2.0** (atmosphere). ESA's online **SPENVIS** system and NASA's **Space Environments and Effects (SEE)** program provide integrated tools.
+Engineers capture the environment in a project **environmental specification**. It is derived from standards such as **ECSS-E-ST-10-04C** (space environment), **NASA-STD-7009**/**NASA-HDBK-1001** (terrestrial and natural space environments) and **ISO 15390** (cosmic rays). Other sources include the **AE9/AP9** models, **ORDEM 3.2** and **MASTER-8** (debris), **MEM 3** (meteoroids) and **NRLMSIS 2.0** (atmosphere). ESA's online **SPENVIS** system and NASA's **Space Environments and Effects (SEE)** program provide integrated tools.
 
 ![NASA's Juno spacecraft emerging from thermal-vacuum testing at Lockheed Martin in 2011. In the chamber the spacecraft was cycled between the hot and cold extremes predicted for its mission while operating, verifying both the thermal design and the electronics.](figures/photos/ch02_tvac.jpg){#fig:tvac width=78%}
 

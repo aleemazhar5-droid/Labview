@@ -19,7 +19,7 @@ The first three are grouped as **TT&C** (telemetry, tracking and command). Paylo
 
 ### The Radio Spectrum for Space
 
-Radio frequencies are a limited, shared natural resource. The **International Telecommunication Union (ITU)** allocates frequency bands to services (e.g., Earth exploration-satellite, space research, fixed-satellite, mobile-satellite, radionavigation-satellite) in its **Radio Regulations**, revised at World Radiocommunication Conferences every three to four years. Satellite operators must file their networks with the ITU through national administrations and coordinate with others to avoid interference — a process that can take years and is a central part of any commercial constellation business plan.
+Radio frequencies are a limited, shared natural resource. The **International Telecommunication Union (ITU)** allocates frequency bands to services (e.g., Earth exploration-satellite, space research, fixed-satellite, mobile-satellite, radionavigation-satellite) in its **Radio Regulations**, revised at World Radiocommunication Conferences every three to four years. Satellite operators must file their networks with the ITU through national administrations and coordinate with others to avoid interference. This process can take years and is a central part of any commercial constellation business plan.
 
 Space engineers use the IEEE radar letter designations for bands (@fig:bands, @tbl:bands).
 
@@ -52,7 +52,7 @@ An antenna converts electrical signals into electromagnetic waves and focuses th
 
 $$G = \eta\left(\frac{\pi D}{\lambda}\right)^2, \qquad \theta_{3dB} \approx 70\,\frac{\lambda}{D}\ \text{degrees}$$
 
-Gain rises with the square of frequency for a fixed size, while beamwidth shrinks (@fig:antgain). A 34 m Deep Space Network antenna has a gain of about 68 dBi at X-band and 80 dBi at Ka-band, with a Ka beam only 0.017° wide — so pointing must be accurate to a few millidegrees.
+Gain rises with the square of frequency for a fixed size, while beamwidth shrinks (@fig:antgain). A 34 m Deep Space Network antenna has a gain of about 68 dBi at X-band and 80 dBi at Ka-band. Its Ka beam is only 0.017° wide, so pointing must be accurate to a few millidegrees.
 
 ![Gain of parabolic antennas as a function of diameter for four frequency bands.](figures/out/ch07_antenna_gain.svg){#fig:antgain width=84%}
 
@@ -73,7 +73,7 @@ The **link budget** is the accounting that shows whether a link closes — wheth
 
 $$C = P_t + G_t - L_t - L_{fs} - L_a - L_{pol} - L_{point} + G_r - L_r \quad [\text{dBW}]$$
 
-where $P_t$ is transmitter power, $G_t$ and $G_r$ are antenna gains, $L_t$ and $L_r$ line losses, $L_a$ atmospheric losses, and $L_{fs}$ is the **free-space path loss**, which describes how power spreads over the surface of an ever-larger sphere:
+where $P_t$ is transmitter power, $G_t$ and $G_r$ are antenna gains, $L_t$ and $L_r$ line losses, and $L_a$ atmospheric losses. The term $L_{fs}$ is the **free-space path loss**, which describes how power spreads over the surface of an ever-larger sphere:
 
 $$L_{fs} = \left(\frac{4\pi d f}{c}\right)^2 \quad\Rightarrow\quad L_{fs}[\text{dB}] = 92.45 + 20\log_{10} d[\text{km}] + 20\log_{10} f[\text{GHz}]$$
 
@@ -109,7 +109,7 @@ With LDPC-coded QPSK requiring about 3 dB, the margin is about 3 dB — adequate
 
 - **BPSK** — two phases, 1 bit per symbol, very robust; used for TT&C and deep space.
 - **QPSK / OQPSK** — four phases, 2 bits per symbol, same power efficiency as BPSK with twice the spectral efficiency; the workhorse of EO downlinks.
-- **8PSK, 16APSK, 32APSK** — more bits per symbol at the cost of needing more $E_b/N_0$; amplitude-phase shift keying (APSK) arranges points on concentric rings to tolerate the non-linear power amplifiers (travelling-wave tube amplifiers, TWTAs) used in space. DVB-S2/S2X and CCSDS 131.2 support them with adaptive switching.
+- **8PSK, 16APSK, 32APSK** — more bits per symbol, at the cost of needing more $E_b/N_0$. Amplitude-phase shift keying (APSK) arranges points on concentric rings. This lets it tolerate the non-linear power amplifiers (travelling-wave tube amplifiers, TWTAs) used in space. DVB-S2/S2X and CCSDS 131.2 support them with adaptive switching.
 - **GMSK and filtered modulations** — constant-envelope, spectrally compact schemes.
 
 Ranging signals (tones or pseudo-noise codes) can share the carrier with data to measure distance.
@@ -136,7 +136,7 @@ Data is also **compressed** before transmission. CCSDS standards include lossles
 
 ## Optical (Laser) Communications
 
-**Free-space optical communications** use lasers at near-infrared wavelengths (1 064 or 1 550 nm). Because the wavelength is about 10 000 times shorter than X-band, a 10 cm telescope produces a beam about 10 µrad wide — far narrower than any radio beam — concentrating the power on the receiver. Optical links offer data rates of gigabits to hundreds of gigabits per second, use spectrum that is not (yet) regulated, and are very hard to intercept or jam. Their challenges are clouds (which block the beam entirely), precise pointing, acquisition and tracking (to microradians while both terminals move), and atmospheric turbulence.
+**Free-space optical communications** use lasers at near-infrared wavelengths (1 064 or 1 550 nm). The wavelength is about 10 000 times shorter than X-band. So a 10 cm telescope produces a beam about 10 µrad wide — far narrower than any radio beam — which concentrates the power on the receiver. Optical links offer data rates of gigabits to hundreds of gigabits per second, use spectrum that is not (yet) regulated, and are very hard to intercept or jam. Their challenges are clouds (which block the beam entirely), precise pointing, acquisition and tracking (to microradians while both terminals move), and atmospheric turbulence.
 
 Milestones include:
 
@@ -144,8 +144,8 @@ Milestones include:
 - **EDRS** (ESA/Airbus "SpaceDataHighway", 2016 onwards) — GEO relay nodes receiving 1.8 Gbit/s laser links from Sentinel-1 and Sentinel-2 satellites and relaying the data to Europe in near-real time.
 - **LCRD** (NASA, 2021) — a GEO laser relay, linked with the **ILLUMA-T** terminal on the ISS in 2023.
 - **TBIRD** (NASA/MIT Lincoln Laboratory, 2022) — a CubeSat terminal that downlinked at 200 Gbit/s.
-- **DSOC** (NASA/JPL, on the Psyche mission, 2023–2025) — the first deep-space laser link, achieving 267 Mbit/s from 33 million km and continuing to link from beyond Mars' distance, with a superconducting nanowire photon-counting detector at Palomar Observatory.
-- **Optical inter-satellite links in mega-constellations** — Starlink satellites carry three or more laser terminals, forming a mesh network in space carrying many petabytes per day; the US Space Development Agency's Transport Layer also uses optical crosslinks; China's constellations are adopting them.
+- **DSOC** (NASA/JPL, on the Psyche mission, 2023–2025) — the first deep-space laser link. It achieved 267 Mbit/s from 33 million km and continued to link from beyond Mars' distance. It used a superconducting nanowire photon-counting detector at Palomar Observatory.
+- **Optical inter-satellite links in mega-constellations** — Starlink satellites carry three or more laser terminals, forming a mesh network in space that carries many petabytes per day. The US Space Development Agency's Transport Layer also uses optical crosslinks, and China's constellations are adopting them.
 - **Artemis II's O2O terminal** (2026) — a laser link returning high-definition video from Orion during the crewed lunar flight.
 
 ![The Deep Space Optical Communications (DSOC) flight laser transceiver before integration with NASA's Psyche spacecraft. Its 22 cm telescope sent the first high-rate laser signals from deep space.](figures/photos/ch07_dsoc_ftl.jpg){#fig:dsoc width=70%}
@@ -163,7 +163,7 @@ Milestones include:
 The **ground segment** comprises all the ground facilities needed to operate the spacecraft and exploit its data (@fig:groundarch):
 
 - **Ground stations** with antennas, RF equipment (low-noise amplifiers, high-power amplifiers, up/down-converters), modems/baseband units, timing, and network connections.
-- **Mission operations centre (MOC)** — the control room where flight controllers monitor telemetry, send commands, and respond to anomalies, using a **mission control system** (e.g., ESA's SCOS-2000 and its successor EGS-CC, NASA's ITOS and AMMOS, or open-source frameworks such as Yamcs and OpenMCT).
+- **Mission operations centre (MOC)** — the control room where flight controllers monitor telemetry, send commands, and respond to anomalies. They use a **mission control system** (e.g., ESA's SCOS-2000 and its successor EGS-CC, NASA's ITOS and AMMOS, or open-source frameworks such as Yamcs and OpenMCT).
 - **Flight dynamics** — orbit determination, manoeuvre planning, attitude reconstruction, collision avoidance, and product generation (ephemerides, pointing predictions).
 - **Mission planning and scheduling** — turning user requests into conflict-free activity timelines that respect power, thermal, data-volume and visibility constraints (Chapter 49 discusses AI planners).
 - **Payload data ground segment (PDGS)** — receiving, processing, calibrating, archiving and distributing payload data. Processing levels follow a standard ladder: Level 0 (raw, time-ordered), Level 1 (calibrated, geolocated), Level 2 (geophysical variables), Level 3 (gridded, composited), Level 4 (model output) (Chapter 13).
@@ -181,7 +181,7 @@ Operators increasingly buy **ground-station-as-a-service**, paying per pass or p
 
 ### Deep Space Communications
 
-Deep-space missions require the largest antennas, the most sensitive receivers and the most powerful transmitters on Earth. NASA's **Deep Space Network (DSN)** has three complexes spaced about 120° apart in longitude — **Goldstone** (California), **Madrid** (Spain) and **Canberra** (Australia) — so that any spacecraft beyond a few thousand kilometres is always visible from at least one (@fig:dsnmap). Each complex has a 70 m antenna and several 34 m beam-waveguide antennas; new 34 m antennas were added under the DSN Aperture Enhancement Project (DSS-53 in Madrid in 2022, DSS-56 and others). Antennas can be **arrayed** to combine their signals, as at Madrid in 2024, where six antennas were arrayed together for the first time to receive Voyager-class signals.
+Deep-space missions require the largest antennas, the most sensitive receivers and the most powerful transmitters on Earth. NASA's **Deep Space Network (DSN)** has three complexes spaced about 120° apart in longitude: **Goldstone** (California), **Madrid** (Spain) and **Canberra** (Australia). This spacing means that any spacecraft beyond a few thousand kilometres is always visible from at least one of them (@fig:dsnmap). Each complex has a 70 m antenna and several 34 m beam-waveguide antennas; new 34 m antennas were added under the DSN Aperture Enhancement Project (DSS-53 in Madrid in 2022, DSS-56 and others). Antennas can be **arrayed** to combine their signals, as at Madrid in 2024, where six antennas were arrayed together for the first time to receive Voyager-class signals.
 
 ![Locations of the three Deep Space Network complexes.](figures/out/ch07_dsn_map.png){#fig:dsnmap width=94%}
 
@@ -191,7 +191,7 @@ Deep-space missions require the largest antennas, the most sensitive receivers a
 ![The 34 m beam-waveguide antenna DSS-53, added to the Madrid complex in 2022.](figures/photos/ch07_dss53.jpg){#fig:dss53}
 :::
 
-Other agencies operate complementary networks: ESA's **ESTRACK** with 35 m deep-space antennas at New Norcia (Australia), Cebreros (Spain) and Malargüe (Argentina); China's deep-space network with 35 m and 66 m antennas at Kashgar, Jiamusi and Zapala (Argentina); India's IDSN at Byalalu; JAXA's 54 m Misasa antenna; and Russia's network. **Cross-support** agreements using CCSDS standards let agencies track each other's missions.
+Other agencies operate complementary networks, such as ESA's **ESTRACK** with 35 m deep-space antennas at New Norcia (Australia), Cebreros (Spain) and Malargüe (Argentina). China's deep-space network has 35 m and 66 m antennas at Kashgar, Jiamusi and Zapala (Argentina). There are also India's IDSN at Byalalu, JAXA's 54 m Misasa antenna and Russia's network. **Cross-support** agreements using CCSDS standards let agencies track each other's missions.
 
 The DSN is heavily oversubscribed: in the late 2020s it supports more than 40 missions, and demand from lunar missions (Artemis, CLPS landers, international orbiters) is growing. NASA is complementing it with commercial lunar communication services and with optical ground stations.
 
@@ -207,7 +207,7 @@ The DSN is heavily oversubscribed: in the late 2020s it supports more than 40 mi
 
 ### Delay- and Disruption-Tolerant Networking
 
-The Internet assumes continuous end-to-end connectivity and round-trip times of milliseconds. In space, links are intermittent and delays can be minutes or hours. **Delay/Disruption-Tolerant Networking (DTN)** uses the **Bundle Protocol** to store data at each node until the next link is available ("store-and-forward"), forming an interplanetary internet. NASA has used DTN on the ISS since 2016 and in the PACE Earth-observation mission (2024); it is a core element of **LunaNet**, the planned interoperable network of lunar relays and services, and of ESA's **Moonlight** initiative.
+The Internet assumes continuous end-to-end connectivity and round-trip times of milliseconds. In space, links are intermittent and delays can be minutes or hours. **Delay/Disruption-Tolerant Networking (DTN)** uses the **Bundle Protocol** to store data at each node until the next link is available ("store-and-forward"), forming an interplanetary internet. NASA has used DTN on the ISS since 2016 and in the PACE Earth-observation mission (2024). It is a core element of **LunaNet**, the planned interoperable network of lunar relays and services, and of ESA's **Moonlight** initiative.
 
 ## Space Data Standards: CCSDS
 
@@ -215,7 +215,7 @@ The **Consultative Committee for Space Data Systems (CCSDS)**, founded in 1982 b
 
 ![The CCSDS protocol stack used by most civil spacecraft, from physical-layer modulation up to file delivery and mission operations services.](figures/out/ch07_ccsds.svg){#fig:ccsds width=94%}
 
-Key CCSDS standards include Space Packets (133.0), TM/TC/AOS frames (132.0/232.0/732.0), the Unified Space Data Link Protocol (USLP, 732.1), channel coding (131.0, 231.0), the CCSDS File Delivery Protocol (CFDP, 727.0), Space Data Link Security (355.0), the Bundle Protocol (734.2) and optical communications (141.0, 142.0). Commercial communications satellites use the DVB-S2/S2X family; LEO broadband constellations use proprietary protocols; and **3GPP non-terrestrial network (NTN)** standards (from Release 17 onwards) integrate satellites into 5G mobile networks (Chapter 17).
+Key CCSDS standards include Space Packets (133.0), TM/TC/AOS frames (132.0/232.0/732.0), the Unified Space Data Link Protocol (USLP, 732.1) and channel coding (131.0, 231.0). Others cover the CCSDS File Delivery Protocol (CFDP, 727.0), Space Data Link Security (355.0), the Bundle Protocol (734.2) and optical communications (141.0, 142.0). Commercial communications satellites use the DVB-S2/S2X family; LEO broadband constellations use proprietary protocols; and **3GPP non-terrestrial network (NTN)** standards (from Release 17 onwards) integrate satellites into 5G mobile networks (Chapter 17).
 
 ::: key
 **Key takeaways**

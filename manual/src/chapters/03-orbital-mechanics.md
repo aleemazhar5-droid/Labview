@@ -100,13 +100,13 @@ Orbits are computed in **inertial** (non-rotating) frames, but ground stations, 
 - **Orbit frames**: **RTN/RSW** (radial, transverse/along-track, normal) and **LVLH** (local vertical, local horizontal), used for relative motion, attitude pointing and orbit-determination covariance.
 - **Body frame**: fixed to the spacecraft structure.
 
-Precise work also needs precise **time scales**: International Atomic Time (TAI); Coordinated Universal Time (UTC), which differs from TAI by an integer number of leap seconds (37 s since 2017); GPS time (TAI − 19 s, no leap seconds); Terrestrial Time (TT = TAI + 32.184 s); and Barycentric Dynamical Time (TDB) for interplanetary ephemerides. Confusing these has caused real errors.
+Precise work also needs precise **time scales**. These include International Atomic Time (TAI) and Coordinated Universal Time (UTC), which differs from TAI by an integer number of leap seconds (37 s since 2017). There are also GPS time (TAI − 19 s, no leap seconds), Terrestrial Time (TT = TAI + 32.184 s) and Barycentric Dynamical Time (TDB) for interplanetary ephemerides. Confusing these has caused real errors.
 
 ![Common reference frames: Earth-centred inertial and Earth-fixed frames, and the orbit-fixed radial / along-track / cross-track (RTN) frame attached to the satellite.](figures/out/ch03_frames.svg){#fig:frames width=88%}
 
 ### Two-Line Element Sets
 
-The most widely distributed orbit format is the **two-line element set (TLE)** (@fig:tle), produced by the US Space Force for the public catalogue. TLEs are *mean* elements fitted for the **SGP4** analytical propagator; they are adequate for antenna pointing and general awareness (errors of about 1 km at epoch, growing by kilometres per day) but not for precise conjunction assessment, which uses covariance-carrying ephemerides (Chapter 21). Because the fixed five-character catalogue-number field is close to exhaustion as tens of thousands of new objects are catalogued (an interim "Alpha-5" scheme replaces the first digit with a letter), users are moving to the **CCSDS Orbit Mean-elements Message (OMM)** in XML, KVN or JSON, which has no such limit.
+The most widely distributed orbit format is the **two-line element set (TLE)** (@fig:tle), produced by the US Space Force for the public catalogue. TLEs are *mean* elements fitted for the **SGP4** analytical propagator. They are adequate for antenna pointing and general awareness (errors of about 1 km at epoch, growing by kilometres per day). But they are not adequate for precise conjunction assessment, which uses covariance-carrying ephemerides (Chapter 21). The fixed five-character catalogue-number field is close to exhaustion as tens of thousands of new objects are catalogued. An interim "Alpha-5" scheme replaces the first digit with a letter. So users are moving to the **CCSDS Orbit Mean-elements Message (OMM)** in XML, KVN or JSON, which has no such limit.
 
 ![Anatomy of a two-line element set (illustrative values). Each field occupies fixed columns; the last digit of each line is a checksum.](figures/out/ch03_tle.svg){#fig:tle width=98%}
 
@@ -142,7 +142,7 @@ $$\dot\Omega = -\frac{3}{2}\,n\,J_2\left(\frac{R_\oplus}{p}\right)^2\cos i$$
 
 $$\dot\omega = \frac{3}{4}\,n\,J_2\left(\frac{R_\oplus}{p}\right)^2\left(5\cos^2 i - 1\right)$$
 
-where $p = a(1-e^2)$. For the ISS ($i = 51.6°$, 420 km), the node regresses by about 5° per day, which is why its ground track shifts each day and why launch windows to the ISS move earlier by roughly 22 minutes per day.
+where $p = a(1-e^2)$. For the ISS ($i = 51.6°$, 420 km), the node regresses by about 5° per day. This is why its ground track shifts each day, and why launch windows to the ISS move earlier by roughly 22 minutes per day.
 
 These "perturbations" are put to good use in three special orbit families (@fig:j2):
 
@@ -154,8 +154,8 @@ These "perturbations" are put to good use in three special orbit families (@fig:
 
 ### Other Perturbations
 
-- **Higher-order gravity.** Tesseral and sectoral harmonics (such as $J_{22}$, related to the ellipticity of the equator) cause GEO satellites to drift east or west towards two stable points near 75° E and 105° W, and cause resonances for orbits with periods that are simple fractions of a day. Precise orbit determination uses models such as EGM2008 or GGM05 to degree and order 100 or more, derived from the GRACE and GOCE missions.
-- **Third-body gravity** from the Moon and Sun changes the inclination of GEO satellites by about 0.75–0.95° per year, which must be corrected by north–south station-keeping (about 45–50 m/s per year — the largest item in a GEO propellant budget).
+- **Higher-order gravity.** Tesseral and sectoral harmonics include $J_{22}$, which is related to the ellipticity of the equator. They cause GEO satellites to drift east or west towards two stable points near 75° E and 105° W. They also cause resonances for orbits with periods that are simple fractions of a day. Precise orbit determination uses models such as EGM2008 or GGM05 to degree and order 100 or more, derived from the GRACE and GOCE missions.
+- **Third-body gravity** from the Moon and Sun changes the inclination of GEO satellites by about 0.75–0.95° per year. This must be corrected by north–south station-keeping (about 45–50 m/s per year — the largest item in a GEO propellant budget).
 - **Solar radiation pressure (SRP)** — sunlight carries momentum, producing a pressure of about 4.56 µN/m² on an absorbing surface at 1 AU (twice that on a perfect mirror). SRP perturbs eccentricity in GEO and is the main error source in GNSS orbit modelling; it is exploited by solar sails (Chapter 42).
 - **Atmospheric drag** — dominant below about 600 km (Chapter 2).
 - **Relativity, Earth tides, albedo and thermal re-radiation** — small effects that matter for centimetre-level orbits of geodetic and GNSS satellites.
@@ -192,7 +192,7 @@ From Cape Canaveral (28.5°), the satellite must also remove its inclination. Do
 
 ### Bi-elliptic Transfers
 
-A three-burn **bi-elliptic transfer**, which first goes beyond the target orbit, can be cheaper than a Hohmann transfer when the radius ratio exceeds 11.94 — and always is when it exceeds 15.58 — but it takes much longer (@fig:bielliptic). It is rarely used for Earth orbits but illustrates that "minimum energy" depends on the constraints.
+A three-burn **bi-elliptic transfer** first goes beyond the target orbit. It can be cheaper than a Hohmann transfer when the radius ratio exceeds 11.94, and always is when it exceeds 15.58. But it takes much longer (@fig:bielliptic). It is rarely used for Earth orbits but illustrates that "minimum energy" depends on the constraints.
 
 ![Total Δv (normalised by initial circular speed) for Hohmann and bi-elliptic transfers. The Hohmann cost peaks at a radius ratio of 15.58; above that, a bi-elliptic transfer with a distant intermediate apoapsis is cheaper.](figures/out/ch03_bielliptic.svg){#fig:bielliptic width=84%}
 
@@ -208,7 +208,7 @@ so it is best performed where the speed is lowest — at apoapsis, or at high al
 
 ### Low-Thrust Transfers
 
-Electric propulsion (Chapter 6) produces tiny thrust (millinewtons to a few newtons) for months. The orbit then spirals gradually; the impulsive approximation no longer applies. For a slow spiral between circular orbits, the Δv approaches the *difference in circular speeds*: $\Delta v \approx v_{c1} - v_{c2}$ — larger than a Hohmann transfer (4.6 km/s from LEO to GEO instead of 3.9 km/s), but with propellant efficiency ten times higher, so far less propellant is used. The **Edelbaum equation** gives the optimal low-thrust transfer with a simultaneous plane change:
+Electric propulsion (Chapter 6) produces tiny thrust (millinewtons to a few newtons) for months. The orbit then spirals gradually; the impulsive approximation no longer applies. For a slow spiral between circular orbits, the Δv approaches the *difference in circular speeds*: $\Delta v \approx v_{c1} - v_{c2}$. This is larger than for a Hohmann transfer (4.6 km/s from LEO to GEO instead of 3.9 km/s). But the propellant efficiency is ten times higher, so far less propellant is used. The **Edelbaum equation** gives the optimal low-thrust transfer with a simultaneous plane change:
 
 $$\Delta v = \sqrt{v_1^2 + v_2^2 - 2v_1 v_2\cos\left(\tfrac{\pi}{2}\Delta i\right)}$$
 
@@ -220,7 +220,7 @@ To dock with the ISS, a visiting vehicle must arrive at the same place at the sa
 
 $$\ddot x - 3n^2 x - 2n\dot y = 0, \qquad \ddot y + 2n\dot x = 0, \qquad \ddot z + n^2 z = 0$$
 
-where $x$ is radial, $y$ along-track and $z$ cross-track. Their solutions produce counter-intuitive behaviour (@fig:cw): a thrust *forward* along the velocity raises the chaser, so it slows down and drops *behind*; a radial burn produces a closed loop with no net drift. Approaches are designed along the **V-bar** (target velocity vector) or **R-bar** (radial line), with "hold points", corridors and abort trajectories that are passively safe — that is, they never collide with the target if thrusters fail.
+where $x$ is radial, $y$ along-track and $z$ cross-track. Their solutions produce counter-intuitive behaviour (@fig:cw): a thrust *forward* along the velocity raises the chaser, so it slows down and drops *behind*; a radial burn produces a closed loop with no net drift. Approaches are designed along the **V-bar** (target velocity vector) or **R-bar** (radial line). They include "hold points", corridors and abort trajectories that are passively safe. That is, they never collide with the target if thrusters fail.
 
 ![Relative motion of a chaser near a target in a 400 km orbit, from the Clohessy–Wiltshire solutions. Each trajectory starts from a simple initial condition and is shown for two orbits.](figures/out/ch03_cw.svg){#fig:cw width=92%}
 
@@ -293,22 +293,22 @@ A **gravity assist** (or swing-by) uses a close flyby of a planet to change a sp
 
 $$\sin\frac{\delta}{2} = \frac{1}{1 + r_p v_\infty^2/\mu}$$
 
-but in the Sun's frame the planet's orbital velocity is added before and after, so the spacecraft's speed can increase (passing behind the planet) or decrease (passing in front). Gravity assists made the Voyager "Grand Tour" possible, sent Cassini to Saturn via Venus–Venus–Earth–Jupiter, slowed MESSENGER and BepiColombo enough to orbit Mercury, and are used by Parker Solar Probe (seven Venus flybys) to approach within 6.2 million km of the Sun. Flybys can be "powered" (with a burn at periapsis, exploiting the **Oberth effect**: a burn is more effective where the speed is highest).
+but in the Sun's frame the planet's orbital velocity is added before and after, so the spacecraft's speed can increase (passing behind the planet) or decrease (passing in front). Gravity assists made the Voyager "Grand Tour" possible and sent Cassini to Saturn via Venus–Venus–Earth–Jupiter. They slowed MESSENGER and BepiColombo enough to orbit Mercury. Parker Solar Probe uses them (seven Venus flybys) to approach within 6.2 million km of the Sun. Flybys can be "powered" (with a burn at periapsis, exploiting the **Oberth effect**: a burn is more effective where the speed is highest).
 
 ![Geometry of a gravity assist. Left: in the planet's frame the hyperbolic flyby rotates the excess velocity without changing its magnitude. Right: in the Sun's frame, adding the planet's orbital velocity shows a net gain in speed.](figures/out/ch03_gravity_assist.svg){#fig:gravityassist width=96%}
 
 ## Three-Body Dynamics and the Lagrange Points
 
-When two massive bodies (such as Sun–Earth or Earth–Moon) orbit each other, a third small body moves in the **circular restricted three-body problem (CR3BP)**. In a frame rotating with the two primaries there are five equilibrium points — the **Lagrange points** L1 to L5 (@fig:lagrange). L1, L2 and L3 lie on the line through the primaries and are unstable (like a ball on a saddle); L4 and L5 form equilateral triangles with the primaries and are stable when the mass ratio is small (Jupiter's Trojan asteroids gather there).
+When two massive bodies (such as Sun–Earth or Earth–Moon) orbit each other, a third small body moves in the **circular restricted three-body problem (CR3BP)**. In a frame rotating with the two primaries there are five equilibrium points — the **Lagrange points** L1 to L5 (@fig:lagrange). L1, L2 and L3 lie on the line through the primaries and are unstable (like a ball on a saddle). L4 and L5 form equilateral triangles with the primaries and are stable when the mass ratio is small. Jupiter's Trojan asteroids gather there.
 
 ![The Earth–Moon Lagrange points and contours of the Jacobi constant ("zero-velocity curves"), which bound the regions a spacecraft with a given energy can reach in the rotating frame.](figures/out/ch03_lagrange.svg){#fig:lagrange width=84%}
 
 Spacecraft cannot sit exactly at an unstable point, but they can fly periodic **halo** or **Lissajous orbits** around it with small station-keeping burns (a few m/s per year):
 
 - **Sun–Earth L1** (1.5 million km sunward) gives an uninterrupted view of the Sun and of the daylit Earth: SOHO, ACE, DSCOVR, Aditya-L1, SWFO-L1 and IMAP.
-- **Sun–Earth L2** (1.5 million km anti-sunward) keeps the Sun, Earth and Moon on one side, ideal for cold infrared and survey telescopes: WMAP, Planck, Herschel, Gaia, JWST, Euclid and the Nancy Grace Roman Space Telescope.
+- **Sun–Earth L2** (1.5 million km anti-sunward) keeps the Sun, Earth and Moon on one side. This is ideal for cold infrared and survey telescopes: WMAP, Planck, Herschel, Gaia, JWST, Euclid and the Nancy Grace Roman Space Telescope.
 - **Earth–Moon L1/L2** (about 61 000 km from the Moon) serve as relay and staging locations: China's Queqiao and Queqiao-2 relay satellites orbit near Earth–Moon L2 to support far-side landers.
-- **Near-rectilinear halo orbits (NRHO)** — a family of L2 halo orbits that pass close over the lunar poles — were tested by NASA's CAPSTONE CubeSat (2022) and were chosen for the planned Gateway station; **distant retrograde orbits (DROs)**, very stable orbits around the Moon, were flown by Orion on Artemis I.
+- **Near-rectilinear halo orbits (NRHO)** are a family of L2 halo orbits that pass close over the lunar poles. They were tested by NASA's CAPSTONE CubeSat (2022) and were chosen for the planned Gateway station. Orion flew **distant retrograde orbits (DROs)**, very stable orbits around the Moon, on Artemis I.
 
 The invariant manifolds of these orbits form low-energy "tubes" that connect them, enabling fuel-efficient transfers known as the **interplanetary superhighway**. The Genesis solar-wind sample-return mission and the GRAIL and CAPSTONE lunar missions used such low-energy trajectories.
 

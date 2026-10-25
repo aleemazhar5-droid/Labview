@@ -8,7 +8,7 @@ abstract: A spacecraft must know which way it is pointing and turn when needed, 
 
 ### What the ADCS Does
 
-**Attitude** is the orientation of the spacecraft in space. Almost every mission needs attitude control: cameras must point at their targets, antennas at the Earth, solar arrays at the Sun, radiators away from it, and thrusters along the desired Δv direction. The **attitude determination and control subsystem (ADCS)** — often combined with orbit control as **guidance, navigation and control (GNC)** — measures the attitude with sensors, compares it with the desired attitude, and applies torques with actuators in a feedback loop (@fig:adcsloop).
+**Attitude** is the orientation of the spacecraft in space. Almost every mission needs attitude control: cameras must point at their targets, antennas at the Earth, solar arrays at the Sun, radiators away from it, and thrusters along the desired Δv direction. The **attitude determination and control subsystem (ADCS)** is often combined with orbit control as **guidance, navigation and control (GNC)**. It measures the attitude with sensors and compares it with the desired attitude. It then applies torques with actuators in a feedback loop (@fig:adcsloop).
 
 ![The attitude control loop. Sensors feed an estimator (usually a Kalman filter); the controller compares estimated and commanded attitude and commands actuators to produce torques that act, together with disturbances, on the spacecraft dynamics.](figures/out/ch06_adcs_loop.svg){#fig:adcsloop width=96%}
 
@@ -19,7 +19,7 @@ Pointing requirements range enormously:
 - **Fine**: Earth-observation imagers, 0.01–0.02° (tens of arcseconds) with stability of a few µrad/s during imaging.
 - **Very fine**: space telescopes — Hubble holds its pointing to 0.007 arcsec (7 milliarcseconds) for hours; JWST about the same with a fine-steering mirror.
 
-Requirements distinguish **accuracy** (how close to the target direction), **knowledge** (how well the attitude is known after the fact), **stability** or **jitter** (how much it moves over a short time), and **agility** (how fast it can slew from target to target).
+Requirements distinguish **accuracy** (how close to the target direction) and **knowledge** (how well the attitude is known after the fact). They also distinguish **stability** or **jitter** (how much it moves over a short time), and **agility** (how fast it can slew from target to target).
 
 ### Stabilisation Methods
 
@@ -75,7 +75,7 @@ A **star tracker** is a small digital camera with a wide-angle lens (field of vi
 
 - **Reaction wheels** — flywheels driven by brushless motors; accelerating a wheel in one direction rotates the spacecraft in the other. They give smooth, precise, propellant-free control. Typical wheels provide 0.01–0.3 N·m of torque and store 0.01 N·m·s (CubeSat wheels) to 200 N·m·s. Four wheels in a skewed pyramid (@fig:wheels) provide full control with one redundant wheel.
 - **Momentum wheels** — biased wheels spinning at constant high speed for gyroscopic stiffness about one axis (classic GEO "momentum-bias" designs).
-- **Control moment gyroscopes (CMGs)** — constantly spinning wheels whose spin axis is tilted by a gimbal motor. The gyroscopic reaction produces torques hundreds of times larger than a reaction wheel of similar mass, enabling very agile spacecraft (WorldView, Pléiades Neo) and the attitude control of the ISS (four 4 760 N·m·s double-gimbal CMGs).
+- **Control moment gyroscopes (CMGs)** — constantly spinning wheels whose spin axis is tilted by a gimbal motor. The gyroscopic reaction produces torques hundreds of times larger than a reaction wheel of similar mass. This enables very agile spacecraft (WorldView, Pléiades Neo) and the attitude control of the ISS (four 4 760 N·m·s double-gimbal CMGs).
 - **Magnetorquers** — electromagnetic coils or rods that interact with Earth's field ($\mathbf T = \mathbf m \times \mathbf B$); used for momentum dumping and for CubeSat attitude control. They can only produce torque perpendicular to the local field.
 - **Thrusters** — produce large torques for slews, momentum dumping and control during orbit manoeuvres; necessary beyond Earth's magnetic field.
 
@@ -90,12 +90,12 @@ A **star tracker** is a small digital camera with a wide-angle lens (field of vi
 ::: warning
 **Failure lesson — when reaction wheels fail**
 
-Reaction wheels are a classic life-limiting item. NASA's Kepler planet-hunting telescope lost its second of four wheels in 2013 and could no longer point precisely; engineers invented the "K2" mission, balancing the spacecraft against solar radiation pressure, which continued to discover exoplanets for five more years. The Dawn asteroid mission lost two wheels and completed its mission using hydrazine thrusters and careful propellant management. Hubble has had several gyro failures and since 2024 operates in a one-gyro mode to preserve its remaining gyros. Lessons include bearing lubrication, cage instability, conservative speed limits, and designing control modes that work with fewer actuators.
+Reaction wheels are a classic life-limiting item. NASA's Kepler planet-hunting telescope lost its second of four wheels in 2013 and could no longer point precisely. Engineers invented the "K2" mission, balancing the spacecraft against solar radiation pressure. This mission continued to discover exoplanets for five more years. The Dawn asteroid mission lost two wheels and completed its mission using hydrazine thrusters and careful propellant management. Hubble has had several gyro failures and since 2024 operates in a one-gyro mode to preserve its remaining gyros. Lessons include bearing lubrication, cage instability, conservative speed limits, and designing control modes that work with fewer actuators.
 :::
 
 ### Control Laws and Modes
 
-Most attitude controllers are variants of **proportional–integral–derivative (PID)** control around each axis, designed with classical frequency-domain margins (typically ≥ 6 dB gain margin and ≥ 30° phase margin) and with filters to avoid exciting flexible modes of solar arrays and antennas. More advanced methods include **linear-quadratic regulators (LQR)**, **model predictive control (MPC)** for constrained slews, and **eigen-axis slews** that rotate about a single axis for time-optimal reorientation.
+Most attitude controllers are variants of **proportional–integral–derivative (PID)** control around each axis. They are designed with classical frequency-domain margins (typically ≥ 6 dB gain margin and ≥ 30° phase margin). They also use filters to avoid exciting flexible modes of solar arrays and antennas. More advanced methods include **linear-quadratic regulators (LQR)**, **model predictive control (MPC)** for constrained slews, and **eigen-axis slews** that rotate about a single axis for time-optimal reorientation.
 
 A spacecraft has several **ADCS modes**: rate damping after separation (often magnetic "B-dot" control on small satellites), Sun acquisition, safe mode, nominal pointing (nadir, target or inertial), slew, orbit-control (thrusting) mode, and momentum-dumping mode. Mode transitions are managed by the flight software and by the fault-protection system.
 
@@ -138,7 +138,7 @@ where $v_e$ is the effective exhaust velocity. Through the rocket equation, $I_{
 
 ### Feed Systems and Propellant Management
 
-Propellant can be fed by **blowdown** (pressurant in the same tank; pressure and thrust fall as the tank empties — simple, typical of LEO satellites) or **pressure regulation** (constant pressure from a separate high-pressure tank — needed for biprop engines with tight mixture-ratio control). Large launch-vehicle stages use pumps (Chapter 35).
+Propellant can be fed by **blowdown** or **pressure regulation**. With blowdown, the pressurant is in the same tank, and pressure and thrust fall as the tank empties; this is simple and typical of LEO satellites. Pressure regulation gives constant pressure from a separate high-pressure tank — needed for biprop engines with tight mixture-ratio control. Large launch-vehicle stages use pumps (Chapter 35).
 
 In microgravity, liquid does not settle at the tank outlet. **Propellant management devices (PMDs)** — surface-tension vanes, sponges, galleries and screens — or **elastomeric diaphragms and bladders** keep gas-free liquid at the outlet. Alternatively, a small "ullage" burn settles the propellant before a main burn. **Propellant gauging** is difficult in weightlessness and uses bookkeeping (counting thruster pulses), pressure–volume–temperature methods, or the thermal response of the tank to heating.
 
@@ -152,7 +152,7 @@ so a 5 kW Hall thruster at 60 % efficiency and 1 800 s produces about 0.34 N. Th
 
 - **Electrothermal** — resistojets and arcjets heat propellant electrically (Isp 300–800 s); used for GEO station-keeping in the 1990s.
 - **Gridded ion engines** — xenon is ionised in a discharge chamber and accelerated through electrically charged grids; a neutraliser emits electrons to keep the spacecraft neutral. Isp 2 500–4 500 s. Flown on Deep Space 1, Hayabusa 1 and 2, Dawn (three NSTAR engines, total Δv ≈ 11 km/s — a record), BepiColombo (four T6 engines), DART (NEXT-C) and Boeing 702 GEO satellites (XIPS).
-- **Hall-effect thrusters** — a radial magnetic field traps electrons in an annular channel, creating an axial electric field that accelerates ions. Isp 1 200–2 800 s, higher thrust per kW than ion engines. They are by far the most widely flown EP technology: Starlink uses krypton and (V2 Mini onwards) argon Hall thrusters on every satellite; the 6 kW-class units power Psyche (SPT-140) and all-electric GEO satellites; 12 kW AEPS thrusters were developed for the Gateway Power and Propulsion Element.
+- **Hall-effect thrusters** — a radial magnetic field traps electrons in an annular channel, creating an axial electric field that accelerates ions. Isp 1 200–2 800 s, higher thrust per kW than ion engines. They are by far the most widely flown EP technology. Starlink uses krypton and (V2 Mini onwards) argon Hall thrusters on every satellite. The 6 kW-class units power Psyche (SPT-140) and all-electric GEO satellites, and 12 kW AEPS thrusters were developed for the Gateway Power and Propulsion Element.
 - **Electrospray and field-emission (FEEP)** thrusters accelerate ions or charged droplets from liquid metals or ionic liquids, giving micronewton thrust for precise control (LISA Pathfinder) and compact CubeSat propulsion.
 - **Pulsed plasma thrusters** ablate a Teflon block with an electric arc — simple, used on small satellites.
 - **Advanced concepts** (VASIMR, magnetoplasmadynamic thrusters, nuclear electric propulsion) are covered in Chapter 42.
@@ -171,17 +171,17 @@ so a 5 kW Hall thruster at 60 % efficiency and 1 800 s produces about 0.34 N. Th
 
 ### Choosing a Propulsion System
 
-The choice depends on the Δv required, the time available, the power available, cost and safety. Rules of thumb: small LEO satellites needing < 100 m/s use cold gas, green monopropellant or electric propulsion; GEO satellites increasingly use all-electric or hybrid architectures; deep-space missions with large Δv use ion or Hall thrusters if solar power is sufficient; planetary orbit insertion and landing need chemical thrust. Mega-constellations have made Hall thrusters a mass-produced commodity: SpaceX alone has built more electric thrusters than the rest of the world combined.
+The choice depends on the Δv required, the time available, the power available, cost and safety. Rules of thumb: small LEO satellites needing < 100 m/s use cold gas, green monopropellant or electric propulsion, and GEO satellites increasingly use all-electric or hybrid architectures. Deep-space missions with large Δv use ion or Hall thrusters if solar power is sufficient. Planetary orbit insertion and landing need chemical thrust. Mega-constellations have made Hall thrusters a mass-produced commodity: SpaceX alone has built more electric thrusters than the rest of the world combined.
 
 ## Command and Data Handling
 
 ### Functions and Architecture
 
-The **command and data handling (C&DH)** subsystem — **on-board data handling (OBDH)** in European terminology — is the spacecraft's nervous system. It receives and validates commands, distributes them to subsystems, runs the flight software, keeps time, collects housekeeping telemetry and payload data, stores data in mass memory, formats it for downlink, and supervises the health of the spacecraft (@fig:cdh).
+The **command and data handling (C&DH)** subsystem — **on-board data handling (OBDH)** in European terminology — is the spacecraft's nervous system. It receives and validates commands, distributes them to subsystems, runs the flight software and keeps time. It collects housekeeping telemetry and payload data, stores data in mass memory and formats it for downlink. It also supervises the health of the spacecraft (@fig:cdh).
 
 ![A typical C&DH architecture: a redundant onboard computer connected through a platform bus to remote interface units and GNC equipment, a high-rate network to the payload and mass memory, and a link to the TT&C transponders.](figures/out/ch06_cdh.svg){#fig:cdh width=96%}
 
-Architectures may be **centralised** (one computer does everything — common on small satellites), **federated** (separate computers for GNC, payload and platform), or **distributed/integrated modular avionics** (partitioned software on shared processors connected by deterministic networks, now common on human spacecraft and large platforms).
+Architectures may be **centralised** (one computer does everything — common on small satellites) or **federated** (separate computers for GNC, payload and platform). They may also be **distributed/integrated modular avionics**, with partitioned software on shared processors connected by deterministic networks. This is now common on human spacecraft and large platforms.
 
 ### Data Buses and Networks
 
@@ -203,7 +203,7 @@ Spacecraft computers lag their terrestrial counterparts by 10–20 years in perf
 
 ![Approximate integer performance of spaceflight processors over time. Commercial processors with radiation mitigation (e.g., the Snapdragon on the Ingenuity Mars helicopter) offer orders-of-magnitude more performance than rad-hard parts but less proven reliability.](figures/out/ch06_processors.svg){#fig:processors width=90%}
 
-A widening alternative is to fly **commercial (COTS)** processors, FPGAs and GPUs with **mitigation**: screening and radiation testing, triple modular redundancy in FPGA logic, watchdogs, error-correcting memory, current-limited power with automatic latch-up recovery, and frequent memory scrubbing. Short-duration LEO missions, mega-constellations and technology demonstrations increasingly use this approach — the Ingenuity helicopter on Mars ran on a Qualcomm Snapdragon 801 smartphone processor for nearly three years. Reconfigurable **FPGAs** (e.g., AMD/Xilinx Kintex UltraScale and Versal space-grade parts, Microchip RTG4 and RT PolarFire) process high-rate payload data and run neural networks (Chapter 45).
+A growing alternative is to fly **commercial (COTS)** processors, FPGAs and GPUs with **mitigation**. This includes screening and radiation testing, triple modular redundancy in FPGA logic, watchdogs and error-correcting memory. It also includes current-limited power with automatic latch-up recovery, and frequent memory scrubbing. Short-duration LEO missions, mega-constellations and technology demonstrations increasingly use this approach — the Ingenuity helicopter on Mars ran on a Qualcomm Snapdragon 801 smartphone processor for nearly three years. Reconfigurable **FPGAs** (e.g., AMD/Xilinx Kintex UltraScale and Versal space-grade parts, Microchip RTG4 and RT PolarFire) process high-rate payload data and run neural networks (Chapter 45).
 
 **Memory** must cope with single-event upsets. Program memory is often in radiation-tolerant PROM, MRAM or protected Flash; working memory in SDRAM with **error detection and correction (EDAC)** that corrects single-bit errors and detects double-bit errors, continuously **scrubbed** in the background. Mass memories use NAND Flash with file systems (CCSDS File Delivery Protocol for ground transfer) and capacities from gigabits on CubeSats to tens of terabits on Earth-observation satellites.
 
@@ -215,25 +215,25 @@ The C&DH maintains **onboard time**, synchronised to UTC or GPS time via GNSS or
 
 ### Architecture
 
-Flight software (FSW) has grown from a few kilobytes on early spacecraft to millions of lines of code (Orion ≈ 2 million; the F-35 fighter about 8 million; Starlink satellites run Linux). Good FSW is layered (@fig:fswlayers): a hardware abstraction layer and drivers; a **real-time operating system** (RTEMS, VxWorks, FreeRTOS, or Linux with real-time extensions); a reusable framework — such as NASA's **core Flight System (cFS)**, JPL's **F Prime** (used on Ingenuity and many CubeSats) or ESA's component-based frameworks — providing a software bus, time, event logging and table services; and mission applications on top.
+Flight software (FSW) has grown from a few kilobytes on early spacecraft to millions of lines of code (Orion ≈ 2 million; the F-35 fighter about 8 million; Starlink satellites run Linux). Good FSW is layered (@fig:fswlayers). It has a hardware abstraction layer and drivers, a **real-time operating system** (RTEMS, VxWorks, FreeRTOS, or Linux with real-time extensions), a reusable framework, and mission applications on top. The framework provides a software bus, time, event logging and table services. Examples are NASA's **core Flight System (cFS)**, JPL's **F Prime** (used on Ingenuity and many CubeSats) and ESA's component-based frameworks.
 
 ![Layered flight-software architecture. A framework such as NASA's cFS or JPL's F Prime separates mission applications from the operating system and hardware.](figures/out/ch06_fsw_layers.svg){#fig:fswlayers width=94%}
 
 ### Development and Assurance
 
-Because flight software controls the whole spacecraft and can be the cause of mission loss, it is developed under strict processes: coding standards (e.g., MISRA C, JPL's "Power of Ten" rules: no recursion, no dynamic memory allocation after initialisation, bounded loops, assertions), static analysis, unit and integration tests, hardware-in-the-loop testing on flight-like testbeds ("flatsats"), and **independent verification and validation (IV&V)** for high-criticality software. Most modern spacecraft can be **reprogrammed in flight** — a capability that has rescued many missions.
+Flight software controls the whole spacecraft and can be the cause of mission loss, so it is developed under strict processes. These include coding standards such as MISRA C and JPL's "Power of Ten" rules (no recursion, no dynamic memory allocation after initialisation, bounded loops, assertions). They also include static analysis, unit and integration tests, hardware-in-the-loop testing on flight-like testbeds ("flatsats"), and **independent verification and validation (IV&V)** for high-criticality software. Most modern spacecraft can be **reprogrammed in flight** — a capability that has rescued many missions.
 
 ::: warning
 **Failure lesson — software can end a mission in seconds**
 
-On its maiden flight in 1996, Ariane 5 broke up 37 seconds after lift-off because inertial-reference software reused from Ariane 4 converted a 64-bit floating-point horizontal velocity into a 16-bit integer, causing an overflow that shut down both (identical) inertial units. In 2016 the Japanese X-ray observatory Hitomi was destroyed when an incorrect parameter uploaded to its attitude-control software, combined with a star-tracker anomaly, caused it to spin up until it broke apart. In 2023 the ispace HAKUTO-R lander crashed on the Moon after its software rejected valid altimeter data as faulty while passing over a crater rim. Each case shows the importance of verifying software against realistic, end-to-end scenarios — including "off-nominal" ones.
+On its maiden flight in 1996, Ariane 5 broke up 37 seconds after lift-off. The cause was inertial-reference software reused from Ariane 4, which converted a 64-bit floating-point horizontal velocity into a 16-bit integer. This caused an overflow that shut down both (identical) inertial units. In 2016 the Japanese X-ray observatory Hitomi was destroyed when an incorrect parameter uploaded to its attitude-control software, combined with a star-tracker anomaly, caused it to spin up until it broke apart. In 2023 the ispace HAKUTO-R lander crashed on the Moon after its software rejected valid altimeter data as faulty while passing over a crater rim. Each case shows the importance of verifying software against realistic, end-to-end scenarios — including "off-nominal" ones.
 :::
 
 ### Autonomy and Fault Protection
 
 Spacecraft are out of contact much of the time — a LEO satellite sees a given ground station for only about 10 minutes per pass, and a Mars rover's commands take 5–22 minutes to arrive. They therefore need **autonomy**: the ability to execute plans, react to events and protect themselves.
 
-**Fault detection, isolation and recovery (FDIR)** — called fault protection at NASA — is organised hierarchically (@fig:fdir). Faults are handled at the lowest level possible: a memory bit-flip is corrected by EDAC, a failed unit is replaced by its redundant twin, a subsystem anomaly triggers a mode change, and if all else fails the spacecraft enters **safe mode** — pointing its solar arrays at the Sun, switching off non-essential loads, and waiting for instructions from the ground. Safe modes must be simple, robust, and independent of the failed hardware (many spacecraft have a separate "survival" computer or hardware-implemented safe mode).
+**Fault detection, isolation and recovery (FDIR)** — called fault protection at NASA — is organised hierarchically (@fig:fdir). Faults are handled at the lowest level possible. A memory bit-flip is corrected by EDAC, a failed unit is replaced by its redundant twin, and a subsystem anomaly triggers a mode change. If all else fails, the spacecraft enters **safe mode** — pointing its solar arrays at the Sun, switching off non-essential loads, and waiting for instructions from the ground. Safe modes must be simple, robust, and independent of the failed hardware (many spacecraft have a separate "survival" computer or hardware-implemented safe mode).
 
 ![The hierarchy of fault detection, isolation and recovery. Fast local responses handle simple faults; system-level safe mode and ground intervention handle complex ones.](figures/out/ch06_fdir.svg){#fig:fdir width=82%}
 
@@ -242,8 +242,8 @@ Higher levels of autonomy — onboard planning and scheduling, autonomous naviga
 ::: key
 **Key takeaways**
 
-- The ADCS determines and controls attitude with sensors (star trackers, gyros, Sun sensors, magnetometers, GNSS) and actuators (reaction wheels, CMGs, magnetorquers, thrusters) in a Kalman-filter-based feedback loop; momentum must be managed against persistent disturbance torques.
-- Propulsion is characterised by thrust and Isp: chemical systems (cold gas 70 s, hydrazine 225 s, biprop 320 s) give high thrust; electric propulsion (Hall 1 200–2 800 s, ion 2 500–4 500 s) gives high efficiency at low thrust and is now standard on constellations and many GEO and deep-space missions.
+- The ADCS determines and controls attitude with sensors (star trackers, gyros, Sun sensors, magnetometers, GNSS) and actuators (reaction wheels, CMGs, magnetorquers, thrusters) in a Kalman-filter-based feedback loop. Momentum must be managed against persistent disturbance torques.
+- Propulsion is characterised by thrust and Isp. Chemical systems (cold gas 70 s, hydrazine 225 s, biprop 320 s) give high thrust. Electric propulsion (Hall 1 200–2 800 s, ion 2 500–4 500 s) gives high efficiency at low thrust and is now standard on constellations and many GEO and deep-space missions.
 - Microgravity requires propellant management devices; feed systems are blowdown or pressure-regulated.
 - C&DH uses radiation-hardened or mitigated commercial processors, EDAC-protected memory and deterministic buses (1553, CAN, SpaceWire, TSN); rad-hard processors lag commercial ones by a decade or more.
 - Flight software is layered (RTOS + framework + applications), rigorously verified and reprogrammable; hierarchical FDIR and safe modes protect the spacecraft between ground contacts.

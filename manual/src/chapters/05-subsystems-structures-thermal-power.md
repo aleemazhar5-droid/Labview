@@ -29,7 +29,7 @@ The structure carries all the spacecraft's equipment through launch, holds instr
 
 Structural design is driven by:
 
-- **Strength** — the structure must not yield or break under launch loads multiplied by **factors of safety** (typically 1.1–1.25 against yield and 1.25–1.4 against ultimate for flight hardware that is tested; higher for untested designs or pressure vessels).
+- **Strength** — the structure must not yield or break under launch loads multiplied by **factors of safety**. For flight hardware that is tested, these are typically 1.1–1.25 against yield and 1.25–1.4 against ultimate. They are higher for untested designs or pressure vessels.
 - **Stiffness** — the fundamental natural frequencies must exceed launcher requirements (e.g., > 20 Hz axial and > 10 Hz lateral for many launchers) to avoid dynamic coupling. Stiffness, not strength, usually sizes the structure.
 - **Stability** — dimensional stability under temperature changes and moisture release, which is critical for telescopes and antennas (alignment tolerances of micrometres).
 - **Mass** — every kilogram costs launch capacity; structures are typically 15–25 % of dry mass.
@@ -45,7 +45,7 @@ Structural design is driven by:
 
 ### Materials
 
-Aluminium alloys remain the workhorse of spacecraft structures — cheap, easy to machine and well characterised. Titanium is used for highly loaded fittings and for its low thermal conductivity; carbon-fibre reinforced polymers (CFRP) give the highest stiffness per unit mass and near-zero thermal expansion, ideal for optical benches and antenna reflectors; beryllium offers extreme stiffness for lightweight mirrors (JWST); Invar and Super-Invar give dimensional stability (@fig:materials). Additive manufacturing (3-D printing) of titanium, aluminium and polymer parts is now routine, allowing topology-optimised brackets that are 30–60 % lighter than machined parts (Chapter 52).
+Aluminium alloys remain the workhorse of spacecraft structures — cheap, easy to machine and well characterised. Titanium is used for highly loaded fittings and for its low thermal conductivity. Carbon-fibre reinforced polymers (CFRP) give the highest stiffness per unit mass and near-zero thermal expansion, ideal for optical benches and antenna reflectors. Beryllium offers extreme stiffness for lightweight mirrors (JWST), and Invar and Super-Invar give dimensional stability (@fig:materials). Additive manufacturing (3-D printing) of titanium, aluminium and polymer parts is now routine, allowing topology-optimised brackets that are 30–60 % lighter than machined parts (Chapter 52).
 
 ![Specific stiffness and specific strength of common spacecraft structural materials. Composites and beryllium dominate where stiffness per kilogram matters most.](figures/out/ch05_materials.svg){#fig:materials width=88%}
 
@@ -72,7 +72,7 @@ $$MS = \frac{\text{allowable stress}}{\text{FS} \times \text{applied stress}} - 
 
 ### Why Temperature Matters
 
-Each component has an **operational temperature range** and a wider **survival range** (@tbl:temps). The thermal control subsystem (TCS) must keep every unit within these limits during all mission phases — launch, eclipse, hot and cold attitudes, safe mode, and end of life — despite the large external variations described in Chapter 2.
+Each component has an **operational temperature range** and a wider **survival range** (@tbl:temps). The thermal control subsystem (TCS) must keep every unit within these limits during all mission phases, despite the large external variations described in Chapter 2. These phases are launch, eclipse, hot and cold attitudes, safe mode, and end of life.
 
 Table: Typical allowed temperature ranges of spacecraft components. {#tbl:temps}
 
@@ -91,7 +91,7 @@ Table: Typical allowed temperature ranges of spacecraft components. {#tbl:temps}
 
 Most thermal control is **passive** — it uses no moving parts or power:
 
-- **Surface finishes** set the balance between absorbed sunlight and emitted infrared (the α/ε ratio, Chapter 2): white paints and optical solar reflectors (OSRs — silvered quartz tiles, α ≈ 0.08, ε ≈ 0.8) on radiators; low-emittance gold or aluminium surfaces where heat must be retained.
+- **Surface finishes** set the balance between absorbed sunlight and emitted infrared (the α/ε ratio, Chapter 2). Radiators use white paints and optical solar reflectors (OSRs — silvered quartz tiles, α ≈ 0.08, ε ≈ 0.8). Low-emittance gold or aluminium surfaces are used where heat must be retained.
 - **Multi-layer insulation (MLI)** blankets (@fig:mli) are the "thermos flask" of spacecraft: many thin layers of aluminised polymer film separated by netting, each layer radiating only to its neighbours. MLI reduces radiative heat flow by a factor of 30–100 compared with a bare surface. The gold-coloured "foil" seen on most spacecraft is the outer Kapton layer of MLI.
 - **Radiators** — surfaces with high ε and low α, oriented away from the Sun (and often Earth), that reject waste heat to space (@fig:radiator). The required area is $A = Q / (\varepsilon\sigma(T^4 - T_{sink}^4))$.
 - **Conductive paths** — doublers, thermal straps, interface fillers and isolators control where heat flows.
@@ -131,7 +131,7 @@ for each node $i$, over hot-case and cold-case scenarios (combinations of end-of
 
 ### Power System Architecture
 
-The electrical power subsystem (EPS) generates, stores, conditions and distributes power (@fig:powerarch). A typical small satellite needs 50–500 W; a large Earth-observation satellite 2–5 kW; a modern high-throughput GEO communications satellite 15–25 kW; the ISS about 120 kW (after the iROSA upgrade, up to 215 kW of array capacity).
+The electrical power subsystem (EPS) generates, stores, conditions and distributes power (@fig:powerarch). A typical small satellite needs 50–500 W, and a large Earth-observation satellite 2–5 kW. A modern high-throughput GEO communications satellite needs 15–25 kW. The ISS needs about 120 kW (after the iROSA upgrade, up to 215 kW of array capacity).
 
 ![Architecture of a spacecraft electrical power system. Solar array power is regulated onto a main bus that charges the battery and supplies the loads through a protected distribution unit and point-of-load converters.](figures/out/ch05_power_arch.svg){#fig:powerarch width=96%}
 
@@ -140,11 +140,11 @@ Two families of regulation exist:
 - **Direct energy transfer (DET)** — the array is connected directly (through shunt regulators) to the bus. Simple, efficient and common on GEO platforms (sequential switching shunt regulators, S3R) with regulated 50 V or 100 V buses.
 - **Peak power tracking (MPPT)** — a DC/DC converter continuously adjusts the array operating point to its maximum power point (@fig:iv). This extracts 10–25 % more power when the array is cold or illuminated at varying angles — common in LEO and on CubeSats.
 
-Buses may be **regulated** (fixed voltage) or **unregulated** (voltage follows battery state of charge, typically 22–36 V). Larger spacecraft use higher voltages (100 V on GEO platforms, 120–160 V on the ISS) to reduce current and harness mass; the Lunar Gateway's Power and Propulsion Element was designed for 120 V to feed 50 kW-class Hall thrusters.
+Buses may be **regulated** (fixed voltage) or **unregulated** (voltage follows battery state of charge, typically 22–36 V). Larger spacecraft use higher voltages (100 V on GEO platforms, 120–160 V on the ISS) to reduce current and harness mass. The Lunar Gateway's Power and Propulsion Element was designed for 120 V to feed 50 kW-class Hall thrusters.
 
 ### Solar Arrays
 
-Photovoltaic **solar cells** convert sunlight into electricity. Early satellites used silicon cells of about 10 % efficiency; modern space cells are **multi-junction** gallium-arsenide-based devices stacking three or four semiconductor layers, each absorbing a different part of the spectrum, reaching **30–33 %** efficiency at beginning of life under the space (AM0) spectrum (@fig:solareff). Cost-sensitive mega-constellations often use silicon or other lower-cost cells instead.
+Photovoltaic **solar cells** convert sunlight into electricity. Early satellites used silicon cells of about 10 % efficiency. Modern space cells are **multi-junction** gallium-arsenide-based devices that stack three or four semiconductor layers, each absorbing a different part of the spectrum. They reach **30–33 %** efficiency at beginning of life under the space (AM0) spectrum (@fig:solareff). Cost-sensitive mega-constellations often use silicon or other lower-cost cells instead.
 
 ![Evolution of the efficiency of flight-qualified space solar cells. Multi-junction III–V cells now exceed 30 %.](figures/out/ch05_solar_eff.svg){#fig:solareff width=86%}
 
@@ -154,7 +154,7 @@ Array output at end of life (EOL) is estimated as
 
 $$P_{EOL} = S\,\eta_{cell}\,A_{cells}\,\cos\theta\;\cdot\;F_{packing}\,F_{temp}\,F_{assembly}\,(1 - d)^{L}$$
 
-where $\theta$ is the Sun incidence angle, $F$ terms account for packing factor (≈ 0.85–0.9), temperature and assembly losses, and $d$ is the annual degradation from radiation, UV and micrometeoroids (typically 1–3 % per year in LEO; more in MEO). Arrays are sized for EOL conditions at the worst season (aphelion in July: 1 316 W/m²).
+where $\theta$ is the Sun incidence angle, and $F$ terms account for packing factor (≈ 0.85–0.9), temperature and assembly losses. The term $d$ is the annual degradation from radiation, UV and micrometeoroids (typically 1–3 % per year in LEO; more in MEO). Arrays are sized for EOL conditions at the worst season (aphelion in July: 1 316 W/m²).
 
 **Array types:**
 
@@ -175,7 +175,7 @@ Batteries supply power during eclipses, launch, peak loads and emergencies. **Li
 
 ![Specific energy and energy density of space battery chemistries. Li-ion cells made rechargeable storage several times lighter than nickel-based batteries.](figures/out/ch05_batteries.svg){#fig:batteries width=86%}
 
-Battery life depends strongly on the **depth of discharge (DoD)** in each cycle (@fig:dod). A LEO satellite cycles about 5 500 times per year, so its batteries are typically limited to 15–30 % DoD; a GEO satellite cycles only 90 times per year (during two eclipse seasons) and can use 60–80 % DoD. Battery capacity is sized as
+Battery life depends strongly on the **depth of discharge (DoD)** in each cycle (@fig:dod). A LEO satellite cycles about 5 500 times per year, so its batteries are typically limited to 15–30 % DoD. A GEO satellite cycles only 90 times per year (during two eclipse seasons) and can use 60–80 % DoD. Battery capacity is sized as
 
 $$C = \frac{P_{eclipse}\;t_{eclipse}}{\text{DoD}\;\eta_{discharge}\;N_{strings,\,usable}/N_{strings}}$$
 
@@ -190,7 +190,7 @@ A satellite in a 600 km orbit (period 96.7 min, maximum eclipse 35.5 min) needs 
 
 *Battery:* energy in eclipse = 400 W × 35.5/60 h = 237 Wh. With 25 % DoD and 95 % discharge efficiency, plus one failed string out of five: $C = 237/(0.25\times0.95\times0.8) = 1\,250$ Wh — about 7 kg of Li-ion cells at 180 Wh/kg cell level.
 
-*Array:* in sunlight (61.2 min) the array must supply the load and recharge 237 Wh / (charge efficiency 0.9) = 263 Wh, so it needs $400 + 263/(61.2/60) = 658$ W at EOL. With 30 % cells, a packing factor of 0.88, 0.85 for temperature and other losses, 10 % degradation over 7 years and an average cosine loss of 0.9, each square metre gives $1\,361\times0.30\times0.88\times0.85\times0.9\times0.9 = 247$ W, so about **2.7 m²** of array is needed, plus margin.
+*Array:* in sunlight (61.2 min) the array must supply the load and recharge 237 Wh / (charge efficiency 0.9) = 263 Wh, so it needs $400 + 263/(61.2/60) = 658$ W at EOL. Assume 30 % cells, a packing factor of 0.88, 0.85 for temperature and other losses, 10 % degradation over 7 years and an average cosine loss of 0.9. Then each square metre gives $1\,361\times0.30\times0.88\times0.85\times0.9\times0.9 = 247$ W. So about **2.7 m²** of array is needed, plus margin.
 :::
 
 ### Radioisotope Power
@@ -201,7 +201,7 @@ Beyond Jupiter, in permanent shadow, or on planetary surfaces with long nights a
 
 ![The Multi-Mission Radioisotope Thermoelectric Generator (MMRTG) for the Mars 2020 Perseverance rover during testing at Idaho National Laboratory.](figures/photos/ch05_mmrtg.jpg){#fig:mmrtgphoto width=50%}
 
-Smaller **radioisotope heater units (RHUs)**, each producing about 1 W of heat from 2.7 g of PuO₂, keep components warm on many missions (e.g., Mars rovers Sojourner–Opportunity, Chang'e 3/4 landers, which used Chinese-made RHUs). Russia and China use Pu-238 and Po-210 heaters. Future systems aim at higher efficiency: Stirling convertors (≈ 25–30 %), the next-generation RTG with skutterudite couples, and americium-241 RTGs under development in Europe. For high power, **fission reactors** — such as NASA's Kilopower/KRUSTY demonstration (2018) and the Fission Surface Power project targeting a lunar reactor of at least 40 kW (and, under 2025 direction, 100 kW-class) by about 2030 — are being developed for lunar bases and nuclear electric propulsion (Chapter 42).
+Smaller **radioisotope heater units (RHUs)**, each producing about 1 W of heat from 2.7 g of PuO₂, keep components warm on many missions (e.g., Mars rovers Sojourner–Opportunity, Chang'e 3/4 landers, which used Chinese-made RHUs). Russia and China use Pu-238 and Po-210 heaters. Future systems aim at higher efficiency: Stirling convertors (≈ 25–30 %), the next-generation RTG with skutterudite couples, and americium-241 RTGs under development in Europe. For high power, **fission reactors** are being developed for lunar bases and nuclear electric propulsion (Chapter 42). Examples are NASA's Kilopower/KRUSTY demonstration (2018) and the Fission Surface Power project. That project targets a lunar reactor of at least 40 kW (and, under 2025 direction, 100 kW-class) by about 2030.
 
 ### Power Distribution and Protection
 
@@ -209,7 +209,7 @@ The **power distribution unit (PDU)** switches power to each load through **latc
 
 ## Mechanisms
 
-Mechanisms are among the most failure-prone items on spacecraft because they must work after launch vibration, in vacuum and over temperature extremes, often after years of storage — and many can be tested only a few times on the ground. The main families are summarised in @fig:mechanisms.
+Mechanisms are among the most failure-prone items on spacecraft. They must work after launch vibration, in vacuum and over temperature extremes, often after years of storage. And many can be tested only a few times on the ground. The main families are summarised in @fig:mechanisms.
 
 ![Families of spacecraft mechanisms and typical examples.](figures/out/ch05_mechanisms.svg){#fig:mechanisms width=98%}
 
@@ -219,12 +219,12 @@ Mechanisms are among the most failure-prone items on spacecraft because they mus
 - **Separation systems** — clamp bands, motorised Lightband rings and CubeSat deployers (e.g., the standard 3U/6U/12U deployers) separate the spacecraft from the launcher.
 - **Precision mechanisms** — hexapods, focus and filter mechanisms, mirror actuators (JWST has 132 actuators to align its 18 primary mirror segments to tens of nanometres).
 
-Design rules for reliable mechanisms include: a **torque margin** of at least 2× (ECSS-E-ST-33-01C requires the motorisation torque to exceed twice the sum of resistive torques plus inertia terms, with higher factors early in design), redundant springs or motor windings, avoidance of cold welding by dissimilar materials and coatings, life testing to several times the required number of cycles, and careful "test as you fly" deployment testing with gravity compensation.
+Design rules for reliable mechanisms include a **torque margin** of at least 2×. ECSS-E-ST-33-01C requires the motorisation torque to exceed twice the sum of resistive torques plus inertia terms, with higher factors early in design. Other rules are redundant springs or motor windings, and avoidance of cold welding by dissimilar materials and coatings. The rules also call for life testing to several times the required number of cycles, and careful "test as you fly" deployment testing with gravity compensation.
 
 ::: warning
 **Failure lesson — Galileo's high-gain antenna (1991)**
 
-NASA's Galileo Jupiter probe carried a 4.8 m umbrella-like high-gain antenna. When commanded to open in April 1991, three of its 18 ribs stuck, probably because the lubricant on the rib restraint pins had been lost during repeated truck transports while the launch was delayed after the Challenger accident. Engineers could never free it. Through heroic software and ground-station upgrades — new data compression and coding, arraying of DSN antennas — the mission still returned about 70 % of its science objectives using the low-gain antenna at about 160 bit/s instead of 134 kbit/s. Lessons include lubricant life, the effect of ground handling, and the value of in-flight reprogrammability.
+NASA's Galileo Jupiter probe carried a 4.8 m umbrella-like high-gain antenna. When commanded to open in April 1991, three of its 18 ribs stuck. This was probably because the lubricant on the rib restraint pins had been lost during repeated truck transports, while the launch was delayed after the Challenger accident. Engineers could never free it. Through heroic software and ground-station upgrades — new data compression and coding, arraying of DSN antennas — the mission still returned about 70 % of its science objectives. It used the low-gain antenna at about 160 bit/s instead of 134 kbit/s. Lessons include lubricant life, the effect of ground handling, and the value of in-flight reprogrammability.
 :::
 
 ## Integrated Design: Example Bus

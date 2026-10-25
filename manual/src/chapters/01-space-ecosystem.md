@@ -8,13 +8,13 @@ abstract: Space is not one place or one industry. It is a layered environment th
 
 There is no physical surface where the atmosphere stops and space starts. Air simply becomes thinner with height: at 5.5 km half of the atmosphere's mass is below you, at 16 km about 90 %, and at 50 km more than 99.9 %. Engineers therefore use *functional* boundaries — heights at which the physics that governs a vehicle changes.
 
-The best-known boundary is the **Kármán line** at **100 km**. It is named after Theodore von Kármán, who noticed that an aircraft trying to fly at about this height would need to travel so fast to generate enough lift that it would already be close to orbital speed. Above it, wings are useless; a vehicle must either follow a ballistic path or be in orbit. The Fédération Aéronautique Internationale (FAI) uses 100 km for astronautics records. The United States Air Force, NASA and the US Federal Aviation Administration award astronaut wings above **50 miles (80.5 km)**, and some scientists argue that 80 km is physically better justified, because satellites with very low perigees can briefly dip to about 80–90 km without immediately re-entering.
+The best-known boundary is the **Kármán line** at **100 km**. It is named after Theodore von Kármán. He noticed that an aircraft trying to fly at about this height would need to travel very fast to generate enough lift. In fact, it would already be close to orbital speed. Above it, wings are useless; a vehicle must either follow a ballistic path or be in orbit. The Fédération Aéronautique Internationale (FAI) uses 100 km for astronautics records. The United States Air Force, NASA and the US Federal Aviation Administration award astronaut wings above **50 miles (80.5 km)**. Some scientists argue that 80 km is physically better justified. This is because satellites with very low perigees can briefly dip to about 80–90 km without immediately re-entering.
 
 Neither number is a legal border. International law has never defined where national airspace ends and outer space begins. In practice, no satellite can stay in orbit for long below about 160 km, because atmospheric drag removes its energy within days.
 
 ![The regimes of near-Earth and cislunar space shown on a logarithmic distance scale. Each order of magnitude in altitude corresponds to a different class of vehicle and a different engineering problem: aerodynamics and buoyancy below 50 km, ballistic flight up to a few hundred kilometres, orbital mechanics beyond, and interplanetary trajectories past the Moon.](figures/out/ch01_regimes.svg){#fig:regimes width=96%}
 
-@fig:regimes and @tbl:regimes summarise the regimes used throughout this manual. Moving outward, each regime adds new challenges: lower air density first removes lift and cooling, then oxygen for air-breathing engines, then protection from radiation and debris; finally distance itself becomes the problem, delaying radio signals by seconds, minutes or hours.
+@fig:regimes and @tbl:regimes summarise the regimes used throughout this manual. Moving outward, each regime adds new challenges. Lower air density first removes lift and cooling, then oxygen for air-breathing engines, then protection from radiation and debris. Finally, distance itself becomes the problem, delaying radio signals by seconds, minutes or hours.
 
 Table: Altitude regimes and the vehicles that operate in them. {#tbl:regimes}
 
@@ -44,13 +44,13 @@ Every space mission, whether a CubeSat built by students or a constellation of t
 
 ![The four segments of a space system and the links that join them. The space segment is usually the most visible, but the ground and user segments often cost as much over a mission's life.](figures/out/ch01_segments.svg){#fig:segments width=88%}
 
-**Space segment.** The spacecraft themselves: satellites, probes, stations and their payloads. A spacecraft is normally divided into a **payload** (the part that performs the mission — a camera, a transponder, a telescope) and a **bus** or **platform** (the part that keeps the payload alive — power, thermal control, attitude control, propulsion, computing and communications). Part I explains the bus in detail; the application Parts explain the payloads.
+**Space segment.** The spacecraft themselves: satellites, probes, stations and their payloads. A spacecraft is normally divided into two parts. The **payload** is the part that performs the mission — a camera, a transponder, a telescope. The **bus** or **platform** is the part that keeps the payload alive — power, thermal control, attitude control, propulsion, computing and communications. Part I explains the bus in detail; the application Parts explain the payloads.
 
 **Ground segment.** Everything on the ground that controls the spacecraft and handles its data: mission control centres, ground stations with antennas, networks, flight dynamics software, payload data processing, archives and distribution systems. Large ground networks — NASA's Deep Space Network, ESA's ESTRACK, commercial "ground-station-as-a-service" networks such as KSAT, AWS Ground Station and Leaf Space — are shared by many missions.
 
 **Launch segment.** The launch vehicle, the spaceport, the range that tracks the rocket and protects the public, and the facilities that integrate the payload into the fairing. For a single satellite the launch is a one-time event, but its cost and risk shape the entire mission design.
 
-**User segment.** The people and equipment that use the service: a GPS receiver in a phone, a satellite TV dish, a farmer's crop-monitoring app, a forecaster using satellite data in a weather model, or a scientist analysing telescope images. For commercial systems the user segment is where revenue is earned; for navigation and broadband systems the user equipment is produced in hundreds of millions of units.
+**User segment.** The people and equipment that use the service. Examples are a GPS receiver in a phone, a satellite TV dish and a farmer's crop-monitoring app. Others are a forecaster using satellite data in a weather model, or a scientist analysing telescope images. For commercial systems the user segment is where revenue is earned; for navigation and broadband systems the user equipment is produced in hundreds of millions of units.
 
 The **link segment** — radio-frequency (RF) and, increasingly, optical (laser) links — joins all of them. Links include telemetry, tracking and command (TT&C) for spacecraft control, high-rate payload data downlinks, user service links, and inter-satellite links that relay data through space. Chapter 7 explains how links are designed.
 
@@ -62,7 +62,7 @@ A frequent cause of mission failure or cost overrun is a space segment designed 
 
 ## A Map of the Space Ecosystem
 
-The word *ecosystem* is used deliberately: space activities depend on each other like species in an environment. Cheap launch enables mega-constellations; mega-constellations create demand for ground terminals, spectrum and collision avoidance; collision avoidance needs space situational awareness; and all of them depend on scientific understanding of space weather. @fig:ecosystem maps the major domains covered in this manual.
+The word *ecosystem* is used deliberately: space activities depend on each other like species in an environment. Cheap launch enables mega-constellations. Mega-constellations create demand for ground terminals, spectrum and collision avoidance, and collision avoidance needs space situational awareness. All of them depend on scientific understanding of space weather. @fig:ecosystem maps the major domains covered in this manual.
 
 ![The space ecosystem as eight interlocking domains, each covered by one or more Parts of this manual, supported by common enablers such as systems engineering, ground infrastructure, spectrum management, artificial intelligence and law.](figures/out/ch01_ecosystem_map.svg){#fig:ecosystem width=92%}
 
@@ -101,7 +101,7 @@ The CubeSat standard (Chapter 11) deserves special mention: by defining a standa
 
 ## A Short History of Spaceflight
 
-The modern space age began on 4 October 1957, when the Soviet Union launched **Sputnik 1**, an 84 kg sphere with four antennas that transmitted a simple beep. Within twelve years humans had orbited the Earth (Yuri Gagarin, 12 April 1961), walked in space (Alexei Leonov, 1965), and walked on the Moon (Neil Armstrong and Buzz Aldrin, 20 July 1969). @fig:timeline marks major milestones.
+The modern space age began on 4 October 1957, when the Soviet Union launched **Sputnik 1**, an 84 kg sphere with four antennas that transmitted a simple beep. Within twelve years humans had orbited the Earth (Yuri Gagarin, 12 April 1961) and walked in space (Alexei Leonov, 1965). They had also walked on the Moon (Neil Armstrong and Buzz Aldrin, 20 July 1969). @fig:timeline marks major milestones.
 
 ![Selected milestones of the space age, 1957–2026. The pace of "firsts" was highest in the 1960s; since 2015 a second wave has been driven by reusable rockets, small satellites and new national programmes.](figures/out/ch01_timeline.svg){#fig:timeline width=100%}
 
@@ -111,12 +111,12 @@ The history can be divided into five broad eras:
 2. **Stations and shuttles (1971–2000).** The USSR operated Salyut stations and Mir; the USA flew Skylab and the reusable Space Shuttle. Satellite applications matured: Landsat (1972), GPS (first launch 1978, fully operational 1995), INTELSAT global communications, and the great observatories (Hubble 1990, Compton 1991, Chandra 1999).
 3. **International cooperation and globalisation (1998–2010).** Assembly of the International Space Station began in 1998, permanently crewed since November 2000. China flew its first astronaut (Yang Liwei, 2003). Europe, Japan and India developed independent launch and exploration capabilities. Mars exploration intensified with orbiters and rovers.
 4. **"New Space" (2010–2019).** Private capital entered the industry. SpaceX's Falcon 9 began flying in 2010, delivered cargo to the ISS in 2012 and landed an orbital-class booster in December 2015. CubeSats and small-satellite constellations (Planet, Spire) appeared. China landed on the far side of the Moon (Chang'e 4, 2019) and the first Starlink satellites launched in 2019.
-5. **The industrial space age (2020–present).** Commercial crew transport (Crew Dragon, 2020), mega-constellations with thousands of satellites, routine booster reuse, China's Tiangong station (2021–2022), the James Webb Space Telescope (2021), the first far-side sample return (Chang'e 6, 2024), the first catch of a returning booster by its launch tower (Starship, October 2024), the first crewed flight around the Moon since 1972 (Artemis II, April 2026) and the launch of the Nancy Grace Roman Space Telescope (August 2026).
+5. **The industrial space age (2020–present).** This era brought commercial crew transport (Crew Dragon, 2020), mega-constellations with thousands of satellites, routine booster reuse and China's Tiangong station (2021–2022). It also saw the James Webb Space Telescope (2021), the first far-side sample return (Chang'e 6, 2024) and the first returning booster caught by its launch tower (Starship, October 2024). Then came the first crewed flight around the Moon since 1972 (Artemis II, April 2026) and the launch of the Nancy Grace Roman Space Telescope (August 2026).
 
 ::: history
 **History — the second space race is commercial and multipolar**
 
-In 1967, two nations conducted nearly all space launches. In 2025, rockets from more than ten countries reached orbit, private companies launched most of the payloads, and the busiest single launch provider (SpaceX) flew more often than the whole world had in any year before 2021.
+In 1967, two nations conducted nearly all space launches. In 2025, rockets from more than ten countries reached orbit, and private companies launched most of the payloads. The busiest single launch provider (SpaceX) flew more often than the whole world had in any year before 2021.
 :::
 
 ## Space Activity in Numbers
@@ -144,7 +144,7 @@ Table: Orbital launch attempts by country of launch provider, 2025 and 2026 to m
 
 ### Satellites in Orbit
 
-The number of satellites has grown even faster than the number of launches, because one launch can now deploy dozens or hundreds of satellites. In 2025 alone about **4 500 payloads** were placed in orbit — more than in the first fifty years of spaceflight combined (@fig:payloads). Most of the growth comes from broadband constellations, especially SpaceX's Starlink, which had more than 10 600 satellites in orbit by October 2026, followed by Eutelsat OneWeb (≈650), China's Guowang and Qianfan constellations, and Amazon Leo (formerly Project Kuiper, about 400 satellites by mid-2026).
+The number of satellites has grown even faster than the number of launches, because one launch can now deploy dozens or hundreds of satellites. In 2025 alone about **4 500 payloads** were placed in orbit — more than in the first fifty years of spaceflight combined (@fig:payloads). Most of the growth comes from broadband constellations, especially SpaceX's Starlink, which had more than 10 600 satellites in orbit by October 2026. Next come Eutelsat OneWeb (≈650), China's Guowang and Qianfan constellations, and Amazon Leo (formerly Project Kuiper, about 400 satellites by mid-2026).
 
 ![Payloads launched per year, 1990–2025, separating Starlink from all other payloads. The step change after 2019 is the arrival of mega-constellations.](figures/out/ch01_payloads_year.svg){#fig:payloads width=96%}
 
@@ -198,18 +198,18 @@ Space engineering combines three difficulties that are rarely found together in 
 
 **1. The energy problem.** To reach low Earth orbit a vehicle must gain about 9.3–9.6 km/s of velocity once gravity and drag losses are included. The rocket equation (Chapter 34) shows that this requires a vehicle that is typically 85–95 % propellant at lift-off; only 2–4 % of the lift-off mass reaches orbit as payload. Every kilogram of spacecraft therefore costs many kilograms of rocket.
 
-**2. The environment problem.** In orbit, a spacecraft must survive vacuum, temperature swings of more than 200 °C, radiation that damages electronics and solar cells, atomic oxygen, micrometeoroids and debris travelling at 10 km/s, and launch vibrations and shocks of tens of g (Chapter 2).
+**2. The environment problem.** In orbit, a spacecraft must survive vacuum, temperature swings of more than 200 °C and radiation that damages electronics and solar cells. It must also survive atomic oxygen, micrometeoroids and debris travelling at 10 km/s, and launch vibrations and shocks of tens of g (Chapter 2).
 
 **3. The no-repair problem.** With very few exceptions (Hubble servicing, the ISS, the new generation of servicing vehicles), a spacecraft cannot be repaired after launch. It must work first time and keep working for 5–15 years. This drives redundancy, extensive testing, conservative design margins and long development schedules.
 
-These difficulties explain why spacecraft traditionally cost tens of thousands of dollars per kilogram. Two trends are now lowering the cost: reusable launch vehicles, and mass-produced small satellites that accept higher individual failure rates because the constellation as a whole is resilient. @fig:costkg shows how much the price of reaching orbit has fallen.
+These difficulties explain why spacecraft traditionally cost tens of thousands of dollars per kilogram. Two trends are now lowering the cost. The first is reusable launch vehicles. The second is mass-produced small satellites, which accept higher individual failure rates because the constellation as a whole is resilient. @fig:costkg shows how much the price of reaching orbit has fallen.
 
 ![Approximate cost per kilogram to low Earth orbit for representative launch vehicles, in inflation-adjusted dollars. Reusable boosters reduced commercial launch prices by about an order of magnitude; fully reusable vehicles aim for another order of magnitude.](figures/out/ch01_cost_per_kg.svg){#fig:costkg width=94%}
 
 ::: example
 **Worked example — how much does it cost to put a 6U CubeSat in orbit?**
 
-A 6U CubeSat has a mass of about 10 kg. On a rideshare mission (for example SpaceX's Transporter series), the list price in 2025 was about US$6 500 per kilogram with a minimum of about US$325 000 for 50 kg to sun-synchronous orbit, so a single 6U satellite would typically be launched through an integrator for roughly US$150 000–300 000 including the deployer. A dedicated small launcher (e.g., Rocket Lab Electron, about US$8.5 million per launch) is far more expensive per kilogram but lets the customer choose the orbit and the launch date. The choice between *rideshare* and *dedicated* launch is one of the first trade-offs in a small-satellite mission (Chapter 11).
+A 6U CubeSat has a mass of about 10 kg. On a rideshare mission (for example SpaceX's Transporter series), the list price in 2025 was about US$6 500 per kilogram. The minimum was about US$325 000 for 50 kg to sun-synchronous orbit. So a single 6U satellite would typically be launched through an integrator for roughly US$150 000–300 000, including the deployer. A dedicated small launcher (e.g., Rocket Lab Electron, about US$8.5 million per launch) is far more expensive per kilogram. However, it lets the customer choose the orbit and the launch date. The choice between *rideshare* and *dedicated* launch is one of the first trade-offs in a small-satellite mission (Chapter 11).
 :::
 
 ## Governance: The Rules of Space
@@ -230,7 +230,7 @@ Table: The core instruments of international space law. {#tbl:spacelaw}
 | UN Long-Term Sustainability Guidelines | 2019 | 21 voluntary guidelines on safety, SSA, debris, regulation |
 | Artemis Accords | 2020 | Non-binding principles for civil lunar exploration: transparency, interoperability, emergency assistance, registration, release of scientific data, preserving heritage sites, deconfliction "safety zones", space-resource use consistent with the OST. 76 signatories by late September 2026 |
 
-National regulators turn these principles into licences. In the United States, for example, the FAA licenses launches and re-entries, the Federal Communications Commission (FCC) licenses spectrum and imposes debris rules (including a five-year post-mission disposal rule for LEO satellites adopted in 2022), and NOAA licenses commercial remote-sensing systems. Other countries, including the UK (Space Industry Act 2018), France (French Space Operations Act 2008), Japan (Space Activities Act 2016), New Zealand, Luxembourg and the UAE, have comparable laws. China's International Lunar Research Station (ILRS) programme forms a second international lunar partnership alongside the Artemis Accords.
+National regulators turn these principles into licences. In the United States, for example, the FAA licenses launches and re-entries. The Federal Communications Commission (FCC) licenses spectrum and imposes debris rules, including a five-year post-mission disposal rule for LEO satellites adopted in 2022. NOAA licenses commercial remote-sensing systems. Other countries, including the UK (Space Industry Act 2018), France (French Space Operations Act 2008), Japan (Space Activities Act 2016), New Zealand, Luxembourg and the UAE, have comparable laws. China's International Lunar Research Station (ILRS) programme forms a second international lunar partnership alongside the Artemis Accords.
 
 ::: warning
 **Lesson — debris is a shared risk**
@@ -265,7 +265,7 @@ Table: Engineering and science disciplines in the space ecosystem. {#tbl:discipl
 
 ## How This Manual Is Organised
 
-The remaining chapters follow a logical sequence. Part I builds the foundations: the environment (Chapter 2), orbits (Chapter 3), systems engineering (Chapter 4), spacecraft subsystems (Chapters 5 and 6) and communications (Chapter 7). Each later Part applies these foundations to a family of systems. Part XIII then shows how artificial intelligence — from onboard image classification to AI weather models and autonomous rovers — is changing every one of these domains, and Part XIV collects the reference data an engineer needs at hand.
+The remaining chapters follow a logical sequence. Part I builds the foundations: the environment (Chapter 2), orbits (Chapter 3), systems engineering (Chapter 4), spacecraft subsystems (Chapters 5 and 6) and communications (Chapter 7). Each later Part applies these foundations to a family of systems. Part XIII then shows how artificial intelligence is changing every one of these domains, from onboard image classification to AI weather models and autonomous rovers. Part XIV collects the reference data an engineer needs at hand.
 
 ::: key
 **Key takeaways**
