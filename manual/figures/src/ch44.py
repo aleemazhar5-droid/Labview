@@ -1233,7 +1233,7 @@ def _chips(rng, n, cue_prob):
             th = rng.uniform(0, np.pi)
             u = (xx - cx) * np.cos(th) + (yy - cy) * np.sin(th)
             v = -(xx - cx) * np.sin(th) + (yy - cy) * np.cos(th)
-            X[i] += 1.4 * np.exp(-(u / 2.6) ** 2 - (v / 0.9) ** 2)
+            X[i] += 2.2 * np.exp(-(u / 3.0) ** 2 - (v / 1.1) ** 2)
             pos.append((cx, cy))
         else:
             pos.append((np.nan, np.nan))
@@ -1289,16 +1289,17 @@ def xai():
               f"{a_new * 100:.1f} %")
     # mean |saliency| maps over ship test chips
     ship = yt == 1
-    sb = np.abs(_saliency(*mb, Xt[ship])).mean(0).reshape(IMG, IMG)
-    scl = np.abs(_saliency(*mc, Xt[ship])).mean(0).reshape(IMG, IMG)
-    frac_b = sb[:, :2].sum() / sb.sum()
-    frac_c = scl[:, :2].sum() / scl.sum()
+    sb = _saliency(*mb, Xt[ship]).mean(0).reshape(IMG, IMG)
+    scl = _saliency(*mc, Xt[ship]).mean(0).reshape(IMG, IMG)
+    frac_b = np.abs(sb[:, :2]).sum() / np.abs(sb).sum()
+    frac_c = np.abs(scl[:, :2]).sum() / np.abs(scl).sum()
     print(f"xai: share of saliency in the 2-pixel quay strip (8.3 % of pixels): shortcut {frac_b * 100:.0f} %, "
           f"clean {frac_c * 100:.0f} %")
     # one example: ship without quay strip
     cand = np.where((yt == 1) & (Xt.reshape(-1, IMG, IMG)[:, :, :2].mean(axis=(1, 2)) < 1.3))[0]
     pb = _predict(*mb, Xt[cand])
-    k = cand[np.argmin(pb)]
+    pc = _predict(*mc, Xt[cand])
+    k = cand[np.argmax(pc - pb)]
     ex = Xt[k].reshape(IMG, IMG)
     s1 = np.abs(_saliency(*mb, Xt[k:k + 1])).reshape(IMG, IMG)
     s2 = np.abs(_saliency(*mc, Xt[k:k + 1])).reshape(IMG, IMG)
