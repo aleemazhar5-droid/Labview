@@ -8,7 +8,7 @@ abstract: Space was a military and intelligence domain from the very beginning: 
 
 ### Mission Areas
 
-Military and intelligence organisations use space for the same reasons as civilians — global coverage, a vantage point above any territory, and the ability to relay signals over the horizon — but with demands for resilience, security and timeliness that civil systems rarely face. National-security space is usually divided into the mission areas shown in @fig:nssfunctions:
+Military and intelligence organisations use space for the same reasons as civilians: global coverage, a vantage point above any territory, and the ability to relay signals over the horizon. But they have demands for resilience, security and timeliness that civil systems rarely face. National-security space is usually divided into the mission areas shown in @fig:nssfunctions:
 
 - **Intelligence, surveillance and reconnaissance (ISR)**: imagery (IMINT), signals intelligence (SIGINT), and measurement and signature intelligence (MASINT).
 - **Missile warning and tracking**: infrared satellites that detect missile launches and nuclear detonations (Chapter 20).
@@ -53,7 +53,7 @@ Military imaging satellites use the same physics as civil Earth observation (Cha
 
 ### Revisit and Constellation Design
 
-For many military purposes the critical parameter is not resolution but **revisit** — how often a target can be observed. A single agile imaging satellite in a sun-synchronous orbit can view a mid-latitude target only about once every two to three days in daylight; doubling the number of satellites roughly halves the wait (@fig:isrrevisit). Radar satellites, which can image at night as well, have about twice as many opportunities. To watch a target several times per day, a constellation of a dozen or more satellites — or satellites in mid-inclination orbits, which pass over mid-latitudes more often and at varying local times — is needed. This is why both governments and commercial operators have moved towards larger constellations of smaller satellites.
+For many military purposes the critical parameter is not resolution but **revisit** — how often a target can be observed. A single agile imaging satellite in a sun-synchronous orbit can view a mid-latitude target only about once every two to three days in daylight; doubling the number of satellites roughly halves the wait (@fig:isrrevisit). Radar satellites, which can image at night as well, have about twice as many opportunities. To watch a target several times per day, a constellation of a dozen or more satellites is needed. An alternative is satellites in mid-inclination orbits, which pass over mid-latitudes more often and at varying local times. This is why both governments and commercial operators have moved towards larger constellations of smaller satellites.
 
 ![Simulated mean time between looks at a target at 35° N as a function of the number of agile imaging satellites.](figures/out/ch19_revisit.svg){#fig:isrrevisit width=84%}
 
@@ -75,11 +75,11 @@ For many military purposes the critical parameter is not resolution but **revisi
 
 ### The Intelligence Cycle
 
-Intelligence agencies describe their work as a cycle: **planning and direction** (what do decision-makers need to know?), **collection** (tasking satellites and other sensors), **processing and exploitation** (turning raw data into information — locating, identifying and measuring objects), **analysis and production** (combining sources into assessments) and **dissemination**. Satellites contribute mainly to collection, but the bottlenecks have increasingly moved to processing and analysis: modern constellations generate far more images than human analysts can examine, which is why AI-based object detection and change detection have become essential (Part XIII).
+Intelligence agencies describe their work as a cycle. It starts with **planning and direction** (what do decision-makers need to know?) and **collection** (tasking satellites and other sensors). Next comes **processing and exploitation** (turning raw data into information — locating, identifying and measuring objects). It ends with **analysis and production** (combining sources into assessments) and **dissemination**. Satellites contribute mainly to collection, but the bottlenecks have increasingly moved to processing and analysis. Modern constellations generate far more images than human analysts can examine. This is why AI-based object detection and change detection have become essential (Part XIII).
 
 ### Commercial Imagery in National Security
 
-Commercial imagery now complements government systems on a large scale. The USA buys imagery under the NRO's Electro-Optical Commercial Layer contracts and from commercial SAR providers, and many smaller nations rely entirely on commercial or allied data. During the war in Ukraine, commercial optical and radar imagery from companies such as Vantor (formerly Maxar), Planet, Airbus, ICEYE, Capella and BlackSky has been widely used by governments and published by the media, transforming public understanding of military events. Commercial data are unclassified and shareable with allies and the public, which has given them diplomatic as well as operational value.
+Commercial imagery now complements government systems on a large scale. The USA buys imagery under the NRO's Electro-Optical Commercial Layer contracts and from commercial SAR providers, and many smaller nations rely entirely on commercial or allied data. During the war in Ukraine, governments have widely used commercial optical and radar imagery from companies such as Vantor (formerly Maxar), Planet, Airbus, ICEYE, Capella and BlackSky. The media have also published this imagery, transforming public understanding of military events. Commercial data are unclassified and shareable with allies and the public, which has given them diplomatic as well as operational value.
 
 ## Signals Intelligence from Space
 
@@ -98,9 +98,9 @@ Commercial imagery now complements government systems on a large scale. The USA 
 
 ### Intercept Physics
 
-A SIGINT satellite is a sensitive radio receiver with a large antenna. Intercepting radar signals is relatively easy because radars are powerful — often hundreds of kilowatts to megawatts of peak power — and even their side lobes are strong. Intercepting low-power communications from space is harder. The link budget (Chapter 7) shows that a 5 W VHF handheld radio received at 600 km arrives at about −95 dBm — easily detectable — but at geostationary distance it arrives about 36 dB weaker, requiring a significant receiving antenna.
+A SIGINT satellite is a sensitive radio receiver with a large antenna. Intercepting radar signals is relatively easy because radars are powerful — often hundreds of kilowatts to megawatts of peak power — and even their side lobes are strong. Intercepting low-power communications from space is harder. The link budget (Chapter 7) shows that a 5 W VHF handheld radio received at 600 km arrives at about −95 dBm, which is easily detectable. At geostationary distance, however, it arrives about 36 dB weaker, so a significant receiving antenna is needed.
 
-The bigger challenge is to **separate and locate** emitters. A receiving antenna's beamwidth is about $70\lambda/D$ degrees, so at low frequencies even large antennas have broad beams (@fig:sigintfootprint). From geostationary orbit, a 10 m antenna at 1 GHz has a beam about 1 300 km wide, and at VHF a beam narrow enough to isolate a single city would need an antenna several hundred metres across. Public reports describe very large deployable reflectors on some geostationary SIGINT satellites, and complementary geolocation techniques are used.
+The bigger challenge is to **separate and locate** emitters. A receiving antenna's beamwidth is about $70\lambda/D$ degrees, so at low frequencies even large antennas have broad beams (@fig:sigintfootprint). From geostationary orbit, a 10 m antenna at 1 GHz has a beam about 1 300 km wide. At VHF, a beam narrow enough to isolate a single city would need an antenna several hundred metres across. Public reports describe very large deployable reflectors on some geostationary SIGINT satellites, and complementary geolocation techniques are used.
 
 ![Ground footprint of a receiving antenna beam as a function of antenna diameter, for four frequencies, from geostationary and low orbit. Isolating emitters by beam alone requires very large antennas, especially at low frequencies.](figures/out/ch19_footprint.svg){#fig:sigintfootprint width=86%}
 
@@ -110,7 +110,7 @@ Emitters are located by measuring how their signals arrive at one or more receiv
 
 - **Angle of arrival (AOA)**: an interferometer measures the phase difference of a signal between two or more antennas separated by a baseline $d$; the phase difference $2\pi d\sin\theta/\lambda$ gives the arrival direction $\theta$ (@fig:aoa). Long baselines give precise but ambiguous angles; combinations of baselines resolve the ambiguity.
 - **Time difference of arrival (TDOA)**: two satellites receive the same signal at slightly different times; each measured time difference places the emitter on a hyperbolic curve on the Earth's surface (@fig:tdoa). Three satellites give two independent TDOAs whose curves intersect at the emitter.
-- **Frequency difference of arrival (FDOA)**: because the satellites move, they receive slightly different Doppler shifts; the frequency difference defines another family of curves that cross the TDOA curves, so a pair of satellites measuring both can fix an emitter.
+- **Frequency difference of arrival (FDOA)**: because the satellites move, they receive slightly different Doppler shifts. The frequency difference defines another family of curves that cross the TDOA curves. So a pair of satellites measuring both can fix an emitter.
 - **Single-satellite Doppler**: like the old Transit system in reverse, one satellite can locate a continuously transmitting emitter from the Doppler curve observed during a pass.
 
 ![Emitter geolocation from a pair of satellites. Lines of constant time difference of arrival (left) are hyperbolas on the ground; lines of constant frequency difference (right) cross them, so the two measurements together fix the emitter.](figures/out/ch19_tdoa.svg){#fig:tdoa width=98%}
@@ -125,7 +125,7 @@ Since 2018, commercial companies have brought these techniques to an open market
 
 ### MASINT
 
-**Measurement and signature intelligence (MASINT)** uses the physical signatures of objects and events: infrared signatures of missile plumes and industrial activity, spectral signatures of materials (hyperspectral imaging), radar signatures, and the light flash, X-rays and electromagnetic pulse of nuclear detonations. Nuclear-detonation detection sensors have flown on GPS satellites since the 1980s as part of the US Nuclear Detonation Detection System, continuing the role of the Vela satellites in verifying the Limited Test Ban Treaty.
+**Measurement and signature intelligence (MASINT)** uses the physical signatures of objects and events. These include infrared signatures of missile plumes and industrial activity, spectral signatures of materials (hyperspectral imaging) and radar signatures. They also include the light flash, X-rays and electromagnetic pulse of nuclear detonations. Nuclear-detonation detection sensors have flown on GPS satellites since the 1980s as part of the US Nuclear Detonation Detection System, continuing the role of the Vela satellites in verifying the Limited Test Ban Treaty.
 
 ## Military Satellite Communications
 
@@ -144,17 +144,17 @@ Military forces need communications that are global, secure and resistant to jam
 
 ![Processing gain of spread-spectrum military links versus user data rate. High data rates leave little margin against jamming.](figures/out/ch19_antijam.svg){#fig:antijam width=86%}
 
-The war in Ukraine demonstrated the value — and vulnerability — of commercial communications in conflict. Thousands of Starlink terminals provided resilient connectivity to Ukrainian forces and civil infrastructure, while a cyber attack on the ground network of Viasat's KA-SAT system on 24 February 2022, the first day of the invasion, disabled tens of thousands of terminals across Europe.
+The war in Ukraine demonstrated the value — and vulnerability — of commercial communications in conflict. Thousands of Starlink terminals provided resilient connectivity to Ukrainian forces and civil infrastructure. Meanwhile, on 24 February 2022, the first day of the invasion, a cyber attack on the ground network of Viasat's KA-SAT system disabled tens of thousands of terminals across Europe.
 
 ## Military Weather, Launch and the Wider Enterprise
 
 ### Military Weather
 
-Weather affects every military operation — cloud cover over a target, winds for parachute drops, sea state for landings, and space weather for communications and GPS. The US Defense Meteorological Satellite Program (DMSP), operating since the 1960s, pioneered night-time visible imaging and microwave sounding; its last satellites are reaching the end of their lives. Its replacements include the **Weather System Follow-on – Microwave (WSF-M)**, the first of which was launched in April 2024 to measure ocean-surface winds and tropical-cyclone structure, and small electro-optical/infrared weather satellites for cloud imagery over regions where geostationary coverage is poor. Military users also rely heavily on civil systems such as Metop and JPSS (Chapter 16).
+Weather affects every military operation — cloud cover over a target, winds for parachute drops, sea state for landings, and space weather for communications and GPS. The US Defense Meteorological Satellite Program (DMSP), operating since the 1960s, pioneered night-time visible imaging and microwave sounding; its last satellites are reaching the end of their lives. Its replacements include the **Weather System Follow-on – Microwave (WSF-M)**. The first WSF-M was launched in April 2024 to measure ocean-surface winds and tropical-cyclone structure. The replacements also include small electro-optical/infrared weather satellites for cloud imagery over regions where geostationary coverage is poor. Military users also rely heavily on civil systems such as Metop and JPSS (Chapter 16).
 
 ### National Security Launch
 
-Assured access to space is a national-security requirement in itself. The USA certifies launch providers for national-security payloads under the **National Security Space Launch (NSSL)** programme; in the 2020s, launches were shared between SpaceX (Falcon 9 and Falcon Heavy), United Launch Alliance (Vulcan Centaur, which replaced Atlas V and Delta IV) and, from Phase 3 (2025 onward), Blue Origin's New Glenn, with a separate "lane" for new entrants on lower-risk missions. **Tactically responsive space** demonstrations, such as Victus Nox in 2023 — in which a satellite was launched 27 hours after the order was given — aim to show that satellites can be replaced quickly in a crisis. China, Russia, India and Europe maintain their own launchers for sovereign access (Chapter 36).
+Assured access to space is a national-security requirement in itself. The USA certifies launch providers for national-security payloads under the **National Security Space Launch (NSSL)** programme. In the 2020s, launches were shared between SpaceX (Falcon 9 and Falcon Heavy) and United Launch Alliance (Vulcan Centaur, which replaced Atlas V and Delta IV). From Phase 3 (2025 onward), they were also shared with Blue Origin's New Glenn, with a separate "lane" for new entrants on lower-risk missions. **Tactically responsive space** demonstrations, such as Victus Nox in 2023, aim to show that satellites can be replaced quickly in a crisis. In Victus Nox, a satellite was launched 27 hours after the order was given. China, Russia, India and Europe maintain their own launchers for sovereign access (Chapter 36).
 
 ### Who Operates Military Satellites?
 
@@ -176,7 +176,7 @@ For most of the space age, national-security satellites were few, large, expensi
 - **Diversification**: using several orbits, frequencies and providers, including commercial ones;
 - **Rapid replenishment**: replacing satellites every few years in "tranches" that incorporate new technology.
 
-The US **Space Development Agency (SDA)**, founded in 2019, is building the **Proliferated Warfighter Space Architecture (PWSA)** in low Earth orbit at about 1 000 km (@fig:pwsa). Its **Transport Layer** forms a mesh network of optical inter-satellite links and radio links (including the Link 16 tactical data link) to deliver targeting data directly to forces, and its **Tracking Layer** carries infrared sensors to detect and track missiles, including hypersonic glide vehicles (Chapter 20). After about two dozen Tranche 0 demonstration satellites launched in 2023, the first operational Tranche 1 satellites launched in September 2025; Tranche 1 comprises 154 satellites (126 transport and 28 tracking), with further tranches planned every two years. Separately, the NRO has been deploying a proliferated constellation of imaging satellites, built with SpaceX and Northrop Grumman, since 2024.
+The US **Space Development Agency (SDA)**, founded in 2019, is building the **Proliferated Warfighter Space Architecture (PWSA)** in low Earth orbit at about 1 000 km (@fig:pwsa). Its **Transport Layer** forms a mesh network of optical inter-satellite links and radio links (including the Link 16 tactical data link) to deliver targeting data directly to forces. Its **Tracking Layer** carries infrared sensors to detect and track missiles, including hypersonic glide vehicles (Chapter 20). About two dozen Tranche 0 demonstration satellites launched in 2023, and the first operational Tranche 1 satellites launched in September 2025. Tranche 1 comprises 154 satellites (126 transport and 28 tracking), with further tranches planned every two years. Separately, the NRO has been deploying a proliferated constellation of imaging satellites, built with SpaceX and Northrop Grumman, since 2024.
 
 ![The Proliferated Warfighter Space Architecture: a transport layer of laser-linked satellites delivers data from a tracking layer of infrared sensors to forces and missile-defence systems.](figures/out/ch19_pwsa.svg){#fig:pwsa width=94%}
 
@@ -203,7 +203,7 @@ As military dependence on space grew, so did interest in denying an adversary's 
 
 ### Anti-Satellite Tests and Debris
 
-Five destructive anti-satellite tests have created long-lived debris (@fig:asat; @tbl:asattests). The worst, China's January 2007 destruction of its Fengyun-1C weather satellite at about 865 km, produced more than 3 500 catalogued fragments — the largest debris-generating event in history — and more than 2 300 were still in orbit in October 2026, threatening satellites in sun-synchronous orbits for decades. Russia's November 2021 test against the defunct Cosmos 1408 at about 480 km produced about 1 800 catalogued fragments and forced the ISS crew to shelter in their spacecraft; most have since re-entered. Tests at lower altitudes, such as the US destruction of the failing USA-193 satellite in 2008 at about 247 km and India's "Mission Shakti" in 2019 at about 283 km, created debris that decayed within months to a few years.
+Five destructive anti-satellite tests have created long-lived debris (@fig:asat; @tbl:asattests). The worst was China's January 2007 destruction of its Fengyun-1C weather satellite at about 865 km. It produced more than 3 500 catalogued fragments — the largest debris-generating event in history. More than 2 300 were still in orbit in October 2026, threatening satellites in sun-synchronous orbits for decades. Russia's November 2021 test against the defunct Cosmos 1408 at about 480 km produced about 1 800 catalogued fragments and forced the ISS crew to shelter in their spacecraft; most have since re-entered. Tests at lower altitudes included the US destruction of the failing USA-193 satellite in 2008 at about 247 km and India's "Mission Shakti" in 2019 at about 283 km. These created debris that decayed within months to a few years.
 
 | Year | Country | Target | Intercept altitude | Catalogued debris | Still in orbit (Oct 2026) |
 |---|---|---|---|---|---|
@@ -217,17 +217,17 @@ Five destructive anti-satellite tests have created long-lived debris (@fig:asat;
 
 ![Tracked debris from destructive anti-satellite tests. Debris from the high-altitude 2007 test remains in orbit; debris from lower-altitude tests has re-entered.](figures/out/ch19_asat.svg){#fig:asat width=90%}
 
-In April 2022 the USA announced a unilateral commitment not to conduct destructive direct-ascent ASAT missile tests, and in December 2022 the UN General Assembly adopted a resolution calling on all states to make the same commitment; dozens of countries have since joined the pledge.
+In April 2022 the USA announced a unilateral commitment not to conduct destructive direct-ascent ASAT missile tests. In December 2022 the UN General Assembly adopted a resolution calling on all states to make the same commitment. Dozens of countries have since joined the pledge.
 
 ### Rendezvous and Proximity Operations
 
-Satellites that can approach other satellites — for inspection, servicing or, potentially, attack — are a growing concern because the same technology serves peaceful and hostile purposes. The USA operates the Geosynchronous Space Situational Awareness Program (GSSAP) satellites to inspect objects in GEO; Russian satellites such as Cosmos 2542, which released a sub-satellite that manoeuvred near a US reconnaissance satellite in 2020, and Luch/Olymp, which has parked near Western communication satellites, have caused public concern; and China's Shijian-21 towed a dead BeiDou satellite to a graveyard orbit in 2022, demonstrating capture technology. Orbital mechanics shapes these operations: an inspector at a slightly different orbit can perform a natural circumnavigation of its target once per orbit without using propellant (@fig:rpo).
+Satellites that can approach other satellites — for inspection, servicing or, potentially, attack — are a growing concern because the same technology serves peaceful and hostile purposes. The USA operates the Geosynchronous Space Situational Awareness Program (GSSAP) satellites to inspect objects in GEO. Russian satellites such as Cosmos 2542 and Luch/Olymp have caused public concern. Cosmos 2542 released a sub-satellite that manoeuvred near a US reconnaissance satellite in 2020, and Luch/Olymp has parked near Western communication satellites. China's Shijian-21 towed a dead BeiDou satellite to a graveyard orbit in 2022, demonstrating capture technology. Orbital mechanics shapes these operations: an inspector at a slightly different orbit can perform a natural circumnavigation of its target once per orbit without using propellant (@fig:rpo).
 
 ![Relative motion of an inspector satellite around a target in geostationary orbit (Clohessy–Wiltshire equations). A suitably offset orbit produces a daily 2:1 ellipse around the target.](figures/out/ch19_rpo.svg){#fig:rpo width=86%}
 
 ### Jamming, Spoofing and Cyber Attacks
 
-Electronic and cyber attacks are now routine in conflicts. GNSS jamming and spoofing affect aviation and shipping across large regions (Chapter 18); satellite television and communications are jammed; and the 2022 KA-SAT attack showed how a cyber attack on a satellite operator's ground network can have international effects. Because these attacks are reversible, hard to attribute and often below the threshold of armed conflict, they are difficult to deter.
+Electronic and cyber attacks are now routine in conflicts. GNSS jamming and spoofing affect aviation and shipping across large regions (Chapter 18), and satellite television and communications are jammed. The 2022 KA-SAT attack showed how a cyber attack on a satellite operator's ground network can have international effects. Because these attacks are reversible, hard to attribute and often below the threshold of armed conflict, they are difficult to deter.
 
 ### Nuclear Weapons in Space
 
@@ -235,14 +235,14 @@ The 1962 US Starfish Prime test, a 1.4-megaton nuclear explosion at 400 km, crea
 
 ## Law, Norms and Stability
 
-International law applies in space. The **Outer Space Treaty** declares space the province of all humankind, prohibits national appropriation and weapons of mass destruction in orbit, and requires states to authorise and supervise their nationals' space activities; the UN Charter, including the right of self-defence, and the law of armed conflict also apply. However, there is no treaty banning conventional weapons in space or ground-based anti-satellite weapons. Diplomatic efforts include:
+International law applies in space. The **Outer Space Treaty** declares space the province of all humankind and prohibits national appropriation and weapons of mass destruction in orbit. It also requires states to authorise and supervise their nationals' space activities. The UN Charter, including the right of self-defence, and the law of armed conflict also apply. However, there is no treaty banning conventional weapons in space or ground-based anti-satellite weapons. Diplomatic efforts include:
 
 - Russian–Chinese proposals for a treaty on the Prevention of the Placement of Weapons in Outer Space (PPWT), criticised by Western states for lacking verification and ignoring ground-based ASATs;
 - the UK-led UN Open-Ended Working Group on **reducing space threats through norms, rules and principles of responsible behaviour** (2022–23);
 - the destructive DA-ASAT test moratorium;
 - expert efforts to clarify how existing law applies, such as the Woomera Manual and the MILAMOS project.
 
-Transparency measures — announcing manoeuvres, sharing space-tracking data, and establishing communication channels between space commands — aim to reduce the risk of misunderstanding in a crowded orbital environment where an accidental collision could be mistaken for an attack.
+Transparency measures include announcing manoeuvres, sharing space-tracking data, and establishing communication channels between space commands. They aim to reduce the risk of misunderstanding in a crowded orbital environment, where an accidental collision could be mistaken for an attack.
 
 ::: example
 **Example: geolocating a ship radar with two satellites**
