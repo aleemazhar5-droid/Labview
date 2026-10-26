@@ -6,7 +6,7 @@ abstract: Every AI system in space rests on two foundations, data and computers.
 
 A modern Earth-observation satellite collects far more data than its radio link can send home. A model on the ground must wait for the data; a model in orbit must live with little power, intense radiation and a computer that cannot be repaired. Either way, it is only as good as the data it learned from. This chapter is about these two foundations of space AI: **data** and **computing hardware**.
 
-The numbers are large. NASA's Earth science archive held 178.7 PB at the end of September 2025 and grew by about 160 TB a day. Yet in 2020 ESA's Φsat-1 screened its images with a deep neural network running on a vision chip of about 1 W. In 2025 a satellite carrying a data-centre graphics processor (GPU), of a kind that draws several hundred watts, trained a small language model in orbit. The hero image above shows HPE's Spaceborne Computer-2 on the International Space Station (ISS), which brought commercial servers and a GPU to orbit in 2021.
+The numbers are large. NASA's Earth science archive held 178.7 PB at the end of September 2025 and grew by about 160 TB a day. Yet in 2020 ESA's Φsat-1 screened its images with a deep neural network running on a vision chip of about 1 W. In 2025 a satellite carrying a data-centre graphics processor (GPU), of a kind that draws several hundred watts, trained a small language model in orbit. The hero image above shows HPE's Spaceborne Computer-2 on the International Space Station (ISS). Launched in 2021, it followed a first HPE unit of 2017 and added a GPU to commercial servers in orbit.
 
 Chapters 43 and 44 explain the learning methods, and Chapters 46–53 apply them and ask how far to trust them. Radiation, flight computers and radio links are introduced in Chapters 2, 6 and 7.
 
@@ -81,9 +81,9 @@ Widely used benchmarks are listed in @tbl:spacebenchmarks. Most Earth-observatio
 | BigEarthNet (v2.0 2024) | 2019 | Sentinel-2 (+ Sentinel-1 in v2.0) | 590 326 patches (v2.0: 549 488 pairs) | Multi-label land cover |
 | SEN12MS | 2019 | Sentinel-1, Sentinel-2, MODIS | 180 662 triplets | Land cover |
 | So2Sat LCZ42 | 2020 | Sentinel-1 and -2 | 400 673 patch pairs | 17 local climate zones |
-| SpaceNet 1–8 | 2016–22 | Commercial 0.3–0.5 m imagery | SpaceNet 8: 850 km² | Buildings, roads, floods |
+| SpaceNet 1–8 | 2016–22 | Commercial optical (0.3–4 m) and radar | SpaceNet 8: 850 km² | Buildings, roads, floods |
 | xView | 2018 | WorldView-3, 0.3 m | > 1 million objects, 1 400 km² | 60 object classes |
-| fMoW | 2018 | High-resolution multispectral | 1 047 691 images | 63 land-use categories |
+| fMoW | 2018 | High-resolution multispectral | 1 047 691 images | 63 categories of land use |
 | xBD | 2019 | Before and after disasters | 850 736 buildings, 19 disasters | Damage level |
 | CloudSEN12 | 2022 | Sentinel-2 and -1 | 49 400 patches | Cloud and shadow masks |
 | SPEED+ | 2021 | Rendered and laboratory images | 59 960 + 9 531 images | Spacecraft pose |
@@ -143,7 +143,7 @@ $$ \mathrm{PSI} = \sum_i (q_i - p_i)\,\ln\frac{q_i}{p_i}. $$
 
 Values below 0.1 are usually taken as stable, and values above 0.25 signal a large shift.
 
-In @fig:driftmonitor a deployed classifier watches a detector that loses 0.1–0.6 % of its gain per month. At month 33, a ground-processing change raises two short-wave infrared bands by 20 %. Without retraining, accuracy slides from 93.7 % to 91.2 % by month 32, then drops to 80.3 %. With a PSI alarm at 0.1, the monitor fires at months 22 and 33. Each time the model is retrained on 2 000 newly labelled pixels and recovers to about 92–93 %.
+In @fig:driftmonitor a deployed classifier watches a detector that loses 0.1–0.6 % of its gain per month. At month 33, a ground-processing change raises two short-wave infrared bands by 20 %. Without retraining, accuracy slides from 93.7 % to about 90–91 % by month 32, then drops to 80.3 %. With a PSI alarm at 0.1, the monitor fires at months 22 and 33. Each time the model is retrained on 2 000 newly labelled pixels and recovers to about 92–93 %.
 
 ![Drift monitoring, computed with a random forest on synthetic pixels over 48 months. (a) A model never retrained (red) loses accuracy as the detector ages and after a processing change; one retrained at each alarm (green) recovers. (b) The largest population stability index across the bands, with the threshold and alarms.](figures/out/ch45_drift.svg){#fig:driftmonitor width=96%}
 
@@ -153,7 +153,7 @@ Most training and much inference happens on the ground, close to the archives (@
 
 | Platform | Operator | What it offers | Status, October 2026 |
 |---|---|---|---|
-| Google Earth Engine | Google | Catalogue of more than 80 PB and 1 000 data sets; analysis on Google's servers | Free for research; commercial use through Google Cloud |
+| Google Earth Engine | Google | Catalogue of 80–90 PB and more than 1 000 data sets; analysis on Google's servers | Free for research; commercial use through Google Cloud |
 | Copernicus Data Space Ecosystem | European Commission, ESA | About 91 PB online; all Sentinel data; processing services | Opened January 2023; replaced the old Open Access Hub (closed November 2023); 542 622 users at end of 2025 |
 | NASA Earthdata Cloud | NASA, on Amazon Web Services | 116.2 PB of the 178.7 PB EOSDIS archive | Operational; serves NISAR products |
 | AWS Open Data | Amazon | Free hosting of public data sets, including Landsat, Sentinel-2 and SpaceNet | Operational |
@@ -183,7 +183,7 @@ Measured rates give a feel for the result. Static memory (SRAM) on two Chinese i
 
 A network's **weights** are its learned parameters, stored in memory for the whole mission. Its **activations** are intermediate results, recomputed for every input. An upset in an activation spoils one result. An upset in a weight spoils every result until the memory is repaired.
 
-Not all bits are equal. A 32-bit floating-point number has 1 sign bit, 8 exponent bits and 23 fraction bits. Flipping a low fraction bit changes a weight slightly. Flipping the highest exponent bit can multiply it by about 2¹²⁸, or 10³⁸, and one such weight turns the network's output into garbage. An 8-bit integer weight can change by at most 255 quantisation steps, so its errors are bounded.
+Not all bits are equal. A 32-bit floating-point number has 1 sign bit, 8 exponent bits and 23 fraction bits. Flipping a low fraction bit changes a weight slightly. Flipping the highest exponent bit can multiply it by about 2¹²⁸, or 10³⁸, and one such weight turns the network's output into garbage. One flip changes an 8-bit integer weight by at most 128 quantisation steps, so its errors are bounded.
 
 A flip in control logic, program code or a register can hang the processor or corrupt a whole layer. Errors that go unnoticed are called **silent data corruption (SDC)**. They are more dangerous than crashes, which at least announce themselves.
 
@@ -235,11 +235,11 @@ Space processors fall into three families. **Radiation-hardened** processors are
 | Processor | In space | Peak throughput | Power | Radiation approach | Example use |
 |---|---|---|---|---|---|
 | RAD750 (BAE Systems) | 2005 | 400 DMIPS | 5 W (CPU) | Hardened, 0.2–1 Mrad | Perseverance, JWST |
-| GR740 (Gaisler), 4 × LEON4 | 2021 (parts) | 1 700 DMIPS | < 3 W (core) | Hardened, 300 krad | ESA missions |
+| GR740 (Gaisler), 4 × LEON4 | 2022 | 1 700 DMIPS | < 3 W (core) | Hardened, 300 krad | Rashid lunar rover |
 | PIC64-HPSC (Microchip) | 2025 (samples) | 28 130 DMIPS; 2 TOPS | Not published | Hardened, 100 krad | In test; not flown |
 | Versal XQRVC1902 (AMD) | 2023 (shipping) | 133 TOPS | Up to ~130 W | Tolerant; scrubbing | Payload processing |
 | Myriad 2 (Intel) | 2020 | > 100 GFLOPS | About 1 W | Commercial; tested | Φsat-1 |
-| Myriad X (Intel) | 2024 | 1 TOPS | As Myriad 2 | Commercial | CogniSAT-6 |
+| Myriad X (Intel) | 2021 | 1 TOPS | As Myriad 2 | Commercial | SpaceCloud, CogniSAT-6 |
 | Snapdragon 801 (Qualcomm) | 2021 | 4 × 2.26 GHz | Not published | Commercial; tested | Ingenuity |
 | T4 GPU (NVIDIA) | 2021 | 130 TOPS | 70 W | Commercial; inside ISS | Spaceborne Computer-2 |
 | SpaceCloud iX5, iX10 (Unibap) | 2021 (iX5) | iX10: CPU, GPU, Myriad X, FPGA | Tens of watts (iX10) | Commercial parts | D-Orbit ION carriers |
@@ -256,7 +256,7 @@ The comparison needs care. A CPU instruction does more varied work than an 8-bit
 
 NASA's **High-Performance Spaceflight Computing (HPSC)** project aims to narrow the gap for hardened parts. Microchip's PIC64-HPSC, announced in July 2024, has eight 64-bit RISC-V cores with vector units. NASA's figures give it about 1 343 times the speed of the GR740 on its SpaceBench benchmark at 1 GHz. As of mid-2026, its chips were in radiation, thermal and shock testing; none had flown.
 
-**FPGAs** are chips whose logic can be rewired after manufacture, which suits high-rate payload processing. AMD's space-grade Versal AI Core adds 400 small AI engines to an FPGA. It completed Class B qualification in December 2022 and has shipped since early 2023. A lidless version aiming at the stricter Class Y is planned to fly from 2027.
+**FPGAs** are chips whose logic can be rewired after manufacture, which suits high-rate payload processing. AMD's space-grade Versal AI Core adds 400 small AI engines to an FPGA. It completed Class B qualification in December 2022 and has shipped since early 2023. A lidless version aiming at the stricter Class Y is sampling in 2026, with flight units planned for 2027.
 
 Commercial chips dominate new demonstrations because they are thousands of times more efficient. Planet's Pelican-4, for example, used a Jetson Orin module to detect aircraft in its own images on 25 March 2026. Unibap's SpaceCloud computers have hosted customers' applications on D-Orbit's ION carriers since June 2021. The price is risk. The Ingenuity helicopter flew 72 times on Mars between April 2021 and January 2024 on a Snapdragon 801 phone processor (@fig:ingenuitysnap). Its team accepted that the chip was less robust than flight parts, and two small microcontrollers ran the time-critical flight control.
 
@@ -280,7 +280,7 @@ maps each weight $w$ to the integer $q = \mathrm{round}(w/s)$, clipped to $\pm(2
 
 **Post-training quantisation (PTQ)** converts a trained network directly. **Quantisation-aware training (QAT)** fine-tunes the network with quantised weights in the forward pass, so that it learns to tolerate rounding. Rounding has no useful gradient. QAT therefore uses the **straight-through estimator**, which passes the gradient through the rounding step as if it were absent.
 
-These methods were applied to the 5 126-parameter network of @fig:bitflipnet (@fig:quantprune). At 8 and 6 bits, PTQ loses nothing measurable: 94.3 % in every case. At 4 bits it loses about one point (93.2 % per tensor, 93.7 % per neuron). At 2 bits — weights of −1, 0 or +1 times a scale — PTQ collapses to 16.7 % per tensor and 51.5 % per neuron, while QAT still reaches 93.2 %. Model size falls from 20.0 kB to 5.9 kB at 8 bits and 2.3 kB at 2 bits; the 32-bit biases and scales set a floor.
+These methods were applied to the 5 126-parameter network of @fig:bitflipnet (@fig:quantprune). At 8 and 6 bits, PTQ loses nothing measurable: 94.2–94.3 % in every case. At 4 bits it loses about one point (93.2 % per tensor, 93.7 % per neuron). At 2 bits — weights of −1, 0 or +1 times a scale — PTQ collapses to 16.7 % per tensor and 51.5 % per neuron, while QAT still reaches 93.2 %. Model size falls from 20.0 kB to 5.9 kB at 8 bits and 2.3 kB at 2 bits; the 32-bit biases and scales set a floor.
 
 ::: example
 **Example: sizing an onboard cloud screen**
@@ -291,7 +291,7 @@ A cloud screen the size of MobileNetV2 has 3.4 million parameters and needs abou
 2. **Uplink time.** At 256 kbit/s: 3.4 × 8 × 10⁶ / 256 000 ≈ 106 s for int8 (one pass), 425 s for float32.
 3. **Work per tile.** Two operations per MAC give 0.6 × 10⁹ operations; at 0.3 × 10¹² per second, a tile takes 2.0 ms.
 4. **Energy per inference.** E = P t = 5 W × 2.0 ms = 10 mJ per tile.
-5. **Per image.** A 10 000 × 10 000-pixel image holds about 2 000 tiles: about 4 s and 20 J. Screening 300 images a day uses about 1.7 Wh. (CloudScout on Φsat-1 was reported to use roughly 0.6 J per image.)
+5. **Per image.** A 10 000 × 10 000-pixel image holds about 2 000 tiles: about 4 s and 20 J. Screening 300 images a day uses about 1.7 Wh. (CloudScout on Φsat-1 took about 0.3 s at about 2 W, roughly 0.6 J per image.)
 6. **Radiation.** At 7.6 × 10⁻⁷ upsets per bit per day, the 27.2 Mbit of int8 weights collect about 21 upsets a day. With SEC-DED ECC and daily scrubbing, a double error in one word occurs only about once in four years.
 :::
 
@@ -319,7 +319,7 @@ A pushbroom imager with $N$ pixels across its track, ground sample distance $g$ 
 
 $$ R = N \, \frac{v_g}{g} \, N_b \, b. $$
 
-At 1 m resolution, 20 000 pixels across, 4 bands and 12 bits, that is 6.7 Gbit/s. A link's daily capacity is its rate times the daily contact time with ground stations. The two are compared in @fig:downlinkgap. An X-band link of 0.5 Gbit/s with 40 minutes of contact a day carries 0.15 TB. A Ka-band link of 3.5 Gbit/s carries 1.05 TB, and an optical link of 100 Gbit/s for 20 minutes carries 15 TB in clear weather. Applied to Sentinel-2's bands, the same model gives about 4.4 TB a day. That is consistent with the 1.5 TB a day each satellite sends after onboard compression of about 3:1.
+At 1 m resolution, 20 000 pixels across, 4 bands, 12 bits and a ground speed of 7 km/s, that is 6.7 Gbit/s. A link's daily capacity is its rate times the daily contact time with ground stations. The two are compared in @fig:downlinkgap. An X-band link of 0.5 Gbit/s with 40 minutes of contact a day carries 0.15 TB. A Ka-band link of 3.5 Gbit/s carries 1.05 TB, and an optical link of 100 Gbit/s for 20 minutes carries 15 TB in clear weather. Applied to Sentinel-2's bands, the same model gives about 4.4 TB a day. That is consistent with the 1.5 TB a day each satellite sends after onboard compression of about 3:1.
 
 ![Imager data versus link capacity. (a) Daily data from pushbroom imagers imaging 30 % of the time, against assumed daily capacities of X-band, Ka-band and optical links; Sentinel-2's reported 1.5 TB a day for comparison. (b) For a 3 m imager, compression, cloud screening and sending only detections cut 2.9 TB a day to 8 GB.](figures/out/ch45_downlink.svg){#fig:downlinkgap width=98%}
 
@@ -332,7 +332,7 @@ About two-thirds of Earth is covered by cloud at any moment. More than a decade 
 ::: figrow
 ![Average cloud cover from MODIS. About 67 % of Earth is typically cloud-covered, most of all over the oceans.](figures/photos/ch45_cloudyearth.jpg){#fig:cloudyearthmap}
 
-![The 34 m antenna DSS-13 at Goldstone, California, with an optical terminal (centre) that receives laser signals from NASA's Psyche spacecraft. Clouds limit optical links.](figures/photos/ch45_laserdownlink.jpg){#fig:dss13optical}
+![The 34 m antenna DSS-13 at Goldstone, California, with an optical terminal (below the centre of the dish) that receives laser signals from NASA's Psyche spacecraft. Clouds limit optical links.](figures/photos/ch45_laserdownlink.jpg){#fig:dss13optical}
 :::
 
 ::: example
@@ -434,7 +434,7 @@ Here $\sigma$ is the Stefan–Boltzmann constant, 5.67 × 10⁻⁸ W m⁻² K⁻
 
 ![Radiator physics for computing in orbit. (a) Area to reject 1 kW: 1.6 m² for a two-sided panel at 300 K in LEO; the ISS's radiators need about four times the ideal. (b) Radiator and solar-array areas grow with computing power; a gigawatt would need about 1.6 km² of radiator and 2.9 km² of solar array.](figures/out/ch45_radiator.svg){#fig:radiatorarea width=96%}
 
-The ISS gives a reality check (@fig:issradiators). Its external active thermal control system rejects up to 70 kW with six radiator wings, each 23.3 m × 3.4 m, for 475 m² of panel. That is 6.8 m² per kW, against an ideal of about 1.6 m² per kW for two-sided panels near 280 K.
+The ISS gives a reality check (@fig:issradiators). Its external active thermal control system rejects up to 70 kW. It uses two radiator wings of three units each; every unit is 23.3 m × 3.4 m, for 475 m² of panel in all. That is 6.8 m² per kW, against an ideal of about 1.6 m² per kW for two-sided panels near 280 K.
 
 ![The ISS in May 2010 (STS-132). Between the solar-array wings, white radiator panels on the truss reject up to 70 kW — the heat of about seven eight-GPU AI servers.](figures/photos/ch45_issflyaround.jpg){#fig:issradiators width=62%}
 
@@ -447,7 +447,7 @@ A 10 kW AI server — about one machine with eight data-centre GPUs — must rej
 2. **Ideal area.** With no absorbed flux, A = 10 000 / (2 × 413) = 12.1 m².
 3. **With environment.** Net flux 413 − 100 = 313 W/m² per side, so A = 10 000 / (2 × 313) = 16.0 m².
 4. **With margin.** Allow 30 % for fin efficiency, temperature drops and degradation: about 21 m².
-5. **Mass.** ISS radiator wings weigh about 14 kg/m² (1 123 kg for 79 m²), giving about 290 kg.
+5. **Mass.** ISS radiator units weigh about 14 kg/m² (1 123 kg for 79 m²), giving about 300 kg.
 6. **Launch cost.** At about $3 600/kg, the radiator alone costs about $1.1 million to launch. The solar array for 10 kW needs another 29 m².
 
 At 350 K the area before margin would fall to 7.5 m², if the chips tolerate the heat.
@@ -477,7 +477,7 @@ Small satellites are often the first home of a new AI payload (@fig:cubesatdeplo
 9. **Plan operations.** Commission in shadow mode — deciding but not acting — and downlink samples to check the decisions. Then monitor for drift.
 :::
 
-![A NanoRacks deployer on the Kibo robotic arm releases cubesats from the ISS in February 2014. Many AI payloads are first proven on small satellites like these.](figures/photos/ch45_cubesats.jpg){#fig:cubesatdeploy width=58%}
+![Japan's Small Satellite Orbital Deployer, held by the Kibo robotic arm on 11 February 2014, shortly before it released NanoRacks cubesats from the ISS. Many AI payloads are first proven on small satellites like these.](figures/photos/ch45_cubesats.jpg){#fig:cubesatdeploy width=58%}
 
 ::: key
 **Key takeaways**

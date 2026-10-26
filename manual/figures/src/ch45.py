@@ -870,11 +870,11 @@ def pipeline():
 # power W (None = not published), class, kind of operation
 PROCS = [
     ("RAD750", 2005, 0.4, 5.0, "hard", "cpu"),
-    ("GR740 (4 x LEON4)", 2021, 1.7, 3.0, "hard", "cpu"),
+    ("GR740 (4 x LEON4)", 2022, 1.7, 3.0, "hard", "cpu"),
     ("PIC64-HPSC (CPU)", 2025, 28.1, None, "hard", "cpu"),
     ("PIC64-HPSC (int8)", 2025, 2000, None, "hard", "ai"),
     ("Myriad 2 (Phi-sat-1)", 2020, 100, 1.0, "cots", "ai"),
-    ("Myriad X (CogniSAT-6)", 2024, 1000, None, "cots", "ai"),
+    ("Myriad X", 2021, 1000, None, "cots", "ai"),
     ("T4 GPU (Spaceborne\nComputer-2)", 2021, 130_000, 70.0, "cots", "ai"),
     ("Versal AI Core XQR", 2023, 133_000, 130.0, "tol", "ai"),
     ("Jetson Orin NX", 2024, 50_000, 25.0, "cots", "ai"),
@@ -890,9 +890,9 @@ PLAB = {"hard": "radiation-hardened by design", "tol": "radiation-tolerant (spac
 def procperf():
     fig, axs = plt.subplots(1, 2, figsize=(7.0, 3.8), gridspec_kw=dict(width_ratios=[1.3, 1.0]))
     ax = axs[0]
-    pos = {"RAD750": (2006.0, 0.4, "left"), "GR740 (4 x LEON4)": (2020.2, 1.7, "right"),
+    pos = {"RAD750": (2006.0, 0.4, "left"), "GR740 (4 x LEON4)": (2021.2, 1.7, "right"),
            "PIC64-HPSC (CPU)": (2024.2, 28, "right"), "PIC64-HPSC (int8)": (2024.2, 3200, "right"),
-           "Myriad 2 (Phi-sat-1)": (2019.2, 100, "right"), "Myriad X (CogniSAT-6)": (2023.2, 650, "right"),
+           "Myriad 2 (Phi-sat-1)": (2019.2, 100, "right"), "Myriad X": (2020.2, 1000, "right"),
            "T4 GPU (Spaceborne\nComputer-2)": (2020.2, 1.3e5, "right"), "Versal AI Core XQR": (2023.6, 1.33e5, "left"),
            "Jetson Orin NX": (2023.2, 3.2e4, "right"), "H100 (Starcloud-1)": (2024.2, 2.6e6, "right"),
            "Three-Body satellite": (2024.2, 5.6e5, "right"),
