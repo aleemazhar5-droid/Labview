@@ -28,7 +28,7 @@ Here $\mathbf{B}$ and $\mathbf{R}$ are the error covariances of the background a
 
 ### Reanalysis: the Training Set
 
-A **reanalysis** runs one fixed assimilation system over decades of archived observations. Because the system never changes, the record is consistent in time. ECMWF's **ERA5**, produced for the European Union's Copernicus Climate Change Service, covers 1940 to the present. It gives hourly fields on a 0.25° grid (about 31 km) with 137 levels from the surface to about 80 km, and many products on 37 pressure levels. Its successor, ERA6, has been in production since 2025 at about 14 km. Its first decades are due for release towards the end of 2027.
+A **reanalysis** runs one fixed assimilation system over decades of archived observations. Because the system never changes, the record is consistent in time. ECMWF's **ERA5**, produced for the European Union's Copernicus Climate Change Service, covers 1940 to the present. It gives hourly fields on a 0.25° grid (about 31 km) with 137 levels from the surface to about 80 km, and many products on 37 pressure levels. Its successor, ERA6, is now in production at about 14 km. Its first decades are due for release towards the end of 2027.
 
 Almost every learned global model has been trained on ERA5. A typical training set holds 1979–2017 or 1979–2018 at 6-hour intervals: about 57 000 global states, each with about a million grid points and tens to hundreds of variables. Later years are kept for testing. A learned model can only be as good as the reanalysis it imitates: it inherits ERA5's errors, its smoothing of small scales and its weak points, such as rainfall.
 
@@ -42,7 +42,7 @@ The key idea of this section is that within three years learned models went from
 
 ### Landmark Models
 
-@tbl:mlwxmodels lists the models that set the pace. **FourCastNet** (NVIDIA and partners, February 2022) produced a week-long global forecast at 0.25° in under two seconds. It matched ECMWF's physics model only at short lead times and for large-scale variables, but it showed what was possible. **Pangu-Weather** (Huawei, published in *Nature* in July 2023) was the first learned model reported to beat ECMWF's deterministic forecast on its main scores. It used a transformer that treats pressure levels and surface fields as one three-dimensional volume. **GraphCast** (Google DeepMind, *Science*, November 2023) was more accurate than ECMWF's high-resolution forecast (HRES) on 90 % of 1 380 verification targets. It made a 10-day forecast in under one minute on a single Google TPU v4 chip.
+@tbl:mlwxmodels lists the models that set the pace. **FourCastNet** (NVIDIA and partners, February 2022) produced a week-long global forecast at 0.25° in under two seconds. It matched ECMWF's physics model at short lead times for large-scale variables, but its skill fell behind at longer range. Still, it showed what was possible. **Pangu-Weather** (Huawei, published in *Nature* in July 2023) was the first learned model reported to beat ECMWF's deterministic forecast on its main scores. It used a transformer that treats pressure levels and surface fields as one three-dimensional volume. **GraphCast** (Google DeepMind, *Science*, November 2023) was more accurate than ECMWF's high-resolution forecast (HRES) on 90 % of 1 380 verification targets. It made a 10-day forecast in under one minute on a single Google TPU v4 chip.
 
 | Model | Developer, year | Architecture | Grid and step | Range | Status, October 2026 |
 |---|---|---|---|---|---|
@@ -68,7 +68,7 @@ Foundation models followed (Chapter 44). **Aurora** (Microsoft, *Nature*, May 20
 
 The decisive change came when weather centres put learned models into daily service (@tbl:mlwxops). "Operational" means run every day on a fixed schedule, monitored, and delivered to users with a service commitment. In every case the learned model runs **beside** the physics model, not instead of it.
 
-ECMWF built its own model (see the box below); NOAA started from an outside one. Through its Project EAGLE, it fine-tuned GraphCast on analyses from its own assimilation system. Of its three models of December 2025, **AIGFS** is a single forecast with better cyclone tracks but weaker intensity than the physics GFS. **AIGEFS** is a 31-member learned ensemble that needs about 9 % of the computing of the physics ensemble. **HGEFS** joins 31 physics and 31 learned members into one 62-member "grand ensemble" — the first such hybrid in operations, NOAA believes.
+ECMWF built its own model (see the box at the end of this section); NOAA started from an outside one. Through its Project EAGLE, it fine-tuned GraphCast on analyses from its own assimilation system. Of its three models of December 2025, **AIGFS** is a single forecast with better cyclone tracks but weaker intensity than the physics GFS. **AIGEFS** is a 31-member learned ensemble that needs about 9 % of the computing of the physics ensemble. **HGEFS** joins 31 physics and 31 learned members into one 62-member "grand ensemble" — the first such hybrid in operations, NOAA believes.
 
 | Centre | System | In service | How it was built | Notes |
 |---|---|---|---|---|
@@ -81,21 +81,21 @@ ECMWF built its own model (see the box below); NOAA started from an outside one.
 
 : Machine-learning global models at national and international centres, October 2026. {#tbl:mlwxops}
 
+### Learning Directly from Observations
+
+All the models above start from an analysis made by physics-based assimilation. The next step is to learn the whole chain. **Aardvark Weather** (Cambridge, the Alan Turing Institute, Microsoft Research and ECMWF; *Nature*, 2025) takes in raw data from scatterometers, sounders, geostationary imagers, stations, ships and radiosondes. It outputs forecasts on a 1.41° grid and for individual stations in about one second on four GPUs; ECMWF's physics system needs about 1 000 node-hours for assimilation and forecast. Using about 8 % of the observations that operational systems ingest, it beat NOAA's GFS on many variables but trailed ECMWF's HRES in the upper atmosphere and at short range.
+
+ECMWF's **GraphDOP** (2024–25) learns from satellite and in-situ observations alone and was skilful to about five days in its first version. A Google DeepMind preprint of September 2026, **WeatherNext 3**, ingests low-latency geostationary images and predicts station temperatures anywhere. These systems are research, but they could free learned forecasting from its dependence on physics-based analyses.
+
 ::: history
 **Landmark: ECMWF's AIFS goes operational (2025–26)**
 
 - **25 February 2025.** ECMWF put its **Artificial Intelligence Forecasting System (AIFS)** into operations, the first data-driven global model in service at a major international centre. It runs at 28 km beside the 9 km physics model (IFS). ECMWF reported gains of up to 20 % on some scores, including cyclone tracks, and about 1 000 times less energy per forecast.
-- **Design.** A graph network maps the input grid onto an internal grid of about 1°, a transformer steps it forward 6 hours, and a decoder maps it back. Pre-trained on ERA5 (1979–2020) and fine-tuned on operational analyses, it trained in about a week on 64 GPUs. A 10-day forecast takes about 2.5 minutes on one GPU.
+- **Design.** A graph network maps the input grid onto an internal grid of about 1°, a transformer steps it forward 6 hours, and a decoder maps it back. Pre-trained on four decades of ERA5 and fine-tuned on operational analyses, it trained in about a week on 64 GPUs. A 10-day forecast takes about 2.5 minutes on one GPU.
 - **1 July 2025.** **AIFS ENS** followed: a 51-member ensemble trained on the continuous ranked probability score. ECMWF reported gains over the physics ensemble of up to 20 % for surface temperature.
-- **12 May 2026.** Version 2 of both arrived with the physics model's new cycle, 50r1, and added ECMWF's first operational data-driven wave forecasts. The ensemble was re-tuned on analyses from the new cycle, because the learned model degrades when its starting analyses change.
+- **12 May 2026.** Version 2 of both arrived with the physics model's new cycle, 50r1, and added ECMWF's first operational data-driven wave forecasts. Both were re-tuned on analyses from the new cycle. Started from the new analyses, version 1 had lost skill, with 2 m temperature errors up to 20 % larger.
 - **Open by design.** AIFS forecasts are free open data (CC-BY-4.0). Its training software, Anemoi, is shared with national services; Germany's AICON is built on it.
 :::
-
-### Learning Directly from Observations
-
-All the models above start from an analysis made by physics-based assimilation. The next step is to learn the whole chain. **Aardvark Weather** (Cambridge, the Alan Turing Institute, Microsoft Research and ECMWF; *Nature*, 2025) takes in raw data from scatterometers, sounders, geostationary imagers, stations, ships and radiosondes. It outputs forecasts on a 1.41° grid and for individual stations in about one second on four GPUs; ECMWF's physics system needs about 1 000 node-hours for assimilation and forecast. Using about 10 % of the input data of operational systems, it beat NOAA's GFS on many variables but trailed ECMWF's HRES in the upper atmosphere and at short range.
-
-ECMWF's **GraphDOP** (2024–25) learns from satellite and in-situ observations alone and was skilful to about five days in its first version. A Google DeepMind preprint of September 2026, **WeatherNext 3**, ingests low-latency geostationary images and predicts station temperatures anywhere. These systems are research, but they could free learned forecasting from its dependence on physics-based analyses.
 
 ## How Learned Weather Models Work
 
@@ -143,7 +143,7 @@ The quadratic term moves "weather" around the ring, $-x_k$ damps it and $F = 8$ 
 
 ![A learned emulator of the chaotic Lorenz-96 system. (a) Truth and a 10-day emulator forecast as space–time diagrams. (b) Error growth for 200 forecasts: the emulator (blue) tracks the perfect physics model, beats a physics model with a 5 % forcing error (orange) and far outperforms persistence. (c) Error relative to the perfect model.](figures/out/ch47_l96.svg){#fig:l96emu width=100%}
 
-We generated 3 000 days of 6-hourly "reanalysis" and trained a small neural network to predict the 6-hour change at each site from its 9 nearest neighbours. Like a graph model, the same network serves all sites. It has 2 881 parameters. We then ran 200 forecasts from initial states with small errors, as if from an imperfect analysis (@fig:l96emu). The learned emulator's error grew almost exactly like that of the perfect physics model: 0.74 against 0.71 after 3 days and 1.53 against 1.49 after 5 days. It beat a physics model with a 5 % error in its forcing, which reached 0.78 and 1.60. All three reached half the climatological spread after 5.5–5.7 days. Persistence — forecasting no change — was worse than climatology after just over a day. Chaos, not the model, set the limit.
+We generated 3 000 days of 6-hourly "reanalysis" and trained a small neural network to predict the 6-hour change at each site from the values at that site and its eight nearest neighbours. Like a graph model, the same network serves all sites. It has 2 881 parameters. We then ran 200 forecasts from initial states with small errors, as if from an imperfect analysis (@fig:l96emu). The learned emulator's error grew almost exactly like that of the perfect physics model: 0.74 against 0.71 after 3 days and 1.53 against 1.49 after 5 days. It beat a physics model with a 5 % error in its forcing, which reached 0.78 and 1.60. All three reached half the climatological spread after 5.5–5.7 days. Persistence — forecasting no change — was worse than climatology after just over a day. Chaos, not the model, set the limit.
 
 The same emulator shows how ensembles help (@fig:l96ensfig). Twenty members started from perturbed analyses spread out as errors grew. After 10 days the ensemble-mean error was 2.81, against 3.56 for a single forecast. The **spread** — the scatter of the members — was 2.70. A spread close to the error of the ensemble mean means the ensemble is **well calibrated**: its uncertainty is honest. With perturbations only at the start, the spread was 4–7 % too small. Adding a little noise at each step, a crude stand-in for model error, brought spread and error to within 2–7 % of each other.
 
@@ -220,7 +220,7 @@ On the scores of the WeatherBench 2 benchmark and the centres' own verification,
 
 **Physical consistency.** Nothing forces a learned model to conserve mass or energy, or to keep winds balanced with pressure. Outputs are mostly close to balance because the training data are, but small errors matter when the output drives other models. Learned models also lack many of the hundreds of fields, such as cloud ice or radiation fluxes, that physics models provide.
 
-**Dependence on analyses.** A learned model inherits every error of its starting analysis; ECMWF's ensemble had to be re-tuned when the physics assimilation changed in 2026. A system of learned models alone would still need the satellites, the assimilation and the physics model that create its inputs.
+**Dependence on analyses.** A learned model inherits every error of its starting analysis; ECMWF's AIFS had to be re-tuned when the physics assimilation changed in 2026. A system of learned models alone would still need the satellites, the assimilation and the physics model that create its inputs.
 
 ::: note
 **Practice: evaluating a learned weather model fairly against a physics baseline**
@@ -243,7 +243,7 @@ The key idea of this section is that learning is useful long before the forecast
 
 A **retrieval** estimates a geophysical quantity, such as rain rate, from what an instrument measures. Geostationary imagers see cloud tops every 5–15 minutes but not the rain beneath. Microwave instruments in low orbit see the rain but pass only a few times a day (Chapter 16). Neural networks have linked the two since the 1990s. PERSIANN ("precipitation estimation from remotely sensed information using artificial neural networks") maps infrared cloud-top temperatures to rain rate, trained on microwave and radar estimates. Multi-satellite products such as NASA's IMERG have used such estimates to fill gaps between microwave passes.
 
-Deep networks now use several channels and the pattern of clouds. GREMLIN, from Colorado State University's CIRA, turns GOES imagery and lightning data into synthetic radar maps. Assimilating them improved 12-hour forecasts over the mountainous western United States, where radar coverage is poor. It remained research in 2025.
+Deep networks now use several channels and the pattern of clouds. GREMLIN, from Colorado State University's CIRA, turns GOES imagery and lightning data into synthetic radar maps. In a one-week test, assimilating them gave better forecasts out to 12 hours over the mountainous western United States, where radar coverage is poor. It remained research in 2025.
 
 **Tropical-cyclone intensity** from satellites still relies largely on the **Dvorak technique**: a trained analyst matches cloud patterns to an intensity scale. When only satellite estimates exist, the National Hurricane Center puts their uncertainty at 10–20 %. Convolutional networks trained on infrared and microwave images, with aircraft reconnaissance as ground truth, can make the estimate objective and repeatable. Most such networks are still research tools.
 
@@ -296,7 +296,7 @@ Here $F$ is the radiative forcing, $\lambda$ the climate feedback, which weakens
 
 ![Emulating a two-layer energy-balance climate model. (a) Training forcing (black and shaded range) and two unseen test scenarios. (b) Under high forcing, outside the training range, the neural-network emulator (orange) fails, while the linear response emulator (blue) stays close. Adding an abrupt 4×CO₂ run to training (violet) fixes the network. (c) In an overshoot scenario inside the training range, all emulators work.](figures/out/ch47_climate.svg){#fig:ebmemu width=100%}
 
-In an overshoot scenario that stayed within the training range, all emulators reproduced the truth to within 0.06 K. In a high-forcing scenario reaching 8.5 W/m² by 2100, the true warming was 5.47 K. The linear emulator gave 5.19 K: close, but low, because it cannot know that the feedback weakens. The neural network gave only 3.11 K. Its tanh units had saturated outside the range they were trained on. When an abrupt 4×CO₂ run was added to training, the network gave 5.36 K. The lesson applies to every learned climate model: **train on the conditions you will predict**, prefer structures that respect physics, and test outside the training range on purpose.
+In an overshoot scenario that stayed within the training range, all emulators reproduced the truth, with RMSE of 0.06 K or less over 2021–2100. In a high-forcing scenario reaching 8.5 W/m² by 2100, the true warming was 5.47 K. The linear emulator gave 5.19 K: close, but low, because it cannot know that the feedback weakens. The neural network gave only 3.11 K. Its tanh units had saturated outside the range they were trained on. When an abrupt 4×CO₂ run was added to training, the network gave 5.36 K. The lesson applies to every learned climate model: **train on the conditions you will predict**, prefer structures that respect physics, and test outside the training range on purpose.
 
 ### Downscaling
 
@@ -304,7 +304,7 @@ Global models run at 10–100 km; impacts happen at 1 km. **Downscaling** fills 
 
 ### Satellite Climate Records and Extremes
 
-Learning from observations needs long, stable records. ESA's **Climate Change Initiative (CCI)** reprocesses decades of satellite data into over 100 consistent data sets, covering many of the 54 **essential climate variables** of the Global Climate Observing System. They are used to train and test learned models and to detect change. Statistical learning can even find the fingerprint of global warming in a single day's weather pattern. For **attribution** of extremes, learned models can generate thousands of plausible seasons to estimate how much more likely a heatwave has become. Their answers are only as good as their behaviour in the tails, which must be tested separately.
+Learning from observations needs long, stable records. ESA's **Climate Change Initiative (CCI)** reprocesses decades of satellite data into over 100 consistent data sets, covering many of the 55 **essential climate variables** of the Global Climate Observing System. They are used to train and test learned models and to detect change. Statistical learning can even find the fingerprint of global warming in a single day's weather pattern. For **attribution** of extremes, learned models can generate thousands of plausible seasons to estimate how much more likely a heatwave has become. Their answers are only as good as their behaviour in the tails, which must be tested separately.
 
 ### Digital Twins of the Earth
 
@@ -372,7 +372,7 @@ The logistic model of @fig:flaretss was tested on 16 000 region-days, of which 3
 7. **Meaning.** A high TSS shows that the model separates flaring from quiet regions, not that its warnings are usually right. Users who pay for false alarms should choose a higher threshold.
 :::
 
-Since 2018 deep networks have learned directly from magnetogram and extreme-ultraviolet images, with results similar to feature-based methods on small samples. The NASA–IBM **Surya** foundation model (August 2025) was pre-trained on about 218 TB of SDO data. Fine-tuned for flares, it beat existing benchmarks by about 16 % in preliminary tests (Chapter 44).
+Since 2018 deep networks have learned directly from magnetogram and extreme-ultraviolet images, with results similar to feature-based methods on small samples. The NASA–IBM **Surya** foundation model (August 2025) was pre-trained on more than 200 TB of SDO data. Fine-tuned for flares, it reportedly beat existing benchmarks by about 16 % in preliminary tests (Chapter 44).
 
 ::: figrow
 ![The largest sunspot group of solar cycle 24, active region 12192, seen by SDO in October 2014. It produced six X-class flares, none of which launched a coronal mass ejection.](figures/photos/ch47_sunspot.jpg){#fig:ar12192}
@@ -384,7 +384,7 @@ Region 12192 (@fig:ar12192) is a warning about labels. It produced 6 X-class, 22
 
 ### CMEs and the Solar Wind
 
-Forecasting when a CME will arrive is still hard. NASA's Community Coordinated Modeling Center collects real-time forecasts from many teams in its CME Scoreboard. A 2024 re-analysis found a mean absolute arrival-time error of 13.2 hours, a standard deviation of 17.4 hours and a bias of −2.5 hours (slightly early), little better than in 2013. Learned models report 6–12 hours on their own samples, such as 5.9 hours for a support vector machine on 182 CMEs and 9.75 hours for an ensemble on 363 CMEs. The samples differ, so the numbers cannot be compared directly.
+Forecasting when a CME will arrive is still hard. NASA's Community Coordinated Modeling Center collects real-time forecasts from many teams in its CME Scoreboard. A 2024 re-analysis found a mean absolute arrival-time error of 13.2 hours, a standard deviation of 17.4 hours and a bias of −2.5 hours (slightly early). That is only slightly better than in the Scoreboard's first five years, from 2013. Learned models report 6–12 hours on their own samples, such as 5.9 hours for a support vector machine on 182 CMEs and 9.75 hours for an ensemble on 363 CMEs. The samples differ, so the numbers cannot be compared directly.
 
 Networks can also forecast the background solar wind. Coronal holes in extreme-ultraviolet images release fast wind that reaches the Earth 3–4 days later. An image network combined with a recurrent network forecast the wind speed at L1 four days ahead with an RMSE of 82 km/s; a later study reached 72 km/s. The physics-based WSA–Enlil model remains the operational standard.
 
@@ -418,7 +418,7 @@ NOAA's SOLAR-1 observatory sits near L1, about 1.5 million km sunward of the Ear
 
 ### Ionosphere and Radiation Belts
 
-The ionosphere delays GNSS signals in proportion to its **total electron content (TEC)** (Chapters 18 and 23). Global TEC maps from thousands of receivers form long image sequences, well suited to recurrent and convolutional networks. Studies report 1–24-hour forecasts that beat empirical models in quiet conditions but are weaker in storms, which are rare in training data. Neural networks driven by solar-wind and particle data also forecast radiation-belt electrons (Chapter 2) between the few spacecraft that measure them. Both remain mostly research.
+The ionosphere delays GNSS signals in proportion to its **total electron content (TEC)** (Chapters 18 and 23). Global TEC maps from thousands of receivers form long image sequences, well suited to recurrent and convolutional networks. Studies report 1–24-hour forecasts that beat empirical models in quiet conditions but are weaker in storms, which are rare in training data. Neural networks driven by solar-wind and particle data also forecast radiation-belt electrons (Chapter 23) between the few spacecraft that measure them. Both remain mostly research.
 
 ### From Research to Operations
 
@@ -427,11 +427,11 @@ Operational space-weather centres have been slower than weather centres to adopt
 ::: history
 **Landmark: three decades of neural networks in space weather**
 
-- **Early 1990s.** A group at the Swedish Institute of Space Physics in Lund began using neural networks to predict geomagnetic indices from solar-wind data. Within an ESA space-weather study around 2001 it built a real-time prototype forecast service.
+- **Early 1990s.** A group at the Swedish Institute of Space Physics in Lund began using neural networks to predict geomagnetic indices from solar-wind data. By the early 2000s it ran real-time forecasts of Dst; its Kp and Dst forecasts are now distributed through ESA's space-weather service.
 - **2010s.** SDO magnetograms enabled image-based flare forecasting. Research classifiers reached TSS near 0.8; operational comparisons showed far lower skill.
 - **2023.** NASA's DAGGER forecast ground magnetic disturbances worldwide 30 minutes ahead in under a second.
 - **2025.** NASA and IBM released the Surya foundation model openly. NOAA's SWFO-L1 launched with NASA's IMAP on 24 September 2025, reached L1 in January 2026 and was renamed SOLAR-1 (@fig:imap47).
-- **2026.** Operational use was still limited to a few products; the bottleneck had moved from algorithms to validation and trust (Chapter 53).
+- **2026.** SOLAR-1 was declared operational in mid-2026, after its CCOR-2 coronagraph in June. Operational use of learning was still limited to a few products; the bottleneck had moved from algorithms to validation and trust (Chapter 53).
 :::
 
 ![The Falcon 9 carrying NASA's IMAP, the Carruthers Geocorona Observatory and NOAA's SWFO-L1 (now SOLAR-1) at Launch Complex 39A on 22 September 2025, two days before launch. SOLAR-1 carries a coronagraph and solar-wind instruments for operational forecasts.](figures/photos/ch47_imap.jpg){#fig:imap47 width=52%}

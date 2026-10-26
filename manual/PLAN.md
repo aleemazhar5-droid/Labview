@@ -78,7 +78,7 @@ Part XIII — Artificial Intelligence in the Space Ecosystem
 - [x] 44 Deep Learning, Foundation Models and Generative AI
 - [x] 45 Data, Computing Hardware and Edge AI in Orbit
 - [x] 46 AI for Earth Observation
-- [ ] 47 AI for Weather, Climate and Space Weather
+- [x] 47 AI for Weather, Climate and Space Weather
 - [ ] 48 AI for Autonomy, Navigation and Robotics
 - [ ] 49 AI for Mission Operations, Communications and Networks
 - [ ] 50 AI for Space Situational Awareness, Defence and Security
