@@ -4,7 +4,7 @@ hero: ch47
 abstract: Between 2022 and 2026 machine learning changed weather forecasting faster than any idea since the first computer forecasts. This chapter explains how. It recalls how physics models and data assimilation turn satellite data into forecasts, then follows the learned models from the first research papers to operational service at ECMWF, NOAA and other centres. It shows how they are built and trained, how their skill is measured fairly, and where they still fall short. It covers machine learning inside the observing chain, nowcasting, climate emulators, downscaling and digital twins. It ends with space weather: flares, coronal mass ejections, geomagnetic storms and the slow road to operations. Small models trained in Python make each idea concrete.
 ---
 
-Weather forecasting is one of the largest users of satellite data. It is also where machine learning has changed operational practice fastest. In 2022 a learned weather model was a research curiosity. By October 2026 learned models were running every day at the European Centre for Medium-Range Weather Forecasts (ECMWF), the US National Oceanic and Atmospheric Administration (NOAA), Germany's weather service and China's. A learned model at the US National Hurricane Center slightly beat the official track forecasts of 2025 at some lead times.
+Weather forecasting is one of the largest users of satellite data. It is also where machine learning has changed operational practice fastest. In 2022 a learned weather model was a research curiosity. By October 2026 learned models were running every day at the European Centre for Medium-Range Weather Forecasts (ECMWF), the US National Oceanic and Atmospheric Administration (NOAA), Germany's weather service and China's. A learned model used at the US National Hurricane Center slightly beat the official track forecasts of 2025 at some lead times.
 
 These models did not appear from nowhere. They learned from decades of **reanalysis**, the best reconstruction of past weather, made by physics models that absorbed billions of satellite observations. They still start from analyses made the same way. The hero image above shows Hurricane Matthew nearing Florida on 7 October 2016, seen by NOAA's GOES-East satellite. Images like this one are the raw material of every learned forecast.
 
@@ -145,7 +145,7 @@ The quadratic term moves "weather" around the ring, $-x_k$ damps it and $F = 8$ 
 
 We generated 3 000 days of 6-hourly "reanalysis" and trained a small neural network to predict the 6-hour change at each site from its 9 nearest neighbours. Like a graph model, the same network serves all sites. It has 2 881 parameters. We then ran 200 forecasts from initial states with small errors, as if from an imperfect analysis (@fig:l96emu). The learned emulator's error grew almost exactly like that of the perfect physics model: 0.74 against 0.71 after 3 days and 1.53 against 1.49 after 5 days. It beat a physics model with a 5 % error in its forcing, which reached 0.78 and 1.60. All three reached half the climatological spread after 5.5–5.7 days. Persistence — forecasting no change — was worse than climatology after just over a day. Chaos, not the model, set the limit.
 
-The same emulator shows how ensembles help (@fig:l96ensfig). Twenty members started from perturbed analyses spread out as errors grew. After 10 days the ensemble-mean error was 2.81, against 3.56 for a single forecast. The **spread** — the scatter of the members — was 2.70. A spread close to the error of the ensemble mean means the ensemble is **well calibrated**: its uncertainty is honest. With perturbations only at the start, the spread was 4–7 % too small. Adding a little noise at each step, a crude stand-in for model error, brought spread and error to within a few per cent.
+The same emulator shows how ensembles help (@fig:l96ensfig). Twenty members started from perturbed analyses spread out as errors grew. After 10 days the ensemble-mean error was 2.81, against 3.56 for a single forecast. The **spread** — the scatter of the members — was 2.70. A spread close to the error of the ensemble mean means the ensemble is **well calibrated**: its uncertainty is honest. With perturbations only at the start, the spread was 4–7 % too small. Adding a little noise at each step, a crude stand-in for model error, brought spread and error to within 2–7 % of each other.
 
 ![An ensemble of the learned Lorenz-96 emulator. (a) Twenty members, their mean and the truth at one site. (b) The ensemble mean beats a single forecast, and its spread matches its error once a little model-error noise is added (green). (c) The ensemble mean loses "activity": it smooths towards climatology, as any forecast trained on squared error does.](figures/out/ch47_l96ens.svg){#fig:l96ensfig width=100%}
 
@@ -153,7 +153,7 @@ Panel (c) shows the price of the mean. The root-mean-square anomaly of a single 
 
 ### Computing and Energy
 
-Learned models are cheap to run and expensive to train (@fig:mlcost). The physics system behind ECMWF's HRES needs roughly 1 000 node-hours of a supercomputer for one assimilation and 10-day forecast. AIFS needs 2.5 minutes of one GPU, and GraphCast under a minute of one TPU. Even a 50-member GenCast ensemble needs only about 7 TPU-hours. Training is the expensive part: about 21 500 TPU-hours for GraphCast and 10 750 GPU-hours for AIFS.
+Learned models are cheap to run and expensive to train (@fig:mlcost). The physics system behind ECMWF's HRES needs roughly 1 000 node-hours of a supercomputer for one assimilation and 10-day forecast. AIFS needs 2.5 minutes of one GPU, and GraphCast under a minute of one TPU. Even a 50-member GenCast ensemble needs only about 7 TPU-hours. Training is the expensive part: about 21 500 TPU-hours for GraphCast and 10 750 GPU-hours for AIFS. Physics models need supercomputers (@fig:pleiades47); a trained learned model does not.
 
 ![Energy for one forecast (a) and for training (b), on a logarithmic scale, from published run times and assumed power draws. A learned forecast uses thousands of times less energy, but it still needs an analysis made by the physics system.](figures/out/ch47_cost.svg){#fig:mlcost width=96%}
 
@@ -169,7 +169,7 @@ Compare one 10-day forecast from AIFS with one from a physics model. The physics
 5. **What is not saved.** The learned forecast still starts from an analysis made by 4D-Var with the physics model; in the Aardvark paper's estimate, assimilation plus forecast take about 1 000 node-hours. Until assimilation is also learned, the saving for the whole system is far smaller than in step 3.
 :::
 
-![The Pleiades supercomputer at NASA's Ames Research Center in 2008. Physics-based weather and climate models need machines like this; learned models run on a single graphics processor once trained.](figures/photos/ch47_pleiades.jpg){#fig:pleiades47 width=60%}
+![The Pleiades supercomputer at NASA's Ames Research Center in 2008. Physics-based weather and climate models need machines like this; learned models run on a single graphics processor once trained.](figures/photos/ch47_pleiades.jpg){#fig:pleiades47 width=46%}
 
 ## Measuring Skill Fairly
 
@@ -185,12 +185,12 @@ where $f$, $o$ and $c$ are forecast, observation and climatology, and $a_i$ are 
 
 | Score | What it measures | Typical use |
 |---|---|---|
-| RMSE | Size of errors; rewards smooth forecasts | Every variable and lead time |
-| Anomaly correlation (ACC) | Pattern of departures from climate | 500 hPa height; useful while above 0.6 |
-| CRPS | Accuracy and sharpness of a probability forecast | Ensembles; for one forecast equals absolute error |
-| Spread–error ratio | Whether ensemble uncertainty is honest | Ensembles; ideal value 1 |
-| Track and intensity error | Kilometres to the observed centre; wind or pressure error | Tropical cyclones |
-| Critical success index (CSI) | Hits ÷ (hits + misses + false alarms) above a threshold | Rain, nowcasting |
+| RMSE | Size of errors; favours smooth forecasts | All variables and lead times |
+| Anomaly correlation (ACC) | Pattern of departures from climate | 500 hPa height; useful above 0.6 |
+| CRPS | Quality of a probability forecast | Ensembles |
+| Spread–error ratio | Honesty of the ensemble spread | Ensembles; ideal value 1 |
+| Track and intensity error | Distance to the centre; wind error | Tropical cyclones |
+| Critical success index | Hits ÷ (hits + misses + false alarms) | Rain, nowcasting |
 | Power spectrum | Energy at each spatial scale | Detecting blurring |
 
 : Common scores for weather forecasts. {#tbl:wxscores}
@@ -202,14 +202,13 @@ On the scores of the WeatherBench 2 benchmark and the centres' own verification,
 ::: data
 **Data box — an AI model at the National Hurricane Center, 2025**
 
-- In June 2025 Google DeepMind and Google Research opened Weather Lab, with an experimental cyclone model generating 50 scenarios out to 15 days. US National Hurricane Center forecasters saw its forecasts live throughout the season, beside the physics models.
-- The 2025 Atlantic season had three Category 5 hurricanes, including Melissa (@fig:melissa47).
-- NHC's verification report, published in spring 2026, found that the model's ensemble mean "slightly outperformed" the official Atlantic track forecasts at 12–72 hours. Its intensity forecasts had skill comparable to the official ones.
-- In the eastern Pacific it did better still: between 48 and 120 hours it beat all other individual models, the official forecast and the consensus aids.
-- The official forecasts themselves beat their 2020–24 average at all lead times. The learned model was one input to human forecasters, not a replacement.
+- In June 2025 Google opened Weather Lab, with an experimental cyclone model giving 50 scenarios out to 15 days. NHC forecasters saw it live all season, including Category 5 Melissa (@fig:melissa47).
+- NHC's verification report (spring 2026) found that its ensemble mean "slightly outperformed" the official Atlantic track forecasts at 12–72 hours, with comparable intensity skill.
+- In the eastern Pacific it beat all other models, the official forecast and the consensus aids at 48–120 hours.
+- It was one input to human forecasters, whose own track forecasts beat their 2020–24 average.
 :::
 
-![Category 5 Hurricane Melissa about 80 km south of Jamaica, photographed from the International Space Station on 28 October 2025. Learned models forecast the tracks of such storms well; their peak intensity is harder.](figures/photos/ch47_melissa.jpg){#fig:melissa47 width=72%}
+![Category 5 Hurricane Melissa about 80 km south of Jamaica, photographed from the International Space Station on 28 October 2025. Learned models forecast the tracks of such storms well; their peak intensity is harder.](figures/photos/ch47_melissa.jpg){#fig:melissa47 width=60%}
 
 ### Where They Fall Short
 
@@ -309,7 +308,7 @@ Learning from observations needs long, stable records. ESA's **Climate Change In
 
 ### Digital Twins of the Earth
 
-A **digital twin** is a model kept in step with observations that users can query: "what if this heatwave happened in a world 2 °C warmer?". The EU's **Destination Earth**, run by ECMWF, ESA and EUMETSAT, has a Climate Change Adaptation twin and a Weather-Induced Extremes twin, both at kilometre scale. Phase 2 added learned components for land, ocean, sea ice, waves and hydrology. Phase 3 (June 2026–June 2028) will couple them into a European learned Earth-system model. NVIDIA's **Earth-2** is a platform of open models (@tbl:climateml); in January 2026 it added a 15-day model and a storm nowcaster.
+A **digital twin** is a model kept in step with observations that users can question. For example, how would this heatwave look in a world 2 °C warmer? The EU's **Destination Earth**, run by ECMWF, ESA and EUMETSAT, has a Climate Change Adaptation twin and a Weather-Induced Extremes twin, both at kilometre scale. Phase 2 added learned components for land, ocean, sea ice, waves and hydrology. Phase 3 (June 2026–June 2028) will couple them into a European learned Earth-system model. NVIDIA's **Earth-2** is a platform of open models (@tbl:climateml); in January 2026 it added a 15-day model and a storm nowcaster.
 
 | System | Developer, year | What it does | Status, October 2026 |
 |---|---|---|---|
@@ -347,7 +346,7 @@ Three things make learning hard. Data are few: the best magnetograms, from the S
 
 ### Flare Forecasting from Magnetograms
 
-Large flares come from active regions with strong, twisted magnetic fields, mapped by SDO's Helioseismic and Magnetic Imager (HMI). Features computed from each map include the total unsigned flux, the flux near the **polarity inversion line** where the field changes sign, electric currents and shear. These features, or the images themselves, feed a classifier that gives the probability of an M- or X-class flare in the next 24 hours.
+Large flares come from active regions with strong, twisted magnetic fields (@fig:arloops47), mapped by SDO's Helioseismic and Magnetic Imager (HMI). Features computed from each map include the total unsigned flux, the flux near the **polarity inversion line** where the field changes sign, electric currents and shear. These features, or the images themselves, feed a classifier that gives the probability of an M- or X-class flare in the next 24 hours.
 
 Flares are rare, so accuracy is useless as a score. A model that always says "no flare" can be 98 % accurate. Flare forecasts are compared with the **true skill statistic** (Chapter 43):
 
@@ -395,7 +394,7 @@ Once the solar wind reaches L1, forecasts become much better, because the driver
 
 $$ \frac{d\,\mathrm{Dst}^*}{dt} = Q(VB_s) - \frac{\mathrm{Dst}^*}{\tau(VB_s)} , $$
 
-where $Q$ is the energy injection and $\tau$ a recovery time of several hours. Neural networks have forecast Dst and Kp since the early 1990s. Today's models include recurrent networks and Gaussian processes that also give uncertainty. GFZ in Potsdam runs a machine-learning Kp ensemble every hour, up to 72 hours ahead.
+where $Q$ is the energy injection and $\tau$ a recovery time of several hours. Storms push the aurora towards the equator (@fig:aurora2026). Neural networks have forecast Dst and Kp since the early 1990s. Today's models include recurrent networks and Gaussian processes that also give uncertainty. GFZ in Potsdam runs a machine-learning Kp ensemble every hour, up to 72 hours ahead.
 
 We built a synthetic test (@fig:dstfc). Four years of hourly solar wind, with recurring fast streams and random CMEs, drove the Dst model above. Three years were used for training and the fourth for testing; the test year held a −429 nT superstorm, stronger than any in training. With only past Dst, a linear model reduced the 3-hour-ahead RMSE from 11.1 nT for persistence to 9.4 nT. Adding L1 solar-wind data cut it to 6.9 nT, and a neural network with the same inputs to 6.1 nT. In storm hours the network's skill score against persistence, $1 - \mathrm{MSE}/\mathrm{MSE}_{\text{pers}}$, was 0.73. Most of the gain came from the L1 data; the network added a smaller step.
 
@@ -431,15 +430,11 @@ Operational space-weather centres have been slower than weather centres to adopt
 - **Early 1990s.** A group at the Swedish Institute of Space Physics in Lund began using neural networks to predict geomagnetic indices from solar-wind data. Within an ESA space-weather study around 2001 it built a real-time prototype forecast service.
 - **2010s.** SDO magnetograms enabled image-based flare forecasting. Research classifiers reached TSS near 0.8; operational comparisons showed far lower skill.
 - **2023.** NASA's DAGGER forecast ground magnetic disturbances worldwide 30 minutes ahead in under a second.
-- **2025.** NASA and IBM released the Surya foundation model openly. NOAA's SWFO-L1 launched with NASA's IMAP on 24 September 2025, reached L1 in January 2026 and was renamed SOLAR-1 (@fig:swfo47).
+- **2025.** NASA and IBM released the Surya foundation model openly. NOAA's SWFO-L1 launched with NASA's IMAP on 24 September 2025, reached L1 in January 2026 and was renamed SOLAR-1 (@fig:imap47).
 - **2026.** Operational use was still limited to a few products; the bottleneck had moved from algorithms to validation and trust (Chapter 53).
 :::
 
-::: figrow
-![NOAA's SWFO-L1 observatory, now SOLAR-1, being inspected at the Astrotech facility near Kennedy Space Center on 24 July 2025. It carries a coronagraph and solar-wind instruments for operational forecasts.](figures/photos/ch47_swfo.jpg){#fig:swfo47}
-
-![The Falcon 9 carrying NASA's IMAP, the Carruthers Geocorona Observatory and SWFO-L1 at Launch Complex 39A on 22 September 2025, two days before launch.](figures/photos/ch47_imap.jpg){#fig:imap47}
-:::
+![The Falcon 9 carrying NASA's IMAP, the Carruthers Geocorona Observatory and NOAA's SWFO-L1 (now SOLAR-1) at Launch Complex 39A on 22 September 2025, two days before launch. SOLAR-1 carries a coronagraph and solar-wind instruments for operational forecasts.](figures/photos/ch47_imap.jpg){#fig:imap47 width=52%}
 
 Space-weather forecasting will probably follow the weather path, more slowly. New monitors at L1, and later L5, will supply data, and long archives with agreed benchmarks will allow fair tests. Hybrid models that keep the physics of the solar wind and learn the rest are the most likely to earn forecasters' trust.
 

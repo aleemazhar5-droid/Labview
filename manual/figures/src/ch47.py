@@ -812,6 +812,8 @@ def climate():
         ax.set_ylabel("Warming (K)", fontsize=7.4)
     axs[1].set_ylim(-0.3, 6.2)
     axs[2].set_ylim(-0.3, 2.6)
+    axs[1].set_ylim(0, 30)
+    axs[2].set_ylim(0, 90)
     axs[1].legend(fontsize=5.9, loc="upper left")
     panel_tag(axs[1], "b")
     panel_tag(axs[2], "c")
@@ -913,7 +915,7 @@ def flare():
               "(M class or above within 24 h) drawn from a logistic law with an unobserved trigger term. First 60 % "
               "for training, last 40 % for testing. (c) Fixed detection and false-alarm rates of the logistic model.",
          width=130)
-    fig.tight_layout(rect=(0, 0.09, 1, 1), w_pad=1.0)
+    fig.tight_layout(rect=(0, 0.13, 1, 1), w_pad=1.0)
     save(fig, "ch47_flare")
 
 
@@ -1027,6 +1029,8 @@ def dst():
         ax.set_ylabel("RMSE (nT)", fontsize=7.2)
         ax.set_title(ttl, fontsize=7.4)
         ax.set_xticks(leads)
+    axs[1].set_ylim(0, 30)
+    axs[2].set_ylim(0, 90)
     axs[1].legend(fontsize=5.9, loc="upper left")
     panel_tag(axs[1], "b")
     panel_tag(axs[2], "c")
