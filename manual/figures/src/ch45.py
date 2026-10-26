@@ -468,7 +468,7 @@ def labels():
          "margin sampling labels the pixels whose two most likely classes are closest; mean and +/-1 s.d. of 4 runs. "
          "(b) 4 000 training pixels; 'random' replaces a label by another class at random; 'map gap' relabels urban "
          "pixels as soil, as when buildings are missing from a reference map; mean of 3 runs.", width=165)
-    fig.tight_layout(rect=(0, 0.12, 1, 1))
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.92, bottom=0.3, wspace=0.28)
     save(fig, "ch45_labels")
 
 
@@ -570,7 +570,7 @@ def simreal():
     for k in nets:
         print("  real-domain accuracy vs severity", k, np.round(100 * np.array(acc[k]), 1))
 
-    fig = plt.figure(figsize=(7.0, 3.3))
+    fig = plt.figure(figsize=(7.0, 3.1))
     gs = fig.add_gridspec(3, 7, width_ratios=[1, 1, 1, 1, 0.62, 2.6, 0.02], wspace=0.08, hspace=0.12,
                           left=0.115, right=0.985, top=0.9, bottom=0.3)
     rr = np.random.default_rng(8)

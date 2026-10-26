@@ -1,7 +1,7 @@
 ---
 title: Data, Computing Hardware and Edge AI in Orbit
 hero: ch45
-abstract: Every AI system in space rests on two foundations, data and computers, and both are hard to get right. This chapter follows data from sensor to model. It covers the petabyte archives, the many kinds of space data, how labels are made, and the benchmarks, competitions and synthetic data used to train and test models. It then explains the MLOps practices that keep models honest in operations. Next it turns to hardware. It shows why radiation flips bits in neural networks, how to protect them, which processors fly in 2026, and how compression lets models fit. It then weighs processing on board against processing on the ground. It ends with updating models in orbit, federated learning across constellations, and the physics and economics of orbital data centres.
+abstract: Every AI system in space rests on two foundations, data and computers. This chapter follows data from sensor to model. It covers petabyte archives, the kinds of space data, how labels are made, and the benchmarks and synthetic data used to train and test models. It explains the machine-learning operations (MLOps) practices that keep models honest in service. It then turns to hardware: why radiation flips bits in neural networks and how to protect them, which processors fly in 2026, and how compression makes models fit. It weighs processing on board against processing on the ground. It ends with updating models in orbit, federated learning across constellations, and the physics and economics of orbital data centres.
 ---
 
 A modern Earth-observation satellite collects far more data than its radio link can send home. A model on the ground must wait for the data; a model in orbit must live with little power, intense radiation and a computer that cannot be repaired. Either way, it is only as good as the data it learned from. This chapter is about these two foundations of space AI: **data** and **computing hardware**.
@@ -18,7 +18,7 @@ The key idea of this section is simple: in space AI, data are plentiful but labe
 
 Archives dwarf the data sets that models are trained on (@fig:datavolumes). NASA's Earth Observing System Data and Information System (EOSDIS) is the largest, and 116.2 PB of it already sits in commercial cloud storage. The **Copernicus Data Space Ecosystem**, the European Union's archive, held about 91 PB online at the end of 2025, and its users downloaded 129.9 PB directly that year. **NISAR**, the NASA–ISRO radar satellite launched in July 2025, is expected to produce close to 85 TB of products a day and up to about 140 PB in three years. The **Vera C. Rubin Observatory** in Chile, which began its ten-year survey in 2026, records about 20 TB a night. It issues about 10 million alerts a night, each within about 60 seconds.
 
-![Data volumes in the space ecosystem. (a) Archives hold tens to hundreds of petabytes, while widely used AI training and benchmark sets are thousands to tens of millions of times smaller. (b) Daily flows: what users download and archives ingest (blue) is far more than any single spacecraft can send down (violet).](figures/out/ch45_volumes.svg){#fig:datavolumes width=96%}
+![Data volumes in the space ecosystem. (a) Archives hold tens to hundreds of petabytes; AI training and benchmark sets are thousands to millions of times smaller. (b) Users download and archives ingest (blue) far more than one spacecraft sends down (violet).](figures/out/ch45_volumes.svg){#fig:datavolumes width=96%}
 
 Telemetry — the housekeeping measurements a spacecraft sends about its own health — is smaller but richer in structure. ESA's anomaly-detection benchmark of 2024 holds 1.55 billion data points from two missions, yet only 7.32 GB compressed. Most telemetry has never been labelled.
 
@@ -55,7 +55,7 @@ where $p_{(1)}$ and $p_{(2)}$ are the largest and second-largest predicted proba
 
 In @fig:labelstrategies a random forest classifies synthetic eight-band pixels. In panel (a), margin sampling with 210 labels reaches 91.3 % accuracy, while random sampling reaches only 91.2 % with 600 labels. Active learning needed about a third as many labels. In panel (b), random label errors barely matter: the forest still scores 90.2 % with half of all labels wrong, because the errors are spread over five other classes. A systematic map gap is far worse. When 40 % of urban pixels are labelled as soil, urban recall — the share of urban pixels found — falls from 87.4 % to 58.6 %. At 50 % it falls to 30.7 %.
 
-![Two labelling strategies, computed with random forests on synthetic eight-band pixels of six classes. (a) Active learning by margin sampling (blue) reaches 91.3 % accuracy with 210 labels; random sampling (grey) is still below that with 600. (b) Random label errors (blue) hurt little; systematic errors that turn urban pixels into soil (orange), as when a reference map misses buildings, destroy the model's ability to find urban areas.](figures/out/ch45_labels.svg){#fig:labelstrategies width=96%}
+![Labelling strategies, computed with random forests on synthetic eight-band pixels of six classes. (a) Margin sampling (blue) reaches 91.3 % with 210 labels; random sampling (grey) is still below that with 600. (b) Random label errors (blue) hurt little; turning urban labels into soil (orange), as when a map misses buildings, stops the model finding urban areas.](figures/out/ch45_labels.svg){#fig:labelstrategies width=96%}
 
 The lesson is clear. Random noise can be averaged away; systematic omissions cannot. Weak labels should be checked against a small expert-labelled sample before they are trusted.
 
@@ -114,7 +114,7 @@ where $s$ is the scene (here, the spacecraft's pose), $y(s)$ its label and $f_\t
 
 A toy renderer shows the effect (@fig:simtoreal). A numpy network trained on clean renders identifies a spacecraft's orientation perfectly on similar images. On "real" images with a different Sun angle, an Earth background, blur and noise, its accuracy falls to 70.3 % at half severity and 26.5 % at full severity. The same network trained on randomised renders keeps 99.6 % and 65.2 %. Randomisation narrows the gap but does not close it. The winners of ESA's 2021 pose challenge also used **domain adaptation**, which trains the network so that its internal features look the same for synthetic and real images.
 
-![The sim-to-real gap, computed with a numpy network (400 inputs, 96 hidden units, 8 orientation classes) on 20 × 20-pixel renders of a toy spacecraft. (a) Examples from the clean training set (A), the randomised training set (B) and the "real" test set at full severity. (b) Accuracy on 3 000 "real" images as the domain shift grows; chance is 12.5 %.](figures/out/ch45_simreal.svg){#fig:simtoreal width=96%}
+![The sim-to-real gap, computed with a numpy network on 20 × 20-pixel renders of a toy spacecraft in 8 orientations. (a) Clean training images (A), randomised training images (B) and "real" test images at full severity. (b) Accuracy on 3 000 "real" images as the shift grows; chance is 12.5 %.](figures/out/ch45_simreal.svg){#fig:simtoreal width=92%}
 
 ## MLOps: From Archive to Operations
 
@@ -124,7 +124,7 @@ A toy renderer shows the effect (@fig:simtoreal). A numpy network trained on cle
 
 The loop for an Earth-observation mission is drawn in @fig:mlopsflow. Data flow from the sensor through the ground stations into processing and the archive. Labels are attached, and a frozen **snapshot** of training data is taken. Models are trained, registered and tested against validation gates. A model that passes is deployed on the ground or, after further checks, uplinked. Monitoring watches for drift and triggers retraining. The data shrink at each step, from terabytes a day to a model of megabytes.
 
-![An end-to-end MLOps pipeline from satellite to model to user. Data volumes shrink from terabytes per day at the downlink to megabytes for the model. A model passes validation gates before it is deployed on the ground or uplinked; monitoring closes the loop by triggering relabelling and retraining when the data drift.](figures/out/ch45_pipeline.svg){#fig:mlopsflow width=100%}
+![An end-to-end MLOps pipeline from satellite to model to user. Volumes shrink from terabytes a day at the downlink to megabytes for the model. Validation gates come before deployment on the ground or in orbit; monitoring triggers retraining when the data drift.](figures/out/ch45_pipeline.svg){#fig:mlopsflow width=100%}
 
 ### Versions, Registries and Validation Gates
 
@@ -145,7 +145,7 @@ Values below 0.1 are usually taken as stable, and values above 0.25 signal a lar
 
 In @fig:driftmonitor a deployed classifier watches a detector that loses 0.1–0.6 % of its gain per month. At month 33, a ground-processing change raises two short-wave infrared bands by 20 %. Without retraining, accuracy slides from 93.7 % to 91.2 % by month 32, then drops to 80.3 %. With a PSI alarm at 0.1, the monitor fires at months 22 and 33. Each time the model is retrained on 2 000 newly labelled pixels and recovers to about 92–93 %.
 
-![Drift monitoring, computed with a random forest on synthetic eight-band pixels over 48 months. (a) A model that is never retrained (red) loses accuracy slowly as the detector ages and suddenly after a processing change; a model retrained when the alarm fires (green) recovers. (b) The largest population stability index across the bands, with the alarm threshold and the two alarms.](figures/out/ch45_drift.svg){#fig:driftmonitor width=96%}
+![Drift monitoring, computed with a random forest on synthetic pixels over 48 months. (a) A model never retrained (red) loses accuracy as the detector ages and after a processing change; one retrained at each alarm (green) recovers. (b) The largest population stability index across the bands, with the threshold and alarms.](figures/out/ch45_drift.svg){#fig:driftmonitor width=96%}
 
 ### Cloud Platforms and Ground Compute
 
@@ -163,7 +163,7 @@ Most training and much inference happens on the ground, close to the archives (@
 
 Training large models also needs clusters of GPUs or tensor processing units (TPUs), in the cloud or in agency supercomputers (@fig:discoverhpc). A foundation model may occupy hundreds of accelerators for weeks, so compute time is budgeted like ground-station time.
 
-![Racks of the Discover supercomputer at the NASA Center for Climate Simulation at Goddard Space Flight Center. Ground clusters like this, and commercial cloud services, do most of the training for space AI.](figures/photos/ch45_discover.jpg){#fig:discoverhpc width=60%}
+![The Discover supercomputer at the NASA Center for Climate Simulation, Goddard Space Flight Center. Ground clusters and cloud services do most of the training for space AI.](figures/photos/ch45_discover.jpg){#fig:discoverhpc width=60%}
 
 ## Radiation and AI Hardware
 
@@ -171,7 +171,7 @@ The key idea of this section is that a neural network is a large block of number
 
 ### How Radiation Disturbs Computers
 
-Chapter 2 explains radiation and its effects; here is a short reminder. **Total ionising dose (TID)** slowly degrades transistors as charge builds up in their oxides; it is measured in krad(Si). **Single-event effects** are caused by one energetic particle. A **single-event upset (SEU)** flips a stored bit. A **single-event functional interrupt (SEFI)** hangs a processor until it is reset. A **single-event latch-up (SEL)** creates a short circuit that can destroy the chip unless the power is cut quickly.
+Chapter 2 explains radiation and its effects; here is a short reminder. **Total ionising dose (TID)** slowly degrades transistors as charge builds up in their oxides; it is measured in krad(Si). **Displacement damage** knocks atoms out of the crystal lattice and mainly harms detectors and solar cells. **Single-event effects** are caused by one energetic particle. A **single-event upset (SEU)** flips a stored bit. A **single-event functional interrupt (SEFI)** hangs a processor until it is reset. A **single-event latch-up (SEL)** creates a short circuit that can destroy the chip unless the power is cut quickly.
 
 The upset rate of a memory comes from folding its measured **cross-section** $\sigma(L)$, the sensitive area per bit, with the flux of particles at each linear energy transfer $L$.
 
@@ -201,7 +201,7 @@ Engineers combine several defences, from hardware to algorithms.
 
 The fault-injection experiment in @fig:bitflipnet tests these defences on a small network of 4 992 weights. Random bit flips are injected into its stored weights. Unprotected float32 weights are the weakest. At a bit-error rate of 10⁻⁴, the median accuracy is still 94.1 %, but one trial in ten falls to 90.0 % or less. At 10⁻³ the median collapses to 19.0 %, because almost every trial hits a high exponent bit. A simple range check keeps 93.8 % at 10⁻³, and int8 storage keeps 93.0 % with no protection at all. SEC-DED ECC without scrubbing keeps the float32 median at full accuracy up to 10⁻³, but fails at 10⁻², when many words collect two errors. Int8 with ECC keeps a median of 86.5 % at 10⁻², and TMR keeps nine trials in ten at full accuracy up to 10⁻³. On the top axis, 10⁻⁴ equals about 130 days in LEO without scrubbing.
 
-![Radiation fault injection into a numpy network (8 inputs, two hidden layers of 64 units, 6 classes) trained on synthetic pixels; 40 random trials per point. (a) Unprotected memory: float32 weights fail once a high exponent bit flips; a range check or int8 storage removes most of the damage. (b) Protection with SEC-DED ECC on 64-bit words (no scrubbing) and with triple modular redundancy; the grey dashed line repeats unprotected float32 for reference.](figures/out/ch45_bitflips.svg){#fig:bitflipnet width=98%}
+![Fault injection into a numpy network (8–64–64–6) trained on synthetic pixels; 40 trials per point. (a) Unprotected float32 weights fail once a high exponent bit flips; a range check or int8 storage removes most of the damage. (b) SEC-DED ECC on 64-bit words (no scrubbing) and triple modular redundancy; grey dashes repeat unprotected float32.](figures/out/ch45_bitflips.svg){#fig:bitflipnet width=98%}
 
 The experiment points to a practical recipe. Store weights as integers. Protect them with ECC and scrub often. Add a range check. Keep a protected golden copy of the model to reload when the ECC reports an uncorrectable error.
 
@@ -209,22 +209,24 @@ The experiment points to a practical recipe. Store weights as integers. Protect 
 
 No calculation replaces a test. **TID tests** expose parts to a cobalt-60 gamma source (ESCC 22900, MIL-STD-883 Method 1019). **Single-event tests** fire heavy ions or protons from an accelerator at a working device and count upsets, interrupts and latch-ups (ESCC 25100, JESD57). For AI processors, the best test runs the real model during exposure and checks every output, which measures silent data corruption directly.
 
-Several AI processors have been tested this way. Intel's Myriad 2 vision chip passed a 36-hour beam test at CERN in late 2018, and later tests, unmodified, clearing it for Φsat-1. Heavy-ion tests at GANIL in France on NVIDIA Jetson Orin NX and Xavier NX modules found that about 80 % of events were correctable upsets, with no destructive latch-up. The HiMassSEE experiment on the ISS measured the environment that causes such events (@fig:himasssee).
+Several AI processors have been tested this way. Intel's Myriad 2 vision chip passed a 36-hour beam test at CERN in late 2018 and two later tests without modification, which cleared it for Φsat-1. Heavy-ion tests at GANIL in France on NVIDIA Jetson Orin NX and Xavier NX modules found that about 80 % of events were correctable upsets, with no destructive latch-up. The HiMassSEE experiment on the ISS measured the environment that causes such events (@fig:himasssee). Tested commercial chips have even flown on Mars (@fig:ingenuitysnap).
 
 ::: data
 **Data box — radiation testing of TPUs for Project Suncatcher**
 
-Google published Project Suncatcher in November 2025. It studied AI computing in a cluster of 81 satellites in a dawn–dusk orbit at about 650 km. Trillium (v6e) TPUs were tested with 67 MeV protons at the UC Davis Crocker Nuclear Laboratory.
+Google's Suncatcher study (November 2025) tested Trillium (v6e) TPUs with 67 MeV protons for an 81-satellite cluster at about 650 km.
 
 - Dose behind 10 mm of aluminium: about 150 rad(Si) a year, 750 rad(Si) in five years.
-- The high-bandwidth memory showed irregularities after 2 krad(Si), about 2.7 times the five-year dose. One chip showed no hard failure up to 15 krad(Si).
-- Silent data corruption in logic and on-chip memory: about one event per 14.4–20 rad. At one inference per second, that is about one bad result in three million.
-- Uncorrectable memory errors: about one per 44 rad. Functional interrupts: about one per 5 krad per chip, and one per 450 rad for the host processor.
-
-On 1 October 2026 a prototype with four TPUs, built with Planet, was launched on SpaceX's Transporter-18 for a year-long test.
+- Memory irregularities began after 2 krad(Si); one chip had no hard failure up to 15 krad(Si).
+- Silent data corruption: about one event per 14.4–20 rad, or one bad result in three million at one inference per second.
+- Uncorrectable memory errors: about one per 44 rad; functional interrupts about one per 5 krad per chip.
 :::
 
-![The HiMassSEE detector kit in the US Laboratory of the ISS in August 2012. It measured how heavy shielding changes the radiation that causes single-event effects in electronics.](figures/photos/ch45_himasssee.jpg){#fig:himasssee width=52%}
+::: figrow
+![The HiMassSEE detector kit in the ISS's US Laboratory in August 2012. It measured how heavy shielding changes the radiation that causes single-event effects.](figures/photos/ch45_himasssee.jpg){#fig:himasssee}
+
+![Ingenuity on Mars, photographed by Perseverance's Mastcam-Z on 5 April 2021. Its navigation ran on a Snapdragon 801 smartphone processor.](figures/photos/ch45_ingenuity.jpg){#fig:ingenuitysnap}
+:::
 
 ## Processors for AI in Orbit
 
@@ -232,22 +234,23 @@ Space processors fall into three families. **Radiation-hardened** processors are
 
 | Processor | In space | Peak throughput | Power | Radiation approach | Example use |
 |---|---|---|---|---|---|
-| RAD750 (BAE Systems) | 2005 | 400 DMIPS at 200 MHz | 5 W (CPU) | Hardened, 200 krad–1 Mrad | Curiosity, Perseverance, JWST |
-| GR740, 4 × LEON4 (Frontgrade Gaisler) | Flight parts 2021 | 1 700 DMIPS at 250 MHz | < 3 W (typical core) | Hardened, 300 krad; latch-up immune | ESA missions, servicing vehicles |
-| PIC64-HPSC (Microchip, NASA) | Samples 2025 | 28 130 DMIPS; 2 TOPS int8 | Not published | Hardened, 100 krad (tested to 200) | In qualification; not yet flown |
-| Versal AI Core XQRVC1902 (AMD) | Shipping 2023 | 133 TOPS int8 | Up to about 130 W | Tolerant; latch-up immune; scrubbing | Payload data processing |
-| Myriad 2 (Intel Movidius) | 2020 | > 100 GFLOPS (fp16) | About 1 W | Commercial; proton-tested | Φsat-1 cloud screening |
-| Myriad X (Intel Movidius) | 2024 | 1 TOPS (neural engine) | Similar to Myriad 2 | Commercial | CogniSAT-6 |
-| Snapdragon 801 (Qualcomm) | 2021 | 4 cores at 2.26 GHz | Not published | Commercial; tested | Ingenuity on Mars |
-| T4 GPU (NVIDIA) in Spaceborne Computer-2 | 2021 | 130 TOPS int8 | 70 W | Commercial, inside the ISS | Edge computing on the ISS |
-| Jetson Orin NX (NVIDIA) | 2024 | 100 TOPS sparse (about 50 dense) | 10–25 W | Commercial; heavy-ion tested; shielded | Aethero cubesat |
-| H100 GPU (NVIDIA) | 2025 | About 2 000 TOPS int8 | Up to 700 W | Commercial | Starcloud-1 |
-| TPU v6e (Google) | 2026 | 1 836 TOPS int8 per chip | Not published | Commercial; proton-tested | Suncatcher prototype (4 chips) |
-| Three-Body satellite (ADA Space, Zhejiang Lab) | 2025 | 744 TOPS per satellite | Not published | Not published | 12-satellite computing constellation |
+| RAD750 (BAE Systems) | 2005 | 400 DMIPS | 5 W (CPU) | Hardened, 0.2–1 Mrad | Perseverance, JWST |
+| GR740 (Gaisler), 4 × LEON4 | 2021 (parts) | 1 700 DMIPS | < 3 W (core) | Hardened, 300 krad | ESA missions |
+| PIC64-HPSC (Microchip) | 2025 (samples) | 28 130 DMIPS; 2 TOPS | Not published | Hardened, 100 krad | In test; not flown |
+| Versal XQRVC1902 (AMD) | 2023 (shipping) | 133 TOPS | Up to ~130 W | Tolerant; scrubbing | Payload processing |
+| Myriad 2 (Intel) | 2020 | > 100 GFLOPS | About 1 W | Commercial; tested | Φsat-1 |
+| Myriad X (Intel) | 2024 | 1 TOPS | As Myriad 2 | Commercial | CogniSAT-6 |
+| Snapdragon 801 (Qualcomm) | 2021 | 4 × 2.26 GHz | Not published | Commercial; tested | Ingenuity |
+| T4 GPU (NVIDIA) | 2021 | 130 TOPS | 70 W | Commercial; inside ISS | Spaceborne Computer-2 |
+| SpaceCloud iX5, iX10 (Unibap) | 2021 (iX5) | iX10: CPU, GPU, Myriad X, FPGA | Tens of watts (iX10) | Commercial parts | D-Orbit ION carriers |
+| Jetson Orin NX (NVIDIA) | 2024 | 50 TOPS (100 sparse) | 10–25 W | Commercial; tested | Aethero cubesat |
+| H100 GPU (NVIDIA) | 2025 | ~2 000 TOPS | Up to 700 W | Commercial | Starcloud-1 |
+| TPU v6e (Google) | 2026 | 1 836 TOPS | Not published | Commercial; tested | Suncatcher (4 chips) |
+| Three-Body satellite (China) | 2025 | 744 TOPS | Not published | Not published | 12 satellites |
 
-: Processors for AI in space, with vendor peak figures. DMIPS: millions of Dhrystone instructions per second, a CPU benchmark. TOPS: trillions of operations per second. {#tbl:aiprocessors}
+: Processors for AI in space (vendor peak figures). DMIPS: millions of Dhrystone instructions per second, a CPU benchmark; TOPS: trillions of int8 operations per second (dense). {#tbl:aiprocessors}
 
-![Processors for AI in orbit, plotted from the values in @tbl:aiprocessors. (a) Peak throughput by year first flown or available rose by about seven orders of magnitude from the RAD750 to the H100. (b) Peak operations per watt: the best commercial AI engines reach about 2 000–2 800 GOPS per watt, against 0.08 for the RAD750 — but CPU instructions and int8 neural-network operations are not directly comparable.](figures/out/ch45_procperf.svg){#fig:aichipperf width=98%}
+![Processors for AI in orbit, from @tbl:aiprocessors. (a) Peak throughput rose about seven orders of magnitude from the RAD750 to the H100. (b) Peak operations per watt: the best commercial AI engines reach 2 000–2 800 GOPS/W, the RAD750 0.08 — though CPU instructions and int8 operations are not directly comparable.](figures/out/ch45_procperf.svg){#fig:aichipperf width=98%}
 
 The comparison needs care. A CPU instruction does more varied work than an 8-bit multiply–add, vendors quote peaks, and real networks reach perhaps 10–50 % of them. Even so, the gap is real. The RAD750 delivers about 0.08 GOPS per watt; Myriad 2 about 100; a Jetson Orin NX about 2 000; an H100 about 2 800.
 
@@ -255,9 +258,7 @@ NASA's **High-Performance Spaceflight Computing (HPSC)** project aims to narrow 
 
 **FPGAs** are chips whose logic can be rewired after manufacture, which suits high-rate payload processing. AMD's space-grade Versal AI Core adds 400 small AI engines to an FPGA. It completed Class B qualification in December 2022 and has shipped since early 2023. A lidless version aiming at the stricter Class Y is planned to fly from 2027.
 
-Commercial chips dominate new demonstrations because they are thousands of times more efficient. Planet's Pelican-4, for example, used a Jetson Orin module to detect aircraft in its own images on 25 March 2026. The price is risk. The Ingenuity helicopter flew 72 times on Mars between April 2021 and January 2024 on a Snapdragon 801 phone processor (@fig:ingenuitysnap). Its team accepted that the chip was less robust than flight parts, and two small microcontrollers ran the time-critical flight control.
-
-![NASA's Ingenuity Mars helicopter photographed by Perseverance's Mastcam-Z on 5 April 2021, the mission's 45th sol. Its navigation ran on a Qualcomm Snapdragon 801, a commercial smartphone processor.](figures/photos/ch45_ingenuity.jpg){#fig:ingenuitysnap width=56%}
+Commercial chips dominate new demonstrations because they are thousands of times more efficient. Planet's Pelican-4, for example, used a Jetson Orin module to detect aircraft in its own images on 25 March 2026. Unibap's SpaceCloud computers have hosted customers' applications on D-Orbit's ION carriers since June 2021. The price is risk. The Ingenuity helicopter flew 72 times on Mars between April 2021 and January 2024 on a Snapdragon 801 phone processor (@fig:ingenuitysnap). Its team accepted that the chip was less robust than flight parts, and two small microcontrollers ran the time-critical flight control.
 
 ::: history
 **Φsat-1: deep learning screens images in orbit**
@@ -281,11 +282,24 @@ maps each weight $w$ to the integer $q = \mathrm{round}(w/s)$, clipped to $\pm(2
 
 These methods were applied to the 5 126-parameter network of @fig:bitflipnet (@fig:quantprune). At 8 and 6 bits, PTQ loses nothing measurable: 94.3 % in every case. At 4 bits it loses about one point (93.2 % per tensor, 93.7 % per neuron). At 2 bits — weights of −1, 0 or +1 times a scale — PTQ collapses to 16.7 % per tensor and 51.5 % per neuron, while QAT still reaches 93.2 %. Model size falls from 20.0 kB to 5.9 kB at 8 bits and 2.3 kB at 2 bits; the 32-bit biases and scales set a floor.
 
+::: example
+**Example: sizing an onboard cloud screen**
+
+A cloud screen the size of MobileNetV2 has 3.4 million parameters and needs about 0.30 billion multiply–accumulates (MACs) per 224 × 224-pixel tile. The processor draws 5 W with a peak of 1 TOPS in int8; assume 30 % of peak.
+
+1. **Model size.** In float32: 3.4 × 10⁶ × 4 bytes = 13.6 MB. In int8: 3.4 MB, four times smaller.
+2. **Uplink time.** At 256 kbit/s: 3.4 × 8 × 10⁶ / 256 000 ≈ 106 s for int8 (one pass), 425 s for float32.
+3. **Work per tile.** Two operations per MAC give 0.6 × 10⁹ operations; at 0.3 × 10¹² per second, a tile takes 2.0 ms.
+4. **Energy per inference.** E = P t = 5 W × 2.0 ms = 10 mJ per tile.
+5. **Per image.** A 10 000 × 10 000-pixel image holds about 2 000 tiles: about 4 s and 20 J. Screening 300 images a day uses about 1.7 Wh. (CloudScout on Φsat-1 was reported to use roughly 0.6 J per image.)
+6. **Radiation.** At 7.6 × 10⁻⁷ upsets per bit per day, the 27.2 Mbit of int8 weights collect about 21 upsets a day. With SEC-DED ECC and daily scrubbing, a double error in one word occurs only about once in four years.
+:::
+
 ### Pruning, Distillation and Efficient Architectures
 
 **Pruning** removes weights that matter little, usually the smallest in magnitude. Panel (c) of @fig:quantprune shows that removing 80 % of the weights without retraining drops accuracy to 75.2 %. After ten epochs of fine-tuning with the remaining weights, it recovers to 94.2 %. At 95 % pruning the fine-tuned network keeps 89.5 %. Pruning saves memory only if the hardware can skip zeros, either through sparse formats or by removing whole neurons or channels.
 
-![Model compression of the numpy network from @fig:bitflipnet, computed on 8 000 synthetic test pixels. (a) Post-training quantisation (PTQ) is harmless down to 6 bits; below 4 bits only quantisation-aware training (QAT) holds accuracy. (b) Model size, including 32-bit biases and scales. (c) Magnitude pruning: removing most weights works only with fine-tuning.](figures/out/ch45_compress.svg){#fig:quantprune width=98%}
+![Compressing the network of @fig:bitflipnet, tested on 8 000 synthetic pixels. (a) Post-training quantisation (PTQ) is harmless down to 6 bits; below 4 bits only quantisation-aware training (QAT) holds accuracy. (b) Model size. (c) Magnitude pruning works only with fine-tuning.](figures/out/ch45_compress.svg){#fig:quantprune width=90%}
 
 **Knowledge distillation** trains a small "student" network to imitate a large "teacher". The student learns from the teacher's soft probabilities, which carry more information than hard labels. Its loss has two terms:
 
@@ -294,21 +308,6 @@ $$ L = (1-\alpha)\,\mathrm{CE}(y, p_s) + \alpha\, T^2\, \mathrm{KL}\big(p_t^{(T)
 Here CE is the cross-entropy with the true labels and KL the Kullback–Leibler divergence between the two networks' outputs. The "temperature" $T$ softens both distributions, and $\alpha$ weights the two terms.
 
 **Efficient architectures** are designed small from the start. Mobile networks replace a standard convolution with a **depthwise separable** one: a per-channel spatial filter followed by a 1 × 1 convolution that mixes channels. For a $k \times k$ kernel and $N$ output channels, this cuts the work by a factor of about $1/N + 1/k^2$ — nearly nine times for 3 × 3 kernels. Chapter 44 describes these architectures.
-
-::: example
-**Example: sizing an onboard cloud screen**
-
-A small satellite will run a cloud-screening network the size of MobileNetV2: 3.4 million parameters and about 0.30 billion multiply–accumulates (MACs) for each 224 × 224-pixel tile. The processor draws 5 W and has a peak of 1 TOPS in int8; assume it reaches 30 % of peak.
-
-1. **Model size.** In float32: 3.4 × 10⁶ × 4 bytes = 13.6 MB. In int8: 3.4 MB, four times smaller.
-2. **Uplink time.** At 256 kbit/s, the int8 model takes 3.4 × 8 × 10⁶ / 256 000 ≈ 106 s — one pass. The float32 model needs 425 s.
-3. **Work per tile.** Each MAC is two operations, so 0.6 × 10⁹ operations per tile. At 0.3 × 10¹² operations per second, one tile takes 2.0 ms.
-4. **Energy per inference.** E = P t = 5 W × 2.0 ms = 10 mJ per tile.
-5. **Per image.** A 10 000 × 10 000-pixel image holds about 2 000 tiles: about 4 s and 20 J. Screening 300 images a day uses about 1.7 Wh — small beside the energy needed to downlink the images it rejects.
-6. **Radiation.** The int8 weights are 27.2 Mbit. At 7.6 × 10⁻⁷ upsets per bit per day, expect about 21 upsets a day. With SEC-DED ECC and daily scrubbing, a double error in one 72-bit word would occur only about once in four years.
-
-For comparison, CloudScout on Φsat-1 was reported to take about 0.33 s at about 1.8 W, roughly 0.6 J per image.
-:::
 
 ## On Board or on the Ground?
 
@@ -322,7 +321,7 @@ $$ R = N \, \frac{v_g}{g} \, N_b \, b. $$
 
 At 1 m resolution, 20 000 pixels across, 4 bands and 12 bits, that is 6.7 Gbit/s. A link's daily capacity is its rate times the daily contact time with ground stations. The two are compared in @fig:downlinkgap. An X-band link of 0.5 Gbit/s with 40 minutes of contact a day carries 0.15 TB. A Ka-band link of 3.5 Gbit/s carries 1.05 TB, and an optical link of 100 Gbit/s for 20 minutes carries 15 TB in clear weather. Applied to Sentinel-2's bands, the same model gives about 4.4 TB a day. That is consistent with the 1.5 TB a day each satellite sends after onboard compression of about 3:1.
 
-![Data generated by imagers versus what links can carry. (a) Daily data from pushbroom imagers imaging 30 % of the time, against assumed daily capacities of X-band, Ka-band and optical links; Sentinel-2's reported 1.5 TB a day is shown for comparison. (b) A budget for a 3 m imager with a 24 km swath: lossless compression, cloud screening and sending only detections reduce 2.9 TB a day to 8 GB.](figures/out/ch45_downlink.svg){#fig:downlinkgap width=98%}
+![Imager data versus link capacity. (a) Daily data from pushbroom imagers imaging 30 % of the time, against assumed daily capacities of X-band, Ka-band and optical links; Sentinel-2's reported 1.5 TB a day for comparison. (b) For a 3 m imager, compression, cloud screening and sending only detections cut 2.9 TB a day to 8 GB.](figures/out/ch45_downlink.svg){#fig:downlinkgap width=98%}
 
 Optical links change the picture (Chapter 7). NASA's TBIRD cubesat sent 4.8 TB in a single pass of under five minutes in April 2023, at 200 Gbit/s. But clouds block lasers, so optical ground stations must be spread across regions with clear skies (@fig:dss13optical).
 
@@ -331,9 +330,9 @@ Optical links change the picture (Chapter 7). NASA's TBIRD cubesat sent 4.8 TB i
 About two-thirds of Earth is covered by cloud at any moment. More than a decade of MODIS observations gives a global cloud fraction of about 67 %: about 55 % over land and 72 % over ocean (@fig:cloudyearthmap). For an optical imager, most cloudy pixels are useless, so a model that discards them on board saves link capacity and ground storage. The risk is a **false negative** — a clear image wrongly discarded is lost forever.
 
 ::: figrow
-![Average cloud cover from MODIS on Terra and Aqua. About 67 % of Earth's surface is typically cloud-covered, most of all over the oceans.](figures/photos/ch45_cloudyearth.jpg){#fig:cloudyearthmap}
+![Average cloud cover from MODIS. About 67 % of Earth is typically cloud-covered, most of all over the oceans.](figures/photos/ch45_cloudyearth.jpg){#fig:cloudyearthmap}
 
-![The 34 m antenna DSS-13 at Goldstone, California, fitted with an optical terminal (centre) to receive laser signals from NASA's Psyche spacecraft. Clouds and daylight limit optical links, a reason to send less data.](figures/photos/ch45_laserdownlink.jpg){#fig:dss13optical}
+![The 34 m antenna DSS-13 at Goldstone, California, with an optical terminal (centre) that receives laser signals from NASA's Psyche spacecraft. Clouds limit optical links.](figures/photos/ch45_laserdownlink.jpg){#fig:dss13optical}
 :::
 
 ::: example
@@ -400,27 +399,24 @@ Here $w_{t+1}^{(k)}$ are the weights trained by satellite $k$ in round $t$ on it
 
 The simulation in @fig:fedlearnorbit has ten satellites, each seeing a different mix of surfaces, as if one flew mostly over ocean and another over desert. A satellite training alone reaches only 71.1 % on average on a balanced test set, and pooling all data on the ground gives 93.7 %. FedAvg reaches 79.0 % after 10 rounds and 88.6 % after 40 without moving any raw data. The remaining gap comes from the satellites' very different data, a known weakness of simple averaging.
 
-![Federated learning across a constellation. (a) Each satellite trains on its own images and sends only model updates for averaging; the new global model is sent back. (b) Computed with numpy networks (8–32–6) on synthetic pixels: FedAvg (blue) approaches the accuracy of pooling all data on the ground (green dashed) and far exceeds satellites training alone (red dotted).](figures/out/ch45_fedlearn.svg){#fig:fedlearnorbit width=98%}
+![Federated learning across a constellation. (a) Satellites train on their own images and send only model updates, which are averaged and returned. (b) Computed with numpy networks on synthetic pixels: FedAvg (blue) approaches pooling all data on the ground (green) and far exceeds satellites training alone (red).](figures/out/ch45_fedlearn.svg){#fig:fedlearnorbit width=98%}
 
 As of October 2026, federated learning across satellites remains **research**. Simulation studies have adapted it to intermittent contacts and to about 100 satellites, but no in-orbit demonstration across a constellation had been reported.
 
 ## Computing in Orbit: Orbital Data Centres
 
-The boldest idea in this chapter turns edge AI inside out: put data-centre computers into orbit, powered by sunlight and cooled by radiating heat to space. The physics allows it, but the engineering and economics are unproven.
+The boldest idea in this chapter turns edge AI inside out: put data-centre computers into orbit, powered by sunlight and cooled by radiating heat to space. The physics allows it, but the engineering and economics are unproven. @tbl:orbitalcompute lists the main projects as of October 2026.
 
 ### Demonstrations and Proposals
 
-The main projects as of October 2026 are listed in @tbl:orbitalcompute.
-
 | Project | Who | When | What | Status |
 |---|---|---|---|---|
-| Spaceborne Computer-2 | HPE, NASA | 2021–23; upgraded unit 2024 | Commercial servers and a T4 GPU inside the ISS | Demonstration, in use |
-| Kepler optical relay | Kepler Communications | Launched January 2026 | 10 relay satellites with optical links and GPU modules | Operational service since August 2026 |
-| Three-Body Computing Constellation | ADA Space, Zhejiang Lab | May 2025 | 12 satellites, 744 TOPS each, laser links up to 100 Gbit/s | Demonstration; up to 2 800 planned |
-| Starcloud-1 | Starcloud | November 2025 | One H100 GPU on a 60 kg satellite | Demonstration; Starcloud-2 reported slipped to 2027 |
-| Suncatcher prototype | Google, Planet | 1 October 2026 | Four TPUs; one-year test | Demonstration; 81-satellite cluster studied |
-| Orbital data centre filing | SpaceX | FCC filing January 2026 | Up to one million satellites at 500–2 000 km | Proposal |
-| ASCEND | Thales Alenia Space, EU | Study 2023–24 | 10 MW by 2036, 1 GW by 2050 | Study |
+| Spaceborne Computer-2 | HPE, NASA | 2021; new unit 2024 | Servers and a T4 GPU on the ISS | Demonstration |
+| Kepler optical relay | Kepler | January 2026 | 10 relay satellites with GPU modules | In service since August 2026 |
+| Three-Body constellation | ADA Space, Zhejiang Lab | May 2025 | 12 satellites, laser links to 100 Gbit/s | Demonstration; 2 800 planned |
+| Starcloud-1 | Starcloud | November 2025 | One H100 on a 60 kg satellite | Demonstration; next satellite 2027 |
+| Suncatcher prototype | Google, Planet | October 2026 | Four TPUs; one-year test | Demonstration |
+| Orbital data centres | SpaceX | FCC filing, January 2026 | Up to one million satellites | Proposal |
 
 : Computing in orbit: demonstrations and proposals, October 2026. {#tbl:orbitalcompute}
 
@@ -436,11 +432,11 @@ $$ P = \varepsilon\, \sigma\, A \left(T^4 - T_\text{sink}^4\right) - \alpha\, A\
 
 Here $\sigma$ is the Stefan–Boltzmann constant, 5.67 × 10⁻⁸ W m⁻² K⁻⁴. The flux $q_\text{abs}$ is the sunlight and Earth infrared that the panel absorbs (Chapter 5). At 300 K with $\varepsilon$ = 0.9, each side radiates 413 W/m². Because of the fourth power, area grows steeply as temperature falls (@fig:radiatorarea). Hotter chips mean smaller radiators, but electronics age faster when hot.
 
-![Radiator physics for computing in orbit. (a) Area needed to reject 1 kW: at 300 K a two-sided panel in LEO needs 1.6 m²; the ISS's real radiators need about four times the ideal area because of environmental loads, fin efficiency and margins. (b) Solar-array and radiator areas grow in step with computing power; a gigawatt-class facility would need about 1.6 km² of radiator and 2.9 km² of solar array.](figures/out/ch45_radiator.svg){#fig:radiatorarea width=96%}
+![Radiator physics for computing in orbit. (a) Area to reject 1 kW: 1.6 m² for a two-sided panel at 300 K in LEO; the ISS's radiators need about four times the ideal. (b) Radiator and solar-array areas grow with computing power; a gigawatt would need about 1.6 km² of radiator and 2.9 km² of solar array.](figures/out/ch45_radiator.svg){#fig:radiatorarea width=96%}
 
 The ISS gives a reality check (@fig:issradiators). Its external active thermal control system rejects up to 70 kW with six radiator wings, each 23.3 m × 3.4 m, for 475 m² of panel. That is 6.8 m² per kW, against an ideal of about 1.6 m² per kW for two-sided panels near 280 K.
 
-![The ISS after Atlantis undocked in May 2010 (STS-132). Between the large solar-array wings, the white radiator panels on the truss reject up to 70 kW of heat — about what seven eight-GPU AI servers produce.](figures/photos/ch45_issflyaround.jpg){#fig:issradiators width=62%}
+![The ISS in May 2010 (STS-132). Between the solar-array wings, white radiator panels on the truss reject up to 70 kW — the heat of about seven eight-GPU AI servers.](figures/photos/ch45_issflyaround.jpg){#fig:issradiators width=62%}
 
 ::: example
 **Example: a radiator for 10 kW of computing**
@@ -461,12 +457,14 @@ At 350 K the area before margin would fall to 7.5 m², if the chips tolerate the
 
 The economic case rests on three claims. Sunlight in a dawn–dusk orbit is almost continuous; Google estimates that panels in some orbits collect up to eight times the yearly energy of a panel at mid-latitudes. No land, water or grid connection is needed. And launch costs are falling.
 
-Google's Suncatcher study puts numbers on the last point. At about $200/kg, possible by the mid-2030s, launched power would cost about $810 per kilowatt per year. Terrestrial data centres pay $570–3 000. At a current price of about $3 600/kg, the estimate is $14 700 per kilowatt per year. The **ASCEND** study for the EU found orbital data centres feasible only if launchers became ten times less polluting over their life cycle.
+Google's Suncatcher study puts numbers on the last point. At about $200/kg, possible by the mid-2030s, launched power would cost about $810 per kilowatt per year. Terrestrial data centres pay $570–3 000 per kilowatt per year for electricity. At a current price of about $3 600/kg, the estimate is $14 700 per kilowatt per year. The **ASCEND** study for the EU found orbital data centres feasible only if launchers became ten times less polluting over their life cycle.
 
 The counter-arguments are strong. Radiators and solar arrays are large and heavy. Failed chips cannot be swapped. Radiation causes silent errors, as the Suncatcher tests showed. Data must still cross limited links to Earth, and crowded orbits add debris risk (Chapter 21). For now, orbital data centres are serious demonstrations and bold proposals, not an industry.
 
 ::: note
 **Practice: qualifying an AI payload for a small satellite**
+
+Small satellites are often the first home of a new AI payload (@fig:cubesatdeploy). A typical workflow:
 
 1. **Define the function and its criticality.** State what the model decides and what happens if it is wrong; keep it out of safety-critical loops. The European handbook ECSS-E-HB-40-02A (November 2024) gives guidance.
 2. **Budget resources.** Set limits for power, energy per orbit, heat, memory, mass and data volume. Estimate throughput at 20–30 % of the processor's peak.
@@ -479,7 +477,7 @@ The counter-arguments are strong. Radiators and solar arrays are large and heavy
 9. **Plan operations.** Commission in shadow mode — deciding but not acting — and downlink samples to check the decisions. Then monitor for drift.
 :::
 
-![A NanoRacks deployer, held by the Kibo laboratory's robotic arm, releases cubesats from the ISS in February 2014. Many AI payloads are first proven on small satellites like these.](figures/photos/ch45_cubesats.jpg){#fig:cubesatdeploy width=58%}
+![A NanoRacks deployer on the Kibo robotic arm releases cubesats from the ISS in February 2014. Many AI payloads are first proven on small satellites like these.](figures/photos/ch45_cubesats.jpg){#fig:cubesatdeploy width=58%}
 
 ::: key
 **Key takeaways**
