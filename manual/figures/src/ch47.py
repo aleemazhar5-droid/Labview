@@ -176,18 +176,19 @@ def l96():
     print(f"L96 emulator parameters: {S['nparam']}")
 
     fig = plt.figure(figsize=(7.0, 2.9))
-    gs = fig.add_gridspec(1, 4, width_ratios=[1.0, 1.0, 1.45, 1.25], wspace=0.14, left=0.065, right=0.99, top=0.9,
-                          bottom=0.34)
+    pos = [[0.06, 0.34, 0.145, 0.56], [0.215, 0.34, 0.145, 0.56], [0.425, 0.34, 0.25, 0.56],
+           [0.755, 0.34, 0.235, 0.56]]
     case = 7
     vmax = 10
     for j, (arr, ttl) in enumerate([(truth[case], "Truth"), (ml[case], "Emulator forecast")]):
-        ax = fig.add_subplot(gs[0, j])
+        ax = fig.add_axes(pos[j])
         im = ax.imshow(arr.T, origin="lower", aspect="auto", cmap="RdBu_r", vmin=-vmax, vmax=vmax,
                        extent=(0, L / 4, 0.5, K96 + 0.5))
         ax.set_title(ttl, fontsize=7.6)
         ax.set_xlabel("Lead time (days)", fontsize=7.0)
         ax.grid(False)
         ax.tick_params(labelsize=6.6)
+        ax.set_xticks([0, 4, 8])
         if j == 0:
             ax.set_ylabel("Site number k", fontsize=7.2)
             panel_tag(ax, "a", x=-0.22)
@@ -197,27 +198,27 @@ def l96():
     cb = fig.colorbar(im, cax=cax, orientation="horizontal")
     cb.ax.tick_params(labelsize=6.0)
     cb.set_label("value of x at each site", fontsize=6.2, labelpad=1)
-    ax = fig.add_subplot(gs[0, 2])
+    ax = fig.add_axes(pos[2])
     ax.plot(days, pers, color=GREY, lw=1.2, ls="--", label="Persistence")
     ax.plot(days, clim, color=GOLD, lw=1.2, ls=":", label="Climatology")
     ax.plot(days, rb, color=ORANGE, lw=1.4, label="Imperfect physics")
     ax.plot(days, rm, color=BLUE, lw=1.4, label="Learned emulator")
     ax.plot(days, rp, color=NAVY, lw=1.0, ls="-.", label="Perfect physics")
     ax.set_xlim(0, 10)
-    ax.set_ylim(0, 6)
+    ax.set_ylim(0, 9.5)
     ax.set_xlabel("Lead time (days)", fontsize=7.0)
     ax.set_ylabel("RMSE", fontsize=7.2, labelpad=1)
     ax.tick_params(labelsize=6.6)
-    ax.legend(fontsize=5.9, loc="lower right", handlelength=2.0)
+    ax.legend(fontsize=5.8, loc="upper center", ncol=2, handlelength=1.6, columnspacing=0.6)
     panel_tag(ax, "b", x=-0.12)
-    ax = fig.add_subplot(gs[0, 3])
+    ax = fig.add_axes(pos[3])
     ax.axhline(1, color=NAVY, lw=1.0, ls="-.")
     ax.plot(days[1:], rb[1:] / rp[1:], color=ORANGE, lw=1.6, label="Imperfect physics")
     ax.plot(days[1:], rm[1:] / rp[1:], color=BLUE, lw=1.6, label="Learned emulator")
     ax.set_xlim(0, 10)
     ax.set_ylim(0.95, 1.15)
     ax.set_xlabel("Lead time (days)", fontsize=7.0)
-    ax.set_ylabel("RMSE / perfect-model RMSE", fontsize=7.0, labelpad=1)
+    ax.set_ylabel("RMSE ratio to perfect model", fontsize=7.0, labelpad=1)
     ax.tick_params(labelsize=6.6)
     ax.legend(fontsize=5.9, loc="upper right")
     panel_tag(ax, "c", x=-0.14)
@@ -495,7 +496,7 @@ def cost():
 # ==============================================================================================
 # Synthetic radar rain field: fractal log-rain field evolving in a Lagrangian frame, advected by a sheared flow
 NR, DXR, DTR = 192, 2.0, 5.0     # pixels, km, minutes
-U0, V0, SHR = 0.6, 0.25, 0.003  # km/min, km/min, (km/min)/km
+U0, V0, SHR = 0.6, 0.25, 0.0  # km/min, km/min, (km/min)/km (uniform motion)
 
 
 @lru_cache(maxsize=1)
@@ -528,30 +529,42 @@ def rain_setup(nT=230):
     return R, yy, xx, yc
 
 
-def flow_est(a, b, nstep, B=33, smax=8):
-    """Dense block matching (TREC-style): minimise the windowed squared difference of log rain over shifts."""
-    la, lb = np.log1p(a), np.log1p(b)
+def flow_est(a, b, nstep, B=17, smax=5):
+    """Dense block matching (TREC-style) on a 2x coarser grid: for every pixel choose the shift that minimises the
+    windowed squared difference of log rain between two frames; sub-pixel by a parabola; confidence-weighted
+    smoothing.  Returns the motion in fine pixels per time step."""
+    def coarse(z):
+        return z.reshape(NR // 2, 2, NR // 2, 2).mean((1, 3))
+    la, lb = np.log1p(coarse(a)), np.log1p(coarse(b))
+    n2 = NR // 2
     sh = range(-smax, smax + 1)
     ns = len(sh)
-    cost = np.empty((ns, ns, NR, NR))
+    cost = np.empty((ns, ns, n2, n2))
     for i, dy in enumerate(sh):
         for j, dxx in enumerate(sh):
             cost[i, j] = ndimage.uniform_filter((np.roll(lb, (-dy, -dxx), (0, 1)) - la) ** 2, B, mode="wrap")
-    k = np.argmin(cost.reshape(-1, NR, NR), 0)
+    k = np.argmin(cost.reshape(-1, n2, n2), 0)
     ki, kj = np.unravel_index(k, (ns, ns))
     ii, jj = np.clip(ki, 1, ns - 2), np.clip(kj, 1, ns - 2)
-    I, J = np.mgrid[0:NR, 0:NR]
+    I, J = np.mgrid[0:n2, 0:n2]
 
     def sub(cm, c0, cp):
         d = cm - 2 * c0 + cp
         return np.where(d > 0, 0.5 * (cm - cp) / np.where(d > 0, d, 1), 0.0)
     dy = ki - smax + sub(cost[ii - 1, jj, I, J], cost[ii, jj, I, J], cost[ii + 1, jj, I, J])
     dxx = kj - smax + sub(cost[ii, jj - 1, I, J], cost[ii, jj, I, J], cost[ii, jj + 1, I, J])
-    w = ndimage.uniform_filter(((a > 0) & (b > 0)).astype(float), B, mode="wrap") ** 2 + 1e-3
+    w = ndimage.uniform_filter(((la > 0) & (lb > 0)).astype(float), B, mode="wrap") ** 2 + 1e-3
 
     def G(z):
-        return ndimage.gaussian_filter(z, 14, mode="wrap")
-    return G(w * dxx / nstep) / G(w), G(w * dy / nstep) / G(w)
+        return ndimage.gaussian_filter(z, 7, mode="wrap")
+    U, V = G(w * dxx) / G(w) * 2 / nstep, G(w * dy) / G(w) * 2 / nstep
+    return ndimage.zoom(U, 2, order=1, mode="grid-wrap"), ndimage.zoom(V, 2, order=1, mode="grid-wrap")
+
+
+def flow_avg(R, t):
+    """Average the motion estimated from three frame pairs 15 min apart (t-5..t)."""
+    est = [flow_est(R[t - 3 - k], R[t - k], 3) for k in range(3)]
+    return np.mean([e[0] for e in est], 0), np.mean([e[1] for e in est], 0)
 
 
 def extrap(r, U, V, n):
@@ -563,7 +576,7 @@ def nowcast():
     R, yy, xx, yc = rain_setup()
     leads = np.arange(0, 25)
     trainT, testT = range(20, 110, 6), range(125, 200, 5)
-    flows = {t: flow_est(R[t - 3], R[t], 3) for t in list(trainT) + list(testT)}
+    flows = {t: flow_avg(R, t) for t in list(trainT) + list(testT)}
     Ut = (U0 + SHR * (yy - yc)) * DTR / DXR
     Vt = np.full_like(Ut, V0 * DTR / DXR)
     errs = [np.abs(flows[t][0] - Ut).mean() + 0 * t for t in testT]
@@ -613,9 +626,9 @@ def nowcast():
     for k in names:
         print(f"nowcast {k}: CSI(1) at 30/60/120 min {csi(k, 1.0)[[6, 12, 24]].round(2)}, CSI(5) "
               f"{csi(k, 5.0)[[6, 12, 24]].round(2)}, RMSE {np.sqrt(se[k] / len(testT))[[6, 12, 24]].round(2)}")
-    fig = plt.figure(figsize=(7.0, 4.1))
-    gs = fig.add_gridspec(2, 4, height_ratios=[1, 1.05], hspace=0.45, wspace=0.12, left=0.07, right=0.98, top=0.95,
-                          bottom=0.15)
+    fig = plt.figure(figsize=(7.0, 4.4))
+    gs = fig.add_gridspec(1, 4, wspace=0.08, left=0.06, right=0.965, top=0.95, bottom=0.6)
+    gs2 = fig.add_gridspec(1, 2, wspace=0.28, left=0.08, right=0.98, top=0.5, bottom=0.22)
     from matplotlib.colors import BoundaryNorm, ListedColormap
     bounds = [0.1, 1, 2, 5, 10, 20, 50]
     cmap = ListedColormap(["#D8E9F5", "#9CC9E8", "#4F9BD1", GREEN, GOLD, ORANGE, RED][:len(bounds) - 1])
@@ -635,14 +648,14 @@ def nowcast():
             U, V = flows[150]
             sl = slice(12, NR, 24)
             ax.quiver(xx[sl, sl], yy[sl, sl], U[sl, sl], V[sl, sl], color=NAVY, scale=25, width=0.006)
-    cax = fig.add_axes([0.985, 0.59, 0.008, 0.33])
-    cb = fig.colorbar(im, cax=cax, ticks=bounds[:-1])
+    cax = fig.add_axes([0.972, 0.62, 0.008, 0.31])
+    cb = fig.colorbar(im, cax=cax, ticks=bounds[:-1], format="%g")
     cb.ax.tick_params(labelsize=5.8)
     cb.set_label("mm/h", fontsize=6)
     mins = leads * DTR
     st = {"pers": (GREY, "Persistence"), "of": (BLUE, "Optical-flow extrapolation"),
           "ml": (ORANGE, "Learned blend (ridge, MSE)"), "true": (NAVY, "Extrapolation with true motion")}
-    ax = fig.add_subplot(gs[1, 0:2])
+    ax = fig.add_subplot(gs2[0, 0])
     for k in ["pers", "of", "ml", "true"]:
         c, lab = st[k]
         ax.plot(mins, csi(k, 1.0), color=c, lw=1.6 if k != "true" else 1.0, ls="-" if k != "true" else ":",
@@ -652,11 +665,11 @@ def nowcast():
     ax.set_ylim(0, 1.0)
     ax.set_xlabel("Lead time (min)", fontsize=7.4)
     ax.set_ylabel("Critical success index", fontsize=7.4)
-    ax.text(118, 0.43, "1 mm/h (solid)", fontsize=6.0, ha="right", color=INK)
-    ax.text(118, 0.025, "5 mm/h (dashed)", fontsize=6.0, ha="right", color=INK)
-    ax.legend(fontsize=6.0, loc="upper right", handlelength=1.8)
+    ax.plot([], [], color=INK, lw=1.2, label="1 mm/h threshold")
+    ax.plot([], [], color=INK, lw=1.0, ls="--", label="5 mm/h threshold")
+    ax.legend(fontsize=5.8, loc="upper right", handlelength=1.8)
     panel_tag(ax, "b")
-    ax = fig.add_subplot(gs[1, 2:4])
+    ax = fig.add_subplot(gs2[0, 1])
     for k in ["pers", "of", "ml"]:
         c, lab = st[k]
         ax.plot(mins, np.sqrt(se[k] / len(testT)), color=c, lw=1.6, label=lab)
@@ -668,7 +681,7 @@ def nowcast():
     for a in fig.axes[4:]:
         a.tick_params(labelsize=7)
     foot(fig, "Synthetic radar: 384 km x 384 km, 2 km pixels, 5-min frames; power-law log-rain field whose small scales "
-              "decorrelate faster, advected by a sheared flow (about 36 km/h). Motion from block matching over 15 min; "
+              "decorrelate faster, moving uniformly at 39 km/h. Motion from block matching of three frame pairs; "
               "learned blend = ridge regression of log rain on the extrapolated field smoothed at 4 scales, trained on "
               "earlier frames. 15 test times.", width=135)
     save(fig, "ch47_nowcast")
@@ -781,6 +794,7 @@ def climate():
     ax.plot(allyr, out["over"][0], color=GREEN, lw=1.3, label="Overshoot test")
     ax.plot(yrs, Fh, color=INK, lw=1.0, label="Historical (training)")
     ax.set_xlim(1850, 2100)
+    ax.set_xticks([1850, 1950, 2050])
     ax.set_ylim(-3.5, 9)
     ax.set_ylabel("Forcing (W/m²)", fontsize=7.4)
     ax.legend(fontsize=5.9, loc="upper left", bbox_to_anchor=(0.0, 0.92))
@@ -792,6 +806,7 @@ def climate():
         ax.plot(allyr, pA, color=ORANGE, lw=1.3, label="MLP emulator")
         ax.plot(allyr, pB, color=VIOLET, lw=1.1, ls="--", label="MLP, +4×CO₂ training run")
         ax.set_xlim(1950, 2100)
+        ax.set_xticks([1950, 2000, 2050, 2100])
         ax.set_title(ttl, fontsize=7.6)
         ax.set_ylabel("Warming (K)", fontsize=7.4)
     axs[1].set_ylim(-0.3, 6.2)
@@ -805,7 +820,7 @@ def climate():
               "exchange 0.73 W m⁻² K⁻¹) with red-noise variability. Emulators map forcing smoothed over 1-400 years to "
               "warming; trained on historical, 1 %/yr to 2×CO₂ and abrupt 2×CO₂ runs; MLP = mean of 5 networks.",
          width=135)
-    fig.tight_layout(rect=(0, 0.08, 1, 1), w_pad=0.8)
+    fig.tight_layout(rect=(0, 0.11, 1, 1), w_pad=0.8)
     save(fig, "ch47_climate")
 
 
@@ -818,12 +833,12 @@ def flare():
     n = 40000
     z = rng.normal(0, 1, n)                      # hidden free magnetic energy
     w = rng.normal(0, 1, n)                      # unobserved trigger
-    X = np.c_[22.0 + 0.6 * z + 0.45 * rng.normal(size=n),          # log10 total unsigned flux (Mx)
-              3.0 + 0.9 * z + 0.6 * rng.normal(size=n),            # log R (flux near polarity inversion line)
-              0.7 * z + 0.7 * rng.normal(size=n),                  # current helicity (standardised)
-              0.5 * z + 0.9 * rng.normal(size=n),                  # mean shear angle (standardised)
+    X = np.c_[22.0 + 0.6 * z + 0.36 * rng.normal(size=n),         # log10 total unsigned flux (Mx)
+              3.0 + 0.9 * z + 0.48 * rng.normal(size=n),           # log R (flux near polarity inversion line)
+              0.7 * z + 0.56 * rng.normal(size=n),                 # current helicity (standardised)
+              0.5 * z + 0.72 * rng.normal(size=n),                 # mean shear angle (standardised)
               rng.poisson(np.exp(-1.2 + 0.8 * z))]                 # flares in previous 24 h
-    p = 1 / (1 + np.exp(-(-5.6 + 1.7 * z + 0.9 * w)))
+    p = 1 / (1 + np.exp(-(-6.5 + 2.6 * z + 0.5 * w)))
     yv = rng.random(n) < p
     ntr = int(0.6 * n)                           # chronological split: first 60 % train
     Xtr, ytr, Xte, yte = X[:ntr], yv[:ntr], X[ntr:], yv[ntr:]
@@ -847,8 +862,7 @@ def flare():
     ax.legend(fontsize=6.0, loc="lower right")
     panel_tag(ax, "a")
     ax = axs[1]
-    for (name, (t0, m0, tss)), c in zip(best.items(), [BLUE, ORANGE]):
-        ax.plot(ths, tss, color=c, lw=1.5, label=f"TSS, {name.split()[0].lower()}")
+    ax.plot(ths, best["Logistic regression"][2], color=BLUE, lw=1.6, label="TSS")
     pp = ps["Logistic regression"]
     hss = []
     for t in ths:
@@ -857,8 +871,8 @@ def flare():
         c_ = ((pp < t) & yte).sum()
         d = ((pp < t) & ~yte).sum()
         hss.append(2 * (a * d - b * c_) / ((a + c_) * (c_ + d) + (a + b) * (b + d)))
-    ax.plot(ths, hss, color=BLUE, lw=1.1, ls="--", label="HSS, logistic")
-    ax.set_xlabel("Probability threshold", fontsize=7.2)
+    ax.plot(ths, hss, color=BLUE, lw=1.1, ls="--", label="HSS")
+    ax.set_xlabel("Threshold on logistic output", fontsize=7.2)
     ax.set_ylabel("Skill score", fontsize=7.2)
     ax.set_ylim(0, 0.9)
     ax.legend(fontsize=6.0, loc="upper right")
@@ -994,9 +1008,9 @@ def dst():
     i0 = int(np.argmin(y))
     sl = slice(i0 - 24, i0 + 48)
     hrs = np.arange(-24, 48)
-    ax.plot(hrs, y[sl], color=INK, lw=2.0, label="Observed (synthetic)")
-    ax.plot(hrs, keep["pers"][sl], color=GREY, lw=1.2, ls="--", label="Persistence, 3 h ahead")
-    ax.plot(hrs, keep["mlp"][sl], color=ORANGE, lw=1.4, label="MLP with L1 data, 3 h ahead")
+    ax.plot(hrs, y[sl], color=INK, lw=2.0, label="Observed")
+    ax.plot(hrs, keep["pers"][sl], color=GREY, lw=1.2, ls="--", label="Persistence (3 h)")
+    ax.plot(hrs, keep["mlp"][sl], color=ORANGE, lw=1.4, label="MLP + L1 (3 h)")
     ax.set_xlim(-24, 48)
     ax.set_xlabel("Hours from storm peak", fontsize=7.2)
     ax.set_ylabel("Dst (nT)", fontsize=7.2)
@@ -1021,7 +1035,7 @@ def dst():
               "Burton-type Dst model with pressure correction and 2 nT noise. Years 1-3 train, year 4 tests; inputs: 6 "
               "hours of past Dst, and for ARX/MLP 7 hours of L1 VBs (one hour ahead of Earth) and dynamic pressure.",
          width=135)
-    fig.tight_layout(rect=(0, 0.09, 1, 1), w_pad=0.8)
+    fig.tight_layout(rect=(0, 0.11, 1, 1), w_pad=0.8)
     save(fig, "ch47_dst")
 
 

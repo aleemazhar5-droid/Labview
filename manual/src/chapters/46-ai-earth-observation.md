@@ -16,7 +16,7 @@ The key idea is that EO analysis is a short list of tasks — classify, segment,
 
 The pipeline in @fig:eopipeline shows where the models sit. Raw data are calibrated and corrected into **analysis-ready data** (ARD) — pixels in physical units on a map grid (Chapter 13). Models turn ARD into maps, alerts and estimates. Users send back corrections and new labels, and some detections trigger new images of the same place. A growing share of the work also happens on the satellite itself.
 
-![The EO data pipeline with AI. Each stage shrinks the data: terabytes of pixels a day become megabytes of maps and kilobytes of alerts. Three loops close the system: users supply new labels, detections cue new collections (tip-and-cue), and an onboard look-ahead camera can retask the satellite within seconds.](figures/out/ch46_pipeline.svg){#fig:eopipeline width=96%}
+![The EO data pipeline with AI. Each stage shrinks the data: terabytes of pixels a day become megabytes of maps and kilobytes of alerts. Three loops close the system: users supply new labels, detections cue new collections (tip-and-cue), and an onboard look-ahead camera can retask the satellite in under 90 seconds.](figures/out/ch46_pipeline.svg){#fig:eopipeline width=96%}
 
 ### What Makes EO Data Different
 
@@ -53,7 +53,7 @@ where $\sigma$ is a simple non-linear function. The filters learn textures and s
 
 In @fig:eolandcover the two are compared on a synthetic six-class scene with Sentinel-2-like bands. Both models learned from 400 labelled pixels per class in the western half and were tested on all 12 800 pixels of the eastern half. The random forest on single pixels reached an overall accuracy of 80.2 %. Cropland was its weakest class, with an F1 score — the balance of precision and recall — of only 0.49, because fields at different growth stages look like grass or bare soil. A random forest given the same 5 × 5-pixel neighbourhoods reached 89.0 %. A small CNN with about 10 000 weights, written in numpy, reached 94.8 % and raised cropland F1 to 0.84. Context, not the network as such, did most of the work.
 
-![Land-cover mapping of a synthetic scene. (a)–(d) Image, reference and two maps; models learned from the western half and were tested on the eastern half. (e) The CNN's remaining confusion is mostly cropland labelled as forest or grass. (f) Neighbourhood information raises F1 for every mixed or textured class.](figures/out/ch46_landcover.svg){#fig:eolandcover width=98%}
+![Land-cover mapping of a synthetic scene. (a)–(d) Image, reference and two maps; models learned from the western half and were tested on the eastern half. (e) The CNN's remaining confusion is mostly cropland labelled as forest. (f) Neighbourhood information raises F1 for every mixed or textured class.](figures/out/ch46_landcover.svg){#fig:eolandcover width=98%}
 
 The synthetic test is easier than reality: global maps reach overall accuracies of about 74–77 % (@tbl:eoproducts). But the ranking is typical. Pixel-based random forests remain strong baselines, and convolutional and transformer networks win where texture and shape matter.
 
@@ -115,7 +115,7 @@ In @fig:eodespeckle four filters are compared on a synthetic single-look scene. 
 
 **Ship detection** in radar is the classic EO detection task. Ships are bright metal on a darker sea. The standard detector is the **constant false alarm rate** (CFAR) test. It estimates the local sea brightness $\hat\mu$ from a ring of pixels around each test cell and declares a target when the cell exceeds $T = \alpha\hat\mu$. For exponential clutter with a known mean, the false-alarm probability is $P_{fa} = e^{-\alpha}$, so $\alpha = -\ln P_{fa}$. Real sea clutter is spikier, so $\alpha$ must be larger.
 
-CFAR flags anything bright. Breaking waves, azimuth "ghosts" of bright objects and small islands all cause false alarms. A learned classifier can look at shape. In @fig:eoships, chips of synthetic K-distributed sea clutter contain ships 2–7 pixels long or look-alikes. At a false-alarm rate of 1 % per chip, cell-averaging CFAR found 53 % of ships, and 286 of its 300 false alarms were ghosts or wave spikes. A small numpy network found 74 %. Its area under the receiver operating characteristic (ROC) curve, which sums up performance at all thresholds, rose from 0.87 to 0.98. Its advantage was largest for weak ships, 5–11 dB above the clutter. In practice the two are chained: CFAR proposes candidates and a network confirms them.
+CFAR flags anything bright. Breaking waves, azimuth "ghosts" of bright objects and small islands all cause false alarms. A learned classifier can look at shape. In @fig:eoships, chips of synthetic K-distributed sea clutter contain ships 2–7 pixels long or look-alikes. At a false-alarm rate of 1 % per chip, cell-averaging CFAR found 53 % of ships, and 286 of its 300 false alarms were ghosts or wave spikes. A small numpy network found 74 %. Its area under the receiver operating characteristic (ROC) curve, which sums up performance at all thresholds, rose from 0.869 to 0.975. Its advantage was largest for weak ships, 5–11 dB above the clutter. In practice the two are chained: CFAR proposes candidates and a network confirms them.
 
 ![Speckle filtering of a synthetic single-look SAR scene. (a)–(d) Truth, speckled image, Lee filter and learned network (dB scale). (e) Equivalent number of looks in the outlined uniform region. (f) RMS error against the truth for all pixels and near edges.](figures/out/ch46_despeckle.svg){#fig:eodespeckle width=98%}
 
@@ -129,7 +129,7 @@ $$ x = \sum_{k} a_k\, e_k + \varepsilon, \qquad a_k \ge 0,\ \ \sum_k a_k = 1, $$
 
 where $e_k$ are pure "endmember" spectra, such as soil, grass and roof, and $a_k$ their area fractions. **Unmixing** solves for the fractions. Learned methods add non-linear mixing and use the spatial context. Classifiers for hyperspectral data must also cope with hundreds of correlated, noisy bands and few labels. Dimension reduction and foundation models pre-trained on unlabelled cubes help (Chapter 44).
 
-**3-D reconstruction** turns stereo pairs, radar interferometry or lidar into heights. Learned stereo matching fills gaps in shadows and on uniform roofs. Networks also estimate building heights from single images; Microsoft's building data set includes tens of millions of such estimates.
+**3-D reconstruction** turns stereo pairs, radar interferometry or lidar into heights. Learned stereo matching fills gaps in shadows and on uniform roofs. Networks also estimate building heights from single images. Microsoft's building data set includes height estimates for more than 170 million buildings.
 
 ## Land: Crops, Forests, Cities and Water
 
@@ -140,7 +140,7 @@ On land, AI's main job is to make **wall-to-wall maps** that are updated often. 
 | WorldCover | ESA, 2021 (2020 map) | Sentinel-1 and -2, 10 m, 11 classes | Supervised classifier on yearly band statistics | Overall accuracy 74.4 % (2020), 76.7 % (2021) |
 | Dynamic World | Google, World Resources Institute, 2022 | Every Sentinel-2 image ≤ 35 % cloud, 10 m, 9 classes | Fully convolutional network; class probabilities | 73.8 % agreement with expert labels |
 | WorldCereal | ESA consortium, 2023 (2021 maps) | Sentinel-1, -2, Landsat, 10 m | Gradient-boosted trees | Crop extent: user's 88.5 %, producer's 92.1 % |
-| Global ML Building Footprints | Microsoft, 2022– | Bing Maps imagery, 2014–2025 | Segmentation network + polygon step | About 1.4 billion buildings; precision 92–97 % |
+| Global ML Building Footprints | Microsoft, 2022– | Bing Maps and Vexcel imagery, 2014–2025 | Segmentation network + polygon step | About 1.4 billion buildings; precision 92–97 % |
 | Open Buildings v3 | Google, 2023 | 50 cm imagery; 58 million km² | Segmentation network | 1.8 billion buildings |
 | Tree cover loss and alerts | Univ. of Maryland, Wageningen, Global Forest Watch | Landsat, Sentinel-2, Sentinel-1 | Decision trees, statistical change tests | Annual since 2000; weekly alerts |
 
@@ -166,7 +166,7 @@ Annual maps are too slow for enforcement, so **alerts** were added. GLAD alerts 
 
 ### Cities, Mines and Water
 
-**Building footprints** are the base layer for population estimates, disaster planning and electrification. Microsoft has extracted about 1.4 billion footprints from aerial and satellite imagery, with regional precision of 92–97 % but recall as low as 71 % in Africa. Google's Open Buildings holds 1.8 billion detections across Africa, Asia, Latin America and the Caribbean. Both are open and often fill gaps that community mapping has not reached.
+**Building footprints** are the base layer for population estimates, disaster planning and electrification. Microsoft has extracted about 1.4 billion footprints from aerial and satellite imagery, with regional precision of 92–97 % but recall as low as 71 % in Africa. Google's Open Buildings holds 1.8 billion detections across Africa, South and South-East Asia, Latin America and the Caribbean. Both are open and often fill gaps that community mapping has not reached.
 
 **Mining** is a growing target. Amazon Mining Watch, from Earth Genome and partners, runs an ensemble of CNNs over Sentinel-2 to map gold mining in nine Amazon countries. Its August 2026 update reported about 99 % specificity and 90 % sensitivity, with maps updated every quarter since 2025. **Water and wetlands** are mapped from long Landsat records and from radar, which separates open water, flooded vegetation and dry land.
 
@@ -224,7 +224,7 @@ Inference is not the bottleneck. Downloading, calibrating and terrain-correcting
 
 ### Rapid Mapping and Damage Assessment
 
-Two coordination systems turn images into maps for responders. The **International Charter "Space and Major Disasters"**, founded in 2000, lets disaster agencies request free imagery from member space agencies. It reached activation number 1 052 in August 2026; 2024 set a record of 85 activations. The **Copernicus Emergency Management Service** (CEMS) adds on-demand mapping. For the Myanmar earthquake of March 2025 it delivered 93 maps from 106 post-event images. Most rapid maps are still drawn or checked by analysts, with AI speeding up the steps.
+Two coordination systems turn images into maps for responders. The **International Charter "Space and Major Disasters"**, in operation since 2000, lets disaster agencies request free imagery from member space agencies. It reached activation number 1 052 in August 2026; 2024 set a record of 85 activations. The **Copernicus Emergency Management Service** (CEMS) adds on-demand mapping. For the Myanmar earthquake of March 2025 it delivered 93 maps from 106 post-event images. Most rapid maps are still drawn or checked by analysts, with AI speeding up the steps.
 
 **Building damage** is assessed by comparing images from before and after. Models trained on xBD grade each building on a four-level scale, from no damage to destroyed. After the February 2023 earthquakes in Türkiye, Microsoft's AI for Good Lab, Planet and the Turkish disaster agency AFAD used such a model on imagery from the first three days. They estimated that 3 849 buildings were damaged or destroyed in four cities. The World Food Programme and Google Research built the open **SKAI** tool. A UN evaluation over nine events found that it covered about seven times more area and gave first results about six times faster, in under a day. A later study comparing two companies' damage maps for the same disaster found that they disagreed in many places. Maps from different models should be treated as estimates, not facts.
 
@@ -330,7 +330,7 @@ The key idea is to decide in orbit what is worth collecting and sending down, be
 
 ### Demonstrations so far
 
-ESA's **Φsat-1** (2020) showed that a deep network on a 1 W vision chip could discard cloudy images in orbit. **Φsat-2** (2024) carried several uploadable apps, including vessel and wildfire detection (Chapter 45). The main EO demonstrations are listed in @tbl:eoonboard. Most are still demonstrations; few run as part of a paying service.
+ESA's **Φsat-1** (2020) showed that a deep network on a vision chip drawing only a watt or two could discard cloudy images in orbit. Its successor, **Φsat-2** (2024), carried several uploadable apps, including vessel and wildfire detection (Chapter 45). The main EO demonstrations are listed in @tbl:eoonboard. Most are still demonstrations; few run as part of a paying service.
 
 | Mission or system | Year | What the AI does on board | Status (Oct 2026) |
 |---|---|---|---|
@@ -347,7 +347,7 @@ ESA's **Φsat-1** (2020) showed that a deep network on a 1 W vision chip could d
 ::: history
 **Dynamic targeting on CogniSAT-6 (2025)**
 
-CogniSAT-6 is a 6U cubesat built and operated by Open Cosmos, with an AI processor and hyperspectral camera from Ubotica. It was launched in March 2024. In mid-July 2025, NASA JPL's **Dynamic Targeting** software flew on it for the first time. The satellite tilted 40–50° forward to image the ground about 500 km ahead. It analysed that image on board, judged whether the target was clear, and decided to image it or skip it — all in under 90 seconds and without human help. JPL's next steps are to hunt short-lived events such as fires, eruptions and storms, and to share tasks between satellites.
+CogniSAT-6 is a 6U cubesat designed, built and operated by Open Cosmos. Its payload, from Ubotica, pairs a commercial AI processor with a hyperspectral camera from Simera Sense. It was launched in March 2024. In mid-July 2025, NASA JPL's **Dynamic Targeting** software flew on it for the first time. The satellite tilted 40–50° forward to image the ground about 500 km ahead. It analysed that image on board, judged whether the target was clear, and decided to image it or skip it — all in under 90 seconds and without human help. JPL's next steps are to hunt short-lived events such as storms, fires and eruptions, and to let a leading satellite pass targets to the ones behind it.
 :::
 
 ### What Smart Tasking Is Worth
@@ -362,7 +362,7 @@ Screening after imaging is a different trade. It does not create clear images, b
 
 ## The EO Analytics Business
 
-Most commercial value lies not in pixels but in answers. Novaspace valued the EO data and services market at about $5 billion in 2023 and expected it to pass $8 billion by 2033, with services rising from $3.1 billion to $4.9 billion. Defence is the main driver of growth. Planet, one of the largest commercial imaging operators, reported revenue of $307.7 million for the year to January 2026, up 26 %, with a backlog of over $900 million.
+Most commercial value lies not in pixels but in answers. Novaspace valued the EO data and services market at about $5 billion in 2023 and expected it to pass $8 billion by 2033, with services rising from $3.1 billion to $4.9 billion. Defence is one of the main drivers of growth. Planet, one of the largest commercial imaging operators, reported revenue of $307.7 million for the year to January 2026, up 26 %, with a backlog of over $900 million.
 
 Three changes define the business in 2026 (Chapter 52). First, operators sell **subscriptions and analytics** rather than single images: alerts for new construction, vessel lists, crop statistics. Second, data are sold as **AI-ready products**: calibrated, co-registered time series with cloud masks and standard tiling. EarthDaily, for example, launched six satellites in May 2026 for a constellation designed for broad-area change detection, with 22 spectral bands. Third, **foundation models** are moving into practice. Google's AlphaEarth embeddings summarise each 10 m pixel and year since 2017 as 64 numbers in Earth Engine. A small classifier on these embeddings can map a new class from relatively few labels. NASA and IBM's Prithvi models are fine-tuned for floods, burn scars and crops (Chapter 44).
 
@@ -374,7 +374,7 @@ A constellation collects about 200 million km² a day in scenes of about 32.5 km
 1. **Scenes per day.** 32.5 × 19.6 = 637 km² per scene; 200 × 10⁶ / 637 ≈ 314 000 scenes a day.
 2. **Analyst capacity.** 7 × 60 / 5 = 84 scenes per analyst per day.
 3. **Analysts needed.** 314 000 / 84 ≈ 3 740 analysts, every day, for one constellation and one question.
-4. **With AI triage.** A change detector flags 2 % of scenes (6 280), and analysts also check a random 1 % of the rest (3 140) to watch for misses. That is 9 420 scenes, or about 112 analysts.
+4. **With AI triage.** A change detector flags 2 % of scenes (6 280), and analysts also check a random 1 % of the rest (about 3 080) to watch for misses. That is about 9 360 scenes, or about 111 analysts.
 5. **Pixels.** At 3 m, each scene holds about 71 million pixels per band, and the day about 2.2 × 10¹³.
 
 The model does not replace the analysts. It points their attention and lets them spend time on what matters. Its miss rate, measured on the random checks, sets how far its output can be trusted.
@@ -404,7 +404,7 @@ A map is often used to report an **area**: hectares of forest lost, or square ki
 
 $$ \hat p_k = \sum_h W_h\, \frac{n_{hk}}{n_h}, \qquad \widehat{\mathrm{SE}}(\hat p_k) = \sqrt{\sum_h W_h^2\, \frac{\hat p_{hk}(1 - \hat p_{hk})}{n_h - 1}}, $$
 
-where $W_h$ is the mapped share of stratum $h$, $n_h$ the number of samples in it, and $n_{hk}$ those found to be class $k$.
+where $W_h$ is the mapped share of stratum $h$, $n_h$ the number of samples in it, $n_{hk}$ those found to be class $k$, and $\hat p_{hk} = n_{hk}/n_h$.
 
 In @fig:eopitfalls (b), a map of a million pixels finds 65 % of 30 000 true loss pixels and adds 4 000 false ones. Counting gives 2.35 % loss, while the truth is 3.00 %. The stratified estimate is unbiased. With 3 200 reference points, 95 % of repeated surveys fell between 2.61 % and 3.53 %. With only 100 points, the reported confidence interval contained the truth in only 37 % of surveys. The few omission errors hidden in the large "no loss" stratum were usually missed by the sample. Small samples give confident-looking but wrong intervals.
 

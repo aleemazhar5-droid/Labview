@@ -8,6 +8,7 @@ of the integrated-mass-enhancement method for methane plumes, Monte Carlo smart 
 plus area estimation.  Numbers quoted in the chapter are printed by each function.
 """
 import os
+import re
 import sys
 import textwrap
 from pathlib import Path
@@ -30,6 +31,7 @@ def panel_tag(ax, s, x=-0.02, y=1.02):
 
 
 def foot(fig, text, y=0.01, width=150):
+    text = re.sub(r"(\d) (?=\d{3}\b)", "\\1\u00a0", text)   # keep digit groups such as "4 998" on one line
     fig.text(0.99, y, "\n".join(textwrap.wrap(text, width)), ha="right", va="bottom", fontsize=FOOT, color=GREY,
              multialignment="right", linespacing=1.25)
 
@@ -698,7 +700,7 @@ def crops():
     foot(fig, "Synthetic fields: double-logistic NDVI curves (grass: three mowing cuts) with ±10-day timing shifts, "
          "amplitude spread and noise; 49 dates every 5 days; clouds remove dates at random and 8 % of 'clear' dates "
          f"carry undetected thin cloud. Both models trained on 5 000 fields, tested on 3 000 per point. Attention "
-         f"network: six heads, {n_par:,} weights, numpy.".replace(",", " "), width=165)
+         f"network: six heads, {n_par:,} weights, numpy.".replace(f"{n_par:,}", f"{n_par:,}".replace(",", " ")), width=165)
     fig.tight_layout(rect=(0, 0.24, 1, 1), w_pad=1.0)
     save(fig, "ch46_crops")
 
@@ -825,7 +827,7 @@ def despeckle():
     foot(fig, "Synthetic 192 × 192-pixel scene: 34 fields between −17 and −5 dB, a −22 dB road and ten +8 dB point "
          "targets, multiplied by single-look exponential speckle. Learned filters see 9 × 9 log-intensity patches "
          "and were trained on 120 000 patches from three other scenes; the network (two hidden layers, "
-         f"{net.n_params():,} weights) is written in numpy.".replace(",", " "), width=165)
+         f"{net.n_params():,} weights) is written in numpy.".replace(f"{net.n_params():,}", f"{net.n_params():,}".replace(",", " ")), width=165)
     fig.subplots_adjust(left=0.07, right=0.99, top=0.95, bottom=0.2)
     save(fig, "ch46_despeckle")
 
