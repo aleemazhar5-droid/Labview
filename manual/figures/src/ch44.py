@@ -19,6 +19,11 @@ ROOT = Path(__file__).resolve().parents[2]
 FOOT = 6.0
 
 
+def sp(n):
+    """Integer with a thin space as thousands separator (manual style)."""
+    return f"{int(round(n)):,}".replace(",", " ")
+
+
 def panel_tag(ax, s, x=-0.02, y=1.02):
     ax.text(x, y, s, transform=ax.transAxes, fontsize=9, weight="bold", ha="right", va="bottom", color=INK)
 
@@ -431,7 +436,7 @@ def _slab(ax, x, y, w, h, d, fc, ec=NAVY, lw=0.7, z=2):
 def cnnarch():
     fig, ax = canvas(7.0, 4.7, xlim=(0, 100), ylim=(0, 67))
     # --- top: small CNN classifier
-    ax.text(1, 66.5, "A small CNN classifier (Example 44.1)", fontsize=8.2, weight="bold", color=NAVY, va="top")
+    ax.text(1, 66.5, "A small CNN classifier (see the worked example)", fontsize=8.2, weight="bold", color=NAVY, va="top")
     specs = [("256×256×4\ninput chip", 3.0, 0.8, 16, 2, "#D6E4F0"),
              ("256×256×32\nconv 3×3 + ReLU", 17.0, 1.8, 16, 4, "#9FC3E3"),
              ("128×128×64\npool, conv", 32.0, 2.6, 11, 6, "#6FA6D6"),
@@ -457,13 +462,13 @@ def cnnarch():
     ax.plot([1, 99], [34.2, 34.2], color="#C9D3DD", lw=0.6)
     # --- bottom left: residual block
     ax.text(1, 32.8, "Residual block (ResNet)", fontsize=8.2, weight="bold", color=NAVY, va="top")
-    bx, cxr = 4.0, 12.0
+    bx, cxr = 3.0, 12.0
     ax.text(cxr, 28.6, "input x", fontsize=6.2, ha="center", va="center")
-    box(ax, bx, 21.0, 16, 4.2, text="conv 3×3 → norm → ReLU", fs=5.9, fc="white", ec=BLUE, r=0.6)
-    box(ax, bx, 13.5, 16, 4.2, text="conv 3×3 → norm", fs=5.9, fc="white", ec=BLUE, r=0.6)
+    box(ax, bx, 21.0, 18, 4.2, text="conv 3×3 → norm → ReLU", fs=5.9, fc="white", ec=BLUE, r=0.6)
+    box(ax, bx, 13.5, 18, 4.2, text="conv 3×3 → norm", fs=5.9, fc="white", ec=BLUE, r=0.6)
     ax.add_patch(Circle((cxr, 8.6), 1.5, fc="white", ec=NAVY, lw=1.0, zorder=3))
     ax.text(cxr, 8.6, "+", fontsize=9, ha="center", va="center", zorder=4, color=NAVY)
-    box(ax, bx + 2, 1.2, 12, 4.0, text="ReLU → output y", fs=5.9, fc="white", ec=BLUE, r=0.6)
+    box(ax, bx + 2, 1.2, 14, 4.0, text="ReLU → output y", fs=5.9, fc="white", ec=BLUE, r=0.6)
     arrow(ax, (cxr, 27.6), (cxr, 25.4), lw=0.9, ms=7)
     arrow(ax, (cxr, 21.0), (cxr, 17.9), lw=0.9, ms=7)
     arrow(ax, (cxr, 13.5), (cxr, 10.2), lw=0.9, ms=7)
@@ -490,7 +495,7 @@ def cnnarch():
     for (xa, ya, wa, ha_), (xb, yb, wb, hb) in zip(lv[:-1], up[::-1]):
         arrow(ax, (xa + wa + 0.3, ya + ha_ / 2), (xb - 0.3, yb + hb / 2), lw=0.8, ms=6, color=GREEN, ls="--")
     ax.text(64.3, 28.6, "skip connections copy fine spatial detail", fontsize=5.9, color=GREEN, ha="center")
-    ax.text(41, 19.6, "image", fontsize=5.9, ha="center", va="top")
+    ax.text(39.2, 19.6, "image", fontsize=5.9, ha="center", va="top")
     ax.text(94.7, 19.6, "class map\n(per pixel)", fontsize=5.9, ha="center", va="top")
     ax.text(47.5, 6.0, "encoder:\nconv + pool", fontsize=5.9, color=NAVY, ha="center", va="center")
     ax.text(82.5, 6.0, "decoder:\nup-sample + conv", fontsize=5.9, color=ORANGE, ha="center", va="center")
@@ -771,9 +776,9 @@ def mesh():
     ax.text(7.6, 6.9, "messages", fontsize=6.0, color=ORANGE, ha="left")
     panel_tag(ax, "c", x=0.02, y=1.0)
     foot(fig, f"Computed: a regular icosahedron refined by splitting each triangle into four; level 6 has "
-              f"{stats[6][1]:,} nodes ({stats[6][2]:,} faces, mean edge {stats[6][4]:.0f} km) — the finest level of "
-              f"GraphCast's mesh. Level-0 edges are about {stats[0][4]:,.0f} km long, so a few message-passing steps "
-              f"on the multi-mesh carry information across the globe.".replace(",", " "), width=150)
+              f"{sp(stats[6][1])} nodes ({sp(stats[6][2])} faces, mean edge {stats[6][4]:.0f} km) — the finest level of "
+              f"GraphCast's mesh. Level-0 edges are about {sp(stats[0][4])} km long, so a few message-passing steps "
+              f"on the multi-mesh carry information across the globe.", width=150)
     fig.subplots_adjust(left=0.02, right=0.99, top=0.92, bottom=0.17)
     save(fig, "ch44_mesh")
 
@@ -876,10 +881,10 @@ def diffusion():
     ax.set_title("Training loss", fontsize=7.0, weight="normal")
     panel_tag(ax, "f", x=-0.05, y=1.0)
     foot(fig, f"Numpy DDPM: noise predictor 18-128-128-128-2 (SiLU), sinusoidal time embedding, T = 100 steps, "
-              f"linear β from 10⁻⁴ to 0.12, {steps:,} Adam steps on a ring of eight Gaussians. "
+              f"linear β from 10⁻⁴ to 0.12, {sp(steps)} Adam steps on a ring of eight Gaussians. "
               f"{within * 100:.0f} % of 4 000 generated samples lie within 3σ of a mode; every mode is "
-              f"populated ({counts.min() / counts.sum() * 100:.0f}–{counts.max() / counts.sum() * 100:.0f} % each)."
-         .replace(",", " "), width=150)
+              f"populated ({counts.min() / counts.sum() * 100:.0f}–{counts.max() / counts.sum() * 100:.0f} % each).",
+         width=150)
     fig.subplots_adjust(left=0.01, right=0.99, top=0.87, bottom=0.31, wspace=0.22)
     pos = axs[5].get_position()
     axs[5].set_position([pos.x0 + 0.04, pos.y0 + 0.06, pos.width - 0.04, pos.height - 0.06])
@@ -906,10 +911,10 @@ def fmpipeline():
     # pre-training box
     title_box(ax, 25, 15, 21, 32, "Pretext task", "", fs=5.9)
     ax.text(35.5, 39.5, "mask 75 % of patches,\nreconstruct them", fontsize=5.9, ha="center", va="center")
-    ax.text(35.5, 31.5, "or: match two views of\nthe same place (contrastive)", fontsize=5.9, ha="center",
+    ax.text(35.5, 31.5, "or: match two views\nof the same place\n(contrastive)", fontsize=5.9, ha="center",
             va="center")
     ax.text(35.5, 23.5, "or: predict the next\nstep / next token", fontsize=5.9, ha="center", va="center")
-    ax.text(35.5, 17.6, "10⁴–10⁵ GPU-hours", fontsize=5.9, ha="center", va="center", color=ORANGE, weight="bold")
+    ax.text(35.5, 17.6, "10³–10⁵ GPU-hours", fontsize=5.9, ha="center", va="center", color=ORANGE, weight="bold")
     for y in ys:
         arrow(ax, (20.2, y + 0.1), (24.8, 31), lw=0.6, ms=5, color=GREY)
     arrow(ax, (46.2, 31), (50.5, 31), lw=1.1, ms=8)
@@ -923,7 +928,7 @@ def fmpipeline():
             color=VIOLET)
     # adaptation options
     opts = [("Frozen embeddings +\nsmall classifier (probe)", 43.5, GREEN),
-            ("Low-rank adapters (LoRA):\ntrain ~1 % of weights", 33.5, BLUE),
+            ("Low-rank adapters (LoRA):\ntrain 0.1–1 % of weights", 33.5, BLUE),
             ("Full fine-tuning:\nall weights + task head", 23.5, VIOLET)]
     for t, y, c in opts:
         box(ax, 72, y - 3.5, 26, 7.2, text=t, fs=5.9, fc="white", ec=c, r=0.6, lw=1.1)
@@ -1047,14 +1052,14 @@ def surrogate():
     ax.axhspan(600, 1000, color="#FBEDE3", zorder=0)
     ax.plot(truth, h, color=INK, lw=2.2, label="physics model")
     ax.plot(nn, h, color=RED, lw=1.3, ls="--", label="neural surrogate")
-    ax.plot(hy, h, color=GREEN, lw=1.3, ls="-.", label="hybrid (physics + NN)")
-    ax.text(-14.6, 940, "extrapolation", fontsize=6.4, color=ORANGE, ha="left", va="center")
-    ax.text(-14.6, 560, "training range\n0–600 km", fontsize=6.4, color=NAVY, ha="left", va="center")
+    ax.plot(hy, h, color=GREEN, lw=1.3, ls="-.", label="hybrid (constant H + NN)")
+    ax.text(-0.5, 800, "extrapolation\n600–1 000 km", fontsize=6.4, color=ORANGE, ha="right", va="center")
+    ax.text(-14.6, 140, "training range\n0–600 km", fontsize=6.4, color=NAVY, ha="left", va="center")
     ax.set_xlabel("log$_{10}$ density (kg/m³)")
     ax.set_ylabel("altitude (km)")
     ax.set_ylim(0, 1000)
     ax.set_xlim(-15, 1)
-    ax.legend(fontsize=6.2, loc="upper right")
+    ax.legend(fontsize=6.2, loc="upper right", bbox_to_anchor=(1.0, 0.57))
     ax.set_title("Density profile", fontsize=8.4)
     panel_tag(ax, "a")
     ax = axs[1]
@@ -1062,11 +1067,11 @@ def surrogate():
     ax.plot(np.abs(err_nn) + 1e-3, h, color=RED, lw=1.2, ls="--", label="neural surrogate")
     ax.plot(np.abs(err_hy) + 1e-3, h, color=GREEN, lw=1.2, ls="-.", label="hybrid")
     ax.set_xscale("log")
-    ax.set_xlim(1e-2, 1e5)
+    ax.set_xlim(1e-2, 3e2)
     ax.set_ylim(0, 1000)
     ax.set_xlabel("density error (%)")
     ax.set_ylabel("altitude (km)")
-    ax.legend(fontsize=6.2, loc="lower right")
+    ax.legend(fontsize=6.2, loc="upper left")
     ax.set_title("Error vs physics model", fontsize=8.4)
     panel_tag(ax, "b")
     ax = axs[2]
@@ -1197,19 +1202,20 @@ def uq():
     ax.bar(xx - 0.19, [res["in"][k] * 100 for k in keys], width=0.36, color=BLUE, label="in range")
     ax.bar(xx + 0.19, [res["ood"][k] * 100 for k in keys], width=0.36, color=RED, label="outside range")
     ax.axhline(90, color=INK, lw=0.9, ls="--")
-    ax.text(3.6, 91, "target 90 %", fontsize=6.0, ha="right", va="bottom")
+    ax.text(-0.45, 91.5, "target 90 %", fontsize=6.0, ha="left", va="bottom")
     ax.set_xticks(xx)
     ax.set_xticklabels(names, fontsize=6.0)
     ax.set_ylabel("measured coverage (%)")
-    ax.set_ylim(0, 105)
-    ax.legend(fontsize=6.2, loc="lower right")
+    ax.set_ylim(0, 122)
+    ax.set_yticks([0, 20, 40, 60, 80, 100])
+    ax.legend(fontsize=6.2, loc="upper right", ncol=2, frameon=False, handlelength=1.2, columnspacing=0.8)
     ax.set_title("Coverage check", fontsize=8.4)
     panel_tag(ax, "b")
     foot(fig, "Synthetic regression y = sin(1.3x) + 0.25x with noise s.d. rising from 0.08 to 0.50. Five numpy MLPs "
               "(1-64-64-2, tanh) trained on 600 points with the Gaussian negative log-likelihood; conformal quantiles "
               "from 400 calibration points; coverage measured on 4 000 in-range and 2 000 out-of-range test points.",
-         width=150)
-    fig.tight_layout(rect=(0, 0.08, 1, 1), w_pad=1.2)
+         width=165)
+    fig.tight_layout(rect=(0, 0.09, 1, 1), w_pad=1.2)
     save(fig, "ch44_uq")
 
 
@@ -1270,6 +1276,14 @@ def _saliency(params, mu, sd, X):
     return dx / sd
 
 
+def _intgrad(params, mu, sd, X, base=1.0, steps=32):
+    """Integrated gradients of the logit along a straight path from a uniform clutter-mean baseline."""
+    tot = np.zeros_like(X)
+    for a in (np.arange(steps) + 0.5) / steps:
+        tot += _saliency(params, mu, sd, base + a * (X - base))
+    return tot / steps * (X - base)
+
+
 def xai():
     rng = np.random.default_rng(31)
     Xb, yb, _ = _chips(rng, 6000, 0.95)        # biased training set: quay strip co-occurs with ships
@@ -1287,50 +1301,55 @@ def xai():
         acc[name] = (a_same, a_new)
         print(f"xai: {name} model: accuracy on biased-like test {a_same * 100:.1f} %, on uncorrelated test "
               f"{a_new * 100:.1f} %")
-    # mean |saliency| maps over ship test chips
-    ship = yt == 1
-    sb = _saliency(*mb, Xt[ship]).mean(0).reshape(IMG, IMG)
-    scl = _saliency(*mc, Xt[ship]).mean(0).reshape(IMG, IMG)
-    frac_b = np.abs(sb[:, :2]).sum() / np.abs(sb).sum()
-    frac_c = np.abs(scl[:, :2]).sum() / np.abs(scl).sum()
-    print(f"xai: share of saliency in the 2-pixel quay strip (8.3 % of pixels): shortcut {frac_b * 100:.0f} %, "
-          f"clean {frac_c * 100:.0f} %")
-    # one example: ship without quay strip
-    cand = np.where((yt == 1) & (Xt.reshape(-1, IMG, IMG)[:, :, :2].mean(axis=(1, 2)) < 1.3))[0]
-    pb = _predict(*mb, Xt[cand])
-    pc = _predict(*mc, Xt[cand])
-    k = cand[np.argmax(pc - pb)]
-    ex = Xt[k].reshape(IMG, IMG)
-    s1 = np.abs(_saliency(*mb, Xt[k:k + 1])).reshape(IMG, IMG)
-    s2 = np.abs(_saliency(*mc, Xt[k:k + 1])).reshape(IMG, IMG)
-    p1, p2 = _predict(*mb, Xt[k:k + 1])[0], _predict(*mc, Xt[k:k + 1])[0]
-    print(f"xai: example chip: P(ship) shortcut {p1:.2f}, clean {p2:.2f}")
-    # an example training chip with quay
-    Xd, ydd, _ = _chips(np.random.default_rng(5), 40, 0.95)
-    kq = np.where(ydd == 1)[0][0]
-    ke = np.where(ydd == 0)[0][0]
+    # ship chips of the uncorrelated test set that contain the quay strip
+    has_q = Xt.reshape(-1, IMG, IMG)[:, :, :2].mean(axis=(1, 2)) > 2.0
+    sel = np.where((yt == 1) & has_q)[0][:600]
+    strip = np.zeros((IMG, IMG), bool)
+    strip[:, :2] = True
+    maps = {}
+    for name, m in [("shortcut", mb), ("clean", mc)]:
+        g = np.abs(_saliency(*m, Xt[sel])).mean(0).reshape(IMG, IMG)
+        ig = _intgrad(*m, Xt[sel]).mean(0).reshape(IMG, IMG)
+        maps[name] = (g, ig)
+        Xa = Xt[sel].reshape(-1, IMG, IMG).copy()
+        Xa[:, :, :2] = np.random.default_rng(3).gamma(2.0, 0.5, Xa[:, :, :2].shape)
+        d0 = np.mean(_predict(*m, Xt[sel]) > 0.5)
+        d1 = np.mean(_predict(*m, Xa.reshape(len(sel), -1)) > 0.5)
+        print(f"xai: {name}: share of |gradient| in quay strip (8.3 % of pixels) {g[strip].sum() / g.sum() * 100:.0f} %;"
+              f" share of net integrated-gradient attribution {ig[strip].sum() / ig.sum() * 100:.0f} %;"
+              f" ships detected {d0 * 100:.0f} % -> {d1 * 100:.0f} % when the strip is replaced by sea clutter")
+    # ships without the quay: how often does each model miss them?
+    noq = np.where((yt == 1) & ~has_q)[0]
+    for name, m in [("shortcut", mb), ("clean", mc)]:
+        print(f"xai: {name}: ships without quay detected {np.mean(_predict(*m, Xt[noq]) > 0.5) * 100:.0f} %")
+    Xd, ydd, pd = _chips(np.random.default_rng(5), 40, 0.95)
+    kq = [k for k in np.where(ydd == 1)[0] if Xd[k].reshape(IMG, IMG)[:, :2].mean() > 2.0][0]
+    ke = [k for k in np.where(ydd == 0)[0] if Xd[k].reshape(IMG, IMG)[:, :2].mean() < 1.5][0]
 
-    fig = plt.figure(figsize=(7.0, 2.75))
-    gs = fig.add_gridspec(2, 5, width_ratios=[1, 1, 1, 1, 1.55], hspace=0.45, wspace=0.12)
-    imgs = [(gs[0, 0], Xd[kq].reshape(IMG, IMG), "train: ship + quay", "gray"),
-            (gs[1, 0], Xd[ke].reshape(IMG, IMG), "train: sea only", "gray"),
-            (gs[0, 1], sb, "shortcut model:\nmean saliency", "inferno"),
-            (gs[1, 1], scl, "clean model:\nmean saliency", "inferno"),
-            (gs[0, 2], ex, f"test ship, no quay", "gray"),
-            (gs[0, 3], s1, f"shortcut: P(ship) = {p1:.2f}", "inferno"),
-            (gs[1, 3], s2, f"clean: P(ship) = {p2:.2f}", "inferno")]
-    for k_, (g, arr, title, cmap) in enumerate(imgs):
+    fig = plt.figure(figsize=(7.0, 3.25))
+    gs = fig.add_gridspec(2, 4, width_ratios=[1, 1, 1, 1.75], hspace=0.40, wspace=0.10,
+                          left=0.03, right=0.985, top=0.83, bottom=0.235)
+    imgs = [(gs[0, 0], Xd[kq].reshape(IMG, IMG), "training chip:\nship + quay strip", "gray"),
+            (gs[1, 0], Xd[ke].reshape(IMG, IMG), "training chip:\nsea only", "gray"),
+            (gs[0, 1], maps["shortcut"][0], "shortcut model:\ngradient saliency", "inferno"),
+            (gs[1, 1], maps["clean"][0], "clean model:\ngradient saliency", "inferno"),
+            (gs[0, 2], maps["shortcut"][1], "shortcut model:\nintegrated gradients", "inferno"),
+            (gs[1, 2], maps["clean"][1], "clean model:\nintegrated gradients", "inferno")]
+    for g, arr, title, cmap in imgs:
         ax = fig.add_subplot(g)
-        ax.imshow(arr, cmap=cmap, vmin=0 if cmap == "inferno" else 0, vmax=np.percentile(arr, 99.5))
+        if "integrated" in title:
+            v = np.percentile(np.abs(np.r_[maps["shortcut"][1].ravel(), maps["clean"][1].ravel()]), 99.5)
+            ax.imshow(arr, cmap="RdBu_r", vmin=-v, vmax=v)
+        else:
+            ax.imshow(arr, cmap=cmap, vmin=0, vmax=np.percentile(arr, 99.5))
         ax.set_xticks([])
         ax.set_yticks([])
         ax.grid(False)
         ax.set_title(title, fontsize=6.2, weight="normal", pad=2, linespacing=1.05)
-    ax = fig.add_subplot(gs[1, 2])
-    ax.axis("off")
-    ax.text(0.5, 0.5, "saliency = |∂P/∂pixel|\n(input gradient)", fontsize=6.0, ha="center", va="center",
-            color=GREY, transform=ax.transAxes)
-    ax = fig.add_subplot(gs[:, 4])
+        if title.startswith("training chip:\nship"):
+            ax.add_patch(Circle((pd[kq][0], pd[kq][1]), 4.2, fill=False, ec=SKY, lw=0.9, ls="--"))
+            ax.text(pd[kq][0], pd[kq][1] - 4.6, "ship", color=SKY, fontsize=5.9, ha="center", va="bottom")
+    ax = fig.add_subplot(gs[:, 3])
     xx = np.arange(2)
     ax.bar(xx - 0.19, [acc["shortcut"][0] * 100, acc["clean"][0] * 100], width=0.36, color=SKY,
            label="test like training data")
@@ -1338,19 +1357,24 @@ def xai():
            label="test with quay uncorrelated")
     for i, key in enumerate(["shortcut", "clean"]):
         for j, v in enumerate(acc[key]):
-            ax.text(i + (j - 0.5) * 0.38, v * 100 + 1, f"{v * 100:.0f}", fontsize=6.0, ha="center", va="bottom")
+            ax.text(i + (j - 0.5) * 0.38, v * 100 + 1, f"{v * 100:.0f}", fontsize=6.2, ha="center", va="bottom")
     ax.set_xticks(xx)
     ax.set_xticklabels(["trained on\nbiased data", "trained on\nclean data"], fontsize=6.4)
-    ax.set_ylim(40, 108)
-    ax.set_ylabel("accuracy (%)", fontsize=7)
+    ax.set_ylim(40, 118)
+    ax.set_yticks([40, 60, 80, 100])
+    ax.set_ylabel("test accuracy (%)", fontsize=7, labelpad=1)
     ax.tick_params(labelsize=6.4)
-    ax.legend(fontsize=5.8, loc="upper center", ncol=1)
-    ax.set_title("Accuracy", fontsize=7.6)
+    ax.legend(fontsize=6.0, loc="upper center", ncol=1, frameon=False)
+    pos = ax.get_position()
+    ax.set_position([pos.x0 + 0.06, pos.y0, pos.width - 0.06, pos.height])
+    ttl(ax, "b", "Accuracy", fs=7.6)
+    fig.text(0.03, 0.935, "$\\bf{a}$  What each model looks at (mean over 600 test ships with a quay strip)",
+             fontsize=7.6, ha="left", va="bottom")
     foot(fig, "Synthetic 24 × 24-pixel radar-like chips (gamma sea clutter; ships = bright elongated blobs). In the biased "
               "training set a bright quay strip on the left edge accompanies 95 % of ships. Numpy MLP 576-64-1 (ReLU), "
-              "60 Adam epochs on 6 000 chips; saliency averaged over ship chips of the uncorrelated test set.",
-         width=150)
-    fig.subplots_adjust(left=0.02, right=0.99, top=0.88, bottom=0.17)
+              "60 Adam epochs on 6 000 chips. Gradient saliency: mean |∂logit/∂pixel|. Integrated gradients (red = evidence for "
+              "ship, blue = against): 32 steps from a uniform clutter-mean baseline.",
+         width=175)
     save(fig, "ch44_xai")
 
 
