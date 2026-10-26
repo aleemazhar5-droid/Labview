@@ -48,7 +48,7 @@ The formula answers a practical question: for a fixed compute budget, how big sh
 
 ![Scaling laws from the published fit of Hoffmann et al. (2022). (a) Predicted loss against model size and data; dashed lines join points of equal compute, and the red line marks the best split. (b) Loss against compute: each fixed model size flattens, while the compute-optimal curve keeps falling.](figures/out/ch44_scaling.svg){#fig:scalinglaws width=100%}
 
-Two cautions apply. First, these published constants imply 40–100 tokens per parameter, while the paper's other two methods recommend about 20. A 2024 replication traced the difference to errors in this fit. Second, the constants are for English text. Earth-observation and weather models show similar trends, but with their own constants.
+Two cautions apply. First, for budgets of 10²⁰–10²⁴ FLOP these published constants imply 40–100 tokens per parameter. The paper's other two methods recommend about 20. A 2024 replication traced the difference to errors in this fit. Second, the constants are for mostly English text. Earth-observation and weather models show similar trends, but with their own constants.
 
 ## Convolutional Networks for Images
 
@@ -68,20 +68,20 @@ The **receptive field** is the patch of input that can influence one output pixe
 
 ### Residual Networks
 
-Simply stacking more layers eventually makes networks harder to train. **Residual networks (ResNets)** (2015) fixed this with a shortcut: each block learns a correction $F(\mathbf{x})$ and outputs $\mathbf{y} = \mathrm{ReLU}(F(\mathbf{x}) + \mathbf{x})$ (@fig:cnnarch). An unneeded block can learn $F \approx 0$ and pass its input straight through, and gradients flow back through the shortcuts undiminished. A 152-layer ResNet ensemble won the 2015 ImageNet competition with a top-5 error of 3.57 %. Residual connections are now in almost every deep network.
+Simply stacking more layers eventually makes networks harder to train. **Residual networks (ResNets)** (2015) fixed this with a shortcut: each block learns a correction $F(\mathbf{x})$ and outputs $\mathbf{y} = \mathrm{ReLU}(F(\mathbf{x}) + \mathbf{x})$ (@fig:cnnarch). An unneeded block can learn $F \approx 0$ and pass its input straight through, and gradients flow back through the shortcuts undiminished. An ensemble of ResNets, the deepest with 152 layers, won the 2015 ImageNet competition with a top-5 error of 3.57 %. Residual connections are now in almost every deep network.
 
 ![Three convolutional architectures. Top: a small classifier for 256 × 256-pixel, four-band chips, with the data shape after each stage (see the worked example). Bottom: a residual block, and a U-Net whose skip connections copy fine detail from encoder to decoder.](figures/out/ch44_cnnarch.svg){#fig:cnnarch width=94%}
 
 ::: example
 **Example: parameters and operations of a small CNN**
 
-The classifier at the top of @fig:cnnarch takes 256 × 256-pixel chips with four bands. It has three 3 × 3 convolution layers with 32, 64 and 128 channels, each after the first preceded by 2 × 2 pooling; then global average pooling and a dense layer for 10 classes.
+The classifier at the top of @fig:cnnarch takes 256 × 256-pixel chips with four bands. It has three 3 × 3 convolution layers with 32, 64 and 128 channels, with 2 × 2 pooling before the second and third. Global average pooling and a dense layer for 10 classes follow.
 
 1. **One layer.** A convolution has $k^2 c_{in} c_{out} + c_{out}$ parameters and needs $H W k^2 c_{in} c_{out}$ multiply–accumulate operations (MACs). Layer 1: 9 × 4 × 32 + 32 = **1 184 parameters**, and 256 × 256 × 9 × 4 × 32 = 75.5 million MACs.
 2. **Layers 2 and 3.** Layer 2 has 9 × 32 × 64 + 64 = 18 496 parameters at 128 × 128 pixels (302 million MACs). Layer 3 has 9 × 64 × 128 + 128 = 73 856 parameters at 64 × 64 pixels (also 302 million MACs).
 3. **Head.** Pooling has no weights; the dense layer has 128 × 10 + 10 = 1 290.
 4. **Totals.** The network has **94 826 parameters** and needs 679 million MACs, or **1.36 GFLOP** (two operations per MAC), per chip.
-5. **Weight sharing.** A dense layer mapping the same input to the same 256 × 256 × 32 output would need 5.5 × 10¹¹ weights — six million times more.
+5. **Weight sharing.** A dense layer mapping the same input to the same 256 × 256 × 32 output would need 5.5 × 10¹¹ weights — about six million times more than the whole network.
 6. **A whole scene.** A 10 000 × 10 000-pixel scene holds about 1 526 chips: about 2.1 × 10¹² operations, or some 2 seconds on a processor sustaining 10¹² operations per second (1 TOPS; Chapter 45).
 :::
 
@@ -239,7 +239,7 @@ $$ \mathbf{x}_{t-1} = \frac{1}{\sqrt{1-\beta_t}}\left(\mathbf{x}_t - \frac{\beta
 
 where $\mathbf{z}$ is fresh noise and $\sigma_t$ a set variance. The noise predictor is, in effect, learning the direction towards more probable data at every noise level.
 
-In @fig:diffusion2d, a complete diffusion model written in numpy learns a ring of eight clusters. It uses 100 noise steps and a network with three hidden layers of 128 units, trained for 9 000 steps (about 1.5 minutes on one processor core). The reverse process gathers 4 000 points of pure noise onto the ring. Of the generated points, 98.5 % lie within three standard deviations of a cluster centre, against 98.7 % of real samples. Every cluster gets 10.9–14.0 % of the points, close to the ideal 12.5 %, so no mode has been lost.
+In @fig:diffusion2d, a complete diffusion model written in numpy learns a ring of eight clusters. It uses 100 noise steps and a network with three hidden layers of 128 units, trained for 9 000 steps (a little over a minute on a desktop processor). The reverse process gathers 4 000 points of pure noise onto the ring. Of the generated points, 98.5 % lie within three standard deviations of a cluster centre, against 98.7 % of real samples. Every cluster gets 10.9–14.0 % of the points, close to the ideal 12.5 %, so no mode has been lost.
 
 ![A two-dimensional diffusion model trained in numpy. (a) Training data: eight clusters on a ring. (b–e) Samples during the reverse process, from pure noise at step 100 to step 0. (f) Training loss. 98.5 % of samples fall within 3σ of a cluster, and every cluster is populated.](figures/out/ch44_diffusion.svg){#fig:diffusion2d width=100%}
 
@@ -294,7 +294,7 @@ Since 2023 many foundation models have been released for Earth observation (@tbl
 | Prithvi-EO-2.0 | NASA, IBM, Jülich, 2024 | 4.2 M global HLS time series, 2014–23 | 300 M, 600 M | Apache-2.0 |
 | TerraMind | IBM, ESA Φ-lab, Jülich, 2025 | 9 M aligned samples, 9 modalities incl. SAR, DEM, text | Base, Large | Apache-2.0 |
 | AlphaEarth Foundations | Google DeepMind, 2025 | Optical, radar, lidar, climate | 64-number embeddings | Embeddings CC-BY 4.0 |
-| OlmoEarth | Allen Institute for AI, 2025 | ~10 TB optical, radar and map layers | 1.4 M–300 M | OlmoEarth Artifact Licence |
+| OlmoEarth | Allen Institute for AI, 2025 | ~10 TB optical, radar and map layers | 1.4 M–300 M | OlmoEarth Artifact License |
 
 : Earth-observation foundation models (status October 2026). HLS: Harmonized Landsat Sentinel-2. {#tbl:eofms}
 
@@ -332,8 +332,8 @@ The same recipe now reaches beyond Earth. **Surya** (August 2025) was pre-traine
 **Landmark: the first foundation model in orbit (2025–26)**
 
 - Researchers from Adelaide University, ESA Φ-lab, Thales Alenia Space and the SmartSat Cooperative Research Centre compressed Prithvi-EO-2.0-300M for spacecraft processors.
-- Knowledge distillation — training a small "student" network to copy the large "teacher" — cut the width from 1 024 to 256 and the file from 1.2 GB to 73 MB, about 16 times smaller. Accuracy on cloud detection stayed within about one percentage point, and biomass error within 3 %.
-- The compact model ran on the IMAGIN-e payload on the International Space Station, on an ordinary 16-core ARM processor, using an uploaded test set. In May 2026 NASA reported that it had also been uploaded to South Australia's Kanyini cubesat, and called it the first geospatial foundation model deployed in orbit.
+- They used knowledge distillation: training a small "student" network to copy the large "teacher". It cut the width from 1 024 to 256 and the file from 1.2 GB to 73 MB, about 16 times smaller. Accuracy on cloud detection stayed within about one percentage point, and biomass error within 3 %.
+- The compact model ran on the IMAGIN-e payload on the International Space Station, on an ordinary 16-core ARM processor, using an uploaded test set. For South Australia's Kanyini cubesat, the December 2025 preprint reported only ground tests on an engineering model. In May 2026 NASA reported that the model had also been uploaded to Kanyini. It called it the first geospatial foundation model deployed in orbit.
 - Open weights spared the team from training its own model. Onboard hardware and compression are discussed in Chapter 45.
 :::
 

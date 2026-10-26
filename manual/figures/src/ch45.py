@@ -1007,7 +1007,7 @@ def downlink():
           f"{raw / 2 * (1 - discard):.3f} TB, detections {raw / 2 * (1 - discard) * 0.01 * 1000:.1f} GB")
     foot(fig, "Pushbroom model: data rate = pixels across track x lines per second (ground speed 7.0 km/s / GSD) x "
          "bands x 12 bits, imaging 30 % of the time. Link capacity = rate x daily contact time (assumed). "
-         "Sentinel-2 check: the same model with its 10/20/60 m bands gives about 4.3 TB/day before compression. "
+         "Sentinel-2 check: the same model with its 10/20/60 m bands gives about 4.4 TB/day before compression. "
          "(b) Scene cloud fractions follow a U-shaped beta distribution with a mean of 55 % (land); scenes more "
          "than 70 % cloudy are discarded.", width=165)
     fig.subplots_adjust(left=0.08, right=0.985, top=0.92, bottom=0.3, wspace=0.3)
@@ -1048,7 +1048,7 @@ def radiator():
     rad = P * area_per_kw(300, 2, 100)
     ax.plot(P, solar, color=GOLD, lw=1.8, label="solar array (30 % cells, 85 % packing)")
     ax.plot(P, rad, color=BLUE, lw=1.8, label="radiator at 300 K (two-sided, LEO)")
-    for pk, lab in [(10, "10 kW\n(one rack)"), (1000, "1 MW"), (1e6, "1 GW")]:
+    for pk, lab in [(10, "10 kW\n(one 8-GPU\nserver)"), (1000, "1 MW"), (1e6, "1 GW")]:
         ax.axvline(pk, color=GREY, lw=0.6, ls=":")
         ax.text(pk * 1.15, 3e5 if pk < 1e6 else 3e5, lab, fontsize=6.0, color=GREY, va="top",
                 ha="left" if pk < 1e6 else "right")
