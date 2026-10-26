@@ -131,13 +131,14 @@ def _title(page_html, root):
 probes — explaining how every major class of space system works, how it is engineered, and where artificial
 intelligence is changing it.</div><div class="rule"></div>
 <div class="meta">First Edition · Information current to October 2026<br>
-A4 format · Fourteen Parts · Forty-seven chapters · Ten appendices</div></div></div>
+A4 format · Fourteen Parts · Fifty-three chapters · Ten appendices<br>Version 1.0 · October 2026</div></div></div>
 <div class="pagebreak"></div>
 <div class="cp">
 <h4>About this edition</h4>
+<p><b>Space Exploration &amp; Aerospace Engineering — An Engineering Reference Manual.</b> First Edition, Version 1.0, October 2026.</p>
 <p>This manual was written to be read by students, engineers, analysts, managers and curious readers. Each topic
 starts with plain-language explanations and builds up to the equations, numbers and design trade-offs that
-practising engineers use. Facts, mission status and programme milestones are current to October 2026; space
+practising engineers use. Sentences are kept short and every technical term is explained in plain words when it first appears; the glossary (Appendix H) and the list of acronyms (Appendix G) collect them. Facts, mission status and programme milestones are current to October 2026; space
 programmes change quickly, so dates of future events should be read as plans, not certainties.</p>
 <h4>Figures, photographs and data</h4>
 <p>Diagrams, charts and graphs were drawn specifically for this manual from published physical relationships
