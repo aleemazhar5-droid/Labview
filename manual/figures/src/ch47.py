@@ -433,15 +433,15 @@ def pipeline():
     box(ax, 42.0, 9.5, 18.0, 8.0, text="Analysis archive and\nreanalysis (ERA5, 1940-)", fs=5.9, fc="#F2F5E9",
         ec=GREEN)
     arrow(ax, (55.5, y1), (55.5, 17.5), lw=0.9, ms=6, color=GREEN)
-    arrow(ax, (60.0, 13.5), (68.0, y1), lw=0.9, ms=6, color=GREEN, rad=0.25)
-    ax.text(68.5, 17.0, "training data\nfor ML models", fontsize=5.9, color=GREEN, ha="left", va="center")
+    arrow(ax, (60.0, 13.5), (62.5, y1), lw=0.9, ms=6, color=GREEN, rad=0.3)
+    ax.text(64.5, 17.0, "training data\nfor ML models", fontsize=5.9, color=GREEN, ha="left", va="center")
     arrow(ax, (49.5, y1 + 17), (69.0, y1 + 17), lw=0.9, ms=6, color=NAVY, rad=-0.35)
     ax.text(59.3, 53.2, "initial conditions", fontsize=5.9, color=NAVY, ha="center")
     # ML entry points (orange tags)
     tags = [(xs[0] + 9.0, y1 - 2.0, "1 retrievals (rain,\ncyclone intensity)"),
             (xs[1] + 9.0, y1 - 2.0, "2 ML bias correction,\ncloud and QC flags"),
             (xs[2] + 6.0, y1 - 2.0, "3 fast observation\noperators"),
-            (xs[3] + 9.0, y1 - 2.0, "4 emulators,\nlearned physics"),
+            (xs[3] + 11.5, y1 - 2.0, "4 emulators,\nlearned physics"),
             (xs[4] + 9.0, y1 - 2.0, "5 calibration,\nnowcasting")]
     for x, y, t in tags:
         ax.text(x, y, t, fontsize=5.8, color=ORANGE, ha="center", va="top", weight="bold", linespacing=1.1)
@@ -662,12 +662,13 @@ def nowcast():
                 label=lab)
         ax.plot(mins, csi(k, 5.0), color=c, lw=1.1 if k != "true" else 0.8, ls="--")
     ax.set_xlim(0, 120)
-    ax.set_ylim(0, 1.0)
+    ax.set_ylim(0, 1.45)
+    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_xlabel("Lead time (min)", fontsize=7.4)
     ax.set_ylabel("Critical success index", fontsize=7.4)
     ax.plot([], [], color=INK, lw=1.2, label="1 mm/h threshold")
     ax.plot([], [], color=INK, lw=1.0, ls="--", label="5 mm/h threshold")
-    ax.legend(fontsize=5.8, loc="upper right", handlelength=1.8)
+    ax.legend(fontsize=5.8, loc="upper right", handlelength=1.8, ncol=2, columnspacing=0.8)
     panel_tag(ax, "b")
     ax = fig.add_subplot(gs2[0, 1])
     for k in ["pers", "of", "ml"]:
