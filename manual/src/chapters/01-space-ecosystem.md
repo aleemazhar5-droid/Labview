@@ -259,7 +259,7 @@ Table: Engineering and science disciplines in the space ecosystem. {#tbl:discipl
 | Aerothermodynamics | Re-entry heating, heat shields, atmospheric entry | 10, 27 |
 | Human factors and life sciences | Life support, radiation protection, ergonomics, medicine | 30–33 |
 | Ground systems and operations | Mission control, scheduling, data processing | 7, 45 |
-| Data science and artificial intelligence | Onboard processing, analytics, autonomy, forecasting | 43–47 |
+| Data science and artificial intelligence | Onboard processing, analytics, autonomy, forecasting | 43–53 |
 | Product assurance and safety | Reliability, quality, parts, materials, safety analysis | 4 |
 | Law, policy and economics | Licensing, spectrum, insurance, finance, export control | 1, 21, 41 |
 

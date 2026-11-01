@@ -35,7 +35,8 @@ OUT_DIR = REPO / "output"
 OUT_PDF = OUT_DIR / "Space_and_Aerospace_Engineering_Reference_Manual.pdf"
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 MATHJAX = ROOT / "tools/node_modules/mathjax-full/es5/tex-svg-full.js"
-BOOK_TITLE = "Space & Aerospace Engineering Reference Manual"
+BOOK_TITLE = "Space Exploration & Aerospace Engineering — An Engineering Reference Manual"
+HEADER_TITLE = "Space Exploration & Aerospace Engineering"
 REF = "https://ref.local/"
 
 sys.path.insert(0, str(ROOT / "tools"))
@@ -564,9 +565,9 @@ def overlay_html(page_specs):
         odd = (s.get("seq", i) % 2 == 0)
         if s.get("header"):
             if odd:
-                inner += f'<div class="hd"><span>{esc(BOOK_TITLE)}</span><span><b>{esc(s["right"])}</b></span></div>'
+                inner += f'<div class="hd"><span>{esc(HEADER_TITLE)}</span><span><b>{esc(s["right"])}</b></span></div>'
             else:
-                inner += f'<div class="hd"><span><b>{esc(s["left"])}</b></span><span>{esc(BOOK_TITLE)}</span></div>'
+                inner += f'<div class="hd"><span><b>{esc(s["left"])}</b></span><span>{esc(HEADER_TITLE)}</span></div>'
         if s.get("num"):
             if odd:
                 inner += f'<div class="ft o"><span class="bar"></span>{esc(s["num"])}</div>'
@@ -822,8 +823,11 @@ async def main():
     if "index" in offsets:
         writer.add_outline_item("Index", offsets["index"])
     writer.add_metadata({"/Title": BOOK_TITLE, "/Author": "Space & Aerospace Engineering Reference Manual project",
-                         "/Subject": "Engineering reference manual on space exploration and aerospace systems",
-                         "/Keywords": "space, aerospace, satellites, launch vehicles, remote sensing, AI"})
+                         "/Subject": "Illustrated engineering reference on the space ecosystem, written in plain language "
+                                     "(First Edition, Version 1.0, October 2026)",
+                         "/Keywords": "space, aerospace, satellites, launch vehicles, remote sensing, SAR, GNSS, "
+                                      "space weather, deep space, human spaceflight, propulsion, artificial intelligence",
+                         "/Creator": "Markdown, pandoc, Chromium and pypdf"})
     writer.page_mode = "/UseOutlines"
     try:
         writer.compress_identical_objects(remove_duplicates=True, remove_unreferenced=True)
