@@ -60,9 +60,8 @@ Most catalogued debris comes from a few hundred **fragmentation events** (@fig:f
 
 ### Other Sources
 
-Smaller debris also comes from **mission-related objects** (lens covers, bolts, adapters released during deployment) and from **solid-rocket-motor** slag and aluminium-oxide dust. Other sources are **paint flakes** and degraded insulation shed by ageing spacecraft (@fig:mlishield). There are also droplets of sodium–potassium coolant leaked by Soviet nuclear-powered radar satellites of the 1980s. Natural **micrometeoroids** — dust from comets and asteroids — add a background flux that dominates for sizes below about 0.1 mm.
+Smaller debris also comes from **mission-related objects** (lens covers, bolts, adapters released during deployment) and from **solid-rocket-motor** slag and aluminium-oxide dust. Other sources are **paint flakes** and degraded insulation shed by ageing spacecraft (Chapter 5 shows a damaged insulation blanket). There are also droplets of sodium–potassium coolant leaked by Soviet nuclear-powered radar satellites of the 1980s. Natural **micrometeoroids** — dust from comets and asteroids — add a background flux that dominates for sizes below about 0.1 mm.
 
-![Damage to a multi-layer insulation blanket on the Zarya module of the International Space Station, photographed during a spacewalk in 2007. Long-term exposure to micrometeoroids, debris and atomic oxygen degrades exterior materials.](figures/photos/ch21_mli.jpg){#fig:mlishield width=62%}
 
 ## Why Debris Is Dangerous
 

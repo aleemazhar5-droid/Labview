@@ -27,7 +27,7 @@
   "q": "Solar Dynamics Observatory X-class solar flare"
  },
  "part8": {
-  "q": "Perseverance rover selfie Mars"
+  "id": "PIA21381"
  },
  "part9": {
   "id": "iss065e145170"
@@ -39,7 +39,7 @@
   "q": "Webb Carina Nebula Cosmic Cliffs"
  },
  "part12": {
-  "id": "2019-02-25_regolith_image_compilation"
+  "id": "iss043e124426"
  },
  "part13": {
   "q": "Pleiades supercomputer NASA Ames"
@@ -174,7 +174,7 @@
   "q": "Hall thruster test glenn"
  },
  "ch43": {
-  "q": "Pleiades supercomputer"
+  "id": "ACD24-0072-012"
  },
  "ch47": {
   "q": "hurricane satellite image GOES"
@@ -189,7 +189,7 @@
   "id": "PIA10969"
  },
  "chD": {
-  "q": "Deep Space Network Canberra antenna"
+  "id": "PIA17792"
  },
  "chE": {
   "q": "Mission control Houston Artemis"
@@ -463,9 +463,6 @@
  "ch21_sts125": {
   "id": "jsc2010e054445"
  },
- "ch21_mli": {
-  "id": "iss015e10854"
- },
  "ch21_hvi": {
   "id": "wstf0507e04048"
  },
@@ -473,7 +470,7 @@
   "id": "GSFC_20171208_Archive_e000934"
  },
  "ch22_sunspot": {
-  "id": "GSFC_20171208_Archive_e000923"
+  "id": "GSFC_20171208_Archive_e001978"
  },
  "ch22_parker": {
   "id": "KSC-20180419-PH_KLS01_0009"
@@ -519,9 +516,6 @@
  },
  "ch24_dawn": {
   "id": "PIA18922"
- },
- "ch25_hiriseedl": {
-  "id": "PIA24270"
  },
  "ch25_enceladus": {
   "id": "PIA14599"
@@ -779,7 +773,7 @@
   "id": "s125e007221"
  },
  "ch32_irosa": {
-  "id": "iss068e026401"
+  "id": "iss065e116519"
  },
  "ch32_cygnusxl": {
   "id": "iss074e0458241"
@@ -932,10 +926,10 @@
   "id": "KSC-20260821-PH-SER01_0002"
  },
  "ch52": {
-  "id": "09-27-2023-HF-12 _062"
+  "id": "MSFC-201900153"
  },
  "ch51": {
-  "q": "Astrobee robot International Space Station"
+  "id": "iss069e010815"
  },
  "ch48": {
   "q": "Mars 2020 Perseverance navigation cameras terrain"
@@ -947,13 +941,13 @@
   "id": "iss065e009485"
  },
  "ch46": {
-  "id": "GSFC_20171208_Archive_e001881"
+  "id": "GSFC_20171208_Archive_e001699"
  },
  "ch49": {
   "id": "jsc2026e022251"
  },
  "ch50": {
-  "id": "jsc2010e054445"
+  "id": "PIA24561"
  },
  "ch53": {
   "id": "ivv"
@@ -1221,5 +1215,23 @@
  },
  "ch51_tess": {
   "id": "KSC-20180212-PH-JBS03_0030"
+ },
+ "ch52_st5": {
+  "id": "KSC-06pd0433"
+ },
+ "ch52_excite": {
+  "id": "GSFC2024excite01"
+ },
+ "ch52_shaker": {
+  "id": "PIA26713"
+ },
+ "ch52_rs25": {
+  "id": "SSC-20240229-s00309"
+ },
+ "ch52_landing": {
+  "id": "NHQ20261001_admin_0012"
+ },
+ "ch52_lcc": {
+  "id": "KSC-20251008-PH-GEB01_0136"
  }
 }

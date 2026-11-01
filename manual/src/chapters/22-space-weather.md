@@ -29,7 +29,7 @@ The number of sunspots rises and falls in a cycle of about **11 years** (@fig:cy
 ![Solar Cycle 25 compared with Cycle 24 and with the 2019 panel forecast.](figures/out/ch22_cycle25.svg){#fig:cycle25 width=88%}
 
 ::: figrow
-![The largest sunspot group of Solar Cycle 24 (active region 12192, October 2014), about 130 000 km across, imaged by NASA's Solar Dynamics Observatory.](figures/photos/ch22_sunspot.jpg){#fig:sunspot}
+![The Sun seen by NASA's Solar Dynamics Observatory in extreme ultraviolet light on 8 September 2010, as a C3-class flare erupted from an active region near the edge of the disk. Active regions sit above sunspot groups, where strong magnetic fields break through the surface.](figures/photos/ch22_sunspot.jpg){#fig:sunspot}
 
 ![An X-class solar flare (bright region at left) on 19 October 2014, observed by SDO in extreme ultraviolet light.](figures/photos/ch22_xflare.jpg){#fig:xflare}
 :::

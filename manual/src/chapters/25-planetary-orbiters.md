@@ -128,9 +128,8 @@ Planetary orbiters carry many of the instrument types described in Chapter 12, a
 
 : Typical planetary orbiter instruments. {#tbl:orbiterinstruments}
 
-The **High Resolution Imaging Science Experiment (HiRISE)** on NASA's Mars Reconnaissance Orbiter, with a 0.5 m telescope, resolves objects about a metre across from 300 km. It has photographed landers descending under their parachutes (@fig:hiriseedl), tracked the movement of dunes and avalanches, and certified the safety of every NASA landing site since 2008.
+The **High Resolution Imaging Science Experiment (HiRISE)** on NASA's Mars Reconnaissance Orbiter, with a 0.5 m telescope, resolves objects about a metre across from 300 km. It has photographed landers descending under their parachutes (Chapter 27 shows Perseverance on its way down), tracked the movement of dunes and avalanches, and certified the safety of every NASA landing site since 2008.
 
-![HiRISE on Mars Reconnaissance Orbiter photographed the Perseverance rover hanging under its parachute during its descent to Jezero crater on 18 February 2021, while travelling at about 3 km/s relative to the rover.](figures/photos/ch25_hiriseedl.jpg){#fig:hiriseedl width=92%}
 
 **Radar sounders** operating at a few megahertz penetrate hundreds of metres to kilometres into ice and dry rock (@fig:sounder). On Mars, they have mapped the layered polar caps, buried glaciers at mid-latitudes and the thickness of ice deposits — essential information for future human missions seeking water.
 

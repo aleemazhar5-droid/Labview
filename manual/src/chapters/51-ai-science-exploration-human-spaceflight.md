@@ -25,7 +25,7 @@ The data rates of some major science facilities are compared in @tbl:sciencedata
 | Gaia (2013–25) | > 500 TB for its fourth release (Dec 2026) | Classifying stars and their motions |
 | Euclid (2023–) | ≈ 100 GB per day | Shapes, lenses, morphology |
 | SDO (2010–) | About 1.5 TB per day | Solar features and event catalogues |
-| Rubin LSST (2025–) | ≈ 10 TB per night; up to ~7 million alerts | Real/bogus, transient classes, redshifts |
+| Rubin LSST (2026–) | ≈ 10 TB per night; up to ~7 million alerts | Real/bogus, transient classes, redshifts |
 | LIGO–Virgo–KAGRA | About 250 candidates in 2023–25 | Glitches, rapid parameter estimation |
 | SKA (2030s) | ≈ 700 PB of products per year (estimate) | Imaging, radio transients |
 
@@ -71,7 +71,7 @@ Most TCEs are not planets. In Kepler's final catalogue, 88 % of them did not bec
 
 ![A transit search on simulated data. (a) Two years of photometry with starspot modulation; the orange line is the trend removed before the search. (b) Box-least-squares signal-to-noise against trial period; the peak lies at the planet's period, with weaker peaks at half and twice the period. (c) Data folded at the recovered period, binned (dark points) and compared with the injected transit (red).](figures/out/ch51_transit.svg){#fig:blssearch width=90%}
 
-Kepler's team first vetted signals by eye, then with the **Robovetter**, a set of expert rules. Each rule tests one property, such as a secondary eclipse or a shift of the star's image during the dip. In 2017 Google and Harvard researchers trained a **convolutional neural network** (Chapter 44) on about 15 000 labelled Kepler signals. Their network, AstroNet, looked at two "views" of each folded light curve: the whole orbit and a zoom on the transit. It reached about 96 % accuracy on test data.
+Kepler's team first vetted signals by eye, then with the **Robovetter**, a set of expert rules. Each rule tests one property, such as a secondary eclipse or a shift of the star's image during the dip. In 2017 a Google engineer and an astronomer at the University of Texas at Austin trained a **convolutional neural network** (Chapter 44) on about 15 000 labelled Kepler signals. Their network, AstroNet, looked at two "views" of each folded light curve: the whole orbit and a zoom on the transit. It reached about 96 % accuracy on test data.
 
 ::: history
 **Landmark: Kepler-90i, the first planet found by a neural network (December 2017)**
@@ -82,7 +82,7 @@ Kepler's team first vetted signals by eye, then with the **Robovetter**, a set o
 - The code was released openly in 2018, and learned vetting has since become a standard step in planet searches.
 :::
 
-NASA's **ExoMiner** (2021) went further. Its network has separate branches for transit shape, secondary eclipse, odd–even depths and image centroids, so it can explain why a signal looks false. On Kepler test data it kept 93.6 % of planets at a precision of 99 %, against 76.3 % for the best earlier classifier. Applied to 1 922 unlabelled candidates, it gave 368 a score above 0.99, and 301 of these were validated as new planets. **ExoMiner++** (2025) adapted the method to TESS, partly by transfer learning from Kepler labels. It flagged 7 330 of 147 568 two-minute-cadence TESS signals as planet candidates.
+NASA's **ExoMiner** (2021) went further. Its network has separate branches for transit shape, secondary eclipse, odd–even depths and image centroids, so it can explain why a signal looks false. On Kepler test data it kept 93.6 % of planets at a precision of 99 %, against 76.3 % for the best earlier classifier. Applied to 1 922 unlabelled candidates, it gave 368 a score above 0.99, and 301 of these were validated as new planets. **ExoMiner++** (2025) adapted the method to TESS. It was trained on Kepler's well-labelled signals together with TESS data, whose labels are noisier. It flagged 7 330 of 147 568 two-minute-cadence TESS signals as planet candidates.
 
 In @fig:transitvetting the idea is repeated on 36 000 synthetic folded signals. They include planets, several kinds of eclipsing binary and artefacts, with SNR from 6 to 40. A small numpy neural network sees the raw global and local views. A logistic-regression vetter sees only four hand-made tests: secondary eclipse, V shape, asymmetry and depth just outside the transit. Both were trained on 24 000 signals and tested on 8 000.
 
@@ -107,7 +107,7 @@ Kepler's noise for a bright, quiet Sun-like star was about 30 ppm over 6.5 hours
 2. **Several transits.** Four transits give 4.0 × √4 = **7.9**, just above the 7.1 threshold. Three transits give **6.8**, which is below it. About 3.2 transits are needed, so an Earth twin is at the edge of a four-year mission.
 3. **Why 7.1?** For pure Gaussian noise, the chance of a value above 7.1σ is 6.2 × 10⁻¹³. Suppose each of the 198 709 stars needs about five million independent trials of period, phase and duration. That is 10¹² tests, which gives about **0.6** false alarms. The threshold was set for exactly this reason.
 4. **Reality.** Real noise is not Gaussian. The search produced 34 032 TCEs, and 88 % were not planet candidates.
-5. **Human cost.** At five minutes per signal, vetting all TCEs by eye would take about 2 840 hours, or nearly two working years. A neural network scores them all in minutes.
+5. **Human cost.** At five minutes per signal, vetting all TCEs by eye would take about 2 840 hours, or about one and a half working years. A neural network scores them all in minutes.
 
 The threshold controls false alarms from random noise; vetting controls false alarms from everything else. Learned vetting does not lower the threshold. It makes the work above the threshold affordable.
 :::
@@ -155,7 +155,7 @@ Take 7 million alerts in a 10-hour night.
 
 1. **Rate.** 7 000 000 / 36 000 s = **194 alerts per second**.
 2. **People.** If a trained person needs 3 s to glance at one alert, a night's stream needs 5 830 hours of attention. That is about **730 people** working 8-hour shifts, every night for ten years.
-3. **Data.** At up to 82 KB per alert, the stream is about 550 GB a night. Most alerts concern known variable stars and asteroids.
+3. **Data.** At up to 82 KB per alert, the stream is about 0.6 TB a night. Most alerts concern known variable stars and asteroids.
 4. **Follow-up.** Suppose the world's telescopes can take 100 spectra of new transients a night. That is one alert in **70 000**.
 5. **What machine learning must do.** It must remove artefacts, recognise known variables and asteroids, and rank the rest. A 1 % error in a filter applied to 7 million alerts is still 70 000 mistakes a night. Errors must be counted, not just accuracy.
 
@@ -172,7 +172,7 @@ $$ \rho^2 = 4 \int_0^\infty \frac{|\tilde{h}(f)|^2}{S_n(f)}\,df . $$
 
 The fourth observing run of LIGO, Virgo and KAGRA ran from May 2023 to 18 November 2025 and produced about 250 candidate signals. Learning helps at three points. **Gravity Spy** combines volunteers and a network to classify detector "glitches", short noise bursts that can mimic signals. Research pipelines such as Aframe search for signals with neural networks in milliseconds, though they do not yet issue official alerts.
 
-The biggest gain is in **parameter estimation**. Standard Bayesian sampling of a merger's masses, spins and sky position can take hours to days. **Simulation-based inference** instead trains a network on millions of simulated signals to output the posterior directly. In March 2025 a team reported DINGO-BNS, which infers all 17 parameters of a neutron-star merger in about one second. Its sky positions were about 30 % more precise than those of the standard rapid method. Such speed lets telescopes point at a kilonova before it fades.
+The biggest gain is in **parameter estimation**. Standard Bayesian sampling of a merger's masses, spins and sky position can take hours to days. **Simulation-based inference** instead trains a network on millions of simulated signals to output the posterior directly. In March 2025 a team reported DINGO-BNS, which infers all 17 parameters of a neutron-star merger in about one second. Its 90 % sky areas were typically about 30 % smaller than those of the standard rapid method. Such speed lets telescopes point at a kilonova before it fades.
 
 Learning can also improve the instrument itself. In September 2025 researchers from Google DeepMind and LIGO reported **Deep Loop Shaping**, a reinforcement-learning controller (Chapter 48) for one mirror-alignment loop at LIGO Livingston. It cut control noise between 10 and 30 Hz by more than 30 times, and by up to 100 times in narrow bands. It was a demonstration on one loop, not yet part of routine observing.
 
@@ -190,7 +190,7 @@ In 2024 a network trained on labelled Hubble images was adapted to the sharper, 
 
 A massive galaxy bends the light of a galaxy behind it into arcs or rings. Such **strong lenses** weigh the dark matter in the lensing galaxy and test cosmology, but only roughly one galaxy in ten thousand shows one. Euclid's first quick release (March 2025) covered 63 square degrees. An ensemble of networks, including Zoobot, ranked the galaxies. Volunteers on the Space Warps project then inspected the best candidates, and experts graded and modelled them.
 
-The result was a catalogue of 497 galaxy–galaxy lenses, 250 of them "grade A"; 243 of those were new. The same engine is expected to yield about 7 000 high-confidence lenses in the first major data release (from late 2026), and more than 100 000 in the full survey.
+The result was a catalogue of 497 galaxy–galaxy lenses, 250 of them "grade A"; 243 of those were new. The same engine is expected to yield about 7 000 high-confidence (grade A or B) lenses in the first major data release, DR1. Its first part is due in November 2026 and the full release in mid-2027. The full survey should yield more than 100 000.
 
 ### Photometric Redshifts
 
@@ -198,7 +198,7 @@ Most galaxies are too faint for a spectrum, so their distance must be estimated 
 
 $$ \sigma_\mathrm{NMAD} = 1.4826 \times \operatorname{median} \left| \Delta z - \operatorname{median}(\Delta z) \right| , $$
 
-and by the fraction of **outliers** with $|\Delta z| > 0.15$. Rubin's goals for its "gold" sample, brighter than magnitude 25.3 in the i band, are a scatter below 0.02 (requirement 0.05) and fewer than 10 % outliers.
+and by the fraction of **outliers** with $|\Delta z| > 0.15$. Rubin's goals for its "gold" sample, brighter than magnitude 25.3 in the i band, are a scatter below 0.02 (requirement 0.05) and fewer than 10 % large (3σ) outliers.
 
 In @fig:photozrf, a random forest is tested on 60 000 synthetic galaxies observed in six Rubin-like filters. Trained on a representative sample of 30 000, it reached a scatter of 0.017 with 12.0 % outliers. Errors grew steeply for faint galaxies, from 0.007 at i ≈ 20 to 0.13 at i ≈ 25. Then the forest was trained only on galaxies brighter than i = 22.5 and nearer than z = 1.2, like a typical spectroscopic sample. The outlier fraction rose to 19.4 %, and to 61 % for the faintest galaxies. A model cannot learn what its training set never shows.
 
@@ -218,7 +218,7 @@ Learning also works inside telescope pipelines (Chapter 38), flagging cosmic ray
 |---|---|---|---|---|---|
 | AstroNet | 2017 | Kepler | 1-D CNN | Kepler-90i, Kepler-80g | Research, open code |
 | ExoMiner | 2021 | Kepler | Explainable CNN | 301 validated planets | Planets in NASA archive |
-| ExoMiner++ | 2025 | TESS | Transfer learning | 7 330 candidates | Public catalogue |
+| ExoMiner++ | 2025 | TESS | Kepler + TESS training | 7 330 candidates | Public catalogue |
 | FRB 121102 search | 2018 | Green Bank | CNN | 72 new bursts | Research |
 | Galaxy Zoo DESI | 2023 | DESI imaging | Zoobot CNN | 8.67 million galaxies | Public catalogue |
 | Euclid lens engine | 2025 | Euclid Q1 | CNN ensemble + volunteers | 497 lenses | In Euclid pipeline |
@@ -302,7 +302,7 @@ Panel (e) shows the most useful diagnostic. With smectite removed from the libra
 
 ### Landing Sites, Traverses and Resources
 
-Before a landing, engineers must know where the ground is safe. JPL's **SPOC** (Soil Property and Object Classification) network classifies terrain in HiRISE images into types such as sand, bedrock and ridges. It was used to judge how easily a rover could drive at candidate landing sites for Perseverance. The **AI4Mars** project (2021) collected about 326 000 terrain labels on 35 000 rover images from volunteers, ten per image. A segmentation network trained on them reached more than 96 % accuracy on an expert-labelled test set.
+Before a landing, engineers must know where the ground is safe. JPL's **SPOC** (Soil Property and Object Classification) network classifies terrain in HiRISE images into types such as sand, bedrock and ridges. It was used to judge how easily a rover could drive at candidate landing sites for Perseverance. The **AI4Mars** project (2021) collected about 326 000 terrain labels on 35 000 rover images from volunteers, ten per image. A segmentation network trained on them reached more than 96 % accuracy on an expert-labelled test set (the labelling tool is shown in Chapter 44).
 
 Resource prospecting combines these tools (Chapter 41). Maps of shadowed craters, boulders, slopes and temperature are merged to find ice that a rover could reach. The NASA–IBM Lunar Foundation Model (2026) is one example; Chapter 44 gives its results and limits.
 
@@ -310,9 +310,9 @@ Resource prospecting combines these tools (Chapter 41). Maps of shadowed craters
 
 A rover or probe can also decide what to measure. The first steps were small. In 2006 the Mars Exploration Rovers received software that looked for dust devils and clouds in sequences of images. It first detected a dust devil on board Spirit in April 2007. On dust-devil sequences it cut the data volume by about 75 %, because only frames with moving features were sent home.
 
-**AEGIS** (Chapter 48) picks rock targets for the laser spectrometers on Curiosity and Perseverance. By May 2026 it had chosen 596 targets on Curiosity and 293 on Perseverance. Perseverance's X-ray spectrometer **PIXL** goes further. Its hexapod mount places it close to a rock, and it scans a postage-stamp-sized patch with thousands of X-ray shots. Its **adaptive sampling** software watches the results. When it sees minerals of interest, such as carbonates or phosphates, it stops and collects data for longer (@fig:pixlscan). Each decision is made on Mars, without waiting for the ground.
+**AEGIS** (Chapter 48) picks rock targets for the laser spectrometers on Curiosity and Perseverance; by May 2026 it had chosen nearly 900. Perseverance's X-ray spectrometer **PIXL** goes further. Its hexapod mount places it close to a rock, and it scans a postage-stamp-sized patch with thousands of X-ray shots. Its **adaptive sampling** software watches the results. When it sees minerals of interest, such as carbonates or phosphates, it stops and collects data for longer (@fig:pixlscan). Each decision is made on Mars, without waiting for the ground.
 
-![A PIXL scan of the rock target "Thunderbolt Peak", recorded by Perseverance on 8 July 2024. Each dot marks a point hit by the X-ray beam; colours show the minerals detected. PIXL's software can lengthen its measurements on board when it finds minerals of interest.](figures/photos/ch51_pixl.jpg){#fig:pixlscan width=50%}
+![A PIXL scan of the rock target "Thunderbolt Peak", recorded by Perseverance on 8 July 2024. Each dot marks a point hit by the X-ray beam; colours show the amounts of iron (red), magnesium (green) and silica (blue). PIXL's software can lengthen its measurements on board when it finds minerals of interest.](figures/photos/ch51_pixl.jpg){#fig:pixlscan width=50%}
 
 Future probes to icy moons may have to detect a plume or outburst and re-plan within hours. In sample curation (Chapter 29), learning could help find rare grains in images and keep records consistent between laboratories, without ever risking irreplaceable material. Onboard science autonomy is summarised in @tbl:onboardscience.
 
@@ -322,7 +322,6 @@ Future probes to icy moons may have to detect a plume or outburst and re-plan wi
 | Autonomous Sciencecraft | EO-1 | Re-plans imaging after events (Chapter 48) | 2004 | Mission ended 2017 |
 | AEGIS | Opportunity, Curiosity, Perseverance | Laser targets after a drive | 2010 | Operational |
 | PIXL adaptive sampling | Perseverance | Where to dwell longer in a scan | 2021 | Operational |
-| Vision-language route planning | Perseverance | Ground-planned waypoints (Chapter 48) | 2025 | Demonstrated |
 | Onboard plume or outburst detection | Icy moons, comets | When to re-target | — | Research |
 
 : Onboard science autonomy on planetary missions. {#tbl:onboardscience}
@@ -345,7 +344,7 @@ On the ISS, a sick astronaut can come home within hours. In January 2026, NASA's
 
 NASA plans medical kits with simulation. Its **Integrated Medical Model** runs Monte Carlo missions over about 100 medical conditions. Each simulated case uses drugs and supplies from the kit, and untreated conditions count as risk, so planners can choose the kit that lowers risk most for its mass. A newer tool, IMPACT, adds conditions that matter for exploration.
 
-Decision support is the next step. In 2025 NASA and Google tested a prototype **Crew Medical Officer Digital Assistant**. It takes speech, text and images, works with little or no link to Earth and records each recommendation. Physicians, one of them an astronaut, graded it with the structured exams used for medical students. Its diagnoses were correct in 88 % of runs for an ankle injury, 80 % for ear pain and 74 % for flank pain. NASA called these early results; the tool is not approved for use.
+Decision support is the next step. In 2025 NASA and Google tested a prototype **Crew Medical Officer Digital Assistant**. It takes speech, text and images, works with little or no link to Earth and records each recommendation. Three physicians, one of them an astronaut, graded it with the structured exams used for medical students. They rated its assessment and treatment plan 88 % likely to be correct for an ankle injury, 80 % for ear pain and 74 % for flank pain. NASA called these early results; the tool is not approved for use.
 
 **Ultrasound** is the main imaging tool in space, but good images need skill. On the ISS, experts on the ground guide astronauts in real time, which will not work with a 40-minute round trip. ESA's ALISSE prototype (2024) uses a network trained on hundreds of thousands of labelled scans. It tells the user where to move the probe and how likely it is that the image shows the right organ. In tests on kidneys and bladders, nine out of ten images taken by untrained students were clinically acceptable.
 
@@ -363,16 +362,16 @@ Voice assistants that can read procedures, log work and answer questions have be
 - **Callisto** flew inside Orion on the uncrewed Artemis I mission in late 2022, testing an offline voice assistant and video calls (@fig:callistoorion).
 - In **August 2024** a generative language model ran on HPE's Spaceborne Computer-2 on the ISS. The Space Llama project followed in April 2025, with an open-source model tuned for station science.
 - In **July 2025** China delivered the **Wukong AI** model to its Tiangong station. Its onboard part helped crew members prepare for a spacewalk.
-- Also in **July 2025**, JAXA astronaut Takuya Onishi used CIMON in the Columbus module to command JAXA's Int-Ball2 camera drone in Kibo (@fig:cimonichiban). It was the first time robots of two agencies worked together on the ISS.
+- Also in **July 2025**, in the ICHIBAN test, JAXA astronaut Takuya Onishi spoke to CIMON in the Columbus module. CIMON passed his commands to JAXA's Int-Ball2 camera drone in Kibo and showed its video (@fig:cimonichiban). JAXA called it the first time that robots built by different organisations had worked together in orbit.
 :::
 
 ::: figrow
-![JAXA astronaut Takuya Onishi sets up CIMON in the ISS's Kibo module on 18 July 2025, for a test in which it commanded the free-flying camera robot Int-Ball2.](figures/photos/ch51_cimon.jpg){#fig:cimonichiban}
+![JAXA astronaut Takuya Onishi sets up CIMON on the ISS on 18 July 2025, during the ICHIBAN tests in which it relayed his voice commands to the free-flying camera robot Int-Ball2.](figures/photos/ch51_cimon.jpg){#fig:cimonichiban}
 
 ![The Callisto technology demonstration inside the Orion crew module on Artemis I, 18 November 2022. The payload tested an offline voice assistant and video calls for future crews.](figures/photos/ch51_callisto.jpg){#fig:callistoorion}
 :::
 
-Robots are the physical side of the same idea. **Astrobee**, the free-flyer in the hero image, has tested autonomous inventory and inspection since 2019, and JAXA's **Int-Ball2** films crew activities (Chapter 48). For a Mars habitat, the goal is a robot that keeps the station running while the crew sleeps or works outside, and before any crew arrives.
+Robots are the physical side of the same idea. **Astrobee**, the free-flyer in the hero image, has tested autonomous inventory and inspection since 2019 (Chapter 48). JAXA's **Int-Ball2** films crew activities in Kibo. For a Mars habitat, the goal is a robot that keeps the station running while the crew sleeps or works outside, and before any crew arrives.
 
 | System | Who, where | Function | Years | Status (Oct 2026) |
 |---|---|---|---|---|
@@ -393,7 +392,7 @@ Robots are the physical side of the same idea. **Astrobee**, the free-flyer in t
 
 A habitat is a machine that keeps people alive (Chapters 30 and 32). Its fans, pumps, valves and filters wear out, and on a Mars mission every failed part must be fixed with a spare carried from Earth. Detecting wear early lets the crew plan repairs and can reduce the spares carried.
 
-The European Columbus module on the ISS sends about 17 000 telemetry parameters. Its life-support system alone produces more than 1 000 signals sampled once a second. Since about 2020, Airbus has trained autoencoders on these data to learn normal behaviour. In 2025 researchers described a ground toolchain, integrated at Airbus, that detects anomalies, diagnoses their cause and recommends actions. An ESA project, ORBIT-STAR, built an onboard demonstrator that sends event messages to ground and crew.
+The European Columbus module on the ISS sends about 17 000 telemetry parameters. Its life-support system alone produces more than 1 000 signals sampled once a second. Since about 2020, Airbus has trained autoencoders on these data to learn normal behaviour. In 2025 researchers described a ground toolchain, integrated at Airbus, that detects anomalies, diagnoses their cause and recommends actions. In ESA's ORBIT-STAR project, Airbus built a demonstrator that reads Columbus sensor data and sends event messages to ground and crew. It was tested on a ground copy of the Columbus software; running it on board is the next step.
 
 A synthetic test shows why learned models help (@fig:fanprognosis). A fleet of 60 cabin fans ran for 1 100 days. Each wore out at a random time, and its vibration, current and temperature rose in its last weeks. But the fans also changed speed, and the cabin warmed and cooled. A fixed vibration limit therefore either alarmed whenever a fan ran fast, or alarmed late. **Gradient-boosted trees** — many small trees, each correcting the errors of the ones before — learned to predict "failure within 30 days" from the raw signals and their trends. They were trained on 40 fans and tested on 20 others. Allowing at most 0.5 false alarms per fan-year, the model gave a median warning of 29 days and warned of every failure. The fixed limit gave 15 days and missed 15 % of failures.
 
@@ -403,11 +402,11 @@ Real fleets are smaller and failures rarer, so models must share data across sim
 
 ### Earth-Independent Operations
 
-On the ISS, mission control answers within seconds. At Mars the one-way **light-time** — the time a signal takes to cross the distance $d$, $\tau = d/c$ — is 3 to 22 minutes. A ground answer takes at least $2\tau$ plus the time experts need to respond. For about two weeks near **solar conjunction**, when Mars is behind the Sun, there is no reliable link at all. In @fig:marsdelay this is computed from the orbits of Earth and Mars for 2026–29. Mars passed behind the Sun on 9 January 2026 and will do so again on 20 March 2028, staying within 2° of it for about two and a half weeks (11–30 March 2028).
+On the ISS, mission control answers within seconds. At Mars the one-way **light-time** — the time a signal takes to cross the distance $d$, $\tau = d/c$ — is 3 to 22 minutes. A ground answer takes at least $2\tau$ plus the time experts need to respond. For about two weeks near **solar conjunction**, when Mars is behind the Sun, there is no reliable link at all. In @fig:marsdelay this is computed from the orbits of Earth and Mars for 2026–29. Mars passed behind the Sun on 9 January 2026 and will do so again around 20 March 2028, staying within 2° of it for about two and a half weeks (11–30 March 2028).
 
 ![Why a Mars crew must decide for itself. (a) One-way light-time between Earth and Mars in 2026–29 and the resulting ground loop, with solar conjunctions shaded. (b) Approximate time available to act in several emergencies and failures, compared with the ground loop for the Moon, for Mars near and far, and for solar conjunction.](figures/out/ch51_delay.svg){#fig:marsdelay width=98%}
 
-NASA's analogue missions test this. The second one-year CHAPEA mission, with four volunteers in a 3-D-printed Mars habitat in Houston, ran from 19 October 2025 to 31 October 2026 with simulated communication delays.
+NASA's analogue missions test this. The second one-year CHAPEA mission, with four volunteers in a 3-D-printed Mars habitat in Houston, ran from 19 October 2025 to its planned end on 31 October 2026, with simulated communication delays.
 
 ::: example
 **Example: autonomy requirements for a Mars crew with a 20-minute delay**
