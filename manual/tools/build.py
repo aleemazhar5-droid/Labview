@@ -341,7 +341,7 @@ class Renderer:
             print("  mathjax wait failed:", e, file=sys.stderr)
         await page.evaluate("""Promise.all(Array.from(document.images).filter(i => !i.complete)
                                .map(i => new Promise(r => { i.onload = i.onerror = r; })))""")
-        await page.pdf(path=str(pdf_path), prefer_css_page_size=True, outline=True, tagged=False,
+        await page.pdf(path=str(pdf_path), prefer_css_page_size=True, outline=True, tagged=True,
                        print_background=True)
         await page.close()
 

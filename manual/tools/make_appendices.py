@@ -211,6 +211,7 @@ def credits_md():
         if not keys:
             continue
         out.append(f"## Chapter {int(key)}: {titles[key]}\n")
+        out.append("::: small")
         out.append("| Image | NASA ID | Title | Date |")
         out.append("|---|---|---|---|")
         for k in keys:
@@ -218,7 +219,8 @@ def credits_md():
             label = "Chapter opening" if k == f"ch{key}" else k.split("_", 1)[-1]
             out.append(f"| {esc(label)} | {esc(c.get('nasa_id', '–'))} | {esc((c.get('title') or '')[:70])} | "
                        f"{c.get('date', '')} |")
-        out.append(f"\n: Images in Chapter {int(key)}. {{#tbl:apxcredit{key}}}\n")
+        out.append(f"\n: Images in Chapter {int(key)}. {{#tbl:apxcredit{key}}}")
+        out.append(":::\n")
     p = SRC / "chapters/J-image-credits.md"
     p.write_text("\n".join(out) + "\n", encoding="utf-8")
     print(p, sum(len(v) for v in used.values()), "images")

@@ -28,14 +28,17 @@ All photographs in this manual come from the NASA Image and Video Library (image
 
 ## Chapter 1: The Space Ecosystem: An Overview
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | s134e010592 | View of ISS taken during STS-134 Flyaround | 2011-05-30 |
 
 : Images in Chapter 1. {#tbl:apxcredit01}
+:::
 
 ## Chapter 2: The Space Environment
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss066e146457 | iss066e146457 | 2022-02-18 |
@@ -44,17 +47,21 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | tvac | PIA13936 | Juno Emerges from Thermal-Vac Testing | 2011-03-29 |
 
 : Images in Chapter 2. {#tbl:apxcredit02}
+:::
 
 ## Chapter 3: Orbital Mechanics and Astrodynamics
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | art001e001712 | Flight Day 14: Orion's Solar Array Divides Earth and Moon | 2022-11-29 |
 
 : Images in Chapter 3. {#tbl:apxcredit03}
+:::
 
 ## Chapter 4: Spacecraft Systems Engineering
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e000495 | James Webb Space Telescope Mirror Halfway Complete | 2017-12-08 |
@@ -63,9 +70,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | shake | GRC-2024-C-01582 | Sierra Space Dream Chaser Spaceplane at the Space Environments Complex | 2024-03-07 |
 
 : Images in Chapter 4. {#tbl:apxcredit04}
+:::
 
 ## Chapter 5: Spacecraft Subsystems I: Structures, Thermal Control, Power and Mechanisms
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA13925 | Juno Solar Panel Deployment Test | 2009-10-13 |
@@ -76,9 +85,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | mmrtg | PIA23306 | Mars 2020's MMRTG | 2019-07-24 |
 
 : Images in Chapter 5. {#tbl:apxcredit05}
+:::
 
 ## Chapter 6: Spacecraft Subsystems II: Attitude Control, Propulsion, Data Handling and Flight Software
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GRC-2003-C-00585 | GRC-2003-C-00585 | 2004-05-01 |
@@ -87,9 +98,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | wheel_eva | S109E5396 | STS-109 MS Massimino and Newman replace Reaction Wheel assembly during | 2002-03-05 |
 
 : Images in Chapter 6. {#tbl:apxcredit06}
+:::
 
 ## Chapter 7: Space Communications and the Ground Segment
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA13277 | Tracks of a Giant | 2010-08-25 |
@@ -99,9 +112,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | dss53 | PIA25137 | The Deep Space Network's New DSS-53 at Night | 2022-03-16 |
 
 : Images in Chapter 7. {#tbl:apxcredit07}
+:::
 
 ## Chapter 8: High-Altitude Platforms and Space Balloons
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e000115 | Alien crop circle? No, that’s just NASA’s newest balloon launch pad | 2017-12-08 |
@@ -111,9 +126,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | er2 | EC01-0232-2 | Lockheed ER-2 #809 high altitude research aircraft in flight | 2001-08-01 |
 
 : Images in Chapter 8. {#tbl:apxcredit08}
+:::
 
 ## Chapter 9: Sounding Rockets and Suborbital Vehicles
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e000703 | NASA Successfully Launches Suborbital Rocket from Wallops with Student | 2017-12-08 |
@@ -123,9 +140,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | x43 | ED04-0261-1 | NASA's B-52B launch aircraft takes off carrying the third X-43A hypers | 2004-09-27 |
 
 : Images in Chapter 9. {#tbl:apxcredit09}
+:::
 
 ## Chapter 10: Spaceplanes, Atmospheric Re-entry and Reusable Vehicles
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | sts135-s-273 | Space Shuttle Atlantis after its Final Landing | 2011-06-21 |
@@ -137,9 +156,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | sts53 | sts053-s-080 | STS-53 Discovery, Orbiter Vehicle (OV) 103, lands on runway 22 at EAFB | 1992-12-09 |
 
 : Images in Chapter 10. {#tbl:apxcredit10}
+:::
 
 ## Chapter 11: Earth Orbits, Constellations and Small Satellites
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss050e031340 | J-SSOD-6 Deployment | 2017-01-16 |
@@ -148,9 +169,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | starling | ACD23-0077-003 | Starling’s four CubeSats in space (illustration) | 2023-07-12 |
 
 : Images in Chapter 11. {#tbl:apxcredit11}
+:::
 
 ## Chapter 12: Satellite Buses and Payload Instruments
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | KSC-20171205-PH_MAS01_0031 | GOES-S Rotate to Vertical | 2017-12-05 |
@@ -159,9 +182,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | goesfull | GSFC_20171208_Archive_e000007 | Eclipse from Space - GOES Full Disk | 2017-12-08 |
 
 : Images in Chapter 12. {#tbl:apxcredit12}
+:::
 
 ## Chapter 13: Remote Sensing Fundamentals
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e002144 | Guinea-Bissau | 2017-12-08 |
@@ -172,9 +197,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | lakemead | PIA19731 | Lake Mead and Drought | 2015-07-20 |
 
 : Images in Chapter 13. {#tbl:apxcredit13}
+:::
 
 ## Chapter 14: Electro-Optical and Infrared Imaging Satellites
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | KSC-20210720-PH-RNB01_0022 | Landsat 9 Spacecraft (Observatory) Move from High Bay into Cell  | 2021-07-20 |
@@ -185,9 +212,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | eyja | PIA13098 | Iceland Volcano Puffs Ash as Lava Flow Cuts Through Eyjafjallajökull I | 2010-05-05 |
 
 : Images in Chapter 14. {#tbl:apxcredit14}
+:::
 
 ## Chapter 15: Synthetic Aperture Radar
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA26612 | NISAR Team Deploys Radar Antenna Reflector | 2025-08-15 |
@@ -200,9 +229,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | kilauea | PIA01710 | Space Radar Image of Kilauea, Hawaii | 1999-01-27 |
 
 : Images in Chapter 15. {#tbl:apxcredit15}
+:::
 
 ## Chapter 16: Weather and Environmental Satellites
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss072e001649 | Hurricane Helene pictured from the space station | 2024-09-25 |
@@ -213,9 +244,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | swot | PIA25772 | SWOT Satellite's Sea Level 'First Light' | 2023-03-24 |
 
 : Images in Chapter 16. {#tbl:apxcredit16}
+:::
 
 ## Chapter 17: Communication Satellites
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | KSC-20170808-PH_KLS01_0532 | TDRS-M Spacecraft Lift to Transport Vehicle | 2017-08-08 |
@@ -225,9 +258,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | illumat | jsc2023e064876 | ILLUMA-T Investigation Preflight Imagery | 2023-10-19 |
 
 : Images in Chapter 17. {#tbl:apxcredit17}
+:::
 
 ## Chapter 18: Global Navigation Satellite Systems
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA24573 | Deep Space Atomic Clock Hardware | 2021-06-30 |
@@ -237,17 +272,21 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | delta | 0400536 | Space Science | 2004-01-01 |
 
 : Images in Chapter 18. {#tbl:apxcredit18}
+:::
 
 ## Chapter 19: National Security Space and Signals Intelligence
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss071e439624 | An orbital sunrise colorfully illuminates the Earth's atmosphere | 2024-08-06 |
 
 : Images in Chapter 19. {#tbl:apxcredit19}
+:::
 
 ## Chapter 20: Missile Early Warning Satellites
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss074e0431736 | The exhaust plume left behind by Artemis II is pictured from the Inter | 2026-04-01 |
@@ -257,9 +296,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | crs35 | NHQ20261013_admin_0004 | NASA’s SpaceX CRS-35 Launch | 2026-10-13 |
 
 : Images in Chapter 20. {#tbl:apxcredit20}
+:::
 
 ## Chapter 21: Space Surveillance, Orbital Debris and Space Situational Awareness
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss074e0540224 | A piece of unidentified space debris is pictured from the Internationa | 2026-04-27 |
@@ -267,9 +308,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | sts125 | jsc2010e054445 | STS-125 Orbital Debris | 2009-07-02 |
 
 : Images in Chapter 21. {#tbl:apxcredit21}
+:::
 
 ## Chapter 22: Space Weather
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e002109 | Blasting CME | 2017-12-08 |
@@ -281,9 +324,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | maven | PIA26304 | MAVEN Detects Auroras During Solar Storm in 2024 | 2024-06-10 |
 
 : Images in Chapter 22. {#tbl:apxcredit22}
+:::
 
 ## Chapter 23: Magnetospheric and Ionospheric Physics
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss072e159172 | The aurora borealis blankets the Earth | 2024-10-30 |
@@ -292,9 +337,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | aurora | iss073e0247726 | The aurora australis arcs above a partly cloudy Indian Ocean | 2025-06-12 |
 
 : Images in Chapter 23. {#tbl:apxcredit23}
+:::
 
 ## Chapter 24: Deep-Space Mission Design
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA22915 | Voyager 2 Spacecraft Instruments | 2018-12-10 |
@@ -304,9 +351,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | lucy | KSC-20210819-PH-GEB01_0026 | Lucy Solar Array Pop & Catch | 2021-08-19 |
 
 : Images in Chapter 24. {#tbl:apxcredit24}
+:::
 
 ## Chapter 25: Planetary Orbiters
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA21771 | Juno Over Jupiter's South Pole (Illustration) | 2017-07-11 |
@@ -319,9 +368,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | enceladus | PIA14599 | Dark Moon, Dramatic Plume | 2012-03-12 |
 
 : Images in Chapter 25. {#tbl:apxcredit25}
+:::
 
 ## Chapter 26: Space Probes and Flyby Missions
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA19956 | Pluto in Extended Color | 2015-09-24 |
@@ -334,9 +385,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | dart | PIA25329 | NASA's DART at the Didymos System | 2022-09-22 |
 
 : Images in Chapter 26. {#tbl:apxcredit26}
+:::
 
 ## Chapter 27: Landers and Entry, Descent & Landing
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA25287 | InSight's Final Selfie | 2022-05-23 |
@@ -351,9 +404,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | huygens | PIA07232 | First Color View of Titan Surface | 2005-01-15 |
 
 : Images in Chapter 27. {#tbl:apxcredit27}
+:::
 
 ## Chapter 28: Planetary Rovers and Aerial Explorers
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA19807 | Curiosity Low-Angle Self-Portrait at Buckskin Drilling Site on Mount S | 2015-08-19 |
@@ -368,9 +423,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | viper | GRC-2019-C-09947 | Virtual Intelligent Planetary Exploration Rover, VIPER Mobili... | 2019-10-22 |
 
 : Images in Chapter 28. {#tbl:apxcredit28}
+:::
 
 ## Chapter 29: Sample-Return Missions
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | NHQ202308300001 | OSIRIS-REx Sample Return Training | 2023-08-30 |
@@ -384,9 +441,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | ees | PIA25986 | Artist's Concept of the Earth Entry System for Mars Sample Return | 2023-08-03 |
 
 : Images in Chapter 29. {#tbl:apxcredit29}
+:::
 
 ## Chapter 30: Human Spaceflight Fundamentals and Life Support
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss074e0381623 | ESA astronaut Sophie Adenot poses for a portrait inside the Internatio | 2026-03-12 |
@@ -402,9 +461,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | chapea | jsc2026e403153 | CHAPEA Mission 2 Crew Poses in Habitat | 2025-11-24 |
 
 : Images in Chapter 30. {#tbl:apxcredit30}
+:::
 
 ## Chapter 31: Crewed Spacecraft
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss073e0505071 | The SpaceX Dragon crew spacecraft approaches the International Space S | 2025-08-02 |
@@ -420,9 +481,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | dsplash | NHQ202601150016 | NASA’s SpaceX Crew-11 Splashdown | 2026-01-15 |
 
 : Images in Chapter 31. {#tbl:apxcredit31}
+:::
 
 ## Chapter 32: Space Stations and Habitats
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss01-389-023 | Expedition One crew flyaround of ISS | 2001-02-24 |
@@ -438,9 +501,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | astrobee | iss060e007162 | Mobility Test of the Free-Flying Astrobee Robotic Assistant | 2019-07-12 |
 
 : Images in Chapter 32. {#tbl:apxcredit32}
+:::
 
 ## Chapter 33: Extravehicular Activity Systems
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss063e052528 | iss063e052528 | 2020-07-21 |
@@ -456,9 +521,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | axemu | axemu-prada-spacesuit-mockup-20241007-423 | Artemis III Lunar Spacesuit | 2024-10-07 |
 
 : Images in Chapter 33. {#tbl:apxcredit33}
+:::
 
 ## Chapter 34: Launch Vehicle Engineering
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | KSC-20240928-PH-KLS03_0026 | NASA's SpaceX Crew-9 Liftoff | 2024-09-28 |
@@ -473,9 +540,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | fhland2 | KSC-20240625-PH-AJN01_0191 | NASA's SpaceX GOES-U Booster Landing | 2024-06-25 |
 
 : Images in Chapter 34. {#tbl:apxcredit34}
+:::
 
 ## Chapter 35: Rocket Propulsion
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | SSC20210116_GR8438 | SSC20210116_GR8438 | 2021-01-16 |
@@ -490,9 +559,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | rl10 | KSC-20160812-PH_DNG01_0078 | Commerical Crew Program (CCP) Astronauts visit Aerojet Rocketdyn | 2016-08-12 |
 
 : Images in Chapter 35. {#tbl:apxcredit35}
+:::
 
 ## Chapter 36: Launch Vehicles of the World
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | KSC-20220816-PH-FMX01_0067 | Artemis I Launch Rollout | 2022-08-16 |
@@ -507,9 +578,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | soyuz | NHQ202409110047 | Expedition 72 Launch | 2024-09-11 |
 
 : Images in Chapter 36. {#tbl:apxcredit36}
+:::
 
 ## Chapter 37: Spaceports and Ground Infrastructure
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | KSC-05pd2403 | KSC-05pd2403 | 2005-11-02 |
@@ -524,9 +597,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | pegasus | PIA15633 | NuSTAR Hitches a Ride on the Stargazer | 2012-06-04 |
 
 : Images in Chapter 37. {#tbl:apxcredit37}
+:::
 
 ## Chapter 38: Space Telescope Engineering
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e000440 | By the Dozen: NASA's James Webb Space Telescope Mirrors | 2017-12-08 |
@@ -542,9 +617,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | wfpc | 9400368 | History of Hubble Space Telescope (HST) | 1993-12-01 |
 
 : Images in Chapter 38. {#tbl:apxcredit38}
+:::
 
 ## Chapter 39: Great Observatories and Deep-Space Telescopes
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA18165 | Hubble Against Earth Horizon 1997 | 1997-10-10 |
@@ -560,9 +637,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | romanfairing | KSC-20260821-PH-SER01_0002 | Roman Space Telescope Encapsulation | 2026-08-21 |
 
 : Images in Chapter 39. {#tbl:apxcredit39}
+:::
 
 ## Chapter 40: In-Space Servicing, Assembly and Manufacturing
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss071e361950 | The Canadarm2 robotic arm above the Mozambique Channel | 2024-07-23 |
@@ -576,9 +655,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | metal | iss071e522127 | NASA astronaut Jeanette Epps configures the Metal 3D printer | 2024-08-21 |
 
 : Images in Chapter 40. {#tbl:apxcredit40}
+:::
 
 ## Chapter 41: Space Resources and Asteroid Mining
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | Bennu_Sample2 | Vial with Sample of Asteroid Bennu | 2024-07-22 |
@@ -594,9 +675,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | msolo | KSC-20200925-PH-GEB01_0004 | MSolo Instrument Work | 2020-09-25 |
 
 : Images in Chapter 41. {#tbl:apxcredit41}
+:::
 
 ## Chapter 42: Advanced Propulsion
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GRC-2017-C-01056 | Hall Thruster | 2017-03-06 |
@@ -610,9 +693,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | rdre | 09-27-2023-HF-12 _062 | 3D-printed Rotating Detonation Rocket Engine Test  | 2023-09-27 |
 
 : Images in Chapter 42. {#tbl:apxcredit42}
+:::
 
 ## Chapter 43: AI Foundations: Machine Learning for Space Engineers
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | ACD24-0072-012 | NASA Advanced Supercomputing Modular Facility Hyperwall Visualiz | 2024-05-23 |
@@ -626,9 +711,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | fires | GSFC_20171208_Archive_e000668 | Series of Wildfires in Northern California Continue Blazing | 2017-12-08 |
 
 : Images in Chapter 43. {#tbl:apxcredit43}
+:::
 
 ## Chapter 44: Deep Learning, Foundation Models and Generative AI
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | ACD15-0062-021 | ACD15-0062-021 | 2015-04-10 |
@@ -640,9 +727,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | roverdrivers | PIA24724 | 3D Glasses Used for Rover Driving | 2021-07-01 |
 
 : Images in Chapter 44. {#tbl:apxcredit44}
+:::
 
 ## Chapter 45: Data, Computing Hardware and Edge AI in Orbit
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss065e009485 | Spaceborne Computer-2 | 2021-04-29 |
@@ -655,9 +744,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | cubesats | iss038e044994 | NanoRacks CubeSat Deployment | 2014-02-11 |
 
 : Images in Chapter 45. {#tbl:apxcredit45}
+:::
 
 ## Chapter 46: AI for Earth Observation
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e001699 | Landsat View: Pearl River Delta, China | 2017-12-08 |
@@ -670,9 +761,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | tanager | PIA26416 | Tanager-1 First Methane and Carbon Dioxide Plume Detections | 2024-10-10 |
 
 : Images in Chapter 46. {#tbl:apxcredit46}
+:::
 
 ## Chapter 47: AI for Weather, Climate and Space Weather
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | GSFC_20171208_Archive_e000204 | Hurricane Matthew from Space | 2017-12-08 |
@@ -684,9 +777,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | imap | KSC-20250922-PH-SPX01_0008 | NASA/SpaceX IMAP Vertical at LC 39A (Sunrise) | 2025-09-22 |
 
 : Images in Chapter 47. {#tbl:apxcredit47}
+:::
 
 ## Chapter 48: AI for Autonomy, Navigation and Robotics
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA24723 | Computer Simulation of Perseverance's First Autonav Drive | 2021-07-01 |
@@ -698,9 +793,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | cadre | PIA25665 | CADRE Rover Testing in JPL's Mars Yard | 2023-08-02 |
 
 : Images in Chapter 48. {#tbl:apxcredit48}
+:::
 
 ## Chapter 49: AI for Mission Operations, Communications and Networks
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | jsc2026e022251 | Artemis II Flight Control Team During Splashdown | 2026-04-10 |
@@ -712,9 +809,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | scantb | GRC-2011-C-03408 | GRC-2011-C-03408 | 2007-09-07 |
 
 : Images in Chapter 49. {#tbl:apxcredit49}
+:::
 
 ## Chapter 50: AI for Space Situational Awareness, Defence and Security
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | PIA24561 | Goldstone Radar Observations of Asteroid 2001 FO32 | 2021-04-05 |
@@ -726,9 +825,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | fdo | jsc2022e090753 | Flight Day 16: Mission Control during Distant Retrograde Departure | 2022-12-01 |
 
 : Images in Chapter 50. {#tbl:apxcredit50}
+:::
 
 ## Chapter 51: AI for Space Science, Planetary Exploration and Human Spaceflight
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | iss069e010815 | Astronaut Sultan Alneyadi observes a free-flying Astrobee robotic assi | 2023-05-16 |
@@ -741,9 +842,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | hololens | iss046e043637 | HoloLens | 2016-02-20 |
 
 : Images in Chapter 51. {#tbl:apxcredit51}
+:::
 
 ## Chapter 52: AI in Spacecraft Design, Manufacturing, Launch and the Space Business
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | MSFC-201900153 | NASA Deputy Administrator, Jim Morhard, Tours MSFC Additive Manu | 2019-03-25 |
@@ -755,9 +858,11 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | lcc | KSC-20251008-PH-GEB01_0136 | Artemis II Terminal Count Simulation | 2025-10-18 |
 
 : Images in Chapter 52. {#tbl:apxcredit52}
+:::
 
 ## Chapter 53: Trustworthy AI for Space: Assurance, Security, Governance and Outlook
 
+::: small
 | Image | NASA ID | Title | Date |
 |---|---|---|---|
 | Chapter opening | ivv | NASA Renames Facility in Honor of ‘Hidden Figure’ Katherine Johnson | 2019-02-21 |
@@ -769,4 +874,5 @@ All photographs in this manual come from the NASA Image and Video Library (image
 | jett | jsc2024e035443 | JETT 5 - jsc2024e035443 | 2024-05-16 |
 
 : Images in Chapter 53. {#tbl:apxcredit53}
+:::
 
