@@ -22,12 +22,12 @@ Work follows a daily cycle. Planners build tomorrow's timeline, and command sequ
 
 ### How Much Telemetry?
 
-Spacecraft telemetry is small in bytes but rich in structure. NASA's James Webb Space Telescope records telemetry at about 100 kbit/s. On the ground it is unpacked into about 36 000 named parameters, called **mnemonics**, with 4 000 more derived on the ground. Some are sampled every 0.064 s, others every 32 s or more. A 28-minute file holds about 10 million samples. EUMETSAT routinely reports about 46 000 housekeeping parameters for each Sentinel-3 satellite. @tbl:opsscale gives more examples.
+Spacecraft telemetry is small in bytes but rich in structure. NASA's James Webb Space Telescope records telemetry at about 100 kbit/s. On the ground it is unpacked into about 36 000 named parameters, called **mnemonics**, with 4 000 more derived on the ground. Some are sampled every 0.064 s, others every 32 s or more. A 28-minute file holds about 10 million samples. EUMETSAT routinely reports about 46 000 housekeeping parameters from Sentinel-3. @tbl:opsscale gives more examples.
 
 | System | Scale | What it means for operations |
 |---|---|---|
 | James Webb Space Telescope | 36 000 telemetered + 4 000 derived points; ~100 kbit/s | Too many for people to watch; trending software is essential |
-| Sentinel-3 (EUMETSAT) | ~46 000 housekeeping parameters per satellite | Learned outlier detection is trialled on a subset |
+| Sentinel-3 (EUMETSAT) | ~46 000 housekeeping parameters routinely reported | Learned outlier detection is trialled on a subset |
 | ESA anomaly benchmark (2024) | 1.55 billion data points, 844 annotated events | Real anomalies are rare: 31–118 per mission |
 | Planet Dove fleet (2018) | >200 satellites, >2 000 passes a day, 8 engineers | Operations run by exception; nominal passes automated |
 | Starlink (June–November 2025) | 148 696 collision-avoidance manoeuvres in six months | Decisions too frequent for people to make one by one |
@@ -36,9 +36,9 @@ Spacecraft telemetry is small in bytes but rich in structure. NASA's James Webb 
 
 ### From One Satellite to Thousands
 
-A traditional mission has a team for each spacecraft, with people on console around the clock. That model does not scale to constellations. In 2018 Planet flew more than 200 Dove imaging satellites with eight engineers in Berlin and San Francisco. Commanding each pass, scheduling contacts, reporting and delivering images were fully automated, and Python scripts fixed the most common anomalies. By 2022 this had cut daily fleet monitoring from about four hours to 30 minutes and ended night shifts for the larger SkySats.
+A traditional mission has a team for each spacecraft, with people on console around the clock. That model does not scale to constellations. In 2018 Planet flew more than 200 Dove imaging satellites with eight engineers in Berlin and San Francisco. By 2022 Planet reported that commanding each pass, scheduling contacts, reporting and delivering images were fully automated. Periodically run Python scripts handled the most common anomalies. This cut daily Dove monitoring from about four hours to 30 minutes and ended night shifts for the larger SkySats.
 
-This style is called **management by exception**. Software flies the nominal mission; people handle what the software cannot. At the largest scale, decisions are taken by machines because there are too many for people. Starlink satellites made 148 696 collision-avoidance manoeuvres between June and November 2025, mostly decided on board when the predicted collision probability exceeded about 3 in 10 million (Chapters 21 and 48).
+This style is called **management by exception**. Software flies the nominal mission; people handle what the software cannot. At the largest scale, decisions are taken by machines because there are too many for people. Starlink satellites made 148 696 collision-avoidance manoeuvres between June and November 2025, decided autonomously, without a person in the loop, when the predicted collision probability exceeded about 3 in 10 million (Chapters 21 and 48).
 
 As @fig:opspipeline49 shows, decision support now grows beside the data path from spacecraft to engineers. It includes monitoring models trained on the archive, planning solvers, automation scripts, assistants and digital twins. Monitoring and scheduling tools are operational in some centres. Language-model assistants are pilots, and natural-language commanding is research.
 
@@ -111,7 +111,7 @@ where $\overline{h}$ is the average path length over the trees and $c(n)$ the av
 
 To see the strengths of each family, this chapter's script builds six housekeeping channels for a satellite in a 96-minute orbit with 36 % eclipse. Battery voltage, battery temperature, bus current, panel temperature, wheel speed and heater duty all follow the orbit, a commanded payload mode and a 14-day seasonal cycle. Slow unmodelled variations are added. Fourteen days train each detector. Fourteen more days test it, with 14 point, 12 contextual and 8 drift anomalies injected (@fig:tmanomalies).
 
-Three detectors are compared. The **fixed limits** are the training minimum and maximum. The **learned predictive detector** is a small neural network for each channel, written in numpy. It predicts the channel from the other five channels, the orbit phase and the mode, and scores the largest standardised residual. The **isolation forest** from scikit-learn sees the channel values, orbit phase and their changes. Each detector's threshold lets 0.1 % of normal samples alarm — about 1.4 false alarms a day.
+Three detectors are compared. The **fixed limits** are the training minimum and maximum, widened by 5 % of the range. The **learned predictive detector** is a small neural network for each channel, written in numpy. It predicts the channel from the other five channels, the orbit phase and the mode, and scores the largest standardised residual. The **isolation forest** from scikit-learn sees the channel values, orbit phase and their changes. Each detector's threshold lets 0.1 % of normal samples alarm — about 1.4 false alarms a day.
 
 The results appear in @fig:tmroc. The predictive network found all 34 injected events, and its sample-by-sample area under the ROC curve (AUC; Chapter 43) was 0.81. The fixed limits found all 8 drifts, but only after 45 % of each ramp, on average. They caught 5 of the 14 spikes — those that left the normal range — and 1 of the 12 contextual events. The isolation forest found only half the drifts and none of the spikes or contextual events.
 
@@ -140,9 +140,11 @@ Comparing detectors fairly needs real, labelled data. Until 2024 the main public
 
 Learned monitors have been used in real control centres for about two decades, usually beside limit checks and for selected parameters. @tbl:monitoringtools summarises the best-documented ones.
 
+EUMETSAT's experience is typical. Its Sentinel-3 flight control team ran a k-nearest-neighbour tool and a neural network in parallel. The choice of training data mattered more than the algorithm. Novel-but-harmless detections were the main burden, and adding the timeline of commanded operations cut them. Engineers also needed to see *why* a parameter was flagged, which favoured simple methods. The tools did find real anomalies, including micrometeoroid or debris impacts.
+
 | Tool | Organisation | Method | Status |
 |---|---|---|---|
-| Inductive Monitoring System (IMS) | NASA Ames | Clusters of nominal data; distance to nearest cluster | Used for ISS gyroscopes from about 2005; about a dozen ISS systems by 2012 |
+| Inductive Monitoring System (IMS) | NASA Ames | Clusters of nominal data; distance to nearest cluster | Used for ISS gyroscopes from about 2005; about a dozen Mission Control systems by 2012 |
 | Novelty Detection | ESA/ESOC | k-nearest-neighbour outlier score on orbit statistics | Developed at ESOC in the early 2010s; trialled by CNES in 2013 |
 | NOSTRADAMUS | CNES with TeSA | One-class support vector machine | Prototype (2014), operational assessment |
 | ATHMoS | DLR German Space Operations Center | Outlier detection; later neural prediction about 4.5 h ahead | Developed 2016–19 |
@@ -151,15 +153,13 @@ Learned monitors have been used in real control centres for about two decades, u
 
 : Learned telemetry monitors with published operational use or trials. {#tbl:monitoringtools}
 
-EUMETSAT's experience is typical. Its Sentinel-3 flight control team ran a k-nearest-neighbour tool and a neural network in parallel. The choice of training data mattered more than the algorithm. Novel-but-harmless detections were the main burden, and adding the timeline of commanded operations cut them. Engineers also needed to see *why* a parameter was flagged, which favoured simple methods. The tools did find real anomalies, including micrometeoroid or debris impacts.
-
 ::: history
 **Landmark: twenty years of learned telemetry monitoring**
 
 - **1988.** Houston's Mission Control tested expert systems beside conventional Space Shuttle displays (Chapter 43).
 - **About 2005.** ISS engineers adopted NASA Ames' Inductive Monitoring System, learned from months of normal data, to watch a failing gyroscope.
 - **2010s.** ESA, CNES and DLR brought outlier detection into European control centres.
-- **2018.** JPL's Telemanom showed that LSTM prediction with automatic thresholds could catch most labelled anomalies, but its false positives kept it from central use.
+- **2018.** JPL's Telemanom showed that LSTM prediction with automatic thresholds could catch most labelled anomalies. In its SMAP pilot, false positives were the main obstacle to central use.
 - **2024.** ESA released ESA-ADB, the first large, operator-labelled benchmark. It showed how far typical algorithms remain from operators' needs.
 - **2025–26.** EUMETSAT reported its Sentinel-3 trial. ESOC's search assistant was in use on 14 missions, and the Aerospace Corporation and Google showed a proof-of-concept agent for triage in large constellations.
 :::
@@ -170,7 +170,7 @@ An alarm says that something is wrong. **Diagnosis** says what, and **root-cause
 
 Classical diagnosis uses fault trees, failure-mode tables and model-based reasoners that compare telemetry with a model of the system (Chapter 6). Learning adds three things. It can match a new alarm pattern to similar past anomalies. It can learn which alarms occur together and which comes first, a hint of cause. And it can gather the context — recent commands, space weather, ground-station problems — that an engineer would otherwise collect by hand.
 
-In April 2026 the Aerospace Corporation and Google's public-sector arm showed a proof-of-concept tool for large constellations in low Earth orbit. It links an anomaly to recent payload tasks or space weather and proposes possible root causes, saving on-call engineers minutes of cross-checking between screens. It is decision support, not a replacement for engineers. A 2025 JPL study of similar "agentic" detection for Deep Space Network data systems reported preliminary results, not yet robust to false positives.
+In April 2026 the Aerospace Corporation and Google's public-sector arm showed a proof-of-concept tool for large constellations in low Earth orbit. It combines telemetry, payload and ground-station data in one view. It links an anomaly to recent events, such as payload activity and environmental conditions, to help engineers find the cause. The aim is to save the minutes on-call staff now spend correlating data by hand. It is decision support, not a replacement for engineers. A 2025 JPL study of similar "agentic" detection for Deep Space Network data systems reported preliminary results, not yet robust to false positives.
 
 ![Nzinga Tull, Hubble systems anomaly response manager, in the control room at NASA's Goddard Space Flight Center on 15 July 2021. A month earlier Hubble's payload computer had stopped, and the team switched to backup hardware to restore science. Diagnosis of this kind is still human work, supported by data tools.](figures/photos/ch49_hubbleops.jpg){#fig:hubbleanomaly width=50%}
 
@@ -280,13 +280,13 @@ The key idea of this section is that antenna time is a scarce resource shared by
 
 ### The Deep Space Network
 
-NASA's **Deep Space Network** (DSN) serves more than 40 missions with antennas at Goldstone (@fig:dss14stars), Madrid and Canberra (Chapter 7). Demand routinely exceeds capacity, often by up to 40 %. JPL reported that the gap between requested and schedulable time grew from about 300 hours a week in 2011–12 to about 500 hours by late 2015.
+NASA's **Deep Space Network** (DSN) serves about 40 missions with antennas at Goldstone (@fig:dss14stars), Madrid and Canberra (Chapter 7). Demand routinely exceeds capacity, often by up to 40 %. JPL reported that the gap between requested and schedulable time grew from about 300 hours a week in 2011–12 to about 500 hours by late 2015.
 
 Since July 2011 the DSN has been scheduled with **Service Scheduling Software** (S3). Each mission states its needs: hours, antennas and time windows. A scheduling engine turns them into tracks, using systematic search and then local repair of conflicts, and the missions negotiate the draft peer to peer. JPL has studied deep reinforcement learning and mixed-integer programming for the same problem (2021); both are research. The hardest part is agreeing what "fair" means.
 
 ### Ground Stations as a Service
 
-Small-satellite operators often buy antenna time instead of building stations. **Ground-station-as-a-service** (GSaaS) providers sell passes or minutes on shared networks through web interfaces (Chapter 7). Amazon Web Services opened AWS Ground Station in 2019. Microsoft retired its Azure Orbital Ground Station on 18 December 2024 and sold its ten 6 m antennas. KSAT reported nearly 300 antennas in 2022, and more than 52 000 passes in one month on its small-satellite network.
+Small-satellite operators often buy antenna time instead of building stations. **Ground-station-as-a-service** (GSaaS) providers sell passes or minutes on shared networks through web interfaces (Chapter 7). Amazon Web Services opened AWS Ground Station in 2019. Microsoft retired its Azure Orbital Ground Station on 18 December 2024 and sold its ten 6 m antennas. KSAT lists more than 300 antennas at 28 locations, and in March 2022 its small-satellite network handled more than 52 000 passes.
 
 On a shared network, each operator wants enough contacts with short gaps at low cost, and the provider wants busy antennas without conflicts. Automated interfaces with priorities and pre-emption rules make this work. Learning helps to forecast demand and to predict which passes will fail. Contacts through relay satellites are booked in the same way (@fig:tdrsl49).
 
@@ -318,7 +318,7 @@ The key idea of this section is that radios increasingly sense their environment
 
 A **cognitive radio** senses its radio environment and changes its frequency, power, waveform or timing to work better. The simplest sensing method is **energy detection**: compare the power in a band with the noise floor. More advanced methods recognise the type of signal present, which is where learning enters.
 
-NASA's **SCaN Testbed** on the International Space Station (@fig:scantestbed), operated from 2012, was the main flight laboratory for such ideas. It carried three software-defined radios that could be reprogrammed from the ground. In a 2018 experiment, a cognitive engine on the ground used reinforcement learning to choose channels. When jammed, it told the satellite transmitter to switch to the channel expected to stay clear longest. The closed loop worked against several types of jammer, but no throughput figures were published.
+NASA's **SCaN Testbed** on the International Space Station (@fig:scantestbed), operated from 2012, was the main flight laboratory for such ideas. It carried three software-defined radios that could be reprogrammed from the ground. In a 2018 experiment, a cognitive engine on the ground used reinforcement learning to choose channels. When jammed, it told the satellite transmitter to switch to the channel expected to stay clear longest. The closed loop worked against several types of jammer, but the published summary gives no throughput figures.
 
 ![The SCaN Testbed, then called CoNNeCT, during a test at NASA's Glenn Research Center before its launch to the International Space Station. Its three software-defined radios were used from 2012 to try reconfigurable and cognitive communication in orbit.](figures/photos/ch49_scantb.jpg){#fig:scantestbed width=52%}
 
@@ -354,7 +354,7 @@ Use the results of @fig:acmgain for a carrier of 250 million symbols per second 
 1. **Fixed coding.** 8PSK 3/5 needs 5.5 dB plus a 0.5 dB implementation margin; it works 99.912 % of the time. Throughput: 250 × 10⁶ × 1.78 × 0.99912 ≈ **445 Mbit/s**.
 2. **ACM, 30 s loop.** Mean 4.096 bit/symbol: 250 × 10⁶ × 4.096 ≈ **1 024 Mbit/s**, a factor of **2.30**.
 3. **Ideal ACM.** 4.130 bit/symbol, 1 033 Mbit/s: the 0.6 dB safety margin costs less than 1 %.
-4. **Why so large?** In clear sky the link uses 32APSK 5/6 at 4.12 bit/symbol, which needs 14.3 dB plus margin. The fixed link must keep about 9.4 dB in reserve for rare fades.
+4. **Why so large?** In clear sky the link uses 32APSK 5/6 at 4.12 bit/symbol, which needs 14.3 dB plus margin. The fixed link must keep about 10 dB in reserve (16 dB available, 6.0 dB needed) for rare fades.
 5. **Five-minute-old data.** A fixed 3.0 dB margin gives 3.305 bit/symbol (826 Mbit/s). The learned, fade-dependent margin gives 3.727 bit/symbol (932 Mbit/s): **13 % more** at the same 99.9 % availability.
 6. **Caveat.** The gain depends on climate, frequency and clear-sky margin. Systems with a smaller clear-sky margin gain less.
 :::
@@ -377,7 +377,7 @@ The key idea of this section is that a constellation with inter-satellite links 
 
 ### Routing in Laser Meshes
 
-Iridium has routed calls through radio crosslinks since 1997, with up to four links per satellite. Starlink uses lasers. In January 2024 SpaceX reported more than 9 000 lasers in orbit carrying more than 42 petabytes a day. Links ran at up to 100 Gbit/s over distances up to 5 400 km. The constellation has grown much larger since. The US Space Development Agency's Transport Layer also links its satellites optically (Chapter 19).
+Iridium has routed calls through radio crosslinks since its service began in 1998, with up to four links per satellite. Starlink uses lasers. In January 2024 SpaceX reported more than 9 000 lasers in orbit carrying more than 42 petabytes a day. Links ran at up to 100 Gbit/s over distances up to 5 400 km. The constellation has grown much larger since. The US Space Development Agency's Transport Layer also links its satellites optically (Chapter 19).
 
 In a **Walker-delta** shell (Chapter 11), each satellite can link to two neighbours in its own plane and one in each neighbouring plane. This gives a grid that wraps around the Earth. Routing then becomes a **shortest-path** problem on a graph: satellites are nodes, links are edges weighted by distance (delay), and Dijkstra's algorithm finds the fastest path. Because the satellites move, the graph is recomputed every few seconds. Light in vacuum travels about 47 % faster than in optical fibre, so long space paths can beat fibre.
 
@@ -416,7 +416,7 @@ Satellites are joining the mobile standards. The 3GPP body added **non-terrestri
 
 The key idea of this section is that the ground segment is the easiest way into a space system. Machine learning helps defenders spot unusual behaviour, but attackers can target the learning itself (Chapter 53).
 
-Ground systems are ordinary computer networks with antennas, modems and cloud links attached, and they face the same attacks as any business network. The best-known case came on 24 February 2022, the first day of Russia's full-scale invasion of Ukraine. Attackers abused the management network of Viasat's KA-SAT system to push a "wiper" program, later named AcidRain, to user modems. Tens of thousands of modems in Ukraine and across Europe stopped working. Spill-over cut remote monitoring of 5 800 wind turbines in Germany. The European Union attributed the attack to Russia in May 2022.
+Ground systems are ordinary computer networks with antennas, modems and cloud links attached, and they face the same attacks as any business network. The best-known case came on 24 February 2022, the first day of Russia's full-scale invasion of Ukraine. Attackers abused the management network of Viasat's KA-SAT system to push a "wiper" program, later named AcidRain, to user modems. Tens of thousands of modems in Ukraine and across Europe stopped working. Spill-over cut remote monitoring of 5 800 Enercon wind turbines in central Europe. The European Union attributed the attack to Russia in May 2022.
 
 Learned defences work at several layers:
 

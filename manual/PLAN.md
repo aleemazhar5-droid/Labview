@@ -80,7 +80,7 @@ Part XIII — Artificial Intelligence in the Space Ecosystem
 - [x] 46 AI for Earth Observation
 - [x] 47 AI for Weather, Climate and Space Weather
 - [ ] 48 AI for Autonomy, Navigation and Robotics
-- [ ] 49 AI for Mission Operations, Communications and Networks
+- [x] 49 AI for Mission Operations, Communications and Networks
 - [ ] 50 AI for Space Situational Awareness, Defence and Security
 - [ ] 51 AI for Space Science, Planetary Exploration and Human Spaceflight
 - [ ] 52 AI in Spacecraft Design, Manufacturing, Launch and the Space Business
