@@ -4,7 +4,7 @@ hero: ch51
 abstract: Space science now produces far more data than people can inspect. A survey telescope sends millions of alerts a night, and orbiters have imaged whole planets at metre scale. A crew on the way to Mars will be twenty minutes from help. This chapter shows how machine learning finds planets in light curves, classifies transients, maps galaxies and lenses, estimates redshifts and speeds up gravitational-wave analysis. It then turns to craters, boulders and minerals on other worlds, to science autonomy on rovers, and to AI for crew health, assistants, robots, smart habitats and Earth-independent operations. Small experiments, run from scratch, show what each method does and where it fails. Status is given as of October 2026.
 ---
 
-Science missions are built to collect data. For most of the space age, people could look at all of it. Astronomers inspected every photographic plate, and planetary geologists mapped every image by hand. That is no longer possible. Kepler watched about 200 000 stars every 30 minutes for four years. The Vera C. Rubin Observatory now sends up to several million alerts each night. Orbiters around the Moon and Mars have returned millions of images sharp enough to show single boulders.
+Science missions are built to collect data. For most of the space age, people could look at all of it. Astronomers inspected every photographic plate, and planetary geologists mapped every image by hand. That is no longer possible. Kepler watched about 150 000 stars every 30 minutes for four years. The Vera C. Rubin Observatory now sends up to several million alerts each night. Orbiters around the Moon and Mars have returned millions of images sharp enough to show single boulders.
 
 Machine learning (ML) helps in two ways. As a **filter and ranker**, it sorts a flood of data so that people look first at what most likely matters. As a **fast approximation** to slow physics, it gives in a second an answer that a full calculation needs hours to produce. Either way, scientists make the final decision. The hero image shows a third role: a robot that works beside a crew on the International Space Station (ISS).
 
@@ -20,7 +20,7 @@ The data rates of some major science facilities are compared in @tbl:sciencedata
 
 | Facility | Data rate or volume | Main learning tasks |
 |---|---|---|
-| Kepler (2009–18) | ≈ 200 000 stars every 30 min | Planet search and vetting |
+| Kepler (2009–18) | ≈ 150 000 stars every 30 min | Planet search and vetting |
 | TESS (2018–) | Most of the sky in 27-day sectors | Vetting thousands of candidates |
 | Gaia (2013–25) | > 500 TB for its fourth release (Dec 2026) | Classifying stars and their motions |
 | Euclid (2023–) | ≈ 100 GB per day | Shapes, lenses, morphology |
@@ -63,13 +63,13 @@ Here $\hat\delta$ is the measured depth, $\sigma$ the noise per point and $n_\ma
 
 A search on simulated data is shown in @fig:blssearch. Two years of photometry at 30-minute cadence contain starspots, gaps and white noise of 250 ppm per point. A planet 1.3 times Earth's radius, with a depth of 142 ppm, is hidden in it; one transit has an SNR of only 1.7. The light curve is first **detrended**: a two-day running median removes the starspot signal. The BLS search over 40 000 trial periods then finds a peak at 17.632 days (true value 17.63) with SNR 8.3 from 42 transits. The next-highest unrelated peak reaches 6.4.
 
-![A transit search on simulated data. (a) Two years of photometry with starspot modulation; the orange line is the trend removed before the search. (b) Box-least-squares signal-to-noise against trial period; the peak lies at the planet's period, with weaker peaks at half and twice the period. (c) Data folded at the recovered period, binned (dark points) and compared with the injected transit (red).](figures/out/ch51_transit.svg){#fig:blssearch width=90%}
-
 The recovered box depth is 130 ppm, a little less than the 142 ppm injected. Limb darkening makes a real transit rounded rather than box-shaped, and detrending removes a little depth. Such losses are why pipelines fit a physical transit model after the search.
 
 ### Vetting with Neural Networks
 
 Most TCEs are not planets. In Kepler's final catalogue, 88 % of them did not become planet candidates. Some are **eclipsing binaries**: pairs of stars that eclipse each other. Their eclipses are often V-shaped, may show a shallow secondary eclipse half an orbit later, and may differ in depth between odd and even events. Others are instrumental artefacts, such as sudden drops in pixel sensitivity, or stellar variability that the search mistook for a dip.
+
+![A transit search on simulated data. (a) Two years of photometry with starspot modulation; the orange line is the trend removed before the search. (b) Box-least-squares signal-to-noise against trial period; the peak lies at the planet's period, with weaker peaks at half and twice the period. (c) Data folded at the recovered period, binned (dark points) and compared with the injected transit (red).](figures/out/ch51_transit.svg){#fig:blssearch width=90%}
 
 Kepler's team first vetted signals by eye, then with the **Robovetter**, a set of expert rules. Each rule tests one property, such as a secondary eclipse or a shift of the star's image during the dip. In 2017 Google and Harvard researchers trained a **convolutional neural network** (Chapter 44) on about 15 000 labelled Kepler signals. Their network, AstroNet, looked at two "views" of each folded light curve: the whole orbit and a zoom on the transit. It reached about 96 % accuracy on test data.
 
@@ -143,9 +143,10 @@ ALeRCE, one of the Rubin brokers, has long used such a forest for light curves, 
 
 A small version is shown in @fig:transientclass. Synthetic two-band light curves of five classes were generated: type Ia supernovae, type II and type Ib/c supernovae, active galactic nuclei (AGN) and periodic variable stars. Each had 28–45 irregular epochs with noise. A random forest of 200 trees used 15 features and was trained on 6 000 objects.
 
-![Classifying synthetic transient light curves. (a) Examples of a type Ia supernova, a type II supernova and an active galactic nucleus. (b) Confusion matrix for full light curves. (c) Accuracy, and recall for each class, as more days of data arrive after the first detection.](figures/out/ch51_transients.svg){#fig:transientclass width=98%}
 
 With full light curves the forest classified 96.1 % of 3 000 test objects correctly. Most errors confused type Ia with type Ib/c supernovae, which also happens in real data. The useful number is the early one. Five days after the first detection, accuracy was only 66.5 %, and type Ib/c supernovae were recognised just 37 % of the time. After 20 days it reached 85.8 %. Astronomers want spectra *before* the peak, so brokers must rank objects while the classification is still uncertain. They therefore report probabilities, not labels.
+
+![Classifying synthetic transient light curves. (a) Examples of a type Ia supernova, a type II supernova and an active galactic nucleus. (b) Confusion matrix for full light curves. (c) Accuracy, and recall for each class, as more days of data arrive after the first detection.](figures/out/ch51_transients.svg){#fig:transientclass width=98%}
 
 ::: example
 **Example: Rubin's alert stream against human attention**
@@ -311,7 +312,7 @@ A rover or probe can also decide what to measure. The first steps were small. In
 
 **AEGIS** (Chapter 48) picks rock targets for the laser spectrometers on Curiosity and Perseverance. By May 2026 it had chosen 596 targets on Curiosity and 293 on Perseverance. Perseverance's X-ray spectrometer **PIXL** goes further. Its hexapod mount places it close to a rock, and it scans a postage-stamp-sized patch with thousands of X-ray shots. Its **adaptive sampling** software watches the results. When it sees minerals of interest, such as carbonates or phosphates, it stops and collects data for longer (@fig:pixlscan). Each decision is made on Mars, without waiting for the ground.
 
-![A PIXL scan of the rock target "Thunderbolt Peak", recorded by Perseverance on 8 July 2024. Each dot marks a point hit by the X-ray beam; colours show the minerals detected. PIXL's software can lengthen its measurements on board when it finds minerals of interest.](figures/photos/ch51_pixl.jpg){#fig:pixlscan width=62%}
+![A PIXL scan of the rock target "Thunderbolt Peak", recorded by Perseverance on 8 July 2024. Each dot marks a point hit by the X-ray beam; colours show the minerals detected. PIXL's software can lengthen its measurements on board when it finds minerals of interest.](figures/photos/ch51_pixl.jpg){#fig:pixlscan width=50%}
 
 Future probes to icy moons may have to detect a plume or outburst and re-plan within hours. In sample curation (Chapter 29), learning could help find rare grains in images and keep records consistent between laboratories, without ever risking irreplaceable material. Onboard science autonomy is summarised in @tbl:onboardscience.
 
@@ -357,7 +358,7 @@ Voice assistants that can read procedures, log work and answer questions have be
 ::: history
 **Landmark: from CIMON to language models in orbit (2018–2025)**
 
-- **CIMON** (Crew Interactive Mobile Companion), a floating sphere built by Airbus and IBM for the German space agency DLR, reached the ISS in July 2018. On 15 November 2018 it recognised Alexander Gerst, talked with him and showed procedures. It returned to Earth in August 2019.
+- **CIMON** (Crew Interactive Mobile Companion), a floating sphere built by Airbus and IBM for the German space agency DLR, reached the ISS in July 2018. On 15 November 2018, in a 90-minute session, it recognised Alexander Gerst and talked with him. It returned to Earth in August 2019.
 - **CIMON-2** arrived in December 2019, adding tone analysis to judge a speaker's mood. Its speech processing ran on ground servers.
 - **Callisto** flew inside Orion on the uncrewed Artemis I mission in late 2022, testing an offline voice assistant and video calls (@fig:callistoorion).
 - In **August 2024** a generative language model ran on HPE's Spaceborne Computer-2 on the ISS. The Space Llama project followed in April 2025, with an open-source model tuned for station science.
@@ -402,7 +403,7 @@ Real fleets are smaller and failures rarer, so models must share data across sim
 
 ### Earth-Independent Operations
 
-On the ISS, mission control answers within seconds. At Mars the one-way **light-time** — the time a signal takes to cross the distance $d$, $\tau = d/c$ — is 3 to 22 minutes. A ground answer takes at least $2\tau$ plus the time experts need to respond. For about two weeks near **solar conjunction**, when Mars is behind the Sun, there is no reliable link at all. In @fig:marsdelay this is computed from the orbits of Earth and Mars for 2026–29. Mars was within 2° of the Sun from 1 to 17 January 2026, and will be again from 11 to 30 March 2028.
+On the ISS, mission control answers within seconds. At Mars the one-way **light-time** — the time a signal takes to cross the distance $d$, $\tau = d/c$ — is 3 to 22 minutes. A ground answer takes at least $2\tau$ plus the time experts need to respond. For about two weeks near **solar conjunction**, when Mars is behind the Sun, there is no reliable link at all. In @fig:marsdelay this is computed from the orbits of Earth and Mars for 2026–29. Mars passed behind the Sun on 9 January 2026 and will do so again on 20 March 2028, staying within 2° of it for about two and a half weeks (11–30 March 2028).
 
 ![Why a Mars crew must decide for itself. (a) One-way light-time between Earth and Mars in 2026–29 and the resulting ground loop, with solar conjunctions shaded. (b) Approximate time available to act in several emergencies and failures, compared with the ground loop for the Moon, for Mars near and far, and for solar conjunction.](figures/out/ch51_delay.svg){#fig:marsdelay width=98%}
 

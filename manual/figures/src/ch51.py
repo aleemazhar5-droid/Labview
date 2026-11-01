@@ -625,7 +625,7 @@ def photoz():
     for r in rows:
         print(f"photoz: i~{r[0]:.1f}: repr NMAD {r[1]:.3f} out {r[2]*100:.1f}% | bright NMAD {r[4]:.3f} out {r[5]*100:.1f}%")
 
-    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.65), gridspec_kw=dict(wspace=0.38))
+    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.9), gridspec_kw=dict(wspace=0.38))
     for ax, zz, col, ttl, st in [(axs[0], zp, BLUE, "Representative training", s_all),
                                  (axs[1], zpb, ORANGE, "Bright, low-z training", s_b)]:
         ax.hexbin(zte, zz, gridsize=55, extent=(0, 3, 0, 3), bins="log", cmap="Blues" if col == BLUE else "Oranges",
@@ -658,7 +658,7 @@ def photoz():
     foot(fig, "Synthetic galaxies: continuum, 4000 Å break and emission lines varying with type, dust; Lyman-α forest "
               "absorption; six LSST-like Gaussian filters with 10-year depths; i < 25.3. Random forest (120 trees) on i "
               "magnitude and five colours; 30 000 training (b: only the 13 929 with i < 22.5 and z < 1.2), 30 000 test galaxies; outliers |Δz|/(1+z) > 0.15. Seed 5151.")
-    fig.subplots_adjust(left=0.07, right=0.99, top=0.9, bottom=0.27)
+    fig.subplots_adjust(left=0.07, right=0.99, top=0.9, bottom=0.3)
     save(fig, "ch51_photoz")
 
 
@@ -959,7 +959,7 @@ def craters():
     print("craters: relative 1-sigma age error vs area (km2) " + ", ".join(
         f"{A}: big {b:.0f}% corr {c:.0f}%" for A, b, c in zip(areas, spread["big"], spread["corr"])))
 
-    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.75), gridspec_kw=dict(width_ratios=[1.15, 1, 0.9], wspace=0.4))
+    fig, axs = plt.subplots(1, 3, figsize=(7.0, 3.0), gridspec_kw=dict(width_ratios=[1.15, 1, 0.9], wspace=0.4))
     ax = axs[0]
     Dc = EDG[:-1] * 1e3
     cum = lambda h: np.cumsum(h[::-1])[::-1] / area
@@ -991,7 +991,8 @@ def craters():
     ax.axvline(T_true * 1e3, color=INK, lw=0.8, ls="--")
     ax.set_xlabel("Model age (Myr)", labelpad=1)
     ax.set_ylabel("Count in 200 trials")
-    ax.legend(fontsize=6.0, loc="upper right")
+    ax.set_ylim(0, 270)
+    ax.legend(fontsize=6.0, loc="upper right", frameon=True, facecolor="white", edgecolor="none", framealpha=0.9)
     ax.set_title("Bias and spread of the age", fontsize=7.8)
     panel_tag(ax, "b")
     ax = axs[2]
@@ -1011,7 +1012,7 @@ def craters():
               "recall 50 % at 7 px rising to 95 %, 7 % diameter error, false positives near the resolution limit. "
               "Completeness and false-positive rates measured by injection on a separate 30 km² labelled set; ages by "
               "Poisson maximum likelihood in 10 bins per decade. Seed 5153.")
-    fig.subplots_adjust(left=0.08, right=0.99, top=0.9, bottom=0.27)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.9, bottom=0.31)
     save(fig, "ch51_craters")
 
 
@@ -1233,6 +1234,10 @@ def delay():
                "Solar\nconjunction": (n + 0.75, "right")}
     for nme, tt in loops:
         ax.plot([np.log10(tt)] * 2, [-0.6, n - 0.4], color=NAVY, lw=0.8, ls="--")
+        if "conjunction" in nme:
+            ax.text(np.log10(tt) - 0.06, n - 0.5, "Solar conjunction", fontsize=6.0, color=NAVY, rotation=90,
+                    ha="right", va="top")
+            continue
         yv, ha = lab_pos[nme]
         ax.text(np.log10(tt) + (0.05 if ha == "left" else -0.05), yv, nme, fontsize=6.0, color=NAVY, ha=ha,
                 va="bottom")
@@ -1247,8 +1252,8 @@ def delay():
     panel_tag(ax, "b", x=-0.6)
     foot(fig, "(a) Heliocentric Keplerian orbits of Earth and Mars (J2000 elements, coplanar approximation); shading "
               "where Mars is within 3° of the Sun. (b) Approximate times available before harm, compared with a ground "
-              "loop of two light-times plus 30 minutes for experts to respond. Red: crew must act alone; amber: ground "
-              "advice arrives late; green: ground can help.")
+              "loop of two light-times plus 30 minutes for experts to respond. Red: crew must act alone; green: ground "
+              "advice can arrive in time, except during solar conjunction.")
     fig.subplots_adjust(left=0.07, right=0.99, top=0.9, bottom=0.28)
     save(fig, "ch51_delay")
 

@@ -796,6 +796,7 @@ def sma_series(rng, nsat, days=60):
     apd = lagged(ap)[::6][:n]                                             # 6-hourly
     Y = np.zeros((nsat, n))
     lab = np.zeros((nsat, n), bool)                                        # True at first sample after a burn
+    dsz = np.zeros((nsat, n))                                              # burn size (m) at labelled samples
     sizes = []
     stormf = (1 + apd / 15.0) ** 0.55 / (1 + 6 / 15.0) ** 0.55
     for i in range(nsat):
@@ -808,12 +809,13 @@ def sma_series(rng, nsat, days=60):
             da = np.exp(rng.uniform(np.log(15), np.log(150)))               # 15-150 m (about 1-8 cm/s)
             a[k:] += da
             lab[i, k] = True
+            dsz[i, k] = da
             sizes.append(da)
         noise = rng.standard_normal(n) * SIGA
         out = rng.uniform(size=n) < 0.02
         noise[out] *= 5
         Y[i] = a + noise
-    return t, apd, Y, lab
+    return t, apd, Y, lab, dsz
 
 
 def cusum_stat(y, W=24, k=1.0, clip=3.0):
@@ -885,7 +887,7 @@ def maneuver():
     from sklearn.ensemble import HistGradientBoostingClassifier
     rng = np.random.default_rng(77)
     nsat = 240
-    t, apd, Y, lab = sma_series(rng, nsat)
+    t, apd, Y, lab, dsz = sma_series(rng, nsat)
     n = len(t)
     half = nsat // 2
     Xs, Js, ys = [], [], []
@@ -913,25 +915,29 @@ def maneuver():
             als = [events_from_score(sc, J, th) for sc, J in zip(scs, Jl)]
             pts.append(event_scores(als, labs, n))
         curves[name] = np.array(pts)
-    # small burns only
-    def small_curve(scs, Jl, thrs, smax=40.0):
-        out = []
-        for th in thrs:
-            det = tot = 0
-            for sc, J, i in zip(scs, Jl, range(half, nsat)):
-                al = events_from_score(sc, J, th)
-                for b in np.where(lab[i])[0]:
-                    da = (Y[i][b:b + 6].mean() - Y[i][b - 6:b].mean())
-                    if da < smax:
-                        tot += 1
-                        det += ((al >= b - 2) & (al <= b + 8)).any()
-            out.append(det / max(tot, 1))
-        return np.array(out)
+    # detection by burn size at about one false alarm per satellite-month
+    def by_size(scs, Jl, th, edges=(15, 50, 100, 151)):
+        det = np.zeros(len(edges) - 1)
+        tot = np.zeros(len(edges) - 1)
+        for sc, J, i in zip(scs, Jl, range(half, nsat)):
+            al = events_from_score(sc, J, th)
+            for b in np.where(lab[i])[0]:
+                kb = np.searchsorted(edges, dsz[i, b], side="right") - 1
+                tot[kb] += 1
+                det[kb] += ((al >= b - 2) & (al <= b + 8)).any()
+        return det / np.maximum(tot, 1), tot
 
     for name, cv in curves.items():
         o = np.argsort(cv[:, 1])
         pds = [np.interp(f, cv[o, 1], cv[o, 0]) for f in (0.3, 1.0, 3.0)]
         print(f"maneuver {name}: Pd at 0.3/1/3 false alarms per satellite-month " + " ".join(f"{p_:.2f}" for p_ in pds))
+    for name, scs, Jl, thrs in (("cusum", sc_cu, [Jfull] * len(sc_cu), np.linspace(1.5, 25, 40)),
+                               ("ml", sc_ml, Js[half:], np.r_[np.linspace(0.02, 0.98, 49), 0.99, 0.995])):
+        cv = curves[name]
+        th1 = thrs[int(np.argmin(np.abs(np.log(np.maximum(cv[:, 1], 1e-3)))))]
+        pd_, tot_ = by_size(scs, Jl, th1)
+        print(f"maneuver {name}: at ~1 FA/month, Pd for burns 15-50 / 50-100 / 100-150 m: "
+              + " ".join(f"{p_:.2f}" for p_ in pd_) + f" (n = {tot_.astype(int).tolist()})")
     nb = lab[half:].sum()
     print(f"maneuver: {nsat} satellites x 60 days, {lab.sum()} burns ({nb} in test)")
 
