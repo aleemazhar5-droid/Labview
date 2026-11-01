@@ -28,6 +28,7 @@ from figlib import *  # noqa: F401,F403   (plt, np, palette, helpers)
 from matplotlib.patches import Polygon, Rectangle, Circle, FancyBboxPatch  # noqa: F401
 from matplotlib.lines import Line2D  # noqa: F401
 from matplotlib.colors import LinearSegmentedColormap
+import matplotlib.ticker
 
 FOOT = 6.0
 
@@ -213,8 +214,8 @@ def transit():
     npts = dur / cad
     print(f"transit: expected SNR = depth/sigma*sqrt(N_in) = {depth_true/250e-6*np.sqrt(npts*ntr*0.98):.1f}")
 
-    fig = plt.figure(figsize=(7.0, 5.0))
-    gs = fig.add_gridspec(3, 2, height_ratios=[1, 1, 1.15], width_ratios=[1.35, 1], hspace=0.62, wspace=0.28)
+    fig = plt.figure(figsize=(7.0, 4.4))
+    gs = fig.add_gridspec(3, 2, height_ratios=[1, 1, 1.2], width_ratios=[1.35, 1], hspace=0.8, wspace=0.28)
     ax = fig.add_subplot(gs[0, :])
     ax.plot(t, (flux - 1) * 1e3, ".", ms=0.6, color=GREY, rasterized=True)
     ax.plot(t, (trend - 1) * 1e3, "-", lw=0.8, color=ORANGE)
@@ -222,7 +223,7 @@ def transit():
     ax.plot(t[intr], (flux[intr] - 1) * 1e3, ".", ms=1.2, color=RED, rasterized=True)
     ax.set_xlim(0, days)
     ax.set_ylabel("Flux − 1 (ppt)")
-    ax.set_xlabel("Time (days)", labelpad=1)
+    ax.text(1.0, -0.2, "days", transform=ax.transAxes, ha="right", va="top", fontsize=7.5, color=INK)
     ax.set_title("Two years of simulated photometry: spots, noise and a hidden 1.3 Earth-radius planet", fontsize=8.4)
     panel_tag(ax, "a", x=-0.035)
     ax2 = fig.add_subplot(gs[1, :])
@@ -262,18 +263,17 @@ def transit():
     panel_tag(ax3, "c", x=-0.07)
     ax4 = fig.add_subplot(gs[2, 1])
     ax4.axis("off")
-    txt = (f"Injected:  P = {P_true} d\n"
-           f"   depth = {depth_true*1e6:.0f} ppm, {dur*24:.1f} h, {ntr} transits\n\n"
-           f"Recovered:  P = {Pbest:.3f} d\n"
-           f"   box depth = {dep*1e6:.0f} ppm,  SNR = {snr[i]:.1f}\n\n"
-           f"Noise per 30-min point: 250 ppm.\n"
-           f"Single transit SNR ≈ {depth_true/250e-6*np.sqrt(npts):.1f}: invisible\n"
-           f"by eye; folding {ntr} transits gives ≈ √{ntr} gain.")
-    ax4.text(0.0, 0.98, txt, transform=ax4.transAxes, va="top", fontsize=7.0, color=INK, linespacing=1.35)
+    txt = (f"Injected:  P = {P_true} d, depth {depth_true*1e6:.0f} ppm,\n"
+           f"   {dur*24:.1f} h, {ntr} transits\n"
+           f"Recovered:  P = {Pbest:.3f} d,\n"
+           f"   box depth {dep*1e6:.0f} ppm, SNR {snr[i]:.1f}\n"
+           f"Noise: 250 ppm per 30-min point;\n"
+           f"   one transit has SNR ≈ {depth_true/250e-6*np.sqrt(npts):.1f}")
+    ax4.text(0.02, 1.0, txt, transform=ax4.transAxes, va="top", fontsize=6.8, color=INK, linespacing=1.4)
     foot(fig, "Simulation: 730 days at 30-min cadence with gaps; starspot modulation (25-day rotation, ~0.6 ppt), white "
               "noise 250 ppm per point; limb-darkened transit of a 1.3 R⊕ planet on a Sun-like star. Detrending by a 2-day "
               "running median; BLS with seven box durations and 800 phase bins per trial period. Seed 51.", y=0.0)
-    fig.subplots_adjust(left=0.08, right=0.98, top=0.95, bottom=0.12)
+    fig.subplots_adjust(left=0.08, right=0.98, top=0.95, bottom=0.15)
     save(fig, "ch51_transit")
 
 
@@ -476,9 +476,10 @@ def vetting():
     cols = [BLUE, ORANGE, GREY]
     for k, (i, nme, col) in enumerate(zip(picks, names, cols)):
         g = G[ntr + nva + i]
-        ax.plot(xg, g - 2.6 * k, lw=0.7, color=col)
-        ax.text(-0.49, -2.6 * k + 0.75, f"{nme} (score {s_nn[i]:.2f})", fontsize=6.4, color=col)
+        ax.plot(xg, g - 3.2 * k, lw=0.7, color=col)
+        ax.text(-0.49, -3.2 * k + 0.55, f"{nme} (score {s_nn[i]:.2f})", fontsize=6.4, color=col)
     ax.set_yticks([])
+    ax.set_ylim(-8.0, 1.3)
     ax.set_xlabel("Orbital phase", labelpad=1)
     ax.set_xlim(-0.5, 0.5)
     ax.set_title("Global views (normalised)", fontsize=8.2)
@@ -512,6 +513,7 @@ def vetting():
     ax.set_xscale("log")
     ax.set_xticks([6, 10, 20, 40])
     ax.set_xticklabels(["6", "10", "20", "40"])
+    ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
     ax.set_xlabel("Signal-to-noise ratio", labelpad=1)
     ax.set_ylabel("Planets kept at 98 % precision (%)")
     ax.set_ylim(0, 102)
@@ -539,13 +541,13 @@ def sed(lam_A, t):
     f = f * np.where(lam_A < 4000, 1 - brk * 1 / (1 + np.exp(-(4000 - lam_A) / 60)), 1.0)
     uv = np.where(lam_A < 2500, np.exp(-(2500 - lam_A) / (300 + 2500 * t)), 1.0)
     f = f * (uv if t < 0.5 else 1.0)
-    for lc, ew in [(3727, 40), (4861, 15), (5007, 45), (6563, 90)]:
+    for lc, ew in [(3727, 40), (4861, 15), (5007, 45), (6563, 90)]:  # emission lines grow with t
         w = ew * t ** 1.5
         f = f + w / (8 * np.sqrt(2 * np.pi)) * np.exp(-0.5 * ((lam_A - lc) / 8) ** 2) * np.interp(lc, lam_A, f)
     return f
 
 
-def photometry(z, t, m_i, rng):
+def photometry(z, t, m_i, rng, av=None):
     lam_obs = np.linspace(3000, 11000, 1600)          # Angstrom
     out = np.zeros((len(z), 6))
     names = list(FILT)
@@ -553,6 +555,8 @@ def photometry(z, t, m_i, rng):
     for n in range(len(z)):
         lr = lam_obs / (1 + z[n])
         fl = sed(lr, t[n])
+        if av is not None:
+            fl = fl * 10 ** (-0.4 * av[n] * (5500.0 / lr) ** 0.9)     # simple dust attenuation
         tau = np.where(lam_obs < 1216 * (1 + z[n]), 0.0036 * (lam_obs / 1216) ** 3.46, 0.0)
         fl = fl * np.exp(-tau) * (lr > 912)
         fnu = fl * lam_obs ** 2
@@ -583,13 +587,14 @@ def photoz():
     z = rng.gamma(2.2, 0.42, n0)
     z = z[(z > 0.02) & (z < 3.0)][:n0]
     t = rng.beta(1.3, 1.6, len(z))
-    M = rng.normal(-20.6, 1.2, len(z)) - 1.2 * np.log10(1 + z)       # brighter galaxies at higher z (evolution)
+    M = rng.normal(-20.4, 1.3, len(z)) - 0.8 * np.log10(1 + z)       # mild luminosity evolution
+    av = rng.uniform(0, 1.2, len(z)) * (0.3 + 0.7 * t)                # dustier star-forming galaxies
     m_i = M + 5 * np.log10(lum_dist(z) * 1e5)
     keep = (m_i < 25.3) & (m_i > 18.5)
-    z, t, m_i = z[keep], t[keep], m_i[keep]
+    z, t, m_i, av = z[keep], t[keep], m_i[keep], av[keep]
     n = min(len(z), 60000)
-    z, t, m_i = z[:n], t[:n], m_i[:n]
-    flux, err = photometry(z, t, m_i, rng)
+    z, t, m_i, av = z[:n], t[:n], m_i[:n], av[:n]
+    flux, err = photometry(z, t, m_i, rng, av)
     mags = asinh_mag(flux, err)
     X = np.column_stack([mags[:, 3]] + [mags[:, k] - mags[:, k + 1] for k in range(5)])
     ntr = 30000
@@ -602,14 +607,14 @@ def photoz():
     rf = RandomForestRegressor(n_estimators=120, min_samples_leaf=3, n_jobs=2, random_state=0).fit(Xtr, ztr)
     zp = rf.predict(Xte)
     s_all = stats(zp, zte)
-    bright = m_i[:ntr] < 22.5
+    bright = (m_i[:ntr] < 22.5) & (ztr < 1.2)      # like a typical spectroscopic training sample
     rfb = RandomForestRegressor(n_estimators=120, min_samples_leaf=3, n_jobs=2, random_state=0).fit(
         Xtr[bright], ztr[bright])
     zpb = rfb.predict(Xte)
     s_b = stats(zpb, zte)
     print(f"photoz: {len(z)} galaxies (i<25.3), median z {np.median(z):.2f}; train {ntr}, test {len(zte)}")
     print(f"photoz: representative training: sigma_NMAD={s_all[0]:.3f}, outliers={s_all[1]*100:.1f}%, bias={s_all[2]:+.4f}")
-    print(f"photoz: bright-only training (i<22.5, n={bright.sum()}, max z {ztr[bright].max():.2f}): "
+    print(f"photoz: spectroscopic-like training (i<22.5, z<1.2, n={bright.sum()}): "
           f"sigma_NMAD={s_b[0]:.3f}, outliers={s_b[1]*100:.1f}%, bias={s_b[2]:+.4f}")
     mb = np.array([19, 21, 22, 23, 24, 24.7, 25.3])
     rows = []
@@ -621,8 +626,8 @@ def photoz():
         print(f"photoz: i~{r[0]:.1f}: repr NMAD {r[1]:.3f} out {r[2]*100:.1f}% | bright NMAD {r[4]:.3f} out {r[5]*100:.1f}%")
 
     fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.65), gridspec_kw=dict(wspace=0.38))
-    for ax, zz, col, ttl, st in [(axs[0], zp, BLUE, "Representative training set", s_all),
-                                 (axs[1], zpb, ORANGE, "Trained on bright galaxies only", s_b)]:
+    for ax, zz, col, ttl, st in [(axs[0], zp, BLUE, "Representative training", s_all),
+                                 (axs[1], zpb, ORANGE, "Bright, low-z training", s_b)]:
         ax.hexbin(zte, zz, gridsize=55, extent=(0, 3, 0, 3), bins="log", cmap="Blues" if col == BLUE else "Oranges",
                   mincnt=1, linewidths=0)
         xx = np.linspace(0, 3, 10)
@@ -640,21 +645,19 @@ def photoz():
     panel_tag(axs[0], "a")
     panel_tag(axs[1], "b")
     ax = axs[2]
-    ax.plot(rows[:, 0], rows[:, 1], "o-", color=BLUE, ms=3, label="σ_NMAD, representative")
-    ax.plot(rows[:, 0], rows[:, 4], "s--", color=ORANGE, ms=3, label="σ_NMAD, bright-only")
-    ax.axhline(0.02, color=GREEN, lw=0.8, ls=":")
-    ax.text(19.1, 0.023, "LSST goal 0.02", fontsize=6.4, color=GREEN)
-    ax.axhline(0.05, color=RED, lw=0.8, ls=":")
-    ax.text(19.1, 0.053, "requirement 0.05", fontsize=6.4, color=RED)
+    ax.plot(rows[:, 0], rows[:, 2] * 100, "o-", color=BLUE, ms=3, label="Representative training")
+    ax.plot(rows[:, 0], rows[:, 5] * 100, "s--", color=ORANGE, ms=3, label="Bright, low-z training")
+    ax.axhline(10, color=RED, lw=0.8, ls=":")
+    ax.text(19.1, 11.5, "LSST limit 10 %", fontsize=6.4, color=RED)
     ax.set_xlabel("i magnitude", labelpad=1)
-    ax.set_ylabel("Scatter σ_NMAD")
-    ax.set_ylim(0, max(0.11, rows[:, 4].max() * 1.1))
-    ax.legend(fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, 0.92))
-    ax.set_title("Scatter against brightness", fontsize=8)
+    ax.set_ylabel("Outliers (%)")
+    ax.set_ylim(0, 70)
+    ax.legend(fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, 0.88))
+    ax.set_title("Outliers against brightness", fontsize=8)
     panel_tag(ax, "c")
-    foot(fig, "Synthetic galaxies: continuum, 4000 Å break and emission lines varying with type; Lyman-α forest "
+    foot(fig, "Synthetic galaxies: continuum, 4000 Å break and emission lines varying with type, dust; Lyman-α forest "
               "absorption; six LSST-like Gaussian filters with 10-year depths; i < 25.3. Random forest (120 trees) on i "
-              "magnitude and five colours; 30 000 training, 30 000 test galaxies; outliers |Δz|/(1+z) > 0.15. Seed 5151.")
+              "magnitude and five colours; 30 000 training (b: only the 13 929 with i < 22.5 and z < 1.2), 30 000 test galaxies; outliers |Δz|/(1+z) > 0.15. Seed 5151.")
     fig.subplots_adjust(left=0.07, right=0.99, top=0.9, bottom=0.27)
     save(fig, "ch51_photoz")
 
@@ -730,7 +733,7 @@ def lc_features(tt, band, f, sig, tcut):
                   (x[j] - t1)]
     # colour and variability statistics
     g, r = f[band == 0], f[band == 1]
-    col = (np.mean(g) - np.mean(r)) / (np.mean(np.abs(f)) + 1e-3) if len(g) and len(r) else 0
+    col = (np.mean(g) - np.mean(r)) / (np.mean(np.abs(f)) + 1e-3) if (len(g) and len(r)) else 0
     d = np.diff(f) / (np.std(f) + 1e-3)
     pre = np.mean(f[tt < t1 - 5]) / (f.max() + 1e-3) if np.any(tt < t1 - 5) else 0   # flux before detection
     feats += [col, np.mean(np.abs(d)), pre, tt.max() - t1, len(f)]
@@ -777,17 +780,21 @@ def transients():
     ax = fig.add_subplot(gs[0])
     cols = [BLUE, RED, ORANGE, VIOLET, GREEN]
     rr = np.random.default_rng(7)
-    for k in (0, 1, 3):
+    off = {0: 0.0, 1: -1.0, 3: -2.0}
+    for k, lab in ((0, "SN Ia"), (1, "SN II"), (3, "AGN")):
         tt, band, f, sg = make_lc(k, rr)
+        f = f / max(1e-3, np.percentile(f, 98)) * 0.8
         for b, mk in ((0, "o"), (1, "s")):
             m = band == b
-            ax.plot(tt[m], f[m] + 0 * k, mk, ms=2.4 if b else 2.0, color=cols[k], alpha=0.9 if b else 0.5,
-                    mfc="none" if b == 0 else cols[k], lw=0)
-    for k, lab in ((0, "SN Ia"), (1, "SN II"), (3, "AGN")):
-        ax.plot([], [], "s", color=cols[k], ms=3, label=lab)
-    ax.legend(fontsize=6.4, loc="upper right")
-    ax.set_xlabel("Days from peak region", labelpad=1)
-    ax.set_ylabel("Flux (arbitrary)")
+            ax.plot(tt[m], f[m] + off[k], mk, ms=2.2, color=cols[k], alpha=0.85,
+                    mfc="none" if b == 0 else cols[k], mew=0.7, lw=0)
+        ax.text(118, off[k] + 0.55, lab, fontsize=6.6, color=cols[k], ha="right")
+    ax.text(-28, -2.3, "○ g band   ■ r band", fontsize=6.0, color=GREY)
+    ax.set_yticks([])
+    ax.set_xlim(-32, 122)
+    ax.set_ylim(-2.4, 1.15)
+    ax.set_xlabel("Days", labelpad=1)
+    ax.set_ylabel("Scaled flux (offset)")
     ax.set_title("Sparse two-band light curves", fontsize=8)
     panel_tag(ax, "a")
     ax = fig.add_subplot(gs[1])
@@ -816,7 +823,7 @@ def transients():
     ax.set_xlabel("Days of data after first detection", labelpad=1)
     ax.set_ylabel("Accuracy or recall (%)")
     ax.set_ylim(0, 102)
-    ax.legend(fontsize=5.9, loc="lower right", ncol=2)
+    ax.legend(fontsize=5.8, loc="lower right", ncol=1, handlelength=1.4)
     ax.set_title("Early classification", fontsize=8)
     panel_tag(ax, "c")
     foot(fig, "Synthetic two-band light curves: SN Ia, II, Ib/c (Bazin-type profiles with class-dependent rise, decline, "
@@ -826,8 +833,540 @@ def transients():
     save(fig, "ch51_transients")
 
 
+# ==============================================================================================
+# 7. Crater counting with a synthetic detector, completeness correction and model age
+NPF_A = [-3.0876, -3.557528, 0.781027, 1.021521, -0.156012, -0.444058, 0.019977, 0.086850, -0.005874, -0.006809,
+         8.25e-4, 5.54e-5]
+
+
+def npf_shape(D_km):
+    """log10 N(>D) per km^2 for the lunar production function (Neukum et al. 2001), normalised to N(1 km) = 1."""
+    x = np.log10(D_km)
+    return sum(a * x ** k for k, a in enumerate(NPF_A)) - NPF_A[0]
+
+
+def n1_age(T):
+    """Cumulative density of craters >= 1 km per km^2 for age T (Gyr), Neukum chronology."""
+    return 5.44e-14 * (np.exp(6.93 * T) - 1) + 8.38e-4 * T
+
+
+def ncum(D_km, T):
+    return n1_age(T) * 10 ** npf_shape(D_km)
+
+
+def sample_craters(rng, area, T, dmin=0.004, dmax=1.0):
+    n = rng.poisson(area * (ncum(dmin, T) - ncum(dmax, T)))
+    lg = np.linspace(np.log10(dmin), np.log10(dmax), 800)
+    c = ncum(10 ** lg, T)
+    u = rng.uniform(c[-1], c[0], n)
+    return 10 ** np.interp(u, c[::-1], lg[::-1])
+
+
+PIX_KM = 0.0015                       # 1.5 m pixels (LROC NAC class)
+
+
+def detector(rng, D, area):
+    """Synthetic detector: recall rises with size in pixels (50 % at 7 px, 95 % plateau); 7 % diameter error;
+    false positives (shadows, boulders) concentrated near the resolution limit."""
+    px = D / PIX_KM
+    p = 0.95 / (1 + np.exp(-(px - 7) / 1.4))
+    hit = rng.random(len(D)) < p
+    Dm = D[hit] * np.exp(0.07 * rng.standard_normal(hit.sum()))
+    nfp = rng.poisson(160.0 * area)            # per km^2, above 4 px
+    fp = 4 * PIX_KM * (1 + rng.pareto(5.0, nfp))
+    return np.concatenate([Dm, fp]), hit
+
+
+EDG = 10 ** np.arange(np.log10(0.006), np.log10(0.6) + 1e-9, 0.1)    # 6 m - 600 m, 10 bins per decade
+
+
+def fit_age(counts, area, comp=None, fpd=None, use=None):
+    from scipy.optimize import minimize_scalar
+    if use is None:
+        use = np.ones(len(counts), bool)
+    shape = 10 ** npf_shape(EDG)
+    dN = shape[:-1] - shape[1:]                # per unit N(1)
+
+    def nll(logT):
+        T = 10 ** logT
+        lam = area * n1_age(T) * dN
+        if comp is not None:
+            lam = lam * comp + fpd * area
+        lam = np.maximum(lam[use], 1e-12)
+        return np.sum(lam - counts[use] * np.log(lam))
+    r = minimize_scalar(nll, bounds=(-3, 0.6), method="bounded")
+    return 10 ** r.x
+
+
+def craters():
+    rng = np.random.default_rng(5153)
+    T_true, area = 0.05, 10.0
+    # calibration: injection-recovery on a separate labelled area of 5 km^2 (several realisations)
+    hits_b, tot_b, fp_b = np.zeros(len(EDG) - 1), np.zeros(len(EDG) - 1), np.zeros(len(EDG) - 1)
+    cal_area = 0
+    for k in range(6):
+        Dt = sample_craters(rng, 5.0, T_true * 2)
+        det, hit = detector(rng, Dt, 5.0)
+        tot_b += np.histogram(Dt, EDG)[0]
+        hits_b += np.histogram(Dt[hit], EDG)[0]
+        nreal = hit.sum()
+        fp_b += np.histogram(det[nreal:], EDG)[0]
+        cal_area += 5.0
+    comp = np.clip(hits_b / np.maximum(tot_b, 1), 0.02, 1)
+    fpd = fp_b / cal_area
+    # one realisation for panel (a)
+    Dt = sample_craters(rng, area, T_true)
+    det, hit = detector(rng, Dt, area)
+    cnt = np.histogram(det, EDG)[0].astype(float)
+    tru = np.histogram(Dt, EDG)[0].astype(float)
+    corr = np.clip((cnt - fpd * area) / comp, 0, None)
+    big = EDG[:-1] >= 0.030
+    good = comp > 0.5
+    a_naive = fit_age(cnt, area)
+    a_big = fit_age(cnt, area, use=big)
+    a_corr = fit_age(cnt, area, comp, fpd, use=good)
+    print(f"craters: area {area} km2, true age {T_true*1e3:.0f} Myr; true craters >=6 m: {np.sum(Dt>=0.006)}, "
+          f"detections (incl. false) >=6 m: {np.sum(det>=0.006)}; craters >=30 m: {np.sum(Dt>=0.03)}")
+    print("craters: bin edges (m) " + ", ".join(f"{e*1e3:.1f}" for e in EDG[:8]) + "; completeness " +
+          ", ".join(f"{c:.2f}" for c in comp[:7]) + f"; first fitted bin starts {EDG[:-1][good][0]*1e3:.1f} m" +
+          f"; false-positive share of detections 6-10 m: {fpd[:2].sum()*area/max(1,cnt[:2].sum())*100:.0f}%")
+    print(f"craters: single run ages (Myr): naive all bins {a_naive*1e3:.0f}, only D>=30 m {a_big*1e3:.0f}, "
+          f"corrected {a_corr*1e3:.0f}")
+    # Monte Carlo of estimator bias and spread
+    res = {"naive": [], "big": [], "corr": []}
+    for k in range(200):
+        Dt_ = sample_craters(rng, area, T_true)
+        det_, _ = detector(rng, Dt_, area)
+        c_ = np.histogram(det_, EDG)[0].astype(float)
+        res["naive"].append(fit_age(c_, area))
+        res["big"].append(fit_age(c_, area, use=big))
+        res["corr"].append(fit_age(c_, area, comp, fpd, use=good))
+    for k, v in res.items():
+        v = np.array(v) * 1e3
+        print(f"craters: MC {k}: median {np.median(v):.0f} Myr, 16-84% {np.percentile(v,16):.0f}-{np.percentile(v,84):.0f}")
+    areas = [0.3, 1, 3, 10, 30]
+    spread = {"big": [], "corr": []}
+    for A in areas:
+        vb, vc = [], []
+        for k in range(120):
+            Dt_ = sample_craters(rng, A, T_true)
+            det_, _ = detector(rng, Dt_, A)
+            c_ = np.histogram(det_, EDG)[0].astype(float)
+            vb.append(fit_age(c_, A, use=big))
+            vc.append(fit_age(c_, A, comp, fpd, use=good))
+        spread["big"].append(0.5 * (np.percentile(vb, 84) - np.percentile(vb, 16)) / T_true * 100)
+        spread["corr"].append(0.5 * (np.percentile(vc, 84) - np.percentile(vc, 16)) / T_true * 100)
+    print("craters: relative 1-sigma age error vs area (km2) " + ", ".join(
+        f"{A}: big {b:.0f}% corr {c:.0f}%" for A, b, c in zip(areas, spread["big"], spread["corr"])))
+
+    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.75), gridspec_kw=dict(width_ratios=[1.15, 1, 0.9], wspace=0.4))
+    ax = axs[0]
+    Dc = EDG[:-1] * 1e3
+    cum = lambda h: np.cumsum(h[::-1])[::-1] / area
+    for T, ls in [(0.025, ":"), (0.05, "-"), (0.1, "--")]:
+        dd = np.logspace(np.log10(0.005), np.log10(0.6), 100)
+        ax.plot(dd * 1e3, ncum(dd, T), color=GREY, lw=0.7, ls=ls)
+        ax.text(330, ncum(0.33, T) * (2.2 if T > 0.06 else (0.25 if T < 0.03 else 1)), f"{T*1e3:.0f} Myr",
+                fontsize=6.0, color=GREY, ha="left", va="center")
+    ax.plot(Dc, cum(tru), "o", ms=2.6, color=INK, mfc="none", mew=0.6, label="All craters (truth)")
+    ax.plot(Dc, cum(cnt), "s", ms=2.6, color=ORANGE, label="Raw detections")
+    ax.plot(Dc, cum(corr), "^", ms=2.8, color=BLUE, label="Corrected")
+    ax.axvspan(5, EDG[:-1][good][0] * 1e3, color=LIGHT, zorder=0)
+    ax.text(5.6, 3e-3, "detector\nincomplete", fontsize=6.0, color=GREY)
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlim(5, 700)
+    ax.set_ylim(1e-3, 3e4)
+    ax.set_xlabel("Crater diameter D (m)", labelpad=1)
+    ax.set_ylabel("Cumulative density N(≥D) per km²")
+    ax.legend(fontsize=6.0, loc="upper right")
+    ax.set_title(f"One count, {area:.0f} km², true age {T_true*1e3:.0f} Myr", fontsize=7.8)
+    panel_tag(ax, "a")
+    ax = axs[1]
+    bins = np.linspace(10, 90, 41)
+    for k, col, lab in [("naive", ORANGE, "Raw, all sizes"), ("big", GREY, "Raw, D ≥ 30 m only"),
+                        ("corr", BLUE, f"Corrected, D ≥ {EDG[:-1][good][0]*1e3:.0f} m")]:
+        v = np.array(res[k]) * 1e3
+        ax.hist(v, bins, color=col, alpha=0.55 if k != "corr" else 0.75, label=lab)
+    ax.axvline(T_true * 1e3, color=INK, lw=0.8, ls="--")
+    ax.set_xlabel("Model age (Myr)", labelpad=1)
+    ax.set_ylabel("Count in 200 trials")
+    ax.legend(fontsize=6.0, loc="upper right")
+    ax.set_title("Bias and spread of the age", fontsize=7.8)
+    panel_tag(ax, "b")
+    ax = axs[2]
+    ax.plot(areas, spread["big"], "o-", color=GREY, ms=3, label="D ≥ 30 m only")
+    ax.plot(areas, spread["corr"], "^-", color=BLUE, ms=3, label="Corrected")
+    ax.set_xscale("log")
+    ax.set_ylim(0, 55)
+    ax.set_xticks(areas)
+    ax.set_xticklabels([str(a) for a in areas])
+    ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+    ax.set_xlabel("Count area (km²)", labelpad=1)
+    ax.set_ylabel("Age uncertainty, 1σ (%)")
+    ax.legend(fontsize=6.0, loc="upper right")
+    ax.set_title("Bigger areas, smaller errors", fontsize=7.8)
+    panel_tag(ax, "c")
+    foot(fig, "Lunar production and chronology functions of Neukum et al. (2001). Synthetic detector on 1.5 m pixels: "
+              "recall 50 % at 7 px rising to 95 %, 7 % diameter error, false positives near the resolution limit. "
+              "Completeness and false-positive rates measured by injection on a separate 30 km² labelled set; ages by "
+              "Poisson maximum likelihood in 10 bins per decade. Seed 5153.")
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.9, bottom=0.27)
+    save(fig, "ch51_craters")
+
+
+# ==============================================================================================
+# 8. Linear spectral unmixing on synthetic hyperspectral pixels
+WL = np.arange(0.40, 2.601, 0.01)        # micrometres, 221 bands
+
+
+def absorb(bands):
+    return np.exp(-sum(a * np.exp(-0.5 * ((WL - c) / w) ** 2) for c, w, a in bands))
+
+
+def endmembers():
+    ferric = lambda d: 1 - d * np.exp(-0.5 * ((WL - 0.45) / 0.12) ** 2)
+    E = {
+        "Olivine": (0.22 + 0.06 * WL) * absorb([(0.85, 0.07, 0.25), (1.05, 0.10, 0.55), (1.25, 0.13, 0.45)]) * ferric(0.3),
+        "Pyroxene": (0.20 + 0.05 * WL) * absorb([(0.92, 0.08, 0.45), (1.92, 0.20, 0.40)]) * ferric(0.25),
+        "Mg carbonate": (0.42 + 0.03 * WL) * absorb([(1.0, 0.25, 0.10), (1.91, 0.03, 0.12), (2.30, 0.04, 0.35),
+                                                     (2.51, 0.045, 0.42)]) * ferric(0.15),
+        "Fe/Mg smectite": (0.30 + 0.03 * WL) * absorb([(1.41, 0.02, 0.20), (1.91, 0.03, 0.35), (2.29, 0.025, 0.25),
+                                                       (2.39, 0.03, 0.12)]) * ferric(0.35),
+        "Dust": np.clip(0.42 - 0.27 * np.exp(-(WL - 0.40) / 0.22), 0, None) * absorb([(0.88, 0.08, 0.08)]),
+    }
+    return list(E), np.array(list(E.values()))
+
+
+def smooth_field(rng, shape, scale):
+    from scipy.ndimage import gaussian_filter
+    return gaussian_filter(rng.standard_normal(shape), scale) * scale
+
+
+def fcls(E, X, delta=50.0):
+    from scipy.optimize import nnls
+    k = E.shape[0]
+    A = np.vstack([E.T, delta * np.ones((1, k))])
+    out = np.zeros((X.shape[0], k))
+    res = np.zeros(X.shape[0])
+    for i, x in enumerate(X):
+        a, _ = nnls(A, np.concatenate([x, [delta]]))
+        out[i] = a
+        res[i] = np.linalg.norm(E.T @ a - x) / np.sqrt(len(x))
+    return out, res
+
+
+def unmixing():
+    from sklearn.decomposition import NMF
+    from scipy.optimize import linear_sum_assignment
+    rng = np.random.default_rng(5154)
+    names, E = endmembers()
+    H, W = 48, 72
+    yy, xx = np.mgrid[0:H, 0:W]
+    # scene: a fan (carbonate + smectite) in the upper left, olivine sand in a channel, pyroxene floor, dust cover
+    fan = np.exp(-(((xx - 18) / 16) ** 2 + ((yy - 14) / 11) ** 2))
+    chan = np.exp(-((yy - (30 + 6 * np.sin(xx / 9))) / 4.5) ** 2)
+    logits = np.stack([
+        2.8 * chan + 0.5 * smooth_field(rng, (H, W), 3),
+        1.2 + 0.5 * smooth_field(rng, (H, W), 4),
+        3.0 * fan * (xx > 14) + 0.5 * smooth_field(rng, (H, W), 3) - 1.0,
+        3.0 * fan * (xx <= 22) + 0.5 * smooth_field(rng, (H, W), 3) - 1.0,
+        0.6 + 0.6 * smooth_field(rng, (H, W), 5),
+    ])
+    Atrue = np.exp(logits) / np.exp(logits).sum(0)
+    At = Atrue.reshape(5, -1).T
+    # each pixel sees slightly different endmembers (band depth and brightness vary by grain size, illumination)
+    npx = At.shape[0]
+    X = np.zeros((npx, len(WL)))
+    for k in range(5):
+        depth = np.exp(0.15 * rng.standard_normal(npx))[:, None]
+        cont = np.max(E[k]) * np.ones_like(E[k])
+        Ek = cont - (cont - E[k]) * depth                      # deeper or shallower bands
+        Ek = Ek * np.exp(0.05 * rng.standard_normal(npx))[:, None]
+        X += At[:, [k]] * Ek
+    shade = np.clip(1 + 0.06 * smooth_field(rng, (H, W), 2).ravel(), 0.85, 1.15)
+    X = X * shade[:, None]                                        # topographic shading
+    snr = 150.0
+    X = X + (X.mean() / snr) * rng.standard_normal(X.shape)
+    est, res = fcls(E, X)
+    rmse = np.sqrt(np.mean((est - At) ** 2, axis=0))
+    ls = np.linalg.lstsq(E.T, X.T, rcond=None)[0].T
+    print("unmixing: FCLS abundance RMSE (percentage points): " + ", ".join(f"{n} {r*100:.1f}" for n, r in zip(names, rmse)))
+    print(f"unmixing: unconstrained LS: share of negative abundances {np.mean(ls < 0)*100:.1f}%, "
+          f"RMSE {np.sqrt(np.mean((ls - At) ** 2))*100:.1f} pp vs FCLS {np.sqrt(np.mean((est - At) ** 2))*100:.1f} pp")
+    # missing endmember: library without smectite
+    keep = [0, 1, 2, 4]
+    est4, res4 = fcls(E[keep], X)
+    print(f"unmixing: residual RMS full library {np.median(res)*1e3:.2f}e-3; without smectite: median "
+          f"{np.median(res4)*1e3:.2f}e-3, 99th pct {np.percentile(res4,99)*1e3:.2f}e-3")
+    # blind NMF
+    nmf = NMF(n_components=5, init="nndsvda", max_iter=1500, random_state=0, tol=1e-6)
+    Wn = nmf.fit_transform(X)
+    Hn = nmf.components_
+    def sam(a, b):
+        return np.degrees(np.arccos(np.dot(a, b) / np.linalg.norm(a) / np.linalg.norm(b)))
+    C = np.array([[sam(E[i], Hn[j]) for j in range(5)] for i in range(5)])
+    r_, c_ = linear_sum_assignment(C)
+    print("unmixing: NMF spectral angle to true endmember (deg): " + ", ".join(f"{names[i]} {C[i, j]:.1f}" for i, j in zip(r_, c_)))
+    # NMF abundances (scale so that sum of abundance x mean reflectance matches)
+    Wsc = Wn * Hn.mean(1)
+    Wsc = Wsc / Wsc.sum(1, keepdims=True)
+    carb_nmf = Wsc[:, c_[list(r_).index(2)]]
+    print(f"unmixing: NMF carbonate abundance RMSE {np.sqrt(np.mean((carb_nmf - At[:, 2]) ** 2))*100:.1f} pp")
+
+    fig = plt.figure(figsize=(7.0, 4.0))
+    gs = fig.add_gridspec(2, 6, height_ratios=[1.1, 1], hspace=0.62, wspace=0.9)
+    ax = fig.add_subplot(gs[0, :3])
+    cols = [GREEN, NAVY, ORANGE, VIOLET, RED]
+    for k, (nme, col) in enumerate(zip(names, cols)):
+        ax.plot(WL, E[k], color=col, lw=1.2, label=nme)
+    for c in (1.05, 1.92, 2.30, 2.51):
+        ax.axvline(c, color=GREY, lw=0.4, ls=":")
+    ax.set_xlim(0.4, 2.6)
+    ax.set_ylim(0, 0.66)
+    ax.set_xlabel("Wavelength (µm)", labelpad=1)
+    ax.set_ylabel("Reflectance")
+    ax.legend(fontsize=5.9, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.02), handlelength=1.2, columnspacing=0.8)
+    ax.set_title("Endmember library (synthetic)", fontsize=8)
+    panel_tag(ax, "a")
+    ax = fig.add_subplot(gs[0, 3:])
+    for k, col in enumerate(cols):
+        ax.plot(At[::4, k] * 100, est[::4, k] * 100, ".", ms=1.6, color=col, alpha=0.6)
+    ax.plot([0, 100], [0, 100], color=INK, lw=0.6)
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.set_xlabel("True abundance (%)", labelpad=1)
+    ax.set_ylabel("Estimated (%)")
+    ax.text(3, 95, "RMSE (points):\n" + "\n".join(f"{n} {r*100:.1f}" for n, r in zip(names, rmse)), fontsize=6.0,
+            va="top", color=INK)
+    ax.set_title("Fully constrained least squares", fontsize=8)
+    panel_tag(ax, "b")
+    maps = [(At[:, 2], "True carbonate", "Greens", (0, 0.8)), (est[:, 2], "Estimated carbonate", "Greens", (0, 0.8)),
+            (res4, "Residual, library\nwithout smectite", "Purples", (0, np.percentile(res4, 99.5)))]
+    for k, (m, ttl, cm, lim) in enumerate(maps):
+        ax = fig.add_subplot(gs[1, 2 * k:2 * k + 2])
+        ax.imshow(m.reshape(H, W), cmap=cm, vmin=lim[0], vmax=lim[1], interpolation="nearest")
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.grid(False)
+        ax.set_title(ttl, fontsize=7.6)
+        panel_tag(ax, "cde"[k])
+    foot(fig, f"Synthetic 48 × 72-pixel scene, 221 bands (0.40–2.60 µm), five endmembers with absorption bands at the "
+              f"positions of real minerals, linear (areal) mixing, noise SNR {snr:.0f}. FCLS = non-negative least squares "
+              "with a sum-to-one row. Without the smectite spectrum, the residual map outlines where the library is "
+              "incomplete. Seed 5154.")
+    fig.subplots_adjust(left=0.07, right=0.99, top=0.94, bottom=0.13)
+    save(fig, "ch51_unmixing")
+
+
+# ==============================================================================================
+# 9. Earth-Mars light-time and the speed of ground support
+def helio(L0, n, a, e, pibar, d):
+    M = np.radians((L0 + n * d - pibar) % 360)
+    Ecc = M.copy()
+    for _ in range(12):
+        Ecc = Ecc - (Ecc - e * np.sin(Ecc) - M) / (1 - e * np.cos(Ecc))
+    nu = 2 * np.arctan2(np.sqrt(1 + e) * np.sin(Ecc / 2), np.sqrt(1 - e) * np.cos(Ecc / 2))
+    r = a * (1 - e * np.cos(Ecc))
+    lon = nu + np.radians(pibar)
+    return r * np.cos(lon), r * np.sin(lon)
+
+
+def delay():
+    import datetime as dt
+    d0 = (dt.date(2026, 1, 1) - dt.date(2000, 1, 1)).days - 0.5
+    d = d0 + np.arange(0, 3.5 * 365.25, 0.5)
+    xe, ye = helio(100.46457, 0.98560912, 1.00000261, 0.01671123, 102.93768, d)
+    xm, ym = helio(-4.55343, 0.52402068, 1.52371034, 0.09339410, -23.94363, d)
+    dist = np.hypot(xm - xe, ym - ye)
+    lt = dist * 149.598e6 / 299792.458 / 60          # minutes
+    # Sun-Earth-Mars elongation at Earth
+    ve, vm = np.stack([-xe, -ye]), np.stack([xm - xe, ym - ye])
+    elong = np.degrees(np.arccos(np.sum(ve * vm, 0) / np.linalg.norm(ve, axis=0) / np.linalg.norm(vm, axis=0)))
+    dates = [dt.date(2000, 1, 1) + dt.timedelta(days=float(x + 0.5)) for x in d]
+    i_min, i_max = np.argmin(lt), np.argmax(lt)
+    blk = elong < 2.0
+    print(f"delay: one-way light-time {lt.min():.1f}-{lt.max():.1f} min; closest {dates[i_min]}, farthest {dates[i_max]}")
+    for lim in (2.0, 3.0):
+        b = (elong < lim).astype(int)
+        st = np.where(np.diff(np.concatenate([[0], b])) == 1)[0]
+        en = np.where(np.diff(np.concatenate([b, [0]])) == -1)[0]
+        for a_, b_ in zip(st, en):
+            print(f"delay: elongation < {lim} deg {dates[a_]} to {dates[b_]} ({(b_-a_)*0.5:.0f} d), "
+                  f"min elong {elong[a_:b_+1].min():.2f} on {dates[a_ + np.argmin(elong[a_:b_+1])]}, lt {lt[a_:b_+1].max():.1f} min")
+    # CO2 build-up example: 4 crew, 1.0 kg CO2 per person per day, 100 m3 free volume, 22 C
+    rate = 4 * 1.0 / 24 / 0.044 * 8.314 * 295 / 100      # Pa per hour
+    print(f"delay: CO2 rise {rate:.0f} Pa/h; 0.4 -> 1.0 kPa in {600/rate:.1f} h")
+
+    fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.9), gridspec_kw=dict(width_ratios=[1.0, 1.15], wspace=0.75))
+    ax = axs[0]
+    yrs = np.array([x.year + (x.timetuple().tm_yday - 0.5) / 365.25 for x in dates])
+    ax.plot(yrs, lt, color=BLUE, lw=1.4, label="One-way light-time")
+    ax.plot(yrs, 2 * lt + 30, color=ORANGE, lw=1.2, ls="--", label="Ground loop: 2 × light-time + 30 min")
+    ax.fill_between(yrs, 0, 100, where=elong < 3, color=RED, alpha=0.15, lw=0)
+    if (elong < 3).any():
+        jj = np.where(elong < 3)[0]
+        ax.text(yrs[jj][-1] + 0.05, 97, "solar\nconjunction:\nno link", fontsize=6.2, color=RED, ha="left", va="top")
+    ax.set_xlim(yrs[0], yrs[-1])
+    ax.set_ylim(0, 100)
+    ax.set_xticks([2026, 2027, 2028, 2029])
+    ax.set_xticklabels(["2026", "2027", "2028", "2029"])
+    ax.set_ylabel("Minutes")
+    ax.legend(fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, 0.88))
+    ax.set_title("Earth–Mars delay, 2026–29", fontsize=8)
+    panel_tag(ax, "a")
+    ax = axs[1]
+    ev = [("Fire, rapid leak of cabin air", 10, 300), ("Cardiac arrest", 60, 600), ("Severe allergic reaction", 120, 1200),
+          ("Toxic leak (ammonia)", 60, 1800), ("CO₂ removal stops (4 crew)", 3 * 3600, 8 * 3600),
+          ("Abdominal pain, diagnosis", 6 * 3600, 3 * 86400), ("Pump fails, spare on board", 86400, 10 * 86400),
+          ("Plan a repair with no spare", 3 * 86400, 30 * 86400)]
+    loops = [("Moon", 2 * 1.3 + 300), ("Mars, close", 2 * lt.min() * 60 + 1800), ("Mars, far", 2 * lt.max() * 60 + 1800),
+             ("Solar\nconjunction", 14 * 86400)]
+    n = len(ev)
+    for k, (nme, a, b) in enumerate(ev[::-1]):
+        far = loops[2][1]
+        col = RED if b < loops[1][1] else (GOLD if b < far * 3 else GREEN)
+        ax.barh(k, np.log10(b) - np.log10(a), left=np.log10(a), height=0.6, color=col, alpha=0.8)
+    ax.set_yticks(range(n))
+    ax.set_yticklabels([e[0] for e in ev[::-1]], fontsize=6.3)
+    lab_pos = {"Moon": (n + 0.15, "left"), "Mars, close": (n + 0.75, "left"), "Mars, far": (n + 0.15, "left"),
+               "Solar\nconjunction": (n + 0.75, "right")}
+    for nme, tt in loops:
+        ax.plot([np.log10(tt)] * 2, [-0.6, n - 0.4], color=NAVY, lw=0.8, ls="--")
+        yv, ha = lab_pos[nme]
+        ax.text(np.log10(tt) + (0.05 if ha == "left" else -0.05), yv, nme, fontsize=6.0, color=NAVY, ha=ha,
+                va="bottom")
+    ticks = [(1, "1 s"), (60, "1 min"), (3600, "1 h"), (86400, "1 day"), (30 * 86400, "1 month")]
+    ax.set_xticks([np.log10(t) for t, _ in ticks])
+    ax.set_xticklabels([l for _, l in ticks], fontsize=7)
+    ax.set_xlim(-0.4, np.log10(60 * 86400))
+    ax.set_ylim(-0.6, len(ev) + 1.3)
+    ax.grid(axis="y", visible=False)
+    ax.set_xlabel("Time available to act", labelpad=1)
+    ax.set_title("Who must decide?", fontsize=8)
+    panel_tag(ax, "b", x=-0.6)
+    foot(fig, "(a) Heliocentric Keplerian orbits of Earth and Mars (J2000 elements, coplanar approximation); shading "
+              "where Mars is within 3° of the Sun. (b) Approximate times available before harm, compared with a ground "
+              "loop of two light-times plus 30 minutes for experts to respond. Red: crew must act alone; amber: ground "
+              "advice arrives late; green: ground can help.")
+    fig.subplots_adjust(left=0.07, right=0.99, top=0.9, bottom=0.28)
+    save(fig, "ch51_delay")
+
+
+# ==============================================================================================
+# 10. Predictive maintenance of life-support fans
+def eclss():
+    from sklearn.ensemble import HistGradientBoostingClassifier
+    rng = np.random.default_rng(5155)
+    nunit, ndays = 60, 1100
+    rows, meta = [], []
+    for u in range(nunit):
+        tf = rng.weibull(2.5) * 900 + 60            # failure day
+        tau = rng.uniform(15, 40)                   # wear acceleration time scale (days)
+        days = np.arange(ndays)
+        alive = days < tf
+        h = np.exp(np.clip((days - tf) / tau, -30, 0))           # health indicator 0 -> 1 at failure
+        speed = np.where(rng.random(ndays) < 0.35, 1.0, 0.0)   # high-speed days (e.g. sleep vs work)
+        speed = np.round(np.convolve(speed, np.ones(5) / 5, "same"))
+        amb = 22 + 1.2 * np.sin(2 * np.pi * days / 90) + 0.4 * rng.standard_normal(ndays)
+        vib = (1.0 + 0.6 * speed) * (1 + 0.8 * h + 0.08 * rng.standard_normal(ndays))
+        cur = 1.0 + 0.35 * speed + 0.02 * (amb - 22) + 0.12 * h + 0.025 * rng.standard_normal(ndays)
+        tmp = amb + 6 + 2 * speed + 4 * h + 0.5 * rng.standard_normal(ndays)
+        lab = (tf - days <= 30) & alive
+        for k in np.where(alive)[0]:
+            lo = max(0, k - 30)
+            w7 = slice(max(0, k - 6), k + 1)
+            sp = speed[w7]
+            rows.append([speed[k], amb[k], vib[k], cur[k], tmp[k],
+                         np.mean(vib[w7] / (1 + 0.6 * speed[w7])) - np.mean(vib[lo:k + 1] / (1 + 0.6 * speed[lo:k + 1])),
+                         np.mean(cur[w7] - 0.35 * sp), np.mean(tmp[w7] - amb[w7] - 2 * sp)])
+            meta.append((u, k, tf, lab[k], vib[k] / (1 + 0 * speed[k])))
+    X = np.array(rows)
+    M = np.array(meta)
+    unit, day, tfail, y = M[:, 0].astype(int), M[:, 1], M[:, 2], M[:, 3].astype(bool)
+    train = unit < 40
+    clf = HistGradientBoostingClassifier(max_iter=250, learning_rate=0.08, max_leaf_nodes=15, random_state=0)
+    clf.fit(X[train], y[train])
+    score = clf.predict_proba(X)[:, 1]
+    test = ~train
+    nfail = len(np.unique(unit[test & (tfail < ndays)]))
+    unit_years = np.sum(test) / 365.25
+
+    def evaluate(sc, thr, persist=3):
+        warn, fa = [], 0
+        for u in np.unique(unit[test]):
+            m = test & (unit == u)
+            s_, d_, tf_ = sc[m], day[m], tfail[m][0]
+            al = np.convolve(s_ > thr, np.ones(persist), "full")[:len(s_)] >= persist
+            # false alarm episodes: alarms more than 30 days before failure (or on units that never fail)
+            early = al & (tf_ - d_ > 30)
+            fa += np.sum(np.diff(np.concatenate([[0], early.astype(int)])) == 1)
+            if tf_ < ndays:
+                late = al & (tf_ - d_ <= 30)
+                warn.append(tf_ - d_[late][0] if late.any() else 0.0)
+        return np.median(warn) if warn else 0, fa / unit_years, np.mean(np.array(warn) > 0) if warn else 0
+    curves = {}
+    for nme, sc, thrs in [("ml", score, np.quantile(score[test], np.linspace(0.5, 0.9995, 60))),
+                          ("limit", X[:, 2], np.linspace(1.1, 3.5, 60))]:
+        curves[nme] = np.array([evaluate(sc, t) for t in thrs])
+    for nme in curves:
+        c = curves[nme]
+        ok = c[:, 1] <= 0.5
+        best = c[ok][np.argmax(c[ok][:, 0])] if ok.any() else c[-1]
+        print(f"eclss: {nme}: at <=0.5 false alarms per unit-year, median warning {best[0]:.0f} d, "
+              f"failures warned {best[2]*100:.0f}% (false alarms {best[1]:.2f}/unit-yr)")
+    print(f"eclss: test units 20 ({nfail} fail within {ndays} d), {unit_years:.1f} unit-years")
+
+    fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.75), gridspec_kw=dict(width_ratios=[1.3, 1], wspace=0.45))
+    ax = axs[0]
+    cand = [u for u in range(40, 60) if 300 < tfail[unit == u][0] < ndays]
+    u = cand[0]
+    m = unit == u
+    dd = day[m]
+    ax.set_xlim(max(0, tfail[m][0] - 260), tfail[m][0] + 8)
+    ax.plot(dd, X[m, 2], color=GREY, lw=0.5, label="Vibration (raw, changes with fan speed)")
+    ax.plot(dd, X[m, 2] / (1 + 0.6 * X[m, 0]), color=BLUE, lw=0.8, label="Vibration, speed-normalised")
+    ax.set_ylabel("Vibration (relative)")
+    ax.set_xlabel("Day", labelpad=1)
+    ax.axvline(tfail[m][0], color=RED, lw=1)
+    ax.text(tfail[m][0] - 3, 3.3, "failure", color=RED, fontsize=6.6, ha="right")
+    ax2 = ax.twinx()
+    ax2.plot(dd, score[m], color=ORANGE, lw=0.9, label="Model risk of failure within 30 days")
+    ax2.set_ylim(0, 1.6)
+    ax2.set_yticks([0, 0.5, 1.0])
+    ax2.set_ylabel("Risk score", color=ORANGE)
+    ax2.grid(False)
+    ax2.spines["right"].set_visible(True)
+    ax.set_ylim(0.6, 4.8)
+    h1, l1 = ax.get_legend_handles_labels()
+    h2, l2 = ax2.get_legend_handles_labels()
+    ax.legend(h1 + h2, l1 + l2, fontsize=6.0, loc="upper left")
+    ax.set_title("One test fan before its failure", fontsize=8)
+    panel_tag(ax, "a")
+    ax = axs[1]
+    for nme, col, lab in [("ml", ORANGE, "Gradient-boosted trees"), ("limit", GREY, "Fixed vibration limit")]:
+        c = curves[nme]
+        o = np.argsort(c[:, 1])
+        ax.plot(c[o, 1], c[o, 0], "o-", ms=2.2, lw=1.1, color=col, label=lab)
+    ax.set_xscale("symlog", linthresh=0.1)
+    ax.set_xlim(0, 30)
+    ax.set_xticks([0, 0.1, 1, 10])
+    ax.set_xticklabels(["0", "0.1", "1", "10"])
+    ax.set_xlabel("False alarms per fan-year", labelpad=1)
+    ax.set_ylabel("Median warning (days)")
+    ax.set_ylim(0, 32)
+    ax.legend(fontsize=6.2, loc="lower right")
+    ax.set_title("Warning time against false alarms", fontsize=8)
+    panel_tag(ax, "b")
+    foot(fig, "Synthetic fleet of 60 cabin fans over 1 100 days: Weibull failure times, wear that grows in the last weeks, "
+              "fan-speed changes and cabin temperature as confounders. Model trained on 40 fans and tested on 20 others; "
+              "an alarm needs three days in a row above threshold. Seed 5155.")
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.9, bottom=0.25)
+    save(fig, "ch51_eclss")
+
+
 if __name__ == "__main__":
-    fns = [alerts, funnel, transit, vetting, photoz, transients]
+    fns = [alerts, funnel, transit, vetting, photoz, transients, craters, unmixing, delay, eclss]
     sel = sys.argv[1:]
     for fn in fns:
         if not sel or fn.__name__ in sel:

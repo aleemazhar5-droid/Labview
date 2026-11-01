@@ -352,8 +352,8 @@ def streak():
     cb.ax.tick_params(labelsize=5.8)
     panel_tag(ax, "b")
     ax = axs[2]
-    ax.plot(amps, pd_pt, "-o", color=GREY, ms=3, lw=1.2, label="point-source (PSF) detector")
-    ax.plot(amps, pd_mf, "-o", color=BLUE, ms=3, lw=1.4, label="line matched filter, 36 angles")
+    ax.plot(amps, pd_pt, "-o", color=GREY, ms=3, lw=1.2, label="point-source filter")
+    ax.plot(amps, pd_mf, "-o", color=BLUE, ms=3, lw=1.4, label="line matched filter")
     ax.set_xscale("log")
     ax.set_xticks([0.1, 0.2, 0.5, 1, 2, 3])
     ax.set_xticklabels(["0.1", "0.2", "0.5", "1", "2", "3"])
@@ -362,8 +362,9 @@ def streak():
     ax.set_ylabel("Detection probability")
     ax.set_ylim(-0.02, 1.05)
     ax.grid(alpha=0.3)
-    ax.legend(fontsize=5.8, loc="center right", frameon=False)
-    ax.text(0.97, 0.06, "0.1 false alarm\nper image", transform=ax.transAxes, fontsize=5.8, color=GREY, ha="right")
+    ax.legend(fontsize=5.8, loc="lower right", frameon=False)
+    ax.text(0.03, 0.95, "0.1 false alarm\nper image", transform=ax.transAxes, fontsize=5.8, color=GREY, ha="left",
+            va="top")
     panel_tag(ax, "c")
     foot(fig, f"Synthetic 192 × 192 px frame, unit Gaussian noise, 90 stars (PSF σ = 1.3 px) and a 64 px streak. "
               f"Stars masked above 6σ after PSF smoothing. (c) {ntrial} trials per point on 128 px frames with stars masked; "
@@ -482,7 +483,7 @@ def assoc():
     ax2.xaxis.set_minor_formatter(NullFormatter())
     ax2.set_ylim(15, 101)
     ax2.grid(alpha=0.3)
-    ax2.legend(fontsize=5.8, loc="upper left", frameon=False)
+    ax2.legend(fontsize=5.8, loc="lower right", frameon=False)
     panel_tag(ax2, "b")
     foot(fig, "Synthetic radar pass over objects released together and spread along-track; prediction error σ along-track "
               "and 0.25σ cross-track; 92 % detection probability; two unknown objects per pass. Gate χ² < 13.8 "
@@ -754,8 +755,8 @@ def triage():
     ax1.set_ylabel("log₁₀ probability of collision")
     ax1.legend(handles=[Line2D([], [], color=RED, lw=1.2, label="high risk at the end"),
                         Line2D([], [], color=ORANGE, lw=1.2, label="looked risky, then fell"),
-                        Line2D([], [], color=GREY, lw=1.2, label="low risk")], fontsize=5.8, loc="upper left",
-               frameon=False)
+                        Line2D([], [], color=GREY, lw=1.2, label="low risk")], fontsize=5.8, loc="lower center",
+               bbox_to_anchor=(0.5, 0.0), frameon=False)
     ax1.grid(alpha=0.3)
     panel_tag(ax1, "a")
     ax2.plot(a_lr, r_lr * 100, color=GREY, lw=1.4, label="rank by latest Pc")
@@ -778,12 +779,494 @@ def triage():
               "km to tens of metres, covariance realism error 30 %, correlated estimation errors, 15 % of CDMs missing. "
               f"High risk: final Pc ≥ 10⁻⁵. Trees trained on half, tested on the other half using CDMs up to 2 days "
               "before closest approach.", width=140)
-    fig.tight_layout(rect=(0, 0.085, 1, 1))
+    fig.tight_layout(rect=(0, 0.11, 1, 1))
     save(fig, "ch50_triage")
 
 
+# ==============================================================================================
+# Manoeuvre detection: CUSUM on prediction residuals vs a learned classifier
+DTM = 0.25            # days between semi-major-axis estimates (four tracking updates a day)
+SIGA = 25.0           # m, noise of each semi-major-axis estimate
+
+
+def sma_series(rng, nsat, days=60):
+    t = np.arange(0, days, DTM)
+    n = len(t)
+    _, _, ap = space_weather(rng, days=days + 2)
+    apd = lagged(ap)[::6][:n]                                             # 6-hourly
+    Y = np.zeros((nsat, n))
+    lab = np.zeros((nsat, n), bool)                                        # True at first sample after a burn
+    sizes = []
+    stormf = (1 + apd / 15.0) ** 0.55 / (1 + 6 / 15.0) ** 0.55
+    for i in range(nsat):
+        base = rng.uniform(15, 60)                                          # m/day decay in quiet conditions
+        rate = base * stormf * np.exp(0.15 * np.sin(2 * np.pi * t / rng.uniform(20, 35)))
+        a = -np.cumsum(rate) * DTM
+        nb = rng.poisson(days / 20.0)
+        for tb in rng.uniform(3, days - 3, nb):
+            k = int(np.ceil(tb / DTM))
+            da = np.exp(rng.uniform(np.log(15), np.log(150)))               # 15-150 m (about 1-8 cm/s)
+            a[k:] += da
+            lab[i, k] = True
+            sizes.append(da)
+        noise = rng.standard_normal(n) * SIGA
+        out = rng.uniform(size=n) < 0.02
+        noise[out] *= 5
+        Y[i] = a + noise
+    return t, apd, Y, lab
+
+
+def cusum_stat(y, W=24, k=1.0, clip=3.0):
+    """Two-sided CUSUM of standardised one-step residuals from a linear fit to the previous W points."""
+    n = len(y)
+    S = np.zeros(n)
+    sp = sm = 0.0
+    x = np.arange(W)
+    for j in range(W, n):
+        c = np.polyfit(x, y[j - W:j], 1)
+        res = y[j - W:j] - np.polyval(c, x)
+        s_ = 1.4826 * np.median(np.abs(res - np.median(res))) + 1e-6
+        r = (y[j] - np.polyval(c, W)) / s_
+        r = np.clip(r, -clip, clip)
+        sp = max(0.0, sp + r - k)
+        sm = max(0.0, sm - r - k)
+        S[j] = max(sp, sm)
+    return S
+
+
+def window_features(y, apd, B=24, A=8):
+    """Features for each time j: detrended window of B points before and A after, in noise units, and storm level."""
+    n = len(y)
+    X, J = [], []
+    xb = np.arange(B)
+    for j in range(B, n - A + 1):
+        c = np.polyfit(xb, y[j - B:j], 1)
+        w = (y[j - B:j + A] - np.polyval(c, np.arange(-0, B + A))) / SIGA
+        # robust step statistics
+        pre = np.median(w[:B])
+        post = np.median(w[B:])
+        X.append(np.r_[w, post - pre, np.log1p(apd[max(0, j - B):j + A].mean()), np.log1p(apd[j - B:j].max())])
+        J.append(j)
+    return np.array(X), np.array(J)
+
+
+def events_from_score(score, J, thr, merge=8):
+    """Alarms where score exceeds thr, merging alarms closer than merge samples."""
+    idx = J[score > thr]
+    alarms = []
+    for j in idx:
+        if not alarms or j - alarms[-1] > merge:
+            alarms.append(j)
+    return np.array(alarms, int)
+
+
+def event_scores(alarm_lists, labs, n, lat=8):
+    """Detection probability (alarm within lat samples after a burn) and false alarms per satellite per 30 days."""
+    det = tot = fa = 0
+    for al, lab in zip(alarm_lists, labs):
+        burns = np.where(lab)[0]
+        hit = np.zeros(len(al), bool)
+        for b in burns:
+            ok = (al >= b - 2) & (al <= b + lat)
+            tot += 1
+            if ok.any():
+                det += 1
+                hit[np.argmax(ok)] = True
+        fa += (~hit).sum() - 0
+        # alarms that are close after an already detected burn are not counted as false
+        for k_, a_ in enumerate(al):
+            if not hit[k_] and any((a_ >= b - 2) and (a_ <= b + lat) for b in burns):
+                fa -= 1
+    days = len(labs) * n * DTM
+    return det / max(tot, 1), fa / days * 30
+
+
+def maneuver():
+    from sklearn.ensemble import HistGradientBoostingClassifier
+    rng = np.random.default_rng(77)
+    nsat = 240
+    t, apd, Y, lab = sma_series(rng, nsat)
+    n = len(t)
+    half = nsat // 2
+    Xs, Js, ys = [], [], []
+    for i in range(nsat):
+        X, J = window_features(Y[i], apd)
+        Xs.append(X)
+        Js.append(J)
+        # label: a burn between samples j-1 and j, or j-1/j+1 (tolerance)
+        lj = lab[i][J] | lab[i][np.minimum(J + 1, n - 1)]
+        ys.append(lj)
+    Xtr = np.concatenate(Xs[:half])
+    ytr = np.concatenate(ys[:half])
+    clf = HistGradientBoostingClassifier(max_iter=250, learning_rate=0.06, max_leaf_nodes=15,
+                                         class_weight={0: 1.0, 1: 10.0}, random_state=0)
+    clf.fit(Xtr, ytr)
+    sc_ml = [clf.predict_proba(Xs[i])[:, 1] for i in range(half, nsat)]
+    sc_cu = [cusum_stat(Y[i]) for i in range(half, nsat)]
+    labs = [lab[i] for i in range(half, nsat)]
+    Jfull = np.arange(n)
+    curves = {}
+    for name, scs, Jl, thrs in (("cusum", sc_cu, [Jfull] * len(sc_cu), np.linspace(1.5, 25, 40)),
+                               ("ml", sc_ml, Js[half:], np.r_[np.linspace(0.02, 0.98, 49), 0.99, 0.995])):
+        pts = []
+        for th in thrs:
+            als = [events_from_score(sc, J, th) for sc, J in zip(scs, Jl)]
+            pts.append(event_scores(als, labs, n))
+        curves[name] = np.array(pts)
+    # small burns only
+    def small_curve(scs, Jl, thrs, smax=40.0):
+        out = []
+        for th in thrs:
+            det = tot = 0
+            for sc, J, i in zip(scs, Jl, range(half, nsat)):
+                al = events_from_score(sc, J, th)
+                for b in np.where(lab[i])[0]:
+                    da = (Y[i][b:b + 6].mean() - Y[i][b - 6:b].mean())
+                    if da < smax:
+                        tot += 1
+                        det += ((al >= b - 2) & (al <= b + 8)).any()
+            out.append(det / max(tot, 1))
+        return np.array(out)
+
+    for name, cv in curves.items():
+        o = np.argsort(cv[:, 1])
+        pds = [np.interp(f, cv[o, 1], cv[o, 0]) for f in (0.3, 1.0, 3.0)]
+        print(f"maneuver {name}: Pd at 0.3/1/3 false alarms per satellite-month " + " ".join(f"{p_:.2f}" for p_ in pds))
+    nb = lab[half:].sum()
+    print(f"maneuver: {nsat} satellites x 60 days, {lab.sum()} burns ({nb} in test)")
+
+    # example series
+    i = half + int(np.argmax([lab[k].sum() for k in range(half, nsat)]))
+    fig = plt.figure(figsize=(7.0, 3.0))
+    gs = fig.add_gridspec(2, 2, height_ratios=[1.6, 1], width_ratios=[1.25, 1], hspace=0.1, wspace=0.3)
+    a1 = fig.add_subplot(gs[0, 0])
+    a2 = fig.add_subplot(gs[1, 0], sharex=a1)
+    a3 = fig.add_subplot(gs[:, 1])
+    c_ = np.polyfit(t, Y[i], 2)
+    a1.plot(t, Y[i] - np.polyval(c_, t), ".", color=NAVY, ms=2.2)
+    for b in np.where(lab[i])[0]:
+        a1.axvline(t[b], color=GREEN, lw=0.9, ls="--")
+        a2.axvline(t[b], color=GREEN, lw=0.9, ls="--")
+    a1.set_ylabel("Semi-major axis minus\nsmooth decay (m)", fontsize=6.6)
+    a1.tick_params(labelbottom=False)
+    a1.grid(alpha=0.3)
+    panel_tag(a1, "a")
+    cu = sc_cu[i - half]
+    ml = sc_ml[i - half]
+    a2.plot(t, cu / 8.0, color=GREY, lw=1.0, label="CUSUM / 8")
+    a2.plot(t[Js[i]], ml, color=BLUE, lw=1.0, label="classifier score")
+    a2.set_ylim(0, 1.6)
+    a2.set_xlabel("Days")
+    a2.legend(fontsize=5.6, loc="upper left", ncol=2, frameon=False)
+    a2.grid(alpha=0.3)
+    cvc, cvm = curves["cusum"], curves["ml"]
+    a3.plot(cvc[:, 1], cvc[:, 0] * 100, "-", color=GREY, lw=1.4, label="CUSUM on residuals")
+    a3.plot(cvm[:, 1], cvm[:, 0] * 100, "-", color=BLUE, lw=1.6, label="learned classifier")
+    a3.set_xscale("log")
+    a3.set_xlim(0.05, 12)
+    a3.set_ylim(0, 100)
+    a3.xaxis.set_minor_formatter(NullFormatter())
+    a3.set_xticks([0.1, 0.3, 1, 3, 10])
+    a3.set_xticklabels(["0.1", "0.3", "1", "3", "10"])
+    a3.set_xlabel("False alarms per satellite per 30 days")
+    a3.set_ylabel("Manoeuvres detected within 2 days (%)")
+    a3.grid(alpha=0.3)
+    a3.legend(fontsize=5.8, loc="lower right", frameon=False)
+    panel_tag(a3, "b")
+    foot(fig, f"{nsat} synthetic LEO satellites, 60 days of semi-major-axis estimates every 6 h (noise 25 m, 2 % outliers ×5), "
+              "drag decay 15–60 m/day rising in storms, burns of 15–150 m (about 1–8 cm/s; green dashed lines). Classifier: "
+              f"gradient-boosted trees on 8-day windows (6 days before, 2 after), trained on {half} satellites, tested on "
+              f"the other {nsat - half}.", width=150)
+    fig.subplots_adjust(left=0.1, right=0.98, top=0.95, bottom=0.29)
+    save(fig, "ch50_maneuver")
+
+
+# ==============================================================================================
+# Light-curve classification: stable, tumbling cylinder (rocket body), tumbling panel (defunct satellite)
+LC_T = np.arange(0, 120, 0.5)                                             # 120 s at 2 Hz
+LC_CLASSES = ["stable", "tumbling\ncylinder", "tumbling\npanel"]
+LC_FREQ = 2 * np.pi * np.linspace(1 / 100, 0.9, 110)                      # angular frequencies (rad/s)
+
+
+def light_curve(rng, cls, sig_mag):
+    t = LC_T
+    ph = rng.uniform(0, 2 * np.pi)
+    P = np.exp(rng.uniform(np.log(4), np.log(150)))
+    w = 2 * np.pi / P
+    trend = rng.normal(0, 0.08) * (t - 60) / 60                           # slow change of phase angle (mag)
+    if cls == 0:                                                          # stabilised satellite
+        flux = 1.0 + rng.uniform(0, 0.1) * np.sin(2 * np.pi * t / rng.uniform(100, 600) + ph)
+        if rng.uniform() < 0.3:                                           # an occasional single glint
+            flux += rng.uniform(0.3, 2.0) * np.exp(-0.5 * ((t - rng.uniform(10, 110)) / rng.uniform(1, 3)) ** 2)
+    elif cls == 1:                                                        # tumbling cylinder: two broad peaks/turn
+        asym = rng.uniform(0.6, 1.0)
+        s_ = np.sin(w * t + ph)
+        prof = np.where(s_ > 0, 1.0, asym) * np.abs(s_) ** rng.uniform(0.8, 1.6)
+        flux = 1.0 + rng.uniform(0.05, 0.9) * (prof - prof.mean()) / 0.6
+    else:                                                                 # tumbling panel: diffuse + sharp flashes
+        c_ = np.cos(w * t + ph)
+        width = rng.uniform(0.05, 0.15)
+        flash = rng.uniform(0.2, 4.0) * np.exp(-((1 - c_) / width) ** 2)
+        flux = 1.0 + rng.uniform(0.05, 0.4) * (np.abs(np.sin(w * t + ph)) - 0.64) + flash
+    flux = np.maximum(flux, 0.05)
+    mag = -2.5 * np.log10(flux) + trend + rng.normal(0, sig_mag, len(t))
+    keep = rng.uniform(size=len(t)) > 0.1                                  # 10 % dropped frames
+    return t[keep], mag[keep]
+
+
+def lc_features(t, mag):
+    m = mag - np.median(mag)
+    f = 10 ** (-0.4 * m)
+    mad = 1.4826 * np.median(np.abs(m - np.median(m))) + 1e-6
+    pw = signal.lombscargle(t, m - m.mean(), LC_FREQ, normalize=True)
+    k = int(np.argmax(pw))
+    lag = 2 * np.pi / LC_FREQ[k]
+    # autocorrelation at the best period (on a regular grid)
+    g = np.interp(LC_T, t, m)
+    sh = int(round(lag / 0.5))
+    ac = np.corrcoef(g[:-sh], g[sh:])[0, 1] if 2 < sh < len(g) - 10 else 0.0
+    return np.array([m.std(), np.percentile(m, 95) - np.percentile(m, 5), pw[k], np.log(lag),
+                     stats.skew(f), stats.kurtosis(f), np.mean(m < -4 * mad), ac, mad])
+
+
+def lc_set(rng, n, sig):
+    X, y = [], []
+    for i in range(n):
+        cls = i % 3
+        sg = sig if np.isscalar(sig) else rng.uniform(*sig)
+        t, mg = light_curve(rng, cls, sg)
+        X.append(lc_features(t, mg))
+        y.append(cls)
+    return np.array(X), np.array(y)
+
+
+def lightcurve():
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.metrics import confusion_matrix
+    rng = np.random.default_rng(31)
+    Xtr, ytr = lc_set(rng, 2400, (0.02, 0.6))
+    rf = RandomForestClassifier(n_estimators=200, min_samples_leaf=2, random_state=0, n_jobs=4).fit(Xtr, ytr)
+    dt = DecisionTreeClassifier(max_depth=2, random_state=0).fit(Xtr[:, [1]], ytr)      # amplitude only
+    sigs = np.array([0.02, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6])
+    acc_rf, acc_dt = [], []
+    cm = None
+    for sg in sigs:
+        Xte, yte = lc_set(rng, 450, sg)
+        acc_rf.append(np.mean(rf.predict(Xte) == yte))
+        acc_dt.append(np.mean(dt.predict(Xte[:, [1]]) == yte))
+        if abs(sg - 0.3) < 1e-9:
+            cm = confusion_matrix(yte, rf.predict(Xte), normalize="true")
+    acc_rf, acc_dt = np.array(acc_rf), np.array(acc_dt)
+    for sg, a, b in zip(sigs, acc_rf, acc_dt):
+        print(f"lightcurve noise {sg:.2f} mag: forest {a * 100:.1f} %, amplitude-only tree {b * 100:.1f} %")
+    print("lightcurve confusion at 0.3 mag (rows true):", np.round(cm, 2).tolist())
+    names = ["std", "amplitude", "LS power", "log period", "skew", "kurtosis", "flash frac", "autocorr", "MAD"]
+    imp = rf.feature_importances_
+    print("lightcurve importances:", {n_: round(v, 3) for n_, v in zip(names, imp)})
+
+    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.6), gridspec_kw=dict(width_ratios=[1.3, 1, 0.85]))
+    ax = axs[0]
+    r2 = np.random.default_rng(4)
+    cols = [GREEN, BLUE, ORANGE]
+    for cls, off in zip(range(3), [0, 1.8, 4.2]):
+        while True:
+            t, mg = light_curve(r2, cls, 0.05)
+            amp = np.percentile(mg, 98) - np.percentile(mg, 2)
+            if (cls == 0 and amp < 0.3) or (cls == 1 and 0.8 < amp < 1.4) or (cls == 2 and 1.0 < amp < 2.0):
+                break
+        ax.plot(t, mg - np.median(mg) + off, ".", ms=1.4, color=cols[cls])
+        ax.text(121, off, LC_CLASSES[cls].replace("\n", " "), fontsize=6.0, color=cols[cls], va="center", ha="left")
+    ax.invert_yaxis()
+    ax.set_xlim(0, 160)
+    ax.set_xticks([0, 30, 60, 90, 120])
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("Magnitude (offset; brighter up)")
+    ax.text(2, -0.6, "noise 0.05 mag", fontsize=5.8, color=GREY, va="center")
+    ax.grid(alpha=0.3)
+    panel_tag(ax, "a")
+    ax = axs[1]
+    ax.plot(sigs, acc_rf * 100, "-o", color=BLUE, ms=3, lw=1.5, label="random forest,\n9 features")
+    ax.plot(sigs, acc_dt * 100, "-o", color=GREY, ms=3, lw=1.2, label="amplitude only")
+    ax.axhline(100 / 3, color=GREY, lw=0.7, ls=":")
+    ax.text(0.6, 35, "chance", fontsize=5.8, color=GREY, ha="right", va="bottom")
+    ax.set_xlabel("Photometric noise (mag)")
+    ax.set_ylabel("Accuracy (%)")
+    ax.set_ylim(25, 102)
+    ax.grid(alpha=0.3)
+    ax.legend(fontsize=5.8, loc="lower left", frameon=False)
+    panel_tag(ax, "b")
+    ax = axs[2]
+    ax.imshow(cm, cmap="Blues", vmin=0, vmax=1)
+    for i_ in range(3):
+        for j_ in range(3):
+            ax.text(j_, i_, f"{cm[i_, j_] * 100:.0f}", ha="center", va="center", fontsize=6.6,
+                    color="white" if cm[i_, j_] > 0.6 else INK)
+    lab3 = ["stable", "cyl.", "panel"]
+    ax.set_xticks(range(3))
+    ax.set_xticklabels(lab3, fontsize=6.2)
+    ax.set_yticks(range(3))
+    ax.set_yticklabels(lab3, fontsize=6.2)
+    ax.set_xlabel("Predicted (0.3 mag noise)", fontsize=6.6)
+    ax.set_ylabel("True class", fontsize=6.6)
+    ax.grid(False)
+    panel_tag(ax, "c")
+    foot(fig, "Synthetic 120 s light curves at 2 Hz with 10 % of frames dropped and a slow phase-angle trend; tumbling "
+              "periods 4–150 s; 30 % of stable objects show one glint. Features: spread, amplitude, Lomb–Scargle peak power and period, skewness, kurtosis, "
+              "flash fraction, autocorrelation at the period. Trained on 2 400 curves (noise 0.02–0.6 mag); 450 test "
+              "curves per noise level.", width=145)
+    fig.tight_layout(rect=(0, 0.1, 1, 1), w_pad=0.8)
+    save(fig, "ch50_lightcurve")
+
+
+# ==============================================================================================
+# False alarms of automated change detection at national scale (base-rate arithmetic)
+def changefa():
+    A = 500_000.0                                                          # km2 (a mid-sized country)
+    pf = np.logspace(-9, -2, 200)
+    cells = {"3 m cells (vehicles)": 3.0, "10 m cells": 10.0, "30 m cells (buildings)": 30.0}
+    for name, c in cells.items():
+        n = A * 1e6 / c ** 2
+        print(f"changefa: {name}: {n:.3e} cells; false alerts per pass at 1e-6: {n * 1e-6:,.0f}; at 1e-4: {n * 1e-4:,.0f}")
+    n30 = A * 1e6 / 30.0 ** 2
+    pd_ = 0.9
+    for T in (100, 1000, 10000):
+        for p_ in (1e-4, 1e-6, 1e-8):
+            prec = pd_ * T / (pd_ * T + p_ * n30)
+            print(f"changefa: 30 m cells, {T} true changes, per-cell FA {p_:g}: precision {prec * 100:.2f} %")
+        need = pd_ * T / n30                                               # FA rate for 50 % precision
+        print(f"changefa: {T} true changes -> per-cell FA for 50 % precision {need:.2e}")
+    p2 = 1e-4
+    print(f"changefa: confirmation by a second independent look: {p2:g} -> {p2 ** 2:g}; "
+          f"false alerts {n30 * p2:,.0f} -> {n30 * p2 ** 2:,.2f}; detection {pd_:.2f} -> {pd_ ** 2:.2f}")
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 2.75))
+    for (name, c), col in zip(cells.items(), [RED, ORANGE, BLUE]):
+        n = A * 1e6 / c ** 2
+        ax1.loglog(pf, n * pf, color=col, lw=1.5, label=name)
+    ax1.axhspan(10, 300, color=GREEN, alpha=0.12, lw=0)
+    ax1.text(2e-6, 55, "what a team of analysts\ncan review in a day", fontsize=5.8, color=GREEN, va="center")
+    ax1.set_xlabel("False-alarm probability per cell and pass")
+    ax1.set_ylabel("False alerts per national pass")
+    ax1.set_ylim(1e-1, 1e9)
+    ax1.grid(alpha=0.3, which="major")
+    ax1.legend(fontsize=5.8, loc="upper left", frameon=False)
+    panel_tag(ax1, "a")
+    for T, col in zip((100, 1000, 10000), [RED, ORANGE, BLUE]):
+        prec = pd_ * T / (pd_ * T + pf * n30)
+        ax2.semilogx(pf, prec * 100, color=col, lw=1.5, label=f"{T:,}".replace(",", " "))
+    T = 1000
+    prec2 = pd_ ** 2 * T / (pd_ ** 2 * T + pf ** 2 * n30)
+    ax2.semilogx(pf, prec2 * 100, color=ORANGE, lw=1.2, ls="--", label="1 000, two looks")
+    ax2.set_xlabel("False-alarm probability per cell and pass")
+    ax2.set_ylabel("Alerts that are real changes (%)")
+    ax2.set_ylim(0, 102)
+    ax2.grid(alpha=0.3)
+    ax2.legend(fontsize=5.8, loc="lower left", frameon=False, title="real changes per pass", title_fontsize=5.8)
+    panel_tag(ax2, "b")
+    foot(fig, "Area 500 000 km² imaged once. (b) 30 m cells (5.6 × 10⁸ cells) and 90 % detection probability per look. "
+              "Assumes false alarms independent between cells and looks; real clutter (clouds, shadows, seasons, "
+              "misregistration) is correlated, so measured rates are needed.", width=140)
+    fig.tight_layout(rect=(0, 0.075, 1, 1))
+    save(fig, "ch50_changefa")
+
+
+# ==============================================================================================
+# Diagrams
+def pipeline():
+    """SSA data pipeline with the places where learning enters (status colour-coded)."""
+    fig, ax = canvas(7.0, 4.25, xlim=(0, 100), ylim=(0, 61))
+    OPC, PIL, RES = GREEN, ORANGE, VIOLET
+
+    def blk(x, y, w, h, t, b, c=NAVY):
+        title_box(ax, x, y, w, h, t, b, fs=5.8, tfs=6.5, hc=c, ec=c)
+
+    W = 18.0
+    xs = [0.5, 20.5, 40.5, 60.5, 80.5]
+    top = [("Sensors", "radars, telescopes,\nspace-based and\ncommercial networks"),
+           ("Detection", "radar returns,\nstreaks and points\nin images"),
+           ("Association", "match detections\nto known objects;\nleft over: UCTs"),
+           ("Orbit determination", "fit orbits, predict\nwith gravity, drag\nand density models"),
+           ("Catalogue", "~35 000 objects:\norbits, covariance,\nsize, status")]
+    for x, (t, b) in zip(xs, top):
+        blk(x, 39, W, 14.5, t, b)
+    for i in range(4):
+        arrow(ax, (xs[i] + W, 46.2), (xs[i + 1], 46.2), lw=1.1, ms=8)
+    bot = [("Behaviour analysis", "manoeuvres, break-ups,\nlight curves, radar\ncross-section", BLUE),
+           ("Coordination", "operators, TraCSS,\nEU SST; who moves?", NAVY),
+           ("Decision", "manoeuvre or not;\nby people or\nonboard rules", NAVY),
+           ("Risk triage", "probability of\ncollision from CDMs;\nwhich events matter?", NAVY),
+           ("Screening", "all-against-all\nclose approaches\nfor 7 days ahead", NAVY)]
+    for x, (t, b, c) in zip(xs, bot):
+        blk(x, 13.5, W, 14.5, t, b, c=c)
+    arrow(ax, (xs[4] + W / 2, 39), (xs[4] + W / 2, 28.0), lw=1.1, ms=8)
+    for i in (4, 3, 2):
+        arrow(ax, (xs[i], 20.7), (xs[i - 1] + W, 20.7), lw=1.1, ms=8)
+    # residuals / UCTs to behaviour analysis, and tasking back to sensors
+    ax.plot([xs[3] + W / 2, xs[3] + W / 2, xs[0] + W * 0.7], [39, 34.2, 34.2], color=BLUE, lw=0.9, ls="--")
+    arrow(ax, (xs[0] + W * 0.7, 34.2), (xs[0] + W * 0.7, 28.0), lw=0.9, ms=7, color=BLUE, ls="--")
+    ax.text(35, 35.0, "residuals, UCTs, new objects", fontsize=5.8, color=BLUE, ha="center", va="bottom")
+    arrow(ax, (xs[0] + W * 0.3, 28.0), (xs[0] + W * 0.3, 39), lw=0.9, ms=7, color=BLUE)
+    ax.text(xs[0] + W * 0.3 - 1.0, 33.5, "re-task\nsensors", fontsize=5.8, color=BLUE, ha="right", va="center")
+    # status tags (top row above, bottom row below)
+    tags_top = [("ML radar scheduling:\ncommercial", PIL), ("CNN streak finders:\nresearch", RES),
+                ("learned association:\nresearch", RES), ("ML error correction:\nresearch", RES),
+                ("physics-based:\noperational", OPC)]
+    for x, (t, c) in zip(xs, tags_top):
+        ax.text(x + W / 2, 54.5, t, fontsize=5.5, color=c, ha="center", va="bottom", weight="bold", linespacing=1.1)
+    tags_bot = [("ML behaviour scores:\ncommercial services", PIL), ("CREAM, TraCSS:\npilots", PIL),
+                ("autonomous avoidance:\noperational (Starlink)", OPC), ("ML triage: research\n(Kelvins 2019)", RES),
+                ("filters + computing:\noperational", OPC)]
+    for x, (t, c) in zip(xs, tags_bot):
+        ax.text(x + W / 2, 12.6, t, fontsize=5.5, color=c, ha="center", va="top", weight="bold", linespacing=1.1)
+    ax.text(0.5, 2.6, "Status in 2026:", fontsize=6.0, color=INK, ha="left", va="center", weight="bold")
+    for x0, (t, c) in zip([20.0, 46.0, 80.0], [("operational", OPC), ("pilots, commercial services", PIL),
+                                              ("research", RES)]):
+        ax.add_patch(Rectangle((x0, 1.5), 2.0, 2.2, fc=c, ec="none"))
+        ax.text(x0 + 2.8, 2.6, t, fontsize=6.0, color=INK, ha="left", va="center")
+    save(fig, "ch50_pipeline")
+
+
+def tipcue():
+    """Tip-and-cue loop across constellations, with human decision points and adversary deception."""
+    fig, ax = canvas(7.0, 3.35, xlim=(0, 100), ylim=(0, 48))
+    HUM = ORANGE
+
+    def blk(x, y, w, h, t, b, c=NAVY):
+        title_box(ax, x, y, w, h, t, b, fs=5.8, tfs=6.5, hc=c, ec=c)
+
+    blk(1, 27, 19, 14, "Wide-area sensors", "SAR, optical, RF,\ninfrared; government\nand commercial")
+    blk(27, 27, 19, 14, "Automated detection", "objects, change,\nemitters, launches;\nconfidence scores", c=BLUE)
+    blk(53, 27, 19, 14, "Fusion and patterns", "tracks across sensors;\nactivity compared with\nnormal behaviour", c=BLUE)
+    blk(79, 27, 20, 14, "Analyst review", "checks evidence and\nalternatives; sets\nconfidence; explains", c=HUM)
+    blk(53, 5, 19, 14, "Cue: task more looks", "high-resolution satellite,\nother sensor or ground\nsource; revisit", c=BLUE)
+    blk(79, 5, 20, 14, "Decision makers", "commanders and\npolicy officials; human\njudgement on any force", c=HUM)
+    blk(1, 5, 19, 14, "Adversary", "decoys, camouflage,\nemission control,\nspoofing, attacks on AI", c=RED)
+    for a, b in [((20, 34), (27, 34)), ((46, 34), (53, 34)), ((72, 34), (79, 34))]:
+        arrow(ax, a, b, lw=1.1, ms=8)
+    arrow(ax, (89, 27), (89, 19), lw=1.1, ms=8, color=HUM)
+    ax.text(90.2, 23, "report", fontsize=5.8, color=HUM, ha="left", va="center")
+    arrow(ax, (62.5, 27), (62.5, 19), lw=1.0, ms=7, color=BLUE)
+    ax.text(63.6, 23, "tip", fontsize=5.8, color=BLUE, ha="left", va="center")
+    arrow(ax, (79, 29), (72, 17), lw=0.9, ms=7, color=HUM, ls="--")
+    ax.text(76.6, 21.0, "ask", fontsize=5.8, color=HUM, ha="left", va="center")
+    arrow(ax, (53, 12), (10.5, 12), lw=0.0, ms=1, color="white")
+    ax.plot([53, 24, 24], [12, 12, 27], color=BLUE, lw=1.0)
+    arrow(ax, (24, 24), (24, 27.2), lw=1.0, ms=7, color=BLUE)
+    ax.text(38.5, 12.8, "new collection, minutes to hours later", fontsize=5.8, color=BLUE, ha="center", va="bottom")
+    arrow(ax, (10.5, 19), (10.5, 27), lw=1.0, ms=7, color=RED, ls="--")
+    ax.text(11.5, 23, "fools sensors\nand models", fontsize=5.8, color=RED, ha="left", va="center")
+    ax.text(50, 45.5, "Machines filter and cue; people check, judge and decide", fontsize=6.8, color=NAVY,
+            ha="center", weight="bold")
+    ax.add_patch(Rectangle((27, 1.0), 2.0, 2.0, fc=BLUE, ec="none"))
+    ax.text(29.8, 2.0, "machine step (AI)", fontsize=6.0, color=INK, va="center")
+    ax.add_patch(Rectangle((52, 1.0), 2.0, 2.0, fc=HUM, ec="none"))
+    ax.text(54.8, 2.0, "human decision point", fontsize=6.0, color=INK, va="center")
+    save(fig, "ch50_tipcue")
+
+
 if __name__ == "__main__":
-    fns = [screening, streak, assoc, drag, triage]
+    fns = [pipeline, tipcue, screening, streak, assoc, drag, triage, maneuver, lightcurve, changefa]
     sel = sys.argv[1:]
     for fn in fns:
         if not sel or fn.__name__ in sel:
