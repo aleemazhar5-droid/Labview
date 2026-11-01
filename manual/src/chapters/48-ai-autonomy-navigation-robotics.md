@@ -16,7 +16,7 @@ The key idea is simple. A spacecraft needs autonomy whenever the ground cannot r
 
 ### Light-Time, Gaps and Scale
 
-**Light-time** is the time a radio signal takes to travel one way. It is 0.12 s to geostationary orbit and 1.3 s to the Moon. To Mars it ranges from about 3 to 22 minutes, and to Jupiter from 33 to 53 minutes. Voyager 1 will be one light-day from Earth in November 2026. A question and its answer take twice as long.
+**Light-time** is the time a radio signal takes to travel one way. It is 0.12 s to geostationary orbit and 1.3 s to the Moon. To Mars it ranges from about 3 to 22 minutes, and to Jupiter from 33 to 54 minutes. Voyager 1 will be one light-day from Earth in November 2026. A question and its answer take twice as long.
 
 **Contact gaps** often matter more. A low-orbit satellite passes over a ground station for about ten minutes at a time, a few times a day. A Mars rover talks to Earth mostly through orbiters that fly over a few times per sol (a Martian day of 24 h 39 min). Deep-space missions share NASA's Deep Space Network with dozens of others and may get a few hours of contact a day.
 
@@ -86,7 +86,7 @@ Faults are rare, so the prior $P(m)$ favours explanations with few failed parts.
 
 ### Twenty-Five Years of Flight Experience
 
-Landmark flights of onboard autonomy are listed in @tbl:autonomyflights. Three patterns stand out. Autonomy has grown from one-off experiments into everyday operations. Most of it is search, estimation and optimisation, not learning. And learned components have entered mainly through perception and science, such as EO-1's classifiers and rover targeting; the first learned flight controller flew only in 2025.
+Landmark flights of onboard autonomy are listed in @tbl:autonomyflights. Three patterns stand out. Autonomy has grown from one-off experiments into everyday operations. Most of it is search, estimation and optimisation, not learning. And learned components have entered mainly through perception and science, such as EO-1's classifiers and rover targeting. The first in-orbit test of a learned attitude controller was reported only in 2025.
 
 ::: pagebreak
 :::
@@ -95,8 +95,8 @@ Landmark flights of onboard autonomy are listed in @tbl:autonomyflights. Three p
 |:----|:-------|:--------------|:--------|:----------|
 | 1999 | Deep Space 1 | Remote Agent planning, execution, diagnosis | Flight experiment | 100 % of objectives |
 | 1999–2001 | Deep Space 1 | AutoNav optical navigation | Flight demonstration | Comet Borrelly flyby, 2001 |
-| 2004–17 | EO-1 | Onboard planning and event detection (ASE) | Operational | Over $1 M a year saved |
-| 2016– | Curiosity, Perseverance | AEGIS science targeting | Operational | 889 targets to May 2026 |
+| 2004–17 | EO-1 | Onboard planning and event detection (ASE) | Operational | About $1 M a year saved |
+| 2010– | Opportunity, Curiosity, Perseverance | AEGIS science targeting | Operational | 889 targets 2016–May 2026 |
 | 2019– | Starlink | Autonomous collision avoidance | Operational | 207 152 manoeuvres in 6 months |
 | 2020 | OSIRIS-REx | Natural Feature Tracking to sample site | Operational | Within about 1 m |
 | 2021 | Perseverance | Lander Vision System | Operational | Touchdown 5 m from aim |
@@ -113,7 +113,7 @@ Landmark flights of onboard autonomy are listed in @tbl:autonomyflights. Three p
 
 NASA's Deep Space 1 tested twelve new technologies. One was the **Remote Agent**, the first AI software to control a spacecraft without ground commanding. It had three parts: a constraint-based planner and scheduler, a multi-threaded "Smart Executive", and Livingstone for diagnosis and recovery. The experiment ran during 17–21 May 1999, for about 35 hours in all.
 
-A 2-day scenario started at 11:04 PDT on 17 May. Remote Agent planned and ran ion-engine thrusting and imaging. It handled an injected camera-switch failure by re-planning. On the morning of 18 May it failed to stop the ion engine as planned. The cause was a race condition between two executive threads that had never appeared in thousands of ground tests. About 70 % of the objectives had been met. The team wrote a new 6-hour scenario overnight. The project chose not to uplink the software fix, judging it insufficiently tested. On 21 May the new scenario completed the remaining objectives, so the experiment met 100 % of them. Its deadlock became a classic argument for formal verification of flight software.
+A 2-day scenario started at 11:04 PDT on 17 May. Remote Agent planned and ran ion-engine thrusting and imaging. When a simulated fault left a camera stuck on, it tried to switch it off, then re-planned around the extra power use. Early on 18 May the part of the executive that issues commands stopped, so the ion engine was not turned off as planned; a backup command shut it down later. The cause was a race condition between two executive threads that had not appeared in extensive ground testing. About 70 % of the objectives had been met by then. There was no time to fix and re-test the software that week. The team instead wrote a new 6-hour scenario and ran it with the bug still on board. On 21 May that scenario completed the remaining objectives, so the experiment met 100 % of them. Its deadlock became a classic argument for formal verification of flight software.
 :::
 
 ## Onboard Planning and Scheduling
@@ -149,9 +149,9 @@ Europe has tested autonomy mainly through small missions. ESA's OPS-SAT CubeSat 
 ::: history
 **The Autonomous Sciencecraft on EO-1 (2004–2017)**
 
-NASA's Earth Observing-1 satellite, launched in 2000 to test new imagers, became the longest-running test of an onboard planner. From January 2004 its **Autonomous Sciencecraft Experiment** (ASE) ran full-time. It had three parts. Onboard classifiers analysed Hyperion images for events such as eruptions, floods, fires and ice break-up. The CASPER planner re-planned observations around new goals. A robust executive ran the result.
+NASA's Earth Observing-1 satellite, launched in 2000 to test new imagers, became the longest-running test of an onboard planner. Its **Autonomous Sciencecraft Experiment** (ASE) began operating on board in January 2004 and was declared validated in May 2004. In November 2004 it became EO-1's primary operations system. It had three parts. Onboard classifiers analysed Hyperion images for events such as eruptions, floods, fires and ice break-up. The CASPER planner re-planned observations around new goals. A robust executive ran the result.
 
-The computer was modest: a 12 MHz Mongoose V processor of about 8 million instructions per second with 256 MB of memory, separate from the main flight computer for safety. CASPER's model was kept small so that it could build a plan in tens of minutes. By 2007 ASE had made over 11 000 autonomous data acquisitions and over 1 500 closed-loop re-tasks. Alerts from other satellites, such as volcano warnings, could trigger Hyperion images through ground "sensorwebs". JPL reported that operations costs fell by more than $1 million a year, and science events captured per megabyte of downlink rose over a hundredfold. ASE remained the primary planning system until the end of the mission in 2017, after more than 60 000 autonomous observations.
+The computer was modest: a 12 MHz Mongoose V processor of about 8 million instructions per second (MIPS), separate from the main flight computer for safety. ASE had only about 4 MIPS and 128 MB of memory to itself. CASPER's model was kept small so that it could build a plan in tens of minutes. By 2007 ASE had made over 11 000 autonomous data acquisitions and over 1 500 closed-loop re-tasks. Alerts from other satellites, such as volcano warnings, could trigger Hyperion images through ground "sensorwebs". EO-1's operations costs fell from $3.6 million in fiscal year 2005 to $1.6 million in 2006, and JPL attributed about $1 million a year of the saving to ASE. Science events captured per megabyte of downlink rose over a hundredfold. ASE remained the primary planning system until the end of the mission in 2017, after more than 60 000 autonomous observations.
 :::
 
 ## Navigation Without the Ground
@@ -193,7 +193,7 @@ A lander carries a 6 m-pixel map tied to the inertial frame with 3 m (1σ) error
 The answer is about ten times better than the 40 m requirement LVS had to meet, and matches its 5 m touchdown. Doubling the number of landmarks hardly helps. Halving the map-tie error helps most. With a 10 m map tie and 0.1° attitude knowledge, the same matcher gives 12 m.
 :::
 
-Other landers use similar ideas. China's Chang'e landers have hovered about 100 m above the Moon since 2013 to choose a safe spot with lidar and cameras (Chapter 27). Japan's SLIM matched craters in its descent images with an onboard crater map in January 2024. All 14 of its image-matching fixes were judged accurate, and its position error before the final hazard avoidance was under 10 m. NASA's **SPLICE** project packages TRN, hazard-detection lidar, a Navigation Doppler Lidar and a descent computer for commercial landers. On Intuitive Machines' IM-1 in February 2024, a safety switch left the lander's own laser rangefinders disabled. A software patch to use NASA's Doppler lidar instead reportedly failed for want of a data flag, and Odysseus landed on its side. In June 2025 ispace's second lander crashed after its laser rangefinder reported late. Sensors, not clever algorithms, cause most landing failures.
+Other landers use similar ideas. China's Chang'e landers have hovered about 100 m above the Moon since 2013 to choose a safe spot with lidar and cameras (Chapter 27). Japan's SLIM matched craters in its descent images with an onboard crater map in January 2024. All 14 of its image-matching fixes were judged accurate, and its position error before the final hazard avoidance was under 10 m. NASA's **SPLICE** project packages TRN, hazard-detection lidar, a Navigation Doppler Lidar and a descent computer for commercial landers. On Intuitive Machines' IM-1 in February 2024, a safety switch left the lander's own laser rangefinders disabled. A software patch to use NASA's Doppler lidar instead reportedly failed for want of a data flag, and Odysseus landed on its side. In June 2025 ispace's second lander crashed after its laser rangefinder reported late. In these recent failures the trouble lay in sensors and in the logic that judges their data, not in the navigation algorithms.
 
 ### Crater Detection with Learning
 
@@ -246,7 +246,7 @@ Keypoint errors become pose errors as shown in @fig:pnpnoise, for a camera like 
 
 Two open competitions shaped this field. In the **Satellite Pose Estimation Challenge** of 2019, run by ESA's Advanced Concepts Team and Stanford's Space Rendezvous Laboratory, 48 teams estimated the pose of the PRISMA mission's Tango satellite. The data set held about 15 000 rendered images and 305 laboratory photographs of a mock-up. The score adds the attitude error in radians to the position error divided by range. The winner, from the University of Adelaide, used keypoints and PnP. It scored 0.0094 on rendered test images, about 0.4° and 3 cm. On real photographs its score was 0.375, forty times worse.
 
-That jump is the **domain gap**: networks trained only on rendered images meet real images with different noise, reflections and lighting (Chapter 45). The 2021 challenge attacked it directly. Teams trained on 59 960 rendered images and were tested on 9 531 hardware-in-the-loop images taken with two kinds of lighting: a "lightbox" imitating Earth glow and a "sunlamp" imitating direct sunlight. With heavy data augmentation, style randomisation and adaptation methods, the winning scores fell to about 0.06–0.07. By @fig:pnpnoise, such scores correspond to several pixels of keypoint noise, against well under a pixel on rendered images.
+That jump is the **domain gap**, also called the sim-to-real gap: networks trained only on rendered images meet real images with different noise, reflections and lighting (Chapter 45). The 2021 challenge attacked it directly. Teams trained on 59 960 rendered images and were tested on 9 531 hardware-in-the-loop images taken with two kinds of lighting: a "lightbox" imitating Earth glow and a "sunlamp" imitating direct sunlight. With heavy data augmentation, style randomisation and adaptation methods, the winning scores were 0.073 (lightbox) and 0.059 (sunlamp). By @fig:pnpnoise, such scores correspond to six to eight pixels of keypoint noise at 15 m, against about one pixel for the 2019 winner on rendered images.
 
 ### Lidar and Sensor Fusion
 
@@ -266,7 +266,7 @@ $$ \lVert \mathbf{u}(t) \rVert \le \sigma(t), \qquad \rho_{\min} \le \sigma(t) \
 
 This relaxed problem is convex, so a solver finds its global optimum reliably and quickly. They proved that at the optimum $\lVert \mathbf{u} \rVert = \sigma$, so the relaxation loses nothing. The resulting **G-FOLD** algorithm (guidance for fuel-optimal large diverts) was flown on Masten's Xombie rocket in 2012–13. In July 2013 it diverted 750 m sideways at about 25 m/s. Its custom solver could compute a trajectory in about 100 ms on a 1.4 GHz processor. SpaceX engineers have described using convex optimisation to land Falcon 9 boosters. This is not machine learning: nothing is learned from data, and every answer can be checked against the constraints.
 
-A 2-D version for a Mars landing can be solved by linear programming, approximating the circle $\lVert \mathbf{u} \rVert \le \sigma$ by a 16-sided polygon (@fig:gfoldlp). From 1 500 m altitude and 75 m/s descent, the convex method could reach targets from 2.5 km behind to 3.5 km ahead. A classical polynomial guidance law, with acceleration linear in time, could reach only from 250 m behind to 1.5 km ahead. Where both worked, the polynomial law used 5–8 % more Δv. The optimal thrust profile is "max–min–max": brake hard, coast at minimum thrust, then brake hard again.
+A 2-D version for a Mars landing can be solved by linear programming, approximating the circle $\lVert \mathbf{u} \rVert \le \sigma$ by a 16-sided polygon (@fig:gfoldlp). From 1 500 m altitude and 75 m/s descent, the convex method could reach targets from 2.5 km behind to 3.5 km ahead. A classical polynomial guidance law, with acceleration linear in time, could reach only from 250 m behind to 1.5 km ahead. Where both worked, the polynomial law used 4–8 % more Δv. The optimal thrust profile is "max–min–max": brake hard, coast at minimum thrust, then brake hard again.
 
 ![Fuel-optimal powered descent solved by linear programming (lossless convexification) compared with polynomial guidance. (a) Trajectories to targets at different distances; dashed lines show polynomial guidance where it is feasible. (b) Δv against target shift: convex guidance reaches a three times wider span of targets. (c) The optimal thrust profile for the largest shift.](figures/out/ch48_gfold.svg){#fig:gfoldlp width=100%}
 
@@ -323,8 +323,8 @@ Servicing adds non-cooperative targets. DARPA's Orbital Express captured its par
 | Soyuz, Progress | 1967 (Igla); Kurs from 1986 | Radio (Kurs) | Onboard; crew backup (TORU) | 3 h – 2 days |
 | ATV | 2008 | Relative GPS, laser, videometer | Onboard; ground can abort | About 10 days (ATV-4) |
 | Crew Dragon | 2019 | Lidar, visible and thermal cameras | Onboard; crew monitors | About 1 day |
-| Shenzhou, Tianzhou | 2011 | Radar, laser, cameras | Onboard; manual backup | 2 h 7 min to 6.5 h |
-| MEV-1, MEV-2 | 2020 | Cameras, infrared, lidar | Onboard; ground go/no-go | Days to weeks |
+| Shenzhou, Tianzhou | 2011 | Radar, laser, cameras | Onboard; manual backup | 2 h 7 min (record) to 2 days |
+| MEV-1, MEV-2 | 2020 | Cameras, infrared, lidar | Onboard; ground go/no-go | Months (slow orbit raising) |
 | ADRAS-J | 2024 (approach only) | Cameras, lidar | Onboard; ground holds | Months |
 
 : Automated rendezvous and docking systems. Most combine onboard control with human go/no-go decisions at hold points. {#tbl:rpoautonomy}
@@ -337,7 +337,7 @@ Robots are where autonomy is most visible. A robot's usefulness grows with the d
 
 A Mars rover drives in three ways (Chapter 28). In a **blind drive**, operators plan a path through terrain they have seen in stereo images, and the rover follows it with **visual odometry** — tracking features between images to measure its true motion. In **AutoNav**, the rover builds its own 3-D map, scores each patch for slope, rocks and steps, and chooses paths towards a goal. Perseverance's **Enhanced AutoNav** adds "thinking while driving". A dedicated vision processor makes the maps while the wheels turn. An algorithm called Approximate Clearance Evaluation checks whether the rover's body can clear the rocks along each candidate path.
 
-The benefit is large (@fig:roverdist). Spirit and Opportunity used their early AutoNav for about 5 % of their driving, and Curiosity for about 6 %. Perseverance used AutoNav for more than 90 %. On 11 October 2026 it passed Opportunity's off-world driving record, reaching 45.22 km in about five and a half years. Opportunity needed nearly fifteen years for the same distance. Perseverance can cover up to 412 m in a sol.
+The benefit is large (@fig:roverdist). Spirit and Opportunity used their early AutoNav for about 5 % of their driving, and Curiosity for about 6 %. Perseverance used AutoNav for more than 90 %. On 11 October 2026 it passed Opportunity's off-world driving record, reaching 45.22 km in about five and a half years. Opportunity needed more than fourteen years for the same distance. Perseverance can cover up to 412 m in a sol.
 
 ![Why rovers drive themselves. (a) Modelled distance per sol against one-way light-time for teleoperation with a continuous link, a single ground-planned drive per sol, and two kinds of onboard autonomy. (b) Share of distance driven autonomously by NASA's Mars rovers.](figures/out/ch48_rover.svg){#fig:roverdist width=96%}
 
@@ -355,11 +355,11 @@ Assume a one-way light-time of 20 minutes and one uplink of commands per sol. Th
 So driving needs event-driven autonomy (E3), resource-aware re-planning helps (E4), and fault handling must be F1–F2. To cross 10 km, ground planning alone would need about 250 driving sols; autonomy needs about 25.
 :::
 
-Autonomy also chooses what to study. **AEGIS** (Autonomous Exploration for Gathering Increased Science) finds rocks in navigation-camera images after a drive and points a laser spectrometer at the best one, without waiting for the ground (@fig:aegisrock). On Curiosity from 2016 it selected the scientists' preferred kind of target over 93 % of the time, against about 24 % expected without it. By May 2026 it had picked 596 targets on Curiosity and 293 on Perseverance.
+Autonomy also chooses what to study. **AEGIS** (Autonomous Exploration for Gathering Increased Science) finds rocks in navigation-camera images after a drive and points a laser spectrometer at the best one, without waiting for the ground (@fig:aegisrock). It was first demonstrated on Opportunity in 2010. On Curiosity from 2016 it selected the scientists' preferred kind of target over 93 % of the time, against about 24 % expected without it. By May 2026 it had picked 596 targets on Curiosity and 293 on Perseverance.
 
 ![A rock targeted by AEGIS on Perseverance on 18 May 2022, one of the first two chosen by the software for SuperCam without input from Earth. The red marks show the laser spots.](figures/photos/ch48_aegis.jpg){#fig:aegisrock width=44%}
 
-The newest step moves AI into route planning on the ground. On 8 and 10 December 2025, Perseverance drove 210 m and 246 m along waypoints chosen by generative vision-language models from orbital images. Before upload, engineers checked the commands in JPL's digital twin of the rover, covering more than 500 000 telemetry variables. Onboard AutoNav stayed in charge of safety.
+The newest step moves AI into route planning on the ground. On 8 and 10 December 2025, Perseverance drove 210 m and 246 m along waypoints chosen by generative vision-language models. The models worked from orbital images and terrain-slope maps. Before upload, engineers checked the commands in JPL's digital twin of the rover, verifying more than 500 000 telemetry variables.
 
 ### Arms, Free-Flyers and Humanoids
 
@@ -377,7 +377,7 @@ Spacecraft working together must know where the others are and agree on who does
 ![Robonaut 2 in the ISS Destiny laboratory on 2 January 2013, operating valves on a task board under remote command from the ground.](figures/photos/ch48_robonaut.jpg){#fig:robonautlab width=48%}
 :::
 
-NASA's **Starling** mission (July 2023) flew four CubeSats to test swarm autonomy. Its Distributed Spacecraft Autonomy software let the satellites share observations of the ionosphere over crosslinks and plan follow-up measurements together. Its StarFOX experiment tracked swarm members and other objects with commercial star trackers. On the Moon, the **CADRE** project will land three suitcase-sized rovers that explore and map as a team without moment-to-moment commands (@fig:cadreyard). It is due to fly on Intuitive Machines' IM-3, no earlier than early 2027.
+NASA's **Starling** mission (July 2023) flew four CubeSats to test swarm autonomy. Its Distributed Spacecraft Autonomy software let the satellites share observations of the ionosphere over crosslinks and plan follow-up measurements together. Its StarFOX experiment tracked swarm members and other objects with commercial star trackers. In a test with SpaceX reported in March 2025, a Starling satellite accepted responsibility for avoiding a close approach with a Starlink satellite through a shared screening service. It then planned and executed the avoidance manoeuvre on its own. On the Moon, the **CADRE** project will land three suitcase-sized rovers that explore and map as a team without moment-to-moment commands (@fig:cadreyard). It is due to fly on Intuitive Machines' IM-3, no earlier than early 2027.
 
 ![A development model of a CADRE rover on its first autonomous drive in JPL's Mars Yard in June 2023. Three such rovers are to map the Moon together as a team.](figures/photos/ch48_cadre.jpg){#fig:cadreyard width=56%}
 
@@ -390,7 +390,7 @@ NASA's **Starling** mission (July 2023) flew four CubeSats to test swarm autonom
 | Canadarm3 | Lunar arm system | Planned supervised autonomy | Refocused on lunar surface; NET 2029 |
 | Astrobee | ISS free-flyers | Map-based navigation; research autonomy | Operating since 2019 |
 | GITAI S2 | Arm on Bishop airlock | Autonomous and teleoperated tasks | Demonstrated 2024 |
-| Starling | 4-CubeSat swarm | Distributed planning, star-tracker navigation | Extended mission to end of 2025 |
+| Starling | 4-CubeSat swarm | Distributed planning, star-tracker navigation | Primary mission done; extended tests 2024–25 |
 | CADRE | 3 lunar rovers | Cooperative mapping | Awaiting IM-3, NET early 2027 |
 | Proba-3 | 2-satellite formation | Millimetre formation control | Operating since 2025 |
 
@@ -401,7 +401,7 @@ At constellation scale, autonomy is already routine. Starlink satellites receive
 ::: data
 **Starlink's autonomous collision avoidance in numbers**
 
-- **Volume.** From 1 December 2025 to 31 May 2026, Starlink satellites made 207 152 propulsive collision-avoidance manoeuvres: 65 137 by first-generation and 142 015 by second-generation satellites. The previous six months saw 148 696.
+- **Volume.** From 1 December 2025 to 31 May 2026, Starlink satellites made 207 152 propulsive collision-avoidance manoeuvres: 65 137 by first-generation and 142 015 by second-generation satellites. The previous six months (June–November 2025) saw 148 696.
 - **Rate.** That is about 36 manoeuvres per satellite per year for the first generation and 46 for the second.
 - **Threshold.** SpaceX manoeuvres when the probability of collision exceeds 3 in 10 million (3 × 10⁻⁷), plus miss-distance criteria. The common industry threshold is 1 in 10 000.
 - **Misses.** The onboard system ran without system-wide outages. In 22 individual cases the targeted risk was not reduced, mostly because predictions of the other object were poor or arrived too late. Newly launched satellites not yet tracked and short Space-Track.org outages were among the causes.
@@ -441,7 +441,7 @@ This is why the decision is automated: humans set the thresholds and handle the 
 - Spacecraft need autonomy when the ground cannot respond fast enough, often enough or cheaply enough. Light-time, contact gaps, fleet size and event speed set the level; ECSS defines E1–E4 for execution, D1–D2 for data and F1–F2 for failures.
 - Most autonomy in flight is search, estimation and optimisation, not learning: executives, fault protection, diagnosis, planners, optical navigation and convex guidance.
 - Learning has entered through perception and science: crater detection, keypoint networks for pose and rover science targeting. Learned detectors are often more robust to lighting than templates, but not more precise.
-- Terrain-relative navigation can reach metre-level accuracy. Map registration and attitude knowledge, not image matching, usually limit it, and sensors cause most landing failures.
+- Terrain-relative navigation can reach metre-level accuracy. Map registration and attitude knowledge, not image matching, usually limit it. Recent landing failures came from sensors and the logic that judges their data.
 - Reinforcement learning can find efficient policies but may fail abruptly outside its training conditions. Runtime monitors with verified backups, and learning that speeds up an optimiser, are the practical routes to flight.
 - Autonomy is now routine at scale: Perseverance drives itself for over 90 % of its distance, and Starlink satellites made over 200 000 autonomous avoidance manoeuvres in six months.
 :::

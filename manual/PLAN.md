@@ -79,7 +79,7 @@ Part XIII — Artificial Intelligence in the Space Ecosystem
 - [x] 45 Data, Computing Hardware and Edge AI in Orbit
 - [x] 46 AI for Earth Observation
 - [x] 47 AI for Weather, Climate and Space Weather
-- [ ] 48 AI for Autonomy, Navigation and Robotics
+- [x] 48 AI for Autonomy, Navigation and Robotics
 - [x] 49 AI for Mission Operations, Communications and Networks
 - [ ] 50 AI for Space Situational Awareness, Defence and Security
 - [ ] 51 AI for Space Science, Planetary Exploration and Human Spaceflight
