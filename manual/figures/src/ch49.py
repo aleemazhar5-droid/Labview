@@ -813,11 +813,11 @@ def modclass():
     ax.plot(snrs, acc_g * 100, "-o", color=BLUE, ms=3, lw=1.4, label="gradient-boosted trees, 10 features")
     ax.plot(snrs, acc_t * 100, "-s", color=ORANGE, ms=3, lw=1.4, label="decision tree, 2 cumulants (rule-like)")
     ax.axhline(100 / len(MODS), color=GREY, lw=0.8, ls=":")
-    ax.text(19.5, 100 / len(MODS) + 2, "chance", fontsize=6.2, color=GREY, ha="right", va="bottom")
+    ax.text(-9.5, 100 / len(MODS) - 2, "chance", fontsize=6.2, color=GREY, ha="left", va="top")
     ax.set_xlabel("Signal-to-noise ratio Es/N0 (dB)", fontsize=7.2)
     ax.set_ylabel("Classification accuracy (%)", fontsize=7.2)
     ax.set_ylim(0, 103)
-    ax.legend(fontsize=6.3, loc="lower right")
+    ax.legend(fontsize=6.3, loc="upper left")
     ax.tick_params(labelsize=6.5)
     panel_tag(ax, "a")
     ax = axs[1]
@@ -989,14 +989,14 @@ def acm():
     panel_tag(ax, "a")
     ax = fig.add_subplot(gs[1, 0])
     t_d, o_d = acm_run(deg[wsl], past[wsl], th_m)
-    ax.step(tt, t_d, color=BLUE, lw=0.9, where="post", label=f"ACM (30 s old data, {th_m:.1f} dB margin)")
+    ax.step(tt, t_d, color=BLUE, lw=0.9, where="post", label=f"ACM (30 s data, {th_m:.1f} dB margin)")
     ax.step(tt, np.where(esn0[wsl] - IMPL >= thr_ccm, eff_ccm, 0), color=ORANGE, lw=1.1, where="post",
             label="fixed MODCOD")
     ax.set_ylabel("bit/symbol", fontsize=7.0)
     ax.set_xlabel("Hours", fontsize=7.0)
     ax.set_xlim(0, 6)
     ax.set_ylim(0, 4.9)
-    ax.legend(fontsize=6.0, loc="center left", bbox_to_anchor=(0.0, 0.62), ncol=1)
+    ax.legend(fontsize=5.8, loc="center left", bbox_to_anchor=(0.0, 0.6), ncol=1, handlelength=1.2)
     ax.tick_params(labelsize=6.3)
     ax = fig.add_subplot(gs[:, 1])
     bars = [("Fixed MODCOD\n(" + MODCODS[kf][0] + ")", eff_ccm * avail_ccm, ORANGE),
@@ -1151,7 +1151,9 @@ def routing():
         ax.fill_between(fr * 100, st[:, 0], st[:, 2], color=c, alpha=0.2, lw=0)
         ax.plot(fr * 100, st[:, 1], "-o", color=c, ms=3, lw=1.4, label=f"London–{p_[1]}")
         ax.axhline(fib[p_], color=c, lw=0.9, ls="--")
-        ax.text(1, fib[p_] + 1.2, f"fibre estimate {fib[p_]:.0f} ms", fontsize=6.0, color=c, va="bottom")
+        up = p_[1] == "Singapore"
+        ax.text(1, fib[p_] + (1.2 if up else -1.2), f"fibre estimate {fib[p_]:.0f} ms", fontsize=6.0, color=c,
+                va="bottom" if up else "top")
     ax.text(59, 3, "mesh splits into\npieces near 50 %", fontsize=6.0, color=GREY, ha="right", va="bottom")
     ax.set_xlabel("Laser links failed at random (%)", fontsize=7.0)
     ax.set_ylabel("One-way latency (ms)", fontsize=7.0)

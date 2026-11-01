@@ -106,8 +106,8 @@ def autonomy():
     parts = np.array([ground_time(*m[1:]) for m in MISSIONS])
     total = parts.sum(1)
     n = len(names)
-    fig = plt.figure(figsize=(7.0, 4.2))
-    ax = fig.add_axes([0.13, 0.31, 0.30, 0.60])
+    fig = plt.figure(figsize=(7.0, 3.8))
+    ax = fig.add_axes([0.13, 0.33, 0.30, 0.58])
     y = np.arange(n)[::-1]
     ax.barh(y, total - 1.0, left=1.0, color="#D5DEE7", height=0.66, edgecolor="none", label="Total")
     mk = [("D", SKY, "Round-trip light-time"), ("o", GOLD, "Waiting for contacts"),
@@ -132,7 +132,7 @@ def autonomy():
               columnspacing=0.8, handletextpad=0.4)
     panel_tag(ax, "a", x=-0.02)
 
-    axm = fig.add_axes([0.53, 0.31, 0.46, 0.60])
+    axm = fig.add_axes([0.53, 0.33, 0.46, 0.58])
     ev = [e[0] for e in EVENTS]
     M = np.full((n, len(ev)), np.nan)
     L = [["" for _ in ev] for _ in names]
