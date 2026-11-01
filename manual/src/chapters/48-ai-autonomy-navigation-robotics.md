@@ -367,15 +367,15 @@ Robot arms in space are mostly supervised rather than autonomous. **Canadarm2** 
 
 Inside the ISS, three cube-shaped **Astrobee** free-flyers have operated since 2019. They navigate by matching camera images to a map of the station, move with electric fans and serve as a test bed for autonomy research (@fig:astrobeefly). **Robonaut 2**, the first humanoid robot in space, worked on the ISS from 2011 to 2018. It was mostly teleoperated, testing whether a dexterous robot could use tools and switches made for people (@fig:robonautlab). The Japanese start-up **GITAI** tested an arm inside the commercial Bishop airlock in 2021. In March 2024 it mounted a second arm outside and performed assembly and servicing tasks, reaching technology readiness level 7.
 
+### Swarms, Formations and Constellations
+
+Spacecraft working together must know where the others are and agree on who does what. The Swedish-led **PRISMA** mission (2010) demonstrated autonomous formation flying with two satellites, Mango and Tango — the Tango of the 2019 pose challenge. ESA's **Proba-3**, launched in December 2024, flies two satellites about 150 m apart. One casts a precise shadow on the other's coronagraph to create artificial solar eclipses. Holding the formation to about a millimetre needs onboard control, using GPS, star trackers, lasers and radio links. Its first eclipse images were taken in May 2025, and it was commissioned for autonomous formation flying in June 2025.
+
 ::: figrow
 ![An Astrobee free-flying robot during a Zero Robotics student programming demonstration on the ISS on 1 May 2024.](figures/photos/ch48_astrobee.jpg){#fig:astrobeefly width=86%}
 
 ![Robonaut 2 in the ISS Destiny laboratory on 2 January 2013, operating valves on a task board under remote command from the ground.](figures/photos/ch48_robonaut.jpg){#fig:robonautlab width=48%}
 :::
-
-### Swarms, Formations and Constellations
-
-Spacecraft working together must know where the others are and agree on who does what. The Swedish-led **PRISMA** mission (2010) demonstrated autonomous formation flying with two satellites, Mango and Tango — the Tango of the 2019 pose challenge. ESA's **Proba-3**, launched in December 2024, flies two satellites about 150 m apart. One casts a precise shadow on the other's coronagraph to create artificial solar eclipses. Holding the formation to about a millimetre needs onboard control, using GPS, star trackers, lasers and radio links. Its first eclipse images were taken in May 2025, and it was commissioned for autonomous formation flying in June 2025.
 
 NASA's **Starling** mission (July 2023) flew four CubeSats to test swarm autonomy. Its Distributed Spacecraft Autonomy software let the satellites share observations of the ionosphere over crosslinks and plan follow-up measurements together. Its StarFOX experiment tracked swarm members and other objects with commercial star trackers. On the Moon, the **CADRE** project will land three suitcase-sized rovers that explore and map as a team without moment-to-moment commands (@fig:cadreyard). It is due to fly on Intuitive Machines' IM-3, no earlier than early 2027.
 

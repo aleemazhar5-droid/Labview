@@ -480,7 +480,7 @@ def rover():
     ax.text(np.sqrt(182 * 1342), 520, "Mars\n3–22 min", ha="center", va="top", fontsize=6.8, color=ORANGE)
     ax.axvline(1.28, color=GREY, lw=0.8, ls=":")
     ax.text(1.4, 520, "Moon\n1.3 s", ha="left", va="top", fontsize=6.8, color=GREY)
-    ax.plot(tau, tel, color=RED, label="Teleoperation, continuous link (move and wait)")
+    ax.plot(tau, tel, color=RED, label="Teleoperation (continuous link)")
     ax.plot(tau, gr, color=GREY, label="Ground-planned drive, once per sol")
     ax.plot(tau, sg, color=GOLD, label="+ autonomous stop-and-go (20 m/h)")
     ax.plot(tau, en, color=BLUE, label="+ thinking while driving (110 m/h)")
@@ -489,7 +489,7 @@ def rover():
     ax.set_ylim(0, 540)
     ax.set_xlabel("One-way light-time (s)", fontsize=8)
     ax.set_ylabel("Distance per sol (m)", fontsize=8)
-    ax.legend(fontsize=6.3, loc="center left", bbox_to_anchor=(0.0, 0.47))
+    ax.legend(fontsize=6.3, loc="center left", bbox_to_anchor=(0.0, 0.44))
     panel_tag(ax, "a")
     for t in [1.28, 4 * 60, 12.5 * 60, 22 * 60]:
         tl, g_, s_, e_ = rover_model(np.array([t]))
