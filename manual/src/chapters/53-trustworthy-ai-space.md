@@ -355,7 +355,7 @@ The International Energy Agency estimated that data centres used about 415 TWh i
 
 $$ E \approx \frac{C}{F_\mathrm{peak}\,u}\;P_\mathrm{acc}\;k_\mathrm{host}\;\mathrm{PUE}, $$
 
-where $F_\mathrm{peak}$ is the peak speed of one accelerator, $u$ the fraction of it actually used, and $P_\mathrm{acc}$ its power. The factor $k_\mathrm{host}$ adds host computers and networking, and the power usage effectiveness (PUE) adds cooling and other data-centre overheads.
+where $F_\mathrm{peak}$ is the peak speed of one accelerator, $u$ the fraction of it actually used, and $P_\mathrm{acc}$ its power. The factor $k_\mathrm{host}$ adds host computers and networking, and the power usage effectiveness (PUE) adds cooling and other overheads (@fig:energy53).
 
 ![City lights from Tokyo to Osaka and Hiroshima, photographed from the International Space Station on 15 September 2025. Data centres for AI are a fast-growing part of the electricity demand that lights scenes like this.](figures/photos/ch53_cities.jpg){#fig:citylights53 width=54%}
 
@@ -376,7 +376,7 @@ Estimate the cost of training a 7-billion-parameter model on 2 trillion tokens �
 For comparison, a 175-billion-parameter model trained in 2020 was estimated at 1 287 MWh and 552 t CO₂; the assumed modern hardware uses about 5 times less energy per operation. The grid changes the carbon by a factor of 27.
 :::
 
-Onboard inference uses only a few watts (Chapter 45); the large costs lie on the ground, in training, storage and serving.
+Onboard inference uses only a few watts (Chapter 45); the large costs lie on the ground.
 
 ### Workforce and Skills
 
@@ -446,6 +446,9 @@ Three threads run through all eleven chapters. First, **physics and engineering 
 - Attacks target data, models and inputs: changes of ±8 grey levels cut accuracy to 74.5 %, and poisoning web-scale data can cost tens of dollars. Defences are layered: secure pipelines, robust training, cages and people.
 - AI law diverges: the EU AI Act's high-risk rules now apply from December 2027 and August 2028; the USA has no general AI statute; China regulates services and labels; international agreements are mostly non-binding.
 - Training a 7-billion-parameter model takes about 190 MWh including experiments; the grid changes its emissions 27-fold, and a popular service can use more energy answering queries than training.
+:::
+
+::: pagebreak
 :::
 
 ::: questions
