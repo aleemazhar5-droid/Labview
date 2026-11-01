@@ -47,7 +47,7 @@ The key idea of this section is that a computer can search shapes, not just chec
 
 ### Evolutionary Design
 
-The first computer-designed hardware in space was a small wire antenna. NASA's Space Technology 5 (ST5) mission needed an X-band antenna with a wide beam for three small satellites. In 2004 a team at NASA Ames used **evolutionary algorithms** to design it (@fig:st5photo).
+The first computer-designed hardware in space was a small wire antenna. NASA's Space Technology 5 (ST5) mission needed an X-band antenna with a wide beam for three small satellites. Around 2004 a team at NASA Ames used **evolutionary algorithms** to design it (@fig:st5photo).
 
 An evolutionary algorithm copies natural selection. It starts with a population of random designs, here wire shapes with a few bends. Each design is scored by a simulation; the score is called its **fitness**. The best designs are copied with small random changes (**mutation**) and mixed together (**crossover**). After many generations the population converges on good designs. The method needs no gradients, so it works with any simulator, but it may need tens of thousands of evaluations.
 
@@ -58,8 +58,9 @@ An evolutionary algorithm copies natural selection. It starts with a population 
 
 - Jason Lohn of NASA Ames, Gregory Hornby of the University of California, Santa Cruz, and Derek Linden of JEM Engineering ran two evolutionary algorithms. One bent single wires; the other grew branching shapes.
 - The winning antennas looked like bent paper clips. No human designer would have drawn them.
-- Mid-project, the mission moved to a lower orbit and the requirements changed. The team changed the fitness function, evolved new designs, then built and tested two new antennas in about a month.
-- Both performed about as well as a conventional antenna designed by a contractor. The three satellites were launched on 22 March 2006 on a Pegasus XL, carrying the first computer-evolved hardware in space.
+- Mid-project, a new launch vehicle put the mission into a much lower orbit, and the requirements changed. The team changed mainly the fitness function. Within a month of the change, a new antenna had been evolved and prototyped.
+- On a spacecraft mock-up, two evolved antennas reached 93 % efficiency, against 38 % for two conventional quadrifilar helix antennas designed by a contractor. The evolved design also took about three person-months to design and build, against about five.
+- The three satellites were launched on 22 March 2006 on a Pegasus XL. Each carried an evolved antenna, the first computer-evolved hardware in space.
 :::
 
 ### Topology Optimisation
@@ -91,10 +92,10 @@ How much mass does this save? Compare a plate of the same outline, thinned until
 
 A small satellite carries 25 aluminium brackets machined as plates of uniform thickness, 12.0 kg in total. Each bracket is replaced by a topology-optimised part with the same stiffness, using the ratio from @fig:simpcantilever.
 
-1. **Mass ratio at equal stiffness.** The optimised design uses 40.3 % of the solid material; the equally stiff plate uses 58.2 %. The ratio is 0.403 / 0.582 = **0.692**.
-2. **New mass.** 12.0 kg × 0.692 = **8.31 kg**. The saving is **3.69 kg** per satellite.
+1. **Mass ratio at equal stiffness.** The optimised design uses 40.33 % of the solid material; the equally stiff plate uses 58.15 %. The ratio is 0.4033 / 0.5815 = **0.694**.
+2. **New mass.** 12.0 kg × 0.694 = **8.32 kg**. The saving is **3.68 kg** per satellite.
 3. **Natural frequency.** The stiffness $k$ and the carried mass are unchanged, so $f = \tfrac{1}{2\pi}\sqrt{k/m}$ stays the same or rises slightly.
-4. **Launch value.** At a reported rideshare price of about $7 000 per kilogram in 2026, 3.69 kg is worth about **$25 800** per satellite. For a batch of 100 satellites it is 369 kg.
+4. **Launch value.** At a reported rideshare price of about $7 000 per kilogram in 2026, 3.68 kg is worth about **$25 800** per satellite. For a batch of 100 satellites it is 368 kg.
 
 The mass saving is real but modest per part. Its main value is often margin: kilograms freed for propellant, payload or growth late in the programme.
 :::
@@ -105,7 +106,7 @@ Commercial **generative design** tools wrap topology optimisation in a friendlie
 
 Industry uses such tools widely. RUAG Space, now Beyond Gravity, topology-optimised an antenna support bracket for Sentinel-1 and printed it in aluminium. It was half the mass of the original part and exceeded its stiffness requirement by more than 30 %; it was qualified for flight around 2016.
 
-At NASA's Goddard Space Flight Center, research engineer Ryan McClelland has used such tools since about 2020 to design what he calls **evolved structures**. NASA reports that they can be up to two-thirds lighter than conventional parts, and that designs take an hour or two. They have been used on balloon telescopes, instruments and a mount for the since-cancelled Mars Sample Return programme (Chapter 29).
+At NASA's Goddard Space Flight Center, research engineer Ryan McClelland has used such tools since about 2020 to design what he calls **evolved structures**. NASA reports that they can be up to two-thirds lighter than conventional parts, and that designs take an hour or two. They have been used on balloon telescopes, instruments and a mount for the Mars Sample Return programme, which lost its funding in 2026 (Chapter 29).
 
 The best-documented case is a bracket for the **EXCITE** balloon telescope (@tbl:excitebracket and @fig:excitephoto). The bracket holds a 1.35 kg tip/tilt mirror stage to the back of the telescope. It must survive 10 g vertically and 3 g sideways. Its first natural frequency must be above 100 Hz, and its target mass was 0.2 kg.
 
@@ -117,7 +118,7 @@ The best-documented case is a bracket for the **EXCITE** balloon telescope (@tbl
 
 : The EXCITE tip/tilt bracket: four human design iterations against generative designs that met the 0.2 kg target and the 100 Hz requirement. Data: R. McClelland, NASA Goddard (2023). {#tbl:excitebracket}
 
-The human designs did not meet the frequency requirement at an acceptable mass. The generative designs met both, with seven to nine times less peak stress. McClelland stresses that people must still review every result. Left alone, the algorithm can make members too thin to build or inspect.
+In four iterations, no human design that could be manufactured met the mass target. The one design that met both targets could be neither machined nor printed. The generative designs met both, with seven to nine times less peak stress. McClelland stresses that people must still review every result. Left alone, the algorithm can make members too thin to build or inspect.
 
 ![The EXCITE balloon-borne telescope hanging in a hangar at NASA's Columbia Scientific Balloon Facility in Fort Sumner, New Mexico, before its test flight on 31 August 2024. Several of its mounts were evolved structures designed with generative software.](figures/photos/ch52_excite.jpg){#fig:excitephoto width=60%}
 
@@ -125,7 +126,7 @@ The human designs did not meet the frequency requirement at an acceptable mass. 
 
 A rocket engine couples flow, combustion, heat transfer and structure. The Dubai company **LEAP 71** calls its approach **computational engineering**. Its software, Noyron, encodes engineering rules, physics and manufacturing limits as code, and generates a whole engine from a short specification. It is closer to an expert system than to a neural network: "AI-designed" can mean many things.
 
-The results are measured by hot fire, not by claims. In June 2024 LEAP 71 fired a 5 kN kerosene–oxygen engine at Airborne Engineering in Westcott, UK. In December 2024 a printed aerospike of similar thrust ran hotter than intended, and the data were fed back into the model. In December 2025 the company reported two 20 kN methane–oxygen engines printed in a copper alloy. They went from specification to first firing in under three weeks. The bell-nozzle engine reached more than 93 % combustion efficiency. The aerospike reached its design chamber pressure of 50 bar but had problems at start-up. Engines of 200 kN and 2 000 kN were in manufacturing trials in 2026.
+The results are measured by hot fire, not by claims. In June 2024 LEAP 71 fired a 5 kN kerosene–oxygen engine at Airborne Engineering in Westcott, UK. In December 2024 it fired a printed aerospike of the same thrust, and the measured pressures and temperatures were used to tune the model. In December 2025 the company reported two 20 kN methane–oxygen engines printed in a copper alloy. They went from specification to first firing in under three weeks. The bell-nozzle engine reached more than 93 % combustion efficiency. The aerospike reached its design chamber pressure of 50 bar, but start-up problems limited it to one firing. A 200 kN aerospike was printed in March 2026 for hot-fire tests later that year, and a 2 000 kN design has been shown.
 
 ### Designing for the Printer
 
@@ -197,7 +198,7 @@ Language models go further. They can judge whether a requirement is testable, su
 
 ### Searching Lessons Learned
 
-Agencies hold decades of lessons in reports that few people read. **Retrieval-augmented generation (RAG)** combines a search engine with a language model (Chapter 44). The question is used to find relevant passages in a trusted archive, and the model answers from those passages with citations. ESA researchers built **SpaceQA**, a question-answering system over reports from ESA's Concurrent Design Facility. NASA teams have proposed and prototyped similar tools for the NASA Lessons Learned system and for tracing requirements. One team building a NASA retrieval tool found that some "wrong" answers were in fact correct. The guidance in the source documents had changed. A RAG system is only as current and as correct as its archive.
+Agencies hold decades of lessons in reports that few people read. **Retrieval-augmented generation (RAG)** combines a search engine with a language model (Chapter 44). The question is used to find relevant passages in a trusted archive, and the model answers from those passages with citations. Researchers working with ESA built **SpaceQA**, a question-answering system over reports from ESA's Concurrent Design Facility. NASA teams have proposed and prototyped similar tools for the NASA Lessons Learned system and for tracing requirements. One team building a NASA retrieval tool heard that some of its answers were wrong. On checking the sources, it found that the official guidance had changed, and the tool was right. The reverse happens too: a RAG system is only as current and as correct as its archive.
 
 ### Models from Text
 
@@ -337,12 +338,12 @@ where $\boldsymbol\Sigma$ is the covariance of the residuals in normal runs. Thi
 
 ![Health monitoring of simulated turbopump hot fires. (a) One run with a growing bearing fault: overall vibration stays under the fixed redline almost until failure. (b) The learned anomaly score crosses its threshold much earlier. (c) Warning time before failure over 300 faulty runs: the learned detector warns about a minute early, the redline only seconds early or not at all.](figures/out/ch52_engine.svg){#fig:enginehealth width=98%}
 
-Why not fly the learned detector? A false shutdown in flight can lose a mission, and a learned model can fail on conditions it never saw. Learned detectors are used in ground tests, such as the RS-25 firings in @fig:rs25cert, and in analysis after flight. On board they are at most advisory, unless they meet the assurance standards of Chapter 53.
+Why not fly the learned detector? A false shutdown in flight can lose a mission, and a learned model can fail on conditions it never saw. Learned detectors suit ground tests, such as the RS-25 firings in @fig:rs25cert, and analysis after flight. On board they are at most advisory, unless they meet the assurance standards of Chapter 53.
 
 ::: history
 **Landmark: the Shuttle's Advanced Health Management System (2006–11)**
 
-- The Space Shuttle main engine (SSME, later RS-25) ran its high-pressure turbopumps at tens of thousands of revolutions per minute. A failed bearing or blade could destroy the engine.
+- The Space Shuttle main engine (SSME, also called RS-25) ran its high-pressure turbopumps at tens of thousands of revolutions per minute. A failed bearing or blade could destroy the engine.
 - The Advanced Health Management System upgraded the engine controller with digital signal processors and new software. It watched turbopump vibration in real time against a **vibration redline**, and could shut down an engine if vibration grew too high.
 - It first flew in monitor-only mode on STS-116 in December 2006 and was then made active.
 - The logic was deterministic: fixed signal processing and limits, verified like any flight software.
@@ -352,7 +353,7 @@ Why not fly the learned detector? A false shutdown in flight can lose a mission,
 
 ### Weather, Lightning and the Range
 
-Weather causes about half of all scrubs at Cape Canaveral (Chapter 37), and lightning rules are the hardest to meet. A model from NASA Marshall and the University of Alabama in Huntsville detected 84 % of lightning 15–30 minutes ahead, with a 22 % false-alarm rate. The Air Force Institute of Technology has trained models to automate the 45th Weather Squadron's daily lightning forecast (Chapter 47). The launch-commit criteria themselves remain fixed rules.
+Weather causes about half of all scrubs at Cape Canaveral (Chapter 37), and lightning rules are the hardest to meet. A model from NASA Marshall and the University of Alabama in Huntsville detected 84 % of lightning 15–30 minutes ahead, with a 22 % false-alarm rate. A study at the Air Force Institute of Technology trained models that could automate the 45th Weather Squadron's daily lightning forecast (Chapter 47). The launch-commit criteria themselves remain fixed rules.
 
 Busy ranges also need scheduling. Florida's Space Coast hosted a record 109 launches in 2025 and planned for 100–120 in 2026. Each launch needs a pad, a window, hazard areas at sea and in the air, tracking assets and recovery ships. Choosing a conflict-free timetable is an optimisation problem. Learning helps predict the inputs, such as the chance of a scrub or of a ship entering a hazard area. Launch teams rehearse these decisions in simulations (@fig:lccsim).
 
@@ -397,7 +398,7 @@ A study published in 2025 in the *Journal of Financial and Quantitative Analysis
 - **Data:** about 4.7 million daily counts of cars in the car parks of 67 078 stores of 44 major US retailers, 2011–2017. The counts came from RS Metrics and Orbital Insight, which used image analysis to count cars.
 - **Signal:** an unusual change in how full the car parks were during a quarter predicted the retailer's earnings.
 - **Returns:** in the three days around earnings announcements, retailers with fuller car parks beat the market by 1.66 %. Those with emptier car parks fell behind it by 3.10 %. The gap was 4.76 %.
-- **Who gained:** mostly short sellers betting on bad news. Individual investors could not use the data, and share trading became less liquid around the reports.
+- **Who gained:** mostly sophisticated investors who bought the data, above all short sellers betting on bad news. Buying by individual investors became less well informed, and shares became less liquid around the reports.
 - **Lesson:** satellite analytics carry real information. But unequal access to data can widen the gap between large and small investors rather than making prices fairer.
 :::
 
@@ -418,9 +419,9 @@ This is the **beta–binomial** model. It lets each flight shift the estimate by
 ::: data
 **Data box: space insurance, 2023–25**
 
-- **2023:** the worst year on record. Claims were about $995 million against premiums of about $557 million. Two satellites caused most of the loss: ViaSat-3 Americas, whose large antenna failed to deploy (a claim of about $420 million), and Inmarsat-6 F2, lost to a power failure ($348 million). More than 85 % of losses came after the satellite had separated from the rocket, not from launch failures.
+- **2023:** one of the worst years on record. Claims were about $995 million against premiums of about $557 million. Two satellites caused most of the loss: ViaSat-3 Americas, whose large antenna failed to deploy (a claim of about $420 million), and Inmarsat-6 F2, lost to a power failure ($348 million). More than 85 % of losses came after the satellite had separated from the rocket, not from launch failures.
 - **2024:** claims fell to about $211 million against premiums of about $580 million (Seradata). Insurers raised rates after 2023, and total working capacity shrank to about $550 million in 2024 and $502 million in 2025 (Gallagher).
-- **2025:** a quiet year until the reported loss of the Spanish military satellite SpainSat NG-2 late in the year, insured for about $400 million.
+- **2025:** a quiet year until late December. Then SpainSat NG-2, a Spanish military communications satellite insured for over $400 million, was damaged on its way to geostationary orbit. Its likely total loss raised the year's loss ratio from about 15 % to about 75 % (Gallagher).
 :::
 
 ### Constellation Design and Capacity
@@ -451,12 +452,12 @@ Money flowed into space in 2025–26, and much of it was linked to AI. The track
 | Space-tech venture investment, 2025 | $12.4 billion (record) | Seraphim |
 | Investment, Q1 2026 | $36 billion, 148 companies (record) | Space Capital (wide definition) |
 | Investment, Q1 2026 | $9.4 billion, 82 companies | Novaspace (narrower definition) |
-| SpaceX share sale, June 2026 | ≈ $75 billion ($85.7 billion with extra shares) | Largest on record |
+| SpaceX IPO, June 2026 | ≈ $75 billion ($85.7 billion with extra shares) | Largest IPO on record |
 | Space insurance premiums, 2025 | ≈ $675 million | Secondary sources |
 
 : Money in the space business, 2025–26. Trackers use different definitions, so their figures cannot be compared directly. {#tbl:spacemoney}
 
-The largest deal joined a space company and an AI company. In February 2026 SpaceX completed an all-share takeover of the AI company xAI. In June 2026 it sold shares to the public for about $75 billion at a valuation of about $1.77 trillion, the largest share sale on record. Its filing reportedly described plans for orbital data centres from about 2028. Google, with Planet, launched a prototype of its Suncatcher computing satellites in October 2026, and Starcloud flew a data-centre graphics processor in 2025. Chapter 45 discusses whether computing in orbit can compete with ground data centres.
+The largest deal joined a space company and an AI company. In February 2026 SpaceX completed an all-share takeover of the AI company xAI. In June 2026 it sold shares to the public for about $75 billion at a valuation of about $1.77 trillion. It was the largest initial public offering (IPO) on record. Its filing reportedly pointed to orbital AI computing from as early as 2028. It also warned that the technology is unproven and may never be commercially viable. Google, with Planet, launched a prototype of its Suncatcher computing satellites in October 2026, and Starcloud flew a data-centre graphics processor in 2025. Chapter 45 discusses whether computing in orbit can compete with ground data centres.
 
 AI creates demand for space in three ways. It needs data, such as images and weather records, to train models. It needs connectivity to reach ships, aircraft and remote sites. And, more speculatively, it may move computing itself into orbit. Each claim deserves the usual engineering test: what are the numbers, and has it flown?
 
@@ -483,7 +484,7 @@ Most failures of AI in engineering are not dramatic. A generated number is copie
 **Key takeaways**
 
 - AI proposes; physics, test and people verify. Every AI output must pass the same verification gate as human work before it enters a controlled design.
-- Most "AI-designed" structures rest on topology optimisation. In a 2-D test, it saved about 31 % of mass at equal stiffness. Goddard's EXCITE bracket met mass and frequency targets that four human iterations missed.
+- Most "AI-designed" structures rest on topology optimisation. In a 2-D test, it saved about 31 % of mass at equal stiffness. Goddard's generative EXCITE bracket met mass and frequency targets that no buildable human design met in four iterations.
 - Bayesian optimisation with a Gaussian-process surrogate found a near-optimal design in a median of 22 expensive runs, where random search needed about 266.
 - Language models help with requirements, lessons learned, SysML v2 drafts and code. But they make plausible errors, and export-controlled data need approved tools.
 - In manufacturing, the value of a screening model comes from choosing its threshold with real costs. In our test, the cost-optimal screen cost a third of full expert review, while the default threshold missed one defect in six.

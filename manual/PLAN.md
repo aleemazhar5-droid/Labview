@@ -84,7 +84,7 @@ Part XIII — Artificial Intelligence in the Space Ecosystem
 - [x] 50 AI for Space Situational Awareness, Defence and Security
 - [x] 51 AI for Space Science, Planetary Exploration and Human Spaceflight
 - [ ] 52 AI in Spacecraft Design, Manufacturing, Launch and the Space Business
-- [ ] 53 Trustworthy AI for Space: Assurance, Security, Governance and Outlook
+- [x] 53 Trustworthy AI for Space: Assurance, Security, Governance and Outlook
 Appendices
 - [x] A Constants, Units and Conversions
 - [x] B Equation Quick Reference

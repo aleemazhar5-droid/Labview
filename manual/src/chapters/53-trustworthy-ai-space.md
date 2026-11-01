@@ -68,7 +68,7 @@ The key idea of this section is that the first ML assurance standards now exist,
 | ED-324 / ARP6983 | EUROCAE WG-114, SAE G-34 | Process standard for aeronautical AI | Drafting |
 | ISO/IEC 22989, 23053 | ISO/IEC, 2022 | AI concepts, terms, ML framework | Published |
 | ISO/IEC 23894; 42001 | ISO/IEC, 2023 | AI risk management; AI management system | Published; 42001 certifiable |
-| ISO/IEC TR 24029-1; 24029-2 | ISO/IEC, 2021; 2023 | Robustness of neural networks; formal methods | Published |
+| ISO/IEC TR 24029-1; ISO/IEC 24029-2 | ISO/IEC, 2021; 2023 | Robustness of neural networks; formal methods | Published (report; standard) |
 | ISO/IEC TR 5469 | ISO/IEC, Jan 2024 | Functional safety and AI | Published (report) |
 | AI RMF 1.0; AI 600-1 | NIST, 2023; 2024 | Voluntary risk framework; generative-AI profile | Revision ordered 2025; none by Oct 2026 |
 | UL 4600 | UL, 2020; 3rd ed. 2023 | Safety cases for autonomous products | Published |
@@ -259,7 +259,7 @@ $$ \mathbf{x}' = \operatorname{clip}_{[0,1]}\big(\mathbf{x} + \varepsilon\,\oper
 
 **Projected gradient descent (PGD)** repeats small steps of this kind and keeps the result within $\varepsilon$ of the original. It is the standard strong attack for testing.
 
-@fig:fgsm53 attacks the patch classifier of @fig:shift53. Random noise of up to ±26 grey levels (of 255) hardly matters: accuracy stays above 97.9 %. A crafted change of only ±8 levels cuts accuracy to 77.6 % with FGSM and 74.5 % with PGD. At ±13 levels PGD leaves 50.2 %, and at ±26 levels 18.0 %. The example crater, 96 % "crater" before the attack, becomes a 99.6 % "boulder", yet a person sees no difference. **Adversarial training**, which mixes attacked examples into training, helps: the retrained network keeps 95.3 % against PGD at ±8 levels and 85.2 % at ±13. It still falls to 47.7 % at ±26 levels.
+@fig:fgsm53 attacks the patch classifier of @fig:shift53. Random noise of up to ±26 grey levels (of 255) hardly matters: accuracy never falls below 97.9 %. A crafted change of only ±8 levels cuts accuracy to 77.6 % with FGSM and 74.5 % with PGD. At ±13 levels PGD leaves 50.2 %, and at ±26 levels 18.0 %. The example crater, 96 % "crater" before the attack, becomes a 99.6 % "boulder", yet a person sees no difference. **Adversarial training**, which mixes attacked examples into training, helps: the retrained network keeps 95.3 % against PGD at ±8 levels and 85.2 % at ±13. It still falls to 47.7 % at ±26 levels.
 
 How real is the threat in space? A digital attack needs access to the pixels — in the onboard computer, the ground pipeline or the data link — so normal cyber security is the first defence. **Physical** attacks need no such access. Printed patches, paint patterns and decoys can change what a sensor sees (Chapter 50). Defences are layered: robust training, input checks, several sensors (optical and radar rarely share the same blind spot), and people reviewing important decisions.
 
@@ -305,7 +305,7 @@ The key idea of this section is that AI law is moving fast and differs between r
 
 The **AI Act**, Regulation (EU) 2024/1689, is the first broad AI law. It entered into force on 1 August 2024 and sorts AI uses by risk. Unacceptable practices, such as social scoring, are banned. These bans, and a duty to build staff AI literacy, apply from 2 February 2025. **High-risk** systems — for example safety components of critical infrastructure, or AI in products under EU safety law such as medical devices — need risk management, data governance, logging, human oversight, accuracy and robustness. They also need conformity assessment. Providers of **general-purpose AI models** have had transparency and copyright duties since 2 August 2025. Fines for banned practices reach €35 million or 7 % of world turnover. AI used only for military or national-security purposes is excluded.
 
-In 2026 a "digital omnibus" amendment, agreed in May and published in July, delayed the rules for stand-alone high-risk systems to 2 December 2027, and for high-risk AI in regulated products to 2 August 2028. Transparency duties, such as labelling AI-generated content, still apply from August 2026. For space engineers the main routes into the Act are data services used in critical infrastructure and, through EASA's rules, AI in aviation; NPA 2025-07 is partly a response to the Act. Most onboard spacecraft functions are not listed as high-risk, but customers increasingly ask for the same evidence.
+In 2026 a "digital omnibus" amendment, agreed in May and published in July, delayed the rules for stand-alone high-risk systems to 2 December 2027, and for high-risk AI in regulated products to 2 August 2028. Transparency duties, such as labelling AI-generated content, still apply from 2 August 2026. Generative systems already on the market have until 2 December 2026 to add machine-readable marks to their output. For space engineers the main routes into the Act are data services used in critical infrastructure and, through EASA's rules, AI in aviation; NPA 2025-07 is partly a response to the Act. Most onboard spacecraft functions are not listed as high-risk, but customers increasingly ask for the same evidence.
 
 ### The United States
 
@@ -317,7 +317,7 @@ US policy turned in 2025 from managing AI risk to accelerating adoption. Executi
 
 ### International Agreements
 
-The **Council of Europe Framework Convention on AI** is the first binding international treaty on AI and human rights. It opened for signature in Vilnius on 5 September 2024. The EU ratified it in May 2026, but it needs five ratifications, including three Council of Europe member states, to enter into force. At the United Nations, the **Global Digital Compact** (September 2024) led to resolution 79/325 of August 2025. It created an Independent International Scientific Panel on AI, whose 40 members were appointed in February 2026, and a **Global Dialogue on AI Governance**. The Dialogue first met in Geneva on 6–7 July 2026, shortly after the Panel released a preliminary report. A series of summits — Bletchley Park (2023), Seoul (2024), Paris (2025) and New Delhi (February 2026) — produced non-binding declarations. The New Delhi Declaration had 91 signatories, including the USA, the UK and China. @tbl:governance53 summarises the main instruments.
+The **Council of Europe Framework Convention on AI** is the first binding international treaty on AI and human rights. It opened for signature in Vilnius on 5 September 2024. The EU ratified it in May 2026, and by the latest treaty records no other party had. It needs five ratifications, including three by Council of Europe member states, to enter into force. At the United Nations, the **Global Digital Compact** (September 2024) led to resolution 79/325 of August 2025. It created an Independent International Scientific Panel on AI, whose 40 members were appointed in February 2026, and a **Global Dialogue on AI Governance**. The Dialogue held its first session in Geneva on 6–7 July 2026, where the Panel presented a preliminary report. A series of summits — Bletchley Park (2023), Seoul (2024), Paris (2025) and New Delhi (February 2026) — produced non-binding declarations. The New Delhi Declaration had 91 signatories, including the USA, the UK and China. @tbl:governance53 summarises the main instruments.
 
 | Instrument | Jurisdiction | Type | Key dates | Status, October 2026 |
 |:---|:---|:---|:---|:---|
@@ -371,7 +371,7 @@ Estimate the cost of training a 7-billion-parameter model on 2 trillion tokens �
 3. **Power.** 0.7 kW per accelerator × 1.3 for hosts and network × PUE 1.2 = 1.09 kW. One run: 59 000 h × 1.09 kW = **64 MWh**.
 4. **Real projects.** Failed runs, tuning and evaluation often triple the total: **193 MWh**.
 5. **Carbon.** On a low-carbon grid (30 g CO₂/kWh): **5.8 t**. At the 2025 world average of 458 g/kWh: **88 t**. On a coal-heavy grid (800 g/kWh): **155 t**.
-6. **Use.** One million queries a day at 0.24 Wh each — a median reported by one large provider in 2025 — need 88 MWh a year, or 40 t CO₂ at the world average. A popular service can use more energy in two years of answers than in training.
+6. **Use.** One million queries a day at 0.24 Wh each — a median reported by one large provider in 2025 — need 88 MWh a year, or 40 t CO₂ at the world average. After about 2.2 years the answers have used more energy than the whole training effort. At ten million queries a day this takes under three months.
 
 For comparison, a 175-billion-parameter model trained in 2020 was estimated at 1 287 MWh and 552 t CO₂; the assumed modern hardware uses about 5 times less energy per operation. The grid changes the carbon by a factor of 27.
 :::
@@ -397,7 +397,7 @@ The projections, with confidence:
 - **Autonomous constellations (medium).** Coordination between operators — who moves when two satellites meet — needs shared rules and data more than better models (Chapters 21 and 50).
 - **AI-designed spacecraft (low).** Algorithms already shape parts: evolved antennas flew on NASA's ST5 in 2006 (Chapter 52). A spacecraft designed largely by AI is unlikely before 2035, because every design must still be verified.
 - **Human–AI teaming on the Moon (low).** Artemis astronauts are expected to land from about 2028 (@fig:ltv53). Assistants for traverses, procedures and medical care will be tried first in analogue tests (@fig:jett53), and trusted only as far as they can explain themselves.
-- **Orbital computing and servicing (low).** Both are at the demonstration stage (Chapters 40 and 45) and depend more on hardware and economics than on AI.
+- **AI-assisted servicing and orbital computing (low).** Docking life-extension vehicles have served satellites commercially since 2020 (Chapter 40). Robotic servicing with learned perception and data centres in orbit are still at the demonstration stage (Chapters 40 and 45). Both depend more on hardware and economics than on AI.
 
 ::: figrow
 ![NASA astronauts Joe Acaba and Mark Vande Hei test Lunar Outpost's Pegasus lunar terrain vehicle prototype at Johnson Space Center in September 2026. NASA selected Lunar Outpost and Astrolab in May 2026 to build the first lunar terrain vehicles.](figures/photos/ch53_ltv.jpg){#fig:ltv53}
@@ -429,7 +429,7 @@ Part XIII began with the foundations of machine learning and ends with trust. @t
 | 49 | Operations and networks | Alert budgets, not accuracy, decide usefulness | Telemetry anomaly tools |
 | 50 | SSA, defence, security | Physics carries most of the load; people keep decisions | Tracking, imagery triage |
 | 51 | Science and human spaceflight | ML is a funnel; discoveries need independent checks | Planet vetting, alert brokers |
-| 52 | Design, manufacturing, launch, business | AI speeds design and inspection; verification stays | Generative parts, inspection |
+| 52 | Design, manufacturing, launch, business | AI proposes; physics, test and people verify | Generative parts, inspection |
 | 53 | Trustworthy AI | Assure data, model and runtime; contain what cannot be proved | Handbooks; shadow-mode demos |
 
 : Part XIII in one table: the lesson of each chapter and the most mature use as of October 2026. {#tbl:part13synthesis}
