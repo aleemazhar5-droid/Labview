@@ -11,6 +11,7 @@ Usage:
   python3 tools/build.py --force         # ignore cache
 """
 import argparse
+import os
 import asyncio
 import hashlib
 import html as htmlmod
@@ -592,6 +593,35 @@ def roman(n):
 # --------------------------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------------------------
+
+def shrink_images(writer, max_px=1200, quality=82):
+    """Downsample photographs whose longest side exceeds max_px (about 250-300 dpi at the printed size)."""
+    from PIL import Image
+    done, saved = set(), 0
+    for page in writer.pages:
+        try:
+            imgs = list(page.images)
+        except Exception:  # noqa: BLE001
+            continue
+        for img in imgs:
+            key = getattr(img.indirect_reference, "idnum", None)
+            if key in done:
+                continue
+            done.add(key)
+            try:
+                im = img.image
+                w, h = im.size
+                if max(w, h) <= max_px or im.mode not in ("RGB", "L"):
+                    continue
+                scale = max_px / max(w, h)
+                small = im.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.LANCZOS)
+                before = len(img.data)
+                img.replace(small, quality=quality)
+                saved += before - len(img.data)
+            except Exception:  # noqa: BLE001
+                continue
+    print(f"  images downsampled: {saved / 1e6:.1f} MB saved")
+
 async def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default="")
@@ -747,7 +777,8 @@ async def main():
         offsets[name] = gi
         for p in r.pages:
             p.merge_page(overlay.pages[gi])
-            writer.add_page(p)
+            wp = writer.add_page(p)
+            wp.compress_content_streams(level=9)       # merge_page leaves the combined stream uncompressed
             gi += 1
     total = gi
     # page labels
@@ -829,12 +860,22 @@ async def main():
                                       "space weather, deep space, human spaceflight, propulsion, artificial intelligence",
                          "/Creator": "Markdown, pandoc, Chromium and pypdf"})
     writer.page_mode = "/UseOutlines"
+    shrink_images(writer, max_px=int(os.environ.get("IMG_MAX_PX", "1000")), quality=int(os.environ.get("IMG_Q", "78")))
     try:
         writer.compress_identical_objects(remove_duplicates=True, remove_unreferenced=True)
     except Exception as e:  # noqa: BLE001
         print("  compress skipped:", e)
     with open(OUT_PDF, "wb") as f:
         writer.write(f)
+    try:                                   # pack objects into compressed object streams (smaller file)
+        import pikepdf
+        tmp = OUT_PDF.with_suffix(".tmp.pdf")
+        with pikepdf.open(OUT_PDF) as pdf:
+            pdf.save(tmp, object_stream_mode=pikepdf.ObjectStreamMode.generate, compress_streams=True,
+                     recompress_flate=True)
+        tmp.replace(OUT_PDF)
+    except ImportError:
+        pass
     print(f"wrote {OUT_PDF} — {total} pages ({front_pages} front + {main_pages} main)")
 
 
