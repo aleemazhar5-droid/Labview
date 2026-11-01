@@ -95,8 +95,8 @@ Appendices
 - [x] G Acronyms and Abbreviations
 - [x] H Glossary
 - [x] I Standards, Sources and Further Reading
-- [ ] J Image Credits
-- [ ] Index
+- [x] J Image Credits
+- [x] Index
 
 ## Status / page tracking (per-chapter PDF pages)
 01:17 02:18 03:21 04:18 05:17 06:16 07:15 08:17  → avg ≈17. Target ≥22 for chapters 09+ (≈6 500–7 500 words,
