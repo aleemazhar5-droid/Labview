@@ -223,7 +223,7 @@ def transit():
     ax.plot(t[intr], (flux[intr] - 1) * 1e3, ".", ms=1.2, color=RED, rasterized=True)
     ax.set_xlim(0, days)
     ax.set_ylabel("Flux − 1 (ppt)")
-    ax.text(1.0, -0.2, "days", transform=ax.transAxes, ha="right", va="top", fontsize=7.5, color=INK)
+    ax.set_xlabel("Time (days)", labelpad=0, fontsize=7)
     ax.set_title("Two years of simulated photometry: spots, noise and a hidden 1.3 Earth-radius planet", fontsize=8.4)
     panel_tag(ax, "a", x=-0.035)
     ax2 = fig.add_subplot(gs[1, :])
