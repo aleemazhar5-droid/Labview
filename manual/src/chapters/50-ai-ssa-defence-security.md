@@ -20,7 +20,7 @@ The key idea of this section is that SSA is a pipeline, from raw sensor data to 
 
 From the catalogue, **screening** finds every close approach in the next few days. **Risk triage** decides which of them matter. Operators then **decide** whether to manoeuvre and **coordinate** with each other. Alongside this runs **behaviour analysis**: spotting manoeuvres and break-ups and learning what each object is.
 
-Most of this pipeline is classical. Orbit determination uses least-squares fits and Kalman filters (Chapter 43), and screening uses geometry. The US Space Force declared its new catalogue software, ATLAS, operational in September 2025. It is replacing a system that dates from the 1980s. Its Unified Data Library pools government and commercial sensor data, and its 2025 Data and AI Strategic Action Plan names space domain awareness as a main focus for AI. @tbl:ssatasks50 summarises where learning fits.
+Most of this pipeline is classical. Orbit determination uses least-squares fits and Kalman filters (Chapter 43), and screening uses geometry. The US Space Force declared its new catalogue software, ATLAS, operational in September 2025. It is replacing a system that dates from the 1980s. Its Unified Data Library pools government and commercial sensor data for space domain awareness. The service's 2025 Data and AI Strategic Action Plan made the library a formal programme and set goals for adopting AI. @tbl:ssatasks50 summarises where learning fits.
 
 ![The space situational awareness pipeline. The data path (top) turns sensor data into a catalogue; the services path (bottom) turns the catalogue into warnings and decisions. Tags give the status in 2026 of machine learning at each step.](figures/out/ch50_pipeline.svg){#fig:ssapipeline50 width=96%}
 
@@ -87,7 +87,7 @@ $$ \hat{\mathbf{x}}(t) = \mathbf{f}_{\mathrm{phys}}(\mathbf{x}_0, t) + g_\theta(
 
 The features include the forecast horizon, altitude, space-weather indices and the errors the propagator made in the recent past. Peng and Bai (2018) showed the idea with neural networks, support vector machines and Gaussian processes on a simulated catalogue. The physics keeps the prediction sensible; the learned part corrects patterns that the physics misses.
 
-@fig:drag50 runs this on 160 synthetic objects over a 240-day record with storms. Fitting the drag scale to 48 hours of data halved the median three-day error, from 3.2 km to 1.75 km. A small neural network on top did not help on average: its median three-day error was 1.98 km. But in the days after storms it cut the median one-day error from 0.75 km to 0.24 km. The lesson is general. A learned correction must be tested separately in the conditions that matter, because a gain in one regime can hide a loss in another.
+@fig:drag50 runs this on 160 synthetic objects over a 240-day record with storms. Fitting the drag scale to 48 hours of data nearly halved the median three-day error, from 3.2 km to 1.75 km. A small neural network on top did not help on average: its median three-day error was 1.98 km. But in the nine test epochs just after storms it cut the median one-day error from 0.75 km to 0.24 km. That sample is small, so the gain is only indicative. The lesson is general. A learned correction must be tested separately in the conditions that matter, because a gain in one regime can hide a loss in another.
 
 ![Storm-time drag and a hybrid correction. (a) Synthetic Ap index (top) and density at 450 km relative to quiet conditions: truth with a lagged storm response and an empirical model with a weaker, unlagged response. (b) Median along-track error against forecast horizon for three predictors, for all test epochs (solid) and for epochs just after storms (dashed).](figures/out/ch50_drag.svg){#fig:drag50 width=98%}
 
@@ -142,7 +142,7 @@ $$ P_c \approx \frac{R^2}{2\sigma^2}\exp\!\left(-\frac{d^2}{2\sigma^2}\right), $
 
 where $d$ is the predicted miss distance. For a fixed miss distance, $P_c$ peaks at $R^2/(e\,d^2)$ when $\sigma = d/\sqrt2$. With larger uncertainty, $P_c$ falls again. This is **dilution**: a poorly tracked object looks safe because nobody knows where it is.
 
-Each event produces a series of CDMs, typically about three a day for a week. The uncertainty shrinks as tracking accumulates, so $P_c$ jumps around (@fig:triage50). Operators usually decide about two days before the closest approach, the last moment for a cheap manoeuvre. The question for learning is whether the history of an event's CDMs predicts its final risk better than the latest value alone.
+Each event produces a series of CDMs, typically one to three a day for about a week. The uncertainty shrinks as tracking accumulates, so $P_c$ jumps around (@fig:triage50). Operators usually decide about two days before the closest approach, the last moment for a cheap manoeuvre. The question for learning is whether the history of an event's CDMs predicts its final risk better than the latest value alone.
 
 ::: history
 **The Kelvins collision-avoidance challenge (2019)**
@@ -185,7 +185,7 @@ Better tracking reduces manoeuvres more than any threshold rule can (@tbl:pcthre
 
 ### Automated Decisions and Coordination
 
-At the largest scale, decisions are already automatic. Starlink satellites receive warnings and plan and execute their own avoidance manoeuvres. They made more than 200 000 such manoeuvres in the six months to May 2026, at a threshold of 3 × 10⁻⁷ (Chapter 48). This is rule-based autonomy rather than learning, and it works because the operator controls both the rules and the satellites. The weak point is data. Most of Starlink's reported misses came from poor or late predictions of the other object.
+At the largest scale, decisions are already automatic. Starlink satellites receive warnings and plan and execute their own avoidance manoeuvres. They made more than 200 000 such manoeuvres in the six months to May 2026, at a threshold of 3 × 10⁻⁷ (Chapter 48). This is rule-based autonomy rather than learning, and it works because the operator controls both the rules and the satellites. The weak point is data. In the few cases where a manoeuvre did not reduce the risk as planned, the cause was mostly a poor or late prediction of the other object.
 
 Coordination between operators is the next step. ESA's **CREAM** project (Collision Risk Estimation and Automated Mitigation), begun in 2020, aims to cut operator workload, false alerts and response time. In August 2025 its ground prototype, built by GMV and Guardtime, could issue alerts, propose manoeuvres and support coordination. ESA was preparing a pilot phase and in-orbit demonstrations, first as a software payload on other satellites. @tbl:ssasystems50 lists the main systems and their status.
 
@@ -217,7 +217,7 @@ $$ S_k^{\pm} = \max\!\left(0,\; S_{k-1}^{\pm} \pm r_k - \kappa\right), $$
 
 which raise an alarm when either exceeds a threshold $h$. The allowance $\kappa$ absorbs normal noise. A step change pushes one sum steadily upward, so CUSUM detects small persistent shifts that a single-point test would miss.
 
-A learned classifier instead looks at a whole window of data around each moment. It learns what a burn looks like compared with a storm or an outlier. @fig:maneuver50 compares the two on 240 synthetic satellites. Each has 60 days of orbit estimates every six hours, drag that rises in storms and burns of 15–150 m. At one false alarm per satellite per month, a tuned CUSUM found 39 % of burns within two days and gradient-boosted trees found 49 %. At 0.3 false alarms the gap widened to 22 % against 43 %. Both found nearly all the large burns. The small ones, below about two noise widths, stayed hard.
+A learned classifier instead looks at a whole window of data around each moment. It learns what a burn looks like compared with a storm or an outlier. @fig:maneuver50 compares the two on 240 synthetic satellites. Each has 60 days of orbit estimates every six hours, drag that rises in storms and burns of 15–150 m. At one false alarm per satellite per month, a tuned CUSUM found 39 % of burns within two days and gradient-boosted trees found 49 %. At 0.3 false alarms the gap widened to 22 % against 43 %. Both found more than 80 % of the largest burns (100–150 m). Burns below 50 m — two noise widths — stayed hard: CUSUM found 19 % of them and the trees 33 %.
 
 ![Manoeuvre detection in noisy orbit estimates. (a) One synthetic satellite: semi-major axis minus its smooth decay, with burns (green dashed lines), the CUSUM statistic and the classifier score. (b) Share of burns detected within two days against false alarms per satellite per month.](figures/out/ch50_maneuver.svg){#fig:maneuver50 width=98%}
 
@@ -225,13 +225,30 @@ Commercial providers now sell such detection. LeoLabs says it uses machine learn
 
 Behaviour analysis matters most in geostationary orbit, where inspector satellites manoeuvre near others. In mid-2025 China's Shijian-21 and Shijian-25 appear to have docked in GEO, probably to test refuelling, and separated in late 2025. China did not confirm the operation. Commercial trackers such as COMSPOC and S2a followed it from the ground, and the US Space Force reportedly watched with its GSSAP inspector satellites.
 
+::: note
+**Practice: building a manoeuvre-detection pipeline**
+
+1. **Define the need.** Decide which satellites to watch, the smallest burn that matters (for example 2 cm/s) and how quickly it must be found. Agree how many false alarms per day the analysts can handle.
+2. **Gather data.** Collect orbit histories — two-line elements, ephemerides or your own orbit fits — with their uncertainties. Add space-weather indices, because storms mimic burns.
+3. **Get labels.** Use operators' published manoeuvre histories, such as constellation ephemerides, or ask cooperating operators. Mark storms, deployments and orbit-raising phases separately.
+4. **Build a baseline.** Fit a smooth decay model and run a CUSUM test on the residuals. Tune its window and allowance on training satellites only.
+5. **Add a learned model.** Train a gradient-boosted classifier on windows of residuals and space-weather features. Split by satellite and by time, never at random, to avoid leakage (Chapter 43).
+6. **Score like an operator.** Report the share of burns found within the required time at your false-alarm budget. Report results for small burns and storm periods separately.
+7. **Estimate each burn.** For every alarm, fit the size, direction and time of the burn and its uncertainty. A flag without an estimate is of little use.
+8. **Run in shadow mode.** Run beside existing tools for months. Review every alarm and missed burn with analysts.
+9. **Monitor and retrain.** Track precision monthly. Retrain after new satellite types, new sensors or a change in solar activity.
+10. **Share what you find.** Publish detected manoeuvres in a standard format, with their uncertainty, so that screening services and other operators can use them at once.
+
+The same steps work for break-up detection and for change detection in imagery.
+:::
+
 ### Characterising Objects from Light Curves
 
 A **light curve** is an object's brightness over time. A stable, pointed satellite shines steadily. A tumbling rocket body brightens twice per turn as its long side faces the observer. A tumbling panel flashes when its flat surface briefly acts as a mirror. Period, amplitude and shape thus reveal what an object is and how it moves.
 
 A good starting point is a set of physical **features**. The **Lomb–Scargle periodogram** finds the strongest period in unevenly sampled data. Skewness and the share of bright outliers measure flashes. The autocorrelation at the best period tests whether the pattern repeats. A classifier then learns from labelled examples.
 
-@fig:lightcurve50 tests this on synthetic two-minute light curves of three classes. A random forest on nine features was 96–97 % accurate up to 0.1 magnitude of noise and 84 % at 0.3 magnitude. The most useful features were periodogram power, skewness and autocorrelation. A rule using amplitude alone managed only 53–59 %. Real studies report similar trends. Classifiers trained on light curves from Russia's Mini-MegaTORTORA wide-field camera reach about 75 % for three broad classes and 85–92 % for some finer tasks. Results differ with the class definitions, so the 2024 RoBo6 data set was released as a common benchmark.
+@fig:lightcurve50 tests this on synthetic two-minute light curves of three classes. A random forest on nine features was about 96–97 % accurate up to 0.1 magnitude of noise and 84 % at 0.3 magnitude. The most useful features were periodogram power, skewness and autocorrelation. A rule using amplitude alone managed only 53–59 %. Real studies report similar trends. Classifiers trained on light curves from Russia's Mini-MegaTORTORA wide-field camera reach about 75 % for three broad classes and 85–92 % for some finer tasks. Results differ with the class definitions, so the 2024 RoBo6 data set was released as a common benchmark.
 
 ![Light-curve classification. (a) Synthetic light curves of a stable satellite, a tumbling cylinder and a tumbling panel. (b) Accuracy against photometric noise for a random forest on nine features and for a rule using amplitude alone. (c) Confusion matrix of the forest at 0.3 magnitude noise.](figures/out/ch50_lightcurve.svg){#fig:lightcurve50 width=98%}
 
@@ -239,7 +256,7 @@ Radar adds a second view. **Radar cross-section** — how strongly an object ref
 
 ### Re-entry Prediction
 
-About 2 000 catalogued objects re-enter each year (Chapter 21). Predicting when an uncontrolled object will re-enter is hard because the final days are dominated by drag at low altitude, where density is least certain. A common rule of thumb is an uncertainty of about 10–20 % of the remaining lifetime. A prediction made a day ahead is therefore uncertain by a few hours, or tens of thousands of kilometres along the track.
+About 2 000 catalogued objects re-enter each year (Chapter 21). Predicting when an uncontrolled object will re-enter is hard because the final days are dominated by drag at low altitude, where density is least certain. A common rule of thumb is an uncertainty of about 10–20 % of the remaining lifetime. A prediction made a day ahead is therefore uncertain by a few hours. That is more than a full orbit, or tens of thousands of kilometres along the track.
 
 Learning has been tried here too. Salmaso, Trisolini and Colombo (2023) trained a sequence-to-sequence network on the altitude histories of more than 400 re-entered objects, adding the drag term, solar activity and area-to-mass ratio as inputs. It worked best for objects similar to its training set, a familiar limit of learned models. Controlled re-entries avoid the problem, as for ESA's ATV-3 in 2012 (@fig:atv3reentry).
 
@@ -258,7 +275,7 @@ Satellite imagery has shaped wars since the first reconnaissance satellites (Cha
 ::: history
 **From Project Maven to NGA Maven**
 
-- **2017.** The US Department of Defense set up an Algorithmic Warfare team, known as Project Maven, to apply computer vision to drone video and other imagery. It was operational by 2018.
+- **2017.** The US Department of Defense set up an Algorithmic Warfare team, known as Project Maven, to apply computer vision to drone video and other imagery. Its first algorithms were in use by December 2017.
 - **2022.** Parts of Maven moved to the National Geospatial-Intelligence Agency (NGA), which handles imagery and maps.
 - **November 2023.** NGA made NGA Maven a formal programme of record.
 - **May 2025.** NGA's director reported more than 20 000 active users across more than 35 military tools, available to all services and combatant commands. Targeting timelines in one exercise fell "from hours to minutes". The ceiling of the related Maven Smart System contract rose to about $1.3 billion through 2029.
@@ -267,7 +284,7 @@ Satellite imagery has shaped wars since the first reconnaissance satellites (Cha
 Sources: Breaking Defense and DefenseScoop reporting of NGA statements, 2025.
 :::
 
-NGA also buys analytics from industry. Its Luno A contract (September 2024, up to $290 million, ten companies) covers computer vision for monitoring infrastructure. Luno B (January 2025, about $200 million) covers wider analytics, including AI-based change detection.
+NGA also buys analytics from industry. Its Luno A contract (September 2024, up to $290 million, ten companies) buys computer vision and analytic services based on commercial imagery. Luno B (January 2025, up to $200 million, 13 companies) has funded orders such as change and movement detection and maritime analytics.
 
 At national scale the main enemy is the false alarm. Clouds, shadows, seasons and small misregistrations all look like change. @fig:changefa50 shows the arithmetic. A country of 500 000 km² divided into 30 m cells has 5.6 × 10⁸ cells per look. Even a tiny per-cell false-alarm rate produces more alerts than any team can read.
 
@@ -298,7 +315,7 @@ Step 6 assumes independent errors. Real clutter repeats from image to image, so 
 
 Radar satellites are central to maritime monitoring because they see through cloud and darkness. In an early example from 1994, the Space Shuttle's imaging radar recorded a ship and its 28 km wake in the Atlantic (@fig:sirship).
 
-![A Spaceborne Imaging Radar-C/X-SAR image of the north-east Atlantic taken from Space Shuttle Endeavour on 11 April 1994. The bright spot at left is a ship and the dark line its 28 km wake, probably lengthened by discharged oil. The area shown is about 35 km × 65 km.](figures/photos/ch50_sarship.jpg){#fig:sirship width=70%}
+![A Spaceborne Imaging Radar-C/X-SAR image of the north-east Atlantic taken from Space Shuttle Endeavour on 11 April 1994. The bright spot at left is a ship and the line at lower left its wake, about 28 km long. Investigators thought that discharged oil made the wake last longer. The area shown is about 35 km × 65 km.](figures/photos/ch50_sarship.jpg){#fig:sirship width=70%}
 
 ### Signals and Emitters
 
@@ -308,17 +325,17 @@ Open research shows what is possible. In 2023 researchers at Oxford fingerprinte
 
 ### Missile Warning and Tracking
 
-Missile-warning satellites stare at the Earth in the infrared and must find a rocket plume among clouds, sun glints and fires (Chapter 20). Classical processing subtracts the background, applies thresholds and confirms detections by tracking them over several frames. Learning is being studied for clutter suppression, event classification and **track fusion** — combining detections from several satellites and radars into one three-dimensional track. The US Space Force accepted its new FORGE missile-warning ground processing for operations in September 2025. Public material says little about the use of learning in operational chains. Errors here could have grave consequences, so changes demand long testing.
+Missile-warning satellites stare at the Earth in the infrared and must find a rocket plume among clouds, sun glints and fires (Chapter 20). Classical processing subtracts the background, applies thresholds and confirms detections by tracking them over several frames. Learning is being studied for clutter suppression, event classification and **track fusion** — combining detections from several satellites and radars into one three-dimensional track. In September 2025 the US Space Force accepted the second delivery of its new FORGE missile-warning ground system for operations. Public material says little about the use of learning in operational chains. Errors here could have grave consequences, so changes demand long testing.
 
 ### Battle Management and Golden Dome
 
 Missile defence must turn tracks into decisions in minutes. **Battle management, command and control** (BMC2) software links sensors to interceptors and proposes which interceptor should engage which threat. The US **Golden Dome** programme, launched by executive order in January 2025, aims at a layered homeland defence that includes space sensors and possibly space-based interceptors.
 
-Public facts are limited and changing. In April 2026 the Space Force gave 12 companies agreements worth up to $3.2 billion for space-based interceptor prototypes. Golden Dome's director, General Michael Guetlein, calls the command-and-control layer the programme's "glue layer". A consortium of nine firms demonstrated part of it in early 2026, and initial operational capability is planned for 2028. He put the cost at $185 billion through 2035. A Congressional Budget Office estimate in May 2026, for an illustrative architecture, put it at about $1.2 trillion over 20 years. In September 2026 Guetlein said that the military must decide "at machine speed". He saw a role for AI in helping leaders sift data and present options. How far humans stay in each decision has not been described in public detail.
+Public facts are limited and changing. In April 2026 the Space Force gave 12 companies agreements worth up to $3.2 billion for space-based interceptor prototypes. Golden Dome's director, General Michael Guetlein, calls the command-and-control layer the programme's "glue layer". An industry consortium of nine firms ran a live demonstration of part of it in early 2026, and initial operational capability is planned for 2028. He put the cost at $185 billion through 2035. A Congressional Budget Office estimate in May 2026, for an illustrative architecture, put it at about $1.2 trillion over 20 years. In September 2026 Guetlein said that the military must make decisions "at machine speed". Senior leaders described a role for AI in helping human operators handle the flood of sensor data. How far humans stay in each decision has not been described in public detail.
 
 ### Autonomy for Rendezvous and Proximity Operations
 
-Inspector satellites, servicers and possible weapons all fly close to other spacecraft. Their guidance and navigation methods are covered in Chapter 48. The defence angle is speed and secrecy. In June 2026 the Space Force's **Victus Haze** exercise launched a Rocket Lab spacecraft 16 hours and 42 minutes after the order to launch. It was to rendezvous with True Anomaly's Jackal spacecraft for several months of proximity operations. Such missions rely on onboard autonomy: the ground cannot react quickly enough when two satellites are tens of metres apart. They also stress SSA, because observers must decide quickly whether an approach is inspection, servicing or a threat (@tbl:defenceai50).
+Inspector satellites, servicers and possible weapons all fly close to other spacecraft. Their guidance and navigation methods are covered in Chapter 48. The defence angle is speed and secrecy. In June 2026 the Space Force's **Victus Haze** exercise launched a Rocket Lab target spacecraft 16 hours and 42 minutes after notice. True Anomaly's Jackal, already in orbit, then approached it and imaged it from several sides. Its mission software planned the sortie and commanded the manoeuvres, and it finished in 61 hours of a 72-hour window. Such missions rely partly on onboard autonomy, because at close range there is little time to wait for commands from the ground. They also stress SSA, because observers must decide quickly whether an approach is inspection, servicing or a threat (@tbl:defenceai50).
 
 | Application | Example (public) | What the machine does | Status (October 2026) |
 |:---|:---|:---|:---|
@@ -343,7 +360,7 @@ Automation changes how people think. **Automation bias** is the tendency to acce
 
 Three practices help. Systems should show their evidence and confidence, not just a verdict. Operators should train with systems that sometimes fail, so that they learn when to doubt them. And the design should state clearly who decides what. NGA's label for machine-generated products is one example of making the machine's role visible. Flight dynamics officers at NASA, who own trajectory decisions for crewed missions, offer another model of human authority supported by software (@fig:artemisfdo).
 
-![Flight controller Julie Reed at the flight dynamics officer console in Mission Control, Houston, on 1 December 2022, as Orion left its distant retrograde orbit around the Moon during Artemis I. Software computes the trajectory options; a named person owns the decision.](figures/photos/ch50_fdo.jpg){#fig:artemisfdo width=40%}
+![Flight controller Julie Reed at the flight dynamics officer console in Mission Control, Houston, on 1 December 2022, as Orion left its distant retrograde orbit around the Moon during Artemis I. Software computes the trajectory options; a named person owns the decision.](figures/photos/ch50_fdo.jpg){#fig:artemisfdo width=35%}
 
 ## Law, Ethics and Policy
 
@@ -368,7 +385,7 @@ The USA launched the **Political Declaration on Responsible Military Use of Arti
 
 : Policy and legal instruments on military AI and autonomy. {#tbl:aipolicy50}
 
-Under the Convention on Certain Conventional Weapons (CCW), with 128 states parties, a group of governmental experts has discussed **lethal autonomous weapon systems** since 2016. Its mandate ended in 2026. At its final session (31 August–4 September 2026) it agreed by consensus on elements that could form the basis of an instrument. The Seventh Review Conference, on 16–20 November 2026, will decide whether to open negotiations. The USA and Russia have opposed new legally binding rules. Many other states and the International Committee of the Red Cross want a treaty. NATO's revised 2024 strategy keeps its six principles: lawfulness, responsibility and accountability, explainability and traceability, reliability, governability and bias mitigation.
+Under the Convention on Certain Conventional Weapons (CCW), with 128 states parties, a group of governmental experts set up in 2016 has discussed **lethal autonomous weapon systems**. Its mandate ended in 2026. At its final session (31 August–4 September 2026) it agreed by consensus on elements that could form the basis of an instrument. The Seventh Review Conference, on 16–20 November 2026, will decide whether to open negotiations. The USA and Russia have opposed new legally binding rules. Many other states and the International Committee of the Red Cross want a treaty. NATO's revised 2024 strategy keeps its six principles: lawfulness, responsibility and accountability, explainability and traceability, reliability, governability and bias mitigation.
 
 ### Stability and Escalation in Space
 
@@ -396,23 +413,6 @@ Almost everything in this chapter is **dual-use**: the same tracker serves a com
 : Summary of this chapter's synthetic experiments. {#tbl:mlsummary50}
 
 Four lessons stand out. Physics and geometry carry most of the load. Learning gives real but moderate gains, mostly where data are noisy or patterns are subtle. Gains must be measured in the conditions that matter, such as storms or low false-alarm rates. And no model can create information that the sensors did not collect.
-
-::: note
-**Practice: building a manoeuvre-detection pipeline**
-
-1. **Define the need.** Decide which satellites to watch, the smallest burn that matters (for example 2 cm/s) and how quickly it must be found. Agree how many false alarms per day the analysts can handle.
-2. **Gather data.** Collect orbit histories — two-line elements, ephemerides or your own orbit fits — with their uncertainties. Add space-weather indices, because storms mimic burns.
-3. **Get labels.** Use operators' published manoeuvre histories, such as constellation ephemerides, or ask cooperating operators. Mark storms, deployments and orbit-raising phases separately.
-4. **Build a baseline.** Fit a smooth decay model and run a CUSUM test on the residuals. Tune its window and allowance on training satellites only.
-5. **Add a learned model.** Train a gradient-boosted classifier on windows of residuals and space-weather features. Split by satellite and by time, never at random, to avoid leakage (Chapter 43).
-6. **Score like an operator.** Report the share of burns found within the required time at your false-alarm budget. Report results for small burns and storm periods separately.
-7. **Estimate each burn.** For every alarm, fit the size, direction and time of the burn and its uncertainty. A flag without an estimate is of little use.
-8. **Run in shadow mode.** Run beside existing tools for months. Review every alarm and missed burn with analysts.
-9. **Monitor and retrain.** Track precision monthly. Retrain after new satellite types, new sensors or a change in solar activity.
-10. **Share what you find.** Publish detected manoeuvres in a standard format, with their uncertainty, so that screening services and other operators can use them at once.
-
-The same steps work for break-up detection and for change detection in imagery.
-:::
 
 ::: key
 **Key takeaways**
